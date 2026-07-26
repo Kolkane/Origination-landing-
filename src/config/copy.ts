@@ -130,8 +130,26 @@ export const copy = {
     titre: "Une zone. Une verticale. Un client.",
     corps:
       "L’exclusivité se prend au premier abonnement signé — pas au premier appel. Les statuts ci-dessous sont tenus à la main : pas de compteurs, pas de fausse rareté.",
-    carteNote: "Carte des zones — en préparation",
     cta: "Réserver un appel — vérifier si votre zone est disponible et en discuter avec Vincent.",
+  },
+  carte: {
+    ariaCarte: "Carte des régions françaises",
+    panneauVide: "Sélectionnez une région.",
+    bouton: "Réserver un appel avec Vincent",
+    statuts: {
+      disponible: {
+        label: "Disponible",
+        texte: "Zone ouverte. La part se prend au premier abonnement signé.",
+      },
+      en_discussion: {
+        label: "En discussion",
+        texte: "Des discussions sont en cours sur cette zone. Un appel reste possible : premier signé, premier servi.",
+      },
+      exclusivite: {
+        label: "Sous exclusivité",
+        texte: "Cette zone est servie en exclusivité. Laissez vos coordonnées à l’appel pour être prévenu si elle se libère.",
+      },
+    },
   },
   engagements: {
     label: "Ce que nous ne faisons pas",
