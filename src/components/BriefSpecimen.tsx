@@ -1,15 +1,17 @@
 import { copy } from "@/config/copy";
 
 type BriefSpecimenProps = {
-  mode?: "compact" | "complet";
+  mode?: "compact" | "detail";
 };
 
 function Caviarde({ largeur }: { largeur: number }) {
   return (
     <span className="whitespace-nowrap">
+      {/* barre rendue par une bordure (pas un fond) pour rester visible en
+          mode contrastes forcés, où les background-color sont supprimés */}
       <span
         aria-hidden="true"
-        className="inline-block h-[0.8em] translate-y-[0.08em] bg-ink"
+        className="inline-block h-0 translate-y-[0.08em] border-t-[0.8em] border-ink"
         style={{ width: `${largeur}ch` }}
       />
       <span className="sr-only">{copy.specimen.caviardeSr}</span>
@@ -17,26 +19,14 @@ function Caviarde({ largeur }: { largeur: number }) {
   );
 }
 
-export default function BriefSpecimen({ mode = "compact" }: BriefSpecimenProps) {
+function Document() {
   const s = copy.specimen;
-  const compact = mode === "compact";
-
   return (
     <figure aria-label={s.ariaLabel} className="relative">
-      <div
-        className={`border border-hairline bg-paper-light ${
-          compact ? "relative aspect-[210/297] overflow-hidden" : ""
-        }`}
-      >
+      <div className="relative aspect-[210/297] overflow-hidden border border-hairline bg-paper-light">
         {/* le fondu est ancré au bord bas de la carte, pas au paragraphe : ce
             qui dépasse du format A4 s'efface quel que soit le viewport */}
-        <div
-          className={
-            compact
-              ? "absolute inset-0 overflow-hidden p-6 [mask-image:linear-gradient(to_bottom,black_72%,transparent_97%)] lg:p-7"
-              : "p-6 lg:p-7"
-          }
-        >
+        <div className="absolute inset-0 overflow-hidden p-6 [mask-image:linear-gradient(to_bottom,black_72%,transparent_97%)] lg:p-7">
           <dl className="grid grid-cols-2 gap-x-4 gap-y-4 border-b border-hairline pb-5">
             {s.identite.map((champ) => (
               <div
@@ -59,7 +49,7 @@ export default function BriefSpecimen({ mode = "compact" }: BriefSpecimenProps) 
             <p className="font-mono text-label uppercase tracking-label text-muted">
               {s.signauxLabel}
             </p>
-            <ul className="mt-1">
+            <ul role="list" className="mt-1">
               {s.signaux.map((signal) => (
                 <li
                   key={signal.date}
@@ -83,15 +73,38 @@ export default function BriefSpecimen({ mode = "compact" }: BriefSpecimenProps) 
             </p>
             <p className="mt-2 text-sm">
               {s.angle.texte}
-              {compact ? <span className="sr-only"> {s.angle.srTronque}</span> : null}
+              <span className="sr-only"> {s.angle.srTronque}</span>
             </p>
           </div>
         </div>
       </div>
 
       <div className="absolute -top-3 right-4 rotate-[-6deg] border border-bronze bg-paper-light px-2.5 py-1 font-mono text-label font-medium tracking-label text-bronze">
-        {s.tampon}
+        {copy.specimen.tampon}
       </div>
     </figure>
   );
+}
+
+export default function BriefSpecimen({ mode = "compact" }: BriefSpecimenProps) {
+  if (mode === "detail") {
+    return (
+      <div className="grid gap-10 lg:grid-cols-12 lg:gap-8">
+        <div className="lg:col-span-7">
+          <Document />
+        </div>
+        <ul role="list" className="flex flex-col gap-6 lg:col-span-5 lg:justify-between lg:py-10 lg:pl-6">
+          {copy.specimen.annotations.map((annotation) => (
+            <li
+              key={annotation}
+              className="relative border-t border-hairline pt-3 font-mono text-label uppercase tracking-label text-muted lg:max-w-[36ch] lg:border-t-0 lg:pt-0 lg:before:absolute lg:before:-left-10 lg:before:top-2 lg:before:h-px lg:before:w-8 lg:before:bg-hairline"
+            >
+              {annotation}
+            </li>
+          ))}
+        </ul>
+      </div>
+    );
+  }
+  return <Document />;
 }

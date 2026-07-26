@@ -1,11 +1,13 @@
 import type { Metadata } from "next";
 import { IBM_Plex_Mono, Newsreader } from "next/font/google";
+import Footer from "@/components/Footer";
 import { brand } from "@/config/brand";
 import { copy } from "@/config/copy";
 import "./globals.css";
 
 const newsreader = Newsreader({
   subsets: ["latin"],
+  style: ["normal", "italic"],
   axes: ["opsz"],
   variable: "--font-newsreader",
   display: "swap",
@@ -46,6 +48,7 @@ export default function RootLayout({
           </div>
         </header>
         {children}
+        <Footer />
       </body>
     </html>
   );
