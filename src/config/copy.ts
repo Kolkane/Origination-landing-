@@ -18,15 +18,21 @@ export type Signal = {
   source: "RNE" | "BODACC";
 };
 
+export type SectionLegale = {
+  titre: string;
+  corps: string;
+  email?: string;
+};
+
 export const copy = {
   meta: {
     title: `${brand.MARQUE} — ${brand.BASELINE}`,
     description:
-      "Détection au registre des PME françaises dont le capital va probablement changer de mains, 12 à 18 mois avant le marché. Dossiers vérifiés à la main, un seul client par zone.",
+      "Détection au registre des PME françaises en transition capitalistique, 12 à 18 mois avant le marché. Dossiers vérifiés, un seul client par zone.",
   },
   header: {
     zoneLien: "Vérifier ma zone ↓",
-    zoneAncre: "#carte",
+    zoneAncre: "/#carte",
   },
   hero: {
     eyebrow: "Origination sell-side · PME françaises · 1–10 M€",
@@ -218,5 +224,53 @@ export const copy = {
     linkedin: "LinkedIn",
     note: "Site sans traceurs publicitaires.",
     copyright: `© 2026 ${brand.ENTITY.raisonSociale}.`,
+  },
+  legales: {
+    mentions: {
+      titre: "Mentions légales",
+      metaTitre: `Mentions légales — ${brand.MARQUE}`,
+      sections: [
+        {
+          titre: "Éditeur",
+          corps: `Le site est édité par ${brand.ENTITY.raisonSociale} — SIREN ${brand.ENTITY.siren} — ${brand.ENTITY.ville}.`,
+        },
+        {
+          titre: "Directeur de la publication",
+          corps: "Vincent Fournier.",
+        },
+        {
+          titre: "Hébergement",
+          corps: "Le site est hébergé par Vercel Inc., 340 S Lemon Ave #4133, Walnut, CA 91789, États-Unis — vercel.com.",
+        },
+        {
+          titre: "Contact",
+          corps: "Pour toute question relative au site :",
+          email: brand.CONTACT_EMAIL,
+        },
+      ] as SectionLegale[],
+    },
+    confidentialite: {
+      titre: "Confidentialité",
+      metaTitre: `Confidentialité — ${brand.MARQUE}`,
+      sections: [
+        {
+          titre: "Cookies et données de navigation",
+          corps: "Ce site ne dépose aucun cookie, n’embarque aucun traceur ni script tiers et ne collecte aucune donnée de navigation.",
+        },
+        {
+          titre: "Prise de rendez-vous",
+          corps: "La prise de rendez-vous s’effectue via Calendly, service externe accessible par un lien sortant. Les informations saisies à cette occasion sont traitées par Calendly, selon ses propres conditions.",
+        },
+        {
+          titre: "Données traitées par le service",
+          corps: `Les dossiers produits par ${brand.MARQUE} reposent exclusivement sur des sources publiques (RNE, SIRENE, BODACC). Une information au titre de l’article 14 du RGPD est jointe à chaque brief. Toute personne concernée peut exercer un opt-out définitif en écrivant à l’adresse ci-dessous ; il est honoré sans condition.`,
+        },
+        {
+          titre: "Contact",
+          corps: "Pour exercer un opt-out ou pour toute question :",
+          email: brand.CONTACT_EMAIL,
+        },
+      ] as SectionLegale[],
+    },
   },
 };

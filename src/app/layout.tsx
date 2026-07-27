@@ -3,11 +3,13 @@ import { IBM_Plex_Mono, Newsreader } from "next/font/google";
 import Footer from "@/components/Footer";
 import { brand } from "@/config/brand";
 import { copy } from "@/config/copy";
+import { SITE_URL } from "@/config/site";
 import "./globals.css";
 
+/* italique volontairement non embarqué : seule l'exergue l'utilise, le
+   navigateur synthétise l'oblique — 131 Ko de préchargement économisés */
 const newsreader = Newsreader({
   subsets: ["latin"],
-  style: ["normal", "italic"],
   axes: ["opsz"],
   variable: "--font-newsreader",
   display: "swap",
@@ -22,8 +24,16 @@ const plexMono = IBM_Plex_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
   title: copy.meta.title,
   description: copy.meta.description,
+  openGraph: {
+    title: copy.meta.title,
+    description: copy.meta.description,
+    locale: "fr_FR",
+    type: "website",
+    url: SITE_URL,
+  },
 };
 
 export default function RootLayout({
