@@ -5,7 +5,7 @@ export default function Footer() {
   const f = copy.footer;
   return (
     <footer className="border-t border-hairline">
-      <div className="mx-auto flex max-w-6xl flex-wrap items-baseline gap-x-6 gap-y-3 px-6 py-8 font-mono text-label text-muted lg:px-10">
+      <div className="mx-auto flex max-w-[1200px] flex-wrap items-baseline gap-x-6 gap-y-3 px-6 py-8 font-mono text-label text-muted lg:px-10">
         <p className="uppercase text-ink">{f.marque}</p>
         <a href={f.mentions.href} className="hover:text-ink">
           {f.mentions.label}

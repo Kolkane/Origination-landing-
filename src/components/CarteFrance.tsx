@@ -1,23 +1,26 @@
 "use client";
 
 import { useState } from "react";
+import Diamond from "@/components/Diamond";
 import { VIEWBOX, tracesRegions } from "@/components/carte/france-regions";
 import { brand, regions, type RegionStatus } from "@/config/brand";
 import { copy } from "@/config/copy";
 
 const remplissages: Record<RegionStatus, string> = {
-  disponible: "fill-paper hover:fill-bronze/[0.12] focus-visible:fill-bronze/[0.12]",
-  en_discussion: "fill-hairline",
+  disponible: "fill-paper hover:fill-outremer/[0.08] focus-visible:fill-outremer/[0.08]",
+  /* l'état « en discussion » est l'un des emplois autorisés de l'outremer */
+  en_discussion: "fill-outremer",
   exclusivite: "fill-[url(#hachures)]",
+};
+
+const losangesLegende: Record<RegionStatus, string> = {
+  disponible: "fill-paper stroke-ink",
+  en_discussion: "fill-outremer",
+  exclusivite: "fill-ink",
 };
 
 /* normalisation typographique d'affichage (brand.ts reste la source exacte) */
 const typo = (s: string) => s.replace(/'/g, "’");
-
-const hachuresLegende = {
-  backgroundImage:
-    "repeating-linear-gradient(45deg, transparent, transparent 4px, #8A6B1E 4px, #8A6B1E 5px)",
-};
 
 export default function CarteFrance() {
   const [slugActif, setSlugActif] = useState<string | null>(null);
@@ -29,7 +32,8 @@ export default function CarteFrance() {
     setSlugActif((actif) => (actif === slug ? null : slug));
 
   /* contours redessinés APRÈS toutes les régions : sinon le trait de focus
-     serait recouvert par le fill des voisines peintes ensuite */
+     serait recouvert par le fill des voisines peintes ensuite ; encre sur
+     les régions outremer, outremer partout ailleurs */
   const contours = Array.from(
     new Set([slugActif, slugFocus].filter((s): s is string => s !== null))
   );
@@ -46,7 +50,7 @@ export default function CarteFrance() {
           <defs>
             {/* tuile calibrée sur le rendu desktop (~600px pour 100 unités) :
                 0.8 unité ≈ 5px et 0.18 unité ≈ 1px, orientation « \ » comme
-                l'échantillon CSS de la légende */}
+                les hachures de la légende */}
             <pattern
               id="hachures"
               width="0.8"
@@ -60,7 +64,7 @@ export default function CarteFrance() {
                 x2="0.4"
                 y2="0.8"
                 strokeWidth="0.18"
-                className="stroke-bronze"
+                className="stroke-ink"
               />
             </pattern>
           </defs>
@@ -92,27 +96,26 @@ export default function CarteFrance() {
               />
             );
           })}
-          {contours.map((slug) => (
-            <path
-              key={`contour-${slug}`}
-              d={tracesRegions[slug]}
-              aria-hidden="true"
-              vectorEffect="non-scaling-stroke"
-              className="pointer-events-none fill-none stroke-bronze stroke-2"
-            />
-          ))}
+          {contours.map((slug) => {
+            const statut = regions.find((r) => r.slug === slug)?.statut;
+            return (
+              <path
+                key={`contour-${slug}`}
+                d={tracesRegions[slug]}
+                aria-hidden="true"
+                vectorEffect="non-scaling-stroke"
+                className={`pointer-events-none fill-none stroke-2 ${
+                  statut === "en_discussion" ? "stroke-ink" : "stroke-outremer"
+                }`}
+              />
+            );
+          })}
         </svg>
 
         <ul role="list" className="mt-6 flex flex-wrap gap-x-8 gap-y-2">
           {(Object.keys(c.statuts) as RegionStatus[]).map((statut) => (
-            <li key={statut} className="flex items-baseline gap-2">
-              <span
-                aria-hidden="true"
-                className={`inline-block h-3 w-3 translate-y-[1px] border border-ink ${
-                  statut === "disponible" ? "bg-paper" : ""
-                }${statut === "en_discussion" ? "bg-hairline" : ""}`}
-                style={statut === "exclusivite" ? hachuresLegende : undefined}
-              />
+            <li key={statut} className="flex items-center gap-2">
+              <Diamond taille={9} className={losangesLegende[statut]} />
               <span className="font-mono text-label uppercase tracking-label text-muted">
                 {c.statuts[statut].label}
               </span>
@@ -130,12 +133,12 @@ export default function CarteFrance() {
               type="button"
               onClick={() => basculer(region.slug)}
               aria-pressed={slugActif === region.slug}
-              className="flex w-full items-baseline justify-between gap-4 py-3 text-left aria-pressed:bg-paper-light"
+              className="flex w-full items-baseline justify-between gap-4 py-3 text-left aria-pressed:bg-paper-dim"
             >
-              <span className="font-serif">{typo(region.nom)}</span>
+              <span className="font-medium">{typo(region.nom)}</span>
               <span className="shrink-0 font-mono text-label uppercase tracking-label text-muted">
                 {c.statuts[region.statut].label}{" "}
-                <span aria-hidden="true" className="text-bronze">
+                <span aria-hidden="true" className="text-ink">
                   ›
                 </span>
               </span>
@@ -150,7 +153,9 @@ export default function CarteFrance() {
       >
         {regionActive ? (
           <>
-            <h3 className="font-serif text-xl font-medium">{typo(regionActive.nom)}</h3>
+            <h3 className="font-display text-xl font-bold tracking-display">
+              {typo(regionActive.nom)}
+            </h3>
             <p className="mt-2 font-mono text-label uppercase tracking-label text-muted">
               {c.statuts[regionActive.statut].label}
             </p>
@@ -161,7 +166,7 @@ export default function CarteFrance() {
               href={brand.CALENDLY_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-8 inline-block w-full rounded-[2px] bg-ink px-6 py-3.5 text-center font-mono text-xs uppercase tracking-label text-paper hover:bg-bronze hover:text-paper-light sm:w-auto"
+              className="mt-8 inline-block w-full bg-ink px-6 py-3.5 text-center font-mono text-xs uppercase tracking-label text-paper transition-colors duration-150 hover:bg-outremer sm:w-auto"
             >
               {c.bouton}
             </a>

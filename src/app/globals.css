@@ -4,7 +4,49 @@
 
 @layer base {
   :focus-visible {
-    outline: 2px solid theme("colors.bronze");
+    outline: 2px solid theme("colors.outremer");
     outline-offset: 2px;
+  }
+}
+
+/* signature de chargement du hero : les barres de caviardage s'étendent
+   de 0 à 100 %, en cascade (délai posé inline par barre) */
+@keyframes caviardage {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+.caviarde-anime {
+  transform-origin: left;
+  animation: caviardage 300ms ease-out both;
+}
+
+/* apparitions au scroll : l'état masqué n'est posé (par JS) que sur les
+   blocs sous la ligne de flottaison — sans JS, tout reste visible */
+.pre-reveal {
+  opacity: 0;
+  transform: translateY(8px);
+}
+
+.revele {
+  opacity: 1;
+  transform: none;
+  transition: opacity 200ms ease-out, transform 200ms ease-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .caviarde-anime {
+    animation: none;
+  }
+  .pre-reveal {
+    opacity: 1;
+    transform: none;
+  }
+  .revele {
+    transition: none;
   }
 }

@@ -7,8 +7,7 @@ export const alt = `${brand.MARQUE} — ${brand.BASELINE}`;
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
-/* récupère un sous-ensemble TTF via l'API css2 (résolu au build, aucun
-   script tiers côté client) */
+/* sous-ensemble TTF via l'API css2 de Google (résolu à la génération) */
 async function policeGoogle(famille: string, poids: number, texte: string) {
   const css = await (
     await fetch(
@@ -20,10 +19,24 @@ async function policeGoogle(famille: string, poids: number, texte: string) {
   return (await fetch(url)).arrayBuffer();
 }
 
+/* TTF Fontshare ; fallback Schibsted Grotesk (Google) si indisponible */
+async function policeDisplay(texte: string) {
+  try {
+    const css = await (
+      await fetch("https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@800")
+    ).text();
+    const url = css.match(/url\('([^']+\.ttf)'\) format\('truetype'\)/)?.[1];
+    if (!url) throw new Error("ttf introuvable");
+    return await (await fetch(url.startsWith("//") ? `https:${url}` : url)).arrayBuffer();
+  } catch {
+    return policeGoogle("Schibsted+Grotesk", 700, texte);
+  }
+}
+
 export default async function Image() {
   const baseline = brand.BASELINE.toUpperCase();
-  const [newsreader, plexMono] = await Promise.all([
-    policeGoogle("Newsreader", 500, brand.MARQUE),
+  const [display, plexMono] = await Promise.all([
+    policeDisplay(brand.MARQUE),
     policeGoogle("IBM+Plex+Mono", 400, `${baseline} ·`),
   ]);
 
@@ -36,18 +49,20 @@ export default async function Image() {
           display: "flex",
           flexDirection: "column",
           justifyContent: "flex-end",
-          backgroundColor: "#F5F1E8",
+          backgroundColor: "#FAFAF8",
           padding: "80px 96px",
         }}
       >
-        <div style={{ width: 96, height: 3, backgroundColor: "#8A6B1E" }} />
+        <div style={{ width: 96, height: 4, backgroundColor: "#1F3AE0" }} />
         <div
           style={{
             marginTop: 40,
-            fontFamily: "Newsreader",
-            fontSize: 110,
-            color: "#1F1B15",
-            lineHeight: 1.05,
+            fontFamily: "Display",
+            fontSize: 116,
+            fontWeight: 800,
+            letterSpacing: "-0.02em",
+            color: "#0D0D0B",
+            lineHeight: 1,
           }}
         >
           {brand.MARQUE}
@@ -57,8 +72,8 @@ export default async function Image() {
             marginTop: 32,
             fontFamily: "IBM Plex Mono",
             fontSize: 26,
-            letterSpacing: "0.14em",
-            color: "#6E675C",
+            letterSpacing: "0.12em",
+            color: "#63635E",
           }}
         >
           {baseline}
@@ -68,7 +83,7 @@ export default async function Image() {
     {
       ...size,
       fonts: [
-        { name: "Newsreader", data: newsreader, weight: 500 },
+        { name: "Display", data: display, weight: 800 },
         { name: "IBM Plex Mono", data: plexMono, weight: 400 },
       ],
     }

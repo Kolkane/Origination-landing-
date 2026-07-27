@@ -9,24 +9,29 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        paper: { DEFAULT: "#F5F1E8", light: "#FAF7F0" },
-        ink: "#1F1B15",
-        muted: "#6E675C",
-        hairline: "#D9D2C3",
-        bronze: "#8A6B1E",
+        paper: { DEFAULT: "#FAFAF8", dim: "#F1F1EC" },
+        ink: "#0D0D0B",
+        muted: "#63635E",
+        hairline: "#E4E4DF",
+        outremer: "#1F3AE0",
+        /* réservé au BriefSpecimen : l'île de papier */
+        creme: "#F5F1E8",
       },
       fontFamily: {
+        display: ["var(--font-cabinet)", "ui-sans-serif", "system-ui", "sans-serif"],
+        sans: ["var(--font-switzer)", "ui-sans-serif", "system-ui", "sans-serif"],
         serif: ["var(--font-newsreader)", "Georgia", "serif"],
         mono: ["var(--font-plex-mono)", "ui-monospace", "SFMono-Regular", "monospace"],
       },
       fontSize: {
-        h1: ["clamp(2.6rem, 6vw, 4.5rem)", { lineHeight: "1.05" }],
-        h2: ["clamp(1.8rem, 3.5vw, 2.6rem)", { lineHeight: "1.15" }],
-        body: ["1.125rem", { lineHeight: "1.65" }],
+        h1: ["clamp(3rem, 7vw, 5.2rem)", { lineHeight: "0.98", letterSpacing: "-0.02em" }],
+        h2: ["clamp(1.8rem, 3.5vw, 2.6rem)", { lineHeight: "1.05", letterSpacing: "-0.02em" }],
+        body: ["1.0625rem", { lineHeight: "1.6" }],
         label: ["0.6875rem", { lineHeight: "1.4" }],
       },
       letterSpacing: {
-        label: "0.14em",
+        label: "0.12em",
+        display: "-0.02em",
       },
     },
   },
