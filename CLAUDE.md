@@ -27,6 +27,8 @@ imprimé (serif + papier). Le produit est littéralement un imprimé posé dans 
   filets #E4E4DF · ACCENT UNIQUE outremer #1F3AE0.
 - L'outremer est rare : liens, hover du CTA, soulignés actifs, état "en discussion"
   de la carte, 2-3 chiffres clés maximum. Jamais en fond de section.
+- Le hero est une section inversée (fond encre, texte #FAFAF8) ; l'objet signature est
+  le Losange Facetté ; c'est le 3e emploi autorisé de l'outremer.
 - Typo (self-hostée via next/font/local, téléchargée depuis Fontshare, licence gratuite) :
   · Display : Cabinet Grotesk (700/800), tracking -0.02em, interlignage 0.95-1.05.
   · Corps : Switzer (400/500), 17-18px/1.6.

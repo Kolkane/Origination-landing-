@@ -53,7 +53,9 @@ export default function BriefSpecimen({ mode = "compact", anime }: BriefSpecimen
 
   const document = (
     <figure aria-label={s.ariaLabel} className={`${newsreader.variable} relative`}>
-      <div className="relative aspect-[210/297] overflow-hidden border border-ink bg-creme">
+      {/* text-ink : l'île de papier garde son encre quel que soit le fond
+          de la section hôte (hero inversé compris) */}
+      <div className="relative aspect-[210/297] overflow-hidden border border-ink bg-creme text-ink">
         {/* le fondu est ancré au bord bas de la carte, pas au paragraphe : ce
             qui dépasse du format A4 s'efface quel que soit le viewport */}
         <div className="absolute inset-0 overflow-hidden p-6 font-serif [mask-image:linear-gradient(to_bottom,black_72%,transparent_97%)] lg:p-7">
