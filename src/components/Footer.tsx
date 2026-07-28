@@ -11,7 +11,7 @@ export default function Footer() {
   return (
     <footer>
       <span className="marque">
-        <LogoImbrin taille={14} variante="disque" />
+        <LogoImbrin taille={14} />
         {f.gauche}
       </span>
       <div className="links mono">

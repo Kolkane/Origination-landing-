@@ -128,7 +128,7 @@ body {
   text-transform: uppercase;
   color: var(--txt);
 }
-.brand svg {
+.brand img {
   display: block;
   flex-shrink: 0;
 }
@@ -650,7 +650,7 @@ footer .marque {
   align-items: center;
   gap: 10px;
 }
-footer .marque svg {
+footer .marque img {
   display: block;
   flex-shrink: 0;
 }

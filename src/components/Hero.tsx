@@ -45,7 +45,7 @@ export default function Hero() {
 
       <div className="nav">
         <span className="brand mono fade f1">
-          <LogoImbrin taille={18} variante="disque" />
+          <LogoImbrin taille={18} />
           <span>
             {brand.MARQUE} <small>· {brand.SUFFIXE}</small>
           </span>

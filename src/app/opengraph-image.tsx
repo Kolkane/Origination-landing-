@@ -1,5 +1,5 @@
 import { ImageResponse } from "next/og";
-import { LOGO } from "@/components/logo-imbrin-geometrie";
+import { LOGO_PATH } from "@/components/logo-imbrin-path";
 import { brand } from "@/config/brand";
 
 export const runtime = "edge";
@@ -41,20 +41,9 @@ export default async function Image() {
           padding: "80px 96px",
         }}
       >
-        {/* disque du logo (géométrie partagée LogoImbrin) */}
+        {/* logo vectorisé depuis le fichier de marque */}
         <svg width="150" height="150" viewBox="0 0 100 100">
-          <circle cx="50" cy="50" r="36" fill="#F4F2EF" />
-          <path d={LOGO.ligneEau} fill="none" stroke="#0A0A0A" strokeWidth="1.3" />
-          {LOGO.pattes.map((d) => (
-            <path key={d} d={d} fill="#0A0A0A" />
-          ))}
-          <path d={LOGO.queue} fill="#0A0A0A" />
-          <path d={LOGO.corps} fill="#0A0A0A" />
-          <path d={LOGO.aile} fill="none" stroke="#0A0A0A" strokeWidth="0.8" />
-          {LOGO.anneaux.map((d) => (
-            <path key={d} d={d} stroke="#F4F2EF" strokeWidth="0.9" fill="none" />
-          ))}
-          <circle cx={LOGO.oeil.cx} cy={LOGO.oeil.cy} r="0.7" fill="#F4F2EF" />
+          <path d={LOGO_PATH} fill="#F4F2EF" fillRule="evenodd" />
         </svg>
         <div
           style={{
