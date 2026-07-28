@@ -1,32 +1,33 @@
 import type { Metadata } from "next";
-import { IBM_Plex_Mono } from "next/font/google";
+import { Instrument_Serif } from "next/font/google";
 import localFont from "next/font/local";
+import Footer from "@/components/Footer";
 import { copy } from "@/config/copy";
 import { SITE_URL } from "@/config/site";
 import "./globals.css";
 
-const cabinet = localFont({
-  src: [
-    { path: "../../public/fonts/cabinet-grotesk-700.woff2", weight: "700" },
-    { path: "../../public/fonts/cabinet-grotesk-800.woff2", weight: "800" },
-  ],
-  variable: "--font-cabinet",
-  display: "swap",
-});
-
-const switzer = localFont({
-  src: [
-    { path: "../../public/fonts/switzer-400.woff2", weight: "400" },
-    { path: "../../public/fonts/switzer-500.woff2", weight: "500" },
-  ],
-  variable: "--font-switzer",
-  display: "swap",
-});
-
-const plexMono = IBM_Plex_Mono({
+const instrument = Instrument_Serif({
   subsets: ["latin"],
-  weight: ["400", "500"],
-  variable: "--font-plex-mono",
+  weight: "400",
+  style: ["normal", "italic"],
+  variable: "--font-instrument",
+  display: "swap",
+});
+
+/* Geist et Geist Mono sont absents du catalogue next/font/google de Next 14.2
+   (snapshot antérieur à leur publication) : self-hostées via next/font/local
+   avec les woff2 variables officiels servis par Google Fonts — même rendu. */
+const geist = localFont({
+  src: "../../public/fonts/geist-variable.woff2",
+  weight: "100 900",
+  variable: "--font-geist",
+  display: "swap",
+});
+
+const geistMono = localFont({
+  src: "../../public/fonts/geist-mono-variable.woff2",
+  weight: "100 900",
+  variable: "--font-geist-mono",
   display: "swap",
 });
 
@@ -34,6 +35,13 @@ export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: copy.meta.title,
   description: copy.meta.description,
+  openGraph: {
+    title: copy.meta.title,
+    description: copy.meta.description,
+    locale: "fr_FR",
+    type: "website",
+    url: SITE_URL,
+  },
 };
 
 export default function RootLayout({
@@ -44,9 +52,12 @@ export default function RootLayout({
   return (
     <html
       lang="fr"
-      className={`${cabinet.variable} ${switzer.variable} ${plexMono.variable}`}
+      className={`${instrument.variable} ${geist.variable} ${geistMono.variable}`}
     >
-      <body className="bg-paper font-sans text-body text-ink antialiased">{children}</body>
+      <body>
+        {children}
+        <Footer />
+      </body>
     </html>
   );
 }

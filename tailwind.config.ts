@@ -8,30 +8,23 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      /* tokens exacts de MAQUETTE-V7.html */
       colors: {
-        paper: { DEFAULT: "#FAFAF8", dim: "#F1F1EC" },
-        ink: "#0D0D0B",
-        muted: "#63635E",
-        hairline: "#E4E4DF",
-        outremer: "#1F3AE0",
-        /* réservé au BriefSpecimen : l'île de papier */
-        creme: "#F5F1E8",
+        fond: "#0A0A0A",
+        txt: "#F4F2EF",
+        "txt-2": "#B9B6B2",
+        "txt-3": "#7A7774",
+        line: "rgba(255,255,255,0.12)",
+        "line-soft": "rgba(255,255,255,0.06)",
+        wine: "#8E2438",
       },
       fontFamily: {
-        display: ["var(--font-cabinet)", "ui-sans-serif", "system-ui", "sans-serif"],
-        sans: ["var(--font-switzer)", "ui-sans-serif", "system-ui", "sans-serif"],
-        serif: ["var(--font-newsreader)", "Georgia", "serif"],
-        mono: ["var(--font-plex-mono)", "ui-monospace", "SFMono-Regular", "monospace"],
+        serif: ["var(--font-instrument)", "Georgia", "serif"],
+        sans: ["var(--font-geist)", "system-ui", "sans-serif"],
+        mono: ["var(--font-geist-mono)", "ui-monospace", "monospace"],
       },
-      fontSize: {
-        h1: ["clamp(3rem, 7vw, 5.2rem)", { lineHeight: "0.98", letterSpacing: "-0.02em" }],
-        h2: ["clamp(1.8rem, 3.5vw, 2.6rem)", { lineHeight: "1.05", letterSpacing: "-0.02em" }],
-        body: ["1.0625rem", { lineHeight: "1.6" }],
-        label: ["0.6875rem", { lineHeight: "1.4" }],
-      },
-      letterSpacing: {
-        label: "0.12em",
-        display: "-0.02em",
+      transitionTimingFunction: {
+        v7: "cubic-bezier(.22,.75,.25,1)",
       },
     },
   },

@@ -1,5 +1,6 @@
 export const brand = {
-  MARQUE: "{{MARQUE}}",                    // seul endroit à changer au choix du nom
+  MARQUE: "Imbrin",
+  SUFFIXE: "Research",
   BASELINE: "Origination sell-side",
   CALENDLY_URL: "https://calendly.com/A-REMPLACER",
   LINKEDIN_URL: "https://www.linkedin.com/in/A-REMPLACER",
