@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import LogoImbrin from "@/components/LogoImbrin";
 import { brand } from "@/config/brand";
 import { copy } from "@/config/copy";
 
@@ -44,7 +45,10 @@ export default function Hero() {
 
       <div className="nav">
         <span className="brand mono fade f1">
-          {brand.MARQUE} <small>· {brand.SUFFIXE}</small>
+          <LogoImbrin taille={24} variante="disque" />
+          <span>
+            {brand.MARQUE} <small>· {brand.SUFFIXE}</small>
+          </span>
         </span>
         <a href={h.navAncre} className="mono fade f1">
           {h.navLien}

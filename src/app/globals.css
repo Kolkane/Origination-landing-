@@ -117,10 +117,17 @@ body {
   padding: 26px 40px;
 }
 .brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
   font-size: 12px;
   letter-spacing: 0.34em;
   text-transform: uppercase;
   color: var(--txt);
+}
+.brand svg {
+  display: block;
+  flex-shrink: 0;
 }
 .brand small {
   color: var(--txt-3);
