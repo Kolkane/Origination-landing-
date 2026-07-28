@@ -1,7 +1,7 @@
-/* Logo Imbrin : sert public/logo-imbrin.svg, vectorisé depuis le fichier de
-   marque fourni (assets/logo-source.svg). Fichier externe plutôt qu'inline :
-   il est mis en cache par le navigateur et n'alourdit pas le HTML de chaque
-   page. Décoratif ici (le nom de la marque est déjà en texte à côté). */
+/* Logo Imbrin : gravure au trait fournie par Vincent (assets/logo-gravure-source.svg),
+   convertie en encre claire sur fond transparent pour le fond encre du site.
+   PNG et non SVG : une gravure est de la texture, pas de la géométrie.
+   Décoratif ici, le nom de la marque est déjà en texte à côté. */
 
 type LogoImbrinProps = {
   taille?: number;
@@ -12,7 +12,7 @@ export default function LogoImbrin({ taille = 18, className = "" }: LogoImbrinPr
   return (
     // eslint-disable-next-line @next/next/no-img-element
     <img
-      src="/logo-imbrin.svg"
+      src="/logo-imbrin.png"
       alt=""
       width={taille}
       height={taille}

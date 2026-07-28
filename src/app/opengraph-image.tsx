@@ -1,5 +1,5 @@
 import { ImageResponse } from "next/og";
-import { LOGO_PATH } from "@/components/logo-imbrin-path";
+import { LOGO_DATA_URI } from "@/components/logo-imbrin-image";
 import { brand } from "@/config/brand";
 
 export const runtime = "edge";
@@ -41,10 +41,8 @@ export default async function Image() {
           padding: "80px 96px",
         }}
       >
-        {/* logo vectorisé depuis le fichier de marque */}
-        <svg width="150" height="150" viewBox="0 0 100 100">
-          <path d={LOGO_PATH} fill="#F4F2EF" fillRule="evenodd" />
-        </svg>
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src={LOGO_DATA_URI} width="150" height="150" alt="" />
         <div
           style={{
             marginTop: 44,
