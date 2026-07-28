@@ -1,10 +1,6 @@
 import type { Metadata } from "next";
 import { IBM_Plex_Mono } from "next/font/google";
 import localFont from "next/font/local";
-import Diamond from "@/components/Diamond";
-import Footer from "@/components/Footer";
-import RevealObserver from "@/components/RevealObserver";
-import { brand } from "@/config/brand";
 import { copy } from "@/config/copy";
 import { SITE_URL } from "@/config/site";
 import "./globals.css";
@@ -38,13 +34,6 @@ export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: copy.meta.title,
   description: copy.meta.description,
-  openGraph: {
-    title: copy.meta.title,
-    description: copy.meta.description,
-    locale: "fr_FR",
-    type: "website",
-    url: SITE_URL,
-  },
 };
 
 export default function RootLayout({
@@ -57,25 +46,7 @@ export default function RootLayout({
       lang="fr"
       className={`${cabinet.variable} ${switzer.variable} ${plexMono.variable}`}
     >
-      <body className="bg-paper font-sans text-body text-ink antialiased selection:bg-ink selection:text-paper">
-        <header className="border-b border-hairline">
-          <div className="mx-auto flex max-w-[1200px] items-center justify-between px-6 py-4 lg:px-10">
-            <p className="flex items-center gap-2.5 font-display text-base font-bold tracking-display">
-              <Diamond taille={10} />
-              {brand.MARQUE}
-            </p>
-            <a
-              href={copy.header.zoneAncre}
-              className="font-mono text-label uppercase tracking-label text-muted decoration-outremer decoration-2 underline-offset-4 hover:text-ink hover:underline"
-            >
-              {copy.header.zoneLien}
-            </a>
-          </div>
-        </header>
-        {children}
-        <Footer />
-        <RevealObserver />
-      </body>
+      <body className="bg-paper font-sans text-body text-ink antialiased">{children}</body>
     </html>
   );
 }
