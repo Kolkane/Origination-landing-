@@ -84,7 +84,7 @@ export const copy = {
       sections: [
         {
           titre: "Éditeur",
-          corps: `Le site est édité par ${brand.ENTITY.raisonSociale} — SIREN ${brand.ENTITY.siren} — ${brand.ENTITY.ville}.`,
+          corps: `Le site est édité par ${brand.ENTITY.raisonSociale} — SIREN ${nb(brand.ENTITY.siren)} — ${brand.ENTITY.ville}.`,
         },
         {
           titre: "Directeur de la publication",
@@ -127,6 +127,10 @@ export const copy = {
   },
   footer: {
     gauche: `${brand.MARQUE} ${brand.SUFFIXE} · ${brand.BASELINE}`,
-    droite: "Site sans traceurs publicitaires · © 2026",
+    mentions: { label: "Mentions légales", href: "/mentions-legales" },
+    confidentialite: { label: "Confidentialité", href: "/confidentialite" },
+    linkedin: "LinkedIn",
+    note: "Site sans traceurs publicitaires",
+    copyright: "© 2026",
   },
 };

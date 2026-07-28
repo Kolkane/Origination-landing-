@@ -13,7 +13,7 @@ const config: Config = {
         fond: "#0A0A0A",
         txt: "#F4F2EF",
         "txt-2": "#B9B6B2",
-        "txt-3": "#7A7774",
+        "txt-3": "#83807C",
         line: "rgba(255,255,255,0.12)",
         "line-soft": "rgba(255,255,255,0.06)",
         wine: "#8E2438",

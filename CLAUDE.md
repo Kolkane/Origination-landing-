@@ -23,9 +23,11 @@ trouvé sur vous". Codes attendus : document financier imprimé, pas SaaS IA.
 - La pièce centrale est une VIDÉO RÉELLE de 6 s d'un plongeon imbrin en chasse
   (public/imbrin.mp4). C'est le différenciateur de la marque : ne jamais la remplacer par
   une image générée, une illustration ou un placeholder décoratif.
-- Palette : fond #0A0A0A · texte #F4F2EF · secondaire #B9B6B2 · tertiaire #7A7774 ·
+- Palette : fond #0A0A0A · texte #F4F2EF · secondaire #B9B6B2 · tertiaire #83807C ·
   filets rgba(255,255,255,.12/.06) · unique accent rouge vin #8E2438 (souligné des CTA,
   hover). Aucune autre couleur.
+  Amendement (arbitrage Vincent, v7-2) : le tertiaire était #7A7774 dans MAQUETTE-V7.html,
+  éclairci en #83807C pour le contraste AA — la maquette reste archive non modifiée.
 - Typo : Instrument Serif (titres, poids 400, italique autorisée) · Geist (corps) ·
   Geist Mono (labels uppercase, tracking large). Via next/font/google. Rien d'autre.
 - Motion : UNE séquence d'apparition au chargement (fade + translateY, délais en cascade),

@@ -6,8 +6,8 @@ export const brand = {
   LINKEDIN_URL: "https://www.linkedin.com/in/A-REMPLACER",
   CONTACT_EMAIL: "contact@A-REMPLACER.fr",
   ENTITY: {
-    raisonSociale: "TODO — nouvelle entité",  // en attendant : Jungle.Block Solutions
-    siren: "TODO",
+    raisonSociale: "Jungle.Block Solutions",  // la nouvelle entité la remplacera plus tard
+    siren: "995 216 090",
     ville: "Bayonne",
   },
   SHOW_PRICING: true,
