@@ -78,7 +78,7 @@ export default function CarteFrance() {
                 d={trace}
                 role="button"
                 tabIndex={0}
-                aria-label={`${typo(region.nom)} — ${c.statuts[region.statut].label}`}
+                aria-label={`${typo(region.nom)}, ${c.statuts[region.statut].label}`}
                 aria-pressed={slugActif === region.slug}
                 vectorEffect="non-scaling-stroke"
                 strokeLinejoin="round"
@@ -98,7 +98,7 @@ export default function CarteFrance() {
             );
           })}
           {/* halos transparents : élargissent la cible tactile des petites
-              régions (~12px de plus tout autour, en pixels écran) — inertes
+              régions (~12px de plus tout autour, en pixels écran), inertes
               sur les écrans à souris pour ne pas voler hover et clic */}
           {CIBLES_ELARGIES.map((slug) =>
             tracesRegions[slug] ? (

@@ -38,21 +38,28 @@ export default function Hero() {
       </video>
       <div className="veil" />
       <p className="video-note mono">
-        {h.noteVideoLigne1}
+        {h.note1}
         <br />
-        {h.noteVideoLigne2}
+        {h.note2}
       </p>
 
       <div className="nav">
         <span className="brand mono fade f1">
-          <LogoImbrin taille={24} variante="disque" />
+          <LogoImbrin taille={18} variante="disque" />
           <span>
             {brand.MARQUE} <small>· {brand.SUFFIXE}</small>
           </span>
         </span>
-        <a href={h.navAncre} className="mono fade f1">
-          {h.navLien}
-        </a>
+        <nav className="nav-r fade f1">
+          {h.nav.map((lien) => (
+            <a key={lien.ancre} href={lien.ancre} className="mono">
+              {lien.label}
+            </a>
+          ))}
+          <a href={h.navAppel.ancre} className="mono keep">
+            {h.navAppel.label}
+          </a>
+        </nav>
       </div>
 
       <div className="hero-copy">
@@ -63,16 +70,21 @@ export default function Hero() {
           {h.titreLigne2} <em>{h.titreItalique}</em>.
         </h1>
         <p className="hero-sub fade f4">{h.sousTitre}</p>
-        <a className="cta mono fade f4" href={h.navAncre}>
+        <a
+          className="cta mono fade f4"
+          href={brand.CALENDLY_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           {h.cta}
         </a>
       </div>
 
       <div className="scroll-cue fade f5" aria-hidden="true" />
       <p className="caption mono fade f5">
-        {h.legendeLigne1}
+        {h.legende1}
         <br />
-        {h.legendeLigne2}
+        {h.legende2}
       </p>
     </section>
   );

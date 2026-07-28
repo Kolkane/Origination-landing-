@@ -19,7 +19,14 @@ trouvé sur vous". Codes attendus : document financier imprimé, pas SaaS IA.
 - Pas de fausse rareté : les statuts de la carte viennent de la config, mis à jour à la main.
 
 ## Direction artistique v7 — "Sanjaya / vidéo réelle" (définitive)
-- Registre : noir, sobre, exclusif — agence B2B haut de gamme. Réf. validée : MAQUETTE-V7.html.
+- Registre : noir, sobre, exclusif — agence B2B haut de gamme. Réf. validée : MAQUETTE-V8.html
+  (v8.1, page complète) ; MAQUETTE-V7.html est archivée.
+- Amendement v8 (spécimen) : la version ANIMÉE du spécimen/console reste interdite ;
+  le spécimen STATIQUE de la v8.1 (document sur filets, caviardage fixe, mention
+  "données fictives") est autorisé et fait partie de la page.
+- Amendement v8 (copy) : aucun tiret cadratin ni demi-cadratin dans les textes du site.
+  Ponctuation en virgules, deux-points, points, parenthèses. Les séparateurs "·" sont
+  réservés aux lignes de labels mono (nav, footer, notes de grille, doc-head).
 - La pièce centrale est une VIDÉO RÉELLE de 6 s d'un plongeon imbrin en chasse
   (public/imbrin.mp4). C'est le différenciateur de la marque : ne jamais la remplacer par
   une image générée, une illustration ou un placeholder décoratif.

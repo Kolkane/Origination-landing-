@@ -59,7 +59,7 @@ const paths = features
   }))
   .sort((a, b) => a.slug.localeCompare(b.slug));
 
-const sortie = `/* GÉNÉRÉ par scripts/build-map.mjs — ne pas éditer à la main.
+const sortie = `/* GÉNÉRÉ par scripts/build-map.mjs, ne pas éditer à la main.
    Source : france-geojson (gregoiredavid), régions simplifiées.
    Regénérer : npm run build:map */
 

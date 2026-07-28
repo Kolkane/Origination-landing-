@@ -16,7 +16,7 @@ const instrument = Instrument_Serif({
 
 /* Geist et Geist Mono sont absents du catalogue next/font/google de Next 14.2
    (snapshot antérieur à leur publication) : self-hostées via next/font/local
-   avec les woff2 variables officiels servis par Google Fonts — même rendu. */
+   avec les woff2 variables officiels servis par Google Fonts : même rendu. */
 const geist = localFont({
   src: "../../public/fonts/geist-variable.woff2",
   weight: "100 900",

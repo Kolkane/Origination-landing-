@@ -1,4 +1,4 @@
-/* GÉNÉRÉ — géométrie du logo Imbrin (vectorisation du logo fourni).
+/* GÉNÉRÉ : géométrie du logo Imbrin (vectorisation du logo fourni).
    Source : scratchpad/genere-logo.mjs (profil de largeur le long d'un axe).
    Consommée par LogoImbrin.tsx, icon.svg et opengraph-image. */
 

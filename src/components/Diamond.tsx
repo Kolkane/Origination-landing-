@@ -5,7 +5,7 @@ type DiamondProps = {
   className?: string;
 };
 
-/* le losange, système graphique de la marque — SVG inline, pas le caractère
+/* le losange, système graphique de la marque : SVG inline, pas le caractère
    unicode */
 export default function Diamond({ taille = 9, className = "fill-ink" }: DiamondProps) {
   return (

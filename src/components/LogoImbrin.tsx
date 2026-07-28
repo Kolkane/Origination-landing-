@@ -1,4 +1,4 @@
-/* Logo Imbrin — vectorisation du logo fourni par Vincent (plongeon imbrin
+/* Logo Imbrin : vectorisation du logo fourni par Vincent (plongeon imbrin
    sous la ligne d'eau, disque blanc sur tuile noire). Deux variantes :
    « tuile » = présentation documents/favicon ; « disque » = fonds sombres
    du site. La géométrie vient de logo-imbrin-geometrie.ts (générée). Si le

@@ -8,7 +8,7 @@ export const metadata: Metadata = {
 export default function Confidentialite() {
   const page = copy.legales.confidentialite;
   return (
-    <main className="wrap below">
+    <main className="wrap py-[110px]">
       <article className="max-w-[640px]">
         <h1 className="statement">{page.titre}</h1>
         {page.sections.map((section) => (

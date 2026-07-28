@@ -1,4 +1,4 @@
-/* GÉNÉRÉ par scripts/build-map.mjs — ne pas éditer à la main.
+/* GÉNÉRÉ par scripts/build-map.mjs, ne pas éditer à la main.
    Source : france-geojson (gregoiredavid), régions simplifiées.
    Regénérer : npm run build:map */
 

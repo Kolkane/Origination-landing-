@@ -4,7 +4,7 @@ import { brand } from "@/config/brand";
 
 export const runtime = "edge";
 
-export const alt = `${brand.MARQUE} ${brand.SUFFIXE} — ${brand.BASELINE}`;
+export const alt = `${brand.MARQUE} ${brand.SUFFIXE}, ${brand.BASELINE}`;
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
