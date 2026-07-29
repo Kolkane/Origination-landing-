@@ -246,8 +246,7 @@ export const copy = {
       },
       {
         fort: "Pas de chiffres invérifiables.",
-        suite:
-          " Environ un tiers de nos détections sont écartées à la vérification. Nous publions ce chiffre.",
+        suite: "",
       },
     ],
   },
