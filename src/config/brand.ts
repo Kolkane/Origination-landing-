@@ -14,13 +14,20 @@ export const brand = {
   PROOF: {
     tauxEcartVerification: "≈ 1/3",       // détections écartées à la vérification — chiffre public
     delaiLivraisonBascule: "7 jours",
-    dureeCouverture: "8 à 12 semaines",
   },
+  /* Deux prix, deux seulement. Toute valeur affichée sur la page part d'ici. */
   PRICING: {
-    boutique: { prix: "1 990 € HT / mois", perimetre: "par région", engagement: "sans engagement" },
-    fo: { prix: "sur-mesure", perimetre: "selon périmètre" },
-    annuel: "−20 % en annuel",
-    verticale2: "+680 € / mois",
+    cartographie: {
+      prix: "4 900 € HT",
+      nature: "prestation unique",
+      delai: "10 jours ouvrés",
+      deduction: "30 jours",              // fenêtre de déduction sur le contrat annuel
+    },
+    cellule: {
+      prix: "2 500 € HT / mois",
+      engagement: "engagement 12 mois",
+      mandat: "5 000 € HT",               // par mandat de cession signé
+    },
   },
 } as const;
 

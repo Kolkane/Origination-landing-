@@ -1,4 +1,3 @@
-import IconeOffre from "@/components/IconesOffre";
 import { copy } from "@/config/copy";
 
 export default function Offre() {
@@ -7,33 +6,40 @@ export default function Offre() {
     <section className="offer" id="offre">
       <div className="wrap">
         <div className="cols">
-          {/* le titre reste au regard pendant que les postes défilent */}
+          {/* le titre reste au regard pendant que les paliers défilent */}
           <div className="sticky">
             <p className="kicker mono rev">{o.kicker}</p>
             <h2 className="statement rev">{o.statement}</h2>
-            <p className="note rev">{o.note}</p>
           </div>
           <div className="items">
-            {o.lignes.map((ligne) => (
-              <div className="oitem rev" key={ligne.num}>
+            {o.paliers.map((palier) => (
+              <div className="oitem rev" key={palier.nom}>
                 <div className="t">
-                  <IconeOffre nom={ligne.icone} />
-                  <h3>{ligne.titre}</h3>
+                  <h3>{palier.nom}</h3>
                 </div>
-                <p>{ligne.texte}</p>
+                <p className="prix mono">{palier.prix}</p>
+                {palier.prix2 && <p className="prix-2 mono">{palier.prix2}</p>}
+                <p className="tier-lead">{palier.lead}</p>
+                <ul className="tier-list">
+                  {palier.points.map((point) => (
+                    <li key={point}>{point}</li>
+                  ))}
+                </ul>
+                <p className="tier-note mono">{palier.note}</p>
               </div>
             ))}
+            {/* ce que « cellule » veut dire, sans quoi l'exclusivité ne se
+                vérifie pas : même encadré que les blocs distingués du site */}
+            <div className="guar rev">
+              <span className="k mono">{o.definition.k}</span>
+              <p>{o.definition.texte}</p>
+            </div>
             <div className="price rev">
-              {o.grille.lignes.map((ligne) => (
-                <div className="price-row" key={ligne.titre}>
-                  <h4>{ligne.titre}</h4>
-                  <span className="p mono">{ligne.prix}</span>
-                </div>
-              ))}
-              <p className="price-note mono">
-                {o.grille.noteAvant}
-                <b>{o.grille.noteFort}</b>
+              <p className="not">
+                <b>{o.pied.fort}</b>
+                {o.pied.suite}
               </p>
+              <p className="price-note mono">{o.pied.note}</p>
             </div>
           </div>
         </div>

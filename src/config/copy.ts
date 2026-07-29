@@ -131,36 +131,52 @@ export const copy = {
   },
   offre: {
     kicker: "L’offre",
-    statement: "Une zone. Une verticale. Un client.",
-    note: "L’exclusivité porte sur un scope, une verticale et une zone, tenus pour un seul client. Elle se prend au premier abonnement signé, pas au premier appel. La grille est publique.",
-    lignes: [
+    statement: "Deux façons de commencer",
+    paliers: [
       {
-        num: "01",
-        titre: "Couverture",
-        icone: "couverture",
-        texte: `Le sourcing exhaustif de votre périmètre : l’intégralité du stock vérifié, livrée par vagues en ${nb(brand.PROOF.dureeCouverture)}. Le point de départ.`,
+        nom: "La Cartographie",
+        prix: `${nb(brand.PRICING.cartographie.prix)}, ${brand.PRICING.cartographie.nature}`,
+        lead: `Un état complet de votre cellule, livré sous ${nb(brand.PRICING.cartographie.delai)}.`,
+        points: [
+          "Le nombre de dirigeants en situation de succession ouverte sur votre cellule, segmenté",
+          "Ceux qui ont posé un acte préparatoire daté, et lequel",
+          "Cinq dossiers d’approche complets, livrés",
+          "La liste explicite de ce que nous ne savons pas",
+        ],
+        note: `Aucun engagement. Intégralement déduite du contrat annuel si vous signez sous ${nb(brand.PRICING.cartographie.deduction)}.`,
       },
       {
-        num: "02",
-        titre: "Veille",
-        icone: "veille",
-        texte: `La cohorte complète surveillée en continu. Chaque bascule détectée est vérifiée, puis livrée sous ${nb(brand.PROOF.delaiLivraisonBascule)}.`,
+        nom: "La Cellule",
+        prix: `${nb(brand.PRICING.cellule.prix)}, ${brand.PRICING.cellule.engagement}`,
+        prix2: `${nb(brand.PRICING.cellule.mandat)} par mandat de cession signé issu d’un dossier ${brand.MARQUE}`,
+        lead: "Une région. Une famille d’activités. Un cabinet.",
+        points: [
+          "Les dossiers d’approche au fil de la détection",
+          "Vérification humaine avant chaque livraison, taux d’écart publié",
+          "Information des personnes, registre d’opposition et opt-out pris en charge par nous",
+          "Vos mandats de recherche alimentés, sur cellules libres, sans supplément",
+        ],
+        note: "Personne d’autre n’est servi sur votre cellule, quel que soit l’usage.",
       },
-      {
-        num: "03",
-        titre: "Exclusivité",
-        icone: "exclusivite",
-        texte:
-          "Une zone, une verticale, un client. La part se prend au premier abonnement signé.",
-      },
-    ] as { num: string; titre: string; icone: NomIcone; texte: string }[],
-    grille: {
-      lignes: [
-        { titre: "Boutiques M&A", prix: nb(`${brand.PRICING.boutique.prix} / région`) },
-        { titre: "Family offices", prix: "Sur-mesure" },
-      ],
-      noteAvant: `Sans engagement · ${nb(brand.PRICING.annuel)} · 2e verticale ${nb(brand.PRICING.verticale2)} · `,
-      noteFort: "Aucun deal hors grille.",
+    ] as {
+      nom: string;
+      prix: string;
+      prix2?: string;
+      lead: string;
+      points: string[];
+      note: string;
+    }[],
+    /* sans définition écrite au contrat, l'exclusivité est invérifiable
+       pour un acheteur : le bloc ci-dessous est ce qui la rend opposable */
+    definition: {
+      k: "Une cellule",
+      texte:
+        "Une cellule, c’est une région administrative et une famille d’activités, arrêtées avec vous à l’appel et inscrites au contrat. Sur cette cellule, vous êtes seul servi tant que le contrat court. Une seconde cellule reste possible.",
+    },
+    pied: {
+      fort: "Pas de commission sur la transaction, jamais.",
+      suite: " Notre rémunération ne dépend ni du closing, ni du prix de cession.",
+      note: "La grille est publique. Aucun accord hors grille.",
     },
   },
   engagements: {

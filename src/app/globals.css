@@ -1468,3 +1468,54 @@ footer a:hover {
 .oitem:hover .t .ico {
   color: var(--txt-2);
 }
+
+/* ============================================================
+   v12 : le poste d'offre devient un palier chiffré. Aucun gabarit
+   nouveau, on réemploie le filet de .step et la mono des labels.
+   ============================================================ */
+
+.oitem .prix {
+  margin-top: 8px;
+  font-size: 13.5px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--txt);
+  max-width: none;
+}
+.oitem .prix-2 {
+  margin-top: 8px;
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--txt-3);
+  line-height: 1.8;
+  max-width: 44ch;
+}
+.oitem .tier-lead {
+  margin-top: 22px;
+}
+.tier-list {
+  margin-top: 22px;
+  border-top: 1px solid var(--line-soft);
+}
+.tier-list li {
+  padding: 13px 0;
+  border-bottom: 1px solid var(--line-soft);
+  font-size: 14px;
+  color: var(--txt-2);
+  line-height: 1.65;
+  max-width: 58ch;
+}
+.tier-note {
+  margin-top: 18px;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--txt-3);
+  line-height: 2;
+  max-width: 50ch;
+}
+.offer .price .not {
+  padding-top: 22px;
+  border-bottom: none;
+}
