@@ -1,5 +1,3 @@
-import { brand } from "./brand";
-
-/* URL canonique dérivée du domaine de CONTACT_EMAIL : brand.ts reste la
-   seule source à modifier quand le nom et le domaine seront choisis. */
-export const SITE_URL = `https://${brand.CONTACT_EMAIL.split("@")[1]}`;
+/* Domaine de production. En dur : le site est servi sur www.imbrin.fr,
+   alors que l'adresse de contact n'est pas encore arbitrée. */
+export const SITE_URL = "https://www.imbrin.fr";

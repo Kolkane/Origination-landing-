@@ -2,8 +2,8 @@ export const brand = {
   MARQUE: "Imbrin",
   SUFFIXE: "Research",
   BASELINE: "Origination sell-side",
-  CALENDLY_URL: "https://calendly.com/A-REMPLACER",
-  LINKEDIN_URL: "https://www.linkedin.com/in/A-REMPLACER",
+  CALENDLY_URL: "https://calendly.com/fnr-vincent-pro/audit-strategique",
+  LINKEDIN_URL: "https://www.linkedin.com/in/vincent-fournier-939021170/",
   CONTACT_EMAIL: "contact@A-REMPLACER.fr",
   ENTITY: {
     raisonSociale: "Jungle.Block Solutions",  // la nouvelle entité la remplacera plus tard

@@ -32,11 +32,16 @@ export default function Produit() {
                 <span className="k mono">{champ.k}</span>
                 <span className="v">
                   {champ.v}
+                  {/* la mention est portée par la barre elle-même : aucun texte
+                      de substitution dans le flux, donc rien d'extractible au
+                      copier-coller, tout en restant annoncé aux lecteurs d'écran */}
                   {champ.barre ? (
-                    <>
-                      <span className="bar" style={{ width: champ.barre }} aria-hidden="true" />
-                      <span className="sr-only">{doc.caviardeSr}</span>
-                    </>
+                    <span
+                      className="bar"
+                      style={{ width: champ.barre }}
+                      role="img"
+                      aria-label={doc.caviardeSr}
+                    />
                   ) : null}
                   {champ.suffixe}
                 </span>

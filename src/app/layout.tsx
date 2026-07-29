@@ -35,6 +35,12 @@ export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: copy.meta.title,
   description: copy.meta.description,
+  alternates: { canonical: "/" },
+  twitter: {
+    card: "summary_large_image",
+    title: copy.meta.title,
+    description: copy.meta.description,
+  },
   openGraph: {
     title: copy.meta.title,
     description: copy.meta.description,
