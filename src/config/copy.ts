@@ -3,6 +3,8 @@ import { brand } from "./brand";
 /** rend une valeur de brand insécable (les chiffres ne se coupent pas en fin de ligne) */
 const nb = (s: string) => s.replace(/ /g, " ");
 
+export type NomIcone = "couverture" | "veille" | "exclusivite";
+
 export type SectionLegale = {
   titre: string;
   corps: string;
@@ -135,20 +137,23 @@ export const copy = {
       {
         num: "01",
         titre: "Couverture",
+        icone: "couverture",
         texte: `Le sourcing exhaustif de votre périmètre : l’intégralité du stock vérifié, livrée par vagues en ${nb(brand.PROOF.dureeCouverture)}. Le point de départ.`,
       },
       {
         num: "02",
         titre: "Veille",
+        icone: "veille",
         texte: `La cohorte complète surveillée en continu. Chaque bascule détectée est vérifiée, puis livrée sous ${nb(brand.PROOF.delaiLivraisonBascule)}.`,
       },
       {
         num: "03",
         titre: "Exclusivité",
+        icone: "exclusivite",
         texte:
           "Une zone, une verticale, un client. La part se prend au premier abonnement signé.",
       },
-    ],
+    ] as { num: string; titre: string; icone: NomIcone; texte: string }[],
     grille: {
       lignes: [
         { titre: "Boutiques M&A", prix: nb(`${brand.PRICING.boutique.prix} / région`) },

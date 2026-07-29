@@ -51,6 +51,9 @@ trouvé sur vous". Codes attendus : document financier imprimé, pas SaaS IA.
 - Interdits définitifs (hérités des itérations rejetées) : ticker, métriques animées,
   count-up, grilles de cards, beam/bordures lumineuses, tilt 3D, spotlight souris, pings,
   glow, dégradés colorés, grid de fond, badges/chips, emojis, icônes décoratives,
+  (amendement v11, arbitrage Vincent : les trois marques de la section Offre sont
+  autorisées. Elles sont dessinées sur mesure, au trait, et forment un système
+  sémantique cadre/point. Aucune icône de bibliothèque, aucune icône ajoutée ailleurs.)
   illustrations d'oiseau en SVG. Si un de ces éléments existe encore dans le code : supprimer.
 - Règle de process : le design se valide sur maquette HTML avec Vincent AVANT le code.
   Aucune nouvelle section, aucun composant visuel nouveau sans maquette validée.

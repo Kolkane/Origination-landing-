@@ -1,3 +1,4 @@
+import IconeOffre from "@/components/IconesOffre";
 import { copy } from "@/config/copy";
 
 export default function Offre() {
@@ -16,7 +17,7 @@ export default function Offre() {
             {o.lignes.map((ligne) => (
               <div className="oitem rev" key={ligne.num}>
                 <div className="t">
-                  <span className="n serif">{ligne.num}</span>
+                  <IconeOffre nom={ligne.icone} />
                   <h3>{ligne.titre}</h3>
                 </div>
                 <p>{ligne.texte}</p>

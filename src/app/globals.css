@@ -1487,3 +1487,17 @@ footer a:hover {
     grid-column: 1 / 8;
   }
 }
+
+/* marques de l'offre : même poids visuel que les numéros qu'elles
+   remplacent, et même réponse au survol */
+.oitem .t {
+  align-items: center;
+}
+.oitem .t .ico {
+  color: var(--txt-3);
+  flex-shrink: 0;
+  transition: color 0.4s var(--ease);
+}
+.oitem:hover .t .ico {
+  color: var(--txt-2);
+}
