@@ -37,11 +37,15 @@ export default function Hero() {
         <source src="/imbrin.mp4" type="video/mp4" onError={() => setSansVideo(true)} />
       </video>
       <div className="veil" />
-      <p className="video-note mono">
-        {h.note1}
-        <br />
-        {h.note2}
-      </p>
+      {/* le fallback ne doit pas exister dans le HTML servi : masqué en CSS, il
+          restait extractible par les crawlers et les extracteurs de texte */}
+      {sansVideo && (
+        <p className="video-note mono">
+          {h.note1}
+          <br />
+          {h.note2}
+        </p>
+      )}
 
       <div className="nav">
         <span className="brand mono fade f1">
