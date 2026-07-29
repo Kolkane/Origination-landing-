@@ -3,7 +3,7 @@
 ## Ce qu'est ce site
 Landing one-page d'une société d'origination sell-side : détection au registre (sources publiques)
 des PME françaises dont le capital va probablement changer de mains, 12-18 mois avant le marché.
-Clients cibles : boutiques M&A small-cap et family offices. Un seul client par zone et par verticale.
+Clients cibles : boutiques M&A small-cap et family offices. Un seul cabinet par cellule.
 La marque : Imbrin Research — toujours via les variables MARQUE/SUFFIXE de src/config/brand.ts,
 jamais en dur. Baseline fixe : "Origination sell-side".
 
@@ -51,12 +51,27 @@ trouvé sur vous". Codes attendus : document financier imprimé, pas SaaS IA.
 - Interdits définitifs (hérités des itérations rejetées) : ticker, métriques animées,
   count-up, grilles de cards, beam/bordures lumineuses, tilt 3D, spotlight souris, pings,
   glow, dégradés colorés, grid de fond, badges/chips, emojis, icônes décoratives,
-  (amendement v11, arbitrage Vincent : les trois marques de la section Offre sont
-  autorisées. Elles sont dessinées sur mesure, au trait, et forment un système
-  sémantique cadre/point. Aucune icône de bibliothèque, aucune icône ajoutée ailleurs.)
+  (amendement v12, arbitrage Vincent : les trois marques de la v11 sont RETIRÉES.
+  Elles étaient sémantiquement liées aux postes Couverture / Veille / Exclusivité,
+  que les deux paliers remplacent ; deux marques pour deux paliers serait un
+  placage. IconesOffre.tsx reste dans le repo, non monté, comme CarteFrance.tsx.
+  Aucune icône nulle part sur la page.)
   illustrations d'oiseau en SVG. Si un de ces éléments existe encore dans le code : supprimer.
 - Règle de process : le design se valide sur maquette HTML avec Vincent AVANT le code.
   Aucune nouvelle section, aucun composant visuel nouveau sans maquette validée.
+
+## L'offre v12 (définitive, remplace la grille régionale)
+Deux prix, deux seulement, tous deux dans src/config/brand.ts :
+- LA CARTOGRAPHIE, 4 900 € HT, prestation unique, livrée sous 10 jours ouvrés,
+  intégralement déduite du contrat annuel si signature sous 30 jours.
+- LA CELLULE, 2 500 € HT / mois, engagement 12 mois, plus 5 000 € HT par mandat
+  de cession signé issu d'un dossier Imbrin.
+Une cellule = une région administrative et une famille d'activités, arrêtées à
+l'appel et inscrites au contrat. Un seul cabinet y est servi tant que le contrat
+court. Les mots « zone », « verticale » et « abonnement » sont proscrits.
+Pas de commission sur la transaction : la rémunération ne dépend ni du closing
+ni du prix de cession. Aucun accord hors grille, aucun tarif sur-mesure.
+Le livrable s'appelle « dossier d'approche », jamais « brief », jamais « fiche ».
 
 ## Interdits absolus (si l'un apparaît, le supprimer immédiatement)
 Emojis · dégradés (bg-gradient-*) · texte en dégradé · glassmorphism / backdrop-blur ·
