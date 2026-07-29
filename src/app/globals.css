@@ -9,6 +9,9 @@
 
 :root {
   --bg: #0a0a0a;
+  --bg-2: #0e0e0e;
+  --paper: #ece7df;
+  --line-dark: rgba(0, 0, 0, 0.14);
   --panel: #0d0d0d;
   --txt: #f4f2ef;
   --txt-2: #b9b6b2;
@@ -32,6 +35,12 @@ body {
   overflow-x: hidden;
 }
 
+.narrow {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
 .mono {
   font-family: var(--font-geist-mono), monospace;
 }
@@ -40,7 +49,7 @@ body {
   font-weight: 400;
 }
 .wrap {
-  max-width: 960px;
+  max-width: 1080px;
   margin: 0 auto;
   padding: 0 40px;
 }
@@ -736,5 +745,411 @@ footer a:hover {
     padding: 24px 22px;
     flex-direction: column;
     text-align: center;
+  }
+}
+
+/* ============================================================
+   Rythme v9.2 : alternance de bandes sombres et claires, largeurs
+   de colonne variables, offre en colonne collante.
+   Portées de MAQUETTE-V9.html.
+   ============================================================ */
+
+/* 01 · constat : mur typographique pleine largeur */
+.constat {
+  padding: 120px 0;
+  border-top: 1px solid var(--line-soft);
+}
+.constat .big {
+  font-family: var(--font-instrument), serif;
+  font-weight: 400;
+  font-size: clamp(34px, 6.5vw, 86px);
+  line-height: 1.04;
+  letter-spacing: -0.01em;
+  max-width: 16ch;
+}
+.constat .big em {
+  font-style: italic;
+  color: var(--txt-2);
+}
+.constat .sub {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  margin-top: 64px;
+  max-width: 900px;
+}
+.constat .sub p {
+  font-size: 15px;
+  line-height: 1.75;
+  color: var(--txt-2);
+}
+.constat .sub .mono {
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--txt-3);
+  line-height: 1.9;
+}
+
+/* bande de chiffres, claire, pleine largeur */
+.band {
+  background: var(--paper);
+  color: #171310;
+}
+.band .row-band {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 0 40px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+.band .cell {
+  padding: 52px 26px 52px 0;
+  border-right: 1px solid var(--line-dark);
+}
+.band .cell:last-child {
+  border-right: none;
+}
+.band .n {
+  font-family: var(--font-instrument), serif;
+  font-size: clamp(34px, 4.4vw, 52px);
+  line-height: 1;
+  letter-spacing: -0.01em;
+}
+.band .l {
+  margin-top: 14px;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #5a544e;
+  line-height: 1.7;
+}
+
+/* 02 · méthode : colonne étroite, légère élévation */
+.method {
+  padding: 120px 0;
+  background: var(--bg-2);
+  border-top: 1px solid var(--line-soft);
+}
+.steps {
+  margin-top: 64px;
+}
+.step {
+  display: grid;
+  grid-template-columns: 56px 1fr;
+  gap: 28px;
+  padding: 34px 0;
+  border-top: 1px solid var(--line-soft);
+}
+.step:last-child {
+  border-bottom: 1px solid var(--line-soft);
+}
+.step .n {
+  font-family: var(--font-instrument), serif;
+  font-size: 30px;
+  color: var(--txt-3);
+  line-height: 1;
+}
+.step h3 {
+  font-size: 18px;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+.step p {
+  font-size: 14px;
+  color: var(--txt-2);
+  line-height: 1.7;
+  max-width: 56ch;
+}
+
+/* 03 · produit : bande claire, le spécimen sombre posé dessus */
+.product {
+  position: relative;
+  padding: 130px 0;
+  background: var(--paper);
+  color: #171310;
+  overflow: hidden;
+}
+.product .head {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+.product .kicker {
+  color: #7a6f63;
+}
+.product .statement {
+  color: #171310;
+}
+.product .grid {
+  max-width: 1080px;
+  margin: 52px auto 0;
+  padding: 0 40px;
+  display: grid;
+  grid-template-columns: 1fr 1.05fr;
+  gap: 64px;
+  align-items: start;
+}
+.product .intro {
+  font-size: 15px;
+  line-height: 1.75;
+  color: #3a342e;
+  margin-bottom: 34px;
+}
+.product .annos {
+  border-top: 1px solid var(--line-dark);
+}
+.product .anno {
+  padding: 18px 0;
+  border-bottom: 1px solid var(--line-dark);
+  font-size: 13px;
+  color: #3a342e;
+  line-height: 1.7;
+  display: grid;
+  grid-template-columns: 22px 1fr;
+  gap: 12px;
+}
+.product .anno .m {
+  color: var(--wine);
+  font-size: 11px;
+  letter-spacing: 0.2em;
+}
+.product .doc {
+  background: #0c0c0c;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  transform: translateY(-28px);
+  box-shadow: 0 40px 80px -40px rgba(0, 0, 0, 0.5);
+}
+
+/* 04 · offre : le titre reste, les postes défilent */
+.offer {
+  padding: 120px 0;
+  border-top: 1px solid var(--line-soft);
+}
+.offer .cols {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 64px;
+  align-items: start;
+}
+.offer .sticky {
+  position: sticky;
+  top: 120px;
+}
+.offer .sticky .statement {
+  margin-bottom: 24px;
+}
+.offer .sticky .note {
+  font-size: 13px;
+  color: var(--txt-2);
+  line-height: 1.7;
+  max-width: 34ch;
+}
+.offer .items {
+  display: flex;
+  flex-direction: column;
+}
+.oitem {
+  padding: 34px 0;
+  border-top: 1px solid var(--line-soft);
+}
+.oitem:last-of-type {
+  border-bottom: 1px solid var(--line-soft);
+}
+.oitem .t {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  margin-bottom: 10px;
+}
+.oitem .t .n {
+  font-family: var(--font-instrument), serif;
+  font-size: 26px;
+  color: var(--txt-3);
+}
+.oitem .t h3 {
+  font-size: 18px;
+  font-weight: 500;
+}
+.oitem p {
+  font-size: 14px;
+  color: var(--txt-2);
+  line-height: 1.7;
+  max-width: 52ch;
+}
+
+/* 05 · engagements : bande claire, deux colonnes */
+.commit {
+  background: var(--paper);
+  color: #171310;
+  padding: 120px 0;
+}
+.commit .head {
+  max-width: 1080px;
+  margin: 0 auto 56px;
+  padding: 0 40px;
+}
+.commit .kicker {
+  color: #7a6f63;
+}
+.commit .statement {
+  color: #171310;
+}
+.commit .list {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 0 40px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 56px;
+}
+.commit .not {
+  padding: 26px 0;
+  border-top: 1px solid var(--line-dark);
+  font-size: 14px;
+  color: #3a342e;
+  line-height: 1.7;
+}
+.commit .not b {
+  color: #171310;
+  font-weight: 500;
+}
+.commit .guar {
+  max-width: 1080px;
+  margin: 48px auto 0;
+  padding: 0 40px;
+}
+.commit .guar .box {
+  border: 1px solid var(--wine);
+  padding: 26px 28px;
+  max-width: 560px;
+}
+.commit .guar .k {
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--wine);
+  display: block;
+  margin-bottom: 12px;
+}
+.commit .guar p {
+  font-size: 14.5px;
+  line-height: 1.7;
+  color: #3a342e;
+}
+.commit .guar p b {
+  color: #171310;
+}
+
+/* 06 · fondateur */
+.founder-s {
+  padding: 120px 0;
+  border-top: 1px solid var(--line-soft);
+}
+.founder .q {
+  font-family: var(--font-instrument), serif;
+  font-size: clamp(22px, 2.6vw, 30px);
+  line-height: 1.35;
+  color: var(--txt);
+  margin-bottom: 24px;
+}
+
+/* 07 · faq */
+.faq-s {
+  padding: 120px 0;
+  background: var(--bg-2);
+  border-top: 1px solid var(--line-soft);
+}
+.faq-s .faq {
+  margin-top: 48px;
+}
+.faq summary {
+  font-size: 16px;
+}
+.faq .a {
+  max-width: 64ch;
+}
+
+/* cta final : pleine hauteur, centré */
+.final {
+  min-height: 70svh;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  padding: 120px 0;
+  border-top: 1px solid var(--line-soft);
+  background: radial-gradient(700px 380px at 50% 40%, rgba(142, 36, 56, 0.1), transparent 70%);
+}
+.final .kicker {
+  margin-bottom: 24px;
+}
+.final h2 {
+  font-family: var(--font-instrument), serif;
+  font-weight: 400;
+  font-size: clamp(32px, 4.6vw, 58px);
+  line-height: 1.1;
+  max-width: 18ch;
+  margin: 0 auto;
+}
+.final .lead {
+  max-width: 48ch;
+  margin: 24px auto 34px;
+}
+.final .cta {
+  margin: 0 auto;
+}
+
+@media (max-width: 880px) {
+  .constat .sub,
+  .commit .list {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  .band .row-band {
+    grid-template-columns: 1fr 1fr;
+  }
+  .band .cell:nth-child(2) {
+    border-right: none;
+  }
+  .band .cell {
+    border-bottom: 1px solid var(--line-dark);
+  }
+  .product .grid,
+  .offer .cols,
+  .founder {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  .offer .sticky {
+    position: static;
+  }
+  .product .doc {
+    transform: none;
+  }
+}
+
+@media (max-width: 760px) {
+  .narrow {
+    padding: 0 22px;
+  }
+  .constat,
+  .method,
+  .offer,
+  .founder-s,
+  .faq-s {
+    padding: 80px 0;
+  }
+  .product,
+  .commit {
+    padding: 88px 0;
+  }
+  .product .head,
+  .product .grid,
+  .commit .head,
+  .commit .list,
+  .commit .guar,
+  .band .row-band {
+    padding-left: 22px;
+    padding-right: 22px;
   }
 }

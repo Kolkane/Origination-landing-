@@ -4,13 +4,13 @@ import { copy } from "@/config/copy";
 export default function Fondateur() {
   const f = copy.fondateur;
   return (
-    <section className="block" id="fondateur">
+    <section className="founder-s" id="fondateur">
       <div className="wrap">
         <p className="kicker mono rev">{f.kicker}</p>
-        <h2 className="statement rev">{f.statement}</h2>
         <div className="founder">
           <div className="ph mono rev">{f.portrait}</div>
           <div className="rev">
+            <p className="q">{f.citation}</p>
             <p>{f.corps}</p>
             <p className="id mono">
               {f.id}

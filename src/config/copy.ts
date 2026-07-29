@@ -29,7 +29,7 @@ export const copy = {
     titreLigne2: "détectés",
     titreItalique: "sous la surface",
     sousTitre:
-      "Détection au registre des transitions capitalistiques, 12 à 18 mois avant le marché. Dossiers vérifiés à la main. Un seul client par zone.",
+      "Sourcing propriétaire des transitions capitalistiques, détectées au registre 12 à 18 mois avant le marché. Un périmètre défini avec vous, des dossiers vérifiés à la main, un seul client par zone.",
     cta: "Vérifier la disponibilité de ma zone",
     /* la légende ne décrit que le sujet : ni l'origine ni la durée du média
        ne sont revendiquées (arbitrage Vincent, v8-4) */
@@ -39,9 +39,14 @@ export const copy = {
   },
   constat: {
     kicker: "Le constat",
-    statement: "La plus grande vague de transmissions de l’histoire française arrive sans carte.",
-    lead: "Environ 700 000 dirigeants de PME partiront à la retraite d’ici dix ans ; près de la moitié n’ont pas de successeur identifié (ordres de grandeur publics : CRA, Bpifrance). Quand un dossier devient visible, la concurrence l’est aussi. Les mandats se gagnent avant : auprès du dirigeant qui n’a encore rien annoncé.",
-    exergue: "Le marché visible est un marché en retard.",
+    titreAvant: "La plus grande vague de transmissions arrive ",
+    titreItalique: "sans carte",
+    lead: "Environ 700 000 dirigeants de PME partiront à la retraite d’ici dix ans ; près de la moitié n’ont pas de successeur identifié. Quand un dossier devient visible, la concurrence l’est aussi. Les mandats se gagnent avant, auprès du dirigeant qui n’a encore rien annoncé.",
+    sourcesLigne1: "Ordres de grandeur publics",
+    sourcesLigne2: "CRA · Bpifrance",
+    citation1: "« Le marché visible",
+    citation2: "est un marché en retard. »",
+
   },
   methode: {
     kicker: "La méthode",
@@ -49,9 +54,9 @@ export const copy = {
     lignes: [
       {
         num: "01",
-        titre: "Détection au registre",
+        titre: "Le périmètre, défini avec vous",
         texte:
-          "Sources exclusivement publiques : RNE, SIRENE, BODACC. Des signaux de transition observables et datés. Pas de scores prédictifs inventés.",
+          "Nous cadrons ensemble le scope de recherche : secteurs, zone, taille de cible, structure de détention. La détection s’appuie sur des sources exclusivement publiques (RNE, SIRENE, BODACC), sur des signaux observables et datés. Pas de scores prédictifs inventés.",
       },
       {
         num: "02",
@@ -61,9 +66,9 @@ export const copy = {
       },
       {
         num: "03",
-        titre: "Le brief",
+        titre: "Le brief de sourcing",
         texte:
-          "Un document opérationnel par dossier : contexte, signaux sourcés, structure de détention, angle d’approche conforme. Prêt pour un premier contact.",
+          "Un livrable opérationnel par cible : contexte, signaux sourcés et datés, structure de détention, angle d’approche conforme. Prêt à intégrer votre pipeline et à ouvrir un premier contact.",
       },
       {
         num: "04",
@@ -75,7 +80,7 @@ export const copy = {
   produit: {
     kicker: "Le produit",
     statement: "Le brief est le produit.",
-    lead: "Pas de plateforme à apprendre, pas de crédits, pas d’export de 4 000 lignes. Des dossiers en petit nombre, vérifiés, argumentés : le format qu’un associé lit en trois minutes et donne à exécuter.",
+    lead: "Pas de plateforme à apprendre, pas de crédits, pas d’export de 4 000 lignes à retraiter. Un flux de cibles qualifiées, en petit nombre, vérifiées et argumentées : le livrable qu’un associé lit en trois minutes et pousse directement dans son pipeline de sourcing.",
     annos: [
       {
         m: "A",
@@ -113,14 +118,24 @@ export const copy = {
       pied: "Spécimen fictif. Nos briefs réels ne quittent pas leurs zones.",
     },
   },
+  bande: {
+    aria: "Chiffres clés",
+    cellules: [
+      { n: "700 000", l: "dirigeants partants sous 10 ans" },
+      { n: "12-18", l: "mois d’avance sur le marché" },
+      { n: nb(brand.PROOF.tauxEcartVerification), l: "de détections écartées, chiffre publié" },
+      { n: "1", l: "client par zone et par verticale" },
+    ],
+  },
   offre: {
     kicker: "L’offre",
     statement: "Une zone. Une verticale. Un client.",
+    note: "L’exclusivité porte sur un scope, une verticale et une zone, tenus pour un seul client. Elle se prend au premier abonnement signé, pas au premier appel. La grille est publique.",
     lignes: [
       {
         num: "01",
         titre: "Couverture",
-        texte: `L’intégralité du stock vérifié de votre zone, livrée par vagues en ${nb(brand.PROOF.dureeCouverture)}. Le point de départ.`,
+        texte: `Le sourcing exhaustif de votre périmètre : l’intégralité du stock vérifié, livrée par vagues en ${nb(brand.PROOF.dureeCouverture)}. Le point de départ.`,
       },
       {
         num: "02",
@@ -131,7 +146,7 @@ export const copy = {
         num: "03",
         titre: "Exclusivité",
         texte:
-          "Une zone, une verticale, un client. La part se prend au premier abonnement signé, pas au premier appel.",
+          "Une zone, une verticale, un client. La part se prend au premier abonnement signé.",
       },
     ],
     grille: {
@@ -140,7 +155,7 @@ export const copy = {
         { titre: "Family offices", prix: "Sur-mesure" },
       ],
       noteAvant: `Sans engagement · ${nb(brand.PRICING.annuel)} · 2e verticale ${nb(brand.PRICING.verticale2)} · `,
-      noteFort: "La grille est publique. Aucun deal hors grille.",
+      noteFort: "Aucun deal hors grille.",
     },
   },
   engagements: {
@@ -148,27 +163,27 @@ export const copy = {
     statement: "Ce que nous ne faisons pas.",
     nots: [
       {
-        fort: "Pas de success fee, jamais",
+        fort: "Pas de success fee, jamais.",
         suite:
-          " : nous facturons la donnée, pas le closing. Notre lecture d’un dossier n’a aucun intérêt au deal.",
+          " Nous facturons la donnée, pas le closing. Notre lecture d’un dossier n’a aucun intérêt au deal.",
       },
       {
-        fort: "Pas de scores prédictifs inventés",
-        suite: " : des signaux observables, sourcés, datés.",
+        fort: "Pas de scores prédictifs inventés.",
+        suite: " Des signaux observables, sourcés, datés.",
       },
       {
-        fort: "Pas de contact du patrimoine privé",
-        suite: " : le premier contact passe toujours par l’entreprise.",
+        fort: "Pas de contact du patrimoine privé.",
+        suite: " Le premier contact passe toujours par l’entreprise.",
       },
       {
-        fort: "Pas de données grises",
+        fort: "Pas de données grises.",
         suite:
-          " : sources publiques, opt-out définitif honoré, information art. 14 RGPD jointe à chaque brief.",
+          " Sources publiques, opt-out définitif honoré, information art. 14 RGPD jointe.",
       },
       {
-        fort: "Pas de chiffres invérifiables",
+        fort: "Pas de chiffres invérifiables.",
         suite:
-          " : environ un tiers de nos détections sont écartées à la vérification. Nous publions ce chiffre.",
+          " Environ un tiers de nos détections sont écartées à la vérification. Nous publions ce chiffre.",
       },
     ],
     garantie: {
@@ -184,7 +199,8 @@ export const copy = {
     kicker: "Le fondateur",
     statement: "Vous parlez au fondateur, pas à un SDR.",
     portrait: "Portrait à venir",
-    corps: `${brand.MARQUE} ${brand.SUFFIXE} est opéré par Vincent Fournier, fondateur, basé entre Paris et Bayonne. Le pipeline de détection est industrialisé ; la vérification finale de chaque dossier reste humaine. Au téléphone comme en livraison, vous avez un seul interlocuteur : celui qui a construit la machine et qui vérifie vos dossiers.`,
+    citation: "« Au téléphone comme en livraison, vous avez un seul interlocuteur : celui qui a construit la machine et qui vérifie vos dossiers. »",
+    corps: `${brand.MARQUE} ${brand.SUFFIXE} est opéré par Vincent Fournier, fondateur, basé entre Paris et Bayonne. Le pipeline de détection est industrialisé ; la vérification finale de chaque dossier reste humaine.`,
     id: `${brand.ENTITY.raisonSociale} · SIREN ${nb(brand.ENTITY.siren)} · ${brand.ENTITY.ville}`,
     linkedin: "LinkedIn ↗",
   },
@@ -208,9 +224,14 @@ export const copy = {
           "Un fournisseur qui ne publie pas son taux d’erreur vous demande de le croire sur parole. Environ un tiers de nos détections sont écartées à la vérification : c’est le coût réel de dossiers fiables.",
       },
       {
+        question: "Comment définit-on le périmètre de recherche ?",
+        reponse:
+          "Lors d’un premier échange, nous cadrons ensemble le scope : secteurs visés, zone, taille de cible, structure de détention. Ce périmètre devient votre exclusivité et conditionne le sourcing livré ensuite.",
+      },
+      {
         question: "Que couvre exactement l’exclusivité ?",
         reponse:
-          "La livraison des dossiers d’une verticale sur une zone, à un seul client. Elle se prend au premier abonnement signé.",
+          "La livraison des cibles d’une verticale sur une zone, à un seul client. Elle se prend au premier abonnement signé.",
       },
       {
         question: "Travaillez-vous au success fee ?",

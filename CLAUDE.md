@@ -19,8 +19,8 @@ trouvé sur vous". Codes attendus : document financier imprimé, pas SaaS IA.
 - Pas de fausse rareté : les statuts de la carte viennent de la config, mis à jour à la main.
 
 ## Direction artistique v7 — "Sanjaya / vidéo en fond de hero" (définitive)
-- Registre : noir, sobre, exclusif — agence B2B haut de gamme. Réf. validée : MAQUETTE-V8.html
-  (v8.1, page complète) ; MAQUETTE-V7.html est archivée.
+- Registre : noir, sobre, exclusif — agence B2B haut de gamme. Réf. validée : MAQUETTE-V9.html
+  (v9.2, rythme et lexique métier) ; les v7 et v8 sont archivées.
 - Amendement v8 (spécimen) : la version ANIMÉE du spécimen/console reste interdite ;
   le spécimen STATIQUE de la v8.1 (document sur filets, caviardage fixe, mention
   "données fictives") est autorisé et fait partie de la page.
@@ -33,6 +33,11 @@ trouvé sur vous". Codes attendus : document financier imprimé, pas SaaS IA.
   dure pas 6 s. Le site ne revendique donc nulle part son origine ni sa durée : la
   légende "Images réelles, boucle de 6 s" est retirée. Règle générale, adossée à la
   section Honnêteté : ne jamais affirmer sur un média ce qui n'est pas vérifiable.
+- Rythme v9 : la page alterne bandes sombres et bandes CLAIRES (#ECE7DF, texte #171310)
+  pour la bande de chiffres, le produit et les engagements. Largeurs de colonne variables
+  (wrap 1080px, narrow 720px), offre en colonne collante, spécimen sombre posé en décalé
+  sur la bande claire, CTA final centré pleine hauteur. Les bandes claires sont le seul
+  écart au fond encre : elles servent le rythme de lecture, jamais la décoration.
 - Palette : fond #0A0A0A · texte #F4F2EF · secondaire #B9B6B2 · tertiaire #83807C ·
   filets rgba(255,255,255,.12/.06) · unique accent rouge vin #8E2438 (souligné des CTA,
   hover). Aucune autre couleur.
