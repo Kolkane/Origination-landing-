@@ -1,6 +1,7 @@
 import BandeChiffres from "@/components/BandeChiffres";
 import Constat from "@/components/Constat";
 import CtaFinal from "@/components/CtaFinal";
+import Dossier from "@/components/Dossier";
 import Engagements from "@/components/Engagements";
 import Faq from "@/components/Faq";
 import Fondateur from "@/components/Fondateur";
@@ -14,6 +15,7 @@ export default function Home() {
   return (
     <main>
       <Hero />
+      <Dossier />
       <Constat />
       <BandeChiffres />
       <Methode />

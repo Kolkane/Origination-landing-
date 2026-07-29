@@ -17,7 +17,7 @@ export const copy = {
   meta: {
     title: `${brand.MARQUE} ${brand.SUFFIXE}, ${brand.BASELINE}`,
     description:
-      "Détection au registre des PME françaises en transition capitalistique, 12 à 18 mois avant le marché. Dossiers vérifiés, un seul client par zone.",
+      "Nous détectons les dirigeants qui préparent leur sortie et livrons le dossier d’approche qui va avec. Un cabinet par cellule.",
   },
   hero: {
     nav: [
@@ -25,19 +25,67 @@ export const copy = {
       { label: "Offre", ancre: "#offre" },
       { label: "FAQ", ancre: "#faq" },
     ],
-    navAppel: { label: "Vérifier ma zone", ancre: "#appel" },
+    navAppel: { label: "Vérifier ma cellule", ancre: "#appel" },
     eyebrow: "Origination sell-side · PME françaises · 1-10 M€",
-    titreLigne1: "Les cédants de demain,",
-    titreLigne2: "détectés",
-    titreItalique: "sous la surface",
+    titreLigne1: "Nous détectons les dirigeants",
+    titreLigne2: "qui préparent leur sortie.",
     sousTitre:
-      "Sourcing propriétaire des transitions capitalistiques, détectées au registre 12 à 18 mois avant le marché. Un périmètre défini avec vous, des dossiers vérifiés à la main, un seul client par zone.",
-    cta: "Vérifier la disponibilité de ma zone",
+      "Et nous livrons le dossier d’approche qui va avec. Un cabinet par cellule.",
+    cta: "Réserver un échange",
+    ctaSecondaire: { label: "La Cartographie", ancre: "#offre" },
     /* la légende ne décrit que le sujet : ni l'origine ni la durée du média
        ne sont revendiquées (arbitrage Vincent, v8-4) */
     legende1: "Plongeon imbrin en chasse",
     note1: "Déposez votre vidéo « imbrin.mp4 »",
     note2: "dans public/, puis rechargez.",
+  },
+  /* l'unité de valeur du produit : elle se décrit avant tout le reste,
+     juste après le hero. Le dernier item est distingué à dessein. */
+  dossier: {
+    kicker: "Le dossier d’approche",
+    statement: "Ce que vous recevez",
+    chapo:
+      "Pas une liste. Pas un signal. Un dossier qu’un associé peut utiliser lundi matin.",
+    lignes: [
+      {
+        num: "01",
+        titre: "Structure de détention réelle",
+        texte:
+          "Qui détient quoi, démembrement, présence ou absence des enfants au capital.",
+      },
+      {
+        num: "02",
+        titre: "L’acte préparatoire, et sa date",
+        texte: "Le fait daté qui a déclenché la détection.",
+      },
+      {
+        num: "03",
+        titre: "Ce que disent les statuts sur la cessibilité",
+        texte: "Clauses d’agrément, pactes, mouvements de titres.",
+      },
+      {
+        num: "04",
+        titre: "Ordres de grandeur financiers",
+        texte: "Issus des comptes déposés.",
+      },
+      {
+        num: "05",
+        titre: "L’angle d’approche",
+        texte: "Par quoi commencer, ce qui presse, ce qui bloque.",
+      },
+      {
+        num: "06",
+        titre: "Coordonnées vérifiées du dirigeant",
+        texte: "Vérifiées à la main avant livraison.",
+      },
+      {
+        num: "07",
+        titre: "Ce que nous ne savons pas",
+        texte:
+          "Section systématique. Les zones d’ombre sont écrites, jamais comblées.",
+        marque: true,
+      },
+    ] as { num: string; titre: string; texte: string; marque?: boolean }[],
   },
   constat: {
     kicker: "Le constat",

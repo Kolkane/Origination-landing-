@@ -824,8 +824,9 @@ footer a:hover {
   line-height: 1.7;
 }
 
-/* 02 · méthode : colonne étroite, légère élévation */
-.method {
+/* 02 · méthode, et le dossier d'approche qui partage son gabarit */
+.method,
+.dossier {
   padding: 120px 0;
   background: var(--bg-2);
   border-top: 1px solid var(--line-soft);
@@ -1106,6 +1107,7 @@ footer a:hover {
   }
   .constat,
   .method,
+  .dossier,
   .offer,
   .founder-s,
   .faq-s {
@@ -1242,31 +1244,48 @@ footer a:hover {
 }
 
 /* 02 · méthode : titre en marge, étapes à droite */
-.method .steps {
+.method .steps,
+.dossier .steps {
   margin-top: 0;
 }
-.method .step {
+.method .step,
+.dossier .step {
   grid-template-columns: clamp(48px, 4vw, 72px) 1fr;
   gap: clamp(20px, 2.4vw, 40px);
   padding: clamp(28px, 2.8vw, 40px) 0;
   transition: border-color 0.4s var(--ease);
 }
-.method .step:hover {
+.method .step:hover,
+.dossier .step:hover {
   border-top-color: var(--line);
 }
-.method .step .n {
+.method .step .n,
+.dossier .step .n {
   font-size: clamp(26px, 2.4vw, 38px);
   transition: color 0.4s var(--ease);
 }
-.method .step:hover .n {
+.method .step:hover .n,
+.dossier .step:hover .n {
   color: var(--txt-2);
 }
-.method .step h3 {
+.method .step h3,
+.dossier .step h3 {
   font-size: clamp(17px, 1.35vw, 21px);
 }
-.method .step p {
+.method .step p,
+.dossier .step p {
   font-size: 14.5px;
   max-width: 62ch;
+}
+/* « ce que nous ne savons pas » : le filet passe à l'accent, comme les
+   blocs distingués. Rien d'autre ne change. */
+.dossier .step.mark,
+.dossier .step.mark:hover {
+  border-top-color: var(--wine);
+}
+.dossier .step.mark .n,
+.dossier .step.mark:hover .n {
+  color: var(--wine);
 }
 
 /* 03 · produit : le spécimen prend de l'ampleur */
@@ -1518,4 +1537,18 @@ footer a:hover {
 .offer .price .not {
   padding-top: 22px;
   border-bottom: none;
+}
+
+/* deux appels dans le hero : le second est un lien interne, il pèse moins */
+.cta-row {
+  display: flex;
+  align-items: center;
+  gap: clamp(22px, 3vw, 44px);
+  flex-wrap: wrap;
+}
+.cta-2 {
+  color: var(--txt-2);
+}
+.cta-2:hover {
+  color: var(--txt);
 }

@@ -71,17 +71,22 @@ export default function Hero() {
         <h1 className="fade f3">
           {h.titreLigne1}
           <br />
-          {h.titreLigne2} <em>{h.titreItalique}</em>.
+          {h.titreLigne2}
         </h1>
         <p className="hero-sub fade f4">{h.sousTitre}</p>
-        <a
-          className="cta mono fade f4"
-          href={brand.CALENDLY_URL}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          {h.cta}
-        </a>
+        <div className="cta-row fade f4">
+          <a
+            className="cta mono"
+            href={brand.CALENDLY_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {h.cta}
+          </a>
+          <a className="cta cta-2 mono" href={h.ctaSecondaire.ancre}>
+            {h.ctaSecondaire.label}
+          </a>
+        </div>
       </div>
 
       <div className="scroll-cue fade f5" aria-hidden="true" />
