@@ -168,11 +168,6 @@ export const copy = {
     statement: "Ce que nous ne faisons pas.",
     nots: [
       {
-        fort: "Pas de success fee, jamais.",
-        suite:
-          " Nous facturons la donnée, pas le closing. Notre lecture d’un dossier n’a aucun intérêt au deal.",
-      },
-      {
         fort: "Pas de scores prédictifs inventés.",
         suite: " Des signaux observables, sourcés, datés.",
       },
@@ -191,14 +186,6 @@ export const copy = {
           " Environ un tiers de nos détections sont écartées à la vérification. Nous publions ce chiffre.",
       },
     ],
-    garantie: {
-      k: "Garantie premier mois",
-      avant: "Exactitude ",
-      fort1: nb(brand.PROOF.garantieM1.exactitude),
-      milieu: " et joignabilité ",
-      fort2: nb(brand.PROOF.garantieM1.joignabilite),
-      apres: " des dossiers livrés. Sinon, remboursé.",
-    },
   },
   fondateur: {
     kicker: "Le fondateur",

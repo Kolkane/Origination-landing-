@@ -15,7 +15,6 @@ export const brand = {
     tauxEcartVerification: "≈ 1/3",       // détections écartées à la vérification — chiffre public
     delaiLivraisonBascule: "7 jours",
     dureeCouverture: "8 à 12 semaines",
-    garantieM1: { exactitude: "≥ 90 %", joignabilite: "≥ 80 %" },
   },
   PRICING: {
     boutique: { prix: "1 990 € HT / mois", perimetre: "par région", engagement: "sans engagement" },

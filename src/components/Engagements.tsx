@@ -16,18 +16,6 @@ export default function Engagements() {
           </p>
         ))}
       </div>
-      <div className="guar">
-        <div className="box rev">
-          <span className="k mono">{e.garantie.k}</span>
-          <p>
-            {e.garantie.avant}
-            <b>{e.garantie.fort1}</b>
-            {e.garantie.milieu}
-            <b>{e.garantie.fort2}</b>
-            {e.garantie.apres}
-          </p>
-        </div>
-      </div>
     </section>
   );
 }
