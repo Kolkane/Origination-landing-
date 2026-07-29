@@ -29,7 +29,9 @@ export const copy = {
     navAppel: { label: "Vérifier ma cellule", ancre: "#appel" },
     eyebrow: "Origination sell-side · PME françaises · 1-10 M€",
     titreLigne1: "Nous détectons les dirigeants",
-    titreLigne2: "qui préparent leur sortie.",
+    titreLigne2Avant: "qui ",
+    titreItalique: "préparent",
+    titreLigne2Apres: " leur sortie.",
     sousTitre:
       "Et nous livrons le dossier d’approche qui va avec. Un cabinet par cellule.",
     cta: "Réserver un échange",
