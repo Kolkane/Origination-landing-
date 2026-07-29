@@ -8,7 +8,15 @@ export default function Fondateur() {
       <div className="wrap">
         <p className="kicker mono rev">{f.kicker}</p>
         <div className="founder">
-          <div className="ph mono rev">{f.portrait}</div>
+          <div className="ph rev">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/portrait-vincent-fournier.webp"
+              alt={f.portraitAlt}
+              width={640}
+              height={857}
+            />
+          </div>
           <div className="rev">
             <p className="q">{f.citation}</p>
             <p>{f.corps}</p>
