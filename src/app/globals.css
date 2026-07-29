@@ -1558,6 +1558,11 @@ footer a:hover {
   margin-bottom: 6px;
 }
 
+/* le palier visé par un lien ne doit pas coller au bord haut de la fenêtre */
+.oitem[id] {
+  scroll-margin-top: clamp(32px, 8vh, 90px);
+}
+
 /* deux appels dans le hero : le second est un lien interne, il pèse moins */
 .cta-row {
   display: flex;

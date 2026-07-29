@@ -13,7 +13,7 @@ export default function Offre() {
           </div>
           <div className="items">
             {o.paliers.map((palier) => (
-              <div className="oitem rev" key={palier.nom}>
+              <div className="oitem rev" id={palier.ancre} key={palier.nom}>
                 <div className="t">
                   <h3>{palier.nom}</h3>
                 </div>

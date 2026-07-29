@@ -21,6 +21,7 @@ export const copy = {
   },
   hero: {
     nav: [
+      { label: "Dossier", ancre: "#dossier" },
       { label: "Méthode", ancre: "#methode" },
       { label: "Offre", ancre: "#offre" },
       { label: "FAQ", ancre: "#faq" },
@@ -32,7 +33,7 @@ export const copy = {
     sousTitre:
       "Et nous livrons le dossier d’approche qui va avec. Un cabinet par cellule.",
     cta: "Réserver un échange",
-    ctaSecondaire: { label: "La Cartographie", ancre: "#offre" },
+    ctaSecondaire: { label: "La Cartographie", ancre: "#cartographie" },
     /* la légende ne décrit que le sujet : ni l'origine ni la durée du média
        ne sont revendiquées (arbitrage Vincent, v8-4) */
     legende1: "Plongeon imbrin en chasse",
@@ -183,6 +184,7 @@ export const copy = {
     paliers: [
       {
         nom: "La Cartographie",
+        ancre: "cartographie",
         prix: `${nb(brand.PRICING.cartographie.prix)}, ${brand.PRICING.cartographie.nature}`,
         lead: `Un état complet de votre cellule, livré sous ${nb(brand.PRICING.cartographie.delai)}.`,
         points: [
@@ -208,6 +210,7 @@ export const copy = {
       },
     ] as {
       nom: string;
+      ancre?: string;
       prix: string;
       prix2?: string;
       lead: string;
@@ -333,12 +336,12 @@ export const copy = {
     kicker: "Prochaine étape",
     statement: "Nous savons déjà combien de dirigeants de votre cellule sont concernés.",
     lead: "Ce chiffre vous est donné à l’appel, sans condition. Qui ils sont, depuis quand, et par quoi commencer : c’est la Cartographie.",
-    cta: "Réserver un appel avec Vincent",
+    cta: "Réserver un échange",
   },
   carte: {
     ariaCarte: "Carte des régions françaises",
     panneauVide: "Sélectionnez une région.",
-    bouton: "Réserver un appel avec Vincent",
+    bouton: "Réserver un échange",
     statuts: {
       disponible: {
         label: "Disponible",
