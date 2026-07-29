@@ -17,8 +17,8 @@ export default function Fondateur() {
               height={857}
             />
           </div>
-          <div className="rev">
-            <p className="q">{f.citation}</p>
+          <div className="txt rev">
+            <p className="q mask">{f.citation}</p>
             <p>{f.corps}</p>
             <p className="id mono">
               {f.id}

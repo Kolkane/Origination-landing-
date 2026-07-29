@@ -6,7 +6,7 @@ export default function Constat() {
     <section className="constat" id="constat">
       <div className="wrap">
         <p className="kicker mono rev">{c.kicker}</p>
-        <h2 className="big rev">
+        <h2 className="big mask rev">
           {c.titreAvant}
           <em>{c.titreItalique}</em>.
         </h2>

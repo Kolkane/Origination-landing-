@@ -60,6 +60,19 @@ export default function RootLayout({
       lang="fr"
       className={`${instrument.variable} ${geist.variable} ${geistMono.variable}`}
     >
+      <head>
+        {/* sans JavaScript, aucun bloc animé ne doit rester invisible :
+            les apparitions au scroll sont un agrément, jamais une condition
+            d'accès au contenu */}
+        <noscript>
+          <style
+            dangerouslySetInnerHTML={{
+              __html:
+                ".rev,.mask,.rule{opacity:1!important;transform:none!important;clip-path:none!important}",
+            }}
+          />
+        </noscript>
+      </head>
       <body>
         {children}
         <Footer />

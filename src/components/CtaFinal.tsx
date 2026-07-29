@@ -5,9 +5,9 @@ export default function CtaFinal() {
   const f = copy.final;
   return (
     <section className="final" id="appel">
-      <div className="narrow">
+      <div className="wrap">
         <p className="kicker mono rev">{f.kicker}</p>
-        <h2 className="rev">{f.statement}</h2>
+        <h2 className="mask rev">{f.statement}</h2>
         <p className="lead rev">{f.lead}</p>
         <a
           className="cta mono rev"

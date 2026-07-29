@@ -1164,3 +1164,326 @@ footer a:hover {
   display: block;
   filter: grayscale(1) contrast(1.02);
 }
+
+/* ============================================================
+   v10 : grille éditoriale. La colonne de lecture reste étroite
+   (le confort de lecture ne se négocie pas) mais elle est POSÉE
+   dans une grille de 12 colonnes au lieu d'être centrée : le
+   libellé de section tient la marge gauche, le contenu occupe
+   la droite. L'espace horizontal travaille au lieu de se vider.
+   ============================================================ */
+
+.wrap,
+.narrow {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 clamp(22px, 4.4vw, 76px);
+}
+
+/* grille de 12 colonnes commune à toutes les sections */
+.g12 {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  column-gap: clamp(18px, 2.2vw, 40px);
+  align-items: start;
+}
+
+/* colonne de marge : le libellé, le titre, la note. Elle suit le
+   défilement sur les sections longues. */
+.aside {
+  grid-column: 1 / 5;
+  position: sticky;
+  top: clamp(40px, 12vh, 120px);
+}
+.aside .statement {
+  max-width: 17ch;
+  font-size: clamp(23px, 2.15vw, 31px);
+  line-height: 1.22;
+}
+.aside .note {
+  margin-top: 22px;
+  font-size: 13.5px;
+  line-height: 1.75;
+  color: var(--txt-2);
+  max-width: 32ch;
+}
+.main {
+  grid-column: 6 / 13;
+}
+
+/* le trait qui ouvre une section se dessine au reveal */
+.rule {
+  height: 1px;
+  background: var(--line-soft);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 1.1s var(--ease);
+}
+.rule.in {
+  transform: scaleX(1);
+}
+
+/* les grands titres se dévoilent par le bas, sans bouger */
+.mask {
+  clip-path: inset(0 0 110% 0);
+  transition: clip-path 1s var(--ease);
+}
+.mask.in {
+  clip-path: inset(0 0 -10% 0);
+}
+
+/* 01 · constat : le mur occupe la largeur, les appuis se rangent
+   sous lui en deux colonnes décalées */
+.constat .big {
+  max-width: 20ch;
+  font-size: clamp(38px, 7.6vw, 104px);
+}
+.constat .sub {
+  max-width: none;
+  margin-top: clamp(48px, 6vw, 88px);
+  grid-column: 1 / 13;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  column-gap: clamp(18px, 2.2vw, 40px);
+  gap: 0;
+}
+.constat .sub p:first-child {
+  grid-column: 1 / 7;
+  font-size: clamp(15px, 1.15vw, 17px);
+}
+.constat .sub p.mono {
+  grid-column: 8 / 12;
+  border-top: 1px solid var(--line-soft);
+  padding-top: 18px;
+}
+
+/* bande de chiffres : elle respire sur toute la largeur */
+.band .row-band {
+  max-width: 1440px;
+  padding: 0 clamp(22px, 4.4vw, 76px);
+  column-gap: clamp(18px, 2.2vw, 40px);
+}
+.band .cell {
+  padding: clamp(44px, 4.4vw, 68px) clamp(18px, 2vw, 34px) clamp(44px, 4.4vw, 68px) 0;
+}
+.band .n {
+  font-size: clamp(34px, 3.6vw, 60px);
+}
+
+/* 02 · méthode : titre en marge, étapes à droite */
+.method .steps {
+  margin-top: 0;
+}
+.method .step {
+  grid-template-columns: clamp(48px, 4vw, 72px) 1fr;
+  gap: clamp(20px, 2.4vw, 40px);
+  padding: clamp(28px, 2.8vw, 40px) 0;
+  transition: border-color 0.4s var(--ease);
+}
+.method .step:hover {
+  border-top-color: var(--line);
+}
+.method .step .n {
+  font-size: clamp(26px, 2.4vw, 38px);
+  transition: color 0.4s var(--ease);
+}
+.method .step:hover .n {
+  color: var(--txt-2);
+}
+.method .step h3 {
+  font-size: clamp(17px, 1.35vw, 21px);
+}
+.method .step p {
+  font-size: 14.5px;
+  max-width: 62ch;
+}
+
+/* 03 · produit : le spécimen prend de l'ampleur */
+.product .head,
+.product .grid {
+  max-width: 1440px;
+  padding: 0 clamp(22px, 4.4vw, 76px);
+}
+.product .grid {
+  grid-template-columns: 1fr 1.15fr;
+  gap: clamp(40px, 5vw, 88px);
+  margin-top: clamp(40px, 4.4vw, 64px);
+}
+.product .intro {
+  font-size: clamp(15px, 1.15vw, 17px);
+  max-width: 44ch;
+}
+.product .doc {
+  padding: clamp(24px, 2.2vw, 34px) clamp(24px, 2.2vw, 34px) 0;
+}
+
+/* 04 · offre : la grille tarifaire s'aligne sur les postes */
+.offer .cols {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  column-gap: clamp(18px, 2.2vw, 40px);
+  align-items: start;
+}
+.offer .sticky {
+  grid-column: 1 / 5;
+  position: sticky;
+  top: clamp(40px, 12vh, 120px);
+}
+.offer .items {
+  grid-column: 6 / 13;
+}
+.oitem {
+  padding: clamp(28px, 2.8vw, 40px) 0;
+  transition: border-color 0.4s var(--ease);
+}
+.oitem:hover {
+  border-top-color: var(--line);
+}
+.oitem .t .n {
+  font-size: clamp(22px, 2vw, 30px);
+  transition: color 0.4s var(--ease);
+}
+.oitem:hover .t .n {
+  color: var(--txt-2);
+}
+.oitem .t h3 {
+  font-size: clamp(17px, 1.35vw, 21px);
+}
+.oitem p {
+  font-size: 14.5px;
+  max-width: 58ch;
+}
+.price-row {
+  padding: clamp(18px, 1.8vw, 26px) 0;
+}
+
+/* 05 · engagements : deux colonnes sur la largeur pleine */
+.commit .head,
+.commit .list,
+.commit .guar {
+  max-width: 1440px;
+  padding: 0 clamp(22px, 4.4vw, 76px);
+}
+.commit .list {
+  column-gap: clamp(40px, 5vw, 88px);
+}
+.commit .not {
+  padding: clamp(22px, 2.2vw, 30px) 0;
+  font-size: 14.5px;
+}
+.commit .guar .box {
+  max-width: 620px;
+}
+
+/* 06 · fondateur : la photo gagne en présence, la citation déborde */
+.founder {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  column-gap: clamp(18px, 2.2vw, 40px);
+  margin-top: clamp(40px, 4.4vw, 64px);
+  align-items: start;
+}
+.founder .ph {
+  grid-column: 1 / 5;
+}
+.founder .txt {
+  grid-column: 6 / 13;
+}
+.founder .q {
+  font-size: clamp(24px, 2.9vw, 40px);
+  max-width: 22ch;
+  margin-bottom: clamp(24px, 2.4vw, 34px);
+}
+.founder p {
+  font-size: clamp(15px, 1.15vw, 17px);
+  max-width: 56ch;
+}
+
+/* 07 · faq : intitulé en marge, questions à droite */
+.faq-s .faq {
+  margin-top: 0;
+}
+.faq summary {
+  padding: clamp(20px, 2vw, 28px) 0;
+  font-size: clamp(16px, 1.3vw, 19px);
+  transition: color 0.3s var(--ease);
+}
+.faq summary:hover {
+  color: var(--txt);
+}
+.faq details {
+  transition: border-color 0.4s var(--ease);
+}
+.faq details[open] {
+  border-bottom-color: var(--line);
+}
+.faq .a {
+  max-width: 68ch;
+  font-size: 14.5px;
+}
+
+/* cta final : il occupe le champ au lieu de flotter au centre */
+.final {
+  min-height: 78svh;
+  place-items: center;
+  padding: clamp(90px, 10vw, 150px) 0;
+}
+.final h2 {
+  font-size: clamp(34px, 5.6vw, 76px);
+  max-width: 16ch;
+}
+.final .lead {
+  max-width: 54ch;
+  font-size: clamp(15px, 1.15vw, 17px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rule,
+  .mask {
+    transform: none !important;
+    clip-path: none !important;
+    transition: none !important;
+  }
+}
+
+/* sous 1080px, la marge de section repasse au-dessus du contenu */
+@media (max-width: 1080px) {
+  .aside,
+  .offer .sticky {
+    grid-column: 1 / 13;
+    position: static;
+    margin-bottom: clamp(28px, 4vw, 44px);
+  }
+  .aside .statement,
+  .offer .sticky .statement {
+    max-width: 22ch;
+  }
+  .aside .note,
+  .offer .sticky .note {
+    max-width: 60ch;
+  }
+  .main,
+  .offer .items {
+    grid-column: 1 / 13;
+  }
+  .constat .sub p:first-child,
+  .constat .sub p.mono {
+    grid-column: 1 / 13;
+  }
+  .constat .sub p.mono {
+    margin-top: 28px;
+  }
+  .founder .ph {
+    grid-column: 1 / 6;
+  }
+  .founder .txt {
+    grid-column: 1 / 13;
+    margin-top: 34px;
+  }
+}
+
+@media (max-width: 880px) {
+  .founder .ph {
+    grid-column: 1 / 8;
+  }
+}
