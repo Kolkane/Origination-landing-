@@ -6,6 +6,7 @@ import Engagements from "@/components/Engagements";
 import Faq from "@/components/Faq";
 import Fondateur from "@/components/Fondateur";
 import Hero from "@/components/Hero";
+import Mesure from "@/components/Mesure";
 import Methode from "@/components/Methode";
 import Offre from "@/components/Offre";
 import Produit from "@/components/Produit";
@@ -22,6 +23,7 @@ export default function Home() {
       <Produit />
       <Offre />
       <Engagements />
+      <Mesure />
       <Fondateur />
       <Faq />
       <CtaFinal />

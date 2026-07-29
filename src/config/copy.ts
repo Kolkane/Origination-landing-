@@ -251,6 +251,24 @@ export const copy = {
       },
     ],
   },
+  /* le taux d'écart était enterré dans la FAQ et dans les engagements :
+     il devient une section, juste avant le fondateur. */
+  mesure: {
+    kicker: "La mesure",
+    statement: "Ce que nous mesurons sur nous-mêmes",
+    items: [
+      {
+        titre: "Taux d’écart à la vérification",
+        texte:
+          "Environ un tiers des détections sont écartées avant livraison. Publié depuis l’ouverture.",
+      },
+      {
+        titre: "Suivi des dossiers livrés",
+        texte:
+          "Chaque dossier est suivi jusqu’à son issue, cession ou non. Les résultats sont communiqués à nos clients, échecs compris, et publiés ici dès qu’une cohorte complète atteint dix-huit mois.",
+      },
+    ],
+  },
   fondateur: {
     kicker: "Le fondateur",
     statement: "Vous parlez au fondateur, pas à un SDR.",

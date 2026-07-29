@@ -1108,6 +1108,7 @@ footer a:hover {
   .constat,
   .method,
   .dossier,
+  .mesure,
   .offer,
   .founder-s,
   .faq-s {
@@ -1537,6 +1538,24 @@ footer a:hover {
 .offer .price .not {
   padding-top: 22px;
   border-bottom: none;
+}
+
+/* bloc de mesure : gabarit de section standard, liste .not sur filets */
+.mesure {
+  padding: 120px 0;
+  border-top: 1px solid var(--line-soft);
+}
+.mesure .nots {
+  margin-top: 0;
+}
+.mesure .not {
+  font-size: 14.5px;
+  max-width: 62ch;
+  padding: clamp(22px, 2.2vw, 30px) 0;
+}
+.mesure .not b {
+  display: inline-block;
+  margin-bottom: 6px;
 }
 
 /* deux appels dans le hero : le second est un lien interne, il pèse moins */
