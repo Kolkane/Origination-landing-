@@ -81,11 +81,7 @@ export default function Hero() {
       </div>
 
       <div className="scroll-cue fade f5" aria-hidden="true" />
-      <p className="caption mono fade f5">
-        {h.legende1}
-        <br />
-        {h.legende2}
-      </p>
+      <p className="caption mono fade f5">{h.legende1}</p>
     </section>
   );
 }

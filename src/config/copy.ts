@@ -31,8 +31,9 @@ export const copy = {
     sousTitre:
       "Détection au registre des transitions capitalistiques, 12 à 18 mois avant le marché. Dossiers vérifiés à la main. Un seul client par zone.",
     cta: "Vérifier la disponibilité de ma zone",
+    /* la légende ne décrit que le sujet : ni l'origine ni la durée du média
+       ne sont revendiquées (arbitrage Vincent, v8-4) */
     legende1: "Plongeon imbrin en chasse",
-    legende2: "Images réelles, boucle de 6 s",
     note1: "Déposez votre vidéo « imbrin.mp4 »",
     note2: "dans public/, puis rechargez.",
   },
@@ -304,3 +305,5 @@ export const copy = {
     note: "Site sans traceurs · © 2026",
   },
 };
+    /* la légende ne décrit que le sujet : ni l'origine ni la durée du
+       média ne sont revendiquées (arbitrage Vincent, v8-4) */

@@ -18,7 +18,7 @@ trouvé sur vous". Codes attendus : document financier imprimé, pas SaaS IA.
 - Le spécimen de brief est FICTIF et porte la mention "Spécimen — données fictives".
 - Pas de fausse rareté : les statuts de la carte viennent de la config, mis à jour à la main.
 
-## Direction artistique v7 — "Sanjaya / vidéo réelle" (définitive)
+## Direction artistique v7 — "Sanjaya / vidéo en fond de hero" (définitive)
 - Registre : noir, sobre, exclusif — agence B2B haut de gamme. Réf. validée : MAQUETTE-V8.html
   (v8.1, page complète) ; MAQUETTE-V7.html est archivée.
 - Amendement v8 (spécimen) : la version ANIMÉE du spécimen/console reste interdite ;
@@ -27,9 +27,12 @@ trouvé sur vous". Codes attendus : document financier imprimé, pas SaaS IA.
 - Amendement v8 (copy) : aucun tiret cadratin ni demi-cadratin dans les textes du site.
   Ponctuation en virgules, deux-points, points, parenthèses. Les séparateurs "·" sont
   réservés aux lignes de labels mono (nav, footer, notes de grille, doc-head).
-- La pièce centrale est une VIDÉO RÉELLE de 6 s d'un plongeon imbrin en chasse
-  (public/imbrin.mp4). C'est le différenciateur de la marque : ne jamais la remplacer par
-  une image générée, une illustration ou un placeholder décoratif.
+- La pièce centrale est la vidéo du hero (public/imbrin.mp4) : un plongeon imbrin en
+  chasse, muette, en boucle. Ne jamais la remplacer par un placeholder décoratif.
+  Amendement (arbitrage Vincent, v8-4) : elle n'est PAS une prise de vue réelle et ne
+  dure pas 6 s. Le site ne revendique donc nulle part son origine ni sa durée : la
+  légende "Images réelles, boucle de 6 s" est retirée. Règle générale, adossée à la
+  section Honnêteté : ne jamais affirmer sur un média ce qui n'est pas vérifiable.
 - Palette : fond #0A0A0A · texte #F4F2EF · secondaire #B9B6B2 · tertiaire #83807C ·
   filets rgba(255,255,255,.12/.06) · unique accent rouge vin #8E2438 (souligné des CTA,
   hover). Aucune autre couleur.
