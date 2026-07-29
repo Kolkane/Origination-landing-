@@ -1,10 +1,6 @@
 import { brand } from "@/config/brand";
 import { copy } from "@/config/copy";
 
-/* TODO : LINKEDIN_URL est encore un placeholder dans brand.ts : le lien ne
-   se rend pas tant que l'URL réelle n'est pas renseignée. */
-const linkedinRenseigne = !brand.LINKEDIN_URL.includes("A-REMPLACER");
-
 export default function Fondateur() {
   const f = copy.fondateur;
   return (
@@ -18,14 +14,10 @@ export default function Fondateur() {
             <p>{f.corps}</p>
             <p className="id mono">
               {f.id}
-              {linkedinRenseigne ? (
-                <>
-                  <br />
-                  <a href={brand.LINKEDIN_URL} target="_blank" rel="noopener noreferrer">
-                    {f.linkedin}
-                  </a>
-                </>
-              ) : null}
+              <br />
+              <a href={brand.LINKEDIN_URL} target="_blank" rel="noopener noreferrer">
+                {f.linkedin}
+              </a>
             </p>
           </div>
         </div>
