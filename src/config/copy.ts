@@ -106,7 +106,7 @@ export const copy = {
         num: "01",
         titre: "Le périmètre, défini avec vous",
         texte:
-          "Nous cadrons ensemble le scope de recherche : secteurs, zone, taille de cible, structure de détention. La détection s’appuie sur des sources exclusivement publiques (RNE, SIRENE, BODACC), sur des signaux observables et datés. Pas de scores prédictifs inventés.",
+          "Nous arrêtons ensemble votre cellule : région, famille d’activités, taille de cible, structure de détention. La détection s’appuie sur des sources exclusivement publiques (RNE, SIRENE, BODACC), sur des signaux observables et datés. Pas de scores prédictifs inventés.",
       },
       {
         num: "02",
@@ -123,7 +123,7 @@ export const copy = {
       {
         num: "04",
         titre: "La veille",
-        texte: `Votre zone entière sous surveillance continue. Chaque bascule détectée est vérifiée, puis livrée sous ${nb(brand.PROOF.delaiLivraisonBascule)}.`,
+        texte: `Votre cellule entière sous surveillance continue. Chaque bascule détectée est vérifiée, puis livrée sous ${nb(brand.PROOF.delaiLivraisonBascule)}.`,
       },
     ],
   },
@@ -165,7 +165,7 @@ export const copy = {
       angleLbl: "Angle d’approche",
       angle:
         "Dirigeant seul au capital depuis 2019, sans successeur identifié au registre. Entrée recommandée par la transmission patrimoniale plutôt que par la valorisation : le calendrier des signaux suggère une fenêtre de douze à dix-huit mois avant une mise en marché, pendant laquelle une approche directe et confidentielle reste possible auprès du dirigeant.",
-      pied: "Spécimen fictif. Nos briefs réels ne quittent pas leurs zones.",
+      pied: "Spécimen fictif. Nos briefs réels ne quittent pas leurs cellules.",
     },
   },
   bande: {
@@ -174,7 +174,7 @@ export const copy = {
       { n: "700 000", l: "dirigeants partants sous 10 ans" },
       { n: "12-18", l: "mois d’avance sur le marché" },
       { n: nb(brand.PROOF.tauxEcartVerification), l: "de détections écartées, chiffre publié" },
-      { n: "1", l: "client par zone et par verticale" },
+      { n: "1", l: "cabinet par cellule" },
     ],
   },
   offre: {
@@ -298,31 +298,42 @@ export const copy = {
           "Un fournisseur qui ne publie pas son taux d’erreur vous demande de le croire sur parole. Environ un tiers de nos détections sont écartées à la vérification : c’est le coût réel de dossiers fiables.",
       },
       {
-        question: "Comment définit-on le périmètre de recherche ?",
+        question: "Comment définit-on le périmètre de recherche ?",
         reponse:
-          "Lors d’un premier échange, nous cadrons ensemble le scope : secteurs visés, zone, taille de cible, structure de détention. Ce périmètre devient votre exclusivité et conditionne le sourcing livré ensuite.",
+          "Lors d’un premier échange, nous arrêtons ensemble votre cellule : région, famille d’activités, taille de cible, structure de détention. Elle est inscrite au contrat et conditionne le sourcing livré ensuite.",
       },
       {
-        question: "Que couvre exactement l’exclusivité ?",
+        question: "Que couvre exactement l’exclusivité ?",
         reponse:
-          "La livraison des cibles d’une verticale sur une zone, à un seul client. Elle se prend au premier abonnement signé.",
+          "Une cellule, un cabinet : personne d’autre n’est servi sur votre région et votre famille d’activités tant que le contrat court, quel que soit l’usage. La définition exacte est écrite sous la grille de prix, et reprise au contrat.",
       },
       {
-        question: "Travaillez-vous au success fee ?",
+        question: "Intervenez-vous sur un mandat de recherche ?",
         reponse:
-          "Non. Ni mandat, ni commission, ni participation au deal. C’est ce qui garantit la neutralité de nos dossiers.",
+          "Oui, sur les cellules libres de toute exclusivité, sans supplément pour nos clients sous contrat. Vos critères, une shortlist vérifiée sous sept jours. C’est l’usage acheté qui est nommé au contrat, et deux clients ne sont jamais servis sur la même course.",
       },
       {
-        question: "Combien de dossiers par mois ?",
+        question: "Pourquoi être rémunérés au mandat signé et non au closing ?",
         reponse:
-          "Peu, et vérifiés. Le volume dépend de la densité réelle de votre zone : mesurée avant l’abonnement, annoncée à l’appel, tenue ensuite.",
+          "Parce qu’un mandat ne porte pas de prix. Notre rémunération ne dépend donc ni de la réalisation de l’opération, ni de sa valorisation. Notre lecture d’un dossier n’a aucun intérêt au deal.",
+      },
+      {
+        question:
+          "Que se passe-t-il si la Cartographie montre que ma cellule est pauvre ?",
+        reponse:
+          "Nous vous le disons et nous ne vous vendons pas de contrat. C’est précisément ce que la Cartographie sert à établir.",
+      },
+      {
+        question: "Combien de dossiers par mois ?",
+        reponse:
+          "Peu, et vérifiés. Le volume dépend de la densité réelle de votre cellule : mesurée avant le contrat, annoncée à l’appel, tenue ensuite.",
       },
     ],
   },
   final: {
     kicker: "Prochaine étape",
-    statement: "La densité de votre zone est déjà mesurée.",
-    lead: "Elle vous est annoncée à l’appel, avec la disponibilité de l’exclusivité sur votre région et votre verticale. Trente minutes, avec le fondateur.",
+    statement: "Nous savons déjà combien de dirigeants de votre cellule sont concernés.",
+    lead: "Ce chiffre vous est donné à l’appel, sans condition. Qui ils sont, depuis quand, et par quoi commencer : c’est la Cartographie.",
     cta: "Réserver un appel avec Vincent",
   },
   carte: {
@@ -332,15 +343,15 @@ export const copy = {
     statuts: {
       disponible: {
         label: "Disponible",
-        texte: "Zone ouverte. La part se prend au premier abonnement signé.",
+        texte: "Cellule ouverte. La part se prend au premier contrat signé.",
       },
       en_discussion: {
         label: "En discussion",
-        texte: "Des discussions sont en cours sur cette zone. Un appel reste possible : premier signé, premier servi.",
+        texte: "Des discussions sont en cours sur cette cellule. Un appel reste possible : premier signé, premier servi.",
       },
       exclusivite: {
         label: "Sous exclusivité",
-        texte: "Cette zone est servie en exclusivité. Laissez vos coordonnées à l’appel pour être prévenu si elle se libère.",
+        texte: "Cette cellule est servie en exclusivité. Laissez vos coordonnées à l’appel pour être prévenu si elle se libère.",
       },
     },
   },
