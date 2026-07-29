@@ -116,7 +116,7 @@ export const copy = {
       },
       {
         num: "03",
-        titre: "Le brief de sourcing",
+        titre: "Le dossier d’approche",
         texte:
           "Un livrable opérationnel par cible : contexte, signaux sourcés et datés, structure de détention, angle d’approche conforme. Prêt à intégrer votre pipeline et à ouvrir un premier contact.",
       },
@@ -129,7 +129,7 @@ export const copy = {
   },
   produit: {
     kicker: "Le produit",
-    statement: "Le brief est le produit.",
+    statement: "Le dossier est le produit.",
     lead: "Pas de plateforme à apprendre, pas de crédits, pas d’export de 4 000 lignes à retraiter. Un flux de cibles qualifiées, en petit nombre, vérifiées et argumentées : le livrable qu’un associé lit en trois minutes et pousse directement dans son pipeline de sourcing.",
     annos: [
       {
@@ -147,7 +147,7 @@ export const copy = {
       },
     ],
     doc: {
-      aria: "Spécimen de brief, données fictives",
+      aria: "Spécimen de dossier, données fictives",
       tete1: "Dossier · Spécimen",
       tete2: "Données fictives",
       caviardeSr: "information caviardée",
@@ -165,7 +165,7 @@ export const copy = {
       angleLbl: "Angle d’approche",
       angle:
         "Dirigeant seul au capital depuis 2019, sans successeur identifié au registre. Entrée recommandée par la transmission patrimoniale plutôt que par la valorisation : le calendrier des signaux suggère une fenêtre de douze à dix-huit mois avant une mise en marché, pendant laquelle une approche directe et confidentielle reste possible auprès du dirigeant.",
-      pied: "Spécimen fictif. Nos briefs réels ne quittent pas leurs cellules.",
+      pied: "Spécimen fictif. Nos dossiers réels ne quittent pas leurs cellules.",
     },
   },
   bande: {
@@ -290,7 +290,7 @@ export const copy = {
       {
         question: "Est-ce conforme au RGPD ?",
         reponse:
-          "Oui : base légale de l’intérêt légitime en B2B, information art. 14 jointe à chaque brief, opt-out définitif honoré, premier contact toujours adressé à l’entreprise.",
+          "Oui : base légale de l’intérêt légitime en B2B, information art. 14 jointe à chaque dossier d’approche, opt-out définitif honoré, premier contact toujours adressé à l’entreprise.",
       },
       {
         question: "Pourquoi publier votre taux d’écart ?",
@@ -393,7 +393,7 @@ export const copy = {
         },
         {
           titre: "Données traitées par le service",
-          corps: `Les dossiers produits par ${brand.MARQUE} reposent exclusivement sur des sources publiques (RNE, SIRENE, BODACC). Une information au titre de l’article 14 du RGPD est jointe à chaque brief. Toute personne concernée peut exercer un opt-out définitif en écrivant à l’adresse ci-dessous ; il est honoré sans condition.`,
+          corps: `Les dossiers produits par ${brand.MARQUE} reposent exclusivement sur des sources publiques (RNE, SIRENE, BODACC). Une information au titre de l’article 14 du RGPD est jointe à chaque dossier d’approche. Toute personne concernée peut exercer un opt-out définitif en écrivant à l’adresse ci-dessous ; il est honoré sans condition.`,
         },
         {
           titre: "Contact",
