@@ -348,30 +348,6 @@ section.block {
   max-width: 56ch;
 }
 
-/* ---------- grille ---------- */
-.price {
-  margin-top: 56px;
-  border-top: 1px solid var(--line);
-}
-.price-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  gap: 24px;
-  padding: 22px 0;
-  border-bottom: 1px solid var(--line-soft);
-}
-.price-row h4 {
-  font-size: 15px;
-  font-weight: 500;
-}
-.price-row .p {
-  font-size: 13px;
-  letter-spacing: 0.06em;
-  color: var(--txt);
-}
-/* .price-note retirée en v13 : plus aucune note de pied sous les prix */
-
 /* ---------- engagements ---------- */
 .nots {
   margin-top: 56px;
@@ -389,29 +365,6 @@ section.block {
   color: var(--txt);
   font-weight: 500;
 }
-.guar {
-  margin-top: 48px;
-  border: 1px solid var(--line);
-  padding: 26px 28px;
-  max-width: 560px;
-}
-.guar .k {
-  font-size: 10px;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--txt-3);
-  display: block;
-  margin-bottom: 12px;
-}
-.guar p {
-  font-size: 14.5px;
-  line-height: 1.7;
-  color: var(--txt-2);
-}
-.guar p b {
-  color: var(--txt);
-}
-
 /* ---------- fondateur ---------- */
 .founder {
   display: grid;
@@ -625,63 +578,6 @@ footer a:hover {
   background: var(--bg-2);
   border-top: 1px solid var(--line-soft);
 }
-/* 04 · offre : le titre reste, les postes défilent */
-.offer {
-  padding: 120px 0;
-  border-top: 1px solid var(--line-soft);
-}
-.offer .cols {
-  display: grid;
-  grid-template-columns: 0.9fr 1.1fr;
-  gap: 64px;
-  align-items: start;
-}
-.offer .sticky {
-  position: sticky;
-  top: 120px;
-}
-.offer .sticky .statement {
-  margin-bottom: 24px;
-}
-.offer .sticky .note {
-  font-size: 13px;
-  color: var(--txt-2);
-  line-height: 1.7;
-  max-width: 34ch;
-}
-.offer .items {
-  display: flex;
-  flex-direction: column;
-}
-.oitem {
-  padding: 34px 0;
-  border-top: 1px solid var(--line-soft);
-}
-.oitem:last-of-type {
-  border-bottom: 1px solid var(--line-soft);
-}
-.oitem .t {
-  display: flex;
-  align-items: baseline;
-  gap: 16px;
-  margin-bottom: 10px;
-}
-.oitem .t .n {
-  font-family: var(--font-instrument), serif;
-  font-size: 26px;
-  color: var(--txt-3);
-}
-.oitem .t h3 {
-  font-size: 18px;
-  font-weight: 500;
-}
-.oitem p {
-  font-size: 14px;
-  color: var(--txt-2);
-  line-height: 1.7;
-  max-width: 52ch;
-}
-
 /* 05 · engagements : bande claire, deux colonnes */
 .commit {
   background: var(--paper);
@@ -781,13 +677,9 @@ footer a:hover {
     grid-template-columns: 1fr;
     gap: 24px;
   }
-  .offer .cols,
   .founder {
     grid-template-columns: 1fr;
     gap: 40px;
-  }
-  .offer .sticky {
-    position: static;
   }
 }
 
@@ -797,7 +689,6 @@ footer a:hover {
   }
   .method,
   .mesure,
-  .offer,
   .founder-s,
   .faq-s {
     padding: 80px 0;
@@ -890,46 +781,6 @@ footer a:hover {
   clip-path: inset(0 0 -10% 0);
 }
 
-/* 04 · offre : la grille tarifaire s'aligne sur les postes */
-.offer .cols {
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  column-gap: clamp(18px, 2.2vw, 40px);
-  align-items: start;
-}
-.offer .sticky {
-  grid-column: 1 / 5;
-  position: sticky;
-  top: clamp(40px, 12vh, 120px);
-}
-.offer .items {
-  grid-column: 6 / 13;
-}
-.oitem {
-  padding: clamp(28px, 2.8vw, 40px) 0;
-  transition: border-color 0.4s var(--ease);
-}
-.oitem:hover {
-  border-top-color: var(--line);
-}
-.oitem .t .n {
-  font-size: clamp(22px, 2vw, 30px);
-  transition: color 0.4s var(--ease);
-}
-.oitem:hover .t .n {
-  color: var(--txt-2);
-}
-.oitem .t h3 {
-  font-size: clamp(17px, 1.35vw, 21px);
-}
-.oitem p {
-  font-size: 14.5px;
-  max-width: 58ch;
-}
-.price-row {
-  padding: clamp(18px, 1.8vw, 26px) 0;
-}
-
 /* 05 · engagements : deux colonnes sur la largeur pleine */
 .commit .head,
 .commit .list {
@@ -1017,22 +868,18 @@ footer a:hover {
 
 /* sous 1080px, la marge de section repasse au-dessus du contenu */
 @media (max-width: 1080px) {
-  .aside,
-  .offer .sticky {
+  .aside {
     grid-column: 1 / 13;
     position: static;
     margin-bottom: clamp(28px, 4vw, 44px);
   }
-  .aside .statement,
-  .offer .sticky .statement {
+  .aside .statement {
     max-width: 22ch;
   }
-  .aside .note,
-  .offer .sticky .note {
+  .aside .note {
     max-width: 60ch;
   }
-  .main,
-  .offer .items {
+  .main {
     grid-column: 1 / 13;
   }
   .founder .ph {
@@ -1048,66 +895,6 @@ footer a:hover {
   .founder .ph {
     grid-column: 1 / 8;
   }
-}
-
-/* marques de l'offre : même poids visuel que les numéros qu'elles
-   remplacent, et même réponse au survol */
-.oitem .t {
-  align-items: center;
-}
-.oitem .t .ico {
-  color: var(--txt-3);
-  flex-shrink: 0;
-  transition: color 0.4s var(--ease);
-}
-.oitem:hover .t .ico {
-  color: var(--txt-2);
-}
-
-/* ============================================================
-   v12 : le poste d'offre devient un palier chiffré. Aucun gabarit
-   nouveau, on réemploie le filet de .step et la mono des labels.
-   ============================================================ */
-
-.oitem .prix {
-  margin-top: 20px;
-  font-size: 13.5px;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--txt);
-  max-width: none;
-}
-.oitem .prix-2 {
-  margin-top: 8px;
-  font-size: 12px;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--txt-3);
-  line-height: 1.8;
-  max-width: 44ch;
-}
-/* la phrase d'accroche suit le titre, le prix vient après elle */
-.oitem .tier-lead {
-  margin-top: 14px;
-}
-.oitem .tier-corps {
-  margin-top: 22px;
-}
-.tier-list {
-  margin-top: 22px;
-  border-top: 1px solid var(--line-soft);
-}
-.tier-list li {
-  padding: 13px 0;
-  border-bottom: 1px solid var(--line-soft);
-  font-size: 14px;
-  color: var(--txt-2);
-  line-height: 1.65;
-  max-width: 58ch;
-}
-.offer .price .not {
-  padding-top: 22px;
-  border-bottom: none;
 }
 
 /* bloc de mesure : gabarit de section standard, liste .not sur filets */
@@ -1126,11 +913,6 @@ footer a:hover {
 .mesure .not b {
   display: inline-block;
   margin-bottom: 6px;
-}
-
-/* le palier visé par un lien ne doit pas coller au bord haut de la fenêtre */
-.oitem[id] {
-  scroll-margin-top: clamp(32px, 8vh, 90px);
 }
 
 /* deux appels dans le hero : le second est un lien interne, il pèse moins */
@@ -2047,5 +1829,194 @@ footer a:hover {
   }
   .st:first-child::before {
     height: 22px;
+  }
+}
+
+/* ============================================================
+   v15 · C2, l'offre en deux lignes pleine largeur. Portée de
+   MAQUETTE-V15-C2-OFFRE-LIGNES.html.
+   Une offre occupe toute la largeur : rien ne se retrouve jamais
+   à côté d'un vide, le déséquilibre est structurellement exclu.
+   C1, deux panneaux côte à côte, a été rejetée pour cette raison.
+   ============================================================ */
+
+.offre {
+  padding: clamp(80px, 9vw, 124px) 0;
+  border-top: 1px solid var(--line-soft);
+}
+
+/* même idiome d'en-tête que la méthode */
+.o-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 40px;
+  flex-wrap: wrap;
+  margin-bottom: clamp(40px, 5vw, 64px);
+}
+.o-kicker {
+  flex: none;
+  margin-bottom: 0;
+}
+.o-statement {
+  font-family: var(--font-instrument), serif;
+  font-weight: 400;
+  font-size: clamp(23px, 2.85vw, 36px);
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  text-align: right;
+  flex: 1 1 auto;
+}
+
+/* une offre = une ligne. Haut de ligne en deux colonnes, détails dessous. */
+.ligne {
+  padding: clamp(30px, 3.4vw, 46px) 0 clamp(34px, 4vw, 54px);
+  border-top: 1px solid var(--line);
+}
+.ligne:last-of-type {
+  border-bottom: 1px solid var(--line);
+}
+.l-haut {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 320px);
+  gap: clamp(28px, 5vw, 72px);
+  align-items: start;
+}
+.l-nom {
+  font-family: var(--font-instrument), serif;
+  font-weight: 400;
+  font-size: clamp(22px, 2.3vw, 30px);
+  line-height: 1.14;
+  margin-bottom: 12px;
+}
+.l-lead {
+  font-size: 15px;
+  line-height: 1.65;
+  color: var(--txt-2);
+  max-width: 52ch;
+}
+
+/* le prix : lisible et repérable, pas dominant. Serif 31px, pas 52. */
+.l-prix {
+  padding-left: clamp(20px, 2.2vw, 32px);
+  border-left: 1px solid var(--line-soft);
+}
+.l-lbl {
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--txt-3);
+  margin-bottom: 6px;
+}
+.l-chiffre {
+  font-family: var(--font-instrument), serif;
+  font-weight: 400;
+  font-size: clamp(26px, 2.4vw, 31px);
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+}
+.l-suffixe {
+  font-size: 13.5px;
+  line-height: 1.55;
+  color: var(--txt-2);
+  margin-top: 8px;
+}
+.l-cond {
+  font-size: 10px;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+  color: var(--txt-3);
+  line-height: 1.9;
+  margin-top: 14px;
+}
+
+/* les détails de l'origination courent sous sa ligne, pleine largeur */
+.l-corps {
+  font-size: 14.5px;
+  line-height: 1.7;
+  color: var(--txt-2);
+  margin-top: clamp(26px, 3vw, 36px);
+  max-width: 78ch;
+}
+/* remplissage en colonnes et non en lignes : l'ordre du DOM reste l'ordre
+   logique, et l'œil descend une colonne avant de passer à la suivante */
+.l-liste {
+  display: grid;
+  grid-template-rows: repeat(3, auto);
+  grid-auto-flow: column;
+  grid-auto-columns: 1fr;
+  column-gap: clamp(32px, 5vw, 72px);
+  margin-top: clamp(24px, 2.6vw, 32px);
+  border-top: 1px solid var(--line-soft);
+}
+.l-liste li {
+  padding: 12px 0;
+  border-bottom: 1px solid var(--line-soft);
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--txt-2);
+}
+
+/* la définition et l'engagement portent sur les deux offres */
+.o-def {
+  display: grid;
+  grid-template-columns: minmax(0, 0.28fr) minmax(0, 0.72fr);
+  gap: clamp(24px, 4vw, 56px);
+  align-items: baseline;
+  padding: clamp(28px, 3vw, 40px) 0;
+  border-bottom: 1px solid var(--line-soft);
+}
+.o-def-k {
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--txt-3);
+}
+.o-def-t {
+  font-size: 14.5px;
+  line-height: 1.7;
+  color: var(--txt-2);
+  max-width: 72ch;
+}
+.o-pied {
+  padding-top: clamp(24px, 2.6vw, 32px);
+  font-size: 14.5px;
+  line-height: 1.7;
+  color: var(--txt-2);
+  max-width: 80ch;
+}
+.o-pied b {
+  color: var(--txt);
+  font-weight: 500;
+}
+
+/* la ligne visée par l'appel secondaire du hero */
+.ligne[id] {
+  scroll-margin-top: clamp(32px, 8vh, 90px);
+}
+
+@media (max-width: 900px) {
+  .o-statement {
+    text-align: left;
+  }
+  .l-haut {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 26px;
+  }
+  .l-prix {
+    padding-left: 0;
+    border-left: none;
+    padding-top: 22px;
+    border-top: 1px solid var(--line-soft);
+  }
+  .l-liste {
+    grid-template-rows: none;
+    grid-auto-flow: row;
+    grid-auto-columns: auto;
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .o-def {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 12px;
   }
 }
