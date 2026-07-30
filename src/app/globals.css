@@ -1776,8 +1776,12 @@ footer a:hover {
 .step.catch .step-n {
   color: var(--wine-lift);
 }
+/* la chute passe sous l'énoncé au lieu de le suivre en ligne : le blanc de
+   début de ligne est supprimé par le navigateur, la copy ne bouge pas */
 .step.catch .step-l b {
+  display: block;
   color: var(--txt);
+  margin-bottom: 3px;
 }
 .step.catch::before {
   content: "";
