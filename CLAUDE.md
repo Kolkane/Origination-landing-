@@ -56,6 +56,13 @@ trouvé sur vous". Codes attendus : document financier imprimé, pas SaaS IA.
   que les deux paliers remplacent ; deux marques pour deux paliers serait un
   placage. IconesOffre.tsx reste dans le repo, non monté, comme CarteFrance.tsx.
   Aucune icône nulle part sur la page.)
+  (amendement v14, arbitrage Vincent : les TAMPONS DE DOCUMENT sont autorisés,
+  et seulement à l'intérieur du spécimen de dossier. VÉRIFIÉ, CONFIDENTIEL et
+  équivalents : rectangulaires, filet fin, jamais arrondis. Ce sont des marques
+  de pièce administrative, pas des badges. Hors du spécimen, l'interdiction des
+  badges et des chips marketing reste entière. Les chips « Solo 60+ · sans
+  relais », « SCI · 2023 », « Sans dette » de la maquette v14 ont été retirées :
+  une chip qui résume un critère de détection le publie.)
   illustrations d'oiseau en SVG. Si un de ces éléments existe encore dans le code : supprimer.
 - Règle de process : le design se valide sur maquette HTML avec Vincent AVANT le code.
   Aucune nouvelle section, aucun composant visuel nouveau sans maquette validée.

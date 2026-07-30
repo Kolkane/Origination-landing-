@@ -175,13 +175,6 @@ export default function Dossier() {
                         {doc.angleP2Avant}
                         <b>{doc.angleP2Fort}</b>
                       </p>
-                      <div className="chips">
-                        {doc.chips.map((c) => (
-                          <span className="chip mono" key={c}>
-                            {c}
-                          </span>
-                        ))}
-                      </div>
                     </div>
 
                     <div

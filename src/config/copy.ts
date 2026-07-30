@@ -52,7 +52,7 @@ export const copy = {
     chapo:
       "Un dossier d’approche, pas une ligne dans un fichier. Chaque élément ci-dessous est surligné sur un exemple de dossier, à droite. Cliquez pour le parcourir.",
     /* l'élément actif au chargement : l'acte préparatoire */
-    defaut: "z-parcours",
+    defaut: "z-fin",
     elements: [
       {
         idx: "01",
@@ -150,12 +150,11 @@ export const copy = {
       angleLbl: "Angle d’approche",
       angleTitre: "Entrer par l’homme-clé, pas par la vente.",
       angleP1:
-        "Toute la valeur tient sur une personne qui a 63 ans. Pour un futur repreneur c’est une fragilité, donc un sujet qu’on ouvre sans prononcer le mot cession : que devient l’atelier le jour où le dirigeant n’est plus là tous les matins.",
+        "Toute la valeur tient sur une personne qui a 63 ans. C’est une fragilité, et le dirigeant le sait. Un sujet qu’on ouvre sans prononcer le mot cession : que devient l’atelier le jour où il n’est plus là tous les matins.",
       angleP2Avant:
         "La SCI de 2023 dit que la réflexion a déjà commencé quelque part. Le cabinet qui entre maintenant accompagne la préparation. ",
       angleP2Fort:
         "Celui qui appelle dans dix-huit mois tombe sur une opération déjà cadrée par un confrère.",
-      chips: ["Solo 60+ · sans relais", "SCI · 2023", "Sans dette"],
 
       inconnuLbl: "Ce que nous ne savons pas",
       inconnuAvant:
@@ -349,9 +348,9 @@ export const copy = {
           "Oui. Vos critères, une shortlist de cibles vérifiées sous 7 jours, au tarif de 3 500 € HT par mission, hors périmètres déjà sous exclusivité. C’est l’usage acheté qui est nommé au contrat, et deux clients ne sont jamais servis sur le même périmètre.",
       },
       {
-        question: "Pourquoi être rémunérés au mandat signé et non au closing ?",
+        question: "Prenez-vous une commission sur les opérations ?",
         reponse:
-          "Parce qu’un mandat ne porte pas de prix. Notre rémunération ne dépend donc ni de la réalisation de l’opération, ni de sa valorisation. Notre lecture d’un dossier n’a aucun intérêt au deal.",
+          "Non. Jamais de commission sur la transaction, ni sur le prix de cession. Vous payez l’abonnement, et une mission de recherche quand vous en confiez une. Rien d’autre.",
       },
       {
         question:

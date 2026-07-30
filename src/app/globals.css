@@ -1759,18 +1759,8 @@ footer a:hover {
   color: var(--ink);
   font-weight: 500;
 }
-.chips {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 7px;
-  margin-top: 22px;
-}
-.chip {
-  font-size: 10px;
-  color: var(--ink-2);
-  border: 1px solid var(--ink-line-2);
-  padding: 6px 12px;
-}
+/* pas de chips : elles énonçaient des critères de détection. Le cartouche
+   VÉRIFIÉ reste, c'est un tampon de document, pas un badge marketing. */
 
 .d-foot {
   margin-top: 30px;
