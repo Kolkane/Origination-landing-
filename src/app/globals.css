@@ -1938,15 +1938,16 @@ footer a:hover {
   flex: none;
   margin-bottom: 0;
 }
+/* le statement tient sur UNE ligne tant que la largeur le permet : pas de
+   max-width qui le casse en deux alors qu'il y a la place */
 .m-statement {
   font-family: var(--font-instrument), serif;
   font-weight: 400;
-  font-size: clamp(24px, 3.1vw, 38px);
+  font-size: clamp(23px, 2.85vw, 36px);
   line-height: 1.15;
   letter-spacing: -0.01em;
-  max-width: 26ch;
   text-align: right;
-  flex: 1 1 340px;
+  flex: 1 1 auto;
 }
 
 /* le filet continu porte la section, les étapes y sont accrochées */
