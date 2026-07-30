@@ -167,16 +167,48 @@ export const copy = {
         " Société et chiffres inventés pour la démonstration. Le format et la méthode sont ceux de nos dossiers réels. Sources publiques (RNE, SIRENE, BODACC) · art. 14 RGPD : information délivrée au premier contact.",
     },
   },
-  constat: {
-    kicker: "Le constat",
-    titreAvant: "La plus grande vague de transmissions arrive ",
-    titreItalique: "sans carte",
-    lead: "Environ 700 000 dirigeants de PME partiront à la retraite d’ici dix ans ; près de la moitié n’ont pas de successeur identifié. Quand un dossier devient visible, la concurrence l’est aussi. Les mandats se gagnent avant, auprès du dirigeant qui n’a encore rien annoncé.",
-    sourcesLigne1: "Ordres de grandeur publics",
-    sourcesLigne2: "CRA · Bpifrance",
-    citation1: "« Le marché visible",
-    citation2: "est un marché en retard. »",
-
+  /* v15 : « Le constat » et la bande de chiffres fusionnés en un seul geste.
+     L'ancrage national est la seule preuve de marché sourcée à un tiers, il
+     précède l'entonnoir régional qui, lui, est un ordre de grandeur à nous. */
+  entonnoir: {
+    kicker: "Le filtre",
+    titreAvant: "Tout un marché, réduit à ceux qui ",
+    titreItalique: "préparent",
+    intro:
+      "Le marché visible est un marché en retard. La valeur est en amont, 12 à 18 mois avant le marché, chez le dirigeant qui n’a encore rien annoncé. Voici comment se resserre une région.",
+    ancrage:
+      "Environ 700 000 dirigeants de PME partent à la retraite d’ici dix ans, près de la moitié sans successeur identifié.",
+    ancrageSource: "Ordres de grandeur publics · CRA · Bpifrance",
+    ariaPaliers: "Resserrement d’une région, ordre de grandeur",
+    paliers: [
+      {
+        n: nb("8 000"),
+        fort: "PME actives",
+        suite: " sur la région, 10 à 99 salariés, plus de trois ans d’existence",
+      },
+      {
+        n: "740",
+        fort: "dirigeants en âge de transmission",
+        suite: ", d’après le registre",
+      },
+      {
+        n: "310",
+        fort: "sans relais de succession",
+        suite: " identifiable dans la structure",
+      },
+      {
+        n: "45",
+        fort: "avec un acte de préparation daté.",
+        suite: " Ceux-là, personne ne les voit encore.",
+        prise: true,
+      },
+    ] as { n: string; fort: string; suite: string; prise?: boolean }[],
+    piedAvant: "Une quarantaine de dossiers là où vos confrères ne voient qu’un annuaire. ",
+    piedItalique: "Ce sont eux que nous livrons.",
+    noteAvant: "Puis environ ",
+    noteFort: "un tiers écarté",
+    noteApres: " à la vérification humaine.",
+    noteLigne2: "Ce qui reste est livré. Rien d’autre.",
   },
   methode: {
     kicker: "La méthode",
@@ -205,15 +237,6 @@ export const copy = {
         titre: "La veille",
         texte: `Votre périmètre entier sous surveillance continue. Chaque bascule détectée est vérifiée, puis livrée sous ${nb(brand.PROOF.delaiLivraisonBascule)}.`,
       },
-    ],
-  },
-  bande: {
-    aria: "Chiffres clés",
-    cellules: [
-      { n: "700 000", l: "dirigeants partants sous 10 ans" },
-      { n: "12-18", l: "mois d’avance sur le marché" },
-      { n: nb(brand.PROOF.tauxEcartVerification), l: "de détections écartées, chiffre publié" },
-      { n: "1", l: "un seul cabinet servi sur votre périmètre" },
     ],
   },
   offre: {

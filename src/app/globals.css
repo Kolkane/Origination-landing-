@@ -619,77 +619,6 @@ footer a:hover {
    Portées de MAQUETTE-V9.html.
    ============================================================ */
 
-/* 01 · constat : mur typographique pleine largeur */
-.constat {
-  padding: 120px 0;
-  border-top: 1px solid var(--line-soft);
-}
-.constat .big {
-  font-family: var(--font-instrument), serif;
-  font-weight: 400;
-  font-size: clamp(34px, 6.5vw, 86px);
-  line-height: 1.04;
-  letter-spacing: -0.01em;
-  max-width: 16ch;
-}
-.constat .big em {
-  font-style: italic;
-  color: var(--txt-2);
-}
-.constat .sub {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 48px;
-  margin-top: 64px;
-  max-width: 900px;
-}
-.constat .sub p {
-  font-size: 15px;
-  line-height: 1.75;
-  color: var(--txt-2);
-}
-.constat .sub .mono {
-  font-size: 11px;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--txt-3);
-  line-height: 1.9;
-}
-
-/* bande de chiffres, claire, pleine largeur */
-.band {
-  background: var(--paper);
-  color: #171310;
-}
-.band .row-band {
-  max-width: 1080px;
-  margin: 0 auto;
-  padding: 0 40px;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-}
-.band .cell {
-  padding: 52px 26px 52px 0;
-  border-right: 1px solid var(--line-dark);
-}
-.band .cell:last-child {
-  border-right: none;
-}
-.band .n {
-  font-family: var(--font-instrument), serif;
-  font-size: clamp(34px, 4.4vw, 52px);
-  line-height: 1;
-  letter-spacing: -0.01em;
-}
-.band .l {
-  margin-top: 14px;
-  font-size: 11px;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: #5a544e;
-  line-height: 1.7;
-}
-
 /* 02 · méthode : colonne étroite, légère élévation */
 .method {
   padding: 120px 0;
@@ -879,19 +808,9 @@ footer a:hover {
 }
 
 @media (max-width: 880px) {
-  .constat .sub,
   .commit .list {
     grid-template-columns: 1fr;
     gap: 24px;
-  }
-  .band .row-band {
-    grid-template-columns: 1fr 1fr;
-  }
-  .band .cell:nth-child(2) {
-    border-right: none;
-  }
-  .band .cell {
-    border-bottom: 1px solid var(--line-dark);
   }
   .offer .cols,
   .founder {
@@ -907,7 +826,6 @@ footer a:hover {
   .narrow {
     padding: 0 22px;
   }
-  .constat,
   .method,
   .mesure,
   .offer,
@@ -919,8 +837,7 @@ footer a:hover {
     padding: 88px 0;
   }
   .commit .head,
-  .commit .list,
-  .band .row-band {
+  .commit .list {
     padding-left: 22px;
     padding-right: 22px;
   }
@@ -1002,44 +919,6 @@ footer a:hover {
 }
 .mask.in {
   clip-path: inset(0 0 -10% 0);
-}
-
-/* 01 · constat : le mur occupe la largeur, les appuis se rangent
-   sous lui en deux colonnes décalées */
-.constat .big {
-  max-width: 20ch;
-  font-size: clamp(38px, 7.6vw, 104px);
-}
-.constat .sub {
-  max-width: none;
-  margin-top: clamp(48px, 6vw, 88px);
-  grid-column: 1 / 13;
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  column-gap: clamp(18px, 2.2vw, 40px);
-  gap: 0;
-}
-.constat .sub p:first-child {
-  grid-column: 1 / 7;
-  font-size: clamp(15px, 1.15vw, 17px);
-}
-.constat .sub p.mono {
-  grid-column: 8 / 12;
-  border-top: 1px solid var(--line-soft);
-  padding-top: 18px;
-}
-
-/* bande de chiffres : elle respire sur toute la largeur */
-.band .row-band {
-  max-width: 1440px;
-  padding: 0 clamp(22px, 4.4vw, 76px);
-  column-gap: clamp(18px, 2.2vw, 40px);
-}
-.band .cell {
-  padding: clamp(44px, 4.4vw, 68px) clamp(18px, 2vw, 34px) clamp(44px, 4.4vw, 68px) 0;
-}
-.band .n {
-  font-size: clamp(34px, 3.6vw, 60px);
 }
 
 /* 02 · méthode : titre en marge, étapes à droite */
@@ -1214,13 +1093,6 @@ footer a:hover {
   .main,
   .offer .items {
     grid-column: 1 / 13;
-  }
-  .constat .sub p:first-child,
-  .constat .sub p.mono {
-    grid-column: 1 / 13;
-  }
-  .constat .sub p.mono {
-    margin-top: 28px;
   }
   .founder .ph {
     grid-column: 1 / 6;
@@ -1823,5 +1695,276 @@ footer a:hover {
   .recu-idx,
   .recu-d {
     transition: none !important;
+  }
+}
+
+/* ============================================================
+   v15 · l'entonnoir. Portée de imbrin-entonnoir.html, tokens du repo.
+   Deux écarts assumés à la maquette, signalés à Vincent :
+   le fond de la barre de prise est un aplat et non un dégradé
+   (interdit absolu du CLAUDE.md), et #B32E46 est déclaré comme la
+   variante AA du vin pour le grand texte, pas comme une couleur de
+   plus (même précédent que le tertiaire éclairci en v7-2 : le vin
+   plein ne donne que 2,3:1 sur l'encre, il n'est pas lisible).
+   ============================================================ */
+
+:root {
+  --wine-lift: #b32e46;              /* vin éclairci, 3,2:1 sur l'encre, grand texte seulement */
+  --fill-bar: rgba(244, 242, 239, 0.07);
+  --fill-bar-edge: rgba(244, 242, 239, 0.18);
+}
+
+.entonnoir {
+  padding: clamp(60px, 9vw, 128px) 0;
+  border-top: 1px solid var(--line-soft);
+}
+/* la maquette pose une mesure plus courte que le reste du site : c'est
+   elle qui donne à la section son air de planche, on la garde */
+.entonnoir .wrap {
+  max-width: 1100px;
+}
+.ent-h2 {
+  font-family: var(--font-instrument), serif;
+  font-weight: 400;
+  font-size: clamp(32px, 5vw, 58px);
+  line-height: 1.03;
+  letter-spacing: -0.015em;
+  max-width: 16ch;
+  margin-bottom: 14px;
+}
+.ent-h2 em {
+  font-style: italic;
+  color: var(--wine-lift);
+}
+.ent-intro {
+  max-width: 48ch;
+  color: var(--txt-2);
+  font-size: 16.5px;
+  line-height: 1.55;
+}
+
+/* ancrage national : la preuve externe, avant l'ordre de grandeur interne */
+.ancrage {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 28px;
+  flex-wrap: wrap;
+  margin-top: clamp(30px, 4vw, 44px);
+  padding-top: 22px;
+  border-top: 1px solid var(--line-soft);
+}
+.ancrage-t {
+  max-width: 46ch;
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--txt-2);
+}
+.ancrage-s {
+  font-size: 11px;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: var(--txt-3);
+  white-space: nowrap;
+}
+
+/* l'entonnoir : des barres qui se resserrent, pas des cartes */
+.funnel {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin: clamp(40px, 6vw, 68px) 0 34px;
+}
+.step {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: clamp(16px, 3vw, 34px);
+  padding: 20px 26px;
+  min-height: 84px;
+  border: 1px solid var(--fill-bar-edge);
+  background: var(--fill-bar);
+  transform-origin: left center;
+  overflow: hidden;
+}
+.step-n {
+  font-size: clamp(34px, 5vw, 58px);
+  line-height: 0.9;
+  letter-spacing: -0.02em;
+  white-space: nowrap;
+  flex: none;
+  min-width: 4.5ch;
+}
+.step-l {
+  font-size: 14.5px;
+  line-height: 1.4;
+  color: var(--txt-2);
+}
+.step-l b {
+  color: var(--txt);
+  font-weight: 400;
+}
+.s1 {
+  width: 100%;
+}
+.s2 {
+  width: 78%;
+}
+.s3 {
+  width: 55%;
+}
+.s4 {
+  width: 34%;
+}
+
+/* la prise. Aplat, pas dégradé : le vin est un signal, pas un remplissage */
+.step.catch {
+  background: rgba(142, 36, 56, 0.14);
+  border-color: var(--wine);
+}
+.step.catch .step-n {
+  color: var(--wine-lift);
+}
+.step.catch .step-l b {
+  color: var(--txt);
+}
+.step.catch::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: var(--wine);
+}
+
+/* déploiement : déclenché à l'entrée de la section, pas au chargement
+   de la page. Voir Entonnoir.tsx, la section est sous la flottaison. */
+.funnel .step {
+  opacity: 0;
+  transform: scaleX(0.4);
+}
+.funnel .step-n,
+.funnel .step-l {
+  opacity: 0;
+}
+.funnel.deploye .step {
+  animation: grow 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+.funnel.deploye .step-n,
+.funnel.deploye .step-l {
+  animation: rise 0.6s ease forwards;
+}
+.funnel.deploye .s1 {
+  animation-delay: 0.05s;
+}
+.funnel.deploye .s1 .step-n,
+.funnel.deploye .s1 .step-l {
+  animation-delay: 0.3s;
+}
+.funnel.deploye .s2 {
+  animation-delay: 0.17s;
+}
+.funnel.deploye .s2 .step-n,
+.funnel.deploye .s2 .step-l {
+  animation-delay: 0.42s;
+}
+.funnel.deploye .s3 {
+  animation-delay: 0.29s;
+}
+.funnel.deploye .s3 .step-n,
+.funnel.deploye .s3 .step-l {
+  animation-delay: 0.54s;
+}
+.funnel.deploye .s4 {
+  animation-delay: 0.41s;
+}
+.funnel.deploye .s4 .step-n,
+.funnel.deploye .s4 .step-l {
+  animation-delay: 0.66s;
+}
+@keyframes grow {
+  to {
+    opacity: 1;
+    transform: scaleX(1);
+  }
+}
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* pied de section */
+.ent-foot {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 28px;
+  flex-wrap: wrap;
+  padding-top: 26px;
+  border-top: 1px solid var(--line);
+}
+.ent-kicker {
+  font-family: var(--font-instrument), serif;
+  font-weight: 400;
+  font-size: clamp(19px, 2.4vw, 26px);
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  max-width: 34ch;
+}
+.ent-kicker em {
+  font-style: italic;
+  color: var(--wine-lift);
+}
+.ent-note {
+  font-size: 11px;
+  letter-spacing: 0.05em;
+  line-height: 1.7;
+  color: var(--txt-3);
+  max-width: 30ch;
+  text-align: right;
+}
+.ent-note b {
+  color: var(--txt-2);
+  font-weight: 400;
+}
+
+@media (max-width: 720px) {
+  .s1,
+  .s2,
+  .s3,
+  .s4 {
+    width: 100%;
+  }
+  .step {
+    min-height: 0;
+    padding: 16px 18px;
+    gap: 16px;
+  }
+  .ent-foot,
+  .ancrage {
+    flex-direction: column;
+    gap: 16px;
+  }
+  .ent-note,
+  .ancrage-s {
+    text-align: left;
+    white-space: normal;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .funnel .step,
+  .funnel .step-n,
+  .funnel .step-l {
+    opacity: 1;
+    transform: none;
+    animation: none !important;
   }
 }

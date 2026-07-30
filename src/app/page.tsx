@@ -1,8 +1,7 @@
-import BandeChiffres from "@/components/BandeChiffres";
-import Constat from "@/components/Constat";
 import CtaFinal from "@/components/CtaFinal";
 import Dossier from "@/components/Dossier";
 import Engagements from "@/components/Engagements";
+import Entonnoir from "@/components/Entonnoir";
 import Faq from "@/components/Faq";
 import Fondateur from "@/components/Fondateur";
 import Hero from "@/components/Hero";
@@ -16,8 +15,7 @@ export default function Home() {
     <main>
       <Hero />
       <Dossier />
-      <Constat />
-      <BandeChiffres />
+      <Entonnoir />
       <Methode />
       <Offre />
       <Engagements />

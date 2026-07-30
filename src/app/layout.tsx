@@ -68,7 +68,7 @@ export default function RootLayout({
           <style
             dangerouslySetInnerHTML={{
               __html:
-                ".rev,.mask,.rule{opacity:1!important;transform:none!important;clip-path:none!important}",
+                ".rev,.mask,.rule,.funnel .step,.funnel .step-n,.funnel .step-l{opacity:1!important;transform:none!important;clip-path:none!important}",
             }}
           />
         </noscript>
