@@ -1832,115 +1832,131 @@ footer a:hover {
   }
 }
 
+
 /* ============================================================
-   v15 · C2, l'offre en deux lignes pleine largeur. Portée de
-   MAQUETTE-V15-C2-OFFRE-LIGNES.html.
-   Une offre occupe toute la largeur : rien ne se retrouve jamais
-   à côté d'un vide, le déséquilibre est structurellement exclu.
-   C1, deux panneaux côte à côte, a été rejetée pour cette raison.
+   v15 · B5, l'offre : un plat principal et un complément.
+   Portée de MAQUETTE-V15-B5-OFFRE.html.
+   La hiérarchie n'est pas dite, elle est construite. L'Origination
+   est un bloc massif, le mandat une bande fine : rapport de surface
+   d'environ 5:1, prix de 92px contre 30px, et le complément descend
+   d'un cran en couleur sur chaque élément.
+   Gabarit distinct de ses deux voisines : la méthode au-dessus est
+   faite de colonnes égales, les engagements en dessous d'une liste
+   sur bande claire. Un bloc puis une bande, nulle part ailleurs.
    ============================================================ */
 
 .offre {
-  padding: clamp(80px, 9vw, 124px) 0;
+  padding: clamp(84px, 9vw, 130px) 0;
   border-top: 1px solid var(--line-soft);
 }
 
-/* même idiome d'en-tête que la méthode */
-.o-head {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  gap: 40px;
-  flex-wrap: wrap;
-  margin-bottom: clamp(40px, 5vw, 64px);
+/* en-tête à GAUCHE : la méthode juste au-dessus a le sien à droite,
+   deux en-têtes identiques à la suite faisaient redite */
+.b-kicker {
+  margin-bottom: 20px;
 }
-.o-kicker {
-  flex: none;
-  margin-bottom: 0;
-}
-.o-statement {
+.b-titre {
   font-family: var(--font-instrument), serif;
   font-weight: 400;
-  font-size: clamp(23px, 2.85vw, 36px);
-  line-height: 1.15;
-  letter-spacing: -0.01em;
-  text-align: right;
-  flex: 1 1 auto;
+  font-size: clamp(38px, 5.2vw, 64px);
+  line-height: 1.03;
+  letter-spacing: -0.02em;
+  max-width: 14ch;
 }
 
-/* une offre = une ligne. Haut de ligne en deux colonnes, détails dessous. */
-.ligne {
-  padding: clamp(30px, 3.4vw, 46px) 0 clamp(34px, 4vw, 54px);
-  border-top: 1px solid var(--line);
-}
-.ligne:last-of-type {
-  border-bottom: 1px solid var(--line);
-}
-.l-haut {
+/* la définition remonte en tête : elle gouverne les deux offres, elle ne
+   peut pas flotter derrière la seconde comme si elle n'était qu'à elle */
+.b-def {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 320px);
-  gap: clamp(28px, 5vw, 72px);
-  align-items: start;
+  grid-template-columns: minmax(0, 0.24fr) minmax(0, 0.76fr);
+  gap: clamp(20px, 3vw, 44px);
+  align-items: baseline;
+  margin-top: clamp(38px, 4.5vw, 60px);
+  padding-top: 22px;
+  border-top: 1px solid var(--line-soft);
 }
-.l-nom {
-  font-family: var(--font-instrument), serif;
-  font-weight: 400;
-  font-size: clamp(22px, 2.3vw, 30px);
-  line-height: 1.14;
-  margin-bottom: 12px;
-}
-.l-lead {
-  font-size: 15px;
-  line-height: 1.65;
-  color: var(--txt-2);
-  max-width: 52ch;
-}
-
-/* le prix : lisible et repérable, pas dominant. Serif 31px, pas 52. */
-.l-prix {
-  padding-left: clamp(20px, 2.2vw, 32px);
-  border-left: 1px solid var(--line-soft);
-}
-.l-lbl {
+.b-def-k {
   font-size: 10px;
   letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--txt-3);
-  margin-bottom: 6px;
 }
-.l-chiffre {
-  font-family: var(--font-instrument), serif;
-  font-weight: 400;
-  font-size: clamp(26px, 2.4vw, 31px);
-  line-height: 1.1;
-  letter-spacing: -0.01em;
-}
-.l-suffixe {
-  font-size: 13.5px;
-  line-height: 1.55;
-  color: var(--txt-2);
-  margin-top: 8px;
-}
-.l-cond {
-  font-size: 10px;
-  letter-spacing: 0.11em;
-  text-transform: uppercase;
+.b-def-t {
+  font-size: 14px;
+  line-height: 1.7;
   color: var(--txt-3);
-  line-height: 1.9;
-  margin-top: 14px;
+  max-width: 82ch;
 }
 
-/* les détails de l'origination courent sous sa ligne, pleine largeur */
-.l-corps {
+/* ---------- le plat principal ---------- */
+.primaire {
+  position: relative;
+  margin-top: clamp(56px, 7vw, 92px);
+  padding-top: clamp(34px, 3.6vw, 48px);
+  border-top: 1px solid var(--line);
+}
+/* la seule touche de vin de la section, sur le bloc qui compte */
+.primaire::before {
+  content: "";
+  position: absolute;
+  top: -1px;
+  left: 0;
+  width: 56px;
+  height: 1px;
+  background: var(--wine);
+}
+.p-nom {
+  font-weight: 500;
+  font-size: 15px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--txt);
+  margin-bottom: 18px;
+}
+.p-lead {
+  font-size: clamp(16px, 1.35vw, 18.5px);
+  line-height: 1.55;
+  color: var(--txt);
+  max-width: 46ch;
+}
+
+/* le prix domine son espace. La métadonnée passe à droite du nombre, en
+   mono tertiaire : elle informe, elle ne le concurrence plus. */
+.p-tarif {
+  display: flex;
+  align-items: baseline;
+  gap: clamp(24px, 3.4vw, 52px);
+  flex-wrap: wrap;
+  margin-top: clamp(38px, 4.4vw, 58px);
+}
+.p-chiffre {
+  font-family: var(--font-instrument), serif;
+  font-weight: 400;
+  font-size: clamp(48px, 7vw, 92px);
+  line-height: 0.92;
+  letter-spacing: -0.03em;
+}
+.p-meta {
+  font-size: 10.5px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--txt-3);
+  line-height: 2;
+  max-width: 34ch;
+}
+.p-meta b {
+  color: var(--txt-2);
+  font-weight: 400;
+}
+.p-corps {
   font-size: 14.5px;
   line-height: 1.7;
   color: var(--txt-2);
-  margin-top: clamp(26px, 3vw, 36px);
-  max-width: 78ch;
+  margin-top: clamp(38px, 4.4vw, 56px);
+  max-width: 80ch;
 }
-/* remplissage en colonnes et non en lignes : l'ordre du DOM reste l'ordre
-   logique, et l'œil descend une colonne avant de passer à la suivante */
-.l-liste {
+/* remplissage en colonnes : l'ordre du DOM reste l'ordre logique */
+.p-liste {
   display: grid;
   grid-template-rows: repeat(3, auto);
   grid-auto-flow: column;
@@ -1949,7 +1965,7 @@ footer a:hover {
   margin-top: clamp(24px, 2.6vw, 32px);
   border-top: 1px solid var(--line-soft);
 }
-.l-liste li {
+.p-liste li {
   padding: 12px 0;
   border-bottom: 1px solid var(--line-soft);
   font-size: 14px;
@@ -1957,66 +1973,108 @@ footer a:hover {
   color: var(--txt-2);
 }
 
-/* la définition et l'engagement portent sur les deux offres */
-.o-def {
+/* ---------- le complément ---------- */
+/* une bande, pas un bloc : filet plus fin, corps plus petits, couleurs
+   d'un cran en dessous, tout tient sur une seule rangée */
+.secondaire {
   display: grid;
-  grid-template-columns: minmax(0, 0.28fr) minmax(0, 0.72fr);
-  gap: clamp(24px, 4vw, 56px);
+  grid-template-columns: minmax(0, 260px) minmax(0, 1fr) minmax(0, 230px);
+  gap: clamp(22px, 3.4vw, 50px);
   align-items: baseline;
-  padding: clamp(28px, 3vw, 40px) 0;
+  margin-top: clamp(44px, 5vw, 66px);
+  padding: clamp(24px, 2.6vw, 32px) 0;
+  border-top: 1px solid var(--line-soft);
   border-bottom: 1px solid var(--line-soft);
 }
-.o-def-k {
-  font-size: 10px;
+.s-nom {
+  font-weight: 400;
+  font-size: 12.5px;
   letter-spacing: 0.2em;
   text-transform: uppercase;
+  color: var(--txt-2);
+}
+.s-lead {
+  font-size: 14px;
+  line-height: 1.6;
   color: var(--txt-3);
+  max-width: 58ch;
 }
-.o-def-t {
+.s-tarif {
+  text-align: right;
+}
+.s-chiffre {
+  font-family: var(--font-instrument), serif;
+  font-weight: 400;
+  font-size: clamp(24px, 2.3vw, 30px);
+  line-height: 1;
+  letter-spacing: -0.01em;
+  color: var(--txt-2);
+}
+.s-meta {
+  font-size: 9.5px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--txt-3);
+  line-height: 1.9;
+  margin-top: 8px;
+}
+
+/* ---------- sortie de section ---------- */
+.b-fin {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: 44px;
+  flex-wrap: wrap;
+  margin-top: clamp(34px, 3.6vw, 46px);
+}
+.b-pied {
   font-size: 14.5px;
   line-height: 1.7;
   color: var(--txt-2);
-  max-width: 72ch;
+  max-width: 58ch;
 }
-.o-pied {
-  padding-top: clamp(24px, 2.6vw, 32px);
-  font-size: 14.5px;
-  line-height: 1.7;
-  color: var(--txt-2);
-  max-width: 80ch;
-}
-.o-pied b {
+.b-pied b {
   color: var(--txt);
   font-weight: 500;
 }
+/* .cta porte un margin-top de 30px hérité du hero, sans objet ici */
+.b-fin .cta {
+  margin-top: 0;
+  white-space: nowrap;
+}
 
 /* la ligne visée par l'appel secondaire du hero */
-.ligne[id] {
+.primaire[id] {
   scroll-margin-top: clamp(32px, 8vh, 90px);
 }
 
 @media (max-width: 900px) {
-  .o-statement {
-    text-align: left;
-  }
-  .l-haut {
+  .b-def {
     grid-template-columns: minmax(0, 1fr);
-    gap: 26px;
+    gap: 10px;
   }
-  .l-prix {
-    padding-left: 0;
-    border-left: none;
-    padding-top: 22px;
+  .p-tarif {
+    gap: 18px;
+  }
+  .secondaire {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 14px;
+  }
+  .s-tarif {
+    text-align: left;
+    padding-top: 14px;
     border-top: 1px solid var(--line-soft);
   }
-  .l-liste {
+  .p-liste {
     grid-template-rows: none;
     grid-auto-flow: row;
     grid-auto-columns: auto;
     grid-template-columns: minmax(0, 1fr);
   }
-  .o-def {
-    grid-template-columns: minmax(0, 1fr);
-    gap: 12px;
+  .b-fin {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 26px;
   }
 }

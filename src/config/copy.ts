@@ -3,6 +3,10 @@ import { brand } from "./brand";
 /** rend une valeur de brand insécable (les chiffres ne se coupent pas en fin de ligne) */
 const nb = (s: string) => s.replace(/ /g, " ");
 
+/* un seul libellé d’appel sur tout le site : trois copies indépendantes avaient
+   déjà produit une divergence en v13 */
+const CTA = "Réserver un échange";
+
 export type NomIcone = "couverture" | "veille" | "exclusivite";
 
 export type SectionLegale = {
@@ -34,7 +38,7 @@ export const copy = {
     titreLigne2Apres: " leur sortie.",
     sousTitre:
       "Et nous livrons le dossier d’approche qui va avec. Un cabinet par périmètre.",
-    cta: "Réserver un échange",
+    cta: CTA,
     ctaSecondaire: { label: "L’origination", ancre: "#origination" },
     /* la légende ne décrit que le sujet : ni l'origine ni la durée du média
        ne sont revendiquées (arbitrage Vincent, v8-4) */
@@ -236,59 +240,48 @@ export const copy = {
       },
     ],
   },
+  /* v15 · B5 : ce ne sont pas deux offres égales, la structure le dit.
+     L'origination est le produit, le mandat un complément ponctuel. */
   offre: {
     kicker: "L’offre",
     statement: "Deux façons de travailler ensemble",
-    paliers: [
-      {
-        nom: "L’Origination",
-        ancre: "origination",
-        lead: "Nous détectons en continu les dirigeants de votre périmètre qui préparent leur sortie, et nous vous livrons les dossiers d’approche au fil de l’eau.",
-        prixLbl: "À partir de",
-        prix: nb(brand.PRICING.origination.prixPlancher),
-        prixSuffixe: `${brand.PRICING.origination.periode}, selon le périmètre convenu.`,
-        prixCond: `Engagement ${nb(brand.PRICING.origination.engagement)}, puis reconduction mensuelle`,
-        corps:
-          "Le périmètre est arrêté avec vous à l’appel : région, typologie d’entreprises, ce que vous voulez voir détecté. Nous mesurons ce qu’il contient et nous vous l’annonçons au devis, avant tout engagement. Un mois qui passe sous ce volume n’est pas facturé.",
-        points: [
-          "Un périmètre défini avec vous, pas un découpage imposé",
-          "Des dossiers d’approche chaque mois, à hauteur de ce que votre périmètre contient",
-          "Vérification humaine avant chaque livraison, taux d’écart publié",
-          "Information des personnes, registre d’opposition et opt-out pris en charge",
-          "Un seul cabinet servi sur votre périmètre, quel que soit l’usage",
-        ],
-      },
-      {
-        nom: "Le mandat de recherche",
-        lead: `Quand un mandat de recherche arrive sur votre bureau, nous l’alimentons à la mission : vos critères, une shortlist de cibles vérifiées sous ${nb(brand.PRICING.mandat.delai)}.`,
-        prixLbl: "Par mission",
-        prix: nb(brand.PRICING.mandat.prix),
-        prixSuffixe: "à la livraison.",
-        prixCond: "Hors périmètres déjà sous exclusivité",
-      },
-    ] as {
-      nom: string;
-      ancre?: string;
-      lead: string;
-      prixLbl: string;
-      prix: string;
-      prixSuffixe: string;
-      prixCond: string;
-      corps?: string;
-      points?: string[];
-    }[],
-    /* sans définition écrite au devis, l'exclusivité est invérifiable
-       pour un acheteur : le bloc ci-dessous est ce qui la rend opposable.
-       Il porte sur les DEUX offres, donc pleine largeur sous les panneaux. */
+    /* la définition gouverne les DEUX offres : elle est en tête de section,
+       pas derrière la seconde où on la lisait comme une clause du mandat */
     definition: {
       k: "Un périmètre",
       texte:
         "Un périmètre, c’est une région et une typologie d’entreprises, arrêtées avec vous à l’appel et inscrites au devis. Sur ce périmètre, vous êtes seul servi tant que le contrat court. Un second périmètre reste possible.",
     },
+    principal: {
+      nom: "L’Origination",
+      ancre: "origination",
+      lead: "Nous détectons en continu les dirigeants de votre périmètre qui préparent leur sortie, et nous vous livrons les dossiers d’approche au fil de l’eau.",
+      prix: nb(brand.PRICING.origination.prixPlancher),
+      metaFort: `À partir de, ${brand.PRICING.origination.periode}`,
+      metaSuite: ", selon le périmètre convenu",
+      metaLigne2: `Engagement ${nb(brand.PRICING.origination.engagement)}, puis reconduction mensuelle`,
+      corps:
+        "Le périmètre est arrêté avec vous à l’appel : région, typologie d’entreprises, ce que vous voulez voir détecté. Nous mesurons ce qu’il contient et nous vous l’annonçons au devis, avant tout engagement. Un mois qui passe sous ce volume n’est pas facturé.",
+      points: [
+        "Un périmètre défini avec vous, pas un découpage imposé",
+        "Des dossiers d’approche chaque mois, à hauteur de ce que votre périmètre contient",
+        "Vérification humaine avant chaque livraison, taux d’écart publié",
+        "Information des personnes, registre d’opposition et opt-out pris en charge",
+        "Un seul cabinet servi sur votre périmètre, quel que soit l’usage",
+      ],
+    },
+    complement: {
+      nom: "Le mandat de recherche",
+      lead: `Quand un mandat de recherche arrive sur votre bureau, nous l’alimentons à la mission : vos critères, une shortlist de cibles vérifiées sous ${nb(brand.PRICING.mandat.delai)}.`,
+      prix: nb(brand.PRICING.mandat.prix),
+      metaLigne1: "Par mission, à la livraison",
+      metaLigne2: "Hors périmètres déjà sous exclusivité",
+    },
     pied: {
       fort: "Pas de commission sur la transaction, jamais.",
       suite: " Notre rémunération ne dépend ni du closing, ni du prix de cession.",
     },
+    cta: CTA,
   },
   engagements: {
     kicker: "Nos engagements",
@@ -396,12 +389,12 @@ export const copy = {
     kicker: "Prochaine étape",
     statement: "Nous mesurons votre périmètre avant que vous vous engagiez.",
     lead: "Ce qu’il contient vous est annoncé au devis. Un mois qui passe sous ce volume n’est pas facturé. Trente minutes, avec le fondateur.",
-    cta: "Réserver un échange",
+    cta: CTA,
   },
   carte: {
     ariaCarte: "Carte des régions françaises",
     panneauVide: "Sélectionnez une région.",
-    bouton: "Réserver un échange",
+    bouton: CTA,
     statuts: {
       disponible: {
         label: "Disponible",
