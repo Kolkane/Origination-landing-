@@ -1172,8 +1172,9 @@ footer a:hover {
   padding: 120px 0;
   border-top: 1px solid var(--line-soft);
 }
+/* le titre est dans la colonne de gauche, donc plus de max-width qui
+   laisserait un blanc : c'est la colonne qui donne la mesure */
 .recu-chapo {
-  max-width: 52ch;
   margin-top: 18px;
   font-size: 16px;
   line-height: 1.6;
@@ -1184,13 +1185,19 @@ footer a:hover {
   grid-template-columns: minmax(0, 0.4fr) minmax(0, 0.6fr);
   gap: clamp(28px, 4vw, 56px);
   align-items: start;
-  margin-top: clamp(40px, 5vw, 64px);
+}
+/* colonne de gauche : titre, chapô et accordéon. Le document en face
+   démarre à la même hauteur, il ne pend plus sous le titre. */
+.recu-col {
+  min-width: 0;
+}
+.recu-col .statement {
+  max-width: 15ch;
 }
 
 /* ---------- nav des éléments ---------- */
 .recu-nav {
-  position: sticky;
-  top: clamp(32px, 8vh, 56px);
+  margin-top: clamp(34px, 4vw, 52px);
   border-left: 1px solid var(--line-soft);
   padding-left: 2px;
 }
@@ -1591,11 +1598,10 @@ footer a:hover {
 
 @media (max-width: 920px) {
   .recu-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
     gap: 34px;
   }
   .recu-nav {
-    position: static;
     border-left: none;
     padding-left: 0;
   }

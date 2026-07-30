@@ -40,29 +40,33 @@ export default function Dossier() {
   return (
     <section className="recu" id="dossier">
       <div className="wrap">
-        <p className="kicker mono rev">{d.kicker}</p>
-        <h2 className="statement mask rev">{d.titre}</h2>
-        <p className="recu-chapo rev">{d.chapo}</p>
-
         <div className="recu-grid">
-          {/* ---------- nav des éléments ---------- */}
-          <nav className="recu-nav rev" aria-label={d.kicker}>
-            {d.elements.map((el) => (
-              <button
-                type="button"
-                key={el.cible}
-                className={`recu-item${actif === el.cible ? " active" : ""}`}
-                aria-current={actif === el.cible ? "true" : undefined}
-                onClick={() => choisir(el.cible)}
-              >
-                <span className="recu-item-top">
-                  <span className="recu-idx mono">{el.idx}</span>
-                  <span className="recu-t">{el.titre}</span>
-                </span>
-                <span className="recu-d">{el.texte}</span>
-              </button>
-            ))}
-          </nav>
+          {/* le titre vit dans la colonne de gauche : sinon le document
+              démarre sous lui et pend très bas par rapport au texte */}
+          <div className="recu-col">
+            <p className="kicker mono rev">{d.kicker}</p>
+            <h2 className="statement mask rev">{d.titre}</h2>
+            <p className="recu-chapo rev">{d.chapo}</p>
+
+            {/* ---------- nav des éléments ---------- */}
+            <nav className="recu-nav rev" aria-label={d.kicker}>
+              {d.elements.map((el) => (
+                <button
+                  type="button"
+                  key={el.cible}
+                  className={`recu-item${actif === el.cible ? " active" : ""}`}
+                  aria-current={actif === el.cible ? "true" : undefined}
+                  onClick={() => choisir(el.cible)}
+                >
+                  <span className="recu-item-top">
+                    <span className="recu-idx mono">{el.idx}</span>
+                    <span className="recu-t">{el.titre}</span>
+                  </span>
+                  <span className="recu-d">{el.texte}</span>
+                </button>
+              ))}
+            </nav>
+          </div>
 
           {/* ---------- document ---------- */}
           <div className="viseur rev">
