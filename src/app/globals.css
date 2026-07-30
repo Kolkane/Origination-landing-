@@ -625,37 +625,6 @@ footer a:hover {
   background: var(--bg-2);
   border-top: 1px solid var(--line-soft);
 }
-.steps {
-  margin-top: 64px;
-}
-.step {
-  display: grid;
-  grid-template-columns: 56px 1fr;
-  gap: 28px;
-  padding: 34px 0;
-  border-top: 1px solid var(--line-soft);
-}
-.step:last-child {
-  border-bottom: 1px solid var(--line-soft);
-}
-.step .n {
-  font-family: var(--font-instrument), serif;
-  font-size: 30px;
-  color: var(--txt-3);
-  line-height: 1;
-}
-.step h3 {
-  font-size: 18px;
-  font-weight: 500;
-  margin-bottom: 10px;
-}
-.step p {
-  font-size: 14px;
-  color: var(--txt-2);
-  line-height: 1.7;
-  max-width: 56ch;
-}
-
 /* 04 · offre : le titre reste, les postes défilent */
 .offer {
   padding: 120px 0;
@@ -919,34 +888,6 @@ footer a:hover {
 }
 .mask.in {
   clip-path: inset(0 0 -10% 0);
-}
-
-/* 02 · méthode : titre en marge, étapes à droite */
-.method .steps {
-  margin-top: 0;
-}
-.method .step {
-  grid-template-columns: clamp(48px, 4vw, 72px) 1fr;
-  gap: clamp(20px, 2.4vw, 40px);
-  padding: clamp(28px, 2.8vw, 40px) 0;
-  transition: border-color 0.4s var(--ease);
-}
-.method .step:hover {
-  border-top-color: var(--line);
-}
-.method .step .n {
-  font-size: clamp(26px, 2.4vw, 38px);
-  transition: color 0.4s var(--ease);
-}
-.method .step:hover .n {
-  color: var(--txt-2);
-}
-.method .step h3 {
-  font-size: clamp(17px, 1.35vw, 21px);
-}
-.method .step p {
-  font-size: 14.5px;
-  max-width: 62ch;
 }
 
 /* 04 · offre : la grille tarifaire s'aligne sur les postes */
@@ -1974,5 +1915,122 @@ footer a:hover {
     opacity: 1;
     transform: none;
     animation: none !important;
+  }
+}
+
+/* ============================================================
+   v15 · B1, la méthode en bande horizontale. Portée de
+   MAQUETTE-V15-B1-METHODE.html. Classes préfixées .m- et .st
+   pour ne pas croiser le .step de l'entonnoir.
+   ============================================================ */
+
+/* l'en-tête tient sur une ligne au lieu d'occuper une colonne :
+   c'est le trou noir de l'ancienne colonne de gauche qui disparaît */
+.m-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 40px;
+  flex-wrap: wrap;
+  margin-bottom: clamp(46px, 6vw, 78px);
+}
+.m-kicker {
+  flex: none;
+  margin-bottom: 0;
+}
+.m-statement {
+  font-family: var(--font-instrument), serif;
+  font-weight: 400;
+  font-size: clamp(24px, 3.1vw, 38px);
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  max-width: 26ch;
+  text-align: right;
+  flex: 1 1 340px;
+}
+
+/* le filet continu porte la section, les étapes y sont accrochées */
+.rail {
+  border-top: 1px solid var(--line);
+}
+.steps-h {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+.st {
+  position: relative;
+  padding: 34px clamp(22px, 2.4vw, 42px) 8px 0;
+}
+.st + .st {
+  padding-left: clamp(22px, 2.4vw, 42px);
+  border-left: 1px solid var(--line-soft);
+}
+/* la graduation : la seule touche de vin de la section */
+.st::before {
+  content: "";
+  position: absolute;
+  top: -1px;
+  left: 0;
+  width: 34px;
+  height: 1px;
+  background: var(--wine);
+}
+.st + .st::before {
+  left: clamp(22px, 2.4vw, 42px);
+}
+.st-n {
+  display: block;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  color: var(--txt-3);
+  margin-bottom: 16px;
+}
+.st-t {
+  font-family: var(--font-instrument), serif;
+  font-weight: 400;
+  font-size: clamp(19px, 1.7vw, 25px);
+  line-height: 1.18;
+  margin-bottom: 12px;
+  max-width: 16ch;
+}
+.st-p {
+  font-size: 14px;
+  line-height: 1.65;
+  color: var(--txt-2);
+  max-width: 34ch;
+}
+
+@media (max-width: 860px) {
+  .m-statement {
+    text-align: left;
+  }
+  .steps-h {
+    grid-template-columns: 1fr;
+  }
+  /* le filet bascule à la verticale : même vocabulaire, pas un
+     second gabarit à maintenir */
+  .rail {
+    border-top: none;
+    border-left: 1px solid var(--line);
+    padding-left: 26px;
+  }
+  .st,
+  .st + .st {
+    padding: 0 0 34px;
+    border-left: none;
+  }
+  .st + .st {
+    padding-top: 34px;
+    border-top: 1px solid var(--line-soft);
+  }
+  .st::before,
+  .st + .st::before {
+    top: 0;
+    left: -27px;
+    width: 1px;
+    height: 34px;
+  }
+  .st:first-child::before {
+    height: 22px;
   }
 }

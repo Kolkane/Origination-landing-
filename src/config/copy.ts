@@ -210,32 +210,29 @@ export const copy = {
     noteApres: " à la vérification humaine.",
     noteLigne2: "Ce qui reste est livré. Rien d’autre.",
   },
+  /* v15 · B1 : trois étapes, pas quatre. L'ancienne « Le dossier
+     d'approche » est absorbée par la section qui montre le document,
+     l'ancienne vérification et l'ancienne veille tiennent en une. */
   methode: {
     kicker: "La méthode",
     statement: "Nous montrons nos résultats. Jamais nos critères.",
     lignes: [
       {
         num: "01",
-        titre: "Le périmètre, défini avec vous",
+        titre: "Le périmètre, arrêté avec vous",
         texte:
-          "Nous arrêtons ensemble votre périmètre : région, typologie d’entreprises, taille de cible, structure de détention. La détection s’appuie sur des sources exclusivement publiques (RNE, SIRENE, BODACC), sur des signaux observables et datés. Pas de scores prédictifs inventés.",
+          "Région, typologie d’entreprises, taille de cible, structure de détention. Inscrit au devis.",
       },
       {
         num: "02",
-        titre: "Vérification humaine",
+        titre: "La détection, aux sources publiques",
         texte:
-          "Chaque détection est vérifiée manuellement avant livraison. Ce qui ne tient pas est écarté, et compté dans nos chiffres publics.",
+          "RNE, SIRENE, BODACC. Des signaux observables et datés. Pas de scores prédictifs inventés.",
       },
       {
         num: "03",
-        titre: "Le dossier d’approche",
-        texte:
-          "Un livrable opérationnel par cible : contexte, signaux sourcés et datés, structure de détention, angle d’approche conforme. Prêt à intégrer votre pipeline et à ouvrir un premier contact.",
-      },
-      {
-        num: "04",
-        titre: "La veille",
-        texte: `Votre périmètre entier sous surveillance continue. Chaque bascule détectée est vérifiée, puis livrée sous ${nb(brand.PROOF.delaiLivraisonBascule)}.`,
+        titre: "La vérification, puis la veille",
+        texte: `Ce qui ne tient pas est écarté. Le périmètre reste sous surveillance, chaque bascule livrée sous ${nb(brand.PROOF.delaiLivraisonBascule)}.`,
       },
     ],
   },
