@@ -282,7 +282,7 @@ export const copy = {
       },
       {
         fort: "Pas de chiffres invérifiables.",
-        suite: "",
+        suite: " Ce que nous publions, nous le mesurons.",
       },
     ],
   },
