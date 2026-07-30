@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Imbrin, B5, l'offre, un plat principal et un complément</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@300;400;500&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* tokens exacts de globals.css */
+:root{
+  --bg:#0a0a0a; --bg-2:#0e0e0e;
+  --txt:#f4f2ef; --txt-2:#b9b6b2; --txt-3:#83807c;
+  --line:rgba(255,255,255,.12); --line-soft:rgba(255,255,255,.06);
+  --wine:#8e2438; --wine-lift:#b32e46;
+  --serif:"Instrument Serif",Georgia,serif;
+  --sans:"Geist",-apple-system,sans-serif;
+  --mono:"Geist Mono",ui-monospace,monospace;
+  --ease:cubic-bezier(.22,.75,.25,1);
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--txt);font-family:var(--sans);font-weight:300;-webkit-font-smoothing:antialiased}
+.note-maquette{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--txt-3);padding:20px clamp(22px,4.4vw,76px);border-bottom:1px solid var(--line-soft);line-height:1.85}
+.note-maquette b{color:var(--wine-lift);font-weight:400}
+.wrap{max-width:1440px;margin:0 auto;padding:0 clamp(22px,4.4vw,76px)}
+
+/* ============================================================
+   B5 · un plat principal et un complément.
+   Le gabarit n'est ni une grille de colonnes égales (méthode),
+   ni une liste sur bande claire (engagements) : c'est UN BLOC
+   MASSIF suivi d'UNE BANDE FINE. La hiérarchie n'est pas dite,
+   elle est construite : le rapport de surface est d'environ 5:1
+   et le rapport de corps des prix de 3:1.
+   ============================================================ */
+.offre-b{padding:clamp(84px,9vw,130px) 0;border-top:1px solid var(--line-soft)}
+
+/* en-tête à GAUCHE : la méthode juste au-dessus a le sien à droite */
+.b-kicker{font-family:var(--mono);font-size:10.5px;letter-spacing:.28em;text-transform:uppercase;color:var(--txt-3);margin:0 0 20px}
+.b-titre{font-family:var(--serif);font-weight:400;font-size:clamp(38px,5.2vw,64px);line-height:1.03;letter-spacing:-.02em;margin:0;max-width:14ch}
+
+/* la définition remonte EN TÊTE : elle gouverne les deux offres, elle ne
+   peut pas flotter derrière la seconde comme si elle n'était qu'à elle */
+.b-def{display:grid;grid-template-columns:minmax(0,.24fr) minmax(0,.76fr);gap:clamp(20px,3vw,44px);align-items:baseline;
+  margin-top:clamp(38px,4.5vw,60px);padding-top:22px;border-top:1px solid var(--line-soft)}
+.b-def-k{font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--txt-3);margin:0}
+.b-def-t{font-size:14px;line-height:1.7;color:var(--txt-3);margin:0;max-width:82ch}
+
+/* ---------- le plat principal ---------- */
+.primaire{position:relative;margin-top:clamp(56px,7vw,92px);padding-top:clamp(34px,3.6vw,48px);border-top:1px solid var(--line)}
+/* la seule touche de vin de la section, sur le bloc qui compte */
+.primaire::before{content:"";position:absolute;top:-1px;left:0;width:56px;height:1px;background:var(--wine)}
+.p-nom{font-family:var(--mono);font-weight:500;font-size:15px;letter-spacing:.22em;text-transform:uppercase;color:var(--txt);margin:0 0 18px}
+.p-lead{font-size:clamp(16px,1.35vw,18.5px);line-height:1.55;color:var(--txt);margin:0;max-width:46ch}
+
+/* le prix domine son espace. La métadonnée passe à droite, en mono
+   tertiaire : elle informe, elle ne concurrence plus le nombre. */
+.p-tarif{display:flex;align-items:baseline;gap:clamp(24px,3.4vw,52px);flex-wrap:wrap;margin-top:clamp(38px,4.4vw,58px)}
+.p-chiffre{font-family:var(--serif);font-weight:400;font-size:clamp(48px,7vw,92px);line-height:.92;letter-spacing:-.03em;margin:0}
+.p-meta{font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--txt-3);line-height:2;margin:0;max-width:34ch}
+.p-meta b{color:var(--txt-2);font-weight:400}
+
+.p-corps{font-size:14.5px;line-height:1.7;color:var(--txt-2);margin:clamp(38px,4.4vw,56px) 0 0;max-width:80ch}
+.p-liste{list-style:none;display:grid;grid-template-rows:repeat(3,auto);grid-auto-flow:column;grid-auto-columns:1fr;
+  column-gap:clamp(32px,5vw,72px);margin:clamp(24px,2.6vw,32px) 0 0;padding:0;border-top:1px solid var(--line-soft)}
+.p-liste li{padding:12px 0;border-bottom:1px solid var(--line-soft);font-size:14px;line-height:1.6;color:var(--txt-2)}
+
+/* ---------- le complément ---------- */
+/* une bande, pas un bloc. Filet plus fin, corps plus petits, couleurs
+   d'un cran en dessous, tout tient sur une seule rangée. */
+.secondaire{display:grid;grid-template-columns:minmax(0,260px) minmax(0,1fr) minmax(0,230px);gap:clamp(22px,3.4vw,50px);
+  align-items:baseline;margin-top:clamp(44px,5vw,66px);padding:clamp(24px,2.6vw,32px) 0;
+  border-top:1px solid var(--line-soft);border-bottom:1px solid var(--line-soft)}
+.s-nom{font-family:var(--mono);font-weight:400;font-size:12.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--txt-2);margin:0}
+.s-lead{font-size:14px;line-height:1.6;color:var(--txt-3);margin:0;max-width:58ch}
+.s-tarif{text-align:right}
+.s-chiffre{font-family:var(--serif);font-weight:400;font-size:clamp(24px,2.3vw,30px);line-height:1;letter-spacing:-.01em;color:var(--txt-2);margin:0}
+.s-meta{font-family:var(--mono);font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--txt-3);line-height:1.9;margin:8px 0 0}
+
+/* ---------- sortie ---------- */
+.b-fin{display:flex;justify-content:space-between;align-items:end;gap:44px;flex-wrap:wrap;margin-top:clamp(34px,3.6vw,46px)}
+.b-pied{font-size:14.5px;line-height:1.7;color:var(--txt-2);margin:0;max-width:58ch}
+.b-pied b{color:var(--txt);font-weight:500}
+.cta{display:inline-block;color:var(--txt);text-decoration:none;font-family:var(--mono);font-size:12px;letter-spacing:.2em;
+  text-transform:uppercase;border-bottom:1px solid var(--line);padding-bottom:6px;white-space:nowrap;
+  transition:border-color .25s var(--ease),letter-spacing .25s var(--ease)}
+.cta:hover{border-color:var(--wine);letter-spacing:.24em}
+
+@media(max-width:900px){
+  .b-def{grid-template-columns:minmax(0,1fr);gap:10px}
+  .p-tarif{gap:18px}
+  .secondaire{grid-template-columns:minmax(0,1fr);gap:14px}
+  .s-tarif{text-align:left;padding-top:14px;border-top:1px solid var(--line-soft)}
+  .p-liste{grid-template-rows:none;grid-auto-flow:row;grid-auto-columns:auto;grid-template-columns:minmax(0,1fr)}
+  .b-fin{flex-direction:column;align-items:flex-start;gap:26px}
+}
+</style>
+</head>
+<body>
+
+<p class="note-maquette">
+  B5 · L'offre · un plat principal et un complément<br>
+  <b>Hiérarchie :</b> l'Origination est un bloc massif, le Mandat une bande fine. Rapport de surface ~5:1, rapport de corps des prix 92px contre 30px, et le Mandat descend d'un cran en couleur (nom en secondaire, description en tertiaire). Aucun risque de les lire comme des jumeaux.<br>
+  <b>Le prix :</b> 92px, et la métadonnée passe À DROITE du nombre en mono tertiaire au lieu de s'empiler dessous en deux lignes de même poids. Elle informe sans concurrencer.<br>
+  <b>Gabarit :</b> ni colonnes égales (méthode, juste au-dessus), ni liste sur bande claire (engagements, juste en dessous). Un bloc puis une bande : rien d'autre sur la page n'a cette forme.<br>
+  <b>La définition du périmètre remonte en tête</b>, sous le titre, sur son propre filet. Elle gouverne les deux offres, elle ne flotte plus derrière le Mandat.<br>
+  <b>Vin :</b> un tiret de 56px sur le filet du bloc principal. Une seule occurrence dans toute la section.<br>
+  <b>AJOUT à valider :</b> l'appel « Réserver un échange » en pied. Ton brief ne le demandait pas, mais la section n'en avait aucun et tu voulais qu'elle donne envie d'appeler. Une ligne à retirer si tu n'en veux pas.<br>
+  <b>Zéro copy nouvelle</b> : textes et prix strictement inchangés, l'accroche que je proposais en C4 est abandonnée.
+</p>
+
+<section class="offre-b">
+  <div class="wrap">
+
+    <p class="b-kicker">L'offre</p>
+    <h2 class="b-titre">Deux façons de travailler ensemble</h2>
+
+    <div class="b-def">
+      <p class="b-def-k">Un périmètre</p>
+      <p class="b-def-t">Un périmètre, c'est une région et une typologie d'entreprises, arrêtées avec vous à l'appel et inscrites au devis. Sur ce périmètre, vous êtes seul servi tant que le contrat court. Un second périmètre reste possible.</p>
+    </div>
+
+    <!-- ---------- le plat principal ---------- -->
+    <div class="primaire">
+      <h3 class="p-nom">L'Origination</h3>
+      <p class="p-lead">Nous détectons en continu les dirigeants de votre périmètre qui préparent leur sortie, et nous vous livrons les dossiers d'approche au fil de l'eau.</p>
+
+      <div class="p-tarif">
+        <p class="p-chiffre">2 000 € HT</p>
+        <p class="p-meta"><b>À partir de, par mois</b>, selon le périmètre convenu<br>Engagement 3 mois, puis reconduction mensuelle</p>
+      </div>
+
+      <p class="p-corps">Le périmètre est arrêté avec vous à l'appel : région, typologie d'entreprises, ce que vous voulez voir détecté. Nous mesurons ce qu'il contient et nous vous l'annonçons au devis, avant tout engagement. Un mois qui passe sous ce volume n'est pas facturé.</p>
+
+      <ul class="p-liste">
+        <li>Un périmètre défini avec vous, pas un découpage imposé</li>
+        <li>Des dossiers d'approche chaque mois, à hauteur de ce que votre périmètre contient</li>
+        <li>Vérification humaine avant chaque livraison, taux d'écart publié</li>
+        <li>Information des personnes, registre d'opposition et opt-out pris en charge</li>
+        <li>Un seul cabinet servi sur votre périmètre, quel que soit l'usage</li>
+      </ul>
+    </div>
+
+    <!-- ---------- le complément ---------- -->
+    <div class="secondaire">
+      <h3 class="s-nom">Le mandat de recherche</h3>
+      <p class="s-lead">Quand un mandat de recherche arrive sur votre bureau, nous l'alimentons à la mission : vos critères, une shortlist de cibles vérifiées sous 7 jours.</p>
+      <div class="s-tarif">
+        <p class="s-chiffre">3 500 € HT</p>
+        <p class="s-meta">Par mission, à la livraison<br>Hors périmètres déjà sous exclusivité</p>
+      </div>
+    </div>
+
+    <div class="b-fin">
+      <p class="b-pied"><b>Pas de commission sur la transaction, jamais.</b> Notre rémunération ne dépend ni du closing, ni du prix de cession.</p>
+      <a class="cta" href="#">Réserver un échange</a>
+    </div>
+
+  </div>
+</section>
+
+</body>
+</html>
