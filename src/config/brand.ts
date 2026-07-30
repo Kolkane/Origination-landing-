@@ -15,18 +15,17 @@ export const brand = {
     tauxEcartVerification: "≈ 1/3",       // détections écartées à la vérification — chiffre public
     delaiLivraisonBascule: "7 jours",
   },
-  /* Deux prix, deux seulement. Toute valeur affichée sur la page part d'ici. */
+  /* Deux prix, deux seulement. Toute valeur affichée sur la page part d'ici.
+     L'origination est calibrée au périmètre : le montant affiché est un
+     plancher, pas une grille. */
   PRICING: {
-    cartographie: {
-      prix: "4 900 € HT",
-      nature: "prestation unique",
-      delai: "10 jours ouvrés",
-      deduction: "30 jours",              // fenêtre de déduction sur le contrat annuel
+    origination: {
+      prixPlancher: "2 000 € HT / mois",
+      engagement: "3 mois",               // puis reconduction mensuelle
     },
-    cellule: {
-      prix: "2 500 € HT / mois",
-      engagement: "engagement 12 mois",
-      mandat: "5 000 € HT",               // par mandat de cession signé
+    mandat: {
+      prix: "3 500 € HT",                 // par mission, à la livraison
+      delai: "7 jours",                   // shortlist vérifiée
     },
   },
 } as const;

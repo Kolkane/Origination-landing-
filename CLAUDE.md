@@ -3,7 +3,7 @@
 ## Ce qu'est ce site
 Landing one-page d'une société d'origination sell-side : détection au registre (sources publiques)
 des PME françaises dont le capital va probablement changer de mains, 12-18 mois avant le marché.
-Clients cibles : boutiques M&A small-cap et family offices. Un seul cabinet par cellule.
+Clients cibles : boutiques M&A small-cap et family offices. Un seul cabinet par périmètre.
 La marque : Imbrin Research — toujours via les variables MARQUE/SUFFIXE de src/config/brand.ts,
 jamais en dur. Baseline fixe : "Origination sell-side".
 
@@ -60,17 +60,22 @@ trouvé sur vous". Codes attendus : document financier imprimé, pas SaaS IA.
 - Règle de process : le design se valide sur maquette HTML avec Vincent AVANT le code.
   Aucune nouvelle section, aucun composant visuel nouveau sans maquette validée.
 
-## L'offre v12 (définitive, remplace la grille régionale)
-Deux prix, deux seulement, tous deux dans src/config/brand.ts :
-- LA CARTOGRAPHIE, 4 900 € HT, prestation unique, livrée sous 10 jours ouvrés,
-  intégralement déduite du contrat annuel si signature sous 30 jours.
-- LA CELLULE, 2 500 € HT / mois, engagement 12 mois, plus 5 000 € HT par mandat
-  de cession signé issu d'un dossier Imbrin.
-Une cellule = une région administrative et une famille d'activités, arrêtées à
-l'appel et inscrites au contrat. Un seul cabinet y est servi tant que le contrat
-court. Les mots « zone », « verticale » et « abonnement » sont proscrits.
+## L'offre v13 (définitive, remplace la v12 et la grille régionale)
+Deux lignes, toutes deux dans src/config/brand.ts :
+- L'ORIGINATION, à partir de 2 000 € HT / mois selon le périmètre convenu,
+  engagement 3 mois puis reconduction mensuelle. Le volume est mesuré et
+  annoncé au devis avant tout engagement ; un mois qui passe sous ce volume
+  n'est pas facturé.
+- LE MANDAT DE RECHERCHE, 3 500 € HT par mission à la livraison, shortlist
+  vérifiée sous 7 jours, hors périmètres déjà sous exclusivité.
+Un périmètre = une région et une typologie d'entreprises, arrêtées à l'appel
+et inscrites au devis. Un seul cabinet y est servi tant que le contrat court.
+Les mots « zone », « verticale », « abonnement » et « cellule » sont proscrits :
+le périmètre se définit au rendez-vous, ce n'est pas un découpage préétabli.
+Le prix est calibré au périmètre : ne jamais écrire que la grille est publique
+ni qu'il n'existe aucun accord hors grille, ces deux phrases sont retirées.
 Pas de commission sur la transaction : la rémunération ne dépend ni du closing
-ni du prix de cession. Aucun accord hors grille, aucun tarif sur-mesure.
+ni du prix de cession. Ne promettre aucun volume en chiffre rond.
 Le livrable s'appelle « dossier d'approche », jamais « brief », jamais « fiche ».
 
 ## Interdits absolus (si l'un apparaît, le supprimer immédiatement)

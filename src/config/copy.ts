@@ -17,7 +17,7 @@ export const copy = {
   meta: {
     title: `${brand.MARQUE} ${brand.SUFFIXE}, ${brand.BASELINE}`,
     description:
-      "Nous détectons les dirigeants qui préparent leur sortie et livrons le dossier d’approche qui va avec. Un cabinet par cellule.",
+      "Nous détectons les dirigeants qui préparent leur sortie et livrons le dossier d’approche qui va avec. Un cabinet par périmètre.",
   },
   hero: {
     nav: [
@@ -26,16 +26,16 @@ export const copy = {
       { label: "Offre", ancre: "#offre" },
       { label: "FAQ", ancre: "#faq" },
     ],
-    navAppel: { label: "Vérifier ma cellule", ancre: "#appel" },
+    navAppel: { label: "Définir mon périmètre", ancre: "#appel" },
     eyebrow: "Origination sell-side · PME françaises · 1-10 M€",
     titreLigne1: "Nous détectons les dirigeants",
     titreLigne2Avant: "qui ",
     titreItalique: "préparent",
     titreLigne2Apres: " leur sortie.",
     sousTitre:
-      "Et nous livrons le dossier d’approche qui va avec. Un cabinet par cellule.",
+      "Et nous livrons le dossier d’approche qui va avec. Un cabinet par périmètre.",
     cta: "Réserver un échange",
-    ctaSecondaire: { label: "La Cartographie", ancre: "#cartographie" },
+    ctaSecondaire: { label: "L’origination", ancre: "#origination" },
     /* la légende ne décrit que le sujet : ni l'origine ni la durée du média
        ne sont revendiquées (arbitrage Vincent, v8-4) */
     legende1: "Plongeon imbrin en chasse",
@@ -109,7 +109,7 @@ export const copy = {
         num: "01",
         titre: "Le périmètre, défini avec vous",
         texte:
-          "Nous arrêtons ensemble votre cellule : région, famille d’activités, taille de cible, structure de détention. La détection s’appuie sur des sources exclusivement publiques (RNE, SIRENE, BODACC), sur des signaux observables et datés. Pas de scores prédictifs inventés.",
+          "Nous arrêtons ensemble votre périmètre : région, typologie d’entreprises, taille de cible, structure de détention. La détection s’appuie sur des sources exclusivement publiques (RNE, SIRENE, BODACC), sur des signaux observables et datés. Pas de scores prédictifs inventés.",
       },
       {
         num: "02",
@@ -126,7 +126,7 @@ export const copy = {
       {
         num: "04",
         titre: "La veille",
-        texte: `Votre cellule entière sous surveillance continue. Chaque bascule détectée est vérifiée, puis livrée sous ${nb(brand.PROOF.delaiLivraisonBascule)}.`,
+        texte: `Votre périmètre entier sous surveillance continue. Chaque bascule détectée est vérifiée, puis livrée sous ${nb(brand.PROOF.delaiLivraisonBascule)}.`,
       },
     ],
   },
@@ -168,7 +168,7 @@ export const copy = {
       angleLbl: "Angle d’approche",
       angle:
         "Dirigeant seul au capital depuis 2019, sans successeur identifié au registre. Entrée recommandée par la transmission patrimoniale plutôt que par la valorisation : le calendrier des signaux suggère une fenêtre de douze à dix-huit mois avant une mise en marché, pendant laquelle une approche directe et confidentielle reste possible auprès du dirigeant.",
-      pied: "Spécimen fictif. Nos dossiers réels ne quittent pas leurs cellules.",
+      pied: "Spécimen fictif. Nos dossiers réels ne quittent pas leurs périmètres.",
     },
   },
   bande: {
@@ -177,59 +177,54 @@ export const copy = {
       { n: "700 000", l: "dirigeants partants sous 10 ans" },
       { n: "12-18", l: "mois d’avance sur le marché" },
       { n: nb(brand.PROOF.tauxEcartVerification), l: "de détections écartées, chiffre publié" },
-      { n: "1", l: "cabinet par cellule" },
+      { n: "1", l: "un seul cabinet servi sur votre périmètre" },
     ],
   },
   offre: {
     kicker: "L’offre",
-    statement: "Deux façons de commencer",
+    statement: "Deux façons de travailler ensemble",
     paliers: [
       {
-        nom: "La Cartographie",
-        ancre: "cartographie",
-        prix: `${nb(brand.PRICING.cartographie.prix)}, ${brand.PRICING.cartographie.nature}`,
-        lead: `Un état complet de votre cellule, livré sous ${nb(brand.PRICING.cartographie.delai)}.`,
+        nom: "L’Origination",
+        ancre: "origination",
+        lead: "Nous détectons en continu les dirigeants de votre périmètre qui préparent leur sortie, et nous vous livrons les dossiers d’approche au fil de l’eau.",
+        prix: `À partir de ${nb(brand.PRICING.origination.prixPlancher)}, selon le périmètre convenu.`,
+        prix2: `Engagement ${nb(brand.PRICING.origination.engagement)}, puis reconduction mensuelle.`,
+        corps:
+          "Le périmètre est arrêté avec vous à l’appel : région, typologie d’entreprises, ce que vous voulez voir détecté. Nous mesurons ce qu’il contient et nous vous l’annonçons au devis, avant tout engagement. Un mois qui passe sous ce volume n’est pas facturé.",
         points: [
-          "Le nombre de dirigeants en situation de succession ouverte sur votre cellule, segmenté",
-          "Ceux qui ont posé un acte préparatoire daté, et lequel",
-          "Cinq dossiers d’approche complets, livrés",
-          "La liste explicite de ce que nous ne savons pas",
+          "Un périmètre défini avec vous, pas un découpage imposé",
+          "Des dossiers d’approche chaque mois, à hauteur de ce que votre périmètre contient",
+          "Vérification humaine avant chaque livraison, taux d’écart publié",
+          "Information des personnes, registre d’opposition et opt-out pris en charge",
+          "Un seul cabinet servi sur votre périmètre, quel que soit l’usage",
         ],
-        note: `Aucun engagement. Intégralement déduite du contrat annuel si vous signez sous ${nb(brand.PRICING.cartographie.deduction)}.`,
       },
       {
-        nom: "La Cellule",
-        prix: `${nb(brand.PRICING.cellule.prix)}, ${brand.PRICING.cellule.engagement}`,
-        prix2: `${nb(brand.PRICING.cellule.mandat)} par mandat de cession signé issu d’un dossier ${brand.MARQUE}`,
-        lead: "Une région. Une famille d’activités. Un cabinet.",
-        points: [
-          "Les dossiers d’approche au fil de la détection",
-          "Vérification humaine avant chaque livraison, taux d’écart publié",
-          "Information des personnes, registre d’opposition et opt-out pris en charge par nous",
-          "Vos mandats de recherche alimentés, sur cellules libres, sans supplément",
-        ],
-        note: "Personne d’autre n’est servi sur votre cellule, quel que soit l’usage.",
+        nom: "Le mandat de recherche",
+        lead: `Quand un mandat de recherche arrive sur votre bureau, nous l’alimentons à la mission : vos critères, une shortlist de cibles vérifiées sous ${nb(brand.PRICING.mandat.delai)}.`,
+        prix: `${nb(brand.PRICING.mandat.prix)} par mission, à la livraison.`,
+        prix2: "Hors périmètres déjà sous exclusivité.",
       },
     ] as {
       nom: string;
       ancre?: string;
+      lead: string;
       prix: string;
       prix2?: string;
-      lead: string;
-      points: string[];
-      note: string;
+      corps?: string;
+      points?: string[];
     }[],
-    /* sans définition écrite au contrat, l'exclusivité est invérifiable
+    /* sans définition écrite au devis, l'exclusivité est invérifiable
        pour un acheteur : le bloc ci-dessous est ce qui la rend opposable */
     definition: {
-      k: "Une cellule",
+      k: "Un périmètre",
       texte:
-        "Une cellule, c’est une région administrative et une famille d’activités, arrêtées avec vous à l’appel et inscrites au contrat. Sur cette cellule, vous êtes seul servi tant que le contrat court. Une seconde cellule reste possible.",
+        "Un périmètre, c’est une région et une typologie d’entreprises, arrêtées avec vous à l’appel et inscrites au devis. Sur ce périmètre, vous êtes seul servi tant que le contrat court. Un second périmètre reste possible.",
     },
     pied: {
       fort: "Pas de commission sur la transaction, jamais.",
       suite: " Notre rémunération ne dépend ni du closing, ni du prix de cession.",
-      note: "La grille est publique. Aucun accord hors grille.",
     },
   },
   engagements: {
@@ -304,17 +299,17 @@ export const copy = {
       {
         question: "Comment définit-on le périmètre de recherche ?",
         reponse:
-          "Lors d’un premier échange, nous arrêtons ensemble votre cellule : région, famille d’activités, taille de cible, structure de détention. Elle est inscrite au contrat et conditionne le sourcing livré ensuite.",
+          "Lors d’un premier échange, nous arrêtons ensemble votre périmètre : région, typologie d’entreprises, taille de cible, structure de détention. Il est inscrit au devis et conditionne le sourcing livré ensuite.",
       },
       {
         question: "Que couvre exactement l’exclusivité ?",
         reponse:
-          "Une cellule, un cabinet : personne d’autre n’est servi sur votre région et votre famille d’activités tant que le contrat court, quel que soit l’usage. La définition exacte est écrite sous la grille de prix, et reprise au contrat.",
+          "Un périmètre, un cabinet : personne d’autre n’est servi sur votre région et votre typologie d’entreprises tant que le contrat court, quel que soit l’usage. La définition exacte est écrite sous les deux blocs de l’offre, et reprise au devis.",
       },
       {
         question: "Intervenez-vous sur un mandat de recherche ?",
         reponse:
-          "Oui, sur les cellules libres de toute exclusivité, sans supplément pour nos clients sous contrat. Vos critères, une shortlist vérifiée sous sept jours. C’est l’usage acheté qui est nommé au contrat, et deux clients ne sont jamais servis sur la même course.",
+          "Oui. Vos critères, une shortlist de cibles vérifiées sous 7 jours, au tarif de 3 500 € HT par mission, hors périmètres déjà sous exclusivité. C’est l’usage acheté qui est nommé au contrat, et deux clients ne sont jamais servis sur le même périmètre.",
       },
       {
         question: "Pourquoi être rémunérés au mandat signé et non au closing ?",
@@ -323,21 +318,21 @@ export const copy = {
       },
       {
         question:
-          "Que se passe-t-il si la Cartographie montre que ma cellule est pauvre ?",
+          "Que se passe-t-il si mon périmètre est pauvre ?",
         reponse:
-          "Nous vous le disons et nous ne vous vendons pas de contrat. C’est précisément ce que la Cartographie sert à établir.",
+          "Nous vous le disons au devis, avant tout engagement. Et un mois qui passe sous le volume annoncé n’est pas facturé.",
       },
       {
         question: "Combien de dossiers par mois ?",
         reponse:
-          "Peu, et vérifiés. Le volume dépend de la densité réelle de votre cellule : mesurée avant le contrat, annoncée à l’appel, tenue ensuite.",
+          "Autant que votre périmètre en contient, annoncé au devis et tenu ensuite. Un mois qui passe sous ce volume n’est pas facturé.",
       },
     ],
   },
   final: {
     kicker: "Prochaine étape",
-    statement: "Nous savons déjà combien de dirigeants de votre cellule sont concernés.",
-    lead: "Ce chiffre vous est donné à l’appel, sans condition. Qui ils sont, depuis quand, et par quoi commencer : c’est la Cartographie.",
+    statement: "Nous mesurons votre périmètre avant que vous vous engagiez.",
+    lead: "Ce qu’il contient vous est annoncé au devis. Un mois qui passe sous ce volume n’est pas facturé. Trente minutes, avec le fondateur.",
     cta: "Réserver un échange",
   },
   carte: {
@@ -347,15 +342,15 @@ export const copy = {
     statuts: {
       disponible: {
         label: "Disponible",
-        texte: "Cellule ouverte. La part se prend au premier contrat signé.",
+        texte: "Périmètre ouvert. La part se prend au premier contrat signé.",
       },
       en_discussion: {
         label: "En discussion",
-        texte: "Des discussions sont en cours sur cette cellule. Un appel reste possible : premier signé, premier servi.",
+        texte: "Des discussions sont en cours sur ce périmètre. Un appel reste possible : premier signé, premier servi.",
       },
       exclusivite: {
         label: "Sous exclusivité",
-        texte: "Cette cellule est servie en exclusivité. Laissez vos coordonnées à l’appel pour être prévenu si elle se libère.",
+        texte: "Ce périmètre est servi en exclusivité. Laissez vos coordonnées à l’appel pour être prévenu si elle se libère.",
       },
     },
   },

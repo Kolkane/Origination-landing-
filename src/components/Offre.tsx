@@ -6,7 +6,7 @@ export default function Offre() {
     <section className="offer" id="offre">
       <div className="wrap">
         <div className="cols">
-          {/* le titre reste au regard pendant que les paliers défilent */}
+          {/* le titre reste au regard pendant que les blocs défilent */}
           <div className="sticky">
             <p className="kicker mono rev">{o.kicker}</p>
             <h2 className="statement rev">{o.statement}</h2>
@@ -17,18 +17,20 @@ export default function Offre() {
                 <div className="t">
                   <h3>{palier.nom}</h3>
                 </div>
+                <p className="tier-lead">{palier.lead}</p>
                 <p className="prix mono">{palier.prix}</p>
                 {palier.prix2 && <p className="prix-2 mono">{palier.prix2}</p>}
-                <p className="tier-lead">{palier.lead}</p>
-                <ul className="tier-list">
-                  {palier.points.map((point) => (
-                    <li key={point}>{point}</li>
-                  ))}
-                </ul>
-                <p className="tier-note mono">{palier.note}</p>
+                {palier.corps && <p className="tier-corps">{palier.corps}</p>}
+                {palier.points && (
+                  <ul className="tier-list">
+                    {palier.points.map((point) => (
+                      <li key={point}>{point}</li>
+                    ))}
+                  </ul>
+                )}
               </div>
             ))}
-            {/* ce que « cellule » veut dire, sans quoi l'exclusivité ne se
+            {/* ce que « périmètre » veut dire, sans quoi l'exclusivité ne se
                 vérifie pas : même encadré que les blocs distingués du site */}
             <div className="guar rev">
               <span className="k mono">{o.definition.k}</span>
@@ -39,7 +41,6 @@ export default function Offre() {
                 <b>{o.pied.fort}</b>
                 {o.pied.suite}
               </p>
-              <p className="price-note mono">{o.pied.note}</p>
             </div>
           </div>
         </div>

@@ -492,18 +492,7 @@ section.block {
   letter-spacing: 0.06em;
   color: var(--txt);
 }
-.price-note {
-  padding-top: 18px;
-  font-size: 11px;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--txt-3);
-  line-height: 2.1;
-}
-.price-note b {
-  color: var(--txt-2);
-  font-weight: 500;
-}
+/* .price-note retirée en v13 : plus aucune note de pied sous les prix */
 
 /* ---------- engagements ---------- */
 .nots {
@@ -1495,7 +1484,7 @@ footer a:hover {
    ============================================================ */
 
 .oitem .prix {
-  margin-top: 8px;
+  margin-top: 20px;
   font-size: 13.5px;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -1511,7 +1500,11 @@ footer a:hover {
   line-height: 1.8;
   max-width: 44ch;
 }
+/* la phrase d'accroche suit le titre, le prix vient après elle */
 .oitem .tier-lead {
+  margin-top: 14px;
+}
+.oitem .tier-corps {
   margin-top: 22px;
 }
 .tier-list {
@@ -1525,15 +1518,6 @@ footer a:hover {
   color: var(--txt-2);
   line-height: 1.65;
   max-width: 58ch;
-}
-.tier-note {
-  margin-top: 18px;
-  font-size: 11px;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--txt-3);
-  line-height: 2;
-  max-width: 50ch;
 }
 .offer .price .not {
   padding-top: 22px;
