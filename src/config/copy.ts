@@ -116,7 +116,7 @@ export const copy = {
         { n: "640 K€", k: "Résultat net 2025" },
         { n: "1,9 M€", k: "Trésorerie" },
         { n: "2,1 M€", k: "Fonds de roulement" },
-        { n: "− 0,2", k: "Gearing" },
+        { n: "≈ 0,2", k: "Gearing" },
       ],
       tendance: [
         { a: "2023", v: "~510 K€" },
