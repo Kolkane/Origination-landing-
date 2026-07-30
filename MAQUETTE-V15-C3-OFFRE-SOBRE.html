@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Imbrin, C3, l'offre sobre, avant sans la colonne vide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@300;400;500&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0a0a0a; --txt:#f4f2ef; --txt-2:#b9b6b2; --txt-3:#83807c;
+  --line:rgba(255,255,255,.12); --line-soft:rgba(255,255,255,.06);
+  --wine:#8e2438; --wine-lift:#b32e46;
+  --serif:"Instrument Serif",Georgia,serif;
+  --sans:"Geist",-apple-system,sans-serif;
+  --mono:"Geist Mono",ui-monospace,monospace;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--txt);font-family:var(--sans);font-weight:300;-webkit-font-smoothing:antialiased}
+.note-maquette{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--txt-3);padding:20px clamp(22px,4.4vw,76px);border-bottom:1px solid var(--line-soft);line-height:1.8}
+.note-maquette b{color:var(--wine-lift);font-weight:400}
+.wrap{max-width:1440px;margin:0 auto;padding:0 clamp(22px,4.4vw,76px)}
+
+/* ============================================================
+   C3 · le minimum. C'est la disposition que tu avais avant,
+   empilée, avec les prix en mono, MOINS la colonne de gauche
+   vide. Le titre passe en en-tête d'une ligne, la colonne de
+   contenu se recentre sur une mesure de lecture. Rien d'autre.
+   ============================================================ */
+.offre-s{padding:clamp(80px,9vw,124px) 0;border-top:1px solid var(--line-soft)}
+
+.o-head{display:flex;justify-content:space-between;align-items:baseline;gap:40px;flex-wrap:wrap;margin-bottom:clamp(40px,5vw,64px)}
+.o-kicker{font-family:var(--mono);font-size:10.5px;letter-spacing:.28em;text-transform:uppercase;color:var(--txt-3);margin:0;flex:none}
+.o-statement{font-family:var(--serif);font-weight:400;font-size:clamp(23px,2.85vw,36px);line-height:1.15;letter-spacing:-.01em;margin:0;text-align:right;flex:1 1 auto}
+
+/* pas de colonne : le contenu prend la largeur. Ce sont les paragraphes qui
+   portent leur propre mesure de lecture, les filets courent d'un bord à
+   l'autre. C'est ça qui supprime le trou, pas un décalage. */
+.corps{max-width:none}
+
+.bloc{padding:clamp(30px,3.4vw,44px) 0;border-top:1px solid var(--line)}
+.bloc:last-of-type{border-bottom:1px solid var(--line)}
+.b-nom{font-family:var(--serif);font-weight:400;font-size:clamp(21px,2.1vw,27px);line-height:1.15;margin:0 0 12px}
+.b-lead{font-size:15px;line-height:1.65;color:var(--txt-2);margin:0 0 24px;max-width:56ch}
+
+/* les prix restent en mono, comme avant. Simplement, ils ne se cassent plus
+   sur deux lignes : la mesure a de la place. */
+.b-prix{font-family:var(--mono);font-size:13.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--txt);margin:0}
+.b-cond{font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--txt-3);line-height:1.8;margin:8px 0 0}
+.b-corps{font-size:14.5px;line-height:1.7;color:var(--txt-2);margin:26px 0 0;max-width:62ch}
+.b-liste{list-style:none;margin:26px 0 0;padding:0;border-top:1px solid var(--line-soft)}
+.b-liste li{padding:13px 0;border-bottom:1px solid var(--line-soft);font-size:14px;line-height:1.6;color:var(--txt-2)}
+
+.o-def{margin-top:clamp(28px,3vw,40px);border:1px solid var(--line);padding:26px 28px}
+.o-def-k{font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--txt-3);display:block;margin-bottom:12px}
+.o-def-t{font-size:14.5px;line-height:1.7;color:var(--txt-2);margin:0}
+.o-pied{margin:clamp(28px,3vw,40px) 0 0;padding-top:24px;border-top:1px solid var(--line-soft);font-size:14.5px;line-height:1.7;color:var(--txt-2);max-width:74ch}
+.o-pied b{color:var(--txt);font-weight:500}
+
+@media(max-width:900px){
+  .o-statement{text-align:left}
+}
+</style>
+</head>
+<body>
+
+<p class="note-maquette">
+  C3 · L'offre · le minimum d'intervention<br>
+  <b>Le parti :</b> c'est exactement ce que tu avais avant, empilé, prix en mono, MOINS la colonne de gauche vide. Le titre passe en en-tête d'une ligne, comme la méthode, et la colonne de contenu se recentre.<br>
+  <b>Prix :</b> inchangés, mono 13,5px. Ils ne se cassent simplement plus sur deux lignes, la mesure a de la place.<br>
+  <b>Déséquilibre :</b> impossible, rien n'est jamais côte à côte.<br>
+  <b>Ce que ça ne règle pas :</b> on ne compare toujours pas les deux offres d'un coup d'œil. Si ça t'est égal, c'est la proposition la plus sûre.
+</p>
+
+<section class="offre-s">
+  <div class="wrap">
+
+    <div class="o-head">
+      <p class="o-kicker">L'offre</p>
+      <p class="o-statement">Deux façons de travailler ensemble</p>
+    </div>
+
+    <div class="corps">
+
+      <div class="bloc">
+        <h3 class="b-nom">L'Origination</h3>
+        <p class="b-lead">Nous détectons en continu les dirigeants de votre périmètre qui préparent leur sortie, et nous vous livrons les dossiers d'approche au fil de l'eau.</p>
+        <p class="b-prix">À partir de 2 000 € HT / mois, selon le périmètre convenu.</p>
+        <p class="b-cond">Engagement 3 mois, puis reconduction mensuelle.</p>
+        <p class="b-corps">Le périmètre est arrêté avec vous à l'appel : région, typologie d'entreprises, ce que vous voulez voir détecté. Nous mesurons ce qu'il contient et nous vous l'annonçons au devis, avant tout engagement. Un mois qui passe sous ce volume n'est pas facturé.</p>
+        <ul class="b-liste">
+          <li>Un périmètre défini avec vous, pas un découpage imposé</li>
+          <li>Des dossiers d'approche chaque mois, à hauteur de ce que votre périmètre contient</li>
+          <li>Vérification humaine avant chaque livraison, taux d'écart publié</li>
+          <li>Information des personnes, registre d'opposition et opt-out pris en charge</li>
+          <li>Un seul cabinet servi sur votre périmètre, quel que soit l'usage</li>
+        </ul>
+      </div>
+
+      <div class="bloc">
+        <h3 class="b-nom">Le mandat de recherche</h3>
+        <p class="b-lead">Quand un mandat de recherche arrive sur votre bureau, nous l'alimentons à la mission : vos critères, une shortlist de cibles vérifiées sous 7 jours.</p>
+        <p class="b-prix">3 500 € HT par mission, à la livraison.</p>
+        <p class="b-cond">Hors périmètres déjà sous exclusivité.</p>
+      </div>
+
+      <div class="o-def">
+        <span class="o-def-k">Un périmètre</span>
+        <p class="o-def-t">Un périmètre, c'est une région et une typologie d'entreprises, arrêtées avec vous à l'appel et inscrites au devis. Sur ce périmètre, vous êtes seul servi tant que le contrat court. Un second périmètre reste possible.</p>
+      </div>
+
+      <p class="o-pied"><b>Pas de commission sur la transaction, jamais.</b> Notre rémunération ne dépend ni du closing, ni du prix de cession.</p>
+
+    </div>
+  </div>
+</section>
+
+</body>
+</html>

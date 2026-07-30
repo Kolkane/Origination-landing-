@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Imbrin, C2, l'offre en deux lignes pleine largeur</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@300;400;500&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0a0a0a; --txt:#f4f2ef; --txt-2:#b9b6b2; --txt-3:#83807c;
+  --line:rgba(255,255,255,.12); --line-soft:rgba(255,255,255,.06);
+  --wine:#8e2438; --wine-lift:#b32e46;
+  --serif:"Instrument Serif",Georgia,serif;
+  --sans:"Geist",-apple-system,sans-serif;
+  --mono:"Geist Mono",ui-monospace,monospace;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--txt);font-family:var(--sans);font-weight:300;-webkit-font-smoothing:antialiased}
+.note-maquette{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--txt-3);padding:20px clamp(22px,4.4vw,76px);border-bottom:1px solid var(--line-soft);line-height:1.8}
+.note-maquette b{color:var(--wine-lift);font-weight:400}
+.wrap{max-width:1440px;margin:0 auto;padding:0 clamp(22px,4.4vw,76px)}
+
+/* ============================================================
+   C2 · deux LIGNES pleine largeur, pas deux colonnes. Chaque
+   offre occupe toute la largeur, donc rien ne peut se retrouver
+   à côté d'un vide : le déséquilibre de C1 est structurellement
+   impossible. Le prix tient une colonne étroite à droite.
+   ============================================================ */
+.offre-l{padding:clamp(80px,9vw,124px) 0;border-top:1px solid var(--line-soft)}
+
+.o-head{display:flex;justify-content:space-between;align-items:baseline;gap:40px;flex-wrap:wrap;margin-bottom:clamp(40px,5vw,64px)}
+.o-kicker{font-family:var(--mono);font-size:10.5px;letter-spacing:.28em;text-transform:uppercase;color:var(--txt-3);margin:0;flex:none}
+.o-statement{font-family:var(--serif);font-weight:400;font-size:clamp(23px,2.85vw,36px);line-height:1.15;letter-spacing:-.01em;margin:0;text-align:right;flex:1 1 auto}
+
+/* une offre = une ligne. Haut de ligne en deux colonnes, détails dessous. */
+.ligne{padding:clamp(30px,3.4vw,46px) 0 clamp(34px,4vw,54px);border-top:1px solid var(--line)}
+.ligne:last-of-type{border-bottom:1px solid var(--line)}
+.l-haut{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,320px);gap:clamp(28px,5vw,72px);align-items:start}
+
+.l-nom{font-family:var(--serif);font-weight:400;font-size:clamp(22px,2.3vw,30px);line-height:1.14;margin:0 0 12px}
+.l-lead{font-size:15px;line-height:1.65;color:var(--txt-2);margin:0;max-width:52ch}
+
+/* le prix : lisible, pas hurlant. Serif à 30px, pas 52. */
+.l-prix{padding-left:clamp(20px,2.2vw,32px);border-left:1px solid var(--line-soft)}
+.l-lbl{font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--txt-3);margin:0 0 6px}
+.l-chiffre{font-family:var(--serif);font-weight:400;font-size:clamp(26px,2.4vw,31px);line-height:1.1;letter-spacing:-.01em;margin:0}
+.l-suffixe{font-size:13.5px;line-height:1.55;color:var(--txt-2);margin:8px 0 0}
+.l-cond{font-family:var(--mono);font-size:10px;letter-spacing:.11em;text-transform:uppercase;color:var(--txt-3);line-height:1.9;margin:14px 0 0}
+
+/* les détails de l'origination courent sous la ligne, pleine largeur */
+.l-corps{font-size:14.5px;line-height:1.7;color:var(--txt-2);margin:clamp(26px,3vw,36px) 0 0;max-width:78ch}
+.l-liste{list-style:none;display:grid;grid-template-columns:1fr 1fr;column-gap:clamp(32px,5vw,72px);margin:clamp(24px,2.6vw,32px) 0 0;padding:0;border-top:1px solid var(--line-soft)}
+.l-liste li{padding:12px 0;border-bottom:1px solid var(--line-soft);font-size:14px;line-height:1.6;color:var(--txt-2)}
+
+.o-def{display:grid;grid-template-columns:minmax(0,.28fr) minmax(0,.72fr);gap:clamp(24px,4vw,56px);align-items:baseline;padding:clamp(28px,3vw,40px) 0;border-bottom:1px solid var(--line-soft)}
+.o-def-k{font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--txt-3);margin:0}
+.o-def-t{font-size:14.5px;line-height:1.7;color:var(--txt-2);margin:0;max-width:72ch}
+.o-pied{padding-top:clamp(24px,2.6vw,32px);font-size:14.5px;line-height:1.7;color:var(--txt-2);margin:0;max-width:80ch}
+.o-pied b{color:var(--txt);font-weight:500}
+
+@media(max-width:900px){
+  .o-statement{text-align:left}
+  .l-haut{grid-template-columns:minmax(0,1fr);gap:26px}
+  .l-prix{padding-left:0;border-left:none;padding-top:22px;border-top:1px solid var(--line-soft)}
+  .l-liste{grid-template-columns:1fr}
+  .o-def{grid-template-columns:1fr;gap:12px}
+}
+</style>
+</head>
+<body>
+
+<p class="note-maquette">
+  C2 · L'offre · deux lignes pleine largeur<br>
+  <b>Contre C1 :</b> une offre = une ligne entière. Rien ne se retrouve jamais à côté d'un vide, le déséquilibre devient structurellement impossible.<br>
+  <b>Prix :</b> serif 31px et non 52. Lisible, en colonne dédiée, mais il ne domine plus la section.<br>
+  <b>Les détails de l'origination</b> courent sous sa ligne, pleine largeur, en deux colonnes. Le mandat n'a pas de détails et personne ne le remarque, puisqu'il n'y a pas de voisin pour le comparer en hauteur.
+</p>
+
+<section class="offre-l">
+  <div class="wrap">
+
+    <div class="o-head">
+      <p class="o-kicker">L'offre</p>
+      <p class="o-statement">Deux façons de travailler ensemble</p>
+    </div>
+
+    <div class="ligne">
+      <div class="l-haut">
+        <div>
+          <h3 class="l-nom">L'Origination</h3>
+          <p class="l-lead">Nous détectons en continu les dirigeants de votre périmètre qui préparent leur sortie, et nous vous livrons les dossiers d'approche au fil de l'eau.</p>
+        </div>
+        <div class="l-prix">
+          <p class="l-lbl">À partir de</p>
+          <p class="l-chiffre">2 000 € HT</p>
+          <p class="l-suffixe">par mois, selon le périmètre convenu.</p>
+          <p class="l-cond">Engagement 3 mois, puis reconduction mensuelle</p>
+        </div>
+      </div>
+
+      <p class="l-corps">Le périmètre est arrêté avec vous à l'appel : région, typologie d'entreprises, ce que vous voulez voir détecté. Nous mesurons ce qu'il contient et nous vous l'annonçons au devis, avant tout engagement. Un mois qui passe sous ce volume n'est pas facturé.</p>
+
+      <ul class="l-liste">
+        <li>Un périmètre défini avec vous, pas un découpage imposé</li>
+        <li>Information des personnes, registre d'opposition et opt-out pris en charge</li>
+        <li>Des dossiers d'approche chaque mois, à hauteur de ce que votre périmètre contient</li>
+        <li>Un seul cabinet servi sur votre périmètre, quel que soit l'usage</li>
+        <li>Vérification humaine avant chaque livraison, taux d'écart publié</li>
+      </ul>
+    </div>
+
+    <div class="ligne">
+      <div class="l-haut">
+        <div>
+          <h3 class="l-nom">Le mandat de recherche</h3>
+          <p class="l-lead">Quand un mandat de recherche arrive sur votre bureau, nous l'alimentons à la mission : vos critères, une shortlist de cibles vérifiées sous 7 jours.</p>
+        </div>
+        <div class="l-prix">
+          <p class="l-lbl">Par mission</p>
+          <p class="l-chiffre">3 500 € HT</p>
+          <p class="l-suffixe">à la livraison.</p>
+          <p class="l-cond">Hors périmètres déjà sous exclusivité</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="o-def">
+      <p class="o-def-k">Un périmètre</p>
+      <p class="o-def-t">Un périmètre, c'est une région et une typologie d'entreprises, arrêtées avec vous à l'appel et inscrites au devis. Sur ce périmètre, vous êtes seul servi tant que le contrat court. Un second périmètre reste possible.</p>
+    </div>
+
+    <p class="o-pied"><b>Pas de commission sur la transaction, jamais.</b> Notre rémunération ne dépend ni du closing, ni du prix de cession.</p>
+
+  </div>
+</section>
+
+</body>
+</html>
