@@ -9,7 +9,6 @@ import Hero from "@/components/Hero";
 import Mesure from "@/components/Mesure";
 import Methode from "@/components/Methode";
 import Offre from "@/components/Offre";
-import Produit from "@/components/Produit";
 import Reveal from "@/components/Reveal";
 
 export default function Home() {
@@ -20,7 +19,6 @@ export default function Home() {
       <Constat />
       <BandeChiffres />
       <Methode />
-      <Produit />
       <Offre />
       <Engagements />
       <Mesure />
