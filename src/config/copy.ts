@@ -244,8 +244,10 @@ export const copy = {
         nom: "L’Origination",
         ancre: "origination",
         lead: "Nous détectons en continu les dirigeants de votre périmètre qui préparent leur sortie, et nous vous livrons les dossiers d’approche au fil de l’eau.",
-        prix: `À partir de ${nb(brand.PRICING.origination.prixPlancher)}, selon le périmètre convenu.`,
-        prix2: `Engagement ${nb(brand.PRICING.origination.engagement)}, puis reconduction mensuelle.`,
+        prixLbl: "À partir de",
+        prix: nb(brand.PRICING.origination.prixPlancher),
+        prixSuffixe: `${brand.PRICING.origination.periode}, selon le périmètre convenu.`,
+        prixCond: `Engagement ${nb(brand.PRICING.origination.engagement)}, puis reconduction mensuelle`,
         corps:
           "Le périmètre est arrêté avec vous à l’appel : région, typologie d’entreprises, ce que vous voulez voir détecté. Nous mesurons ce qu’il contient et nous vous l’annonçons au devis, avant tout engagement. Un mois qui passe sous ce volume n’est pas facturé.",
         points: [
@@ -259,20 +261,25 @@ export const copy = {
       {
         nom: "Le mandat de recherche",
         lead: `Quand un mandat de recherche arrive sur votre bureau, nous l’alimentons à la mission : vos critères, une shortlist de cibles vérifiées sous ${nb(brand.PRICING.mandat.delai)}.`,
-        prix: `${nb(brand.PRICING.mandat.prix)} par mission, à la livraison.`,
-        prix2: "Hors périmètres déjà sous exclusivité.",
+        prixLbl: "Par mission",
+        prix: nb(brand.PRICING.mandat.prix),
+        prixSuffixe: "à la livraison.",
+        prixCond: "Hors périmètres déjà sous exclusivité",
       },
     ] as {
       nom: string;
       ancre?: string;
       lead: string;
+      prixLbl: string;
       prix: string;
-      prix2?: string;
+      prixSuffixe: string;
+      prixCond: string;
       corps?: string;
       points?: string[];
     }[],
     /* sans définition écrite au devis, l'exclusivité est invérifiable
-       pour un acheteur : le bloc ci-dessous est ce qui la rend opposable */
+       pour un acheteur : le bloc ci-dessous est ce qui la rend opposable.
+       Il porte sur les DEUX offres, donc pleine largeur sous les panneaux. */
     definition: {
       k: "Un périmètre",
       texte:

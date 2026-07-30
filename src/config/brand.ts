@@ -20,7 +20,8 @@ export const brand = {
      plancher, pas une grille. */
   PRICING: {
     origination: {
-      prixPlancher: "2 000 € HT / mois",
+      prixPlancher: "2 000 € HT",         // affiché en grand, la période suit
+      periode: "par mois",
       engagement: "3 mois",               // puis reconduction mensuelle
     },
     mandat: {
