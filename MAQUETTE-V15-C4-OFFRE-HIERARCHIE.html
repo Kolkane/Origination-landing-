@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Imbrin, C4, l'offre, hiérarchie et appel</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@300;400;500&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0a0a0a; --txt:#f4f2ef; --txt-2:#b9b6b2; --txt-3:#83807c;
+  --line:rgba(255,255,255,.12); --line-soft:rgba(255,255,255,.06);
+  --wine:#8e2438; --wine-lift:#b32e46;
+  --serif:"Instrument Serif",Georgia,serif;
+  --sans:"Geist",-apple-system,sans-serif;
+  --mono:"Geist Mono",ui-monospace,monospace;
+  --ease:cubic-bezier(.22,.75,.25,1);
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--txt);font-family:var(--sans);font-weight:300;-webkit-font-smoothing:antialiased}
+.note-maquette{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--txt-3);padding:20px clamp(22px,4.4vw,76px);border-bottom:1px solid var(--line-soft);line-height:1.8}
+.note-maquette b{color:var(--wine-lift);font-weight:400}
+.wrap{max-width:1440px;margin:0 auto;padding:0 clamp(22px,4.4vw,76px)}
+
+/* ============================================================
+   C4 · trois niveaux nets au lieu de deux niveaux confondus.
+   1. le titre de section, très grand, À GAUCHE
+   2. le PRIX, seul serif de chaque ligne, ancre du regard
+   3. tout le reste, mono ou Geist, petit
+   Le nom de l'offre passe en mono capitales : il ne peut plus
+   être confondu avec le titre, ce n'est plus la même fonte.
+   ============================================================ */
+.offre-h{padding:clamp(84px,9vw,130px) 0;border-top:1px solid var(--line-soft)}
+
+/* titre à GAUCHE : la méthode juste au-dessus a le sien à droite,
+   deux en-têtes identiques à la suite, c'était la redite */
+.h-kicker{font-family:var(--mono);font-size:10.5px;letter-spacing:.28em;text-transform:uppercase;color:var(--txt-3);margin:0 0 20px}
+.h-titre{font-family:var(--serif);font-weight:400;font-size:clamp(38px,5.2vw,64px);line-height:1.03;letter-spacing:-.02em;margin:0;max-width:14ch}
+.h-lead{font-size:16px;line-height:1.6;color:var(--txt-2);margin:22px 0 0;max-width:56ch}
+
+.lignes{margin-top:clamp(48px,6vw,80px)}
+
+/* une offre = une ligne de registre : numéro, nom en capitales, prix */
+.ligne{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,300px);gap:clamp(28px,5vw,72px);
+  align-items:start;padding:clamp(30px,3.4vw,44px) 0;border-top:1px solid var(--line)}
+.l-tete{display:flex;align-items:baseline;gap:16px;margin-bottom:14px}
+.l-num{font-family:var(--serif);font-size:clamp(22px,2.2vw,30px);line-height:1;color:var(--txt-3)}
+.l-nom{font-family:var(--mono);font-weight:500;font-size:14px;letter-spacing:.2em;text-transform:uppercase;color:var(--txt);margin:0}
+.l-lead{font-size:15px;line-height:1.65;color:var(--txt-2);margin:0;max-width:54ch}
+
+/* le prix est le seul serif de la ligne : c'est lui qu'on voit */
+.l-prix{text-align:right}
+.l-lbl{font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--txt-3);margin:0 0 8px}
+.l-chiffre{font-family:var(--serif);font-weight:400;font-size:clamp(30px,3.1vw,42px);line-height:1;letter-spacing:-.02em;margin:0}
+.l-suffixe{font-size:13.5px;line-height:1.55;color:var(--txt-2);margin:10px 0 0}
+.l-cond{font-family:var(--mono);font-size:10px;letter-spacing:.11em;text-transform:uppercase;color:var(--txt-3);line-height:1.9;margin:14px 0 0}
+
+.l-detail{grid-column:1 / -1;margin-top:clamp(24px,2.8vw,34px)}
+.l-corps{font-size:14.5px;line-height:1.7;color:var(--txt-2);margin:0;max-width:78ch}
+.l-liste{list-style:none;display:grid;grid-template-rows:repeat(3,auto);grid-auto-flow:column;grid-auto-columns:1fr;
+  column-gap:clamp(32px,5vw,72px);margin:clamp(22px,2.4vw,30px) 0 0;padding:0;border-top:1px solid var(--line-soft)}
+.l-liste li{padding:12px 0;border-bottom:1px solid var(--line-soft);font-size:14px;line-height:1.6;color:var(--txt-2)}
+
+.o-def{display:grid;grid-template-columns:minmax(0,.28fr) minmax(0,.72fr);gap:clamp(24px,4vw,56px);align-items:baseline;
+  padding:clamp(28px,3vw,40px) 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line-soft)}
+.o-def-k{font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--txt-3);margin:0}
+.o-def-t{font-size:14.5px;line-height:1.7;color:var(--txt-2);margin:0;max-width:72ch}
+
+/* la sortie de section : après les prix, on ne laisse pas le lecteur
+   sans marche suivante. C'est ce qui manquait le plus. */
+.o-fin{display:flex;justify-content:space-between;align-items:end;gap:40px;flex-wrap:wrap;padding-top:clamp(28px,3vw,40px)}
+.o-pied{font-size:14.5px;line-height:1.7;color:var(--txt-2);margin:0;max-width:56ch}
+.o-pied b{color:var(--txt);font-weight:500}
+.cta{display:inline-block;color:var(--txt);text-decoration:none;font-family:var(--mono);font-size:12px;letter-spacing:.2em;
+  text-transform:uppercase;border-bottom:1px solid var(--line);padding-bottom:6px;transition:border-color .25s,letter-spacing .25s;white-space:nowrap}
+.cta:hover{border-color:var(--wine);letter-spacing:.24em}
+
+@media(max-width:900px){
+  .ligne{grid-template-columns:minmax(0,1fr);gap:24px}
+  .l-prix{text-align:left;padding-top:20px;border-top:1px solid var(--line-soft)}
+  .l-liste{grid-template-rows:none;grid-auto-flow:row;grid-auto-columns:auto;grid-template-columns:minmax(0,1fr)}
+  .o-def{grid-template-columns:1fr;gap:12px}
+  .o-fin{flex-direction:column;align-items:flex-start;gap:26px}
+}
+</style>
+</head>
+<body>
+
+<p class="note-maquette">
+  C4 · L'offre · hiérarchie et appel<br>
+  <b>Le flou vient de 6 pixels :</b> le titre de section faisait 36px et les noms d'offres 30px, même fonte, même graisse, même couleur. Deux niveaux séparés par 17 %, l'œil ne les distingue pas. Ici : titre 64px, prix 42px, noms en mono capitales 14px. Trois niveaux, trois traitements.<br>
+  <b>Le nom d'offre change de fonte :</b> mono capitales au lieu de serif. Il ne PEUT plus être confondu avec le titre.<br>
+  <b>Le prix devient le seul serif de sa ligne</b>, donc l'ancre du regard. Dans une section de prix, c'est ce qu'on veut voir.<br>
+  <b>Le titre repasse à gauche :</b> la méthode juste au-dessus a le sien à droite. Deux en-têtes identiques à la suite, c'était ta redite.<br>
+  <b>Ce qui manquait le plus :</b> aucun appel à l'action. On lisait les prix et on n'avait nulle part où aller. Un « Réserver un échange » ferme la section.<br>
+  <b>À VALIDER :</b> la phrase d'accroche sous le titre est une copy NOUVELLE. Dis-moi si tu la gardes, la réécris, ou la supprimes.
+</p>
+
+<section class="offre-h">
+  <div class="wrap">
+
+    <p class="h-kicker">L'offre</p>
+    <h2 class="h-titre">Deux façons de travailler ensemble</h2>
+    <p class="h-lead">Un contrat mensuel au fil de l'eau, ou une mission ponctuelle. Dans les deux cas, le prix est arrêté au devis, avant tout engagement.</p>
+
+    <div class="lignes">
+
+      <div class="ligne">
+        <div>
+          <div class="l-tete">
+            <span class="l-num">01</span>
+            <h3 class="l-nom">L'Origination</h3>
+          </div>
+          <p class="l-lead">Nous détectons en continu les dirigeants de votre périmètre qui préparent leur sortie, et nous vous livrons les dossiers d'approche au fil de l'eau.</p>
+        </div>
+
+        <div class="l-prix">
+          <p class="l-lbl">À partir de</p>
+          <p class="l-chiffre">2 000 € HT</p>
+          <p class="l-suffixe">par mois, selon le périmètre convenu.</p>
+          <p class="l-cond">Engagement 3 mois, puis reconduction mensuelle</p>
+        </div>
+
+        <div class="l-detail">
+          <p class="l-corps">Le périmètre est arrêté avec vous à l'appel : région, typologie d'entreprises, ce que vous voulez voir détecté. Nous mesurons ce qu'il contient et nous vous l'annonçons au devis, avant tout engagement. Un mois qui passe sous ce volume n'est pas facturé.</p>
+          <ul class="l-liste">
+            <li>Un périmètre défini avec vous, pas un découpage imposé</li>
+            <li>Des dossiers d'approche chaque mois, à hauteur de ce que votre périmètre contient</li>
+            <li>Vérification humaine avant chaque livraison, taux d'écart publié</li>
+            <li>Information des personnes, registre d'opposition et opt-out pris en charge</li>
+            <li>Un seul cabinet servi sur votre périmètre, quel que soit l'usage</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="ligne">
+        <div>
+          <div class="l-tete">
+            <span class="l-num">02</span>
+            <h3 class="l-nom">Le mandat de recherche</h3>
+          </div>
+          <p class="l-lead">Quand un mandat de recherche arrive sur votre bureau, nous l'alimentons à la mission : vos critères, une shortlist de cibles vérifiées sous 7 jours.</p>
+        </div>
+
+        <div class="l-prix">
+          <p class="l-lbl">Par mission</p>
+          <p class="l-chiffre">3 500 € HT</p>
+          <p class="l-suffixe">à la livraison.</p>
+          <p class="l-cond">Hors périmètres déjà sous exclusivité</p>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="o-def">
+      <p class="o-def-k">Un périmètre</p>
+      <p class="o-def-t">Un périmètre, c'est une région et une typologie d'entreprises, arrêtées avec vous à l'appel et inscrites au devis. Sur ce périmètre, vous êtes seul servi tant que le contrat court. Un second périmètre reste possible.</p>
+    </div>
+
+    <div class="o-fin">
+      <p class="o-pied"><b>Pas de commission sur la transaction, jamais.</b> Notre rémunération ne dépend ni du closing, ni du prix de cession.</p>
+      <a class="cta" href="#">Réserver un échange</a>
+    </div>
+
+  </div>
+</section>
+
+</body>
+</html>
