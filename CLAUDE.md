@@ -43,6 +43,13 @@ trouvé sur vous". Codes attendus : document financier imprimé, pas SaaS IA.
   hover). Aucune autre couleur.
   Amendement (arbitrage Vincent, v7-2) : le tertiaire était #7A7774 dans MAQUETTE-V7.html,
   éclairci en #83807C pour le contraste AA — la maquette reste archive non modifiée.
+  Amendement (arbitrage Vincent, v15) : --wine-lift #B32E46 est la variante
+  LISIBLE du vin, pas une seconde couleur. Le vin plein sur l'encre ne donne
+  que 2,3:1, il échoue même le seuil grand texte ; le lift donne 3,2:1 et
+  passe AA en grand texte. Même précédent que le tertiaire ci-dessus.
+  Il ne sert QU'AU TEXTE, en grande taille, sur fond sombre. Jamais en
+  remplissage, jamais sur un filet, jamais sur papier : les aplats et les
+  filets restent en #8E2438, et sur papier le vin plein suffit (6,8:1).
 - Typo : Instrument Serif (titres, poids 400, italique autorisée) · Geist (corps) ·
   Geist Mono (labels uppercase, tracking large). Via next/font/google. Rien d'autre.
 - Motion : UNE séquence d'apparition au chargement (fade + translateY, délais en cascade),

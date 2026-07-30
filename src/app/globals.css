@@ -1936,11 +1936,19 @@ footer a:hover {
 }
 
 @media (max-width: 720px) {
-  .s1,
-  .s2,
-  .s3,
-  .s4 {
+  /* le resserrement doit survivre au téléphone : à largeur égale ce ne
+     serait plus un entonnoir, juste quatre barres empilées */
+  .s1 {
     width: 100%;
+  }
+  .s2 {
+    width: 88%;
+  }
+  .s3 {
+    width: 74%;
+  }
+  .s4 {
+    width: 58%;
   }
   .step {
     min-height: 0;
