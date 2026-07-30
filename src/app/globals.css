@@ -1764,10 +1764,14 @@ footer a:hover {
   width: 34%;
 }
 
-/* la prise. Aplat, pas dégradé : le vin est un signal, pas un remplissage */
+/* la prise sort de la boîte : ni fond ni cadre, elle se lit sur l'encre de
+   la section. Il ne reste que le filet vin à gauche. Le bord transparent
+   conserve la géométrie, donc le 45 reste aligné sur les trois chiffres
+   au-dessus, et la largeur libérée évite que le libellé se casse. */
 .step.catch {
-  background: rgba(142, 36, 56, 0.14);
-  border-color: var(--wine);
+  width: 100%;
+  background: none;
+  border-color: transparent;
 }
 .step.catch .step-n {
   color: var(--wine-lift);
