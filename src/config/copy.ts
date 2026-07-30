@@ -350,7 +350,7 @@ export const copy = {
       {
         question: "Prenez-vous une commission sur les opérations ?",
         reponse:
-          "Non. Jamais de commission sur la transaction, ni sur le prix de cession. Vous payez l’abonnement, et une mission de recherche quand vous en confiez une. Rien d’autre.",
+          "Non. Jamais de commission sur la transaction, ni sur le prix de cession. Vous réglez le contrat mensuel, et une mission de recherche quand vous en confiez une. Rien d’autre.",
       },
       {
         question:
