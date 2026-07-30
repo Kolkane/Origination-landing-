@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Imbrin, B3, la mesure en asymétrie</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@300;400;500&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* tokens du repo */
+:root{
+  --bg:#0a0a0a;
+  --txt:#f4f2ef; --txt-2:#b9b6b2; --txt-3:#83807c;
+  --line:rgba(255,255,255,.12); --line-soft:rgba(255,255,255,.06);
+  --wine:#8e2438; --wine-lift:#b32e46;
+  --serif:"Instrument Serif",Georgia,serif;
+  --sans:"Geist",-apple-system,sans-serif;
+  --mono:"Geist Mono",ui-monospace,monospace;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--txt);font-family:var(--sans);font-weight:300;-webkit-font-smoothing:antialiased}
+.note-maquette{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--txt-3);padding:20px clamp(22px,4.4vw,76px);border-bottom:1px solid var(--line-soft);line-height:1.8}
+.note-maquette b{color:var(--wine-lift);font-weight:400}
+
+.wrap{max-width:1440px;margin:0 auto;padding:0 clamp(22px,4.4vw,76px)}
+
+/* ============================================================
+   B3 · la mesure. Asymétrie franche : un repère chiffré très
+   grand à gauche, deux énoncés en colonne étroite à droite,
+   une colonne VIDE entre les deux. Le chiffre ne s'aligne pas
+   sur le haut du texte, il descend.
+   ============================================================ */
+.mes-b{padding:clamp(96px,12vw,160px) 0;border-top:1px solid var(--line-soft)}
+.m-kicker{font-family:var(--mono);font-size:10.5px;letter-spacing:.28em;text-transform:uppercase;color:var(--txt-3);margin:0 0 18px}
+.m-statement{font-family:var(--serif);font-weight:400;font-size:clamp(26px,3.4vw,40px);line-height:1.15;letter-spacing:-.01em;margin:0 0 clamp(56px,7vw,96px);max-width:22ch}
+
+.grid12{display:grid;grid-template-columns:repeat(12,1fr);column-gap:clamp(18px,2.2vw,40px);align-items:start}
+
+/* le repère : 4 colonnes, décalé vers le bas, en wine-lift */
+.repere{grid-column:1 / 5;padding-top:clamp(40px,7vw,110px)}
+.repere-n{font-family:var(--serif);font-weight:400;font-size:clamp(78px,13vw,190px);line-height:.82;letter-spacing:-.03em;color:var(--wine-lift);margin:0}
+.repere-l{font-family:var(--mono);font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--txt-3);margin:22px 0 0;line-height:1.8;max-width:18ch}
+
+/* colonne 5 laissée VIDE, c'est le vide qui fait l'asymétrie */
+.enonces{grid-column:7 / 12}
+.en{padding:clamp(26px,3vw,38px) 0;border-top:1px solid var(--line-soft)}
+.en:last-child{border-bottom:1px solid var(--line-soft)}
+.en-t{font-family:var(--serif);font-weight:400;font-size:clamp(19px,1.8vw,25px);line-height:1.2;margin:0 0 12px}
+.en-p{font-size:14.5px;line-height:1.7;color:var(--txt-2);margin:0;max-width:48ch}
+
+@media(max-width:1080px){
+  .repere{grid-column:1 / 13;padding-top:0}
+  .enonces{grid-column:1 / 13;margin-top:clamp(40px,6vw,60px)}
+  .repere-l{max-width:none}
+}
+</style>
+</head>
+<body>
+
+<p class="note-maquette">
+  B3 · La mesure · asymétrie, grand repère chiffré<br>
+  <b>Ce qui change :</b> deux items plats en colonne de droite → un repère de 190px face à deux énoncés étroits, colonne 5 laissée vide.<br>
+  <b>Pourquoi ce chiffre revient :</b> le ≈ 1/3 s'affichait en gros dans la bande de chiffres, que l'entonnoir a supprimée. La page récupère un repère numérique, et il porte sur notre rigueur au lieu du marché.<br>
+  <b>Vin :</b> le seul chiffre en --wine-lift de la page, justifié par la taille. Aucun filet ni aplat en vin ici.
+</p>
+
+<section class="mes-b">
+  <div class="wrap">
+
+    <p class="m-kicker">La mesure</p>
+    <h2 class="m-statement">Ce que nous mesurons sur nous-mêmes</h2>
+
+    <div class="grid12">
+
+      <div class="repere">
+        <p class="repere-n">&#8776;&nbsp;1/3</p>
+        <p class="repere-l">Chiffre publié depuis l'ouverture</p>
+      </div>
+
+      <div class="enonces">
+        <div class="en">
+          <h3 class="en-t">Taux d'écart à la vérification</h3>
+          <p class="en-p">Environ un tiers des détections sont écartées avant livraison.</p>
+        </div>
+        <div class="en">
+          <h3 class="en-t">Suivi des dossiers livrés</h3>
+          <p class="en-p">Chaque dossier est suivi jusqu'à son issue, cession ou non. Les résultats sont communiqués à nos clients, échecs compris, et publiés ici dès qu'une cohorte complète atteint dix-huit mois.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+</body>
+</html>

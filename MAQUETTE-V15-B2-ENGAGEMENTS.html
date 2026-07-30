@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Imbrin, B2, les engagements en manifeste</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@300;400;500&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* tokens du repo */
+:root{
+  --bg:#0a0a0a; --paper:#ece7df;
+  --ink:#171310; --ink-2:#3a342e; --ink-3:#7a6f63;
+  --line-dark:rgba(0,0,0,.14);
+  --wine:#8e2438;
+  --serif:"Instrument Serif",Georgia,serif;
+  --sans:"Geist",-apple-system,sans-serif;
+  --mono:"Geist Mono",ui-monospace,monospace;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:#f4f2ef;font-family:var(--sans);font-weight:300;-webkit-font-smoothing:antialiased}
+.note-maquette{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#83807c;padding:20px clamp(22px,4.4vw,76px);border-bottom:1px solid rgba(255,255,255,.06);line-height:1.8}
+.note-maquette b{color:#b32e46;font-weight:400}
+
+/* ============================================================
+   B2 · manifeste. Une colonne, pas de grille, pas d'aside.
+   Ça tient par l'ÉCHELLE et le VIDE. Zéro rouge.
+   ============================================================ */
+.commit-b{background:var(--paper);color:var(--ink);padding:clamp(96px,13vw,180px) 0}
+.wrap-n{max-width:1240px;margin:0 auto;padding:0 clamp(22px,4.4vw,76px)}
+
+.c-kicker{font-family:var(--mono);font-size:10.5px;letter-spacing:.28em;text-transform:uppercase;color:var(--ink-3);margin:0 0 clamp(30px,4vw,48px)}
+
+/* la seule typo de la page à l'échelle du hero, avec le hero lui-même */
+.c-statement{font-family:var(--serif);font-weight:400;font-size:clamp(40px,6vw,76px);line-height:1.02;letter-spacing:-.02em;margin:0 0 clamp(64px,9vw,120px);max-width:14ch}
+
+/* quatre lignes pleine largeur. Principe à gauche en serif, explication à
+   droite en Geist. Grand vide entre les deux, c'est ça qui fait le manifeste. */
+.c-line{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.92fr);gap:clamp(24px,6vw,90px);align-items:baseline;padding:clamp(30px,3.6vw,48px) 0;border-top:1px solid var(--line-dark)}
+.c-line:last-child{border-bottom:1px solid var(--line-dark)}
+.c-p{font-family:var(--serif);font-weight:400;font-size:clamp(22px,2.5vw,31px);line-height:1.16;letter-spacing:-.01em;margin:0;max-width:18ch}
+.c-e{font-size:14.5px;line-height:1.7;color:var(--ink-2);margin:0;max-width:44ch}
+
+@media(max-width:860px){
+  .c-line{grid-template-columns:1fr;gap:14px}
+  .c-statement{max-width:18ch}
+}
+</style>
+</head>
+<body>
+
+<p class="note-maquette">
+  B2 · Nos engagements · manifeste, colonne unique<br>
+  <b>Ce qui change :</b> grille 2 colonnes de petites lignes → quatre lignes pleine largeur, titre à l'échelle du hero. Le vide fait le travail.<br>
+  <b>Zéro rouge</b>, comme demandé : la section tient par le blanc et l'échelle. Après la fusion de l'entonnoir, c'est la <b>seule bande claire pleine largeur</b> de la page.<br>
+  <b>Contraste voisin :</b> l'offre au-dessus est dense et chiffrée, la mesure en dessous repasse sur l'encre.
+</p>
+
+<section class="commit-b">
+  <div class="wrap-n">
+
+    <p class="c-kicker">Nos engagements</p>
+    <h2 class="c-statement">Ce que nous ne faisons pas.</h2>
+
+    <div class="c-line">
+      <p class="c-p">Pas de scores prédictifs inventés.</p>
+      <p class="c-e">Des signaux observables, sourcés, datés.</p>
+    </div>
+
+    <div class="c-line">
+      <p class="c-p">Pas de contact du patrimoine privé.</p>
+      <p class="c-e">Le premier contact passe toujours par l'entreprise.</p>
+    </div>
+
+    <div class="c-line">
+      <p class="c-p">Pas de données grises.</p>
+      <p class="c-e">Sources publiques, opt-out définitif honoré, information art. 14 RGPD jointe.</p>
+    </div>
+
+    <div class="c-line">
+      <p class="c-p">Pas de chiffres invérifiables.</p>
+      <p class="c-e">Ce que nous publions, nous le mesurons.</p>
+    </div>
+
+  </div>
+</section>
+
+</body>
+</html>
