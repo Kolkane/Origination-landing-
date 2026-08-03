@@ -530,42 +530,6 @@ footer a:hover {
   background: var(--bg-2);
   border-top: 1px solid var(--line-soft);
 }
-/* 05 · engagements : bande claire, deux colonnes */
-.commit {
-  background: var(--paper);
-  color: #171310;
-  padding: 120px 0;
-}
-.commit .head {
-  max-width: 1080px;
-  margin: 0 auto 56px;
-  padding: 0 40px;
-}
-.commit .kicker {
-  color: #7a6f63;
-}
-.commit .statement {
-  color: #171310;
-}
-.commit .list {
-  max-width: 1080px;
-  margin: 0 auto;
-  padding: 0 40px;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0 56px;
-}
-.commit .not {
-  padding: 26px 0;
-  border-top: 1px solid var(--line-dark);
-  font-size: 14px;
-  color: #3a342e;
-  line-height: 1.7;
-}
-.commit .not b {
-  color: #171310;
-  font-weight: 500;
-}
 /* 06 · fondateur */
 .founder-s {
   padding: 120px 0;
@@ -617,30 +581,14 @@ footer a:hover {
   margin: 0 auto;
 }
 
-@media (max-width: 880px) {
-  .commit .list {
-    grid-template-columns: 1fr;
-    gap: 24px;
-  }
-}
-
 @media (max-width: 760px) {
   .narrow {
     padding: 0 22px;
   }
   .method,
-  .mesure,
   .founder-s,
   .faq-s {
     padding: 80px 0;
-  }
-  .commit {
-    padding: 88px 0;
-  }
-  .commit .head,
-  .commit .list {
-    padding-left: 22px;
-    padding-right: 22px;
   }
 }
 
@@ -668,29 +616,6 @@ footer a:hover {
   align-items: start;
 }
 
-/* colonne de marge : le libellé, le titre, la note. Elle suit le
-   défilement sur les sections longues. */
-.aside {
-  grid-column: 1 / 5;
-  position: sticky;
-  top: clamp(40px, 12vh, 120px);
-}
-.aside .statement {
-  max-width: 17ch;
-  font-size: clamp(23px, 2.15vw, 31px);
-  line-height: 1.22;
-}
-.aside .note {
-  margin-top: 22px;
-  font-size: 13.5px;
-  line-height: 1.75;
-  color: var(--txt-2);
-  max-width: 32ch;
-}
-.main {
-  grid-column: 6 / 13;
-}
-
 /* le trait qui ouvre une section se dessine au reveal */
 .rule {
   height: 1px;
@@ -712,19 +637,6 @@ footer a:hover {
   clip-path: inset(0 0 -10% 0);
 }
 
-/* 05 · engagements : deux colonnes sur la largeur pleine */
-.commit .head,
-.commit .list {
-  max-width: 1440px;
-  padding: 0 clamp(22px, 4.4vw, 76px);
-}
-.commit .list {
-  column-gap: clamp(40px, 5vw, 88px);
-}
-.commit .not {
-  padding: clamp(22px, 2.2vw, 30px) 0;
-  font-size: 14.5px;
-}
 
 /* 07 · faq : intitulé en marge, questions à droite */
 .faq-s .faq {
@@ -773,42 +685,6 @@ footer a:hover {
   }
 }
 
-/* sous 1080px, la marge de section repasse au-dessus du contenu */
-@media (max-width: 1080px) {
-  .aside {
-    grid-column: 1 / 13;
-    position: static;
-    margin-bottom: clamp(28px, 4vw, 44px);
-  }
-  .aside .statement {
-    max-width: 22ch;
-  }
-  .aside .note {
-    max-width: 60ch;
-  }
-  .main {
-    grid-column: 1 / 13;
-  }
-}
-
-
-/* bloc de mesure : gabarit de section standard, liste .not sur filets */
-.mesure {
-  padding: 120px 0;
-  border-top: 1px solid var(--line-soft);
-}
-.mesure .nots {
-  margin-top: 0;
-}
-.mesure .not {
-  font-size: 14.5px;
-  max-width: 62ch;
-  padding: clamp(22px, 2.2vw, 30px) 0;
-}
-.mesure .not b {
-  display: inline-block;
-  margin-bottom: 6px;
-}
 
 /* deux appels dans le hero : le second est un lien interne, il pèse moins */
 .cta-row {
@@ -2093,4 +1969,152 @@ footer a:hover {
 }
 .faq .a {
   max-width: 72ch;
+}
+
+/* ============================================================
+   v15 · B2, les engagements en manifeste.
+   Portée de MAQUETTE-V15-B2-ENGAGEMENTS.html.
+   Colonne unique, quatre lignes pleine largeur, et le statement
+   à l'échelle du hero : c'est le seul autre endroit de la page à
+   cette taille, c'est ce qui en fait un événement.
+   Zéro rouge : la section tient par le blanc et l'échelle.
+   Après la fusion de l'entonnoir, c'est la seule bande claire
+   pleine largeur du site, donc rien ne peut l'annuler.
+   ============================================================ */
+
+.commit {
+  background: var(--paper);
+  color: var(--ink);
+  padding: clamp(96px, 13vw, 180px) 0;
+}
+.commit .wrap {
+  max-width: 1240px;
+}
+.c-kicker {
+  color: var(--ink-3);
+  margin-bottom: clamp(30px, 4vw, 48px);
+}
+.c-statement {
+  font-family: var(--font-instrument), serif;
+  font-weight: 400;
+  font-size: clamp(40px, 6vw, 76px);
+  line-height: 1.02;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  max-width: 14ch;
+  margin-bottom: clamp(64px, 9vw, 120px);
+}
+/* principe à gauche en serif, explication à droite en Geist,
+   grand vide entre les deux : c'est le vide qui fait le manifeste */
+.c-ligne {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 0.92fr);
+  gap: clamp(24px, 6vw, 90px);
+  align-items: baseline;
+  padding: clamp(30px, 3.6vw, 48px) 0;
+  border-top: 1px solid var(--ink-line);
+}
+.c-ligne:last-child {
+  border-bottom: 1px solid var(--ink-line);
+}
+.c-p {
+  font-family: var(--font-instrument), serif;
+  font-weight: 400;
+  font-size: clamp(22px, 2.5vw, 31px);
+  line-height: 1.16;
+  letter-spacing: -0.01em;
+  max-width: 18ch;
+}
+.c-e {
+  font-size: 14.5px;
+  line-height: 1.7;
+  color: var(--ink-2);
+  max-width: 44ch;
+}
+
+/* ============================================================
+   v15 · B3, la mesure en asymétrie.
+   Portée de MAQUETTE-V15-B3-MESURE.html.
+   Le repère tient les colonnes 1 à 4 et descend, les énoncés les
+   colonnes 7 à 12 : la colonne du milieu reste vide, c'est elle
+   qui fait l'asymétrie.
+   Couleur : le chiffre en encre claire, le vin sur le seul signe
+   d'approximation. Le repère ne doit pas devenir la plus grande
+   tache rouge du site.
+   ============================================================ */
+
+.mesure {
+  padding: clamp(96px, 12vw, 160px) 0;
+  border-top: 1px solid var(--line-soft);
+}
+.mes-kicker {
+  margin-bottom: 18px;
+}
+.mes-statement {
+  font-family: var(--font-instrument), serif;
+  font-weight: 400;
+  font-size: clamp(26px, 3.4vw, 40px);
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  max-width: 22ch;
+  margin-bottom: clamp(56px, 7vw, 96px);
+}
+.repere {
+  grid-column: 1 / 5;
+  padding-top: clamp(40px, 7vw, 110px);
+}
+.repere-n {
+  font-family: var(--font-instrument), serif;
+  font-weight: 400;
+  font-size: clamp(78px, 13vw, 190px);
+  line-height: 0.82;
+  letter-spacing: -0.03em;
+  color: var(--txt);
+}
+.repere-signe {
+  color: var(--wine-lift);
+  margin-right: 0.1em;
+}
+.enonces {
+  grid-column: 7 / 13;
+}
+.en {
+  padding: clamp(26px, 3vw, 38px) 0;
+  border-top: 1px solid var(--line-soft);
+}
+.en:last-child {
+  border-bottom: 1px solid var(--line-soft);
+}
+.en-t {
+  font-family: var(--font-instrument), serif;
+  font-weight: 400;
+  font-size: clamp(19px, 1.8vw, 25px);
+  line-height: 1.2;
+  margin-bottom: 12px;
+}
+.en-p {
+  font-size: 14.5px;
+  line-height: 1.7;
+  color: var(--txt-2);
+  max-width: 48ch;
+}
+
+@media (max-width: 1080px) {
+  .repere {
+    grid-column: 1 / 13;
+    padding-top: 0;
+  }
+  .enonces {
+    grid-column: 1 / 13;
+    margin-top: clamp(40px, 6vw, 60px);
+  }
+}
+@media (max-width: 860px) {
+  .c-ligne {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 14px;
+  }
+  .c-statement {
+    max-width: 18ch;
+  }
 }

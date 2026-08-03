@@ -311,6 +311,10 @@ export const copy = {
   mesure: {
     kicker: "La mesure",
     statement: "Ce que nous mesurons sur nous-mêmes",
+    /* le repère chiffré fait face aux énoncés : signe et valeur sont
+       séparés parce qu'ils ne portent pas la même couleur */
+    repereSigne: brand.PROOF.tauxEcart.signe,
+    repereValeur: brand.PROOF.tauxEcart.valeur,
     items: [
       {
         titre: "Taux d’écart à la vérification",

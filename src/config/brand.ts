@@ -12,7 +12,8 @@ export const brand = {
   },
   SHOW_PRICING: true,
   PROOF: {
-    tauxEcartVerification: "≈ 1/3",       // détections écartées à la vérification — chiffre public
+    /* affiché en deux morceaux : le signe prend l’accent, pas le chiffre */
+    tauxEcart: { signe: "≈", valeur: "1/3" },   // détections écartées à la vérification, chiffre public
     delaiLivraisonBascule: "7 jours",
   },
   /* Deux prix, deux seulement. Toute valeur affichée sur la page part d'ici.
