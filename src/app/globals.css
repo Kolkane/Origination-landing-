@@ -2015,6 +2015,22 @@ footer a:hover {
   max-width: 26ch;
   margin: clamp(36px, 4.4vw, 58px) auto 0;
 }
+/* le corps : une seule phrase, sur une mesure courte pour rester centrée
+   sans devenir un pavé */
+.f-corps {
+  margin: clamp(26px, 3vw, 36px) auto 0;
+  max-width: 48ch;
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--txt-2);
+}
+/* le kicker porte désormais une phrase, pas une étiquette : le suivi
+   large des labels la rendrait illisible, on le resserre ici seulement */
+.founder-s .f-kicker {
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  color: var(--txt-2);
+}
 .f-nom {
   margin-top: clamp(30px, 3.6vw, 46px);
   font-size: 15px;

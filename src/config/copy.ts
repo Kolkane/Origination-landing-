@@ -329,10 +329,13 @@ export const copy = {
      elle disait déjà « un seul interlocuteur », le dire deux fois à la
      même échelle aurait fait doublon. */
   fondateur: {
-    kicker: "Le fondateur",
+    kicker: "Vous parlez au fondateur, pas à un SDR.",
     portraitAlt: "Vincent Fournier, fondateur",
     citation:
       "« Au téléphone comme en livraison, vous avez un seul interlocuteur : celui qui a construit la machine et qui vérifie vos dossiers. »",
+    /* seul endroit du site qui dit l’industrialisation du pipeline */
+    corps:
+      "Le pipeline de détection est industrialisé ; chaque dossier est ensuite vérifié à la main.",
     nom: "Vincent Fournier, fondateur",
     lieu: "entre Paris et Bayonne",
     id: `${brand.ENTITY.raisonSociale} · SIREN ${nb(brand.ENTITY.siren)} · ${brand.ENTITY.ville}`,

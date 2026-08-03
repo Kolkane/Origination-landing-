@@ -71,8 +71,16 @@ trouvé sur vous". Codes attendus : document financier imprimé, pas SaaS IA.
   relais », « SCI · 2023 », « Sans dette » de la maquette v14 ont été retirées :
   une chip qui résume un critère de détection le publie.)
   illustrations d'oiseau en SVG. Si un de ces éléments existe encore dans le code : supprimer.
-- Règle de process : le design se valide sur maquette HTML avec Vincent AVANT le code.
-  Aucune nouvelle section, aucun composant visuel nouveau sans maquette validée.
+- Règle de process (amendée v15, arbitrage Vincent). Deux régimes, à ne pas confondre :
+  1. NOUVELLE section ou NOUVEAU composant visuel : maquette HTML validée avec
+     Vincent AVANT le code, sans exception.
+  2. REFONTE du gabarit d'une section EXISTANTE : peut être codée directement,
+     mais seulement sur décision explicite de Vincent dans le brief. Sans cette
+     décision, la maquette reste la règle.
+  La composition centrée du fondateur et l'enveloppe pleine largeur de la FAQ
+  ont été faites sous le régime 2. Les sections entonnoir, dossier, offre et
+  méthode sont passées par le régime 1, leurs planches sont à la racine
+  (MAQUETTE-V15-*.html) et font foi sur ce qui a été validé.
 
 ## L'offre v13 (définitive, remplace la v12 et la grille régionale)
 Deux lignes, toutes deux dans src/config/brand.ts :

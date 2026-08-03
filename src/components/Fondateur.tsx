@@ -23,6 +23,8 @@ export default function Fondateur() {
 
         <blockquote className="f-citation mask rev">{f.citation}</blockquote>
 
+        <p className="f-corps rev">{f.corps}</p>
+
         <p className="f-nom rev">{f.nom}</p>
         <p className="f-lieu mono rev">{f.lieu}</p>
 
