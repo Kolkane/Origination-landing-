@@ -13,6 +13,7 @@ export default function Footer() {
       <div className="links mono">
         <a href={f.mentions.href}>{f.mentions.label}</a>
         <a href={f.confidentialite.href}>{f.confidentialite.label}</a>
+        <a href={brand.TELEPHONE.lien}>{brand.TELEPHONE.affiche}</a>
         <a href={brand.LINKEDIN_URL} target="_blank" rel="noopener noreferrer">
           {f.linkedin}
         </a>

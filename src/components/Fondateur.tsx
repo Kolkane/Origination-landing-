@@ -9,7 +9,9 @@ export default function Fondateur() {
   return (
     <section className="founder-s" id="fondateur">
       <div className="wrap">
-        <p className="kicker mono rev f-kicker">{f.kicker}</p>
+        {/* le kicker porte une phrase et non une étiquette depuis la v15 :
+            c'est l'énoncé de la section, donc son h2. Rendu inchangé. */}
+        <h2 className="kicker mono rev f-kicker">{f.kicker}</h2>
 
         <div className="f-portrait rev">
           {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -27,6 +29,9 @@ export default function Fondateur() {
 
         <p className="f-nom rev">{f.nom}</p>
         <p className="f-lieu mono rev">{f.lieu}</p>
+        <p className="f-tel mono rev">
+          <a href={brand.TELEPHONE.lien}>{brand.TELEPHONE.affiche}</a>
+        </p>
 
         <div className="f-filet rev" aria-hidden="true" />
 

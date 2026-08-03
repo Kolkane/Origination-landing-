@@ -391,6 +391,7 @@ export const copy = {
     statement: "Nous mesurons votre périmètre avant que vous vous engagiez.",
     lead: "Ce qu’il contient vous est annoncé au devis. Un mois qui passe sous ce volume n’est pas facturé. Trente minutes, avec le fondateur.",
     cta: CTA,
+    telAvant: "ou appelez directement le ",
   },
   carte: {
     ariaCarte: "Carte des régions françaises",

@@ -5,6 +5,9 @@ export const brand = {
   CALENDLY_URL: "https://calendly.com/fnr-vincent-pro/audit-strategique",
   LINKEDIN_URL: "https://www.linkedin.com/in/vincent-fournier-939021170/",
   CONTACT_EMAIL: "contact@imbrin.fr",
+  /* ligne directe du fondateur : affichée à trois endroits seulement,
+     fondateur, footer et appel final. Jamais dans le hero. */
+  TELEPHONE: { affiche: "06 81 28 54 33", lien: "tel:+33681285433", e164: "+33681285433" },
   ENTITY: {
     raisonSociale: "Jungle.Block Solutions",  // la nouvelle entité la remplacera plus tard
     siren: "995 216 090",

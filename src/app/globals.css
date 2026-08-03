@@ -2118,3 +2118,40 @@ footer a:hover {
     max-width: 18ch;
   }
 }
+
+/* le numéro : trois emplacements, trois traitements discrets */
+.f-tel {
+  margin-top: 8px;
+  font-size: 10.5px;
+  letter-spacing: 0.18em;
+  color: var(--txt-3);
+}
+.f-tel a {
+  color: var(--txt-2);
+  text-decoration: none;
+  border-bottom: 1px solid var(--line-soft);
+  padding-bottom: 2px;
+  transition: color 0.2s var(--ease), border-color 0.2s var(--ease);
+}
+.f-tel a:hover {
+  color: var(--txt);
+  border-color: var(--wine);
+}
+.final-tel {
+  margin-top: 26px;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--txt-3);
+}
+.final-tel a {
+  color: var(--txt-2);
+  text-decoration: none;
+  border-bottom: 1px solid var(--line-soft);
+  padding-bottom: 2px;
+  transition: color 0.2s var(--ease), border-color 0.2s var(--ease);
+}
+.final-tel a:hover {
+  color: var(--txt);
+  border-color: var(--wine);
+}

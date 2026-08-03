@@ -17,6 +17,10 @@ export default function CtaFinal() {
         >
           {f.cta}
         </a>
+        <p className="final-tel mono rev">
+          {f.telAvant}
+          <a href={brand.TELEPHONE.lien}>{brand.TELEPHONE.affiche}</a>
+        </p>
       </div>
     </section>
   );
