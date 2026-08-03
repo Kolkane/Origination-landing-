@@ -365,50 +365,6 @@ section.block {
   color: var(--txt);
   font-weight: 500;
 }
-/* ---------- fondateur ---------- */
-.founder {
-  display: grid;
-  grid-template-columns: 280px 1fr;
-  gap: 64px;
-  margin-top: 56px;
-  align-items: start;
-}
-.ph {
-  aspect-ratio: 4/5;
-  border: 1px solid var(--line-soft);
-  display: grid;
-  place-items: center;
-  font-size: 10px;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--txt-3);
-}
-.founder p {
-  font-size: 15px;
-  line-height: 1.75;
-  color: var(--txt-2);
-  max-width: 52ch;
-}
-.founder .id {
-  margin-top: 22px;
-  font-size: 10.5px;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--txt-3);
-  line-height: 2.1;
-}
-.founder a {
-  color: var(--txt-2);
-  text-decoration: none;
-  border-bottom: 1px solid var(--line);
-  padding-bottom: 2px;
-  transition: border-color 0.2s, color 0.2s;
-}
-.founder a:hover {
-  color: var(--txt);
-  border-color: var(--wine);
-}
-
 /* ---------- FAQ ---------- */
 .faq {
   margin-top: 56px;
@@ -520,10 +476,6 @@ footer a:hover {
   }
 }
 @media (max-width: 860px) {
-  .founder {
-    grid-template-columns: 1fr;
-    gap: 44px;
-  }
   .row {
     grid-template-columns: 44px 1fr;
     grid-template-rows: auto auto;
@@ -619,13 +571,6 @@ footer a:hover {
   padding: 120px 0;
   border-top: 1px solid var(--line-soft);
 }
-.founder .q {
-  font-family: var(--font-instrument), serif;
-  font-size: clamp(22px, 2.6vw, 30px);
-  line-height: 1.35;
-  color: var(--txt);
-  margin-bottom: 24px;
-}
 
 /* 07 · faq */
 .faq-s {
@@ -677,10 +622,6 @@ footer a:hover {
     grid-template-columns: 1fr;
     gap: 24px;
   }
-  .founder {
-    grid-template-columns: 1fr;
-    gap: 40px;
-  }
 }
 
 @media (max-width: 760px) {
@@ -703,16 +644,6 @@ footer a:hover {
   }
 }
 
-.ph {
-  overflow: hidden;
-}
-.ph img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  filter: grayscale(1) contrast(1.02);
-}
 
 /* ============================================================
    v10 : grille éditoriale. La colonne de lecture reste étroite
@@ -795,30 +726,6 @@ footer a:hover {
   font-size: 14.5px;
 }
 
-/* 06 · fondateur : la photo gagne en présence, la citation déborde */
-.founder {
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  column-gap: clamp(18px, 2.2vw, 40px);
-  margin-top: clamp(40px, 4.4vw, 64px);
-  align-items: start;
-}
-.founder .ph {
-  grid-column: 1 / 5;
-}
-.founder .txt {
-  grid-column: 6 / 13;
-}
-.founder .q {
-  font-size: clamp(24px, 2.9vw, 40px);
-  max-width: 22ch;
-  margin-bottom: clamp(24px, 2.4vw, 34px);
-}
-.founder p {
-  font-size: clamp(15px, 1.15vw, 17px);
-  max-width: 56ch;
-}
-
 /* 07 · faq : intitulé en marge, questions à droite */
 .faq-s .faq {
   margin-top: 0;
@@ -882,20 +789,8 @@ footer a:hover {
   .main {
     grid-column: 1 / 13;
   }
-  .founder .ph {
-    grid-column: 1 / 6;
-  }
-  .founder .txt {
-    grid-column: 1 / 13;
-    margin-top: 34px;
-  }
 }
 
-@media (max-width: 880px) {
-  .founder .ph {
-    grid-column: 1 / 8;
-  }
-}
 
 /* bloc de mesure : gabarit de section standard, liste .not sur filets */
 .mesure {
@@ -2077,4 +1972,109 @@ footer a:hover {
     align-items: flex-start;
     gap: 26px;
   }
+}
+
+/* ============================================================
+   v15 · le fondateur en composition centrée.
+   C'est le seul endroit centré d'une page alignée à gauche de
+   bout en bout : c'est ce qui le distingue de ses voisines et
+   ce qui le réchauffe. Aucun rouge dans cette section.
+   ============================================================ */
+
+.founder-s .wrap {
+  max-width: 900px;
+  text-align: center;
+}
+.f-kicker {
+  margin-bottom: clamp(40px, 5vw, 62px);
+}
+/* portrait rectangulaire : la page est à angles vifs, un cercle y serait
+   le seul arrondi de tout le site */
+.f-portrait {
+  width: clamp(120px, 12vw, 150px);
+  margin: 0 auto;
+  overflow: hidden;
+}
+.f-portrait img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  filter: grayscale(1) contrast(1.02);
+}
+/* la citation tient le rôle que tenait le statement : à cette échelle et
+   sur cette mesure, c'est elle l'énoncé de la section */
+.f-citation {
+  font-family: var(--font-instrument), serif;
+  font-weight: 400;
+  font-size: clamp(26px, 3.4vw, 44px);
+  line-height: 1.14;
+  letter-spacing: -0.015em;
+  color: var(--txt);
+  max-width: 26ch;
+  margin: clamp(36px, 4.4vw, 58px) auto 0;
+}
+.f-nom {
+  margin-top: clamp(30px, 3.6vw, 46px);
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--txt-2);
+}
+.f-lieu {
+  margin-top: 6px;
+  font-size: 10.5px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--txt-3);
+}
+.f-filet {
+  width: 56px;
+  height: 1px;
+  background: var(--line);
+  margin: clamp(34px, 4vw, 52px) auto 0;
+}
+.f-id {
+  margin-top: clamp(24px, 2.8vw, 34px);
+  font-size: 10.5px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--txt-3);
+  line-height: 2.2;
+}
+.f-id a {
+  color: var(--txt-3);
+  text-decoration: none;
+  border-bottom: 1px solid var(--line-soft);
+  padding-bottom: 2px;
+  transition: color 0.2s var(--ease), border-color 0.2s var(--ease);
+}
+.f-id a:hover {
+  color: var(--txt-2);
+  border-color: var(--line);
+}
+
+/* ============================================================
+   v15 · la FAQ change d'enveloppe, l'accordéon ne bouge pas.
+   Le titre quittait la colonne collante de gauche, cinquième
+   emploi du même moule : il passe pleine largeur au-dessus.
+   ============================================================ */
+
+.faq-head {
+  margin-bottom: clamp(40px, 5vw, 64px);
+}
+.faq-head .statement {
+  max-width: 24ch;
+}
+/* les questions occupent la largeur, les réponses gardent une mesure
+   lisible : une réponse sur 1300px ne se lit pas */
+.faq-s .faq {
+  margin-top: 0;
+  border-top: 1px solid var(--line);
+}
+.faq summary {
+  font-size: clamp(16px, 1.45vw, 21px);
+}
+.faq .a {
+  max-width: 72ch;
 }

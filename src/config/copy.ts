@@ -324,13 +324,18 @@ export const copy = {
       },
     ],
   },
+  /* v15 : composition centrée, seul endroit centré d'une page alignée à
+     gauche de bout en bout. La citation en grand remplace le statement :
+     elle disait déjà « un seul interlocuteur », le dire deux fois à la
+     même échelle aurait fait doublon. */
   fondateur: {
     kicker: "Le fondateur",
-    statement: "Vous parlez au fondateur, pas à un SDR.",
     portraitAlt: "Vincent Fournier, fondateur",
-    citation: "« Au téléphone comme en livraison, vous avez un seul interlocuteur : celui qui a construit la machine et qui vérifie vos dossiers. »",
-    corps: `${brand.MARQUE} ${brand.SUFFIXE} est opéré par Vincent Fournier, fondateur, basé entre Paris et Bayonne. Le pipeline de détection est industrialisé ; la vérification finale de chaque dossier reste humaine.`,
-    id: `${brand.ENTITY.raisonSociale} · SIREN ${nb(brand.ENTITY.siren)} · ${brand.ENTITY.ville}`,
+    citation:
+      "« Au téléphone comme en livraison, vous avez un seul interlocuteur : celui qui a construit la machine et qui vérifie vos dossiers. »",
+    nom: "Vincent Fournier, fondateur",
+    lieu: "entre Paris et Bayonne",
+    id: `${brand.ENTITY.raisonSociale} · SIREN ${nb(brand.ENTITY.siren)} · ${brand.ENTITY.ville}`,
     linkedin: "LinkedIn ↗",
   },
   faq: {
