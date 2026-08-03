@@ -236,7 +236,7 @@ export const copy = {
       {
         num: "03",
         titre: "La vérification, puis la veille",
-        texte: `Ce qui ne tient pas est écarté. Le périmètre reste sous surveillance, chaque bascule livrée sous ${nb(brand.PROOF.delaiLivraisonBascule)}.`,
+        texte: `Chaque détection est reprise à la main avant livraison. Le périmètre reste sous surveillance, chaque bascule livrée sous ${nb(brand.PROOF.delaiLivraisonBascule)}.`,
       },
     ],
   },
@@ -338,19 +338,14 @@ export const copy = {
     statement: "Ce qu’on nous demande avant de signer.",
     items: [
       {
-        question: "D’où viennent vos données ?",
+        question: "D’où viennent vos données, et est-ce conforme au RGPD ?",
         reponse:
-          "Des registres publics français (RNE/INPI, SIRENE, BODACC) et d’enrichissements ponctuels sourcés. Aucune donnée grise.",
+          "Des registres publics français (RNE/INPI, SIRENE, BODACC) et d’enrichissements ponctuels sourcés, aucune donnée grise. Base légale de l’intérêt légitime en B2B, information art. 14 jointe à chaque dossier d’approche, opt-out définitif honoré, premier contact toujours adressé à l’entreprise.",
       },
       {
-        question: "Est-ce conforme au RGPD ?",
+        question: "Pourquoi publier votre taux d’écart ?",
         reponse:
-          "Oui : base légale de l’intérêt légitime en B2B, information art. 14 jointe à chaque dossier d’approche, opt-out définitif honoré, premier contact toujours adressé à l’entreprise.",
-      },
-      {
-        question: "Pourquoi publier votre taux d’écart ?",
-        reponse:
-          "Un fournisseur qui ne publie pas son taux d’erreur vous demande de le croire sur parole. Environ un tiers de nos détections sont écartées à la vérification : c’est le coût réel de dossiers fiables.",
+          "Un fournisseur qui ne publie pas son taux d’erreur vous demande de le croire sur parole. Environ un tiers de nos détections sont écartées à la vérification : c’est le coût réel de dossiers fiables.",
       },
       {
         question: "Comment définit-on le périmètre de recherche ?",
@@ -373,15 +368,9 @@ export const copy = {
           "Non. Jamais de commission sur la transaction, ni sur le prix de cession. Vous réglez le contrat mensuel, et une mission de recherche quand vous en confiez une. Rien d’autre.",
       },
       {
-        question:
-          "Que se passe-t-il si mon périmètre est pauvre ?",
+        question: "Combien de dossiers par mois, et si mon périmètre est pauvre ?",
         reponse:
-          "Nous vous le disons au devis, avant tout engagement. Et un mois qui passe sous le volume annoncé n’est pas facturé.",
-      },
-      {
-        question: "Combien de dossiers par mois ?",
-        reponse:
-          "Autant que votre périmètre en contient, annoncé au devis et tenu ensuite. Un mois qui passe sous ce volume n’est pas facturé.",
+          "Autant que votre périmètre en contient : le volume est mesuré et annoncé au devis, avant tout engagement. Un mois qui passe sous ce volume n’est pas facturé.",
       },
     ],
   },
