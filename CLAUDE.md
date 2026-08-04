@@ -112,6 +112,12 @@ Next 14 App Router, TypeScript strict, Tailwind (tokens étendus dans tailwind.c
 next/font (Google : Instrument Serif, Geist, Geist Mono), zéro dépendance UI externe
 (pas de shadcn, pas de framer-motion : IntersectionObserver + classes CSS suffisent).
 Composants dans src/components, un fichier par section. Contenu et données dans
-src/config/brand.ts et src/config/copy.ts uniquement — jamais en dur dans le JSX.
+des fichiers de configuration typés sous src/config : brand.ts (marque, entité,
+contact, prix), copy.ts (les textes de la page), analyses.ts (les articles),
+schema.ts (les graphes structurés, dérivés des précédents), site.ts (le domaine).
+Amendement (arbitrage Vincent, v16) : la règle n'a jamais été « deux fichiers
+seulement », c'est « RIEN CODÉ EN DUR DANS LE JSX ». Un nouveau domaine de
+données mérite son fichier typé plutôt que d'être entassé dans copy.ts ; ce qui
+reste interdit, c'est un texte ou une valeur écrits dans un composant.
 Site 100 % statique, aucun backend, aucun formulaire : le seul CTA est un lien Calendly.
 Accessibilité : focus visibles, contrastes AA, html lang="fr".

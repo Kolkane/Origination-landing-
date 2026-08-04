@@ -20,7 +20,7 @@ export const analyses: Article[] = [
     slug: "vague-transmission-pme",
     titre: "La vague de transmission des PME françaises",
     standfirst:
-      "Une génération de dirigeants approche de la retraite. Ce que cela change pour qui rachète.",
+      "Une génération de dirigeants approche de la retraite. Ce que cela change pour qui conseille les cédants.",
     datePublished: "2026-08-04",
     corps: [
       "D’ici dix ans, environ 700 000 dirigeants de PME françaises partiront à la retraite. Près de la moitié n’a, à ce jour, aucun successeur identifié. Ce n’est pas une conjoncture, c’est une donnée démographique : elle se déroulera quelle que soit la santé de l’économie, parce qu’elle tient à l’âge des dirigeants et non au cycle.",

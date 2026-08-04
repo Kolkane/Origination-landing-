@@ -26,8 +26,8 @@ export default function Home() {
       <Engagements />
       <Mesure />
       <Fondateur />
-      <Faq />
       <Analyses />
+      <Faq />
       <CtaFinal />
       <Reveal />
     </main>
