@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Instrument_Serif } from "next/font/google";
 import localFont from "next/font/local";
 import Footer from "@/components/Footer";
+import JsonLd from "@/components/JsonLd";
+import { fondateurSchema, organisationSchema } from "@/config/schema";
 import { copy } from "@/config/copy";
 import { SITE_URL } from "@/config/site";
 import "./globals.css";
@@ -74,6 +76,10 @@ export default function RootLayout({
         </noscript>
       </head>
       <body>
+        {/* l'identité de l'entreprise et du fondateur vaut pour toutes les
+            pages : elle est portée par le layout, pas par l'accueil */}
+        <JsonLd data={organisationSchema} />
+        <JsonLd data={fondateurSchema} />
         {children}
         <Footer />
       </body>
