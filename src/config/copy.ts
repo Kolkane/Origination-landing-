@@ -29,6 +29,7 @@ export const copy = {
       { label: "Méthode", ancre: "#methode" },
       { label: "Offre", ancre: "#offre" },
       { label: "FAQ", ancre: "#faq" },
+      { label: "Analyses", ancre: "#analyses" },
     ],
     navAppel: { label: "Définir mon périmètre", ancre: "#appel" },
     eyebrow: "Origination sell-side · PME françaises · 1-10 M€",
@@ -385,6 +386,18 @@ export const copy = {
           "Autant que votre périmètre en contient : le volume est mesuré et annoncé au devis, avant tout engagement. Un mois qui passe sous ce volume n’est pas facturé.",
       },
     ],
+  },
+  /* la section d’accueil et le gabarit des pages article. Les textes des
+     analyses elles-mêmes vivent dans src/config/analyses.ts */
+  analyses: {
+    kicker: "Analyses",
+    titre: "Ce que nous observons du marché de la transmission.",
+    intro:
+      "Quelques repères sur la cession de PME, la démographie des dirigeants et le travail d’origination. Sans jargon, sans recette.",
+    lire: "Lire",
+    retour: "Analyses",
+    piedTexte: "C’est exactement ce que nous faisons, pour un cabinet par périmètre.",
+    cta: CTA,
   },
   final: {
     kicker: "Prochaine étape",

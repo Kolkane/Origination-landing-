@@ -2155,3 +2155,187 @@ footer a:hover {
   color: var(--txt);
   border-color: var(--wine);
 }
+
+/* ============================================================
+   v16 · les analyses. Portée de imbrin-analyses.html.
+   Index : des lignes sur filets, gabarit inédit sur la page.
+   Page article : une colonne de lecture étroite, sobre.
+   Le rouge n'apparaît qu'au survol, nulle part au repos.
+   ============================================================ */
+
+.analyses {
+  padding: clamp(72px, 9vw, 120px) 0;
+  border-top: 1px solid var(--line-soft);
+}
+.analyses .wrap {
+  max-width: 1240px;
+}
+.a-kicker {
+  margin-bottom: 20px;
+}
+.a-titre {
+  font-family: var(--font-instrument), serif;
+  font-weight: 400;
+  font-size: clamp(30px, 4.4vw, 52px);
+  line-height: 1.04;
+  letter-spacing: -0.015em;
+  max-width: 20ch;
+  margin-bottom: 14px;
+}
+.a-intro {
+  max-width: 52ch;
+  color: var(--txt-2);
+  font-size: 16px;
+  line-height: 1.55;
+  margin-bottom: clamp(40px, 5vw, 60px);
+}
+
+.a-list {
+  border-top: 1px solid var(--line);
+}
+.a-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: clamp(20px, 4vw, 60px);
+  align-items: baseline;
+  padding: clamp(26px, 3vw, 38px) 0;
+  border-bottom: 1px solid var(--line);
+  text-decoration: none;
+  color: inherit;
+  transition: padding-left 0.3s var(--ease);
+}
+.a-row:hover {
+  padding-left: 14px;
+}
+.a-row-main {
+  max-width: 60ch;
+}
+.a-row-t {
+  display: block;
+  font-family: var(--font-instrument), serif;
+  font-weight: 400;
+  font-size: clamp(23px, 2.6vw, 33px);
+  line-height: 1.12;
+  letter-spacing: -0.01em;
+  margin-bottom: 10px;
+  transition: color 0.25s var(--ease);
+}
+.a-row:hover .a-row-t {
+  color: var(--wine-lift);
+}
+.a-row-s {
+  display: block;
+  font-size: 14.5px;
+  line-height: 1.55;
+  color: var(--txt-3);
+}
+.a-row-cta {
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--txt-3);
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: color 0.25s var(--ease);
+}
+.a-row:hover .a-row-cta {
+  color: var(--txt);
+}
+.a-row-cta .arw {
+  transition: transform 0.3s var(--ease);
+}
+.a-row:hover .a-row-cta .arw {
+  transform: translateX(4px);
+}
+
+/* ---------- page article ---------- */
+.article-page {
+  padding: clamp(48px, 6vw, 80px) 0 clamp(72px, 9vw, 120px);
+}
+.article-page .wrap {
+  max-width: 1240px;
+}
+.ap-back {
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--txt-3);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: clamp(40px, 5vw, 64px);
+  transition: color 0.25s var(--ease);
+}
+.ap-back:hover {
+  color: var(--txt);
+}
+.ap-col {
+  max-width: 680px;
+  margin: 0 auto;
+}
+.ap-eyebrow {
+  font-size: 10.5px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--txt-3);
+  margin-bottom: 22px;
+}
+.ap-h1 {
+  font-family: var(--font-instrument), serif;
+  font-weight: 400;
+  font-size: clamp(34px, 5vw, 58px);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  margin-bottom: 20px;
+}
+.ap-standfirst {
+  font-size: clamp(17px, 1.5vw, 20px);
+  line-height: 1.5;
+  color: var(--txt-2);
+  margin-bottom: clamp(36px, 4.4vw, 52px);
+  padding-bottom: clamp(28px, 3vw, 40px);
+  border-bottom: 1px solid var(--line);
+}
+.ap-body p {
+  font-size: 16.5px;
+  line-height: 1.72;
+  color: var(--txt-2);
+  margin-bottom: 22px;
+  max-width: 64ch;
+}
+/* la chute passe en encre pleine : c'est elle qu'on retient */
+.ap-body p:last-child {
+  color: var(--txt);
+  margin-bottom: 0;
+}
+.ap-foot {
+  margin-top: clamp(48px, 6vw, 72px);
+  padding-top: 28px;
+  border-top: 1px solid var(--line);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+.ap-foot-t {
+  font-size: 15px;
+  color: var(--txt-2);
+}
+.ap-foot .cta {
+  margin-top: 0;
+  white-space: nowrap;
+}
+
+@media (max-width: 760px) {
+  .a-row {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 14px;
+  }
+  .a-row-cta {
+    justify-content: flex-start;
+  }
+}

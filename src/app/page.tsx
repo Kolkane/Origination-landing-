@@ -1,3 +1,4 @@
+import Analyses from "@/components/Analyses";
 import CtaFinal from "@/components/CtaFinal";
 import Dossier from "@/components/Dossier";
 import Engagements from "@/components/Engagements";
@@ -26,6 +27,7 @@ export default function Home() {
       <Mesure />
       <Fondateur />
       <Faq />
+      <Analyses />
       <CtaFinal />
       <Reveal />
     </main>
