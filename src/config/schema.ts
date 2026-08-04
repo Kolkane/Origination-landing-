@@ -1,3 +1,4 @@
+import type { Article } from "@/config/analyses";
 import { brand } from "@/config/brand";
 import { copy } from "@/config/copy";
 import { SITE_URL } from "@/config/site";
@@ -63,3 +64,22 @@ export const faqSchema = {
     acceptedAnswer: { "@type": "Answer", text: item.reponse },
   })),
 };
+
+/* Article, dérivé d'une entrée de src/config/analyses.ts. L'auteur et
+   l'éditeur sont référencés par @id vers les graphes portés par le layout
+   plutôt que redécrits : un seul endroit à corriger le jour où l'entité
+   change, et les moteurs recollent les morceaux eux-mêmes. */
+export function articleSchema(article: Article) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: article.titre,
+    description: article.standfirst,
+    author: { "@id": ID_FONDATEUR },
+    publisher: { "@id": ID_ORGANISATION },
+    datePublished: article.datePublished,
+    dateModified: article.datePublished,
+    mainEntityOfPage: `${SITE_URL}/analyses/${article.slug}`,
+    inLanguage: "fr-FR",
+  };
+}
