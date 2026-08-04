@@ -1,4 +1,5 @@
 import type { MetadataRoute } from "next";
+import { analyses } from "@/config/analyses";
 import { SITE_URL } from "@/config/site";
 
 type Page = {
@@ -7,21 +8,30 @@ type Page = {
   frequence: "monthly" | "yearly";
 };
 
-/* Les pages du site. Les articles à venir s'ajoutent ici, ou se génèrent
-   depuis leur source et se concatènent : la forme du sitemap ne bouge pas.
-   Pas de lastModified sur les pages statiques : il vaudrait la date du build
-   et non celle du contenu, ce qui n'apprend rien à un robot. Les articles,
-   eux, porteront la leur. */
+/* Les pages fixes du site. Pas de lastModified ici : il vaudrait la date du
+   build et non celle du contenu, ce qui n'apprend rien à un robot. */
 const PAGES: Page[] = [
   { chemin: "/", priorite: 1, frequence: "monthly" },
   { chemin: "/mentions-legales", priorite: 0.2, frequence: "yearly" },
   { chemin: "/confidentialite", priorite: 0.2, frequence: "yearly" },
 ];
 
+/* Les analyses se concatènent depuis leur source : un article ajouté à
+   src/config/analyses.ts entre au sitemap sans qu'on touche à cette
+   fonction. Elles, en revanche, ont une vraie date de publication. */
 export default function sitemap(): MetadataRoute.Sitemap {
-  return PAGES.map(({ chemin, priorite, frequence }) => ({
+  const fixes = PAGES.map(({ chemin, priorite, frequence }) => ({
     url: `${SITE_URL}${chemin}`,
     changeFrequency: frequence,
     priority: priorite,
   }));
+
+  const articles = analyses.map((article) => ({
+    url: `${SITE_URL}/analyses/${article.slug}`,
+    lastModified: new Date(article.datePublished),
+    changeFrequency: "yearly" as const,
+    priority: 0.6,
+  }));
+
+  return [...fixes, ...articles];
 }
