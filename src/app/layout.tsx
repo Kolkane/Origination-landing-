@@ -74,7 +74,11 @@ export default function RootLayout({
           <style
             dangerouslySetInnerHTML={{
               __html:
-                ".rev,.mask,.rule,.funnel .step,.funnel .step-n,.funnel .step-l,.c-cell{opacity:1!important;transform:none!important;clip-path:none!important}",
+                ".rev,.mask,.rule,.funnel .step,.funnel .step-n,.funnel .step-l,.c-cell{opacity:1!important;transform:none!important;clip-path:none!important}" +
+                /* le viseur du dossier n'a plus de nav pour changer de zone :
+                   la scène repasse en flux normal et les six zones se lisent
+                   à la suite, comme un document entier */
+                ".d-scene{display:block!important}.d-scene .zone{opacity:1!important;transform:none!important;pointer-events:auto!important}.d-scene .zone+.zone{margin-top:26px;padding-top:22px;border-top:1px solid var(--ink-line)}",
             }}
           />
         </noscript>

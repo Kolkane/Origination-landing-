@@ -849,22 +849,22 @@ footer a:hover {
 .viseur-bar .warn {
   color: var(--wine);
 }
-.doc-scroll {
-  max-height: 640px;
-  overflow-y: auto;
+/* v19 : le cadre ne défile plus, il cadre. La hauteur reste celle d'avant,
+   en plancher et non en plafond : si la plus haute des six zones demande
+   davantage, le cadre grandit au lieu de rogner. */
+.doc-cadre {
+  min-height: 640px;
+  display: flex;
   background: var(--paper);
-  scroll-behavior: smooth;
-}
-.doc-scroll::-webkit-scrollbar {
-  width: 8px;
-}
-.doc-scroll::-webkit-scrollbar-thumb {
-  background: var(--ink-line-2);
 }
 
 /* ---------- le document ---------- */
+/* le document occupe tout le cadre : en-tête et pied fixes, la scène prend
+   ce qui reste */
 .doc {
-  display: block;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
   position: relative;
   color: var(--ink);
   padding: clamp(24px, 3vw, 40px);
@@ -950,62 +950,66 @@ footer a:hover {
   text-transform: uppercase;
   margin-right: 14px;
 }
-.d-body {
+/* la scène : les six zones occupent la MÊME cellule de grille. La scène
+   prend donc la hauteur de la plus haute et ne bouge plus quand on change
+   de zone, sans rien rogner. flex:1 lui donne le reste du cadre. */
+.d-scene {
+  flex: 1;
+  min-height: 0;
   display: grid;
-  grid-template-columns: minmax(0, 0.4fr) minmax(0, 0.6fr);
   margin-top: 26px;
-}
-.d-rail {
-  padding-right: 26px;
-  border-right: 1px solid var(--ink-line);
-}
-.d-main {
-  padding-left: 26px;
-}
-.d-rail .zone + .zone {
-  margin-top: 8px;
-}
-.d-main .zone + .zone {
-  margin-top: 12px;
+  padding-top: 22px;
+  border-top: 1px solid var(--ink-line);
 }
 .doc .lbl {
-  font-size: 10px;
+  font-size: 10.5px;
   letter-spacing: 0.16em;
   text-transform: uppercase;
   color: var(--ink-3);
-  margin-bottom: 14px;
+  margin-bottom: 16px;
 }
 
-/* la zone surlignée : le seul état que pilote la nav */
+/* une zone à la fois. Les inactives gardent leur place dans le DOM et dans
+   l'arbre d'accessibilité : ni display:none, ni visibility, ni aria-hidden,
+   seulement une opacité nulle. Un lecteur d'écran les parcourt toutes. */
 .zone {
-  border-left: 2px solid transparent;
-  padding: 14px 0 14px 16px;
-  margin-left: -18px;
-  transition: background 0.3s var(--ease), border-color 0.3s var(--ease);
+  grid-area: 1 / 1;
+  align-self: start;
+  opacity: 0;
+  transform: scale(0.96);
+  transform-origin: 50% 30%;
+  pointer-events: none;
+  transition: opacity 0.27s var(--ease), transform 0.27s var(--ease);
 }
+/* la loupe se pose : la zone entrante arrive de 0,96 à 1 */
 .zone.lit {
-  border-left-color: var(--wine);
-  background: var(--wine-tint);
+  opacity: 1;
+  transform: none;
+  pointer-events: auto;
 }
 
-/* finances */
+/* finances. La zone occupe désormais toute la largeur du document : les
+   quatre chiffres passent en deux colonnes plutôt qu'en pile étroite, et
+   ils sont à l'échelle où on les lit, pas à celle où on les devine. */
+.figs {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: clamp(20px, 3vw, 44px);
+}
 .fig {
   display: flex;
   align-items: baseline;
   justify-content: space-between;
   gap: 10px;
-  padding: 10px 0;
-  border-bottom: 1px solid var(--ink-line);
-}
-.fig:first-of-type {
+  padding: 12px 0;
   border-top: 1px solid var(--ink-line);
 }
 .fig-n {
-  font-size: 27px;
+  font-size: clamp(28px, 2.6vw, 34px);
   line-height: 1;
 }
 .fig-k {
-  font-size: 9px;
+  font-size: 9.5px;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--ink-3);
@@ -1014,14 +1018,14 @@ footer a:hover {
   max-width: 12ch;
 }
 .trend {
-  margin-top: 14px;
+  margin-top: 20px;
 }
 .trend-row {
   display: flex;
   justify-content: space-between;
   gap: 12px;
-  font-size: 11.5px;
-  padding: 6px 0;
+  font-size: 12.5px;
+  padding: 8px 0;
   border-bottom: 1px solid var(--ink-line);
 }
 .trend-row span:first-child {
@@ -1032,11 +1036,11 @@ footer a:hover {
   font-weight: 500;
 }
 .trend-tag {
-  font-size: 9px;
+  font-size: 9.5px;
   letter-spacing: 0.11em;
   text-transform: uppercase;
   color: var(--ink-2);
-  margin-top: 8px;
+  margin-top: 12px;
 }
 
 /* frise */
@@ -1047,7 +1051,7 @@ footer a:hover {
 }
 .tl li {
   position: relative;
-  padding: 0 0 14px 20px;
+  padding: 0 0 18px 22px;
 }
 .tl li:last-child {
   padding-bottom: 0;
@@ -1080,37 +1084,39 @@ footer a:hover {
 }
 .tl .yr {
   display: block;
-  font-size: 10px;
+  font-size: 10.5px;
   letter-spacing: 0.1em;
   color: var(--ink-3);
-  margin-bottom: 2px;
+  margin-bottom: 4px;
 }
 .tl .yr.key {
   color: var(--wine);
 }
 .tl .ev {
-  font-size: 12.5px;
-  line-height: 1.4;
+  font-size: 14.5px;
+  line-height: 1.45;
   color: var(--ink);
 }
 
 /* coordonnées */
 .coord-s {
-  font-size: 10.5px;
+  font-size: 11px;
   color: var(--ink-2);
-  margin-bottom: 7px;
+  margin-bottom: 10px;
 }
 .coord-d {
-  font-size: 12px;
-  line-height: 1.55;
+  font-size: 14.5px;
+  line-height: 1.6;
   color: var(--ink-2);
+  max-width: 52ch;
 }
 
 /* signal, angle, inconnu */
 .signal {
-  font-size: 15px;
+  font-size: 16.5px;
   line-height: 1.62;
   color: var(--ink);
+  max-width: 58ch;
 }
 .signal b {
   font-weight: 500;
@@ -1124,11 +1130,11 @@ footer a:hover {
   margin-bottom: 14px;
 }
 .angle-p {
-  font-size: 14px;
-  line-height: 1.6;
+  font-size: 15px;
+  line-height: 1.65;
   color: var(--ink-2);
-  margin-bottom: 12px;
-  max-width: 56ch;
+  margin-bottom: 14px;
+  max-width: 60ch;
 }
 .angle-p:last-of-type {
   margin-bottom: 0;
@@ -1138,10 +1144,10 @@ footer a:hover {
   font-weight: 500;
 }
 .unknown {
-  font-size: 13.5px;
-  line-height: 1.6;
+  font-size: 15.5px;
+  line-height: 1.62;
   color: var(--ink-2);
-  max-width: 58ch;
+  max-width: 60ch;
 }
 .unknown b {
   color: var(--ink);
@@ -1176,21 +1182,27 @@ footer a:hover {
   .recu-item {
     padding: 16px 0 16px 18px;
   }
-  .doc-scroll {
-    max-height: none;
+  /* la nav passe au-dessus, le cadre dessous : c'est l'ordre du DOM, rien
+     à réordonner. Le plancher de 640px saute. */
+  .doc-cadre {
+    min-height: 0;
   }
-  .d-body {
-    grid-template-columns: 1fr;
-    gap: 26px;
+  /* sur petit écran le cadre épouse la zone active au lieu de réserver la
+     hauteur de la plus haute : sinon « Les coordonnées », qui est courte,
+     laissait trois cents pixels de vide avant le pied. La zone active
+     reprend le flux, les inactives en sortent sans quitter le DOM. */
+  .d-scene {
+    display: block;
+    position: relative;
   }
-  .d-rail {
-    padding-right: 0;
-    border-right: none;
-    border-bottom: 1px solid var(--ink-line);
-    padding-bottom: 22px;
+  .d-scene .zone {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
   }
-  .d-main {
-    padding-left: 0;
+  .d-scene .zone.lit {
+    position: static;
   }
 }
 @media (max-width: 760px) {
@@ -1200,12 +1212,58 @@ footer a:hover {
   .viseur {
     padding: 10px;
   }
+  /* sur téléphone la zone doit se lire, pas se deviner : les quatre
+     chiffres repassent en une colonne pour garder leur corps, et les
+     textes restent au-dessus de 14px. */
+  .figs {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .doc {
+    padding: 22px 18px;
+  }
+  .d-scene {
+    margin-top: 20px;
+    padding-top: 18px;
+  }
+  /* l'en-tête passe en pile : en deux colonnes, « SEMAINE 30 » se coupait
+     et laissait le 30 seul sur sa ligne */
+  .d-head {
+    flex-direction: column;
+    gap: 12px;
+  }
+  .d-meta {
+    text-align: left;
+  }
+  .fig-n {
+    font-size: 30px;
+  }
+  /* plancher de 10,5px sur les légendes mono : en dessous, sur un
+     téléphone, elles ne se lisent plus, elles se devinent */
+  .fig-k,
+  .trend-tag,
+  .d-meta {
+    font-size: 10.5px;
+  }
+  .signal {
+    font-size: 16px;
+  }
+  .angle-p {
+    font-size: 15px;
+  }
+  .unknown {
+    font-size: 15px;
+  }
+  .tl .ev,
+  .coord-d {
+    font-size: 14.5px;
+  }
 }
 @media (prefers-reduced-motion: reduce) {
-  .doc-scroll {
-    scroll-behavior: auto;
+  /* le changement de zone devient instantané : ni fondu, ni échelle */
+  .zone {
+    transition: none !important;
+    transform: none !important;
   }
-  .zone,
   .recu-item,
   .recu-idx,
   .recu-d {

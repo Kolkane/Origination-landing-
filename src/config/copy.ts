@@ -57,9 +57,12 @@ export const copy = {
   dossier: {
     kicker: "Ce que vous recevez",
     titre: "Ce qui arrive sur votre bureau.",
+    /* v19 : le chapô disait « surligné » et « à droite ». Le viseur ne
+       surligne plus un document entier, il cadre une zone à la fois, et
+       sous 920px il passe dessous et non à droite. */
     chapo:
-      "Un dossier d’approche, pas une ligne dans un fichier. Chaque élément ci-dessous est surligné sur un exemple de dossier, à droite. Cliquez pour le parcourir.",
-    /* l'élément actif au chargement : l'acte préparatoire */
+      "Un dossier d’approche, pas une ligne dans un fichier. Chaque élément ci-dessous ouvre sa zone dans un exemple de dossier, cadrée de près. Cliquez pour le parcourir.",
+    /* l'élément actif au chargement : les chiffres */
     defaut: "z-fin",
     elements: [
       {
