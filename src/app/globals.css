@@ -972,20 +972,54 @@ footer a:hover {
 /* une zone à la fois. Les inactives gardent leur place dans le DOM et dans
    l'arbre d'accessibilité : ni display:none, ni visibility, ni aria-hidden,
    seulement une opacité nulle. Un lecteur d'écran les parcourt toutes. */
+/* v20 : la bascule d'une zone à l'autre est une MISE AU POINT, pas un fondu.
+   Deux animations jouées en même temps, pas une transition symétrique : la
+   transition ne pouvait pas donner à la sortie et à l'entrée des valeurs
+   distinctes, et surtout elle aurait laissé un blur permanent sur les cinq
+   zones inactives, donc un filtre au repos et cinq calques à composer.
+   En animations, l'état de repos reste net : ni filtre, ni transform. */
 .zone {
   grid-area: 1 / 1;
   align-self: start;
   opacity: 0;
-  transform: scale(0.96);
-  transform-origin: 50% 30%;
+  transform-origin: 50% 28%;
   pointer-events: none;
-  transition: opacity 0.27s var(--ease), transform 0.27s var(--ease);
 }
-/* la loupe se pose : la zone entrante arrive de 0,96 à 1 */
+/* la nouvelle zone arrive floue et trop grande, puis se pose : le blur
+   revient à zéro et l'échelle à 1. Courbe très décélérée, c'est elle qui
+   fait « la netteté qui arrive » plutôt que « le bloc qui apparaît ». */
 .zone.lit {
   opacity: 1;
-  transform: none;
   pointer-events: auto;
+  animation: miseAuPoint 0.46s cubic-bezier(0.16, 1, 0.3, 1);
+}
+/* l'ancienne sort par l'avant : elle grossit et se défocalise en partant */
+.zone.sortante {
+  animation: perteDeNettete 0.4s ease-in;
+}
+@keyframes miseAuPoint {
+  from {
+    opacity: 0;
+    transform: scale(1.08);
+    filter: blur(10px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+    filter: blur(0);
+  }
+}
+@keyframes perteDeNettete {
+  from {
+    opacity: 1;
+    transform: scale(1);
+    filter: blur(0);
+  }
+  to {
+    opacity: 0;
+    transform: scale(1.06);
+    filter: blur(8px);
+  }
 }
 
 /* finances. La zone occupe désormais toute la largeur du document : les
@@ -1259,10 +1293,15 @@ footer a:hover {
   }
 }
 @media (prefers-reduced-motion: reduce) {
-  /* le changement de zone devient instantané : ni fondu, ni échelle */
-  .zone {
+  /* la mise au point est purement décorative : elle disparaît en entier.
+     Le changement de zone devient instantané, sans flou ni échelle. */
+  .zone,
+  .zone.lit,
+  .zone.sortante {
+    animation: none !important;
     transition: none !important;
     transform: none !important;
+    filter: none !important;
   }
   .recu-item,
   .recu-idx,

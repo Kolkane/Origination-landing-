@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import LogoImbrin from "@/components/LogoImbrin";
 import { brand } from "@/config/brand";
 import { copy } from "@/config/copy";
@@ -26,8 +26,30 @@ export default function Dossier() {
   const d = copy.dossier;
   const doc = d.doc;
   const [actif, setActif] = useState(d.defaut);
+  const [sortante, setSortante] = useState<string | null>(null);
 
-  const zone = (cible: string) => `zone${actif === cible ? " lit" : ""}`;
+  /* v20 : la zone qui perd le focus garde une classe le temps de son
+     animation. Sans elle, elle disparaîtrait d'un coup et on ne verrait
+     que l'arrivée : c'est la superposition des deux qui donne la
+     TRAVERSÉE de mise au point, l'ancienne qui part vers l'avant en se
+     floutant pendant que la nouvelle se pose. On la retire ensuite, pour
+     qu'aucune zone ne conserve d'animation ni de filtre au repos. */
+  useEffect(() => {
+    if (!sortante) return;
+    const t = setTimeout(() => setSortante(null), 480);
+    return () => clearTimeout(t);
+  }, [sortante]);
+
+  function choisir(cible: string) {
+    if (cible === actif) return;
+    setSortante(actif);
+    setActif(cible);
+  }
+
+  const zone = (cible: string) =>
+    `zone${actif === cible ? " lit" : ""}${
+      sortante === cible ? " sortante" : ""
+    }`;
   const marque = (cible: string) =>
     actif === cible ? ({ "aria-current": "true" } as const) : {};
 
@@ -50,7 +72,7 @@ export default function Dossier() {
                   key={el.cible}
                   className={`recu-item${actif === el.cible ? " active" : ""}`}
                   aria-current={actif === el.cible ? "true" : undefined}
-                  onClick={() => setActif(el.cible)}
+                  onClick={() => choisir(el.cible)}
                 >
                   <span className="recu-item-top">
                     <span className="recu-idx mono">{el.idx}</span>

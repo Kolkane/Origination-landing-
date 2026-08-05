@@ -83,7 +83,20 @@ trouvé sur vous". Codes attendus : document financier imprimé, pas SaaS IA.
   vin par engagement. Le blanc et les filets suffisent.
 - Motion : UNE séquence d'apparition au chargement (fade + translateY, délais en cascade),
   fade des lignes de l'offre au scroll, lent zoom respiratoire de la vidéo (22 s), indice
-  de scroll. C'EST TOUT. prefers-reduced-motion : tout statique, vidéo en pause.
+  de scroll. prefers-reduced-motion : tout statique, vidéo en pause.
+  Amendement (arbitrage Vincent, v20) : la liste ci-dessus se terminait par
+  « C'EST TOUT » et ne décrivait plus le site. Trois mouvements s'y ajoutent,
+  tous DÉCLENCHÉS PAR L'UTILISATEUR ou par l'entrée dans le champ, aucun en
+  boucle : le déploiement des barres de l'entonnoir, la cascade des quatre
+  engagements, et la MISE AU POINT du viseur du dossier. Cette dernière est
+  la seule à utiliser filter: blur(). Elle joue au changement de zone : la
+  sortante se floute et grossit en s'effaçant, l'entrante arrive floue et
+  trop grande puis se pose nette. L'en-tête du dossier n'est jamais touché,
+  c'est l'ancrage net qui rend l'effet crédible. Le flou est un état de
+  TRANSITION, jamais un état de repos : hors animation, aucune zone ne porte
+  de filtre. En prefers-reduced-motion, flou et échelle disparaissent
+  entièrement et le changement de zone est instantané.
+  La liste reste fermée : tout nouveau mouvement demande un arbitrage.
 - Interdits définitifs (hérités des itérations rejetées) : ticker, métriques animées,
   count-up, grilles de cards, beam/bordures lumineuses, tilt 3D, spotlight souris, pings,
   glow, dégradés colorés, grid de fond, badges/chips, emojis, icônes décoratives,
