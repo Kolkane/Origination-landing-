@@ -2196,8 +2196,12 @@ footer a:hover {
     align-items: start;
     gap: 16px;
   }
+  /* l'intro ne sert que la bande d'en-tête à deux colonnes : en pile elle
+     coûte deux lignes là où la hauteur pèse le plus, et elle n'annonce que
+     ce que les quatre engagements disent juste en dessous. Les engagements,
+     eux, restent tous les quatre. */
   .c-intro {
-    padding-bottom: 0;
+    display: none;
   }
   .c-statement {
     max-width: 18ch;

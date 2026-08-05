@@ -52,6 +52,15 @@ trouvé sur vous". Codes attendus : document financier imprimé, pas SaaS IA.
   filets restent en #8E2438, et sur papier le vin plein suffit (6,8:1).
 - Typo : Instrument Serif (titres, poids 400, italique autorisée) · Geist (corps) ·
   Geist Mono (labels uppercase, tracking large). Via next/font/google. Rien d'autre.
+  Amendement (arbitrage Vincent, v17) : le titre des ENGAGEMENTS est ramené de
+  l'échelle du hero (~76px de plafond) à ~50px, définitivement. Il gardait à lui
+  seul près d'un écran de hauteur pour quatre lignes de principe. La section ne
+  tient donc plus par l'échelle typographique mais par la GRILLE 2×2 et ses
+  FILETS EN CROIX, avec l'explication posée directement sous son principe.
+  Ne pas restaurer le 76px : ce n'est pas une régression de gabarit, c'est
+  l'arbitrage. Le hero redevient le seul endroit de la page à cette échelle.
+  Corollaire inchangé : ZÉRO ROUGE sur cette section, pas même un petit marqueur
+  vin par engagement. Le blanc et les filets suffisent.
 - Motion : UNE séquence d'apparition au chargement (fade + translateY, délais en cascade),
   fade des lignes de l'offre au scroll, lent zoom respiratoire de la vidéo (22 s), indice
   de scroll. C'EST TOUT. prefers-reduced-motion : tout statique, vidéo en pause.
@@ -77,10 +86,13 @@ trouvé sur vous". Codes attendus : document financier imprimé, pas SaaS IA.
   2. REFONTE du gabarit d'une section EXISTANTE : peut être codée directement,
      mais seulement sur décision explicite de Vincent dans le brief. Sans cette
      décision, la maquette reste la règle.
-  La composition centrée du fondateur et l'enveloppe pleine largeur de la FAQ
-  ont été faites sous le régime 2. Les sections entonnoir, dossier, offre et
-  méthode sont passées par le régime 1, leurs planches sont à la racine
-  (MAQUETTE-V15-*.html) et font foi sur ce qui a été validé.
+  La composition centrée du fondateur, l'enveloppe pleine largeur de la FAQ et
+  la grille 2×2 des engagements ont été faites sous le régime 2. Les sections
+  entonnoir, dossier, offre et méthode sont passées par le régime 1, leurs
+  planches sont à la racine (MAQUETTE-V15-*.html) et font foi sur ce qui a été
+  validé. Exception : MAQUETTE-V15-B2-ENGAGEMENTS.html est une ARCHIVE, elle ne
+  décrit plus le code depuis la refonte v17 (voir l'amendement Typo). Ne pas
+  s'en servir pour « remettre la section conforme à sa planche ».
 
 ## L'offre v13 (définitive, remplace la v12 et la grille régionale)
 Deux lignes, toutes deux dans src/config/brand.ts :
