@@ -2,7 +2,7 @@ export const brand = {
   MARQUE: "Imbrin",
   SUFFIXE: "Research",
   BASELINE: "Origination sell-side",
-  CALENDLY_URL: "https://calendly.com/fnr-vincent-pro/audit-strategique",
+  CALENDLY_URL: "https://calendly.com/fnr-vincent-pro/echange",
   LINKEDIN_URL: "https://www.linkedin.com/in/vincent-fournier-939021170/",
   CONTACT_EMAIL: "contact@imbrin.fr",
   /* ligne directe du fondateur : affichée à trois endroits seulement,
