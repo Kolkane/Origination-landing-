@@ -10,7 +10,10 @@ export default function Methode() {
       <div className="wrap">
         <div className="m-head">
           <p className="m-kicker kicker mono rev">{m.kicker}</p>
-          <h2 className="m-statement mask rev">{m.statement}</h2>
+          <div className="m-head-t rev">
+            <h2 className="m-statement mask">{m.statement}</h2>
+            <p className="m-sous">{m.sousTitre}</p>
+          </div>
         </div>
 
         <div className="rail rev">

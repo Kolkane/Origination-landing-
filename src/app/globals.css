@@ -1507,14 +1507,25 @@ footer a:hover {
 }
 /* le statement tient sur UNE ligne tant que la largeur le permet : pas de
    max-width qui le casse en deux alors qu'il y a la place */
+.m-head-t {
+  flex: 1 1 auto;
+  text-align: right;
+}
+/* le sous-titre lève l'ambiguïté du titre : il précise ce qui est montré
+   et ce qui ne l'est pas, sans lui disputer l'échelle */
+.m-sous {
+  margin: 14px 0 0 auto;
+  max-width: 56ch;
+  font-size: 14.5px;
+  line-height: 1.65;
+  color: var(--txt-2);
+}
 .m-statement {
   font-family: var(--font-instrument), serif;
   font-weight: 400;
   font-size: clamp(23px, 2.85vw, 36px);
   line-height: 1.15;
   letter-spacing: -0.01em;
-  text-align: right;
-  flex: 1 1 auto;
 }
 
 /* le filet continu porte la section, les étapes y sont accrochées */
@@ -1569,7 +1580,7 @@ footer a:hover {
 }
 
 @media (max-width: 860px) {
-  .m-statement {
+  .m-head-t {
     text-align: left;
   }
   .steps-h {
@@ -2370,4 +2381,33 @@ footer a:hover {
   line-height: 1.7;
   color: var(--txt-2);
   max-width: 52ch;
+}
+
+/* la promesse qui retourne l'objection du spécimen, juste sous la mention
+   de fiction et alignée sur elle */
+.viseur-note {
+  padding: 0 8px 14px;
+  margin-top: -6px;
+  text-align: right;
+  font-size: 10.5px;
+  line-height: 1.7;
+  color: var(--txt-2);
+}
+
+/* le mono-interlocuteur dès le premier écran : une métadonnée, pas un
+   troisième appel. Ni bouton, ni encadré, ni accent. */
+.hero-signature {
+  margin-top: 22px;
+  font-size: 10.5px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--txt-3);
+  line-height: 1.9;
+  max-width: 46ch;
+}
+
+@media (max-width: 760px) {
+  .viseur-note {
+    text-align: left;
+  }
 }

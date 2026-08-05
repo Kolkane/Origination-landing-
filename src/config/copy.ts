@@ -41,6 +41,9 @@ export const copy = {
       "Et nous livrons le dossier d’approche qui va avec. Un cabinet par périmètre.",
     cta: CTA,
     ctaSecondaire: { label: "L’origination", ancre: "#origination" },
+    /* le caractère mono-interlocuteur dès le premier écran, en métadonnée :
+       ni bouton ni encadré, ça ne dispute rien aux deux appels */
+    signature: "Un seul interlocuteur, du premier appel à la vérification de vos dossiers.",
     /* la légende ne décrit que le sujet : ni l'origine ni la durée du média
        ne sont revendiquées (arbitrage Vincent, v8-4) */
     legende1: "Plongeon imbrin en chasse",
@@ -103,6 +106,9 @@ export const copy = {
       },
     ],
     viewer: { titre: "Dossier d’approche", mention: "Exemple fictif" },
+    /* la ligne qui retourne l’objection du spécimen : oui c’est fictif, et
+       voilà comment on en voit un vrai */
+    viewerNote: "Au rendez-vous, nous vous montrons un dossier réel, sur votre territoire.",
     doc: {
       aria: "Exemple de dossier d’approche, société et chiffres inventés",
       metaAvant: "Dossier · ",
@@ -231,7 +237,9 @@ export const copy = {
      l'ancienne vérification et l'ancienne veille tiennent en une. */
   methode: {
     kicker: "La méthode",
-    statement: "Nous montrons nos résultats. Jamais nos critères.",
+    statement: "Nous montrons nos dossiers. Pas notre grille.",
+    sousTitre:
+      "Chaque dossier livré expose le signal qui l’a déclenché. La grille qui trie une région entière reste chez nous.",
     lignes: [
       {
         num: "01",

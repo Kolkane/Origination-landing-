@@ -89,6 +89,8 @@ export default function Hero() {
             {h.ctaSecondaire.label}
           </a>
         </div>
+        {/* métadonnée, pas un troisième appel : ni bouton ni encadré */}
+        <p className="hero-signature mono fade f5">{h.signature}</p>
       </div>
 
       <div className="scroll-cue fade f5" aria-hidden="true" />

@@ -74,6 +74,9 @@ export default function Dossier() {
               <span>{d.viewer.titre}</span>
               <span className="warn">{d.viewer.mention}</span>
             </div>
+            {/* l'objection « montrez-m'en un vrai » se retourne ici, juste
+                sous la mention de fiction, plutôt que d'être laissée en l'air */}
+            <p className="viseur-note mono">{d.viewerNote}</p>
 
             <div className="doc-scroll" ref={viseurRef}>
               <article className="doc" aria-label={doc.aria}>
