@@ -83,7 +83,7 @@ export default function Dossier() {
                 <header className="d-head">
                   <span className="d-brand">
                     <LogoImbrin taille={20} ton="sombre" />
-                    <span className="d-word serif">{brand.MARQUE}</span>
+                    <span className="d-word display">{brand.MARQUE}</span>
                   </span>
                   <span className="d-meta mono">
                     {doc.metaAvant}
@@ -112,7 +112,7 @@ export default function Dossier() {
                       <p className="lbl mono">{doc.finLbl}</p>
                       {doc.figures.map((f) => (
                         <div className="fig" key={f.k}>
-                          <span className="fig-n serif">{f.n}</span>
+                          <span className="fig-n display">{f.n}</span>
                           <span className="fig-k mono">{f.k}</span>
                         </div>
                       ))}

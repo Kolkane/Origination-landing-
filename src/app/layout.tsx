@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Instrument_Serif } from "next/font/google";
+import { Familjen_Grotesk } from "next/font/google";
 import localFont from "next/font/local";
 import Footer from "@/components/Footer";
 import JsonLd from "@/components/JsonLd";
@@ -8,11 +8,15 @@ import { copy } from "@/config/copy";
 import { SITE_URL } from "@/config/site";
 import "./globals.css";
 
-const instrument = Instrument_Serif({
+/* Display v18 : grotesque à la place du serif. Familjen Grotesk est variable
+   (wght 400-700), on ne fixe donc pas de poids : les titres restent à 400.
+   Son italique est une VRAIE italique, aux formes redessinées (le « a » passe
+   de deux étages à un seul), pas une oblique penchée. C'est ce qui permet de
+   garder l'accent italique du hero et de l'entonnoir après la bascule. */
+const familjen = Familjen_Grotesk({
   subsets: ["latin"],
-  weight: "400",
   style: ["normal", "italic"],
-  variable: "--font-instrument",
+  variable: "--font-familjen",
   display: "swap",
 });
 
@@ -60,7 +64,7 @@ export default function RootLayout({
   return (
     <html
       lang="fr"
-      className={`${instrument.variable} ${geist.variable} ${geistMono.variable}`}
+      className={`${familjen.variable} ${geist.variable} ${geistMono.variable}`}
     >
       <head>
         {/* sans JavaScript, aucun bloc animé ne doit rester invisible :

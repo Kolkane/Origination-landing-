@@ -50,8 +50,28 @@ trouvé sur vous". Codes attendus : document financier imprimé, pas SaaS IA.
   Il ne sert QU'AU TEXTE, en grande taille, sur fond sombre. Jamais en
   remplissage, jamais sur un filet, jamais sur papier : les aplats et les
   filets restent en #8E2438, et sur papier le vin plein suffit (6,8:1).
-- Typo : Instrument Serif (titres, poids 400, italique autorisée) · Geist (corps) ·
+- Typo : Familjen Grotesk (display, poids 400, italique autorisée) · Geist (corps) ·
   Geist Mono (labels uppercase, tracking large). Via next/font/google. Rien d'autre.
+  Amendement (arbitrage Vincent, v18) : le DISPLAY passe du serif à la grotesque.
+  Instrument Serif est RETIRÉE du site, y compris de l'image OpenGraph. Motif :
+  Instrument Serif et Geist sont devenues les polices par défaut des sites
+  générés, elles ne distinguent plus, c'est le reproche « trop IA ».
+  Familjen Grotesk (Familjen STHLM, OFL, Google Fonts) est retenue pour ses
+  AMORCES D'ENCRE, ces entailles dans les angles rentrants : un dispositif
+  d'imprimerie, cohérent avec le registre « document financier imprimé ».
+  Son italique est une vraie italique dessinée (« a » à un seul étage), pas une
+  oblique : l'accent italique du hero et de l'entonnoir survit à la bascule.
+  Le CORPS reste Geist, décision différée, ne pas y toucher sans arbitrage.
+  Planche de comparaison : MAQUETTE-TYPO-GROTESQUE.html à la racine.
+  Nommage : la classe utilitaire .serif est renommée .display, et la clé
+  Tailwind fontFamily.serif devient fontFamily.display. Le nom dit le RÔLE,
+  pas la classification, pour ne pas mentir à la prochaine bascule.
+- Accent de titre (v18) : le mot accentué d'un grand titre se met en ITALIQUE
+  + vin --wine-lift #B32E46, jamais le vin plein (2,3:1 sur l'encre, échoue
+  même le seuil grand texte). L'entonnoir portait déjà ce dispositif, le hero
+  l'a rejoint. Il ne vaut QUE pour les grands titres sur fond sombre, et il
+  reste rare : trois mots sur toute la page. Les engagements gardent leur
+  ZÉRO ROUGE de la v17, ils n'ont aucun mot accentué et n'en prennent pas.
   Amendement (arbitrage Vincent, v17) : le titre des ENGAGEMENTS est ramené de
   l'échelle du hero (~76px de plafond) à ~50px, définitivement. Il gardait à lui
   seul près d'un écran de hauteur pour quatre lignes de principe. La section ne

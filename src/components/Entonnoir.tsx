@@ -62,7 +62,7 @@ export default function Entonnoir() {
               key={p.n}
               role="listitem"
             >
-              <span className="step-n serif">{p.n}</span>
+              <span className="step-n display">{p.n}</span>
               <span className="step-l">
                 <b>{p.fort}</b>
                 {p.suite}

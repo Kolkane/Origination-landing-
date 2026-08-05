@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Imbrin, display en grotesque, comparaison de trois candidates</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<!-- témoin, corps, et les trois candidates : tout vient de Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@300;400;500&family=Schibsted+Grotesk:wght@400;500;700&family=Familjen+Grotesk:wght@400;500;700&family=Chivo:wght@400;500;700&display=swap" rel="stylesheet">
+
+<style>
+/* tokens du repo, valeurs exactes de src/app/globals.css */
+:root{
+  --bg:#0a0a0a; --panel:#0d0d0d;
+  --txt:#f4f2ef; --txt-2:#b9b6b2; --txt-3:#83807c;
+  --line:rgba(255,255,255,.12); --line-soft:rgba(255,255,255,.06);
+  --wine:#8e2438; --wine-lift:#b32e46;
+  --paper:#ece7df; --ink:#171310; --ink-2:#3a342e; --ink-3:#7a6f63;
+  --ink-line:rgba(23,19,16,.14);
+
+  --serif:"Instrument Serif",Georgia,serif;
+  --sans:"Geist",-apple-system,sans-serif;
+  --mono:ui-monospace,"SFMono-Regular",Menlo,monospace;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--txt);font-family:var(--sans);font-weight:300;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1440px;margin:0 auto;padding:0 clamp(22px,4.4vw,76px)}
+
+/* ---------- en-tête de maquette ---------- */
+.note-maquette{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--txt-3);padding:22px clamp(22px,4.4vw,76px);border-bottom:1px solid var(--line-soft);line-height:1.9}
+.note-maquette b{color:var(--wine-lift);font-weight:400}
+.note-maquette .t{color:var(--txt);letter-spacing:.16em}
+
+.avert{padding:26px clamp(22px,4.4vw,76px);border-bottom:1px solid var(--line-soft);background:var(--panel)}
+.avert p{margin:0 0 10px;font-size:13.5px;line-height:1.75;color:var(--txt-2);max-width:92ch}
+.avert p:last-child{margin-bottom:0}
+.avert strong{color:var(--txt);font-weight:400}
+.avert .lbl{font-family:var(--mono);font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--wine-lift);display:block;margin-bottom:8px}
+
+/* ---------- bloc candidate ---------- */
+.bloc{border-bottom:1px solid var(--line-soft);padding:clamp(48px,6vw,86px) 0}
+.bloc.temoin{background:var(--panel)}
+
+.etiquette{display:grid;grid-template-columns:minmax(0,.42fr) minmax(0,.58fr);gap:clamp(20px,4vw,64px);align-items:start;padding-bottom:clamp(30px,3.6vw,46px);margin-bottom:clamp(34px,4vw,54px);border-bottom:1px solid var(--line-soft)}
+.et-num{font-family:var(--mono);font-size:10.5px;letter-spacing:.28em;text-transform:uppercase;color:var(--txt-3);margin:0 0 12px}
+.et-nom{font-family:var(--sans);font-weight:400;font-size:clamp(20px,2vw,26px);line-height:1.15;margin:0 0 10px;color:var(--txt)}
+.et-meta{font-family:var(--mono);font-size:11px;letter-spacing:.06em;line-height:1.9;color:var(--txt-3);margin:0}
+/* palette du site tenue jusque dans les légendes : pas de couleur de statut
+   inventée, le vin marque ce qui coûte, le reste reste en gris */
+.et-meta .libre{color:var(--txt-2)}
+.et-meta .payant{color:var(--wine-lift)}
+.et-carac{font-size:14px;line-height:1.75;color:var(--txt-2);margin:0;max-width:56ch}
+.et-carac + .et-carac{margin-top:12px}
+
+/* ---------- échantillon, échelles réelles du site ---------- */
+.ech-kicker{font-family:var(--mono);font-size:10.5px;letter-spacing:.28em;text-transform:uppercase;color:var(--txt-2);margin:0 0 22px}
+
+/* h1 du site : clamp(42px,5.6vw,72px), line-height 1.06, poids 400.
+   La mesure est celle de .hero-copy sur le site, 640px : c'est elle qui
+   décide du nombre de lignes, et les candidates n'y logent pas la même
+   quantité de texte. C'est une différence à voir, pas à neutraliser. */
+.ech-h1{font-weight:400;font-size:clamp(42px,5.6vw,72px);line-height:1.06;margin:0;max-width:640px}
+/* .hero-sub du site : 15px / 1.7, secondaire, 52ch */
+.ech-sub{font-family:var(--sans);font-weight:300;font-size:15px;line-height:1.7;color:var(--txt-2);max-width:52ch;margin:20px 0 0}
+
+/* .statement du site : clamp(26px,3.4vw,40px), line-height 1.2, 26ch */
+.ech-h2{font-weight:400;font-size:clamp(26px,3.4vw,40px);line-height:1.2;max-width:26ch;margin:0}
+
+.sep{height:1px;background:var(--line-soft);margin:clamp(38px,4.4vw,58px) 0}
+.sep-lbl{font-family:var(--mono);font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--txt-3);margin:0 0 18px}
+
+/* la bande claire, telle qu'elle est sur le site : le titre des engagements
+   ne vit PAS sur l'encre, le rendre sur fond sombre serait infidèle */
+.papier{background:var(--paper);color:var(--ink);padding:clamp(34px,4vw,54px) clamp(26px,3.4vw,48px);margin-top:clamp(30px,3.4vw,44px)}
+.papier .lbl{font-family:var(--mono);font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-3);margin:0 0 20px}
+/* .c-statement du site, après l'arbitrage v17 : clamp(28px,4vw,50px) */
+.ech-h3{font-weight:400;font-size:clamp(28px,4vw,50px);line-height:1.04;letter-spacing:-.02em;max-width:14ch;margin:0;color:var(--ink)}
+
+/* l'accent vin. Sur l'encre, #8E2438 ne donne que 2,3:1 : c'est --wine-lift
+   qui sert au TEXTE en grande taille (3,2:1, AA grand texte). */
+.accent{color:var(--wine-lift)}
+
+/* ---------- affectation des polices par bloc ---------- */
+.f-temoin .ech-h1,.f-temoin .ech-h2,.f-temoin .ech-h3{font-family:var(--serif);letter-spacing:0}
+.f-temoin .ech-h1 em{font-style:italic}
+
+.f-schibsted .ech-h1,.f-schibsted .ech-h2,.f-schibsted .ech-h3{font-family:"Schibsted Grotesk",sans-serif;letter-spacing:-.02em}
+.f-familjen  .ech-h1,.f-familjen  .ech-h2,.f-familjen  .ech-h3{font-family:"Familjen Grotesk",sans-serif;letter-spacing:-.02em}
+.f-chivo     .ech-h1,.f-chivo     .ech-h2,.f-chivo     .ech-h3{font-family:"Chivo",sans-serif;letter-spacing:-.02em}
+
+/* ---------- note finale sur l'accent ---------- */
+.accent-note{padding:clamp(48px,6vw,80px) 0}
+.an-h{font-family:var(--mono);font-size:10.5px;letter-spacing:.28em;text-transform:uppercase;color:var(--wine-lift);margin:0 0 16px}
+.an-p{font-size:14px;line-height:1.75;color:var(--txt-2);max-width:76ch;margin:0 0 34px}
+.an-ligne{padding:22px 0;border-top:1px solid var(--line-soft);display:grid;grid-template-columns:minmax(0,.24fr) minmax(0,.76fr);gap:clamp(16px,3vw,44px);align-items:baseline}
+.an-ligne:last-child{border-bottom:1px solid var(--line-soft)}
+.an-lbl{font-family:var(--mono);font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--txt-3);margin:0}
+.an-ex{font-family:"Schibsted Grotesk",sans-serif;font-weight:400;font-size:clamp(24px,2.9vw,38px);line-height:1.12;letter-spacing:-.02em;margin:0}
+.an-ex em{font-style:italic}
+.an-ex .serif-it{font-family:var(--serif);font-style:italic}
+
+@media(max-width:860px){
+  .etiquette{grid-template-columns:minmax(0,1fr);gap:18px}
+  .an-ligne{grid-template-columns:minmax(0,1fr);gap:10px}
+}
+</style>
+</head>
+<body>
+
+<p class="note-maquette">
+  <span class="t">Maquette de comparaison · display en grotesque · aucune intégration</span><br>
+  Quatre blocs : le témoin (état actuel, Instrument Serif) puis trois candidates.<br>
+  Échantillon identique partout, aux échelles réelles du site : h1 clamp(42-72px), statement clamp(26-40px), engagements clamp(28-50px).<br>
+  <b>Le corps de texte reste en Geist dans tous les blocs</b> : seul le display change, comme demandé.
+</p>
+
+<div class="avert">
+  <span class="lbl">Deux points à trancher, signalés avant que vous ne jugiez</span>
+  <p><strong>1. Sur le site, « préparent » n'est pas en vin, il est en ITALIQUE serif.</strong>
+  Le vin ne sert aujourd'hui qu'aux soulignés de CTA et aux survols, jamais au titre du hero.
+  Je l'ai rendu en vin ici parce que vous l'avez demandé, et en #B32E46 (wine-lift) et non
+  #8E2438 : le vin plein sur l'encre ne donne que 2,3:1 et échoue même le seuil grand texte,
+  la règle de contraste est déjà dans CLAUDE.md. Conséquence à voir plus bas : passer le display
+  en grotesque supprime l'italique serif comme dispositif d'accent, une oblique de grotesque
+  ne porte pas la même charge. Il faudra choisir un remplaçant.</p>
+  <p><strong>2. Le titre des engagements vit sur la bande claire, pas sur l'encre.</strong>
+  Vous demandiez tout sur fond sombre ; je l'ai rendu sur son vrai fond papier #ECE7DF, parce
+  qu'une grotesque ne pèse pas pareil en clair et en sombre et que la comparaison serait fausse
+  autrement. Le reste de l'échantillon est bien sur l'encre.</p>
+  <p><strong>3. Payer ne met pas à l'abri du reproche « trop IA ».</strong> Deux grotesques
+  premium sont aujourd'hui les plus marquées par l'IA auprès de ceux qui regardent : Söhne, de
+  Klim, habille ChatGPT, et Styrene, de Commercial Type, habille Claude. Les acheter reviendrait
+  à payer cher exactement l'association dont vous voulez sortir. Elles sont donc écartées d'office,
+  au même titre que les gratuites que vous avez listées.</p>
+</div>
+
+
+<!-- ============================ TÉMOIN ============================ -->
+<section class="bloc temoin f-temoin">
+  <div class="wrap">
+    <div class="etiquette">
+      <div>
+        <p class="et-num">00 · témoin</p>
+        <h2 class="et-nom">Instrument Serif</h2>
+        <p class="et-meta">
+          Google Fonts · SIL Open Font License · <span class="libre">gratuite</span><br>
+          en place aujourd'hui sur le site
+        </p>
+      </div>
+      <div>
+        <p class="et-carac">L'état actuel, pour mesurer l'écart. Sa faiblesse n'est pas son dessin,
+        qui est bon, c'est sa fréquence : Instrument Serif est devenu en deux ans l'un des trois
+        display par défaut des sites générés, au point que le registre « éditorial chic » qu'il
+        servait est maintenant le registre « fait vite ». Elle ne vous distingue plus.</p>
+      </div>
+    </div>
+
+    <p class="ech-kicker">Origination sell-side · PME françaises · 1-10 M€</p>
+    <h1 class="ech-h1">Nous détectons les dirigeants<br>qui <span class="accent">préparent</span> leur sortie.</h1>
+    <p class="ech-sub">Et nous livrons le dossier d’approche qui va avec. Un cabinet par périmètre.</p>
+
+    <div class="sep"></div>
+    <p class="sep-lbl">Titre de section</p>
+    <h2 class="ech-h2">Ce que vous recevez</h2>
+
+    <div class="papier">
+      <p class="lbl">Titre de section, sur la bande claire</p>
+      <h3 class="ech-h3">Ce que nous ne faisons pas.</h3>
+    </div>
+  </div>
+</section>
+
+
+<!-- ========================= CANDIDATE 1 ========================= -->
+<section class="bloc f-schibsted">
+  <div class="wrap">
+    <div class="etiquette">
+      <div>
+        <p class="et-num">01 · candidate</p>
+        <h2 class="et-nom">Schibsted Grotesk</h2>
+        <p class="et-meta">
+          Google Fonts · SIL Open Font License · <span class="libre">gratuite</span><br>
+          Bakken &amp; Bæck, en commande pour Schibsted, groupe de presse scandinave · 12 styles
+        </p>
+      </div>
+      <div>
+        <p class="et-carac">Une néo-grotesque de commande, pas un exercice de fonderie : elle a été
+        dessinée pour l'identité d'un groupe de presse, en puisant dans son héritage imprimé tout
+        en visant l'écran. C'est le registre suisse éditorial demandé, tenu sans raideur.</p>
+        <p class="et-carac">Ce qu'elle donne : de la tenue institutionnelle. C'est la plus sûre des
+        trois pour un cabinet qui vend de la rigueur, et celle qui se fera le mieux oublier au
+        profit de ce qui est écrit. Reproche possible, et c'est le vrai risque au regard de votre
+        objection : sa neutralité même la rend peu mémorable, elle vous sort du défaut sans vous
+        donner une signature.</p>
+      </div>
+    </div>
+
+    <p class="ech-kicker">Origination sell-side · PME françaises · 1-10 M€</p>
+    <h1 class="ech-h1">Nous détectons les dirigeants<br>qui <span class="accent">préparent</span> leur sortie.</h1>
+    <p class="ech-sub">Et nous livrons le dossier d’approche qui va avec. Un cabinet par périmètre.</p>
+
+    <div class="sep"></div>
+    <p class="sep-lbl">Titre de section</p>
+    <h2 class="ech-h2">Ce que vous recevez</h2>
+
+    <div class="papier">
+      <p class="lbl">Titre de section, sur la bande claire</p>
+      <h3 class="ech-h3">Ce que nous ne faisons pas.</h3>
+    </div>
+  </div>
+</section>
+
+
+<!-- ========================= CANDIDATE 2 ========================= -->
+<section class="bloc f-familjen">
+  <div class="wrap">
+    <div class="etiquette">
+      <div>
+        <p class="et-num">02 · candidate</p>
+        <h2 class="et-nom">Familjen Grotesk</h2>
+        <p class="et-meta">
+          Google Fonts · SIL Open Font License · <span class="libre">gratuite</span><br>
+          Familjen STHLM, Stockholm · projet mené par Kristian Möller
+        </p>
+      </div>
+      <div>
+        <p class="et-carac">Le contraste demandé, et il tient sur un détail vérifiable : elle porte
+        de vraies AMORCES D'ENCRE, ces entailles creusées dans les angles rentrants. C'est un
+        dispositif d'imprimerie, prévu pour que l'encre ne bave pas dans les creux, repris ici comme
+        signature de dessin. Plus étroite et plus dense que la 01, elle loge davantage de texte par
+        ligne à mesure égale.</p>
+        <p class="et-carac">Ce qu'elle donne : du caractère qui vient de la technique, pas du style.
+        C'est l'argument le plus direct contre votre objection, et il tombe juste pour une marque
+        qui revendique le registre du document imprimé. Risque à peser : ces entailles se voient en
+        grand et disparaissent en petit, la page aura donc deux visages selon l'échelle.</p>
+      </div>
+    </div>
+
+    <p class="ech-kicker">Origination sell-side · PME françaises · 1-10 M€</p>
+    <h1 class="ech-h1">Nous détectons les dirigeants<br>qui <span class="accent">préparent</span> leur sortie.</h1>
+    <p class="ech-sub">Et nous livrons le dossier d’approche qui va avec. Un cabinet par périmètre.</p>
+
+    <div class="sep"></div>
+    <p class="sep-lbl">Titre de section</p>
+    <h2 class="ech-h2">Ce que vous recevez</h2>
+
+    <div class="papier">
+      <p class="lbl">Titre de section, sur la bande claire</p>
+      <h3 class="ech-h3">Ce que nous ne faisons pas.</h3>
+    </div>
+  </div>
+</section>
+
+
+<!-- ========================= CANDIDATE 3 ========================= -->
+<section class="bloc f-chivo">
+  <div class="wrap">
+    <div class="etiquette">
+      <div>
+        <p class="et-num">03 · candidate premium, rendue par substitution</p>
+        <h2 class="et-nom">GT America <span style="color:var(--txt-3);font-size:.72em">· approchée ici par Chivo</span></h2>
+        <p class="et-meta">
+          GT America · Grilli Type, Zurich · <span class="payant">payante</span><br>
+          licence web à paiement unique, pas d'abonnement, tarifée aux visiteurs uniques mensuels<br>
+          premier palier : 50 000 visiteurs/mois, très au-dessus de votre trafic<br>
+          ordre de grandeur ~70 € par style, chiffre NON confirmé : Grilli Type calcule ses prix
+          côté navigateur et leur FAQ annonce des montants en USD, à vérifier au panier<br>
+          rendu ci-dessous avec Chivo (Héctor Gatti &amp; Omnibus-Type, OFL), qui en approche le squelette
+        </p>
+      </div>
+      <div>
+        <p class="et-carac">Ce que vous voyez n'est PAS GT America : c'est Chivo, une néo-grotesque
+        libre de squelette proche, mise là pour que vous jugiez le registre, pas le détail. GT
+        America est le pont entre la grotesque suisse et les gothiques américains, et se décline
+        en six largeurs et 84 styles. C'est le standard discret de beaucoup d'éditorial et de
+        corporate haut de gamme.</p>
+        <p class="et-carac">Ce que le premium achète vraiment ici, ce n'est pas un meilleur dessin
+        que la 01, c'est la RARETÉ et l'amplitude : personne ne l'a par défaut, et les six largeurs
+        vous donnent des condensés propres pour les tableaux et les mentions. À votre trafic, vous
+        resterez des années au palier plancher, donc le coût est un achat unique modeste, pas une
+        rente. Voir plus bas ma recommandation.</p>
+      </div>
+    </div>
+
+    <p class="ech-kicker">Origination sell-side · PME françaises · 1-10 M€</p>
+    <h1 class="ech-h1">Nous détectons les dirigeants<br>qui <span class="accent">préparent</span> leur sortie.</h1>
+    <p class="ech-sub">Et nous livrons le dossier d’approche qui va avec. Un cabinet par périmètre.</p>
+
+    <div class="sep"></div>
+    <p class="sep-lbl">Titre de section</p>
+    <h2 class="ech-h2">Ce que vous recevez</h2>
+
+    <div class="papier">
+      <p class="lbl">Titre de section, sur la bande claire</p>
+      <h3 class="ech-h3">Ce que nous ne faisons pas.</h3>
+    </div>
+  </div>
+</section>
+
+
+<!-- ===================== la question de l'accent ===================== -->
+<section class="accent-note">
+  <div class="wrap">
+    <p class="an-h">Conséquence à trancher · le dispositif d'accent</p>
+    <p class="an-p">Aujourd'hui l'accent du hero est une italique serif, et elle porte parce qu'un
+    serif a une italique VRAIMENT dessinée, aux formes différentes du romain. Les trois candidates
+    ont bien des italiques, ce ne sont pas des obliques penchées mécaniquement, mais une italique
+    de grotesque reste proche de son romain : elle marque beaucoup moins, et de loin elle peut
+    passer inaperçue. Passer le display en grotesque affaiblit donc l'accent actuel, et vous
+    laisse trois sorties, rendues ici en Schibsted Grotesk :</p>
+
+    <div class="an-ligne">
+      <p class="an-lbl">A · vin<br>(rendu ci-dessus)</p>
+      <p class="an-ex">qui <span class="accent">préparent</span> leur sortie.</p>
+    </div>
+    <div class="an-ligne">
+      <p class="an-lbl">B · oblique<br>seule</p>
+      <p class="an-ex">qui <em>préparent</em> leur sortie.</p>
+    </div>
+    <div class="an-ligne">
+      <p class="an-lbl">C · italique serif<br>conservée en îlot</p>
+      <p class="an-ex">qui <span class="serif-it">préparent</span> leur sortie.</p>
+    </div>
+
+    <p class="an-p" style="margin-top:34px">L'option C garde l'Instrument Serif pour ce seul mot,
+    en contrepoint du display grotesque. Elle est la plus riche, et la plus risquée : elle laisse
+    entrer sur la page la police même dont vous voulez sortir.</p>
+  </div>
+</section>
+
+</body>
+</html>

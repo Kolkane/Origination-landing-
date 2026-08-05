@@ -23,8 +23,8 @@ async function policeGoogle(famille: string, poids: number, texte: string) {
 export default async function Image() {
   const marque = `${brand.MARQUE} ${brand.SUFFIXE}`;
   const baseline = brand.BASELINE.toUpperCase();
-  const [instrument, geistMono] = await Promise.all([
-    policeGoogle("Instrument+Serif", 400, marque),
+  const [familjen, geistMono] = await Promise.all([
+    policeGoogle("Familjen+Grotesk", 400, marque),
     policeGoogle("Geist+Mono", 400, `${baseline} ·`),
   ]);
 
@@ -46,8 +46,9 @@ export default async function Image() {
         <div
           style={{
             marginTop: 44,
-            fontFamily: "Instrument Serif",
+            fontFamily: "Familjen Grotesk",
             fontSize: 120,
+            letterSpacing: "-0.02em",
             color: "#F4F2EF",
             lineHeight: 1.06,
           }}
@@ -70,7 +71,7 @@ export default async function Image() {
     {
       ...size,
       fonts: [
-        { name: "Instrument Serif", data: instrument, weight: 400 },
+        { name: "Familjen Grotesk", data: familjen, weight: 400 },
         { name: "Geist Mono", data: geistMono, weight: 400 },
       ],
     }

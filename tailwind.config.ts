@@ -19,7 +19,9 @@ const config: Config = {
         wine: "#8E2438",
       },
       fontFamily: {
-        serif: ["var(--font-instrument)", "Georgia", "serif"],
+        /* v18 : le display est une grotesque, la clé prend le nom du rôle.
+           Aucun composant n'utilisait font-serif, le renommage ne casse rien. */
+        display: ["var(--font-familjen)", "system-ui", "sans-serif"],
         sans: ["var(--font-geist)", "system-ui", "sans-serif"],
         mono: ["var(--font-geist-mono)", "ui-monospace", "monospace"],
       },
