@@ -214,6 +214,17 @@ export const copy = {
     noteFort: "un tiers écarté",
     noteApres: " à la vérification humaine.",
     noteLigne2: "Ce qui reste est livré. Rien d’autre.",
+    /* le stock et le flux. Sans cette distinction, un prospect divise 45 par
+       le rythme mensuel, conclut que trois mois lui suffisent, et lit dans la
+       page une invitation à partir à l'échéance de son engagement. Aucun
+       chiffre de flux ici : il n'est pas mesuré, il est annoncé au devis
+       comme le volume. */
+    bascule1Avant: "Ces 45, une fois vérifiés à la main, forment votre ",
+    bascule1Fort: "rattrapage",
+    bascule1Apres:
+      " : ce que votre périmètre contient déjà, livré dans les premières semaines.",
+    bascule2:
+      "Ensuite, chaque mois, de nouveaux dirigeants entrent en préparation. Ce flux est mesuré sur votre périmètre et annoncé au devis.",
   },
   /* v15 · B1 : trois étapes, pas quatre. L'ancienne « Le dossier
      d'approche » est absorbée par la section qui montre le document,
@@ -261,11 +272,16 @@ export const copy = {
       metaFort: `À partir de, ${brand.PRICING.origination.periode}`,
       metaSuite: ", selon le périmètre convenu",
       metaLigne2: `Engagement ${nb(brand.PRICING.origination.engagement)}, puis reconduction mensuelle`,
+      /* l'arithmétique posée à la place du prospect, sans chiffre
+         d'honoraires ni promesse de résultat : c'est lui qui sait ce que
+         vaut un mandat dans son cabinet, pas nous */
+      arithmetique: `${nb(brand.PRICING.origination.prixPlancher)} par mois, soit ${nb(brand.PRICING.origination.prixAnnuel)} sur l’année. Vous savez ce que vaut un mandat de cession dans votre cabinet.`,
       corps:
         "Le périmètre est arrêté avec vous à l’appel : région, typologie d’entreprises, ce que vous voulez voir détecté. Nous mesurons ce qu’il contient et nous vous l’annonçons au devis, avant tout engagement. Un mois qui passe sous ce volume n’est pas facturé.",
       points: [
         "Un périmètre défini avec vous, pas un découpage imposé",
-        "Des dossiers d’approche chaque mois, à hauteur de ce que votre périmètre contient",
+        "Le rattrapage initial de votre périmètre, livré dès les premières semaines",
+        "Puis les nouvelles bascules au fil de l’eau, vérifiées et livrées sous 7 jours",
         "Vérification humaine avant chaque livraison, taux d’écart publié",
         "Information des personnes, registre d’opposition et opt-out pris en charge",
         "Un seul cabinet servi sur votre périmètre, quel que soit l’usage",
@@ -383,7 +399,7 @@ export const copy = {
       {
         question: "Combien de dossiers par mois, et si mon périmètre est pauvre ?",
         reponse:
-          "Autant que votre périmètre en contient : le volume est mesuré et annoncé au devis, avant tout engagement. Un mois qui passe sous ce volume n’est pas facturé.",
+          "Les premières semaines livrent le rattrapage, ce que votre périmètre contient déjà. Ensuite viennent les nouvelles bascules, au fil de la détection. Les deux volumes sont mesurés sur votre périmètre et annoncés au devis, avant tout engagement, et un mois qui passe sous ce volume n’est pas facturé.",
       },
     ],
   },

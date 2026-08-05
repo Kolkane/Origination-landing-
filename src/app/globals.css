@@ -2339,3 +2339,35 @@ footer a:hover {
     justify-content: flex-start;
   }
 }
+
+/* le stock et le flux, sous l'entonnoir. Même vocabulaire que l'ancrage
+   national en tête de section : un filet, du texte, rien de plus. */
+.bascule {
+  margin-top: clamp(30px, 3.4vw, 44px);
+  padding-top: 24px;
+  border-top: 1px solid var(--line-soft);
+}
+.bascule-t {
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--txt-2);
+  max-width: 72ch;
+}
+.bascule-t b {
+  color: var(--txt);
+  font-weight: 500;
+}
+/* le flux est d'un cran en retrait : c'est ce qui n'est pas encore mesuré */
+.bascule-flux {
+  margin-top: 12px;
+  color: var(--txt-3);
+}
+
+/* l'arithmétique sous le prix : lisible, jamais aussi lourde que le nombre */
+.p-arith {
+  margin-top: clamp(22px, 2.4vw, 30px);
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--txt-2);
+  max-width: 52ch;
+}

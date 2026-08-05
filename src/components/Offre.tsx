@@ -36,6 +36,10 @@ export default function Offre() {
             </p>
           </div>
 
+          {/* l'arithmétique posée à la place du prospect : le prix mensuel
+              ramené à l'année, face à ce qu'il sait déjà valoir chez lui */}
+          <p className="p-arith">{p.arithmetique}</p>
+
           <p className="p-corps">{p.corps}</p>
           <ul className="p-liste">
             {p.points.map((point) => (

@@ -71,6 +71,17 @@ export default function Entonnoir() {
           ))}
         </div>
 
+        {/* le stock et le flux. Sans cette distinction, un prospect divise 45
+            par le rythme mensuel et conclut que trois mois lui suffisent. */}
+        <div className="bascule rev">
+          <p className="bascule-t">
+            {e.bascule1Avant}
+            <b>{e.bascule1Fort}</b>
+            {e.bascule1Apres}
+          </p>
+          <p className="bascule-t bascule-flux">{e.bascule2}</p>
+        </div>
+
         <div className="ent-foot rev">
           <p className="ent-kicker">
             {e.piedAvant}
