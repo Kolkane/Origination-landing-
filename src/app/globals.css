@@ -1984,11 +1984,19 @@ footer a:hover {
 
 /* ============================================================
    v15 · B2, les engagements en manifeste.
-   Portée de MAQUETTE-V15-B2-ENGAGEMENTS.html.
-   Colonne unique, quatre lignes pleine largeur, et le statement
-   à l'échelle du hero : c'est le seul autre endroit de la page à
-   cette taille, c'est ce qui en fait un événement.
-   Zéro rouge : la section tient par le blanc et l'échelle.
+   Reprise de MAQUETTE-V15-B2-ENGAGEMENTS.html, refondue sous le
+   régime 2 (gabarit d'une section existante, décision au brief).
+   Ce qui change et pourquoi :
+   - grille 2×2 à filets en croix au lieu de quatre lignes pleine
+     largeur. La section faisait le double de la hauteur utile.
+   - l'explication passe SOUS son principe. En pleine largeur elle
+     lui faisait face à l'autre bout de la ligne : on lisait deux
+     colonnes indépendantes, pas quatre engagements.
+   - le statement est réduit d'un tiers (76px → 50px de plafond) et
+     n'est donc plus à l'échelle du hero. Il gardait à lui seul près
+     d'un écran de hauteur. La place libérée à sa droite porte
+     l'intro plutôt que du vide.
+   Zéro rouge, inchangé : la section tient par le blanc et les filets.
    Après la fusion de l'entonnoir, c'est la seule bande claire
    pleine largeur du site, donc rien ne peut l'annuler.
    ============================================================ */
@@ -1996,51 +2004,109 @@ footer a:hover {
 .commit {
   background: var(--paper);
   color: var(--ink);
-  padding: clamp(96px, 13vw, 180px) 0;
+  padding: clamp(64px, 8vw, 108px) 0;
 }
 .commit .wrap {
   max-width: 1240px;
 }
+
+/* bande d'en-tête : titre à gauche, intro calée en pied à droite,
+   les deux sur la même ligne de base optique */
+.c-tete {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 0.78fr);
+  gap: clamp(20px, 5vw, 80px);
+  align-items: end;
+  margin-bottom: clamp(32px, 4vw, 54px);
+}
 .c-kicker {
   color: var(--ink-3);
-  margin-bottom: clamp(30px, 4vw, 48px);
+  margin-bottom: clamp(18px, 2.2vw, 28px);
 }
 .c-statement {
   font-family: var(--font-instrument), serif;
   font-weight: 400;
-  font-size: clamp(40px, 6vw, 76px);
-  line-height: 1.02;
+  font-size: clamp(28px, 4vw, 50px);
+  line-height: 1.04;
   letter-spacing: -0.02em;
   color: var(--ink);
   max-width: 14ch;
-  margin-bottom: clamp(64px, 9vw, 120px);
 }
-/* principe à gauche en serif, explication à droite en Geist,
-   grand vide entre les deux : c'est le vide qui fait le manifeste */
-.c-ligne {
+.c-intro {
+  font-size: 14.5px;
+  line-height: 1.7;
+  color: var(--ink-2);
+  max-width: 40ch;
+  padding-bottom: 0.35em;
+}
+
+/* la croix : le filet vertical est porté par la colonne de gauche,
+   le filet horizontal par la première rangée. Le bloc est fermé en
+   haut et en bas seulement, comme les autres tableaux de la page. */
+.c-grille {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 0.92fr);
-  gap: clamp(24px, 6vw, 90px);
-  align-items: baseline;
-  padding: clamp(30px, 3.6vw, 48px) 0;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   border-top: 1px solid var(--ink-line);
+  border-bottom: 1px solid var(--ink-line);
 }
-.c-ligne:last-child {
+.c-cell {
+  padding: clamp(22px, 2.4vw, 32px) 0;
+}
+.c-cell:nth-child(odd) {
+  padding-right: clamp(26px, 4vw, 64px);
+  border-right: 1px solid var(--ink-line);
+}
+.c-cell:nth-child(even) {
+  padding-left: clamp(26px, 4vw, 64px);
+}
+.c-cell:nth-child(1),
+.c-cell:nth-child(2) {
   border-bottom: 1px solid var(--ink-line);
 }
 .c-p {
   font-family: var(--font-instrument), serif;
   font-weight: 400;
-  font-size: clamp(22px, 2.5vw, 31px);
+  font-size: clamp(21px, 2.1vw, 27px);
   line-height: 1.16;
   letter-spacing: -0.01em;
-  max-width: 18ch;
+  max-width: 20ch;
+  margin-bottom: 12px;
 }
 .c-e {
   font-size: 14.5px;
   line-height: 1.7;
   color: var(--ink-2);
-  max-width: 44ch;
+  max-width: 42ch;
+}
+
+/* révélation en cascade, déclenchée à l'entrée de la section et jouée
+   une seule fois. Voir Engagements.tsx. Opacité et transform seulement,
+   aucun reflow. Sans JavaScript, le noscript du layout rend les quatre
+   cellules d'emblée : l'animation ne conditionne jamais la lecture. */
+.c-cell {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.62s var(--ease), transform 0.62s var(--ease);
+}
+.c-grille.revelee .c-cell {
+  opacity: 1;
+  transform: none;
+}
+.c-grille.revelee .c-cell:nth-child(2) {
+  transition-delay: 0.1s;
+}
+.c-grille.revelee .c-cell:nth-child(3) {
+  transition-delay: 0.2s;
+}
+.c-grille.revelee .c-cell:nth-child(4) {
+  transition-delay: 0.3s;
+}
+@media (prefers-reduced-motion: reduce) {
+  .c-cell {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
 }
 
 /* ============================================================
@@ -2120,13 +2186,37 @@ footer a:hover {
     margin-top: clamp(40px, 6vw, 60px);
   }
 }
-@media (max-width: 860px) {
-  .c-ligne {
+/* la croix tient jusqu'au petit écran : en dessous de 720px, deux colonnes
+   couperaient les principes en quatre lignes, la pile redevient plus courte */
+@media (max-width: 720px) {
+  /* la croix se déplie en pile : le filet vertical disparaît, le filet
+     horizontal passe entre chaque engagement */
+  .c-tete {
     grid-template-columns: minmax(0, 1fr);
-    gap: 14px;
+    align-items: start;
+    gap: 16px;
+  }
+  .c-intro {
+    padding-bottom: 0;
   }
   .c-statement {
     max-width: 18ch;
+  }
+  .c-grille {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .c-cell:nth-child(odd) {
+    padding-right: 0;
+    border-right: 0;
+  }
+  .c-cell:nth-child(even) {
+    padding-left: 0;
+  }
+  .c-cell:nth-child(3) {
+    border-bottom: 1px solid var(--ink-line);
+  }
+  .c-cell:last-child {
+    border-bottom: 0;
   }
 }
 

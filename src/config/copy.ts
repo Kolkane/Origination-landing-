@@ -311,6 +311,10 @@ export const copy = {
   engagements: {
     kicker: "Nos engagements",
     statement: "Ce que nous ne faisons pas.",
+    /* l'intro tient la droite de la bande d'en-tête : le titre a été réduit,
+       la place ainsi libérée porte du sens au lieu de rester vide */
+    intro:
+      "Quatre limites que nous nous imposons, et qui font la valeur de ce que nous livrons.",
     nots: [
       {
         fort: "Pas de scores prédictifs inventés.",
