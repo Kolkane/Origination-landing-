@@ -933,11 +933,6 @@ footer a:hover {
   letter-spacing: -0.015em;
   margin: 0 0 12px;
 }
-.d-desc {
-  font-size: 12px;
-  color: var(--ink-2);
-  line-height: 1.7;
-}
 .d-interlo {
   margin-top: 14px;
   padding-top: 12px;
@@ -995,33 +990,34 @@ footer a:hover {
   --flou-entree: 6px;
   --flou-sortie: 7px;
 }
-/* v21 : la mise au point n'est plus un bloc qui se défloute, c'est une
-   CHORÉGRAPHIE. Un gros flou uniforme rend l'image molle, pas chère ;
-   ce qui fait l'effet soigné, c'est que les éléments de la zone arrivent
-   en séquence, chacun avec sa propre course, sur une courbe très
-   décélérée. Le flou devient un appoint, pas le sujet.
+/* v23 : la zone entière fait sa mise au point pendant que ses lignes se
+   RÉVÈLENT PAR BALAYAGE, de gauche à droite, à bord fondu. C'est le geste
+   d'un tirage photographique qui se développe, pas un fondu d'interface :
+   c'est ce qui distingue la section d'un gabarit acheté.
 
-   Le conteneur ne porte plus qu'un recadrage discret : c'est le mouvement
-   d'objectif. Le détail est porté par les enfants. */
+   Le masque n'est déclaré QUE dans les images-clés. Hors animation il
+   n'existe pas : ni masque ni filtre ne subsistent au repos. */
 .zone.lit {
   opacity: 1;
   pointer-events: auto;
-  animation: cadrage 0.54s cubic-bezier(0.2, 0.8, 0.2, 1);
+  animation: cadrage 0.55s cubic-bezier(0.16, 1, 0.3, 1);
 }
 @keyframes cadrage {
   from {
-    transform: scale(1.035);
+    transform: scale(1.02);
+    filter: blur(var(--flou-entree));
   }
   to {
     transform: scale(1);
+    filter: blur(0);
   }
 }
 
-/* chaque élément de la zone monte, se met au point et se pose. backwards :
-   il reste à l'état initial pendant son délai, donc invisible, et retrouve
-   son état naturel une fois l'animation finie. Aucun filtre au repos. */
+/* chaque élément est balayé puis se pose. backwards : il reste à l'état
+   initial pendant son délai, donc invisible, et retrouve son état naturel
+   une fois l'animation finie. */
 .zone.lit > * {
-  animation: apparition 0.58s cubic-bezier(0.16, 1, 0.3, 1) backwards;
+  animation: balayage 0.62s cubic-bezier(0.16, 1, 0.3, 1) backwards;
 }
 .zone.lit > *:nth-child(1) {
   animation-delay: 0.04s;
@@ -1035,16 +1031,29 @@ footer a:hover {
 .zone.lit > *:nth-child(4) {
   animation-delay: 0.205s;
 }
-@keyframes apparition {
+/* le balai : un dégradé trois fois plus large que l'élément, dont on fait
+   glisser la position. La frange fondue traverse la ligne de gauche à
+   droite et la révèle au passage. */
+@keyframes balayage {
   from {
     opacity: 0;
-    transform: translateY(15px);
-    filter: blur(var(--flou-entree));
+    transform: translateY(9px);
+    -webkit-mask-image: linear-gradient(90deg, #000 0 40%, transparent 62%);
+    mask-image: linear-gradient(90deg, #000 0 40%, transparent 62%);
+    -webkit-mask-size: 300% 100%;
+    mask-size: 300% 100%;
+    -webkit-mask-position: 100% 0;
+    mask-position: 100% 0;
   }
   to {
     opacity: 1;
     transform: none;
-    filter: blur(0);
+    -webkit-mask-image: linear-gradient(90deg, #000 0 40%, transparent 62%);
+    mask-image: linear-gradient(90deg, #000 0 40%, transparent 62%);
+    -webkit-mask-size: 300% 100%;
+    mask-size: 300% 100%;
+    -webkit-mask-position: 0 0;
+    mask-position: 0 0;
   }
 }
 
@@ -1054,30 +1063,62 @@ footer a:hover {
    multiplier les filtres coûterait cher pour rien. */
 .zone.lit .fig,
 .zone.lit .tl li,
-.zone.lit .trend-row {
+.zone.lit .serie-l,
+.zone.lit .ident li,
+.zone.lit .caviard li {
   animation: monte 0.5s cubic-bezier(0.16, 1, 0.3, 1) backwards;
 }
 .zone.lit .fig:nth-child(1),
 .zone.lit .tl li:nth-child(1),
-.zone.lit .trend-row:nth-child(1) {
+.zone.lit .serie-l:nth-child(1),
+.zone.lit .ident li:nth-child(1),
+.zone.lit .caviard li:nth-child(1) {
   animation-delay: 0.13s;
 }
 .zone.lit .fig:nth-child(2),
 .zone.lit .tl li:nth-child(2),
-.zone.lit .trend-row:nth-child(2) {
+.zone.lit .serie-l:nth-child(2),
+.zone.lit .ident li:nth-child(2),
+.zone.lit .caviard li:nth-child(2) {
   animation-delay: 0.185s;
 }
 .zone.lit .fig:nth-child(3),
 .zone.lit .tl li:nth-child(3),
-.zone.lit .trend-row:nth-child(3) {
+.zone.lit .serie-l:nth-child(3),
+.zone.lit .ident li:nth-child(3),
+.zone.lit .caviard li:nth-child(3) {
   animation-delay: 0.24s;
 }
 .zone.lit .fig:nth-child(4),
-.zone.lit .tl li:nth-child(4) {
+.zone.lit .tl li:nth-child(4),
+.zone.lit .ident li:nth-child(4) {
   animation-delay: 0.295s;
 }
 .zone.lit .tl li:nth-child(5) {
   animation-delay: 0.35s;
+}
+/* la barre de la série se tire ensuite, dans le sens de la lecture : c'est
+   elle qui donne l'impression que le document se dessine sous les yeux */
+.zone.lit .serie-barre {
+  animation: tire 0.66s cubic-bezier(0.16, 1, 0.3, 1) backwards;
+  transform-origin: 0 50%;
+}
+.zone.lit .serie-l:nth-child(1) .serie-barre {
+  animation-delay: 0.22s;
+}
+.zone.lit .serie-l:nth-child(2) .serie-barre {
+  animation-delay: 0.275s;
+}
+.zone.lit .serie-l:nth-child(3) .serie-barre {
+  animation-delay: 0.33s;
+}
+@keyframes tire {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
 }
 @keyframes monte {
   from {
@@ -1137,23 +1178,45 @@ footer a:hover {
   line-height: 1.4;
   max-width: 12ch;
 }
-.trend {
-  margin-top: 20px;
+/* la série, forme propre à la zone 01. Un tableau dont chaque ligne porte
+   sa barre : la valeur reste lisible sans la barre, la barre donne la
+   grandeur d'un coup d'oeil. Une seule série, en encre : pas de couleur à
+   décoder, donc pas de légende. Base à ZÉRO, jamais tronquée, sinon la
+   pente serait flattée. Marque fine, extrémité carrée, pas d'arrondi :
+   la charte proscrit les formes arrondies. */
+.serie {
+  margin-top: 22px;
 }
-.trend-row {
-  display: flex;
-  justify-content: space-between;
+.serie-l {
+  display: grid;
+  grid-template-columns: 4.5ch minmax(0, 1fr) 7.5ch;
+  align-items: center;
   gap: 12px;
-  font-size: 12.5px;
-  padding: 8px 0;
-  border-bottom: 1px solid var(--ink-line);
+  padding: 7px 0;
 }
-.trend-row span:first-child {
+.serie-l + .serie-l {
+  border-top: 1px solid var(--ink-line);
+}
+.serie-an {
+  font-size: 11px;
   color: var(--ink-3);
+  font-variant-numeric: tabular-nums;
 }
-.trend-row span:last-child {
+.serie-piste {
+  display: block;
+  height: 7px;
+}
+.serie-barre {
+  display: block;
+  height: 100%;
+  background: var(--ink-2);
+}
+.serie-v {
+  font-size: 12px;
   color: var(--ink);
   font-weight: 500;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
 }
 .trend-tag {
   font-size: 9.5px;
@@ -1218,28 +1281,103 @@ footer a:hover {
   color: var(--ink);
 }
 
-/* coordonnées */
+/* ---- zone 00 · la fiche d'identité, seule zone en cases ---- */
+.ident {
+  list-style: none;
+  margin: 0 0 18px;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  border-top: 1px solid var(--ink-line);
+}
+.ident li {
+  font-size: 11.5px;
+  letter-spacing: 0.04em;
+  color: var(--ink-2);
+  padding: 11px 0;
+  border-bottom: 1px solid var(--ink-line);
+}
+.ident li:nth-child(odd) {
+  padding-right: 18px;
+}
+.ident li:nth-child(even) {
+  padding-left: 18px;
+  border-left: 1px solid var(--ink-line);
+}
+
+/* ---- zone 05 · le caviardage. Le spécimen prouve qu'on détient les
+   coordonnées sans les publier. Barres pleines, rectangulaires, jamais
+   arrondies : c'est une pièce caviardée, pas un composant. ---- */
 .coord-s {
   font-size: 11px;
   color: var(--ink-2);
-  margin-bottom: 10px;
+  margin-bottom: 16px;
+}
+.caviard {
+  list-style: none;
+  margin: 0 0 18px;
+  padding: 0;
+}
+.caviard li {
+  display: grid;
+  grid-template-columns: 13ch minmax(0, 1fr);
+  align-items: center;
+  gap: 16px;
+  padding: 10px 0;
+  border-top: 1px solid var(--ink-line);
+}
+.cav-k {
+  font-size: 10.5px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+.cav-bar {
+  display: block;
+  height: 13px;
+  background: var(--ink);
+}
+.caviard li:nth-child(1) .cav-bar {
+  width: 62%;
+}
+.caviard li:nth-child(2) .cav-bar {
+  width: 84%;
+}
+.caviard li:nth-child(3) .cav-bar {
+  width: 47%;
 }
 .coord-d {
-  font-size: 14.5px;
+  font-size: 14px;
   line-height: 1.6;
   color: var(--ink-2);
   max-width: 52ch;
 }
 
-/* signal, angle, inconnu */
-.signal {
-  font-size: 16.5px;
-  line-height: 1.62;
-  color: var(--ink);
-  max-width: 58ch;
+/* ---- zone 02 · le constat. Seule zone où une phrase passe à l'échelle
+   du display : c'est la trouvaille, elle mérite le corps. ---- */
+.sig-amorce {
+  font-size: 13.5px;
+  line-height: 1.6;
+  color: var(--ink-3);
+  max-width: 60ch;
+  margin-bottom: 14px;
 }
-.signal b {
-  font-weight: 500;
+.sig-fort {
+  font-size: clamp(21px, 2.4vw, 28px);
+  line-height: 1.22;
+  letter-spacing: -0.015em;
+  color: var(--ink);
+  /* mesure élargie : à 26ch, « ans. » retombait seul sur une ligne */
+  max-width: 34ch;
+  margin-bottom: 16px;
+}
+.sig-suite {
+  font-size: 14px;
+  line-height: 1.65;
+  color: var(--ink-2);
+  max-width: 62ch;
+  padding-top: 14px;
+  border-top: 1px solid var(--ink-line);
 }
 .angle-t {
   font-family: var(--font-familjen), sans-serif;
@@ -1263,8 +1401,27 @@ footer a:hover {
   color: var(--ink);
   font-weight: 500;
 }
-.unknown {
+/* ---- zone 04 · la chute détachée. C'est la phrase qui fait vendre, elle
+   ne doit pas mourir en fin de paragraphe. ---- */
+.angle-chute {
+  margin-top: 16px;
+  padding-top: 14px;
+  border-top: 1px solid var(--ink-2);
   font-size: 15.5px;
+  line-height: 1.5;
+  color: var(--ink);
+  font-weight: 500;
+  max-width: 52ch;
+}
+
+/* ---- zone 06 · la réserve. Seule zone encadrée : dans un rapport, une
+   réserve se signale, elle ne se fond pas dans le texte. ---- */
+.reserve {
+  border: 1px solid var(--ink-line-2);
+  padding: clamp(18px, 2.2vw, 26px);
+}
+.unknown {
+  font-size: 15px;
   line-height: 1.62;
   color: var(--ink-2);
   max-width: 60ch;
@@ -1373,9 +1530,6 @@ footer a:hover {
   .d-meta {
     font-size: 10.5px;
   }
-  .signal {
-    font-size: 16px;
-  }
   .angle-p {
     font-size: 15px;
   }
@@ -1383,8 +1537,25 @@ footer a:hover {
     font-size: 15px;
   }
   .tl .ev,
-  .coord-d {
+  .coord-d,
+  .sig-suite {
     font-size: 14.5px;
+  }
+  /* la fiche d'identité et le caviardage repassent en une colonne : à
+     390px, deux cases côte à côte couperaient les libellés */
+  .ident {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .ident li:nth-child(odd) {
+    padding-right: 0;
+  }
+  .ident li:nth-child(even) {
+    padding-left: 0;
+    border-left: 0;
+  }
+  .caviard li {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 8px;
   }
 }
 @media (prefers-reduced-motion: reduce) {
@@ -1397,11 +1568,16 @@ footer a:hover {
   .zone.lit > *,
   .zone.lit .fig,
   .zone.lit .tl li,
-  .zone.lit .trend-row {
+  .zone.lit .serie-l,
+  .zone.lit .serie-barre,
+  .zone.lit .ident li,
+  .zone.lit .caviard li {
     animation: none !important;
     transition: none !important;
     transform: none !important;
     filter: none !important;
+    -webkit-mask-image: none !important;
+    mask-image: none !important;
   }
   .recu-item,
   .recu-idx,

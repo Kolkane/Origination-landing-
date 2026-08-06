@@ -141,7 +141,15 @@ export const copy = {
          elle est montrée. */
       societeLbl: "Identité",
       titre: "Établissements Vasseur",
-      desc: "Génie climatique · 60-99 salariés · agglomération type · SAS, titres cessibles",
+      /* v23 : la même phrase que le « desc » d'avant, découpée sur ses points
+         médians pour devenir une fiche d'identité en cases. Aucun mot n'est
+         ajouté ni retiré, seule la structure change. */
+      descItems: [
+        "Génie climatique",
+        "60-99 salariés",
+        "agglomération type",
+        "SAS, titres cessibles",
+      ],
       interloLbl: "Interlocuteur",
       interlo: "Gérard Vasseur · Président · 63 ans",
 
@@ -152,10 +160,14 @@ export const copy = {
         { n: "2,1 M€", k: "Fonds de roulement" },
         { n: "≈ 0,2", k: "Gearing" },
       ],
+      /* v23 : « n » est la valeur déjà affichée dans « v », en milliers, pour
+         que la barre soit proportionnelle. Ce n'est pas une donnée de plus,
+         c'est la même, lisible par la mise en page. Échelle à zéro, jamais
+         tronquée : une base tronquée exagérerait la pente. */
       tendance: [
-        { a: "2023", v: "~510 K€" },
-        { a: "2024", v: "~590 K€" },
-        { a: "2025", v: "~640 K€" },
+        { a: "2023", v: "~510 K€", n: 510 },
+        { a: "2024", v: "~590 K€", n: 590 },
+        { a: "2025", v: "~640 K€", n: 640 },
       ],
       tendanceTag: "Résultat net · trois exercices en hausse",
 
@@ -170,6 +182,11 @@ export const copy = {
 
       coordLbl: "Coordonnées",
       coordS: "Vérifiées avant livraison",
+      /* v23 : les trois intitulés sont ceux que la phrase ci-dessous nomme
+         déjà. Ils sont sortis pour être caviardés : le spécimen montre qu'on
+         détient les coordonnées sans les publier. Le caviardage est autorisé
+         dans le spécimen par l'amendement v8.1 de CLAUDE.md. */
+      coordItems: ["Mobile", "Email", "Ligne directe"],
       coordD:
         "Mobile, email et ligne directe du dirigeant, contrôlés à la source publique la semaine de la livraison.",
 

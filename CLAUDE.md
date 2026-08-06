@@ -96,7 +96,27 @@ trouvé sur vous". Codes attendus : document financier imprimé, pas SaaS IA.
   TRANSITION, jamais un état de repos : hors animation, aucune zone ne porte
   de filtre. En prefers-reduced-motion, flou et échelle disparaissent
   entièrement et le changement de zone est instantané.
+  Amendement (arbitrage Vincent, v23, carte blanche sur la section dossier) :
+  la mise au point devient un BALAYAGE. Chaque ligne de la zone entrante est
+  révélée de gauche à droite par un masque à frange fondue, en cascade,
+  pendant que la zone entière se défloute. C'est le geste d'un tirage qui se
+  développe, choisi parce qu'il appartient au registre imprimé de la marque
+  et non au vocabulaire d'interface. Le masque n'existe QUE dans les
+  images-clés : au repos, aucune zone ne porte masque, filtre ni transform.
   La liste reste fermée : tout nouveau mouvement demande un arbitrage.
+- Section dossier, formes des zones (v23, carte blanche) : les sept zones ont
+  chacune une FORME propre, c'est la règle. Elles se ressemblaient toutes et
+  la loupe n'avait alors rien à révéler. Identité en cases, finances en
+  chiffres plus barres, constat à l'échelle du display, parcours en frise,
+  angle avec sa chute détachée, coordonnées CAVIARDÉES, réserve encadrée.
+  Le caviardage applique l'amendement v8.1 : il prouve qu'on détient les
+  coordonnées sans les publier. Ne pas réaligner ces zones sur un gabarit
+  commun, la variété EST la fonction.
+  Le graphe des exercices : série unique en encre, base à ZÉRO jamais
+  tronquée, marque fine à extrémité carrée (la charte proscrit les arrondis),
+  aucune légende puisqu'il n'y a qu'une série, et la valeur reste écrite à
+  côté de la barre. Pas d'infobulle : c'est l'image d'un document imprimé,
+  pas un tableau de bord.
 - Interdits définitifs (hérités des itérations rejetées) : ticker, métriques animées,
   count-up, grilles de cards, beam/bordures lumineuses, tilt 3D, spotlight souris, pings,
   glow, dégradés colorés, grid de fond, badges/chips, emojis, icônes décoratives,

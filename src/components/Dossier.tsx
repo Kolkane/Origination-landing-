@@ -25,6 +25,9 @@ import { copy } from "@/config/copy";
 export default function Dossier() {
   const d = copy.dossier;
   const doc = d.doc;
+  /* échelle du graphe de la série : base à zéro, plafond au plus grand
+     exercice. Dérivé de la donnée affichée, jamais saisi à la main. */
+  const maxTendance = Math.max(...doc.tendance.map((t) => t.n));
   const [actif, setActif] = useState(d.defaut);
   const [sortante, setSortante] = useState<string | null>(null);
 
@@ -133,7 +136,15 @@ export default function Dossier() {
                   >
                     <p className="lbl mono">{doc.societeLbl}</p>
                     <h3 className="d-title">{doc.titre}</h3>
-                    <p className="d-desc mono">{doc.desc}</p>
+                    {/* fiche d'identité en cases : la seule zone qui présente
+                        des faits bruts sans phrase */}
+                    <ul className="ident">
+                      {doc.descItems.map((x) => (
+                        <li className="mono" key={x}>
+                          {x}
+                        </li>
+                      ))}
+                    </ul>
                     <p className="d-interlo mono">
                       <b>{doc.interloLbl}</b>
                       {doc.interlo}
@@ -150,28 +161,38 @@ export default function Dossier() {
                         </div>
                       ))}
                     </div>
-                    <div className="trend">
+                    {/* la série : un tableau dont chaque ligne porte sa propre
+                        barre. La barre ne remplace pas le chiffre, elle le
+                        double, donc la valeur reste lisible sans elle. Base à
+                        zéro, largeur proportionnelle au plus grand exercice. */}
+                    <div className="serie">
                       {doc.tendance.map((t) => (
-                        <div className="trend-row mono" key={t.a}>
-                          <span>{t.a}</span>
-                          <span>{t.v}</span>
+                        <div className="serie-l" key={t.a}>
+                          <span className="serie-an mono">{t.a}</span>
+                          <span className="serie-piste">
+                            <span
+                              className="serie-barre"
+                              style={{ width: `${(t.n / maxTendance) * 100}%` }}
+                            />
+                          </span>
+                          <span className="serie-v mono">{t.v}</span>
                         </div>
                       ))}
                     </div>
                     <p className="trend-tag mono">{doc.tendanceTag}</p>
                   </div>
 
+                  {/* le constat : la seule zone où une phrase passe à
+                      l'échelle du display. C'est la trouvaille du dossier. */}
                   <div
                     className={zone("z-signal")}
                     id="z-signal"
                     {...marque("z-signal")}
                   >
                     <p className="lbl mono">{doc.signalLbl}</p>
-                    <p className="signal">
-                      {doc.signalAvant}
-                      <b>{doc.signalFort}</b>
-                      {doc.signalApres}
-                    </p>
+                    <p className="sig-amorce">{doc.signalAvant}</p>
+                    <p className="sig-fort display">{doc.signalFort}</p>
+                    <p className="sig-suite">{doc.signalApres}</p>
                   </div>
 
                   <div
@@ -200,12 +221,16 @@ export default function Dossier() {
                     <p className="lbl mono">{doc.angleLbl}</p>
                     <h4 className="angle-t">{doc.angleTitre}</h4>
                     <p className="angle-p">{doc.angleP1}</p>
-                    <p className="angle-p">
-                      {doc.angleP2Avant}
-                      <b>{doc.angleP2Fort}</b>
-                    </p>
+                    <p className="angle-p">{doc.angleP2Avant}</p>
+                    {/* la chute est détachée sous un filet : c'est la phrase
+                        qui fait vendre, elle ne doit pas finir un paragraphe */}
+                    <p className="angle-chute">{doc.angleP2Fort}</p>
                   </div>
 
+                  {/* caviardage. Le spécimen prouve qu'on détient les
+                      coordonnées sans les publier : les barres disent ce
+                      qu'une phrase ne ferait que promettre. Autorisé dans le
+                      spécimen par l'amendement v8.1 de CLAUDE.md. */}
                   <div
                     className={zone("z-coord")}
                     id="z-coord"
@@ -213,6 +238,14 @@ export default function Dossier() {
                   >
                     <p className="lbl mono">{doc.coordLbl}</p>
                     <p className="coord-s mono">{doc.coordS}</p>
+                    <ul className="caviard">
+                      {doc.coordItems.map((c) => (
+                        <li key={c}>
+                          <span className="cav-k mono">{c}</span>
+                          <span className="cav-bar" aria-hidden="true" />
+                        </li>
+                      ))}
+                    </ul>
                     <p className="coord-d">{doc.coordD}</p>
                   </div>
 
@@ -222,11 +255,15 @@ export default function Dossier() {
                     {...marque("z-unknown")}
                   >
                     <p className="lbl mono">{doc.inconnuLbl}</p>
-                    <p className="unknown">
-                      {doc.inconnuAvant}
-                      <b>{doc.inconnuFort}</b>
-                      {doc.inconnuApres}
-                    </p>
+                    {/* la seule zone encadrée : une réserve se signale comme
+                        telle dans un rapport, elle ne se fond pas au texte */}
+                    <div className="reserve">
+                      <p className="unknown">
+                        {doc.inconnuAvant}
+                        <b>{doc.inconnuFort}</b>
+                        {doc.inconnuApres}
+                      </p>
+                    </div>
                   </div>
                 </div>
 
