@@ -51,9 +51,16 @@ export const copy = {
     note2: "dans public/, puis rechargez.",
   },
   /* v14 : la description du livrable et l'exemple de dossier ne font plus
-     qu'une section. Cliquer un élément à gauche surligne sa zone à droite.
-     Le dossier est fictif et le dit à trois endroits : barre du viewer,
-     sous le titre, pied de document. Ne jamais retirer l'une des trois. */
+     qu'une section. Depuis la v19, cliquer un élément ne surligne plus une
+     zone dans un document entier : le viseur ne cadre que cette zone.
+     Le dossier est fictif et le dit à TROIS endroits, tous visibles en
+     permanence quelle que soit la zone active : barre du viseur (« Exemple
+     fictif »), chrome du document (« Société et chiffres inventés »), pied
+     de document. Ne jamais retirer l'une des trois.
+     v22 : la deuxième était décrite comme étant « sous le titre ». Le titre
+     est descendu dans la zone 00, la mention est restée dans le chrome et
+     se lit donc au-dessus. Elle n'a jamais cessé d'être toujours visible,
+     c'est ce qui compte. */
   dossier: {
     kicker: "Ce que vous recevez",
     titre: "Ce qui arrive sur votre bureau.",
@@ -62,9 +69,18 @@ export const copy = {
        sous 920px il passe dessous et non à droite. */
     chapo:
       "Un dossier d’approche, pas une ligne dans un fichier. Chaque élément ci-dessous ouvre sa zone dans un exemple de dossier, cadrée de près. Cliquez pour le parcourir.",
-    /* l'élément actif au chargement : les chiffres */
-    defaut: "z-fin",
+    /* v22 : la présentation du prospect quitte l'en-tête permanent et
+       devient la zone 00. Elle est donc l'élément actif au chargement :
+       c'est la page de garde du dossier, on la lit avant les chiffres. */
+    defaut: "z-societe",
     elements: [
+      {
+        idx: "00",
+        cible: "z-societe",
+        titre: "La société",
+        texte:
+          "Ce qu’elle fait, sa taille, sa forme juridique, et qui la dirige.",
+      },
       {
         idx: "01",
         cible: "z-fin",
@@ -120,6 +136,10 @@ export const copy = {
       metaLigne2: "Région exemple · Semaine 30",
       ficti: "Société et chiffres inventés",
       badge: "Vérifié",
+      /* v22 : ces quatre champs ne sont plus dans l'en-tête permanent, ils
+         forment la zone 00. Aucune donnée ne change, seul l'endroit où
+         elle est montrée. */
+      societeLbl: "Identité",
       titre: "Établissements Vasseur",
       desc: "Génie climatique · 60-99 salariés · agglomération type · SAS, titres cessibles",
       interloLbl: "Interlocuteur",

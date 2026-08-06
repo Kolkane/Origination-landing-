@@ -96,7 +96,11 @@ export default function Dossier() {
 
             <div className="doc-cadre">
               <article className="doc" aria-label={doc.aria}>
-                {/* en-tête permanent : il ne change jamais de zone */}
+                {/* en-tête permanent, réduit au CHROME du document depuis la
+                    v22 : marque, référence, mention de fiction et tampon. Il
+                    ne porte plus l'identité du prospect, qui se répétait
+                    au-dessus des six zones et les faisait toutes se
+                    ressembler. Il reste l'ancrage net de la mise au point. */}
                 <header className="d-head">
                   <span className="d-brand">
                     <LogoImbrin taille={20} ton="sombre" />
@@ -116,16 +120,26 @@ export default function Dossier() {
                   <span className="d-badge mono">{doc.badge}</span>
                 </div>
 
-                <h3 className="d-title">{doc.titre}</h3>
-                <p className="d-desc mono">{doc.desc}</p>
-                <p className="d-interlo mono">
-                  <b>{doc.interloLbl}</b>
-                  {doc.interlo}
-                </p>
-
-                {/* la scène : les six zones dans la même cellule, une seule
+                {/* la scène : les sept zones dans la même cellule, une seule
                     visible. L'ordre du DOM suit celui de la nav. */}
                 <div className="d-scene">
+                  {/* v22 : la présentation du prospect était répétée au-dessus
+                      de chaque zone, ce qui donnait à toutes le même visage.
+                      Elle devient la zone 00, la page de garde du dossier. */}
+                  <div
+                    className={zone("z-societe")}
+                    id="z-societe"
+                    {...marque("z-societe")}
+                  >
+                    <p className="lbl mono">{doc.societeLbl}</p>
+                    <h3 className="d-title">{doc.titre}</h3>
+                    <p className="d-desc mono">{doc.desc}</p>
+                    <p className="d-interlo mono">
+                      <b>{doc.interloLbl}</b>
+                      {doc.interlo}
+                    </p>
+                  </div>
+
                   <div className={zone("z-fin")} id="z-fin" {...marque("z-fin")}>
                     <p className="lbl mono">{doc.finLbl}</p>
                     <div className="figs">

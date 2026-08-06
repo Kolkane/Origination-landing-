@@ -923,13 +923,15 @@ footer a:hover {
   border: 1px solid var(--wine);
   padding: 5px 12px;
 }
+/* v22 : le titre vit dans la zone 00 et non plus dans l'en-tête, c'est le
+   label de zone qui le précède et donne l'écart du haut */
 .d-title {
   font-family: var(--font-familjen), sans-serif;
   font-weight: 400;
   font-size: clamp(28px, 3.4vw, 40px);
   line-height: 1.04;
   letter-spacing: -0.015em;
-  margin: 20px 0 10px;
+  margin: 0 0 12px;
 }
 .d-desc {
   font-size: 12px;
@@ -957,8 +959,8 @@ footer a:hover {
   flex: 1;
   min-height: 0;
   display: grid;
-  margin-top: 26px;
-  padding-top: 22px;
+  margin-top: 20px;
+  padding-top: 20px;
   border-top: 1px solid var(--ink-line);
 }
 .doc .lbl {
@@ -1321,6 +1323,15 @@ footer a:hover {
   }
   .d-scene .zone.lit {
     position: static;
+  }
+  /* une zone inactive plus haute que l'active continuait d'étendre la zone
+     de défilement du cadre, alors qu'elle est invisible : on la borne à la
+     hauteur de la scène. La sortante est exclue, elle doit rester entière
+     le temps de son animation. Ni display:none ni visibility ici : le
+     texte reste dans l'arbre d'accessibilité. */
+  .d-scene .zone:not(.lit):not(.sortante) {
+    max-height: 100%;
+    overflow: hidden;
   }
 }
 @media (max-width: 760px) {
