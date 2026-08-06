@@ -78,7 +78,7 @@ export default function RootLayout({
                 /* le viseur du dossier n'a plus de nav pour changer de zone :
                    la scène repasse en flux normal et les six zones se lisent
                    à la suite, comme un document entier */
-                ".d-scene{display:block!important}.d-scene .zone{opacity:1!important;transform:none!important;filter:none!important;animation:none!important;pointer-events:auto!important}.d-scene .zone+.zone{margin-top:26px;padding-top:22px;border-top:1px solid var(--ink-line)}",
+                ".d-scene{display:block!important}.d-scene .zone,.d-scene .zone *{opacity:1!important;transform:none!important;filter:none!important;animation:none!important}.d-scene .zone{pointer-events:auto!important}.d-scene .zone+.zone{margin-top:26px;padding-top:22px;border-top:1px solid var(--ink-line)}",
             }}
           />
         </noscript>

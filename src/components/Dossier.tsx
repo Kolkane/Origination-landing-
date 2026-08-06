@@ -36,7 +36,7 @@ export default function Dossier() {
      qu'aucune zone ne conserve d'animation ni de filtre au repos. */
   useEffect(() => {
     if (!sortante) return;
-    const t = setTimeout(() => setSortante(null), 480);
+    const t = setTimeout(() => setSortante(null), 340);
     return () => clearTimeout(t);
   }, [sortante]);
 

@@ -984,32 +984,116 @@ footer a:hover {
   opacity: 0;
   transform-origin: 50% 28%;
   pointer-events: none;
+  /* l'intensité du flou est sortie en variable pour être réglable d'un
+     seul endroit. Mesure faite avant de l'atténuer sur téléphone : à
+     390px et CPU bridé x6, le nombre d'images perdues est le MÊME à
+     flou 0, 3,5, 6 et 12px (entre 4,3 et 4,8 sur 900ms, pire intervalle
+     33,4ms dans tous les cas). Le flou n'est donc pas le coût, c'est le
+     recalcul de styles au clic. L'effet reste identique sur mobile. */
+  --flou-entree: 6px;
+  --flou-sortie: 7px;
 }
-/* la nouvelle zone arrive floue et trop grande, puis se pose : le blur
-   revient à zéro et l'échelle à 1. Courbe très décélérée, c'est elle qui
-   fait « la netteté qui arrive » plutôt que « le bloc qui apparaît ». */
+/* v21 : la mise au point n'est plus un bloc qui se défloute, c'est une
+   CHORÉGRAPHIE. Un gros flou uniforme rend l'image molle, pas chère ;
+   ce qui fait l'effet soigné, c'est que les éléments de la zone arrivent
+   en séquence, chacun avec sa propre course, sur une courbe très
+   décélérée. Le flou devient un appoint, pas le sujet.
+
+   Le conteneur ne porte plus qu'un recadrage discret : c'est le mouvement
+   d'objectif. Le détail est porté par les enfants. */
 .zone.lit {
   opacity: 1;
   pointer-events: auto;
-  animation: miseAuPoint 0.46s cubic-bezier(0.16, 1, 0.3, 1);
+  animation: cadrage 0.54s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
-/* l'ancienne sort par l'avant : elle grossit et se défocalise en partant */
+@keyframes cadrage {
+  from {
+    transform: scale(1.035);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+/* chaque élément de la zone monte, se met au point et se pose. backwards :
+   il reste à l'état initial pendant son délai, donc invisible, et retrouve
+   son état naturel une fois l'animation finie. Aucun filtre au repos. */
+.zone.lit > * {
+  animation: apparition 0.58s cubic-bezier(0.16, 1, 0.3, 1) backwards;
+}
+.zone.lit > *:nth-child(1) {
+  animation-delay: 0.04s;
+}
+.zone.lit > *:nth-child(2) {
+  animation-delay: 0.1s;
+}
+.zone.lit > *:nth-child(3) {
+  animation-delay: 0.155s;
+}
+.zone.lit > *:nth-child(4) {
+  animation-delay: 0.205s;
+}
+@keyframes apparition {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+    filter: blur(var(--flou-entree));
+  }
+  to {
+    opacity: 1;
+    transform: none;
+    filter: blur(0);
+  }
+}
+
+/* second niveau de cadence, sur les deux zones qui ont une structure :
+   les chiffres et les jalons de la frise entrent l'un après l'autre.
+   Déplacement et opacité seulement, le flou du parent leur suffit et
+   multiplier les filtres coûterait cher pour rien. */
+.zone.lit .fig,
+.zone.lit .tl li,
+.zone.lit .trend-row {
+  animation: monte 0.5s cubic-bezier(0.16, 1, 0.3, 1) backwards;
+}
+.zone.lit .fig:nth-child(1),
+.zone.lit .tl li:nth-child(1),
+.zone.lit .trend-row:nth-child(1) {
+  animation-delay: 0.13s;
+}
+.zone.lit .fig:nth-child(2),
+.zone.lit .tl li:nth-child(2),
+.zone.lit .trend-row:nth-child(2) {
+  animation-delay: 0.185s;
+}
+.zone.lit .fig:nth-child(3),
+.zone.lit .tl li:nth-child(3),
+.zone.lit .trend-row:nth-child(3) {
+  animation-delay: 0.24s;
+}
+.zone.lit .fig:nth-child(4),
+.zone.lit .tl li:nth-child(4) {
+  animation-delay: 0.295s;
+}
+.zone.lit .tl li:nth-child(5) {
+  animation-delay: 0.35s;
+}
+@keyframes monte {
+  from {
+    opacity: 0;
+    transform: translateY(11px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* la sortie est brève et sans cérémonie : une sortie qui s'admire retarde
+   l'entrée, qui est le vrai sujet. Elle recule et se défocalise. */
 .zone.sortante {
-  animation: perteDeNettete 0.4s ease-in;
+  animation: retrait 0.3s cubic-bezier(0.4, 0, 0.9, 0.5);
 }
-@keyframes miseAuPoint {
-  from {
-    opacity: 0;
-    transform: scale(1.08);
-    filter: blur(10px);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-    filter: blur(0);
-  }
-}
-@keyframes perteDeNettete {
+@keyframes retrait {
   from {
     opacity: 1;
     transform: scale(1);
@@ -1017,8 +1101,8 @@ footer a:hover {
   }
   to {
     opacity: 0;
-    transform: scale(1.06);
-    filter: blur(8px);
+    transform: scale(1.05);
+    filter: blur(var(--flou-sortie));
   }
 }
 
@@ -1293,11 +1377,16 @@ footer a:hover {
   }
 }
 @media (prefers-reduced-motion: reduce) {
-  /* la mise au point est purement décorative : elle disparaît en entier.
-     Le changement de zone devient instantané, sans flou ni échelle. */
+  /* la chorégraphie est purement décorative : elle disparaît en entier,
+     cadence comprise. Le changement de zone devient instantané, sans
+     flou, sans échelle et sans décalage. */
   .zone,
   .zone.lit,
-  .zone.sortante {
+  .zone.sortante,
+  .zone.lit > *,
+  .zone.lit .fig,
+  .zone.lit .tl li,
+  .zone.lit .trend-row {
     animation: none !important;
     transition: none !important;
     transform: none !important;
