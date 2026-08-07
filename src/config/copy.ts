@@ -32,7 +32,13 @@ export const copy = {
       { label: "Analyses", ancre: "#analyses" },
     ],
     navAppel: { label: "Définir mon périmètre", ancre: "#appel" },
-    eyebrow: "Origination sell-side · PME françaises · 1-10 M€",
+    /* v24 : la tranche de taille cède la place au signal recherché. Le
+       premier écran qualifie désormais la SITUATION du dirigeant plutôt que
+       la taille de l'entreprise, c'est ce que le cabinet vient chercher.
+       Les espaces insécables après les « · » sont conservées : sans elles,
+       le séparateur peut finir une ligne tout seul quand le libellé passe
+       sur deux lignes, ce qui arrive sur téléphone. */
+    eyebrow: "Origination sell-side · PME françaises · dirigeant en transmission",
     titreLigne1: "Nous détectons les dirigeants",
     titreLigne2Avant: "qui ",
     titreItalique: "préparent",
