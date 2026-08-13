@@ -329,12 +329,15 @@ export const copy = {
          d'honoraires ni promesse de résultat : c'est lui qui sait ce que
          vaut un mandat dans son cabinet, pas nous */
       arithmetique: `${nb(brand.PRICING.origination.prixPlancher)} par mois, soit ${nb(brand.PRICING.origination.prixAnnuel)} sur l’année. Vous savez ce que vaut un mandat de cession dans votre cabinet.`,
-      corps:
-        "Le périmètre est arrêté avec vous à l’appel : région, typologie d’entreprises, ce que vous voulez voir détecté. Nous mesurons ce qu’il contient et nous vous l’annonçons au devis, avant tout engagement. Un mois qui passe sous ce volume n’est pas facturé.",
+      /* un tableau, pas une chaîne : le corps se lit en paragraphes et le
+         composant les rend tels quels. Un seul élément aujourd'hui. */
+      corps: [
+        "Le périmètre est arrêté avec vous à l’appel : région, typologie d’entreprises, ce que vous voulez voir détecté. Nous mesurons ce qu’il contient et nous vous l’annonçons au devis, avant tout engagement. Le plancher mensuel y est chiffré, avant votre signature : un mois qui passe sous ce nombre n’est pas facturé.",
+      ],
       points: [
         "Un périmètre défini avec vous, pas un découpage imposé",
         "Le rattrapage initial de votre périmètre, livré dès les premières semaines",
-        "Puis les nouvelles bascules au fil de l’eau, vérifiées et livrées sous 7 jours",
+        "Puis la veille du périmètre, ce que vous payez chaque mois : les nouvelles bascules vérifiées et livrées sous 7 jours",
         "Vérification humaine avant chaque livraison, taux d’écart publié",
         "Information des personnes, registre d’opposition et opt-out pris en charge",
         "Un seul cabinet servi sur votre périmètre, quel que soit l’usage",
@@ -456,7 +459,7 @@ export const copy = {
       {
         question: "Combien de dossiers par mois, et si mon périmètre est pauvre ?",
         reponse:
-          "Les premières semaines livrent le rattrapage, ce que votre périmètre contient déjà. Ensuite viennent les nouvelles bascules, au fil de la détection. Les deux volumes sont mesurés sur votre périmètre et annoncés au devis, avant tout engagement, et un mois qui passe sous ce volume n’est pas facturé.",
+          "Les premières semaines livrent le rattrapage, ce que votre périmètre contient déjà. Ensuite viennent les nouvelles bascules, au fil de la détection. Les deux volumes sont mesurés sur votre périmètre et annoncés au devis, avant tout engagement. Le plancher mensuel est chiffré au devis : un mois qui passe sous ce nombre n’est pas facturé.",
       },
     ],
   },
@@ -475,7 +478,7 @@ export const copy = {
   final: {
     kicker: "Prochaine étape",
     statement: "Nous mesurons votre périmètre avant que vous vous engagiez.",
-    lead: "Ce qu’il contient vous est annoncé au devis. Un mois qui passe sous ce volume n’est pas facturé. Trente minutes, avec le fondateur.",
+    lead: "Ce qu’il contient vous est annoncé au devis, plancher mensuel chiffré. Un mois qui passe sous ce nombre n’est pas facturé. Trente minutes, avec le fondateur.",
     cta: CTA,
     telAvant: "ou appelez directement le ",
   },

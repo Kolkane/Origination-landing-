@@ -40,7 +40,11 @@ export default function Offre() {
               ramené à l'année, face à ce qu'il sait déjà valoir chez lui */}
           <p className="p-arith">{p.arithmetique}</p>
 
-          <p className="p-corps">{p.corps}</p>
+          {p.corps.map((para) => (
+            <p className="p-corps" key={para}>
+              {para}
+            </p>
+          ))}
           <ul className="p-liste">
             {p.points.map((point) => (
               <li key={point}>{point}</li>
