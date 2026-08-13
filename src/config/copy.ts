@@ -119,7 +119,7 @@ export const copy = {
         cible: "z-coord",
         titre: "Les coordonnées vérifiées",
         texte:
-          "Mobile, email et ligne directe du dirigeant, contrôlés à la source la semaine de la livraison.",
+          "Mobile, email et ligne directe du dirigeant, vérifiés la semaine de la livraison.",
       },
       {
         idx: "06",
@@ -193,7 +193,7 @@ export const copy = {
          dans le spécimen par l'amendement v8.1 de CLAUDE.md. */
       coordItems: ["Mobile", "Email", "Ligne directe"],
       coordD:
-        "Mobile, email et ligne directe du dirigeant, contrôlés à la source publique la semaine de la livraison.",
+        "Mobile, email et ligne directe du dirigeant, vérifiés la semaine de la livraison.",
 
       signalLbl: "Signal détecté",
       signalAvant:
@@ -372,7 +372,7 @@ export const copy = {
       {
         fort: "Pas de données grises.",
         suite:
-          " Sources publiques, opt-out définitif honoré, information art. 14 RGPD jointe.",
+          " Registres publics et fournisseurs contractualisés. Opt-out définitif honoré, information art. 14 jointe.",
       },
       {
         fort: "Pas de chiffres invérifiables.",
@@ -426,7 +426,7 @@ export const copy = {
       {
         question: "D’où viennent vos données, et est-ce conforme au RGPD ?",
         reponse:
-          "Des registres publics français (RNE/INPI, SIRENE, BODACC) et d’enrichissements ponctuels sourcés, aucune donnée grise. Base légale de l’intérêt légitime en B2B, information art. 14 jointe à chaque dossier d’approche, opt-out définitif honoré, premier contact toujours adressé à l’entreprise.",
+          "L’identité, les chiffres et la structure viennent des registres publics français (RNE/INPI, SIRENE, BODACC). Les coordonnées du dirigeant viennent de fournisseurs d’enrichissement B2B, sourcés et contractualisés, vérifiés avant livraison, aucune donnée grise. Base légale de l’intérêt légitime en B2B, information art. 14 jointe à chaque dossier d’approche, opt-out définitif honoré, premier contact toujours adressé à l’entreprise.",
       },
       {
         question: "Pourquoi publier votre taux d’écart ?",
@@ -536,7 +536,7 @@ export const copy = {
         },
         {
           titre: "Données traitées par le service",
-          corps: `Les dossiers produits par ${brand.MARQUE} reposent exclusivement sur des sources publiques (RNE, SIRENE, BODACC). Une information au titre de l’article 14 du RGPD est jointe à chaque dossier d’approche. Toute personne concernée peut exercer un opt-out définitif en écrivant à l’adresse ci-dessous ; il est honoré sans condition.`,
+          corps: `Les dossiers produits par ${brand.MARQUE} reposent sur deux sources. L’identité, la société, les chiffres, les actes et la structure de détention viennent des registres publics français (RNE, SIRENE, BODACC). Les coordonnées professionnelles du dirigeant viennent de fournisseurs d’enrichissement B2B contractualisés. Une information au titre de l’article 14 du RGPD est jointe à chaque dossier d’approche. Toute personne concernée peut exercer un opt-out définitif en écrivant à l’adresse ci-dessous ; il est honoré sans condition.`,
         },
         {
           titre: "Contact",
