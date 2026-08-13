@@ -11,7 +11,9 @@ export type NomIcone = "couverture" | "veille" | "exclusivite";
 
 export type SectionLegale = {
   titre: string;
-  corps: string;
+  /* une chaîne, ou plusieurs paragraphes. Les mentions légales n'en
+     utilisent qu'une, la page Confidentialité en a besoin de plusieurs. */
+  corps: string | string[];
   email?: string;
 };
 
@@ -220,7 +222,7 @@ export const copy = {
 
       legalFicti: "Exemple fictif.",
       legal:
-        " Société et chiffres inventés pour la démonstration. Le format et la méthode sont ceux de nos dossiers réels. Sources publiques (RNE, SIRENE, BODACC) · art. 14 RGPD : information délivrée au premier contact.",
+        " Société et chiffres inventés pour la démonstration. Le format et la méthode sont ceux de nos dossiers réels. Sources publiques (RNE, SIRENE, BODACC) · art. 14 RGPD : information des personnes accessible sur notre page Confidentialité.",
     },
   },
   /* v15 : « Le constat » et la bande de chiffres fusionnés en un seul geste.
@@ -429,7 +431,7 @@ export const copy = {
       {
         question: "D’où viennent vos données, et est-ce conforme au RGPD ?",
         reponse:
-          "L’identité, les chiffres et la structure viennent des registres publics français (RNE/INPI, SIRENE, BODACC). Les coordonnées du dirigeant viennent de fournisseurs d’enrichissement B2B, sourcés et contractualisés, vérifiés avant livraison, aucune donnée grise. Base légale de l’intérêt légitime en B2B, information art. 14 jointe à chaque dossier d’approche, opt-out définitif honoré, premier contact toujours adressé à l’entreprise.",
+          "L’identité, les chiffres et la structure viennent des registres publics français (RNE/INPI, SIRENE, BODACC). Les coordonnées du dirigeant viennent de fournisseurs d’enrichissement B2B, sourcés et contractualisés, vérifiés avant livraison, aucune donnée grise. Base légale de l’intérêt légitime en B2B, information art. 14 rendue publiquement accessible sur notre page Confidentialité, opt-out définitif honoré, premier contact toujours adressé à l’entreprise.",
       },
       {
         question: "Pourquoi publier votre taux d’écart ?",
@@ -530,6 +532,10 @@ export const copy = {
       metaTitre: `Confidentialité, ${brand.MARQUE} ${brand.SUFFIXE}`,
       sections: [
         {
+          titre: "Responsable du traitement",
+          corps: `Les traitements décrits sur cette page sont mis en œuvre par ${brand.ENTITY.raisonSociale}, SIREN ${nb(brand.ENTITY.siren)}. ${brand.MARQUE} ${brand.SUFFIXE} est une marque exploitée par cette société.`,
+        },
+        {
           titre: "Cookies et données de navigation",
           corps: "Ce site ne dépose aucun cookie, n’embarque aucun traceur ni script tiers et ne collecte aucune donnée de navigation.",
         },
@@ -538,12 +544,46 @@ export const copy = {
           corps: "La prise de rendez-vous s’effectue via Calendly, service externe accessible par un lien sortant. Les informations saisies à cette occasion sont traitées par Calendly, selon ses propres conditions.",
         },
         {
-          titre: "Données traitées par le service",
-          corps: `Les dossiers produits par ${brand.MARQUE} reposent sur deux sources. L’identité, la société, les chiffres, les actes et la structure de détention viennent des registres publics français (RNE, SIRENE, BODACC). Les coordonnées professionnelles du dirigeant viennent de fournisseurs d’enrichissement B2B contractualisés. Une information au titre de l’article 14 du RGPD est jointe à chaque dossier d’approche. Toute personne concernée peut exercer un opt-out définitif en écrivant à l’adresse ci-dessous ; il est honoré sans condition.`,
+          titre: "Finalité et base légale",
+          corps: [
+            "Nous identifions des sociétés dont la transmission paraît en préparation, et nous transmettons ces informations à un cabinet de fusions acquisitions, un seul par périmètre, qui pourra prendre contact avec le dirigeant.",
+            "Le traitement repose sur l’intérêt légitime : mettre en relation des dirigeants susceptibles de céder leur entreprise avec des professionnels de la transmission. Il ne porte que sur des personnes dans l’exercice de leurs fonctions professionnelles.",
+          ],
+        },
+        {
+          titre: "Données traitées",
+          corps: "Les données concernent le dirigeant dans son rôle professionnel : identité, fonction, âge, société dirigée, chiffres publiés, actes et structure de détention, coordonnées professionnelles.",
+        },
+        {
+          titre: "Origine des données",
+          corps: [
+            "L’identité, la société, les chiffres, les actes et la structure de détention viennent des registres publics français (RNE, SIRENE, BODACC). Les coordonnées professionnelles viennent de prestataires d’enrichissement B2B contractualisés.",
+            "Ces données ne sont pas collectées auprès du dirigeant. L’information prévue à l’article 14 du RGPD est rendue publiquement accessible par cette page.",
+          ],
+        },
+        {
+          titre: "Destinataires",
+          corps: "Le dossier d’approche est livré au cabinet servi sur le périmètre concerné, et à lui seul. Interviennent également l’hébergeur de notre base et le prestataire chargé de l’enrichissement des coordonnées, qui agissent pour notre compte et sur nos instructions.",
+        },
+        /* EMPLACEMENT RÉSERVÉ : les transferts hors UE viennent ici, entre les
+           destinataires et les durées. Rien n'est écrit tant que la région
+           d'hébergement et le DPA du prestataire ne sont pas vérifiés. Ne rien
+           affirmer dans un sens ni dans l'autre en attendant. */
+        {
+          titre: "Durées de conservation",
+          corps: "Une détection non retenue est conservée 3 ans à compter de sa dernière mise à jour. Un dossier livré à un cabinet est conservé pendant la durée du contrat, puis 5 ans. Le registre d’opposition est conservé sans limitation de durée : c’est ce qui rend l’opt-out définitif.",
+        },
+        {
+          titre: "Vos droits",
+          corps: [
+            "Vous disposez d’un droit d’accès, de rectification, d’effacement, de limitation et d’opposition sur les données qui vous concernent. Vous pouvez obtenir une copie des données que nous détenons sur vous.",
+            "Vous pouvez demander un opt-out définitif : il est honoré sans condition, et vos coordonnées sont inscrites à notre registre d’opposition. Cette opposition peut être exercée à tout moment, y compris avant toute livraison à un cabinet.",
+            "Vous pouvez introduire une réclamation auprès de la Commission nationale de l’informatique et des libertés, 3 place de Fontenoy, TSA 80715, 75334 Paris Cedex 07 (cnil.fr).",
+          ],
         },
         {
           titre: "Contact",
-          corps: "Pour exercer un opt-out ou pour toute question :",
+          corps: "Pour exercer vos droits ou pour toute question :",
           email: brand.CONTACT_EMAIL,
         },
       ] as SectionLegale[],
