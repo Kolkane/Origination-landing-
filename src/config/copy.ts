@@ -421,7 +421,7 @@ export const copy = {
       "Le pipeline de détection est industrialisé ; chaque dossier est ensuite vérifié à la main.",
     nom: "Vincent Fournier, fondateur",
     lieu: "entre Paris et Bayonne",
-    id: `${brand.ENTITY.raisonSociale} · SIREN ${nb(brand.ENTITY.siren)} · ${brand.ENTITY.ville}`,
+    id: `${brand.ENTITY.raisonSociale} · SIREN ${nb(brand.ENTITY.siren)}`,
     linkedin: "LinkedIn ↗",
   },
   faq: {
@@ -510,7 +510,7 @@ export const copy = {
       sections: [
         {
           titre: "Éditeur",
-          corps: `Le site est édité par ${brand.ENTITY.raisonSociale}, SIREN ${nb(brand.ENTITY.siren)}, ${brand.ENTITY.ville}.`,
+          corps: `Le site est édité par ${brand.ENTITY.raisonSociale}, SIREN ${nb(brand.ENTITY.siren)}, dont le siège est situé ${brand.ENTITY.adresse}, ${brand.ENTITY.codePostal} ${brand.ENTITY.ville}.`,
         },
         {
           titre: "Directeur de la publication",
@@ -565,10 +565,10 @@ export const copy = {
           titre: "Destinataires",
           corps: "Le dossier d’approche est livré au cabinet servi sur le périmètre concerné, et à lui seul. Interviennent également l’hébergeur de notre base et le prestataire chargé de l’enrichissement des coordonnées, qui agissent pour notre compte et sur nos instructions.",
         },
-        /* EMPLACEMENT RÉSERVÉ : les transferts hors UE viennent ici, entre les
-           destinataires et les durées. Rien n'est écrit tant que la région
-           d'hébergement et le DPA du prestataire ne sont pas vérifiés. Ne rien
-           affirmer dans un sens ni dans l'autre en attendant. */
+        {
+          titre: "Transferts hors Union européenne",
+          corps: "Notre base est hébergée dans l’Union européenne, en Irlande. Le prestataire chargé de l’enrichissement des coordonnées héberge également dans l’Union européenne, mais son siège se situe hors de l’Espace économique européen, ainsi qu’une partie de ses sous-traitants et de ses fournisseurs de données. Ces transferts sont encadrés par les clauses contractuelles types adoptées par la Commission européenne.",
+        },
         {
           titre: "Durées de conservation",
           corps: "Une détection non retenue est conservée 3 ans à compter de sa dernière mise à jour. Un dossier livré à un cabinet est conservé pendant la durée du contrat, puis 5 ans. Le registre d’opposition est conservé sans limitation de durée : c’est ce qui rend l’opt-out définitif.",

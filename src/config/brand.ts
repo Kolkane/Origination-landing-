@@ -11,7 +11,12 @@ export const brand = {
   ENTITY: {
     raisonSociale: "Jungle.Block Solutions",  // la nouvelle entité la remplacera plus tard
     siren: "995 216 090",
-    ville: "Bayonne",
+    /* le siège, publié aux mentions légales. « ville » sert aussi la ligne
+       d'identité du fondateur et le schema.org, où seule la commune est
+       attendue : les trois champs restent donc séparés. */
+    adresse: "64 chemin de Trezbarats",
+    codePostal: "40230",
+    ville: "Saint-Vincent-de-Tyrosse",
   },
   SHOW_PRICING: true,
   PROOF: {
