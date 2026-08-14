@@ -308,7 +308,8 @@ export const copy = {
       {
         num: "03",
         titre: "La vérification, puis la veille",
-        texte: `Chaque détection est reprise à la main avant livraison. Le périmètre reste sous surveillance, chaque bascule livrée sous ${nb(brand.PROOF.delaiLivraisonBascule)}.`,
+        texte:
+          "Chaque détection est reprise à la main avant livraison. Le périmètre reste sous surveillance.",
       },
     ],
   },
@@ -343,13 +344,16 @@ export const copy = {
       corps: [
         "Le périmètre est arrêté avec vous à l’appel : région, typologie d’entreprises, ce que vous voulez voir détecté. Nous mesurons ce qu’il contient et nous vous l’annonçons au devis, avant tout engagement. Le plancher mensuel y est chiffré, avant votre signature : un mois qui passe sous ce nombre n’est pas facturé.",
       ],
+      /* v27 : quatre puces retirées, elles redisaient la définition du
+         périmètre, le rattrapage, le taux d'écart et l'exclusivité, tous
+         énoncés ailleurs sur la page. Les deux qui restent portent chacune
+         une information qu'on ne trouve nulle part ailleurs : le lien entre
+         la veille et le paiement mensuel, et le fait que l'information des
+         personnes est PRISE EN CHARGE, donc que le cabinet n'a pas à la faire.
+         « Puis » a sauté avec la puce du rattrapage qui le précédait. */
       points: [
-        "Un périmètre défini avec vous, pas un découpage imposé",
-        "Le rattrapage initial de votre périmètre, livré dès les premières semaines",
-        "Puis la veille du périmètre, ce que vous payez chaque mois : les nouvelles bascules vérifiées et livrées sous 7 jours",
-        "Vérification humaine avant chaque livraison, taux d’écart publié",
+        "La veille du périmètre, ce que vous payez chaque mois : les nouvelles bascules vérifiées et livrées sous 7 jours",
         "Information des personnes, registre d’opposition et opt-out pris en charge",
-        "Un seul cabinet servi sur votre périmètre, quel que soit l’usage",
       ],
     },
     complement: {
@@ -361,7 +365,8 @@ export const copy = {
     },
     pied: {
       fort: "Pas de commission sur la transaction, jamais.",
-      suite: " Notre rémunération ne dépend ni du closing, ni du prix de cession.",
+      suite:
+        " Notre rémunération ne dépend ni du closing, ni du prix de cession. Vous réglez le contrat mensuel, et une mission de recherche quand vous en confiez une. Rien d’autre.",
     },
     cta: CTA,
   },
@@ -405,7 +410,7 @@ export const copy = {
       {
         titre: "Taux d’écart à la vérification",
         texte:
-          "Environ un tiers des détections sont écartées avant livraison. Publié depuis l’ouverture.",
+          "Un fournisseur qui ne publie pas son taux d’erreur vous demande de le croire sur parole. Environ un tiers des détections sont écartées avant livraison. Publié depuis l’ouverture.",
       },
       {
         titre: "Suivi des dossiers livrés",
@@ -434,41 +439,41 @@ export const copy = {
   faq: {
     kicker: "Questions fréquentes",
     statement: "Ce qu’on nous demande avant de signer.",
+    /* v27 : les six questions traitent ce que le fil de la page ne peut pas
+       aborder. Les sept précédentes redisaient la page, une seule portait une
+       information unique, celle sur le RGPD : elle est conservée mot pour mot.
+       Les details sont fermés au chargement, donc seule la longueur des
+       QUESTIONS pèse sur la hauteur, jamais celle des réponses. */
     items: [
+      {
+        question: "Qui contacte le dirigeant ?",
+        reponse:
+          "Vous. Nous ne contactons jamais le dirigeant, à aucun moment. Le dossier arrive sur votre bureau, l’approche est la vôtre et se fait sous votre nom.",
+      },
+      {
+        question: "Et si un dirigeant refuse d’être recontacté ?",
+        reponse:
+          "Son opposition est honorée sans condition et sans limitation de durée. Si son dossier vous a déjà été livré, vous êtes prévenu le jour même et le dossier ne doit plus être exploité.",
+      },
+      {
+        question: "Sous combien de temps les premiers dossiers ?",
+        reponse:
+          "Le délai du premier lot vous est annoncé au devis, comme le périmètre et le plancher. Le rattrapage part d’abord, les nouvelles bascules suivent au fil de la détection.",
+      },
+      {
+        question: "Que se passe-t-il après les trois mois ?",
+        reponse:
+          "Il se reconduit au mois, résiliable avec un mois de préavis.",
+      },
+      {
+        question: "Et si mon périmètre est déjà servi ?",
+        reponse:
+          "Nous vous le disons à l’appel, avant toute proposition. Vous pouvez être prévenu s’il se libère, et un autre périmètre reste ouvert. Le mandat de recherche n’est pas disponible sur un périmètre déjà sous exclusivité.",
+      },
       {
         question: "D’où viennent vos données, et est-ce conforme au RGPD ?",
         reponse:
           "L’identité, les chiffres et la structure viennent des registres publics français (RNE/INPI, SIRENE, BODACC). Les coordonnées du dirigeant viennent de fournisseurs d’enrichissement B2B, sourcés et contractualisés, vérifiés avant livraison, aucune donnée grise. Base légale de l’intérêt légitime en B2B, information art. 14 rendue publiquement accessible sur notre page Confidentialité, opt-out définitif honoré, premier contact toujours adressé à l’entreprise.",
-      },
-      {
-        question: "Pourquoi publier votre taux d’écart ?",
-        reponse:
-          "Un fournisseur qui ne publie pas son taux d’erreur vous demande de le croire sur parole. Environ un tiers de nos détections sont écartées à la vérification : c’est le coût réel de dossiers fiables.",
-      },
-      {
-        question: "Comment définit-on le périmètre de recherche ?",
-        reponse:
-          "Lors d’un premier échange, nous arrêtons ensemble votre périmètre : région, typologie d’entreprises, taille de cible, structure de détention. Il est inscrit au devis et conditionne le sourcing livré ensuite.",
-      },
-      {
-        question: "Que couvre exactement l’exclusivité ?",
-        reponse:
-          "Un périmètre, un cabinet : personne d’autre n’est servi sur votre région et votre typologie d’entreprises tant que le contrat court, quel que soit l’usage. La définition exacte est écrite sous les deux blocs de l’offre, et reprise au devis.",
-      },
-      {
-        question: "Intervenez-vous sur un mandat de recherche ?",
-        reponse:
-          "Oui. Vos critères, une shortlist de cibles vérifiées sous 7 jours, au tarif de 3 500 € HT par mission, hors périmètres déjà sous exclusivité. C’est l’usage acheté qui est nommé au contrat, et deux clients ne sont jamais servis sur le même périmètre.",
-      },
-      {
-        question: "Prenez-vous une commission sur les opérations ?",
-        reponse:
-          "Non. Jamais de commission sur la transaction, ni sur le prix de cession. Vous réglez le contrat mensuel, et une mission de recherche quand vous en confiez une. Rien d’autre.",
-      },
-      {
-        question: "Combien de dossiers par mois, et si mon périmètre est pauvre ?",
-        reponse:
-          "Les premières semaines livrent le rattrapage, ce que votre périmètre contient déjà. Ensuite viennent les nouvelles bascules, au fil de la détection. Les deux volumes sont mesurés sur votre périmètre et annoncés au devis, avant tout engagement. Le plancher mensuel est chiffré au devis : un mois qui passe sous ce nombre n’est pas facturé.",
       },
     ],
   },

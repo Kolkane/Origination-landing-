@@ -2970,3 +2970,28 @@ footer a:hover {
     transition: none;
   }
 }
+
+/* ============================================================
+   v27 : densification mobile. Deux blocs seulement, le reste de
+   la page était déjà réduit par ses clamps.
+   ============================================================ */
+@media (max-width: 760px) {
+  /* Analyses : 965px pour trois liens, dont 593px de liste. Sur un écran
+     tactile, le titre suffit à décider d'un clic. Le standfirst part, et
+     « Lire » avec lui : la ligne entière est déjà un lien, et sans survol
+     à amorcer l'appel n'ajoute rien. Les trois liens et leurs titres sont
+     intacts, le desktop ne bouge pas. */
+  .a-row {
+    padding: 18px 0;
+  }
+  .a-row-s,
+  .a-row-cta {
+    display: none;
+  }
+
+  /* la mesure portait 192px de padding pour 771px de section, soit un quart
+     de vide. Son clamp plafonnait au plancher dès 390px de large. */
+  .mesure {
+    padding: 64px 0;
+  }
+}
