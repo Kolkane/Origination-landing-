@@ -234,9 +234,14 @@ export const copy = {
     titreItalique: "préparent",
     intro:
       "Le marché visible est un marché en retard. La valeur est en amont, 12 à 18 mois avant le marché, chez le dirigeant qui n’a encore rien annoncé. Voici comment se resserre une région.",
-    ancrage:
-      "Environ 700 000 dirigeants de PME partent à la retraite d’ici dix ans, près de la moitié sans successeur identifié.",
-    ancrageSource: "Ordres de grandeur publics · CRA · Bpifrance",
+    /* l'ancrage porte le SOUS-TOTAL PME, pas les 370 000 tous formats : le
+       marché d'Imbrin, ce sont les 58 000. L'énoncé est fondé sur l'INTENTION
+       déclarée, pas sur l'âge des dirigeants : le critère de l'âge est
+       précisément celui que les travaux du secteur donnent pour mauvais
+       prédicteur de cession. L'écart 370 000 / 130 000 porte sur l'ensemble
+       du marché et n'est jamais rapporté aux 58 000. */
+    ancrage: `Les dirigeants de ${nb("58 000")} PME comptent transmettre d’ici 2030, sur un marché de ${nb("370 000")} entreprises. Au rythme actuel, ${nb("130 000")} aboutiraient.`,
+    ancrageSource: `Bpifrance Le Lab · CCI France · CMA France · C.R.A · 27 novembre 2025 · ≈ ${nb("5 000")} réponses`,
     ariaPaliers: "Resserrement d’une région, ordre de grandeur",
     paliers: [
       {
@@ -327,10 +332,12 @@ export const copy = {
       metaFort: `À partir de, ${brand.PRICING.origination.periode}`,
       metaSuite: ", selon le périmètre convenu",
       metaLigne2: `Engagement ${nb(brand.PRICING.origination.engagement)}, puis reconduction mensuelle`,
-      /* l'arithmétique posée à la place du prospect, sans chiffre
-         d'honoraires ni promesse de résultat : c'est lui qui sait ce que
-         vaut un mandat dans son cabinet, pas nous */
-      arithmetique: `${nb(brand.PRICING.origination.prixPlancher)} par mois, soit ${nb(brand.PRICING.origination.prixAnnuel)} sur l’année. Vous savez ce que vaut un mandat de cession dans votre cabinet.`,
+      /* l'arithmétique posée à la place du prospect. Les pourcentages sont
+         des ordres de grandeur du marché, pas une mesure d'Imbrin, et la
+         déférence reste : c'est lui qui connaît ses honoraires. « une
+         opération », jamais « votre opération » : aucun mandat n'est promis,
+         et aucune fraction n'est chiffrée pour ne rien avoir à défendre. */
+      arithmetique: `${nb(brand.PRICING.origination.prixPlancher)} par mois, soit ${nb(brand.PRICING.origination.prixAnnuel)} sur l’année. Vous connaissez vos honoraires de succès : 3 à 5 % du prix sur une opération de 5 à 15 M€. L’année pèse une fraction d’un seul mandat.`,
       /* un tableau, pas une chaîne : le corps se lit en paragraphes et le
          composant les rend tels quels. Un seul élément aujourd'hui. */
       corps: [
