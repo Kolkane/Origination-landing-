@@ -2895,3 +2895,78 @@ footer a:hover {
     text-align: left;
   }
 }
+
+/* ============================================================
+   v25 : barre d'action mobile. Le seul point de sortie entre le
+   hero et l'appel final. La logique est dans BarreAction.tsx.
+   La règle n'existe qu'au-dessous du point de rupture : au-dessus
+   le composant ne monte rien, il n'y a donc rien à masquer.
+   ============================================================ */
+@media (max-width: 760px) {
+  .barre-action {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 60;
+    display: flex;
+    justify-content: center;
+    /* env() vaut 0 aujourd'hui, et c'est la bonne valeur : le site ne déclare
+       pas viewport-fit=cover, or sans cover iOS rétrécit lui-même le viewport
+       à la zone sûre et la barre est déjà posée au-dessus de l'indicateur
+       d'accueil. Ce n'est donc pas un oubli. Le calc devient juste tout seul
+       le jour où cover serait adopté, sans rien changer ici. */
+    padding: 14px 22px calc(14px + env(safe-area-inset-bottom));
+    background: var(--panel);
+    border-top: 1px solid var(--line);
+    transform: translateY(100%);
+    opacity: 0;
+    /* visibility sort la barre du parcours de tabulation et de l'arbre
+       d'accessibilité au repos. Le délai de .28s la retient pendant toute
+       l'animation de sortie : sans lui elle disparaîtrait d'un coup au lieu
+       de glisser. Elle commute, elle n'est jamais animée : le mouvement
+       reste en transform et opacity seulement. */
+    visibility: hidden;
+    transition: transform 0.28s var(--ease), opacity 0.28s var(--ease),
+      visibility 0s linear 0.28s;
+  }
+  .barre-action.visible {
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+    transition: transform 0.28s var(--ease), opacity 0.28s var(--ease),
+      visibility 0s linear 0s;
+  }
+  /* pas de will-change : la barre anime deux fois par visite, transform et
+     opacity sont déjà composées et le navigateur promeut la couche de
+     lui-même. Une couche maintenue pour la vie de la page coûterait environ
+     1 Mo de mémoire graphique pour rien. */
+  .barre-action a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    /* 44px : cible tactile minimale */
+    min-height: 44px;
+    padding: 0 12px;
+    border: 1px solid var(--line);
+    color: var(--txt);
+    text-decoration: none;
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+  }
+  .barre-action a:active {
+    border-color: var(--txt-3);
+  }
+}
+
+/* les deux sélecteurs, et après le bloc mobile : .barre-action.visible vaut
+   0,2,0 contre 0,1,0 pour .barre-action. Sans cela la règle du dessus
+   l'emporterait et la barre continuerait d'animer en mouvement réduit. */
+@media (prefers-reduced-motion: reduce) {
+  .barre-action,
+  .barre-action.visible {
+    transition: none;
+  }
+}

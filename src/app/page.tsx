@@ -1,4 +1,5 @@
 import Analyses from "@/components/Analyses";
+import BarreAction from "@/components/BarreAction";
 import CtaFinal from "@/components/CtaFinal";
 import Dossier from "@/components/Dossier";
 import Engagements from "@/components/Engagements";
@@ -30,6 +31,10 @@ export default function Home() {
       <Faq />
       <CtaFinal />
       <Reveal />
+      {/* v25 : posée en dernier, elle recouvre la page sans jamais s'insérer
+          dans sa lecture. Elle n'existe que sur l'accueil, seule page à porter
+          les deux ancres qu'elle observe. */}
+      <BarreAction />
     </main>
   );
 }

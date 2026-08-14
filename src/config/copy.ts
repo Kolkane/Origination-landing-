@@ -491,6 +491,10 @@ export const copy = {
     cta: CTA,
     telAvant: "ou appelez directement le ",
   },
+  /* v25 : la barre d'action mobile. Le libellé passe par la constante CTA
+     comme les autres appels : trois copies indépendantes avaient déjà
+     divergé en v13. */
+  barre: { cta: CTA },
   carte: {
     ariaCarte: "Carte des régions françaises",
     panneauVide: "Sélectionnez une région.",
