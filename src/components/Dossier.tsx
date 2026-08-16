@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import LogoImbrin from "@/components/LogoImbrin";
 import { brand } from "@/config/brand";
 import { copy } from "@/config/copy";
@@ -28,6 +28,7 @@ export default function Dossier() {
   /* échelle du graphe de la série : base à zéro, plafond au plus grand
      exercice. Dérivé de la donnée affichée, jamais saisi à la main. */
   const maxTendance = Math.max(...doc.tendance.map((t) => t.n));
+  const navRef = useRef<HTMLElement>(null);
   const [actif, setActif] = useState(d.defaut);
   const [sortante, setSortante] = useState<string | null>(null);
 
@@ -43,10 +44,28 @@ export default function Dossier() {
     return () => clearTimeout(t);
   }, [sortante]);
 
-  function choisir(cible: string) {
+  function choisir(cible: string, bouton?: HTMLElement) {
     if (cible === actif) return;
     setSortante(actif);
     setActif(cible);
+
+    /* v27, bande mobile : on recentre l'élément tapé dans la bande, et
+       SEULEMENT dans la bande. scrollIntoView ferait défiler tous les
+       ancêtres défilables, donc la page entière bougerait verticalement
+       sous le doigt : c'est le défaut classique de ce motif. Ici on ne
+       touche qu'au scrollLeft du conteneur. En desktop la nav n'a pas de
+       débordement horizontal, la condition sort d'elle-même. */
+    const nav = navRef.current;
+    if (!nav || !bouton || nav.scrollWidth <= nav.clientWidth) return;
+    const doux = !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const gauche = Math.max(
+      0,
+      Math.min(
+        bouton.offsetLeft - (nav.clientWidth - bouton.offsetWidth) / 2,
+        nav.scrollWidth - nav.clientWidth
+      )
+    );
+    nav.scrollTo({ left: gauche, behavior: doux ? "smooth" : "auto" });
   }
 
   const zone = (cible: string) =>
@@ -68,14 +87,14 @@ export default function Dossier() {
             <p className="recu-chapo rev">{d.chapo}</p>
 
             {/* ---------- nav des éléments ---------- */}
-            <nav className="recu-nav rev" aria-label={d.kicker}>
+            <nav className="recu-nav rev" aria-label={d.kicker} ref={navRef}>
               {d.elements.map((el) => (
                 <button
                   type="button"
                   key={el.cible}
                   className={`recu-item${actif === el.cible ? " active" : ""}`}
                   aria-current={actif === el.cible ? "true" : undefined}
-                  onClick={() => choisir(el.cible)}
+                  onClick={(e) => choisir(el.cible, e.currentTarget)}
                 >
                   <span className="recu-item-top">
                     <span className="recu-idx mono">{el.idx}</span>
@@ -85,6 +104,15 @@ export default function Dossier() {
                 </button>
               ))}
             </nav>
+
+            {/* v27 : en bande horizontale, la description ne tient plus dans
+                le bouton. Elle y RESTE pour l'arbre d'accessibilité, masquée
+                visuellement, et cet écho la rend lisible sous la bande. Il
+                est donc aria-hidden : sans quoi un lecteur d'écran la dirait
+                deux fois. Affiché en mobile seulement. */}
+            <p className="recu-echo" aria-hidden="true">
+              {d.elements.find((el) => el.cible === actif)?.texte}
+            </p>
           </div>
 
           {/* ---------- document ---------- */}

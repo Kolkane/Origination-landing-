@@ -45,11 +45,6 @@ export default function Offre() {
               {para}
             </p>
           ))}
-          <ul className="p-liste">
-            {p.points.map((point) => (
-              <li key={point}>{point}</li>
-            ))}
-          </ul>
         </div>
 
         {/* ---------- le complément ---------- */}

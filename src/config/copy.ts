@@ -342,18 +342,7 @@ export const copy = {
       /* un tableau, pas une chaîne : le corps se lit en paragraphes et le
          composant les rend tels quels. Un seul élément aujourd'hui. */
       corps: [
-        "Le périmètre est arrêté avec vous à l’appel : région, typologie d’entreprises, ce que vous voulez voir détecté. Nous mesurons ce qu’il contient et nous vous l’annonçons au devis, avant tout engagement. Le plancher mensuel y est chiffré, avant votre signature : un mois qui passe sous ce nombre n’est pas facturé.",
-      ],
-      /* v27 : quatre puces retirées, elles redisaient la définition du
-         périmètre, le rattrapage, le taux d'écart et l'exclusivité, tous
-         énoncés ailleurs sur la page. Les deux qui restent portent chacune
-         une information qu'on ne trouve nulle part ailleurs : le lien entre
-         la veille et le paiement mensuel, et le fait que l'information des
-         personnes est PRISE EN CHARGE, donc que le cabinet n'a pas à la faire.
-         « Puis » a sauté avec la puce du rattrapage qui le précédait. */
-      points: [
-        "La veille du périmètre, ce que vous payez chaque mois : les nouvelles bascules vérifiées et livrées sous 7 jours",
-        "Information des personnes, registre d’opposition et opt-out pris en charge",
+        `Le périmètre est arrêté avec vous à l’appel : région, typologie d’entreprises, ce que vous voulez voir détecté. Nous mesurons ce qu’il contient et nous vous l’annonçons au devis, avant tout engagement. Le plancher mensuel y est chiffré, avant votre signature : un mois qui passe sous ce nombre n’est pas facturé. Ce que vous payez chaque mois, c’est la veille du périmètre : les nouvelles bascules vous reviennent vérifiées, livrées sous ${nb(brand.PROOF.delaiLivraisonBascule)}.`,
       ],
     },
     complement: {
@@ -366,7 +355,7 @@ export const copy = {
     pied: {
       fort: "Pas de commission sur la transaction, jamais.",
       suite:
-        " Notre rémunération ne dépend ni du closing, ni du prix de cession. Vous réglez le contrat mensuel, et une mission de recherche quand vous en confiez une. Rien d’autre.",
+        " Notre rémunération ne dépend ni du closing, ni du prix de cession. Vous réglez le contrat mensuel, et une mission de recherche quand vous en confiez une. Rien d’autre. L’information des personnes, le registre d’opposition et l’opt-out sont pris en charge.",
     },
     cta: CTA,
   },

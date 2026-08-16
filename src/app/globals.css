@@ -805,6 +805,10 @@ footer a:hover {
 .recu-item.active .recu-idx {
   color: var(--wine);
 }
+/* l'écho de la description n'existe qu'en bande mobile */
+.recu-echo {
+  display: none;
+}
 .recu-t {
   font-size: 17.5px;
   font-weight: 400;
@@ -2126,24 +2130,6 @@ footer a:hover {
   margin-top: clamp(38px, 4.4vw, 56px);
   max-width: 80ch;
 }
-/* remplissage en colonnes : l'ordre du DOM reste l'ordre logique */
-.p-liste {
-  display: grid;
-  grid-template-rows: repeat(3, auto);
-  grid-auto-flow: column;
-  grid-auto-columns: 1fr;
-  column-gap: clamp(32px, 5vw, 72px);
-  margin-top: clamp(24px, 2.6vw, 32px);
-  border-top: 1px solid var(--line-soft);
-}
-.p-liste li {
-  padding: 12px 0;
-  border-bottom: 1px solid var(--line-soft);
-  font-size: 14px;
-  line-height: 1.6;
-  color: var(--txt-2);
-}
-
 /* ---------- le complément ---------- */
 /* une bande, pas un bloc : filet plus fin, corps plus petits, couleurs
    d'un cran en dessous, tout tient sur une seule rangée */
@@ -2236,12 +2222,6 @@ footer a:hover {
     text-align: left;
     padding-top: 14px;
     border-top: 1px solid var(--line-soft);
-  }
-  .p-liste {
-    grid-template-rows: none;
-    grid-auto-flow: row;
-    grid-auto-columns: auto;
-    grid-template-columns: minmax(0, 1fr);
   }
   .b-fin {
     flex-direction: column;
@@ -2993,5 +2973,79 @@ footer a:hover {
      de vide. Son clamp plafonnait au plancher dès 390px de large. */
   .mesure {
     padding: 64px 0;
+  }
+}
+
+/* ============================================================
+   v27 : la nav du dossier devient une BANDE HORIZONTALE en mobile.
+   Empilée, elle plaçait la scène du viseur à 737px sous l'élément
+   tapé : pour cinq éléments sur sept, on tapait et il ne se passait
+   rien à l'écran. En bande, l'élément et sa zone tiennent dans le
+   même écran, mesuré à 100 % pour les sept.
+   Le marqueur est l'idiome existant PIVOTÉ : le filet vin qui tenait
+   la gauche passe dessous, l'index reste en vin. Aucun encadré, donc
+   aucune chip. Le desktop n'est pas touché.
+   ============================================================ */
+@media (max-width: 920px) {
+  .recu-nav {
+    position: relative;
+    display: flex;
+    overflow-x: auto;
+    overflow-y: hidden;
+    border-left: none;
+    border-bottom: 1px solid var(--line-soft);
+    padding-left: 0;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+  .recu-nav::-webkit-scrollbar {
+    display: none;
+  }
+  .recu-item {
+    flex: 0 0 auto;
+    width: auto;
+    white-space: nowrap;
+    /* 24px de part et d'autre : valeur trouvée par balayage de 320 à 440px
+       de large, c'est celle qui garantit qu'un élément reste coupé au bord
+       droit à toutes les largeurs. Sans cette coupe, rien n'indique que la
+       bande défile. Pas de flèche, pas de fondu : la coupe suffit. */
+    padding: 14px 24px 12px;
+    margin-left: 0;
+    margin-bottom: -1px;
+    border-left: none;
+    border-bottom: 2px solid transparent;
+  }
+  .recu-item:first-child {
+    padding-left: 0;
+  }
+  .recu-item + .recu-item {
+    border-top: none;
+  }
+  .recu-item.active {
+    border-left-color: transparent;
+    border-bottom-color: var(--wine);
+  }
+  /* la description reste dans le bouton pour l'arbre d'accessibilité,
+     elle n'est retirée que de l'image. L'écho ci-dessous la montre. */
+  .recu-item .recu-d {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+  .recu-echo {
+    display: block;
+    margin-top: 12px;
+    font-size: 13.5px;
+    line-height: 1.6;
+    color: var(--txt-2);
+    /* mesuré en Geist sur la vraie page : six descriptions tiennent en deux
+       lignes, « La structure de détention » en prend trois. Sans ce plancher
+       la scène du viseur sautait de 22px à chaque bascule. */
+    min-height: 65px;
   }
 }
