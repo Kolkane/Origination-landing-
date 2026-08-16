@@ -22,7 +22,11 @@ const config: Config = {
         /* v18 : le display est une grotesque, la clé prend le nom du rôle.
            Aucun composant n'utilisait font-serif, le renommage ne casse rien. */
         display: ["var(--font-familjen)", "system-ui", "sans-serif"],
-        sans: ["var(--font-geist)", "system-ui", "sans-serif"],
+        /* v28 : « sans » devient « corps ». Le corps est passé en serif, une
+           clé nommée sans pointant sur une serif mentirait, exactement ce que
+           l'amendement v18 voulait éviter en renommant serif en display : le
+           nom dit le RÔLE, pas la classification. */
+        corps: ["var(--font-literata)", "Georgia", "serif"],
         mono: ["var(--font-geist-mono)", "ui-monospace", "monospace"],
       },
       transitionTimingFunction: {

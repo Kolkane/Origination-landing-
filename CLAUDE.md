@@ -61,7 +61,22 @@ trouvé sur vous". Codes attendus : document financier imprimé, pas SaaS IA.
   d'imprimerie, cohérent avec le registre « document financier imprimé ».
   Son italique est une vraie italique dessinée (« a » à un seul étage), pas une
   oblique : l'accent italique du hero et de l'entonnoir survit à la bascule.
-  Le CORPS reste Geist, décision différée, ne pas y toucher sans arbitrage.
+  Amendement (arbitrage Vincent, v28) : le CORPS passe de Geist à LITERATA.
+  Geist est la police maison de Vercel, devenue le signe des sites générés :
+  c'était le dernier de ces signes sur la page. Une autre grotesque aurait
+  ramené le problème par une autre porte, d'où une serif de labeur, qui donne
+  le registre éditorial revendiqué et qui est l'inverse du tell, les pages
+  générées mettant du serif en titre et jamais en corps. Literata plutôt
+  qu'une autre : hauteur d'x à 51 % du corps contre 54 % pour Geist et masse
+  d'encre quasi identique, donc ni la taille apparente ni la tenue du texte
+  clair sur fond sombre ne changent ; c'est aussi la plus légère des variables
+  évaluées. 400 et 500, romain, latin : aucun italique, les trois du site sont
+  tous portés par Familjen. Geist est retiré du dépôt, fichier compris.
+  GEIST MONO RESTE, inchangé.
+  Corollaire mesuré : le « 0 » de Literata est 12,7 % plus étroit que celui de
+  Geist, donc toute largeur en ch du corps rétrécit d'autant. Sept déclarations
+  ont été recalées. Ne pas ajouter de max-width en ch sans mesurer les
+  caractères par ligne qu'elle donne réellement.
   Planche de comparaison : MAQUETTE-TYPO-GROTESQUE.html à la racine.
   Nommage : la classe utilitaire .serif est renommée .display, et la clé
   Tailwind fontFamily.serif devient fontFamily.display. Le nom dit le RÔLE,
@@ -174,7 +189,7 @@ compteurs animés · popup/chatbot · bannière cookies (le site n'a aucun trace
 
 ## Stack & conventions
 Next 14 App Router, TypeScript strict, Tailwind (tokens étendus dans tailwind.config.ts),
-next/font (Google : Instrument Serif, Geist, Geist Mono), zéro dépendance UI externe
+next/font (Google : Familjen Grotesk, Literata ; local : Geist Mono), zéro dépendance UI externe
 (pas de shadcn, pas de framer-motion : IntersectionObserver + classes CSS suffisent).
 Composants dans src/components, un fichier par section. Contenu et données dans
 des fichiers de configuration typés sous src/config : brand.ts (marque, entité,

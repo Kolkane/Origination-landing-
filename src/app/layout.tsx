@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Familjen_Grotesk } from "next/font/google";
+import { Familjen_Grotesk, Literata } from "next/font/google";
 import localFont from "next/font/local";
 import Footer from "@/components/Footer";
 import JsonLd from "@/components/JsonLd";
@@ -20,16 +20,28 @@ const familjen = Familjen_Grotesk({
   display: "swap",
 });
 
-/* Geist et Geist Mono sont absents du catalogue next/font/google de Next 14.2
-   (snapshot antérieur à leur publication) : self-hostées via next/font/local
-   avec les woff2 variables officiels servis par Google Fonts : même rendu. */
-const geist = localFont({
-  src: "../../public/fonts/geist-variable.woff2",
-  weight: "100 900",
-  variable: "--font-geist",
+/* Corps v28 : Literata remplace Geist. Geist est la police maison de Vercel,
+   devenue le signe des sites générés : c'était le dernier de ces signes sur la
+   page. Une autre grotesque aurait ramené le problème par une autre porte, d'où
+   une serif de labeur, qui donne le registre éditorial revendiqué et qui est
+   structurellement l'inverse du tell, les pages générées mettant du serif en
+   titre et jamais en corps.
+   Literata plutôt qu'une autre : hauteur d'x à 51 % du corps contre 54 % pour
+   Geist, et masse d'encre quasi identique, donc la bascule ne change ni la
+   taille apparente ni la tenue du texte clair sur fond sombre, qui est le cas
+   difficile. C'est aussi la plus légère des variables évaluées.
+   400 et 500 seulement, romain : les trois italiques du site sont tous portés
+   par Familjen, aucun ne tombe dans du texte de corps. */
+const literata = Literata({
+  subsets: ["latin"],
+  weight: ["400", "500"],
+  variable: "--font-literata",
   display: "swap",
 });
 
+/* Geist Mono reste : absent du catalogue next/font/google de Next 14.2
+   (snapshot antérieur à sa publication), self-hosté avec le woff2 variable
+   officiel servi par Google Fonts, même rendu. */
 const geistMono = localFont({
   src: "../../public/fonts/geist-mono-variable.woff2",
   weight: "100 900",
@@ -64,7 +76,7 @@ export default function RootLayout({
   return (
     <html
       lang="fr"
-      className={`${familjen.variable} ${geist.variable} ${geistMono.variable}`}
+      className={`${familjen.variable} ${literata.variable} ${geistMono.variable}`}
     >
       <head>
         {/* sans JavaScript, aucun bloc animé ne doit rester invisible :

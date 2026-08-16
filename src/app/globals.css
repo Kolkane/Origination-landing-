@@ -30,7 +30,7 @@ html {
 body {
   background: var(--bg);
   color: var(--txt);
-  font-family: var(--font-geist), system-ui, sans-serif;
+  font-family: var(--font-literata), Georgia, serif;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
 }
@@ -413,7 +413,7 @@ section.block {
   font-size: 14px;
   color: var(--txt-2);
   line-height: 1.75;
-  max-width: 62ch;
+  max-width: 60ch;
 }
 
 /* ---------- CTA final ---------- */
@@ -561,7 +561,7 @@ footer a:hover {
   font-size: 16px;
 }
 .faq .a {
-  max-width: 64ch;
+  max-width: 60ch;
 }
 
 /* cta final : pleine hauteur, centré */
@@ -670,7 +670,7 @@ footer a:hover {
   border-bottom-color: var(--line);
 }
 .faq .a {
-  max-width: 68ch;
+  max-width: 60ch;
   font-size: 14.5px;
 }
 
@@ -1172,6 +1172,9 @@ footer a:hover {
 .fig-n {
   font-size: clamp(28px, 2.6vw, 34px);
   line-height: 1;
+  /* v28 : Literata a des chiffres proportionnels par défaut. Sur une
+     colonne de nombres empilés, leurs bords danseraient. */
+  font-variant-numeric: tabular-nums;
 }
 .fig-k {
   font-size: 9.5px;
@@ -1205,6 +1208,9 @@ footer a:hover {
   font-size: 11px;
   color: var(--ink-3);
   font-variant-numeric: tabular-nums;
+  /* v28 : Literata a des chiffres proportionnels par défaut. Sur une
+     colonne de nombres empilés, leurs bords danseraient. */
+  font-variant-numeric: tabular-nums;
 }
 .serie-piste {
   display: block;
@@ -1220,6 +1226,9 @@ footer a:hover {
   color: var(--ink);
   font-weight: 500;
   text-align: right;
+  font-variant-numeric: tabular-nums;
+  /* v28 : Literata a des chiffres proportionnels par défaut. Sur une
+     colonne de nombres empilés, leurs bords danseraient. */
   font-variant-numeric: tabular-nums;
 }
 .trend-tag {
@@ -1686,6 +1695,9 @@ footer a:hover {
   white-space: nowrap;
   flex: none;
   min-width: 4.5ch;
+  /* v28 : Literata a des chiffres proportionnels par défaut. Sur une
+     colonne de nombres empilés, leurs bords danseraient. */
+  font-variant-numeric: tabular-nums;
 }
 .step-l {
   font-size: 14.5px;
@@ -1969,7 +1981,7 @@ footer a:hover {
   font-size: 14px;
   line-height: 1.65;
   color: var(--txt-2);
-  max-width: 34ch;
+  max-width: 39ch;
 }
 
 @media (max-width: 860px) {
@@ -2060,7 +2072,7 @@ footer a:hover {
   font-size: 14px;
   line-height: 1.7;
   color: var(--txt-3);
-  max-width: 82ch;
+  max-width: 59ch;
 }
 
 /* ---------- le plat principal ---------- */
@@ -2128,7 +2140,7 @@ footer a:hover {
   line-height: 1.7;
   color: var(--txt-2);
   margin-top: clamp(38px, 4.4vw, 56px);
-  max-width: 80ch;
+  max-width: 60ch;
 }
 /* ---------- le complément ---------- */
 /* une bande, pas un bloc : filet plus fin, corps plus petits, couleurs
@@ -2348,7 +2360,7 @@ footer a:hover {
   font-size: clamp(16px, 1.45vw, 21px);
 }
 .faq .a {
-  max-width: 72ch;
+  max-width: 60ch;
 }
 
 /* ============================================================
@@ -2405,7 +2417,7 @@ footer a:hover {
   font-size: 14.5px;
   line-height: 1.7;
   color: var(--ink-2);
-  max-width: 40ch;
+  max-width: 46ch;
   padding-bottom: 0.35em;
 }
 
@@ -2445,7 +2457,7 @@ footer a:hover {
   font-size: 14.5px;
   line-height: 1.7;
   color: var(--ink-2);
-  max-width: 42ch;
+  max-width: 48ch;
 }
 
 /* révélation en cascade, déclenchée à l'entrée de la section et jouée
@@ -2826,7 +2838,7 @@ footer a:hover {
   font-size: 15px;
   line-height: 1.7;
   color: var(--txt-2);
-  max-width: 72ch;
+  max-width: 59ch;
 }
 .bascule-t b {
   color: var(--txt);
