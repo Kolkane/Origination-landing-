@@ -31,6 +31,11 @@ body {
   background: var(--bg);
   color: var(--txt);
   font-family: var(--font-literata), Georgia, serif;
+  /* v29 : Chromium ne retravaille que la queue du paragraphe, l'effet
+     mesuré est donc faible, deux cas sur douze et jamais sur le drapeau.
+     Posé quand même : coût nul, ignoré là où il n'est pas supporté, et
+     l'implémentation ne peut que s'améliorer. */
+  text-wrap: pretty;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
 }
@@ -413,7 +418,7 @@ section.block {
   font-size: 14px;
   color: var(--txt-2);
   line-height: 1.75;
-  max-width: 60ch;
+  max-width: 64ch;
 }
 
 /* ---------- CTA final ---------- */
@@ -561,7 +566,7 @@ footer a:hover {
   font-size: 16px;
 }
 .faq .a {
-  max-width: 60ch;
+  max-width: 64ch;
 }
 
 /* cta final : pleine hauteur, centré */
@@ -670,7 +675,7 @@ footer a:hover {
   border-bottom-color: var(--line);
 }
 .faq .a {
-  max-width: 60ch;
+  max-width: 64ch;
   font-size: 14.5px;
 }
 
@@ -2140,7 +2145,7 @@ footer a:hover {
   line-height: 1.7;
   color: var(--txt-2);
   margin-top: clamp(38px, 4.4vw, 56px);
-  max-width: 60ch;
+  max-width: 64ch;
 }
 /* ---------- le complément ---------- */
 /* une bande, pas un bloc : filet plus fin, corps plus petits, couleurs
@@ -2360,7 +2365,7 @@ footer a:hover {
   font-size: clamp(16px, 1.45vw, 21px);
 }
 .faq .a {
-  max-width: 60ch;
+  max-width: 64ch;
 }
 
 /* ============================================================
@@ -3060,4 +3065,33 @@ footer a:hover {
        la scène du viseur sautait de 22px à chaque bascule. */
     min-height: 65px;
   }
+}
+
+/* ============================================================
+   v29 : équilibrage des titres. Ils tombent bien aujourd'hui,
+   balance protège les futurs et les traductions. La citation du
+   fondateur en est EXCLUE : elle a été composée pour tomber d'une
+   certaine façon, équilibrer ses lignes casserait son rythme.
+   Le corps, lui, reçoit pretty et non balance : balance est borné
+   à quelques lignes et n'est pas fait pour du texte suivi.
+   ============================================================ */
+h1,
+.statement,
+.ent-h2,
+.ent-kicker,
+.b-titre,
+.a-titre,
+.a-row-t,
+.c-statement,
+.c-p,
+.mes-statement,
+.m-statement,
+.final h2,
+.ap-h1,
+.en-t,
+.st-t,
+.d-title,
+.angle-t,
+.exergue {
+  text-wrap: balance;
 }
