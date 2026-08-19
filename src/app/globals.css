@@ -3092,3 +3092,35 @@ footer a:hover {
     min-height: 65px;
   }
 }
+
+/* ============================================================
+   v32 : équilibrage des TITRES DE SECTION seulement. La règle
+   v29 couvrait dix-huit sélecteurs, du h1 du hero aux intitulés
+   d'engagement ; retirée en bloc à la v30, elle laissait « Ce
+   que nous mesurons sur / nous-mêmes » avec un mot seul en
+   dernière ligne. Elle revient sur les neuf titres de section
+   h2 et équivalents, et sur eux seuls.
+   Restent DEHORS, délibérément : le h1 du hero, qui porte ses
+   propres <br /> et dont balance combattrait le découpage
+   voulu ; les kickers ; la citation du fondateur, composée pour
+   tomber d'une certaine façon (règle v29 conservée) ; les
+   intitulés de niveau inférieur (.c-p, .en-t, .st-t, .d-title,
+   .angle-t) et les titres d'article en liste (.a-row-t), qui
+   tombent déjà bien et dont l'équilibrage déplacerait le rythme
+   d'une liste. Le corps garde pretty, jamais balance.
+   Mesuré au navigateur à 1440 et 1280px : quatre titres de
+   l'accueil changent de découpage, cinq sont inchangés, et le
+   titre des pages article passe de deux lignes pleines plus
+   « veut faire » à trois lignes égales. Aucun ne perd de ligne.
+   ============================================================ */
+.statement,
+.ent-h2,
+.b-titre,
+.a-titre,
+.c-statement,
+.mes-statement,
+.m-statement,
+.final h2,
+.ap-h1 {
+  text-wrap: balance;
+}
