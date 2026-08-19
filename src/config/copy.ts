@@ -1,7 +1,5 @@
 import { brand } from "./brand";
-
-/** rend une valeur de brand insécable (les chiffres ne se coupent pas en fin de ligne) */
-const nb = (s: string) => s.replace(/ /g, " ");
+import { typoDeep } from "./typo";
 
 /* un seul libellé d’appel sur tout le site : trois copies indépendantes avaient
    déjà produit une divergence en v13 */
@@ -18,8 +16,8 @@ export type SectionLegale = {
 };
 
 /* Copy v8 : reprise AU MOT PRÈS de MAQUETTE-V8.html (source de vérité).
-   Règle v8 : aucun tiret cadratin ni demi-cadratin dans les textes. */
-export const copy = {
+   Règle v8 : aucun tiret cadratin ni demi-cadratin dans les textes. */
+export const copy = typoDeep({
   meta: {
     title: `${brand.MARQUE} ${brand.SUFFIXE}, ${brand.BASELINE}`,
     description:
@@ -54,7 +52,7 @@ export const copy = {
     /* la légende ne décrit que le sujet : ni l'origine ni la durée du média
        ne sont revendiquées (arbitrage Vincent, v8-4) */
     legende1: "Plongeon imbrin en chasse",
-    note1: "Déposez votre vidéo « imbrin.mp4 »",
+    note1: "Déposez votre vidéo « imbrin.mp4 »",
     note2: "dans public/, puis rechargez.",
   },
   /* v14 : la description du livrable et l'exemple de dossier ne font plus
@@ -240,12 +238,12 @@ export const copy = {
        précisément celui que les travaux du secteur donnent pour mauvais
        prédicteur de cession. L'écart 370 000 / 130 000 porte sur l'ensemble
        du marché et n'est jamais rapporté aux 58 000. */
-    ancrage: `Les dirigeants de ${nb("58 000")} PME comptent transmettre d’ici 2030, sur un marché de ${nb("370 000")} entreprises. Au rythme actuel, ${nb("130 000")} aboutiraient.`,
-    ancrageSource: `Bpifrance Le Lab · CCI France · CMA France · C.R.A · 27 novembre 2025 · ≈ ${nb("5 000")} réponses`,
+    ancrage: `Les dirigeants de 58 000 PME comptent transmettre d’ici 2030, sur un marché de 370 000 entreprises. Au rythme actuel, 130 000 aboutiraient.`,
+    ancrageSource: `Bpifrance Le Lab · CCI France · CMA France · C.R.A · 27 novembre 2025 · ≈ 5 000 réponses`,
     ariaPaliers: "Resserrement d’une région, ordre de grandeur",
     paliers: [
       {
-        n: nb("8 000"),
+        n: "8 000",
         fort: "PME actives",
         suite: " sur la région, 10 à 99 salariés, plus de trois ans d’existence",
       },
@@ -329,26 +327,26 @@ export const copy = {
       nom: "L’Origination",
       ancre: "origination",
       lead: "Nous détectons en continu les dirigeants de votre périmètre qui préparent leur sortie, et nous vous livrons les dossiers d’approche au fil de l’eau.",
-      prix: nb(brand.PRICING.origination.prixPlancher),
+      prix: brand.PRICING.origination.prixPlancher,
       metaFort: `À partir de, ${brand.PRICING.origination.periode}`,
       metaSuite: ", selon le périmètre convenu",
-      metaLigne2: `Engagement ${nb(brand.PRICING.origination.engagement)}, puis reconduction mensuelle`,
+      metaLigne2: `Engagement ${brand.PRICING.origination.engagement}, puis reconduction mensuelle`,
       /* l'arithmétique posée à la place du prospect. Les pourcentages sont
          des ordres de grandeur du marché, pas une mesure d'Imbrin, et la
          déférence reste : c'est lui qui connaît ses honoraires. « une
          opération », jamais « votre opération » : aucun mandat n'est promis,
          et aucune fraction n'est chiffrée pour ne rien avoir à défendre. */
-      arithmetique: `${nb(brand.PRICING.origination.prixPlancher)} par mois, soit ${nb(brand.PRICING.origination.prixAnnuel)} sur l’année. Vous connaissez vos honoraires de succès : 3 à 5 % du prix sur une opération de 5 à 15 M€. L’année pèse une fraction d’un seul mandat.`,
+      arithmetique: `${brand.PRICING.origination.prixPlancher} par mois, soit ${brand.PRICING.origination.prixAnnuel} sur l’année. Vous connaissez vos honoraires de succès : 3 à 5 % du prix sur une opération de 5 à 15 M€. L’année pèse une fraction d’un seul mandat.`,
       /* un tableau, pas une chaîne : le corps se lit en paragraphes et le
          composant les rend tels quels. Un seul élément aujourd'hui. */
       corps: [
-        `Le périmètre est arrêté avec vous à l’appel : région, typologie d’entreprises, ce que vous voulez voir détecté. Nous mesurons ce qu’il contient et nous vous l’annonçons au devis, avant tout engagement. Le plancher mensuel y est chiffré, avant votre signature : un mois qui passe sous ce nombre n’est pas facturé. Ce que vous payez chaque mois, c’est la veille du périmètre : les nouvelles bascules vous reviennent vérifiées, livrées sous ${nb(brand.PROOF.delaiLivraisonBascule)}.`,
+        `Le périmètre est arrêté avec vous à l’appel : région, typologie d’entreprises, ce que vous voulez voir détecté. Nous mesurons ce qu’il contient et nous vous l’annonçons au devis, avant tout engagement. Le plancher mensuel y est chiffré, avant votre signature : un mois qui passe sous ce nombre n’est pas facturé. Ce que vous payez chaque mois, c’est la veille du périmètre : les nouvelles bascules vous reviennent vérifiées, livrées sous ${brand.PROOF.delaiLivraisonBascule}.`,
       ],
     },
     complement: {
       nom: "Le mandat de recherche",
-      lead: `Quand un mandat de recherche arrive sur votre bureau, nous l’alimentons à la mission : vos critères, une shortlist de cibles vérifiées sous ${nb(brand.PRICING.mandat.delai)}.`,
-      prix: nb(brand.PRICING.mandat.prix),
+      lead: `Quand un mandat de recherche arrive sur votre bureau, nous l’alimentons à la mission : vos critères, une shortlist de cibles vérifiées sous ${brand.PRICING.mandat.delai}.`,
+      prix: brand.PRICING.mandat.prix,
       metaLigne1: "Par mission, à la livraison",
       metaLigne2: "Hors périmètres déjà sous exclusivité",
     },
@@ -378,7 +376,7 @@ export const copy = {
       {
         fort: "Pas de données grises.",
         suite:
-          " Registres publics et fournisseurs contractualisés. Opt-out définitif honoré, information art. 14 jointe.",
+          " Registres publics et fournisseurs contractualisés. Opt-out définitif honoré, information art. 14 jointe.",
       },
       {
         fort: "Pas de chiffres invérifiables.",
@@ -422,7 +420,7 @@ export const copy = {
       "Le pipeline de détection est industrialisé ; chaque dossier est ensuite vérifié à la main.",
     nom: "Vincent Fournier, fondateur",
     lieu: "entre Paris et Bayonne",
-    id: `${brand.ENTITY.raisonSociale} · SIREN ${nb(brand.ENTITY.siren)}`,
+    id: `${brand.ENTITY.raisonSociale} · SIREN ${brand.ENTITY.siren}`,
     linkedin: "LinkedIn ↗",
   },
   faq: {
@@ -500,7 +498,7 @@ export const copy = {
       },
       en_discussion: {
         label: "En discussion",
-        texte: "Des discussions sont en cours sur ce périmètre. Un appel reste possible : premier signé, premier servi.",
+        texte: "Des discussions sont en cours sur ce périmètre. Un appel reste possible : premier signé, premier servi.",
       },
       exclusivite: {
         label: "Sous exclusivité",
@@ -515,7 +513,7 @@ export const copy = {
       sections: [
         {
           titre: "Éditeur",
-          corps: `Le site est édité par ${brand.ENTITY.raisonSociale}, SIREN ${nb(brand.ENTITY.siren)}, dont le siège est situé ${brand.ENTITY.adresse}, ${brand.ENTITY.codePostal} ${brand.ENTITY.ville}.`,
+          corps: `Le site est édité par ${brand.ENTITY.raisonSociale}, SIREN ${brand.ENTITY.siren}, dont le siège est situé ${brand.ENTITY.adresse}, ${brand.ENTITY.codePostal} ${brand.ENTITY.ville}.`,
         },
         {
           titre: "Directeur de la publication",
@@ -527,7 +525,7 @@ export const copy = {
         },
         {
           titre: "Contact",
-          corps: "Pour toute question relative au site :",
+          corps: "Pour toute question relative au site :",
           email: brand.CONTACT_EMAIL,
         },
       ] as SectionLegale[],
@@ -538,7 +536,7 @@ export const copy = {
       sections: [
         {
           titre: "Responsable du traitement",
-          corps: `Les traitements décrits sur cette page sont mis en œuvre par ${brand.ENTITY.raisonSociale}, SIREN ${nb(brand.ENTITY.siren)}. ${brand.MARQUE} ${brand.SUFFIXE} est une marque exploitée par cette société.`,
+          corps: `Les traitements décrits sur cette page sont mis en œuvre par ${brand.ENTITY.raisonSociale}, SIREN ${brand.ENTITY.siren}. ${brand.MARQUE} ${brand.SUFFIXE} est une marque exploitée par cette société.`,
         },
         {
           titre: "Cookies et données de navigation",
@@ -601,6 +599,6 @@ export const copy = {
     linkedin: "LinkedIn",
     note: "Site sans traceurs · © 2026",
   },
-};
+});
     /* la légende ne décrit que le sujet : ni l'origine ni la durée du
        média ne sont revendiquées (arbitrage Vincent, v8-4) */

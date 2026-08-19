@@ -1,4 +1,5 @@
 import { copy } from "@/config/copy";
+import { grand } from "@/config/typo";
 
 /* v15 · B3 : asymétrie. Le repère tient les colonnes 1 à 4 et descend, les
    énoncés les colonnes 7 à 12 ; celle du milieu reste vide, c'est elle qui
@@ -11,7 +12,7 @@ export default function Mesure() {
     <section className="mesure" id="mesure">
       <div className="wrap">
         <p className="mes-kicker kicker mono rev">{m.kicker}</p>
-        <h2 className="mes-statement mask rev">{m.statement}</h2>
+        <h2 className="mes-statement mask rev">{grand(m.statement)}</h2>
 
         <div className="g12">
           <div className="repere rev">
@@ -24,7 +25,7 @@ export default function Mesure() {
           <div className="enonces rev">
             {m.items.map((item) => (
               <div className="en" key={item.titre}>
-                <h3 className="en-t">{item.titre}</h3>
+                <h3 className="en-t">{grand(item.titre)}</h3>
                 <p className="en-p">{item.texte}</p>
               </div>
             ))}

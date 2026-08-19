@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { copy } from "@/config/copy";
+import { grand } from "@/config/typo";
 
 /* v15 · B2 : manifeste. Grille 2×2, filets en croix, l'explication posée
    directement sous son principe : le grand vide horizontal de la version en
@@ -47,7 +48,7 @@ export default function Engagements() {
         <div className="c-tete">
           <div className="c-tete-titre">
             <p className="c-kicker kicker mono rev">{e.kicker}</p>
-            <h2 className="c-statement mask rev">{e.statement}</h2>
+            <h2 className="c-statement mask rev">{grand(e.statement)}</h2>
           </div>
           <p className="c-intro rev">{e.intro}</p>
         </div>
@@ -55,7 +56,7 @@ export default function Engagements() {
         <div className={`c-grille${revele ? " revelee" : ""}`} ref={ref}>
           {e.nots.map((item) => (
             <div className="c-cell" key={item.fort}>
-              <p className="c-p">{item.fort}</p>
+              <p className="c-p">{grand(item.fort)}</p>
               <p className="c-e">{item.suite}</p>
             </div>
           ))}

@@ -1,3 +1,5 @@
+import { typoDeep } from "./typo";
+
 /* Les analyses sont une DONNÉE, pas trois pages en dur. De ce tableau
    dérivent l'index de l'accueil, les pages /analyses/[slug], le balisage
    Article et les entrées de sitemap. Ajouter un article, c'est ajouter une
@@ -15,7 +17,7 @@ export type Article = {
   datePublished: string; // ISO 8601, jamais affichée
 };
 
-export const analyses: Article[] = [
+export const analyses: Article[] = typoDeep([
   {
     slug: "vague-transmission-pme",
     titre: "La vague de transmission des PME françaises",
@@ -62,7 +64,7 @@ export const analyses: Article[] = [
       "C’est cet écart, entre la nécessité reconnue de l’origination et l’incapacité pratique à la tenir dans la durée, qui explique pourquoi tant de cabinets restent à la merci de ce qui veut bien leur arriver. Le problème n’est pas de savoir qu’il faudrait le faire. C’est de trouver qui le fera, sans relâche, et pour un seul cabinet à la fois.",
     ],
   },
-];
+]);
 
 export function articleParSlug(slug: string): Article | undefined {
   return analyses.find((a) => a.slug === slug);

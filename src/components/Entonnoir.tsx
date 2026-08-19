@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { copy } from "@/config/copy";
+import { grand } from "@/config/typo";
 
 /* v15 : « Le constat » et la bande de chiffres en un seul geste.
    Les barres se déploient quand la section entre dans le champ, pas au
@@ -38,8 +39,8 @@ export default function Entonnoir() {
       <div className="wrap">
         <p className="kicker mono rev">{e.kicker}</p>
         <h2 className="ent-h2 mask rev">
-          {e.titreAvant}
-          <em>{e.titreItalique}</em>.
+          {grand(e.titreAvant)}
+          <em>{grand(e.titreItalique)}</em>.
         </h2>
         <p className="ent-intro rev">{e.intro}</p>
 

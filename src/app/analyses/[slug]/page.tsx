@@ -6,6 +6,7 @@ import { analyses, articleParSlug } from "@/config/analyses";
 import { brand } from "@/config/brand";
 import { copy } from "@/config/copy";
 import { articleSchema } from "@/config/schema";
+import { grand } from "@/config/typo";
 
 type Props = { params: { slug: string } };
 
@@ -53,7 +54,7 @@ export default function Analyse({ params }: Props) {
 
         <article className="ap-col">
           <p className="ap-eyebrow mono">{a.kicker}</p>
-          <h1 className="ap-h1">{article.titre}</h1>
+          <h1 className="ap-h1">{grand(article.titre)}</h1>
           <p className="ap-standfirst">{article.standfirst}</p>
 
           <div className="ap-body">

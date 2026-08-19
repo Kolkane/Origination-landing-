@@ -1,4 +1,6 @@
-export const brand = {
+import { typoDeep } from "./typo";
+
+export const brand = typoDeep({
   MARQUE: "Imbrin",
   SUFFIXE: "Research",
   BASELINE: "Origination sell-side",
@@ -39,10 +41,10 @@ export const brand = {
       delai: "7 jours",                   // shortlist vérifiée
     },
   },
-} as const;
+} as const);
 
 export type RegionStatus = "disponible" | "en_discussion" | "exclusivite";
-export const regions: { slug: string; nom: string; statut: RegionStatus }[] = [
+export const regions: { slug: string; nom: string; statut: RegionStatus }[] = typoDeep([
   { slug: "ile-de-france", nom: "Île-de-France", statut: "disponible" },
   { slug: "auvergne-rhone-alpes", nom: "Auvergne-Rhône-Alpes", statut: "en_discussion" },
   { slug: "nouvelle-aquitaine", nom: "Nouvelle-Aquitaine", statut: "disponible" },
@@ -56,4 +58,4 @@ export const regions: { slug: string; nom: string; statut: RegionStatus }[] = [
   { slug: "centre-val-de-loire", nom: "Centre-Val de Loire", statut: "disponible" },
   { slug: "bourgogne-franche-comte", nom: "Bourgogne-Franche-Comté", statut: "disponible" },
   { slug: "corse", nom: "Corse", statut: "disponible" },
-];
+]);

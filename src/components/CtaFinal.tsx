@@ -1,5 +1,6 @@
 import { brand } from "@/config/brand";
 import { copy } from "@/config/copy";
+import { grand } from "@/config/typo";
 
 export default function CtaFinal() {
   const f = copy.final;
@@ -7,7 +8,7 @@ export default function CtaFinal() {
     <section className="final" id="appel">
       <div className="wrap">
         <p className="kicker mono rev">{f.kicker}</p>
-        <h2 className="mask rev">{f.statement}</h2>
+        <h2 className="mask rev">{grand(f.statement)}</h2>
         <p className="lead rev">{f.lead}</p>
         <a
           className="cta mono rev"

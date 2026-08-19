@@ -2139,6 +2139,14 @@ footer a:hover {
   flex-wrap: wrap;
   margin-top: clamp(38px, 4.4vw, 58px);
 }
+/* MESURÉ (v31) : c'est le plus gros corps de la page, donc l'endroit où une
+   chaîne insécable coûte le plus cher. « 2 000 € HT » y est lié en deux
+   morceaux, « 2 000 € » puis « HT » : les règles de typo.ts lient le nombre
+   à son symbole, aucune ne lie un symbole au mot qui suit, et c'est bien.
+   À 48px, le plancher du clamp, « 2 000 € » fait 159,2px. Le conteneur vaut
+   le viewport moins 44px de padding, soit 276px à 320px : 116,8px de marge,
+   et ça tient encore à 220px de viewport. Si le prix gagne un chiffre,
+   compter environ 30px de plus et revenir vérifier ici. */
 .p-chiffre {
   font-family: var(--font-familjen), sans-serif;
   font-weight: 400;

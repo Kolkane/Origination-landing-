@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import LogoImbrin from "@/components/LogoImbrin";
 import { brand } from "@/config/brand";
 import { copy } from "@/config/copy";
+import { grand } from "@/config/typo";
 
 export default function Hero() {
   const [pret, setPret] = useState(false);
@@ -69,11 +70,11 @@ export default function Hero() {
       <div className="hero-copy">
         <p className="eyebrow mono fade f2">{h.eyebrow}</p>
         <h1 className="fade f3">
-          {h.titreLigne1}
+          {grand(h.titreLigne1)}
           <br />
-          {h.titreLigne2Avant}
-          <em>{h.titreItalique}</em>
-          {h.titreLigne2Apres}
+          {grand(h.titreLigne2Avant)}
+          <em>{grand(h.titreItalique)}</em>
+          {grand(h.titreLigne2Apres)}
         </h1>
         <p className="hero-sub fade f4">{h.sousTitre}</p>
         <div className="cta-row fade f4">

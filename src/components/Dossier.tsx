@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import LogoImbrin from "@/components/LogoImbrin";
 import { brand } from "@/config/brand";
 import { copy } from "@/config/copy";
+import { grand } from "@/config/typo";
 
 /* v19 : le viseur devient une LOUPE. Avant, le document entier était posé
    dans un cadre qui défilait et la nav ne faisait qu'y surligner une zone :
@@ -83,7 +84,7 @@ export default function Dossier() {
               démarre sous lui et pend très bas par rapport au texte */}
           <div className="recu-col">
             <p className="kicker mono rev">{d.kicker}</p>
-            <h2 className="statement mask rev">{d.titre}</h2>
+            <h2 className="statement mask rev">{grand(d.titre)}</h2>
             <p className="recu-chapo rev">{d.chapo}</p>
 
             {/* ---------- nav des éléments ---------- */}
@@ -98,7 +99,7 @@ export default function Dossier() {
                 >
                   <span className="recu-item-top">
                     <span className="recu-idx mono">{el.idx}</span>
-                    <span className="recu-t">{el.titre}</span>
+                    <span className="recu-t">{grand(el.titre)}</span>
                   </span>
                   <span className="recu-d">{el.texte}</span>
                 </button>
@@ -163,7 +164,7 @@ export default function Dossier() {
                     {...marque("z-societe")}
                   >
                     <p className="lbl mono">{doc.societeLbl}</p>
-                    <h3 className="d-title">{doc.titre}</h3>
+                    <h3 className="d-title">{grand(doc.titre)}</h3>
                     {/* fiche d'identité en cases : la seule zone qui présente
                         des faits bruts sans phrase */}
                     <ul className="ident">
@@ -219,7 +220,7 @@ export default function Dossier() {
                   >
                     <p className="lbl mono">{doc.signalLbl}</p>
                     <p className="sig-amorce">{doc.signalAvant}</p>
-                    <p className="sig-fort display">{doc.signalFort}</p>
+                    <p className="sig-fort display">{grand(doc.signalFort)}</p>
                     <p className="sig-suite">{doc.signalApres}</p>
                   </div>
 
@@ -247,7 +248,7 @@ export default function Dossier() {
                     {...marque("z-angle")}
                   >
                     <p className="lbl mono">{doc.angleLbl}</p>
-                    <h4 className="angle-t">{doc.angleTitre}</h4>
+                    <h4 className="angle-t">{grand(doc.angleTitre)}</h4>
                     <p className="angle-p">{doc.angleP1}</p>
                     <p className="angle-p">{doc.angleP2Avant}</p>
                     {/* la chute est détachée sous un filet : c'est la phrase

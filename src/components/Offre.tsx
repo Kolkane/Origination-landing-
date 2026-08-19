@@ -1,5 +1,6 @@
 import { brand } from "@/config/brand";
 import { copy } from "@/config/copy";
+import { grand } from "@/config/typo";
 
 /* v15 · B5 : un plat principal et un complément. Ce ne sont pas deux offres
    égales, et la structure le dit avant le texte : un bloc massif, puis une
@@ -12,7 +13,7 @@ export default function Offre() {
     <section className="offre" id="offre">
       <div className="wrap">
         <p className="b-kicker kicker mono rev">{o.kicker}</p>
-        <h2 className="b-titre mask rev">{o.statement}</h2>
+        <h2 className="b-titre mask rev">{grand(o.statement)}</h2>
 
         {/* la définition gouverne les deux offres : elle est en tête, pas
             derrière la seconde où elle passait pour une clause du mandat */}

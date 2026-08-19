@@ -1,4 +1,5 @@
 import { copy } from "@/config/copy";
+import { grand } from "@/config/typo";
 
 /* v15 : nouvelle enveloppe, accordéon inchangé. Le titre tenait une colonne
    collante à gauche, cinquième emploi du même moule sur la page ; il passe
@@ -10,14 +11,14 @@ export default function Faq() {
       <div className="wrap">
         <div className="faq-head">
           <p className="kicker mono rev">{f.kicker}</p>
-          <h2 className="statement mask rev">{f.statement}</h2>
+          <h2 className="statement mask rev">{grand(f.statement)}</h2>
         </div>
 
         <div className="faq rev">
           {f.items.map((item) => (
             <details key={item.question}>
               <summary>
-                {item.question}
+                {grand(item.question)}
                 <span className="plus" aria-hidden="true">
                   +
                 </span>

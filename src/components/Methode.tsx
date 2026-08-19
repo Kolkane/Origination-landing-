@@ -1,4 +1,5 @@
 import { copy } from "@/config/copy";
+import { grand } from "@/config/typo";
 
 /* v15 · B1 : bande horizontale sur filet continu. L'en-tête tient sur une
    ligne au lieu d'occuper une colonne de gauche restée aux trois quarts
@@ -11,7 +12,7 @@ export default function Methode() {
         <div className="m-head">
           <p className="m-kicker kicker mono rev">{m.kicker}</p>
           <div className="m-head-t rev">
-            <h2 className="m-statement mask">{m.statement}</h2>
+            <h2 className="m-statement mask">{grand(m.statement)}</h2>
             <p className="m-sous">{m.sousTitre}</p>
           </div>
         </div>
@@ -21,7 +22,7 @@ export default function Methode() {
             {m.lignes.map((ligne) => (
               <div className="st" key={ligne.num}>
                 <span className="st-n mono">{ligne.num}</span>
-                <h3 className="st-t">{ligne.titre}</h3>
+                <h3 className="st-t">{grand(ligne.titre)}</h3>
                 <p className="st-p">{ligne.texte}</p>
               </div>
             ))}

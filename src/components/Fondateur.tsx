@@ -1,5 +1,6 @@
 import { brand } from "@/config/brand";
 import { copy } from "@/config/copy";
+import { grand } from "@/config/typo";
 
 /* v15 : composition centrée. C'est le seul endroit centré d'une page alignée
    à gauche de bout en bout, et c'est ce qui la distingue de ses voisines
@@ -23,7 +24,7 @@ export default function Fondateur() {
           />
         </div>
 
-        <blockquote className="f-citation mask rev">{f.citation}</blockquote>
+        <blockquote className="f-citation mask rev">{grand(f.citation)}</blockquote>
 
         <p className="f-corps rev">{f.corps}</p>
 
