@@ -25,8 +25,10 @@ const config: Config = {
         /* v28 : « sans » devient « corps ». Le corps est passé en serif, une
            clé nommée sans pointant sur une serif mentirait, exactement ce que
            l'amendement v18 voulait éviter en renommant serif en display : le
-           nom dit le RÔLE, pas la classification. */
-        corps: ["var(--font-literata)", "Georgia", "serif"],
+           nom dit le RÔLE, pas la classification. La v30 change la police
+           derrière la clé, pas la clé : c'est ce que le nommage par rôle
+           devait permettre. */
+        corps: ["var(--font-source-serif)", "Georgia", "serif"],
         mono: ["var(--font-geist-mono)", "ui-monospace", "monospace"],
       },
       transitionTimingFunction: {

@@ -203,7 +203,11 @@ export default function CarteFrance() {
             <p className="mt-2 font-mono text-label uppercase tracking-label text-muted">
               {c.statuts[regionActive.statut].label}
             </p>
-            <p className="mt-4 max-w-[48ch] text-body">
+            {/* v30 : figé en rem comme les 37 largeurs de globals.css. Le
+                composant n'est pas monté, mais un ch qui traîne ici est un
+                couplage à la police de corps qui ressurgira le jour où
+                quelqu'un le montera. 48ch sous Geist à 16px = 509px. */}
+            <p className="mt-4 max-w-[31.8125rem] text-body">
               {c.statuts[regionActive.statut].texte}
             </p>
             <a

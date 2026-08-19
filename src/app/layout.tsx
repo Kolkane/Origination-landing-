@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Familjen_Grotesk, Literata } from "next/font/google";
+import { Familjen_Grotesk, Source_Serif_4 } from "next/font/google";
 import localFont from "next/font/local";
 import Footer from "@/components/Footer";
 import JsonLd from "@/components/JsonLd";
@@ -20,22 +20,27 @@ const familjen = Familjen_Grotesk({
   display: "swap",
 });
 
-/* Corps v28 : Literata remplace Geist. Geist est la police maison de Vercel,
-   devenue le signe des sites générés : c'était le dernier de ces signes sur la
-   page. Une autre grotesque aurait ramené le problème par une autre porte, d'où
-   une serif de labeur, qui donne le registre éditorial revendiqué et qui est
-   structurellement l'inverse du tell, les pages générées mettant du serif en
-   titre et jamais en corps.
-   Literata plutôt qu'une autre : hauteur d'x à 51 % du corps contre 54 % pour
-   Geist, et masse d'encre quasi identique, donc la bascule ne change ni la
-   taille apparente ni la tenue du texte clair sur fond sombre, qui est le cas
-   difficile. C'est aussi la plus légère des variables évaluées.
+/* Corps v30 : Source Serif 4 remplace Literata. Le motif de la v28 tient
+   toujours, une serif de labeur plutôt qu'une grotesque, mais Literata a été
+   dessinée pour la lecture longue sur liseuse : elle est trop littéraire pour
+   un document financier. Source Serif est une serif de travail, du même
+   registre que les caractères des documents imprimés que la page revendique.
    400 et 500 seulement, romain : les trois italiques du site sont tous portés
-   par Familjen, aucun ne tombe dans du texte de corps. */
-const literata = Literata({
+   par Familjen, aucun ne tombe dans du texte de corps.
+
+   OBSERVATION, à trancher en prod et hors de ce commit : la hauteur d'x tombe
+   de 50,7 % du corps (Literata) à 47,5 % (Source Serif 4), contre 53,0 % pour
+   Geist. À font-size égale le texte paraîtra donc plus petit. AUCUNE font-size
+   n'a été touchée ici : la taille apparente est une seconde variable, on la
+   juge sur pièce avant d'y toucher, sinon deux changements se masquent l'un
+   l'autre. C'est exactement ce qui s'est produit en v28, où le choix de
+   Literata avait été calé sur sa hauteur d'x et où le déplacement réel, celui
+   des largeurs en ch, est passé inaperçu. */
+const sourceSerif = Source_Serif_4({
   subsets: ["latin"],
   weight: ["400", "500"],
-  variable: "--font-literata",
+  style: ["normal"],
+  variable: "--font-source-serif",
   display: "swap",
 });
 
@@ -76,7 +81,7 @@ export default function RootLayout({
   return (
     <html
       lang="fr"
-      className={`${familjen.variable} ${literata.variable} ${geistMono.variable}`}
+      className={`${familjen.variable} ${sourceSerif.variable} ${geistMono.variable}`}
     >
       <head>
         {/* sans JavaScript, aucun bloc animé ne doit rester invisible :

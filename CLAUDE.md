@@ -50,8 +50,9 @@ trouvé sur vous". Codes attendus : document financier imprimé, pas SaaS IA.
   Il ne sert QU'AU TEXTE, en grande taille, sur fond sombre. Jamais en
   remplissage, jamais sur un filet, jamais sur papier : les aplats et les
   filets restent en #8E2438, et sur papier le vin plein suffit (6,8:1).
-- Typo : Familjen Grotesk (display, poids 400, italique autorisée) · Geist (corps) ·
-  Geist Mono (labels uppercase, tracking large). Via next/font/google. Rien d'autre.
+- Typo : Familjen Grotesk (display, poids 400, italique autorisée) · Source Serif 4
+  (corps, 400 et 500, romain) · Geist Mono (labels uppercase, tracking large).
+  Familjen et Source Serif 4 via next/font/google, Geist Mono en local. Rien d'autre.
   Amendement (arbitrage Vincent, v18) : le DISPLAY passe du serif à la grotesque.
   Instrument Serif est RETIRÉE du site, y compris de l'image OpenGraph. Motif :
   Instrument Serif et Geist sont devenues les polices par défaut des sites
@@ -73,10 +74,33 @@ trouvé sur vous". Codes attendus : document financier imprimé, pas SaaS IA.
   évaluées. 400 et 500, romain, latin : aucun italique, les trois du site sont
   tous portés par Familjen. Geist est retiré du dépôt, fichier compris.
   GEIST MONO RESTE, inchangé.
-  Corollaire mesuré : le « 0 » de Literata est 12,7 % plus étroit que celui de
-  Geist, donc toute largeur en ch du corps rétrécit d'autant. Sept déclarations
-  ont été recalées. Ne pas ajouter de max-width en ch sans mesurer les
-  caractères par ligne qu'elle donne réellement.
+  Amendement (arbitrage Vincent, v30) : le CORPS passe de Literata à
+  SOURCE SERIF 4, 400 et 500, romain, latin, via next/font/google. Le motif de
+  la v28 tient toujours, une serif de labeur plutôt qu'une grotesque, mais
+  Literata a été dessinée pour la lecture longue sur liseuse : elle est trop
+  littéraire pour un document financier. Source Serif est une serif de travail,
+  du même registre que les caractères des documents imprimés que la page
+  revendique. Literata est retirée du dépôt, layout.tsx et tailwind.config.ts
+  compris. GEIST MONO ET FAMILJEN RESTENT, inchangés.
+  Observation consignée, PAS un arbitrage : la hauteur d'x tombe à 47,5 % du
+  corps contre 50,7 % pour Literata et 53,0 % pour Geist, donc à font-size
+  égale le texte paraît plus petit. Aucune font-size n'a été touchée dans le
+  commit de bascule, la taille apparente se juge sur pièce en prod et se
+  traite à part. Deux changements simultanés se masquent l'un l'autre.
+  Amendement (arbitrage Vincent, v30) : LES LARGEURS DE COLONNE DU CORPS NE
+  SONT PLUS EN CH ET NE DOIVENT PLUS Y REVENIR. Le ch vaut l'avance du « 0 »,
+  donc une largeur exprimée ainsi dépend de la police de corps et se déplace
+  à chaque bascule, en silence, sans qu'aucune déclaration ne bouge : Geist
+  0,663 em, Literata 0,579 em, Source Serif 4 0,529 em, soit −20 % de Geist à
+  Source Serif 4. Le corollaire v28 ci-dessus, « ne pas ajouter de max-width
+  en ch sans mesurer », est REMPLACÉ : mesurer ne suffisait pas, la mesure
+  était juste et le couplage est resté. Les 37 déclarations du corps sont
+  figées en rem, aux largeurs rendues sous Geist avant la v28 ; les deux
+  font-size en clamp sont reproduites borne par borne. Les 22 déclarations en
+  ch qui restent dans globals.css sont portées par Familjen ou par le mono et
+  peuvent rester : elles ne dépendent pas de la police du corps. Toute
+  nouvelle largeur de texte de corps se déclare en rem, y compris dans un
+  composant non monté.
   Planche de comparaison : MAQUETTE-TYPO-GROTESQUE.html à la racine.
   Nommage : la classe utilitaire .serif est renommée .display, et la clé
   Tailwind fontFamily.serif devient fontFamily.display. Le nom dit le RÔLE,
@@ -189,7 +213,7 @@ compteurs animés · popup/chatbot · bannière cookies (le site n'a aucun trace
 
 ## Stack & conventions
 Next 14 App Router, TypeScript strict, Tailwind (tokens étendus dans tailwind.config.ts),
-next/font (Google : Familjen Grotesk, Literata ; local : Geist Mono), zéro dépendance UI externe
+next/font (Google : Familjen Grotesk, Source Serif 4 ; local : Geist Mono), zéro dépendance UI externe
 (pas de shadcn, pas de framer-motion : IntersectionObserver + classes CSS suffisent).
 Composants dans src/components, un fichier par section. Contenu et données dans
 des fichiers de configuration typés sous src/config : brand.ts (marque, entité,

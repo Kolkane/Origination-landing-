@@ -27,10 +27,20 @@ html {
   scroll-behavior: smooth;
 }
 
+/* v30 : les largeurs de colonne du corps ne sont PLUS en ch, et ne doivent
+   plus y revenir. Le ch vaut l'avance du « 0 », donc toute largeur exprimée
+   ainsi se déplace au moindre changement de police de corps : la bascule
+   Geist → Literata les avait toutes rétrécies de 12,7 pour cent d'un coup,
+   sans qu'aucune déclaration ait bougé. Les 37 déclarations du corps sont
+   figées en rem, aux largeurs rendues sous Geist avant cette bascule ; les
+   deux font-size en clamp sont reproduites borne par borne, clamp étant
+   homogène pour un facteur positif. Les 22 déclarations en ch qui restent
+   dans ce fichier sont portées par Familjen ou par le mono : elles ne
+   dépendent pas de la police du corps, elles peuvent rester. */
 body {
   background: var(--bg);
   color: var(--txt);
-  font-family: var(--font-literata), Georgia, serif;
+  font-family: var(--font-source-serif), Georgia, serif;
   /* v29 : Chromium ne retravaille que la queue du paragraphe, l'effet
      mesuré est donc faible, deux cas sur douze et jamais sur le drapeau.
      Posé quand même : coût nul, ignoré là où il n'est pas supporté, et
@@ -206,7 +216,7 @@ h1 em {
   font-size: 15px;
   line-height: 1.7;
   color: var(--txt-2);
-  max-width: 52ch;
+  max-width: 32.3125rem;
 }
 .cta {
   display: inline-block;
@@ -315,7 +325,7 @@ section.block {
   font-size: 15px;
   line-height: 1.75;
   color: var(--txt-2);
-  max-width: 62ch;
+  max-width: 38.5625rem;
 }
 .exergue {
   margin-top: 34px;
@@ -362,7 +372,7 @@ section.block {
   font-size: 14px;
   color: var(--txt-2);
   line-height: 1.7;
-  max-width: 56ch;
+  max-width: 32.5rem;
 }
 
 /* ---------- engagements ---------- */
@@ -376,7 +386,7 @@ section.block {
   font-size: 14px;
   color: var(--txt-2);
   line-height: 1.7;
-  max-width: 66ch;
+  max-width: 38.3125rem;
 }
 .not b {
   color: var(--txt);
@@ -418,7 +428,7 @@ section.block {
   font-size: 14px;
   color: var(--txt-2);
   line-height: 1.75;
-  max-width: 64ch;
+  max-width: 37.25rem;
 }
 
 /* ---------- CTA final ---------- */
@@ -430,7 +440,7 @@ section.block {
   max-width: 22ch;
 }
 .final .lead {
-  max-width: 52ch;
+  max-width: clamp(32.3212rem, 39.6474vw, 36.6307rem);
 }
 
 footer {
@@ -566,7 +576,7 @@ footer a:hover {
   font-size: 16px;
 }
 .faq .a {
-  max-width: 64ch;
+  max-width: 38.4375rem;
 }
 
 /* cta final : pleine hauteur, centré */
@@ -592,7 +602,7 @@ footer a:hover {
   margin: 0 auto;
 }
 .final .lead {
-  max-width: 48ch;
+  max-width: clamp(29.835rem, 36.5976vw, 33.813rem);
   margin: 24px auto 34px;
 }
 .final .cta {
@@ -675,7 +685,7 @@ footer a:hover {
   border-bottom-color: var(--line);
 }
 .faq .a {
-  max-width: 64ch;
+  max-width: 40.875rem;
   font-size: 14.5px;
 }
 
@@ -690,7 +700,7 @@ footer a:hover {
   max-width: 16ch;
 }
 .final .lead {
-  max-width: 54ch;
+  max-width: clamp(33.5644rem, 41.1723vw, 38.0396rem);
   font-size: clamp(15px, 1.15vw, 17px);
 }
 
@@ -1177,8 +1187,10 @@ footer a:hover {
 .fig-n {
   font-size: clamp(28px, 2.6vw, 34px);
   line-height: 1;
-  /* v28 : Literata a des chiffres proportionnels par défaut. Sur une
-     colonne de nombres empilés, leurs bords danseraient. */
+  /* v30 : ces chiffres sont rendus par Familjen (.fig-n, .step-n) ou par
+     Geist Mono (.serie-an, .serie-v), jamais par la police de corps : la
+     bascule v30 ne les touche pas. La déclaration reste, elle protège la
+     colonne le jour où la police porteuse changerait. */
   font-variant-numeric: tabular-nums;
 }
 .fig-k {
@@ -1201,7 +1213,7 @@ footer a:hover {
 }
 .serie-l {
   display: grid;
-  grid-template-columns: 4.5ch minmax(0, 1fr) 7.5ch;
+  grid-template-columns: 3rem minmax(0, 1fr) 5rem;
   align-items: center;
   gap: 12px;
   padding: 7px 0;
@@ -1213,8 +1225,10 @@ footer a:hover {
   font-size: 11px;
   color: var(--ink-3);
   font-variant-numeric: tabular-nums;
-  /* v28 : Literata a des chiffres proportionnels par défaut. Sur une
-     colonne de nombres empilés, leurs bords danseraient. */
+  /* v30 : ces chiffres sont rendus par Familjen (.fig-n, .step-n) ou par
+     Geist Mono (.serie-an, .serie-v), jamais par la police de corps : la
+     bascule v30 ne les touche pas. La déclaration reste, elle protège la
+     colonne le jour où la police porteuse changerait. */
   font-variant-numeric: tabular-nums;
 }
 .serie-piste {
@@ -1232,8 +1246,10 @@ footer a:hover {
   font-weight: 500;
   text-align: right;
   font-variant-numeric: tabular-nums;
-  /* v28 : Literata a des chiffres proportionnels par défaut. Sur une
-     colonne de nombres empilés, leurs bords danseraient. */
+  /* v30 : ces chiffres sont rendus par Familjen (.fig-n, .step-n) ou par
+     Geist Mono (.serie-an, .serie-v), jamais par la police de corps : la
+     bascule v30 ne les touche pas. La déclaration reste, elle protège la
+     colonne le jour où la police porteuse changerait. */
   font-variant-numeric: tabular-nums;
 }
 .trend-tag {
@@ -1338,7 +1354,7 @@ footer a:hover {
 }
 .caviard li {
   display: grid;
-  grid-template-columns: 13ch minmax(0, 1fr);
+  grid-template-columns: 8.625rem minmax(0, 1fr);
   align-items: center;
   gap: 16px;
   padding: 10px 0;
@@ -1368,7 +1384,7 @@ footer a:hover {
   font-size: 14px;
   line-height: 1.6;
   color: var(--ink-2);
-  max-width: 52ch;
+  max-width: 30.1875rem;
 }
 
 /* ---- zone 02 · le constat. Seule zone où une phrase passe à l'échelle
@@ -1377,7 +1393,7 @@ footer a:hover {
   font-size: 13.5px;
   line-height: 1.6;
   color: var(--ink-3);
-  max-width: 60ch;
+  max-width: 33.5625rem;
   margin-bottom: 14px;
 }
 .sig-fort {
@@ -1393,7 +1409,7 @@ footer a:hover {
   font-size: 14px;
   line-height: 1.65;
   color: var(--ink-2);
-  max-width: 62ch;
+  max-width: 35.9375rem;
   padding-top: 14px;
   border-top: 1px solid var(--ink-line);
 }
@@ -1410,7 +1426,7 @@ footer a:hover {
   line-height: 1.65;
   color: var(--ink-2);
   margin-bottom: 14px;
-  max-width: 60ch;
+  max-width: 37.3125rem;
 }
 .angle-p:last-of-type {
   margin-bottom: 0;
@@ -1429,7 +1445,7 @@ footer a:hover {
   line-height: 1.5;
   color: var(--ink);
   font-weight: 500;
-  max-width: 52ch;
+  max-width: 33.375rem;
 }
 
 /* ---- zone 06 · la réserve. Seule zone encadrée : dans un rapport, une
@@ -1442,7 +1458,7 @@ footer a:hover {
   font-size: 15px;
   line-height: 1.62;
   color: var(--ink-2);
-  max-width: 60ch;
+  max-width: 37.3125rem;
 }
 .unknown b {
   color: var(--ink);
@@ -1643,7 +1659,7 @@ footer a:hover {
   color: var(--wine-lift);
 }
 .ent-intro {
-  max-width: 48ch;
+  max-width: 32.8125rem;
   color: var(--txt-2);
   font-size: 16.5px;
   line-height: 1.55;
@@ -1661,7 +1677,7 @@ footer a:hover {
   border-top: 1px solid var(--line-soft);
 }
 .ancrage-t {
-  max-width: 46ch;
+  max-width: 28.5625rem;
   font-size: 15px;
   line-height: 1.6;
   color: var(--txt-2);
@@ -1700,8 +1716,10 @@ footer a:hover {
   white-space: nowrap;
   flex: none;
   min-width: 4.5ch;
-  /* v28 : Literata a des chiffres proportionnels par défaut. Sur une
-     colonne de nombres empilés, leurs bords danseraient. */
+  /* v30 : ces chiffres sont rendus par Familjen (.fig-n, .step-n) ou par
+     Geist Mono (.serie-an, .serie-v), jamais par la police de corps : la
+     bascule v30 ne les touche pas. La déclaration reste, elle protège la
+     colonne le jour où la police porteuse changerait. */
   font-variant-numeric: tabular-nums;
 }
 .step-l {
@@ -1924,7 +1942,7 @@ footer a:hover {
    et ce qui ne l'est pas, sans lui disputer l'échelle */
 .m-sous {
   margin: 14px 0 0 auto;
-  max-width: 56ch;
+  max-width: 33.625rem;
   font-size: 14.5px;
   line-height: 1.65;
   color: var(--txt-2);
@@ -1986,7 +2004,7 @@ footer a:hover {
   font-size: 14px;
   line-height: 1.65;
   color: var(--txt-2);
-  max-width: 39ch;
+  max-width: 19.75rem;
 }
 
 @media (max-width: 860px) {
@@ -2077,7 +2095,7 @@ footer a:hover {
   font-size: 14px;
   line-height: 1.7;
   color: var(--txt-3);
-  max-width: 59ch;
+  max-width: 47.5625rem;
 }
 
 /* ---------- le plat principal ---------- */
@@ -2109,7 +2127,7 @@ footer a:hover {
   font-size: clamp(16px, 1.35vw, 18.5px);
   line-height: 1.55;
   color: var(--txt);
-  max-width: 46ch;
+  max-width: clamp(30.498rem, 41.1723vw, 35.2633rem);
 }
 
 /* le prix domine son espace. La métadonnée passe à droite du nombre, en
@@ -2145,7 +2163,7 @@ footer a:hover {
   line-height: 1.7;
   color: var(--txt-2);
   margin-top: clamp(38px, 4.4vw, 56px);
-  max-width: 64ch;
+  max-width: 48.0625rem;
 }
 /* ---------- le complément ---------- */
 /* une bande, pas un bloc : filet plus fin, corps plus petits, couleurs
@@ -2171,7 +2189,7 @@ footer a:hover {
   font-size: 14px;
   line-height: 1.6;
   color: var(--txt-3);
-  max-width: 58ch;
+  max-width: 33.625rem;
 }
 .s-tarif {
   text-align: right;
@@ -2206,7 +2224,7 @@ footer a:hover {
   font-size: 14.5px;
   line-height: 1.7;
   color: var(--txt-2);
-  max-width: 58ch;
+  max-width: 34.875rem;
 }
 .b-pied b {
   color: var(--txt);
@@ -2292,7 +2310,7 @@ footer a:hover {
    sans devenir un pavé */
 .f-corps {
   margin: clamp(26px, 3vw, 36px) auto 0;
-  max-width: 48ch;
+  max-width: 29.8125rem;
   font-size: 15px;
   line-height: 1.7;
   color: var(--txt-2);
@@ -2365,7 +2383,7 @@ footer a:hover {
   font-size: clamp(16px, 1.45vw, 21px);
 }
 .faq .a {
-  max-width: 64ch;
+  max-width: 43.25rem;
 }
 
 /* ============================================================
@@ -2422,7 +2440,7 @@ footer a:hover {
   font-size: 14.5px;
   line-height: 1.7;
   color: var(--ink-2);
-  max-width: 46ch;
+  max-width: 24.0625rem;
   padding-bottom: 0.35em;
 }
 
@@ -2462,7 +2480,7 @@ footer a:hover {
   font-size: 14.5px;
   line-height: 1.7;
   color: var(--ink-2);
-  max-width: 48ch;
+  max-width: 25.25rem;
 }
 
 /* révélation en cascade, déclenchée à l'entrée de la section et jouée
@@ -2560,7 +2578,7 @@ footer a:hover {
   font-size: 14.5px;
   line-height: 1.7;
   color: var(--txt-2);
-  max-width: 48ch;
+  max-width: 28.8125rem;
 }
 
 @media (max-width: 1080px) {
@@ -2675,7 +2693,7 @@ footer a:hover {
   margin-bottom: 14px;
 }
 .a-intro {
-  max-width: 52ch;
+  max-width: 34.5rem;
   color: var(--txt-2);
   font-size: 16px;
   line-height: 1.55;
@@ -2700,7 +2718,7 @@ footer a:hover {
   padding-left: 14px;
 }
 .a-row-main {
-  max-width: 60ch;
+  max-width: 39.75rem;
 }
 .a-row-t {
   display: block;
@@ -2796,7 +2814,7 @@ footer a:hover {
   line-height: 1.72;
   color: var(--txt-2);
   margin-bottom: 22px;
-  max-width: 64ch;
+  max-width: 43.75rem;
 }
 /* la chute passe en encre pleine : c'est elle qu'on retient */
 .ap-body p:last-child {
@@ -2843,7 +2861,7 @@ footer a:hover {
   font-size: 15px;
   line-height: 1.7;
   color: var(--txt-2);
-  max-width: 59ch;
+  max-width: 44.75rem;
 }
 .bascule-t b {
   color: var(--txt);
@@ -2861,7 +2879,7 @@ footer a:hover {
   font-size: 14px;
   line-height: 1.7;
   color: var(--txt-2);
-  max-width: 52ch;
+  max-width: 30.1875rem;
 }
 
 /* la promesse qui retourne l'objection du spécimen, juste sous la mention
@@ -3065,33 +3083,4 @@ footer a:hover {
        la scène du viseur sautait de 22px à chaque bascule. */
     min-height: 65px;
   }
-}
-
-/* ============================================================
-   v29 : équilibrage des titres. Ils tombent bien aujourd'hui,
-   balance protège les futurs et les traductions. La citation du
-   fondateur en est EXCLUE : elle a été composée pour tomber d'une
-   certaine façon, équilibrer ses lignes casserait son rythme.
-   Le corps, lui, reçoit pretty et non balance : balance est borné
-   à quelques lignes et n'est pas fait pour du texte suivi.
-   ============================================================ */
-h1,
-.statement,
-.ent-h2,
-.ent-kicker,
-.b-titre,
-.a-titre,
-.a-row-t,
-.c-statement,
-.c-p,
-.mes-statement,
-.m-statement,
-.final h2,
-.ap-h1,
-.en-t,
-.st-t,
-.d-title,
-.angle-t,
-.exergue {
-  text-wrap: balance;
 }
