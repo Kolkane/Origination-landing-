@@ -189,11 +189,23 @@ export const copy = typoDeep({
 
       coordLbl: "Coordonnées",
       coordS: "Vérifiées avant livraison",
-      /* v23 : les trois intitulés sont ceux que la phrase ci-dessous nomme
-         déjà. Ils sont sortis pour être caviardés : le spécimen montre qu'on
-         détient les coordonnées sans les publier. Le caviardage est autorisé
-         dans le spécimen par l'amendement v8.1 de CLAUDE.md. */
-      coordItems: ["Mobile", "Email", "Ligne directe"],
+      /* v35 : les coordonnées sont ÉCRITES, plus caviardées. Toute cette
+         société est inventée, il n'y avait donc rien à protéger, et les
+         trois barres noires étaient les mêmes formes que les barres du
+         graphe de la zone 01 : elles se lisaient comme une donnée alors
+         qu'elles cachaient une absence de donnée.
+         Les valeurs sont inventées mais SÛRES, et il faut qu'elles le
+         restent. Les deux numéros sont pris dans les plages que l'ARCEP
+         réserve à la fiction, 06 39 98 XX XX pour le mobile et 02 61 91 XX XX
+         pour le fixe : elles ne peuvent être attribuées à personne. Le
+         domaine du courriel a été vérifié inexistant. Ne pas les remplacer
+         par des valeurs « plus crédibles », elles appartiendraient à
+         quelqu'un. */
+      coordItems: [
+        { k: "Mobile", v: "06 39 98 41 07" },
+        { k: "Email", v: "g.vasseur@etablissements-vasseur.fr" },
+        { k: "Ligne directe", v: "02 61 91 38 24" },
+      ],
       coordD:
         "Mobile, email et ligne directe du dirigeant, vérifiés la semaine de la livraison.",
 

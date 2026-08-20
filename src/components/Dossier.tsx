@@ -256,10 +256,11 @@ export default function Dossier() {
                     <p className="angle-chute">{doc.angleP2Fort}</p>
                   </div>
 
-                  {/* caviardage. Le spécimen prouve qu'on détient les
-                      coordonnées sans les publier : les barres disent ce
-                      qu'une phrase ne ferait que promettre. Autorisé dans le
-                      spécimen par l'amendement v8.1 de CLAUDE.md. */}
+                  {/* v35 : les coordonnées sont écrites. La société étant
+                      inventée de bout en bout, il n'y avait rien à caviarder,
+                      et les barres noires reprenaient la forme des barres du
+                      graphe de la zone 01. Valeurs fictives en plages ARCEP
+                      réservées, voir copy.ts. */}
                   <div
                     className={zone("z-coord")}
                     id="z-coord"
@@ -267,11 +268,11 @@ export default function Dossier() {
                   >
                     <p className="lbl mono">{doc.coordLbl}</p>
                     <p className="coord-s mono">{doc.coordS}</p>
-                    <ul className="caviard">
+                    <ul className="coord-l">
                       {doc.coordItems.map((c) => (
-                        <li key={c}>
-                          <span className="cav-k mono">{c}</span>
-                          <span className="cav-bar" aria-hidden="true" />
+                        <li key={c.k}>
+                          <span className="coord-k mono">{c.k}</span>
+                          <span className="coord-v mono">{c.v}</span>
                         </li>
                       ))}
                     </ul>

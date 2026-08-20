@@ -1089,28 +1089,28 @@ footer a:hover {
 .zone.lit .tl li,
 .zone.lit .serie-l,
 .zone.lit .ident li,
-.zone.lit .caviard li {
+.zone.lit .coord-l li {
   animation: monte 0.5s cubic-bezier(0.16, 1, 0.3, 1) backwards;
 }
 .zone.lit .fig:nth-child(1),
 .zone.lit .tl li:nth-child(1),
 .zone.lit .serie-l:nth-child(1),
 .zone.lit .ident li:nth-child(1),
-.zone.lit .caviard li:nth-child(1) {
+.zone.lit .coord-l li:nth-child(1) {
   animation-delay: 0.13s;
 }
 .zone.lit .fig:nth-child(2),
 .zone.lit .tl li:nth-child(2),
 .zone.lit .serie-l:nth-child(2),
 .zone.lit .ident li:nth-child(2),
-.zone.lit .caviard li:nth-child(2) {
+.zone.lit .coord-l li:nth-child(2) {
   animation-delay: 0.185s;
 }
 .zone.lit .fig:nth-child(3),
 .zone.lit .tl li:nth-child(3),
 .zone.lit .serie-l:nth-child(3),
 .zone.lit .ident li:nth-child(3),
-.zone.lit .caviard li:nth-child(3) {
+.zone.lit .coord-l li:nth-child(3) {
   animation-delay: 0.24s;
 }
 .zone.lit .fig:nth-child(4),
@@ -1344,46 +1344,43 @@ footer a:hover {
   border-left: 1px solid var(--ink-line);
 }
 
-/* ---- zone 05 · le caviardage. Le spécimen prouve qu'on détient les
-   coordonnées sans les publier. Barres pleines, rectangulaires, jamais
-   arrondies : c'est une pièce caviardée, pas un composant. ---- */
+/* ---- zone 05 · les coordonnées. Écrites depuis la v35 : la société du
+   spécimen est inventée, il n'y avait rien à protéger, et le caviardage
+   empruntait la forme des barres du graphe de la zone 01. ---- */
 .coord-s {
   font-size: 11px;
   color: var(--ink-2);
   margin-bottom: 16px;
 }
-.caviard {
+/* v35 : la liste des coordonnées porte ses VALEURS. Elle s'appelait
+   .caviard et rendait trois barres noires ; le nom comme la forme ont été
+   retirés ensemble. La société du spécimen étant inventée, il n'y avait rien
+   à masquer, et ces barres avaient exactement la forme de celles du graphe
+   de la zone 01 : l'oeil y lisait une donnée là où il n'y en avait aucune. */
+.coord-l {
   list-style: none;
   margin: 0 0 18px;
   padding: 0;
 }
-.caviard li {
+.coord-l li {
   display: grid;
   grid-template-columns: 8.625rem minmax(0, 1fr);
-  align-items: center;
+  align-items: baseline;
   gap: 16px;
   padding: 10px 0;
   border-top: 1px solid var(--ink-line);
 }
-.cav-k {
+.coord-k {
   font-size: 10.5px;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--ink-3);
 }
-.cav-bar {
-  display: block;
-  height: 13px;
-  background: var(--ink);
-}
-.caviard li:nth-child(1) .cav-bar {
-  width: 62%;
-}
-.caviard li:nth-child(2) .cav-bar {
-  width: 84%;
-}
-.caviard li:nth-child(3) .cav-bar {
-  width: 47%;
+.coord-v {
+  font-size: 12.5px;
+  color: var(--ink);
+  font-variant-numeric: tabular-nums;
+  overflow-wrap: anywhere;
 }
 .coord-d {
   font-size: 14px;
@@ -1580,7 +1577,7 @@ footer a:hover {
   .sig-suite {
     font-size: 14.5px;
   }
-  /* la fiche d'identité et le caviardage repassent en une colonne : à
+  /* la fiche d'identité et les coordonnées repassent en une colonne : à
      390px, deux cases côte à côte couperaient les libellés */
   .ident {
     grid-template-columns: minmax(0, 1fr);
@@ -1592,7 +1589,7 @@ footer a:hover {
     padding-left: 0;
     border-left: 0;
   }
-  .caviard li {
+  .coord-l li {
     grid-template-columns: minmax(0, 1fr);
     gap: 8px;
   }
@@ -1610,7 +1607,7 @@ footer a:hover {
   .zone.lit .serie-l,
   .zone.lit .serie-barre,
   .zone.lit .ident li,
-  .zone.lit .caviard li {
+  .zone.lit .coord-l li {
     animation: none !important;
     transition: none !important;
     transform: none !important;

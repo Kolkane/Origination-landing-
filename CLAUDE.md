@@ -176,10 +176,22 @@ trouvé sur vous". Codes attendus : document financier imprimé, pas SaaS IA.
   chacune une FORME propre, c'est la règle. Elles se ressemblaient toutes et
   la loupe n'avait alors rien à révéler. Identité en cases, finances en
   chiffres plus barres, constat à l'échelle du display, parcours en frise,
-  angle avec sa chute détachée, coordonnées CAVIARDÉES, réserve encadrée.
-  Le caviardage applique l'amendement v8.1 : il prouve qu'on détient les
-  coordonnées sans les publier. Ne pas réaligner ces zones sur un gabarit
-  commun, la variété EST la fonction.
+  angle avec sa chute détachée, coordonnées écrites, réserve encadrée.
+  Ne pas réaligner ces zones sur un gabarit commun, la variété EST la fonction.
+  Amendement (arbitrage Vincent, v35) : la zone 05 n'est PLUS CAVIARDÉE, ses
+  trois coordonnées sont écrites en clair. Deux motifs. La société du spécimen
+  est inventée de bout en bout, il n'y avait donc rien à protéger et le
+  caviardage jouait une pudeur sans objet. Et les trois barres noires avaient
+  exactement la forme des barres du graphe de la zone 01 : à deux zones
+  d'écart, l'oeil y lisait une donnée là où elles cachaient une absence de
+  donnée. L'amendement v8.1, qui autorisait le caviardage dans le spécimen,
+  n'a plus d'objet ici ; il reste valable pour les tampons de document.
+  Les valeurs sont inventées mais SÛRES, et elles doivent le rester : les
+  deux numéros sont pris dans les plages que l'ARCEP réserve à la fiction,
+  06 39 98 XX XX et 02 61 91 XX XX, qui ne peuvent être attribuées à
+  personne, et le domaine du courriel a été vérifié inexistant. Ne jamais les
+  remplacer par des valeurs « plus crédibles » : elles appartiendraient à un
+  vrai dirigeant, et la section Honnêteté l'interdit.
   Le graphe des exercices : série unique en encre, base à ZÉRO jamais
   tronquée, marque fine à extrémité carrée (la charte proscrit les arrondis),
   aucune légende puisqu'il n'y a qu'une série, et la valeur reste écrite à
