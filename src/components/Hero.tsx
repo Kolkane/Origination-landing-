@@ -72,9 +72,9 @@ export default function Hero() {
         <h1 className="fade f3">
           {grand(h.titreLigne1)}
           <br />
-          {grand(h.titreLigne2Avant)}
-          <em>{grand(h.titreItalique)}</em>
-          {grand(h.titreLigne2Apres)}
+          <em>{grand(h.titreLigne2Italique)}</em>
+          <br />
+          {grand(h.titreLigne3)}
         </h1>
         <p className="hero-sub fade f4">{h.sousTitre}</p>
         <div className="cta-row fade f4">

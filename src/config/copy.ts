@@ -38,10 +38,12 @@ export const copy = typoDeep({
        elle, le séparateur peut finir une ligne tout seul quand le libellé
        passe sur deux lignes, ce qui arrive sur téléphone. */
     eyebrow: "Origination sell-side · PME françaises",
-    titreLigne1: "Nous détectons les dirigeants",
-    titreLigne2Avant: "qui ",
-    titreItalique: "préparent",
-    titreLigne2Apres: " leur sortie.",
+    /* trois lignes découpées à la main, le mot accentué occupe la sienne
+       seul. Les clés portent leur numéro de ligne : elles ne peuvent pas
+       mentir si le découpage change. */
+    titreLigne1: "Nous détectons les dirigeants qui",
+    titreLigne2Italique: "préparent",
+    titreLigne3: "leur sortie.",
     sousTitre:
       "Et nous livrons le dossier d’approche qui va avec. Un cabinet par périmètre.",
     cta: CTA,
