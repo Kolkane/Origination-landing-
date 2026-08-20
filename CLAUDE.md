@@ -38,6 +38,35 @@ trouvé sur vous". Codes attendus : document financier imprimé, pas SaaS IA.
   (wrap 1080px, narrow 720px), offre en colonne collante, spécimen sombre posé en décalé
   sur la bande claire, CTA final centré pleine hauteur. Les bandes claires sont le seul
   écart au fond encre : elles servent le rythme de lecture, jamais la décoration.
+- MESURE DE SECTION (arbitrage Vincent, v33) : --mesure vaut 48rem, 768px. C'est la
+  plus large colonne de lecture de la page, .p-corps à 48,0625rem, arrondie au rem :
+  une valeur GÉNÉRALISÉE, pas inventée, donc rien n'a jamais à s'élargir pour y entrer.
+  Elle borne un bord droit partagé par une prose et par ce qui l'encadre.
+  Cet amendement DÉROGE explicitement au principe v10, « l'espace horizontal travaille
+  au lieu de se vider ». Borner un encadré à 768px dans un conteneur de 1313px laisse
+  545px de marge droite, et c'est assumé : un filet qui court sous du vide est pire
+  qu'une marge droite. On déplace le vide, on ne le supprime pas, et c'est délibéré.
+  Ne pas « corriger » ce vide en réélargissant les blocs bornés.
+  PÉRIMÈTRE, mesuré au navigateur et volontairement étroit. Reçoivent la mesure :
+  .ancrage de l'entonnoir (son filet courait 265px au-delà de sa plus longue ligne).
+  Ne la reçoivent PAS, et il ne faut pas la leur appliquer : la FAQ et les lignes
+  d'Analyses, dont le bord droit est ANCRÉ, par le « + » de la question et par le lien
+  de la ligne d'article — leur filet ne court pas sous du vide, vide mesuré à 0px ;
+  l'en-tête et la grille 2×2 des engagements, qui n'ont que 91 et 95px de jeu ; les
+  paliers de l'entonnoir, dont la décroissance est la rhétorique de la section et
+  demande toute la largeur ; tous les titres, dont la mesure étroite est un choix.
+  Règle de méthode qui a produit ce périmètre : comparer une prose à la boîte de son
+  PARENT donne des faux positifs en grille et en flex. Ce qui compte est ce qui ANCRE
+  le bord droit de la structure. Mesurer cela avant de conclure à un défaut.
+- OFFRE EN DEUX COLONNES (arbitrage Vincent, v33) : .primaire passe en grille
+  48rem + 1fr au-dessus de 1390px, le corps à sa mesure et le bloc tarif, qui existait
+  déjà sous lui, monté dans le vide. 568px de filet sous rien, le plus gros écart de
+  la page, ramenés à 63px. Le corps ne bouge pas d'un pixel : c'est la condition.
+  Le seuil de 1390px est MESURÉ, pas choisi : la colonne de droite vaut le conteneur
+  moins 768px et 72px de gouttière, et « 2 000 € HT » lié fait 410,2px à 92px. Il
+  manque 4,4px à 1366px et 72px à 1280px, et en dessous la colonne de gauche passerait
+  sous 768px, donc le corps se recomposerait. Les écrans 1366 gardent une colonne.
+  Ne pas descendre ce seuil sans remesurer la chaîne du prix.
 - Palette : fond #0A0A0A · texte #F4F2EF · secondaire #B9B6B2 · tertiaire #83807C ·
   filets rgba(255,255,255,.12/.06) · unique accent rouge vin #8E2438 (souligné des CTA,
   hover). Aucune autre couleur.

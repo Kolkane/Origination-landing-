@@ -21,6 +21,11 @@
   --wine: #8e2438;
   --grade: saturate(0.82) contrast(1.06) brightness(0.94);
   --ease: cubic-bezier(0.22, 0.75, 0.25, 1);
+  /* v33 · mesure de section. Bord droit partagé par une prose et par ce qui
+     l'encadre. Ce n'est pas une valeur inventée : c'est la plus large colonne
+     de lecture de la page, .p-corps à 48,0625rem, arrondie au rem. Rien n'a
+     donc à s'élargir, et tout ce qu'on y borne tient déjà dedans. */
+  --mesure: 48rem;
 }
 
 html {
@@ -1675,6 +1680,13 @@ footer a:hover {
   margin-top: clamp(30px, 4vw, 44px);
   padding-top: 22px;
   border-top: 1px solid var(--line-soft);
+  /* v33 · le seul encadré de l'entonnoir à recevoir la mesure de section.
+     Ses deux lignes ne tiennent pas côte à côte, elles passent à la ligne :
+     le filet courait donc 265px au-delà de la plus longue (708px de source
+     dans un encadré de 973px). Borné, il s'arrête 60px après elle.
+     Les PALIERS ne sont pas touchés : leur décroissance est la rhétorique
+     de la section, elle a besoin de toute la largeur. */
+  max-width: var(--mesure);
 }
 .ancrage-t {
   max-width: 28.5625rem;
@@ -2139,14 +2151,18 @@ footer a:hover {
   flex-wrap: wrap;
   margin-top: clamp(38px, 4.4vw, 58px);
 }
-/* MESURÉ (v31) : c'est le plus gros corps de la page, donc l'endroit où une
-   chaîne insécable coûte le plus cher. « 2 000 € HT » y est lié en deux
-   morceaux, « 2 000 € » puis « HT » : les règles de typo.ts lient le nombre
-   à son symbole, aucune ne lie un symbole au mot qui suit, et c'est bien.
-   À 48px, le plancher du clamp, « 2 000 € » fait 159,2px. Le conteneur vaut
-   le viewport moins 44px de padding, soit 276px à 320px : 116,8px de marge,
-   et ça tient encore à 220px de viewport. Si le prix gagne un chiffre,
-   compter environ 30px de plus et revenir vérifier ici. */
+/* MESURÉ (v33) : c'est le plus gros corps de la page, donc l'endroit où une
+   chaîne insécable coûte le plus cher. Depuis la règle R7 de typo.ts,
+   « 2 000 € HT » est un seul jeton indivisible.
+   En une colonne : 214,0px à 48px, le plancher du clamp, dans un conteneur
+   de 276px à 320px de viewport, soit 62px de marge. Il tient jusqu'à 258px
+   de viewport, sous tout appareil réel.
+   En deux colonnes : 410,2px à 92px, le plafond du clamp, dans une colonne
+   qui vaut le conteneur moins 768px de mesure et 72px de gouttière. Elle
+   n'atteint 410px qu'à partir de 1390px de viewport — d'où le point de
+   bascule de la grille ci-dessous, mesuré et non choisi.
+   Si le prix gagne un chiffre, compter environ 55px de plus à 92px et
+   revenir vérifier les deux cas. */
 .p-chiffre {
   font-family: var(--font-familjen), sans-serif;
   font-weight: 400;
@@ -3123,4 +3139,46 @@ footer a:hover {
 .final h2,
 .ap-h1 {
   text-wrap: balance;
+}
+
+/* ============================================================
+   v33 · L'OFFRE EN DEUX COLONNES. Le bloc principal portait un
+   filet sur 1313px au-dessus d'un corps qui s'arrête à 809px :
+   568px de trait sous du vide, le plus gros écart mesuré de la
+   page. Le tarif existait déjà, posé SOUS le corps ; il monte
+   dans le vide au lieu qu'on rétrécisse le filet. Le corps ne
+   bouge pas d'un pixel, c'est la condition de l'arbitrage.
+
+   1390px et pas 1200px, mesuré au navigateur : la colonne de
+   droite vaut le conteneur moins 768px de mesure et 72px de
+   gouttière, et « 2 000 € HT » lié fait 410,2px à 92px. Elle
+   n'atteint 410px qu'à 1390px. À 1366px il manque 4,4px, à
+   1280px il en manque 72. En dessous, la colonne de gauche
+   passerait en plus sous les 768px et le corps se recomposerait.
+   Les écrans 1366 gardent donc la disposition en une colonne :
+   c'est un moins bon sort que prévu, mais c'est le chiffre.
+   ============================================================ */
+@media (min-width: 1390px) {
+  .primaire {
+    display: grid;
+    grid-template-columns: minmax(0, var(--mesure)) minmax(20rem, 1fr);
+    column-gap: 4.5rem;
+    align-items: start;
+  }
+  /* ::before est en position absolue, il ne devient pas un élément de grille */
+  .primaire > * {
+    grid-column: 1;
+  }
+  .primaire > .p-tarif {
+    grid-column: 2;
+    grid-row: 2;
+    /* en colonne, le prix et sa métadonnée s'empilent : côte à côte ils
+       demanderaient 410 + 52 + 214, soit plus que la colonne ne donne */
+    display: block;
+    margin-top: 6px;
+  }
+  .primaire > .p-tarif .p-meta {
+    max-width: none;
+    margin-top: 20px;
+  }
 }

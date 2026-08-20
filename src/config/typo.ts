@@ -34,25 +34,37 @@ const R4 = /(art\.|n°) (?=\d)/g;
 const R5O = /« /g;
 const R5F = / (?=»)/g;
 
+/* R7 · le symbole monétaire et la mention de taxe qui le suit. « 2 000 € HT »
+   devient un seul jeton, ce que R2 et R3 ne savaient pas faire : elles lient
+   le nombre à son symbole, aucune ne liait un symbole au mot suivant.
+   Bornée à HT et TTC, PAS à « tout mot qui suit ». Une règle large lierait
+   « 24 000 € sur l'année », composé au runtime dans copy.ts.arithmetique, et
+   produirait une chaîne de trois mots là où le prix s'arrête au symbole.
+   Motif : en deux colonnes, l'offre affiche le prix à 92px dans une colonne
+   de 473px. Sans cette règle, « HT » retombe sous le nombre dès que la
+   colonne se resserre. Mesuré : la chaîne liée fait 410,2px et tient à
+   partir de 1390px de viewport, d'où le point de bascule de la grille. */
+const R7 = /(€) (?=HT\b|TTC\b)/g;
+
 /* R6 · mot d'une seule lettre en fin de ligne possible. JAMAIS automatique :
    voir grand() ci-dessous. Un « à » orphelin se voit dans un titre de 32px,
    personne ne le remarque dans un corps de 14,5px, et le lier partout
    coûterait une soixantaine de blocs indivisibles sans bénéfice. */
 const R6 = /(^|[\s(])([ày]) /g;
 
-/* Les six règles ne consomment qu'une U+0020 et n'en produisent jamais :
+/* Aucune règle ne consomme autre chose qu'une U+0020 et aucune n'en produit :
    les appliquer deux fois donne le même résultat que les appliquer une
    fois. C'est ce qui rend sûre la composition typoDeep() puis grand(). */
 
 /* Il reste TROIS U+00A0 écrites à la main dans copy.ts, et seulement trois :
    celles qui suivent le séparateur « · » de l'eyebrow du hero et des deux
-   lignes du pied de page. Aucune des six règles ne les couvre, le séparateur
-   n'étant ni une ponctuation haute ni un guillemet. Elles restent littérales
-   faute d'une septième règle, qui n'a pas été demandée. Si le « · » devient
-   une convention à part entière du site, c'est ici qu'elle se déclare, et
+   lignes du pied de page. Aucune règle ne les couvre, le séparateur n'étant
+   ni une ponctuation haute ni un guillemet. Elles restent littérales faute
+   d'une règle dédiée, qui n'a pas été demandée. Si le « · » devient une
+   convention à part entière du site, c'est ici qu'elle se déclare, et
    ces trois caractères disparaissent des sources. */
 
-/** R1 à R5, mécaniques. Appliquées à toute la copy via typoDeep(). */
+/** R1 à R5 et R7, mécaniques. Appliquées à toute la copy via typoDeep(). */
 export function typo(s: string): string {
   return s
     .replace(R1, "$1" + INS)
@@ -60,10 +72,11 @@ export function typo(s: string): string {
     .replace(R3, "$1" + INS)
     .replace(R4, "$1" + INS)
     .replace(R5O, "«" + INS)
-    .replace(R5F, INS);
+    .replace(R5F, INS)
+    .replace(R7, "$1" + INS);
 }
 
-/** R1 à R6. À poser au point de RENDU, sur le grand texte seulement :
+/** typo() plus R6. À poser au point de RENDU, sur le grand texte seulement :
     titres, citations, intitulés de FAQ. Le point de rendu est le seul
     endroit où la taille est visible ; le nom de la clé ne la dit pas
     (les titres de section des pages légales sont en mono 10,5px). */
