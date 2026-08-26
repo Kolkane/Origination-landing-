@@ -916,10 +916,10 @@ footer a:hover {
    dérivée : l'image ne dicte jamais la largeur de l'en-tête. */
 .d-lockup {
   display: block;
-  /* v43b : le lockup corrigé (médaillon plus petit face au slogan) est
-     plus plat (900x212). 72px suffisent : la baseline vin garde ~13px
-     de capitales et la méta de droite garde sa place. */
-  height: 72px;
+  /* v43c (arbitrage Vincent, 27/08 : « plus discret, plus léger ») :
+     72 -> 50px. Le lockup est un en-tête de papier à lettres, pas une
+     enseigne ; la baseline vin garde ~9px de capitales, lisible. */
+  height: 50px;
   width: auto;
   flex-shrink: 0;
 }
