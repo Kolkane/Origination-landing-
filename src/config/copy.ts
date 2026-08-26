@@ -57,70 +57,188 @@ export const copy = typoDeep({
     note1: "Déposez votre vidéo « imbrin.mp4 »",
     note2: "dans public/, puis rechargez.",
   },
-  /* v38 : L'OBJET. Le viseur sombre et ses sept zones (v14-v35) sont
-     remplacés par le dossier EN PAPIER : un feuillet composé comme le
-     gabarit A4 réel — rail / corps, rubriques, chronologie datée, pied en
-     bas de page. Direction validée sur MAQUETTE-V38-OBJET.html (arbitrage
-     Vincent, 26/08/2026), après analyse de références réelles.
+  /* v14 : la description du livrable et l'exemple de dossier ne font plus
+     qu'une section. Depuis la v19, cliquer un élément ne surligne plus une
+     zone dans un document entier : le viseur ne cadre que cette zone.
      Le dossier est fictif et le dit à TROIS endroits, tous visibles en
-     permanence : le tampon SPÉCIMEN sur la feuille, la méta de la colonne
-     de gauche, le pied de feuille. Ne jamais retirer l'une des trois.
-     Les coordonnées fictives restent dans les plages que l'ARCEP réserve
-     à la fiction (06 39 98 XX XX, 02 61 91 XX XX) et le domaine du
-     courriel a été vérifié inexistant : ne jamais les « crédibiliser ». */
+     permanence quelle que soit la zone active : barre du viseur (« Exemple
+     fictif »), chrome du document (« Société et chiffres inventés »), pied
+     de document. Ne jamais retirer l'une des trois.
+     v22 : la deuxième était décrite comme étant « sous le titre ». Le titre
+     est descendu dans la zone 00, la mention est restée dans le chrome et
+     se lit donc au-dessus. Elle n'a jamais cessé d'être toujours visible,
+     c'est ce qui compte. */
   dossier: {
     kicker: "Ce que vous recevez",
     titre: "Ce qui arrive sur votre bureau.",
+    /* v19 : le chapô disait « surligné » et « à droite ». Le viseur ne
+       surligne plus un document entier, il cadre une zone à la fois, et
+       sous 920px il passe dessous et non à droite. */
     chapo:
-      "Un dossier d’approche, pas une ligne dans un fichier. Le format et la méthode sont ceux de nos dossiers réels : repères sourcés, faits datés, l’angle, ce que nous ne savons pas.",
-    note: "Au rendez-vous, nous parcourons un dossier complet avec vous, page à page.",
-    meta: [
-      "Exemple fictif · Société et chiffres inventés",
-      "Sources publiques : RNE · SIRENE · BODACC",
-      "Art. 14 RGPD · page Confidentialité",
+      "Un dossier d’approche, pas une ligne dans un fichier. Chaque élément ci-dessous ouvre sa zone dans un exemple de dossier, cadrée de près. Cliquez pour le parcourir.",
+    /* v22 : la présentation du prospect quitte l'en-tête permanent et
+       devient la zone 00. Elle est donc l'élément actif au chargement :
+       c'est la page de garde du dossier, on la lit avant les chiffres. */
+    defaut: "z-societe",
+    elements: [
+      {
+        idx: "00",
+        cible: "z-societe",
+        titre: "La société",
+        texte:
+          "Ce qu’elle fait, sa taille, sa forme juridique, et qui la dirige.",
+      },
+      {
+        idx: "01",
+        cible: "z-fin",
+        titre: "Les chiffres, à la source",
+        texte:
+          "Résultat, trésorerie, endettement, sur trois exercices. Repris des comptes déposés, pas d’un agrégateur.",
+      },
+      {
+        idx: "02",
+        cible: "z-signal",
+        titre: "La structure de détention",
+        texte:
+          "Qui tient le capital, quels mouvements de titres. Lue dans les actes, pas déduite d’une base. Ici, un dirigeant seul, aucun mouvement en treize ans.",
+      },
+      {
+        idx: "03",
+        cible: "z-parcours",
+        titre: "Le fait daté",
+        texte:
+          "La chronologie des actes déposés, chaque ligne datée au registre. Ici, une SCI constituée en 2023 pour isoler les murs. Un fait établi, jamais une intention supposée.",
+      },
+      {
+        idx: "04",
+        cible: "z-angle",
+        titre: "L’angle d’approche",
+        texte:
+          "Par où entrer, quoi dire, ce qui presse. Écrit pour être utilisé lundi matin. Et quand la raison de ne pas appeler existe, c’est elle qui est livrée.",
+      },
+      {
+        idx: "05",
+        cible: "z-coord",
+        titre: "Les coordonnées, avec leur statut",
+        texte:
+          "Fournisseurs contractualisés, jamais de donnée grise. Chaque coordonnée livrée porte son statut, écrit : vérifiée, ou non.",
+      },
+      {
+        idx: "06",
+        cible: "z-unknown",
+        titre: "Ce que nous ne savons pas",
+        texte:
+          "Les zones d’ombre sont écrites noir sur blanc. Jamais comblées pour faire joli.",
+      },
     ],
-    feuille: {
+    viewer: { titre: "Dossier d’approche", mention: "Exemple fictif" },
+    /* la ligne qui retourne l’objection du spécimen. L'ancienne promettait
+       un dossier réel « sur votre territoire » avant tout contrat : une
+       promesse qu'on ne tient pas à coup sûr, retirée à la refonte. */
+    viewerNote: "Au rendez-vous, nous parcourons un dossier complet avec vous, page à page.",
+    doc: {
       aria: "Exemple de dossier d’approche, société et chiffres inventés",
-      meta: "Dossier d’approche · Région exemple · Semaine 30",
+      metaAvant: "Dossier · ",
+      metaFort: "Exemple",
+      metaApres: " · Confidentiel",
+      metaLigne2: "Région exemple · Semaine 30",
+      ficti: "Société et chiffres inventés",
+      badge: "Spécimen",
+      /* v22 : ces quatre champs ne sont plus dans l'en-tête permanent, ils
+         forment la zone 00. Aucune donnée ne change, seul l'endroit où
+         elle est montrée. */
+      societeLbl: "Identité",
       titre: "Établissements Vasseur",
-      sous: "Génie climatique · 60-99 salariés · agglomération type · SAS, titres cessibles",
-      tampon: "Spécimen · données fictives",
-      /* le rail du gabarit : libellé mono, valeur serif, statut écrit */
-      rail: [
-        { k: "Interlocuteur", v: "Gérard Vasseur", s: "Président · 63 ans" },
-        { k: "Résultat net 2025", v: "640 K€" },
-        { k: "Trésorerie", v: "1,9 M€" },
-        { k: "Fonds de roulement", v: "2,1 M€" },
-        { k: "Gearing", v: "≈ 0,2" },
-        { k: "Mobile", v: "06 39 98 41 07", s: "vérifiée" },
-        { k: "Email", v: "g.vasseur@etablissements-vasseur.fr", s: "vérifiée" },
-        { k: "Ligne directe", v: "02 61 91 38 24", s: "non vérifiée" },
-      ] as { k: string; v: string; s?: string }[],
-      detentionLbl: "Structure de détention",
-      detentionAvant:
-        "Gérard Vasseur détient et dirige seul depuis 2011, à 63 ans. Au registre : ",
-      detentionFort: "pas d’associé entré, aucun mouvement de titres en treize ans.",
-      detentionApres: " Trois exercices en hausse, quasiment pas de dette.",
-      faitLbl: "Le fait daté",
-      chrono: [
+      /* v23 : la même phrase que le « desc » d'avant, découpée sur ses points
+         médians pour devenir une fiche d'identité en cases. Aucun mot n'est
+         ajouté ni retiré, seule la structure change. */
+      descItems: [
+        "Génie climatique",
+        "60-99 salariés",
+        "agglomération type",
+        "SAS, titres cessibles",
+      ],
+      interloLbl: "Interlocuteur",
+      interlo: "Gérard Vasseur · Président · 63 ans",
+
+      finLbl: "Finances · 2025",
+      figures: [
+        { n: "640 K€", k: "Résultat net 2025" },
+        { n: "1,9 M€", k: "Trésorerie" },
+        { n: "2,1 M€", k: "Fonds de roulement" },
+        { n: "≈ 0,2", k: "Gearing" },
+      ],
+      /* v23 : « n » est la valeur déjà affichée dans « v », en milliers, pour
+         que la barre soit proportionnelle. Ce n'est pas une donnée de plus,
+         c'est la même, lisible par la mise en page. Échelle à zéro, jamais
+         tronquée : une base tronquée exagérerait la pente. */
+      tendance: [
+        { a: "2023", v: "~510 K€", n: 510 },
+        { a: "2024", v: "~590 K€", n: 590 },
+        { a: "2025", v: "~640 K€", n: 640 },
+      ],
+      tendanceTag: "Résultat net · trois exercices en hausse",
+
+      parcoursLbl: "Le fait daté",
+      parcours: [
         { an: "1998", ev: "Création, transmission familiale" },
         { an: "2011", ev: "Reprise par le dirigeant actuel" },
         { an: "2023", ev: "Constitution d’une SCI, murs d’exploitation isolés", cle: true },
         { an: "04 / 2026", ev: "Dernier dépôt de comptes, clos 12/2025" },
         { an: "07 / 2026", ev: "Vérification registre : dirigeant actif, aucun relais" },
       ] as { an: string; ev: string; cle?: boolean }[],
-      angleLbl: "L’angle d’approche",
-      angleFort: "Entrer par l’homme-clé, pas par la vente.",
-      angleSuite:
+
+      coordLbl: "Coordonnées",
+      coordS: "Statut écrit, ligne à ligne",
+      /* v35 : les coordonnées sont ÉCRITES, plus caviardées. Toute cette
+         société est inventée, il n'y avait donc rien à protéger, et les
+         trois barres noires étaient les mêmes formes que les barres du
+         graphe de la zone 01 : elles se lisaient comme une donnée alors
+         qu'elles cachaient une absence de donnée.
+         Les valeurs sont inventées mais SÛRES, et il faut qu'elles le
+         restent. Les deux numéros sont pris dans les plages que l'ARCEP
+         réserve à la fiction, 06 39 98 XX XX pour le mobile et 02 61 91 XX XX
+         pour le fixe : elles ne peuvent être attribuées à personne. Le
+         domaine du courriel a été vérifié inexistant. Ne pas les remplacer
+         par des valeurs « plus crédibles », elles appartiendraient à
+         quelqu'un. */
+      coordItems: [
+        /* le statut est écrit ligne à ligne, et la « non vérifiée » est
+           délibérée : le spécimen montre que le statut est réel, pas
+           décoratif. Les « · » sont conformes : coord-v est une ligne mono. */
+        { k: "Mobile", v: "06 39 98 41 07 · vérifiée" },
+        { k: "Email", v: "g.vasseur@etablissements-vasseur.fr · vérifiée" },
+        { k: "Ligne directe", v: "02 61 91 38 24 · non vérifiée" },
+      ],
+      coordD:
+        "Coordonnées de fournisseurs contractualisés. Chaque ligne porte son statut : vérifiée, ou non. Jamais de donnée grise.",
+
+      signalLbl: "Structure de détention",
+      signalAvant:
+        "Gérard Vasseur détient et dirige seul depuis 2011, à 63 ans. Au registre : ",
+      signalFort:
+        "pas d’associé entré, aucun mouvement de titres en treize ans.",
+      signalApres:
+        " L’affaire est saine, trois exercices en hausse, quasiment pas de dette. En 2023, les murs sont sortis dans une SCI : le fait est daté, il est dans la chronologie.",
+
+      angleLbl: "Angle d’approche",
+      angleTitre: "Entrer par l’homme-clé, pas par la vente.",
+      angleP1:
         "Toute la valeur tient sur une personne qui a 63 ans. Un sujet qui s’ouvre sans prononcer le mot cession : que devient l’atelier le jour où il n’est plus là tous les matins.",
+      angleP2Avant:
+        "La SCI de 2023 est un fait, pas une intention : les murs sont sortis de l’exploitation, l’acte est au registre. Ce que ce geste prépare, l’acte ne le dit pas. ",
+      angleP2Fort:
+        "C’est la question à poser au dirigeant, avant qu’un autre ne la pose.",
+
       inconnuLbl: "Ce que nous ne savons pas",
       inconnuAvant:
-        "Le chiffre d’affaires est sous option de confidentialité : fourchette, pas montant. L’intention du dirigeant : ",
-      inconnuFort: "aucune source publique ne la porte.",
-      inconnuApres: " Un acte établit un fait, jamais un projet.",
-      piedFicti: "Exemple fictif.",
-      pied:
-        " Société et chiffres inventés pour la démonstration. Sources : actes déposés au registre national des entreprises, comptes annuels, annonces BODACC. Information des personnes : art. 14 RGPD, page Confidentialité.",
+        "Le chiffre d’affaires est sous option de confidentialité depuis 2021 : nous donnons une fourchette, pas un montant. Ses deux enfants sont hors de l’entreprise, et nous ne savons pas s’ils sont une piste de reprise. Quant à l’intention du dirigeant : ",
+      inconnuFort: "aucune source publique ne la porte. Un acte établit un fait, jamais un projet.",
+      inconnuApres: " Ce sont les premières questions à poser.",
+
+      legalFicti: "Exemple fictif.",
+      legal:
+        " Société et chiffres inventés pour la démonstration. La structure est celle de nos dossiers réels : repères sourcés, faits datés, angle, ce que nous ne savons pas, sources. Sources publiques (RNE, SIRENE, BODACC) · art. 14 RGPD : information des personnes accessible sur notre page Confidentialité.",
     },
   },
   /* v15 : « Le constat » et la bande de chiffres fusionnés en un seul geste.
@@ -295,17 +413,14 @@ export const copy = typoDeep({
     ],
   },
   /* refonte 2026-08 : le « ≈ 1/3 publié depuis l'ouverture » n'était pas
-     mesuré, il est mort. Le grand repère devient « 0 » : zéro chiffre
-     générique sur ce site, c'est la promesse centrale mise en scène par la
-     section qui parle de mesure. Le taux d'écart, lui, est mesuré sur le
-     périmètre et livré avec chaque lot. */
+     mesuré, il est mort. Le grand repère « 0 » qui l'avait remplacé est
+     mort aussi (arbitrage Vincent, 26/08) : un grand zéro se lit comme du
+     vide, pas comme une preuve. La section reprend la grammaire des
+     entrées sur filets, sans repère. Le taux d'écart, lui, est mesuré sur
+     le périmètre et livré avec chaque lot. */
   mesure: {
     kicker: "La mesure",
     statement: "Ce que nous mesurons sur nous-mêmes",
-    /* le repère fait face aux énoncés : signe et valeur restent séparés
-       parce qu'ils ne portent pas la même couleur ; le signe est vide. */
-    repereSigne: brand.PROOF.repere.signe,
-    repereValeur: brand.PROOF.repere.valeur,
     items: [
       {
         titre: "Zéro chiffre générique sur ce site",

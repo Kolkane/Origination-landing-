@@ -21,14 +21,10 @@ export const brand = typoDeep({
     ville: "Saint-Vincent-de-Tyrosse",
   },
   SHOW_PRICING: true,
-  PROOF: {
-    /* le grand repère de la section Mesure. Refonte 2026-08 : le « ≈ 1/3 »
-       n'était pas mesuré, il est retiré. Le repère devient « 0 » : zéro
-       chiffre générique sur le site. Le taux d'écart réel est mesuré sur le
-       périmètre et livré avec chaque lot, jamais affiché en moyenne. Le
-       signe reste un champ séparé (couleur propre), vide désormais. */
-    repere: { signe: "", valeur: "0" },
-  },
+  /* PROOF est mort en deux temps : le « ≈ 1/3 » n'était pas mesuré, puis
+     le repère « 0 » qui l'avait remplacé a été retiré (un grand zéro se
+     lit comme du vide). Le taux d'écart réel est mesuré sur le périmètre
+     et livré avec chaque lot, jamais affiché en moyenne sur le site. */
   /* Deux prix, deux seulement. Toute valeur affichée sur la page part d'ici.
      L'origination est calibrée au périmètre : le montant affiché est un
      plancher, pas une grille. */

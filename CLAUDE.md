@@ -223,6 +223,18 @@ trouvé sur vous". Codes attendus : document financier imprimé, pas SaaS IA.
   (ils déguisaient la page) : le vin en aplat et le registre ne vivent QUE
   dans le spécimen. La règle qui reste : UN objet signature rendu
   matériellement, et le reste de la page se tait.
+  CORRECTION LE JOUR MÊME (arbitrage Vincent, 26/08/2026 soir) : le
+  feuillet STATIQUE de la V38 est annulé — figé, le spécimen « se voyait
+  généré », et c'est l'INTERACTION de la loupe (v19-v23 : nav des
+  éléments, mise au point, balayage) qui fait « travaillé, pas généré ».
+  Le viseur interactif est RESTAURÉ tel quel : le document était déjà du
+  papier, l'objet signature c'est le papier PLUS la loupe. Restent acquis
+  de la V38 : la méthode en lignes empilées à l'échelle display, le
+  .statement à 50px, le rejet des folios/tampons hors spécimen. Et le
+  grand repère de la Mesure (« ≈ 1/3 » puis « 0 ») est MORT : un grand
+  zéro se lit comme du vide, pas comme une preuve — la section reprend la
+  grammaire des entrées sur filets, sans repère. Ne remettre ni le
+  feuillet statique, ni un grand chiffre d'affiche dans la Mesure.
 - Interdits définitifs (hérités des itérations rejetées) : ticker, métriques animées,
   count-up, grilles de cards, beam/bordures lumineuses, tilt 3D, spotlight souris, pings,
   glow, dégradés colorés, grid de fond, badges/chips, emojis, icônes décoratives,
