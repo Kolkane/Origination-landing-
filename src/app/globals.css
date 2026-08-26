@@ -916,9 +916,10 @@ footer a:hover {
    dérivée : l'image ne dicte jamais la largeur de l'en-tête. */
 .d-lockup {
   display: block;
-  /* 84px : mesuré pour que la baseline vin du lockup reste lisible
-     (~9px de capitales) sans écraser la méta de droite */
-  height: 84px;
+  /* v43b : le lockup corrigé (médaillon plus petit face au slogan) est
+     plus plat (900x212). 72px suffisent : la baseline vin garde ~13px
+     de capitales et la méta de droite garde sa place. */
+  height: 72px;
   width: auto;
   flex-shrink: 0;
 }

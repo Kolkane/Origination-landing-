@@ -142,7 +142,7 @@ export default function Dossier() {
                     src="/logo-dossier.png"
                     alt={`${brand.MARQUE} ${brand.SUFFIXE} · ${brand.BASELINE}`}
                     width={900}
-                    height={327}
+                    height={212}
                   />
                   <span className="d-meta mono">
                     {doc.metaAvant}

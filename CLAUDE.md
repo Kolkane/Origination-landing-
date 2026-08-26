@@ -272,8 +272,9 @@ trouvé sur vous". Codes attendus : document financier imprimé, pas SaaS IA.
   porte le LOCKUP OFFICIEL (public/logo-dossier.png : médaillon +
   IMBRIN RESEARCH + baseline vin, encre sur transparent, rogné depuis
   « Section dossier logo et slogan.png » du Bureau) à la place du
-  médaillon seul + mot-marque HTML. Hauteur 84px, mesurée pour que la
-  baseline reste lisible. L'alt passe par les variables de marque.
+  médaillon seul + mot-marque HTML. Corrigé le jour même : version du
+  fichier avec le médaillon proportionné au slogan (900x212 après
+  rognage), hauteur 72px. L'alt passe par les variables de marque.
   LogoImbrin (le composant) reste en usage au hero et au footer.
 - Interdits définitifs (hérités des itérations rejetées) : ticker, métriques animées,
   count-up, grilles de cards, beam/bordures lumineuses, tilt 3D, spotlight souris, pings,
