@@ -68,9 +68,10 @@ export default function Hero() {
       </div>
 
       <div className="hero-copy">
-        {/* v39 : l'eyebrow ne surplombe plus le titre (tic de gabarit, une
-            voix de trop au-dessus de la seule voix qui compte). Le libellé
-            vit désormais dans la légende, en bas à droite. */}
+        {/* v40 : l'eyebrow REVIENT au-dessus du titre — la v39 l'avait
+            descendu en légende, arbitrage Vincent du 27/08 : la première
+            ligne qualifiante fait partie de la composition. */}
+        <p className="eyebrow mono fade f2">{h.eyebrow}</p>
         <h1 className="fade f3">
           {grand(h.titreLigne1)}
           <br />
@@ -97,13 +98,7 @@ export default function Hero() {
       </div>
 
       <div className="scroll-cue fade f5" aria-hidden="true" />
-      {/* v39 : la légende porte deux lignes, le marché puis le sujet.
-          L'eyebrow descendu du titre y trouve sa place de métadonnée. */}
-      <p className="caption mono fade f5">
-        {h.eyebrow}
-        <br />
-        {h.legende1}
-      </p>
+      <p className="caption mono fade f5">{h.legende1}</p>
     </section>
   );
 }

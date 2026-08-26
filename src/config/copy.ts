@@ -40,12 +40,18 @@ export const copy = typoDeep({
     eyebrow: "Origination sell-side · PME françaises",
     /* trois lignes découpées à la main, le mot accentué occupe la sienne
        seul. Les clés portent leur numéro de ligne : elles ne peuvent pas
-       mentir si le découpage change. */
-    titreLigne1: "Nous lisons les actes que",
-    titreLigne2Italique: "personne",
-    titreLigne3: "n’ouvre.",
+       mentir si le découpage change.
+       v40 (arbitrage Vincent, 27/08) : « Nous lisons les actes que
+       personne n'ouvre » est mort — l'accroche dit la répartition du
+       travail, pas la méthode. L'accent tombe sur « vous » : le client. */
+    titreLigne1: "Nous trouvons les dossiers,",
+    titreLigne2Italique: "vous",
+    titreLigne3: "les traitez.",
+    /* v40 : « qui en sort » renvoyait aux actes de l'ancienne accroche,
+       l'antécédent a disparu avec elle. Le sous-titre raccorde : « les »,
+       ce sont les dossiers du titre. */
     sousTitre:
-      "Et nous livrons le dossier d’approche qui en sort. Un analyste, sur pièces. Un cabinet par périmètre.",
+      "Un analyste, sur pièces, les détecte au registre et les vérifie à la main. Un cabinet par périmètre.",
     cta: CTA,
     ctaSecondaire: { label: "L’origination", ancre: "#origination" },
     /* le caractère mono-interlocuteur dès le premier écran, en métadonnée :

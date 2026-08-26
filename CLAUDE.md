@@ -247,6 +247,19 @@ trouvé sur vous". Codes attendus : document financier imprimé, pas SaaS IA.
   cran en pied (0,8) pour la lisibilité du titre agrandi. Le plancher
   mobile reste à 40px : à 390px le titre casse naturellement en quatre
   lignes et « personne » garde la sienne, vérifié sur pièce.
+  ANNULÉE LE LENDEMAIN (arbitrage Vincent, 27/08/2026) : « bien trop
+  grand », et la ligne qualifiante au-dessus du titre lui manquait. Tout
+  est revenu à l'état v38 (72px, colonne, eyebrow au-dessus du titre,
+  voile, soulignés des CTA), NE PAS remonter l'échelle du hero.
+- Amendement v40 (arbitrage Vincent, 27/08/2026) : L'ACCROCHE. « Nous
+  lisons les actes que personne n'ouvre » est morte — trop méthode, pas
+  assez client. L'accroche dit la répartition du travail : « Nous
+  trouvons les dossiers, / vous / les traitez. », l'accent vin sur
+  « vous ». La colonne du hero passe de 640 à 830px, mesurée au rendu en
+  deux passes pour que la première ligne tienne entière à 72px. Le
+  sous-titre est raccordé (« qui en sort » renvoyait aux actes disparus) :
+  « Un analyste, sur pièces, les détecte au registre et les vérifie à la
+  main. Un cabinet par périmètre. »
 - Interdits définitifs (hérités des itérations rejetées) : ticker, métriques animées,
   count-up, grilles de cards, beam/bordures lumineuses, tilt 3D, spotlight souris, pings,
   glow, dégradés colorés, grid de fond, badges/chips, emojis, icônes décoratives,
