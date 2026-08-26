@@ -22,9 +22,12 @@ export const brand = typoDeep({
   },
   SHOW_PRICING: true,
   PROOF: {
-    /* affiché en deux morceaux : le signe prend l’accent, pas le chiffre */
-    tauxEcart: { signe: "≈", valeur: "1/3" },   // détections écartées à la vérification, chiffre public
-    delaiLivraisonBascule: "7 jours",
+    /* le grand repère de la section Mesure. Refonte 2026-08 : le « ≈ 1/3 »
+       n'était pas mesuré, il est retiré. Le repère devient « 0 » : zéro
+       chiffre générique sur le site. Le taux d'écart réel est mesuré sur le
+       périmètre et livré avec chaque lot, jamais affiché en moyenne. Le
+       signe reste un champ séparé (couleur propre), vide désormais. */
+    repere: { signe: "", valeur: "0" },
   },
   /* Deux prix, deux seulement. Toute valeur affichée sur la page part d'ici.
      L'origination est calibrée au périmètre : le montant affiché est un
@@ -38,7 +41,8 @@ export const brand = typoDeep({
     },
     mandat: {
       prix: "3 500 € HT",                 // par mission, à la livraison
-      delai: "7 jours",                   // shortlist vérifiée
+      /* « delai: 7 jours » retiré à la refonte 2026-08 : la shortlist est
+         livrée à la date convenue à la mission, jamais sous délai générique */
     },
   },
 } as const);

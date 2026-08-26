@@ -21,7 +21,7 @@ export const copy = typoDeep({
   meta: {
     title: `${brand.MARQUE} ${brand.SUFFIXE}, ${brand.BASELINE}`,
     description:
-      "Nous détectons les dirigeants qui préparent leur sortie et livrons le dossier d’approche qui va avec. Un cabinet par périmètre.",
+      "Origination externe pour cabinets M&A sell-side : nous lisons les actes déposés au registre, y compris ceux que personne n’ouvre, et nous livrons des dossiers d’approche datés et sourcés. Un cabinet par périmètre.",
   },
   hero: {
     nav: [
@@ -41,11 +41,11 @@ export const copy = typoDeep({
     /* trois lignes découpées à la main, le mot accentué occupe la sienne
        seul. Les clés portent leur numéro de ligne : elles ne peuvent pas
        mentir si le découpage change. */
-    titreLigne1: "Nous détectons les dirigeants qui",
-    titreLigne2Italique: "préparent",
-    titreLigne3: "leur sortie.",
+    titreLigne1: "Nous lisons les actes que",
+    titreLigne2Italique: "personne",
+    titreLigne3: "n’ouvre.",
     sousTitre:
-      "Et nous livrons le dossier d’approche qui va avec. Un cabinet par périmètre.",
+      "Et nous livrons le dossier d’approche qui en sort. Un analyste, sur pièces. Un cabinet par périmètre.",
     cta: CTA,
     ctaSecondaire: { label: "L’origination", ancre: "#origination" },
     /* le caractère mono-interlocuteur dès le premier écran, en métadonnée :
@@ -100,28 +100,28 @@ export const copy = typoDeep({
         cible: "z-signal",
         titre: "La structure de détention",
         texte:
-          "Qui tient le capital, quels mouvements de titres, quelle forme juridique. Ici, un dirigeant seul, aucun mouvement en treize ans.",
+          "Qui tient le capital, quels mouvements de titres. Lue dans les actes, pas déduite d’une base. Ici, un dirigeant seul, aucun mouvement en treize ans.",
       },
       {
         idx: "03",
         cible: "z-parcours",
-        titre: "L’acte préparatoire, daté",
+        titre: "Le fait daté",
         texte:
-          "Le fait concret qui déclenche la détection, avec sa date. Ici, une SCI constituée en 2023 pour isoler les murs.",
+          "La chronologie des actes déposés, chaque ligne datée au registre. Ici, une SCI constituée en 2023 pour isoler les murs. Un fait établi, jamais une intention supposée.",
       },
       {
         idx: "04",
         cible: "z-angle",
         titre: "L’angle d’approche",
         texte:
-          "Par où entrer, quoi dire, ce qui presse. Écrit pour être utilisé lundi matin, pas pour meubler.",
+          "Par où entrer, quoi dire, ce qui presse. Écrit pour être utilisé lundi matin. Et quand la raison de ne pas appeler existe, c’est elle qui est livrée.",
       },
       {
         idx: "05",
         cible: "z-coord",
-        titre: "Les coordonnées vérifiées",
+        titre: "Les coordonnées, avec leur statut",
         texte:
-          "Mobile, email et ligne directe du dirigeant, vérifiés la semaine de la livraison.",
+          "Fournisseurs contractualisés, jamais de donnée grise. Chaque coordonnée livrée porte son statut, écrit : vérifiée, ou non.",
       },
       {
         idx: "06",
@@ -132,9 +132,10 @@ export const copy = typoDeep({
       },
     ],
     viewer: { titre: "Dossier d’approche", mention: "Exemple fictif" },
-    /* la ligne qui retourne l’objection du spécimen : oui c’est fictif, et
-       voilà comment on en voit un vrai */
-    viewerNote: "Au rendez-vous, nous vous montrons un dossier réel, sur votre territoire.",
+    /* la ligne qui retourne l’objection du spécimen. L'ancienne promettait
+       un dossier réel « sur votre territoire » avant tout contrat : une
+       promesse qu'on ne tient pas à coup sûr, retirée à la refonte. */
+    viewerNote: "Au rendez-vous, nous parcourons un dossier complet avec vous, page à page.",
     doc: {
       aria: "Exemple de dossier d’approche, société et chiffres inventés",
       metaAvant: "Dossier · ",
@@ -178,7 +179,7 @@ export const copy = typoDeep({
       ],
       tendanceTag: "Résultat net · trois exercices en hausse",
 
-      parcoursLbl: "Parcours",
+      parcoursLbl: "Le fait daté",
       parcours: [
         { an: "1998", ev: "Création, transmission familiale" },
         { an: "2011", ev: "Reprise par le dirigeant actuel" },
@@ -188,7 +189,7 @@ export const copy = typoDeep({
       ] as { an: string; ev: string; cle?: boolean }[],
 
       coordLbl: "Coordonnées",
-      coordS: "Vérifiées avant livraison",
+      coordS: "Statut écrit, ligne à ligne",
       /* v35 : les coordonnées sont ÉCRITES, plus caviardées. Toute cette
          société est inventée, il n'y avait donc rien à protéger, et les
          trois barres noires étaient les mêmes formes que les barres du
@@ -202,39 +203,42 @@ export const copy = typoDeep({
          par des valeurs « plus crédibles », elles appartiendraient à
          quelqu'un. */
       coordItems: [
-        { k: "Mobile", v: "06 39 98 41 07" },
-        { k: "Email", v: "g.vasseur@etablissements-vasseur.fr" },
-        { k: "Ligne directe", v: "02 61 91 38 24" },
+        /* le statut est écrit ligne à ligne, et la « non vérifiée » est
+           délibérée : le spécimen montre que le statut est réel, pas
+           décoratif. Les « · » sont conformes : coord-v est une ligne mono. */
+        { k: "Mobile", v: "06 39 98 41 07 · vérifiée" },
+        { k: "Email", v: "g.vasseur@etablissements-vasseur.fr · vérifiée" },
+        { k: "Ligne directe", v: "02 61 91 38 24 · non vérifiée" },
       ],
       coordD:
-        "Mobile, email et ligne directe du dirigeant, vérifiés la semaine de la livraison.",
+        "Coordonnées de fournisseurs contractualisés. Chaque ligne porte son statut : vérifiée, ou non. Jamais de donnée grise.",
 
-      signalLbl: "Signal détecté",
+      signalLbl: "Structure de détention",
       signalAvant:
-        "Gérard Vasseur dirige seul depuis 2011, à 63 ans. Derrière lui, personne au registre : ",
+        "Gérard Vasseur détient et dirige seul depuis 2011, à 63 ans. Au registre : ",
       signalFort:
-        "pas d’associé entré récemment, aucun mouvement de titres en treize ans.",
+        "pas d’associé entré, aucun mouvement de titres en treize ans.",
       signalApres:
-        " L’affaire est saine, trois exercices en hausse, quasiment pas de dette. Et en 2023, il a sorti les murs dans une SCI. À cet âge, ce n’est pas un geste anodin.",
+        " L’affaire est saine, trois exercices en hausse, quasiment pas de dette. En 2023, les murs sont sortis dans une SCI : le fait est daté, il est dans la chronologie.",
 
       angleLbl: "Angle d’approche",
       angleTitre: "Entrer par l’homme-clé, pas par la vente.",
       angleP1:
-        "Toute la valeur tient sur une personne qui a 63 ans. C’est une fragilité, et le dirigeant le sait. Un sujet qu’on ouvre sans prononcer le mot cession : que devient l’atelier le jour où il n’est plus là tous les matins.",
+        "Toute la valeur tient sur une personne qui a 63 ans. Un sujet qui s’ouvre sans prononcer le mot cession : que devient l’atelier le jour où il n’est plus là tous les matins.",
       angleP2Avant:
-        "La SCI de 2023 dit que la réflexion a déjà commencé quelque part. Le cabinet qui entre maintenant accompagne la préparation. ",
+        "La SCI de 2023 est un fait, pas une intention : les murs sont sortis de l’exploitation, l’acte est au registre. Ce que ce geste prépare, l’acte ne le dit pas. ",
       angleP2Fort:
-        "Celui qui appelle dans dix-huit mois tombe sur une opération déjà cadrée par un confrère.",
+        "C’est la question à poser au dirigeant, avant qu’un autre ne la pose.",
 
       inconnuLbl: "Ce que nous ne savons pas",
       inconnuAvant:
-        "Le chiffre d’affaires est sous option de confidentialité depuis 2021 : nous donnons une fourchette, pas un montant. Ses deux enfants sont hors de l’entreprise, mais ",
-      inconnuFort: "nous ne savons pas s’ils sont une piste de reprise familiale.",
-      inconnuApres: " Ce sont les deux premières questions à poser.",
+        "Le chiffre d’affaires est sous option de confidentialité depuis 2021 : nous donnons une fourchette, pas un montant. Ses deux enfants sont hors de l’entreprise, et nous ne savons pas s’ils sont une piste de reprise. Quant à l’intention du dirigeant : ",
+      inconnuFort: "aucune source publique ne la porte. Un acte établit un fait, jamais un projet.",
+      inconnuApres: " Ce sont les premières questions à poser.",
 
       legalFicti: "Exemple fictif.",
       legal:
-        " Société et chiffres inventés pour la démonstration. Le format et la méthode sont ceux de nos dossiers réels. Sources publiques (RNE, SIRENE, BODACC) · art. 14 RGPD : information des personnes accessible sur notre page Confidentialité.",
+        " Société et chiffres inventés pour la démonstration. La structure est celle de nos dossiers réels : repères sourcés, faits datés, angle, ce que nous ne savons pas, sources. Sources publiques (RNE, SIRENE, BODACC) · art. 14 RGPD : information des personnes accessible sur notre page Confidentialité.",
     },
   },
   /* v15 : « Le constat » et la bande de chiffres fusionnés en un seul geste.
@@ -242,10 +246,10 @@ export const copy = typoDeep({
      précède l'entonnoir régional qui, lui, est un ordre de grandeur à nous. */
   entonnoir: {
     kicker: "Le filtre",
-    titreAvant: "Tout un marché, réduit à ceux qui ",
-    titreItalique: "préparent",
+    titreAvant: "Tout un marché, réduit à votre ",
+    titreItalique: "périmètre",
     intro:
-      "Le marché visible est un marché en retard. La valeur est en amont, 12 à 18 mois avant le marché, chez le dirigeant qui n’a encore rien annoncé. Voici comment se resserre une région.",
+      "Le marché visible est un marché en retard : il ne montre que les dirigeants déjà engagés dans un processus. La valeur est en amont, chez ceux qui n’ont rien annoncé mais dont la situation au registre réunit déjà les conditions. Vous êtes à Paris ; ces dossiers sont en région. Voici comment un périmètre se resserre.",
     /* l'ancrage porte le SOUS-TOTAL PME, pas les 370 000 tous formats : le
        marché d'Imbrin, ce sont les 58 000. L'énoncé est fondé sur l'INTENTION
        déclarée, pas sur l'âge des dirigeants : le critère de l'âge est
@@ -254,56 +258,64 @@ export const copy = typoDeep({
        du marché et n'est jamais rapporté aux 58 000. */
     ancrage: `Les dirigeants de 58 000 PME comptent transmettre d’ici 2030, sur un marché de 370 000 entreprises. Au rythme actuel, 130 000 aboutiraient.`,
     ancrageSource: `Bpifrance Le Lab · CCI France · CMA France · C.R.A · 27 novembre 2025 · ≈ 5 000 réponses`,
-    ariaPaliers: "Resserrement d’une région, ordre de grandeur",
+    /* refonte 2026-08 : l'entonnoir chiffré 8 000/740/310/45 était un
+       générique jamais mesuré, il est mort. Les barres portent désormais
+       les QUATRE FILTRES du registre, sans nombre : le seul décompte
+       honnête est celui du périmètre du client, et il est au devis. */
+    ariaPaliers: "Les quatre filtres du périmètre",
     paliers: [
       {
-        n: "8 000",
-        fort: "PME actives",
-        suite: " sur la région, 10 à 99 salariés, plus de trois ans d’existence",
+        n: "Tout",
+        fort: "votre périmètre",
+        suite: " : les sociétés de la région et de la typologie arrêtées avec vous",
       },
       {
-        n: "740",
-        fort: "dirigeants en âge de transmission",
-        suite: ", d’après le registre",
+        n: "L’âge",
+        fort: "du dirigeant",
+        suite: ", lu au registre, pas déclaré",
       },
       {
-        n: "310",
-        fort: "sans relais de succession",
-        suite: " identifiable dans la structure",
+        n: "Le relais",
+        fort: "absent",
+        suite: " : personne au capital ni aux mandats pour prendre la suite",
       },
       {
-        n: "45",
-        fort: "avec un acte de préparation daté.",
-        suite: " Ceux-là, personne ne les voit encore.",
+        n: "Le fait",
+        fort: "daté, quand il existe.",
+        suite: " Un acte déposé, jamais une intention supposée.",
         prise: true,
       },
     ] as { n: string; fort: string; suite: string; prise?: boolean }[],
-    piedAvant: "Une quarantaine de dossiers là où vos confrères ne voient qu’un annuaire. ",
-    piedItalique: "Ce sont eux que nous livrons.",
-    noteAvant: "Puis environ ",
-    noteFort: "un tiers écarté",
-    noteApres: " à la vérification humaine.",
+    piedAvant: "Combien dans votre région ? ",
+    piedItalique: "Nous les comptons avant que vous signiez.",
+    noteAvant: "Le taux d’écart à la vérification est ",
+    noteFort: "mesuré sur votre périmètre",
+    noteApres: " et livré avec chaque lot.",
     noteLigne2: "Ce qui reste est livré. Rien d’autre.",
-    /* le stock et le flux. Sans cette distinction, un prospect divise 45 par
-       le rythme mensuel, conclut que trois mois lui suffisent, et lit dans la
-       page une invitation à partir à l'échéance de son engagement. Aucun
-       chiffre de flux ici : il n'est pas mesuré, il est annoncé au devis
-       comme le volume. */
-    bascule1Avant: "Ces 45, une fois vérifiés à la main, forment votre ",
+    /* le stock et le flux. Sans cette distinction, un prospect divise le
+       stock par le rythme mensuel, conclut que trois mois lui suffisent, et
+       lit dans la page une invitation à partir à l'échéance de son
+       engagement. Aucun chiffre ici, ni de stock ni de flux : le stock est
+       compté au devis, le flux est constaté, le plancher protège. */
+    bascule1Avant: "Ce que votre périmètre contient déjà forme votre ",
     bascule1Fort: "rattrapage",
-    bascule1Apres:
-      " : ce que votre périmètre contient déjà, livré dans les premières semaines.",
+    bascule1Apres: " : compté au devis, livré dans les premières semaines.",
     bascule2:
-      "Ensuite, chaque mois, de nouveaux dirigeants entrent en préparation. Ce flux est mesuré sur votre périmètre et annoncé au devis.",
+      "Ensuite, la veille. Le flux n’est pas promis, il est constaté : quand une situation bascule dans votre périmètre, le dossier suit. Le plancher chiffré au devis vous protège, un mois qui passe dessous n’est pas facturé.",
   },
   /* v15 · B1 : trois étapes, pas quatre. L'ancienne « Le dossier
      d'approche » est absorbée par la section qui montre le document,
      l'ancienne vérification et l'ancienne veille tiennent en une. */
+  /* refonte 2026-08 : la « grille qui reste chez nous » jouait le mystère
+     d'un algorithme propriétaire, l'inverse de la preuve réelle. La
+     différence est un analyste qui OUVRE les actes, scans compris. La bande
+     reste à trois lignes, sa grille CSS est à trois colonnes : la raison de
+     ne pas appeler prend la ligne 03 au lieu d'une quatrième. */
   methode: {
     kicker: "La méthode",
-    statement: "Nous montrons nos dossiers. Pas notre grille.",
+    statement: "Nous ouvrons les actes. Même les scans.",
     sousTitre:
-      "Chaque dossier livré expose le signal qui l’a déclenché. La grille qui trie une région entière reste chez nous.",
+      "La différence n’est pas un algorithme. C’est un analyste qui lit ce que les bases n’affichent pas : la répartition du capital, les conditions suspensives, le motif réel derrière une métadonnée muette.",
     lignes: [
       {
         num: "01",
@@ -313,15 +325,15 @@ export const copy = typoDeep({
       },
       {
         num: "02",
-        titre: "La détection, aux sources publiques",
+        titre: "La détection, puis la lecture",
         texte:
-          "RNE, SIRENE, BODACC. Des signaux observables et datés. Pas de scores prédictifs inventés.",
+          "RNE, SIRENE, BODACC : des faits observables et datés, pas de scores prédictifs inventés. Chaque détection est reprise à la main, l’acte est ouvert et lu, y compris quand c’est un scan.",
       },
       {
         num: "03",
-        titre: "La vérification, puis la veille",
+        titre: "Le dossier, ou la raison de ne pas appeler",
         texte:
-          "Chaque détection est reprise à la main avant livraison. Le périmètre reste sous surveillance.",
+          "Ce qui tient à la lecture est livré, et le périmètre reste sous veille. Quand la raison de ne pas appeler existe, vous la recevez : société déjà conseillée, filiale d’un groupe, contrôle déjà basculé. Un dossier de moins est aussi une information.",
       },
     ],
   },
@@ -340,26 +352,28 @@ export const copy = typoDeep({
     principal: {
       nom: "L’Origination",
       ancre: "origination",
-      lead: "Nous détectons en continu les dirigeants de votre périmètre qui préparent leur sortie, et nous vous livrons les dossiers d’approche au fil de l’eau.",
+      lead: "Nous tenons votre périmètre sous veille : quand la situation d’une société réunit les conditions au registre, le dossier d’approche arrive sur votre bureau, vérifié.",
       prix: brand.PRICING.origination.prixPlancher,
       metaFort: `À partir de, ${brand.PRICING.origination.periode}`,
       metaSuite: ", selon le périmètre convenu",
       metaLigne2: `Engagement ${brand.PRICING.origination.engagement}, puis reconduction mensuelle`,
-      /* l'arithmétique posée à la place du prospect. Les pourcentages sont
-         des ordres de grandeur du marché, pas une mesure d'Imbrin, et la
-         déférence reste : c'est lui qui connaît ses honoraires. « une
-         opération », jamais « votre opération » : aucun mandat n'est promis,
-         et aucune fraction n'est chiffrée pour ne rien avoir à défendre. */
-      arithmetique: `${brand.PRICING.origination.prixPlancher} par mois, soit ${brand.PRICING.origination.prixAnnuel} sur l’année. Vous connaissez vos honoraires de succès : 3 à 5 % du prix sur une opération de 5 à 15 M€. L’année pèse une fraction d’un seul mandat.`,
+      /* l'arithmétique posée à la place du prospect, sans un chiffre de
+         marché : les « 3 à 5 % sur 5 à 15 M€ » étaient des ordres de
+         grandeur non sourcés, retirés à la refonte. La déférence reste :
+         c'est lui qui connaît ses honoraires, et aucune fraction n'est
+         chiffrée pour ne rien avoir à défendre. */
+      arithmetique: `${brand.PRICING.origination.prixPlancher} par mois, soit ${brand.PRICING.origination.prixAnnuel} sur l’année. Vous connaissez vos honoraires de succès : l’année pèse une fraction d’un seul mandat.`,
       /* un tableau, pas une chaîne : le corps se lit en paragraphes et le
          composant les rend tels quels. Un seul élément aujourd'hui. */
+      /* « livrées sous 7 jours » est retiré : on annonce une DATE au devis,
+         jamais un délai générique de recalcul (contrainte de production). */
       corps: [
-        `Le périmètre est arrêté avec vous à l’appel : région, typologie d’entreprises, ce que vous voulez voir détecté. Nous mesurons ce qu’il contient et nous vous l’annonçons au devis, avant tout engagement. Le plancher mensuel y est chiffré, avant votre signature : un mois qui passe sous ce nombre n’est pas facturé. Ce que vous payez chaque mois, c’est la veille du périmètre : les nouvelles bascules vous reviennent vérifiées, livrées sous ${brand.PROOF.delaiLivraisonBascule}.`,
+        "Le périmètre est arrêté avec vous à l’appel : région, typologie d’entreprises, ce que vous voulez voir détecté. Nous mesurons ce qu’il contient et nous vous l’annonçons au devis, avant tout engagement. Le plancher mensuel y est chiffré, avant votre signature : un mois qui passe sous ce nombre n’est pas facturé. Ce que vous payez chaque mois, c’est la veille du périmètre : les nouvelles bascules vous reviennent vérifiées, à la date annoncée au devis.",
       ],
     },
     complement: {
       nom: "Le mandat de recherche",
-      lead: `Quand un mandat de recherche arrive sur votre bureau, nous l’alimentons à la mission : vos critères, une shortlist de cibles vérifiées sous ${brand.PRICING.mandat.delai}.`,
+      lead: "Quand un mandat de recherche arrive sur votre bureau, nous l’alimentons à la mission : vos critères, une shortlist de cibles vérifiées, livrée à la date convenue à la mission.",
       prix: brand.PRICING.mandat.prix,
       metaLigne1: "Par mission, à la livraison",
       metaLigne2: "Hors périmètres déjà sous exclusivité",
@@ -398,20 +412,28 @@ export const copy = typoDeep({
       },
     ],
   },
-  /* le taux d'écart était enterré dans la FAQ et dans les engagements :
-     il devient une section, juste avant le fondateur. */
+  /* refonte 2026-08 : le « ≈ 1/3 publié depuis l'ouverture » n'était pas
+     mesuré, il est mort. Le grand repère devient « 0 » : zéro chiffre
+     générique sur ce site, c'est la promesse centrale mise en scène par la
+     section qui parle de mesure. Le taux d'écart, lui, est mesuré sur le
+     périmètre et livré avec chaque lot. */
   mesure: {
     kicker: "La mesure",
     statement: "Ce que nous mesurons sur nous-mêmes",
-    /* le repère chiffré fait face aux énoncés : signe et valeur sont
-       séparés parce qu'ils ne portent pas la même couleur */
-    repereSigne: brand.PROOF.tauxEcart.signe,
-    repereValeur: brand.PROOF.tauxEcart.valeur,
+    /* le repère fait face aux énoncés : signe et valeur restent séparés
+       parce qu'ils ne portent pas la même couleur ; le signe est vide. */
+    repereSigne: brand.PROOF.repere.signe,
+    repereValeur: brand.PROOF.repere.valeur,
     items: [
       {
-        titre: "Taux d’écart à la vérification",
+        titre: "Zéro chiffre générique sur ce site",
         texte:
-          "Un fournisseur qui ne publie pas son taux d’erreur vous demande de le croire sur parole. Environ un tiers des détections sont écartées avant livraison. Publié depuis l’ouverture.",
+          "Aucun entonnoir type, aucune moyenne de marché, aucun taux d’affiche. Un chiffre n’est publié que mesuré, avec sa source et sa date. Le décompte qui vous concerne est celui de votre périmètre, et il est au devis.",
+      },
+      {
+        titre: "Le taux d’écart, livré avec chaque lot",
+        texte:
+          "Des détections sont écartées à la vérification, et vous devez savoir combien. Le taux d’écart est mesuré sur votre périmètre et livré avec chaque lot, écrit.",
       },
       {
         titre: "Suivi des dossiers livrés",
@@ -429,9 +451,10 @@ export const copy = typoDeep({
     portraitAlt: "Vincent Fournier, fondateur",
     citation:
       "« Au téléphone comme en livraison, vous avez un seul interlocuteur : celui qui a construit la machine et qui vérifie vos dossiers. »",
-    /* seul endroit du site qui dit l’industrialisation du pipeline */
+    /* « pipeline industrialisé » surclamait : 73 % des actes sont des scans,
+       la lecture est humaine, et c'est l'argument, pas un aveu. */
     corps:
-      "Le pipeline de détection est industrialisé ; chaque dossier est ensuite vérifié à la main.",
+      "La détection est outillée ; la lecture des actes, elle, se fait à la main.",
     nom: "Vincent Fournier, fondateur",
     lieu: "entre Paris et Bayonne",
     id: `${brand.ENTITY.raisonSociale} · SIREN ${brand.ENTITY.siren}`,
@@ -440,9 +463,11 @@ export const copy = typoDeep({
   faq: {
     kicker: "Questions fréquentes",
     statement: "Ce qu’on nous demande avant de signer.",
-    /* v27 : les six questions traitent ce que le fil de la page ne peut pas
-       aborder. Les sept précédentes redisaient la page, une seule portait une
-       information unique, celle sur le RGPD : elle est conservée mot pour mot.
+    /* v27 : les questions traitent ce que le fil de la page ne peut pas
+       aborder. Les sept d'origine redisaient la page, une seule portait une
+       information unique, celle sur le RGPD : elle est conservée.
+       Refonte 2026-08 : deux questions s'ajoutent, la différence avec un
+       agrégateur et le pourquoi de l'absence de chiffres.
        Les details sont fermés au chargement, donc seule la longueur des
        QUESTIONS pèse sur la hauteur, jamais celle des réponses. */
     items: [
@@ -459,7 +484,7 @@ export const copy = typoDeep({
       {
         question: "Sous combien de temps les premiers dossiers ?",
         reponse:
-          "Le délai du premier lot vous est annoncé au devis, comme le périmètre et le plancher. Le rattrapage part d’abord, les nouvelles bascules suivent au fil de la détection.",
+          "Le délai du premier lot vous est annoncé au devis, comme le périmètre et le plancher. Le rattrapage part d’abord, la veille suit, chaque livraison à date annoncée.",
       },
       {
         question: "Que se passe-t-il après les trois mois ?",
@@ -474,7 +499,17 @@ export const copy = typoDeep({
       {
         question: "D’où viennent vos données, et est-ce conforme au RGPD ?",
         reponse:
-          "L’identité, les chiffres et la structure viennent des registres publics français (RNE/INPI, SIRENE, BODACC). Les coordonnées du dirigeant viennent de fournisseurs d’enrichissement B2B, sourcés et contractualisés, vérifiés avant livraison, aucune donnée grise. Base légale de l’intérêt légitime en B2B, information art. 14 rendue publiquement accessible sur notre page Confidentialité, opt-out définitif honoré, premier contact toujours adressé à l’entreprise.",
+          "L’identité, les chiffres et la structure viennent des registres publics français (RNE/INPI, SIRENE, BODACC). Les coordonnées du dirigeant viennent de fournisseurs d’enrichissement B2B, sourcés et contractualisés, et chaque coordonnée livrée porte son statut écrit, vérifiée ou non, aucune donnée grise. Base légale de l’intérêt légitime en B2B, information art. 14 rendue publiquement accessible sur notre page Confidentialité, opt-out définitif honoré, premier contact toujours adressé à l’entreprise.",
+      },
+      {
+        question: "En quoi est-ce différent d’une base de données ou d’un agrégateur ?",
+        reponse:
+          "Une base affiche des métadonnées : la mention qu’un acte existe, sa date de dépôt. Nous ouvrons l’acte, y compris quand c’est un scan que personne ne lit : la répartition du capital, les conditions suspensives, le motif réel de l’opération. Et quand la lecture dit qu’il ne faut pas appeler, c’est ce que nous livrons.",
+      },
+      {
+        question: "Pourquoi si peu de chiffres sur ce site ?",
+        reponse:
+          "Parce qu’un chiffre honnête porte sa source, sa méthode, sa date et son périmètre, et qu’une moyenne d’affiche n’a rien de tout cela. Le seul décompte qui vous concerne, celui de votre périmètre, est mesuré avant votre engagement et inscrit au devis.",
       },
     ],
   },
@@ -563,8 +598,8 @@ export const copy = typoDeep({
         {
           titre: "Finalité et base légale",
           corps: [
-            "Nous identifions des sociétés dont la transmission paraît en préparation, et nous transmettons ces informations à un cabinet de fusions acquisitions, un seul par périmètre, qui pourra prendre contact avec le dirigeant.",
-            "Le traitement repose sur l’intérêt légitime : mettre en relation des dirigeants susceptibles de céder leur entreprise avec des professionnels de la transmission. Il ne porte que sur des personnes dans l’exercice de leurs fonctions professionnelles.",
+            "Nous identifions des sociétés dont la situation au registre réunit les conditions d’une transmission : âge du dirigeant, absence de relais identifiable, structure de détention. Nous transmettons ces informations à un cabinet de fusions acquisitions, un seul par périmètre, qui pourra prendre contact avec le dirigeant, par l’entreprise.",
+            "Le traitement repose sur l’intérêt légitime : faciliter la transmission d’entreprises en mettant en relation leurs dirigeants avec des professionnels du conseil en cession. Il ne porte que sur des personnes dans l’exercice de leurs fonctions professionnelles.",
           ],
         },
         {

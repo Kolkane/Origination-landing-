@@ -1,9 +1,19 @@
 # CLAUDE.md — Règles du projet (ne jamais dévier)
 
 ## Ce qu'est ce site
-Landing one-page d'une société d'origination sell-side : détection au registre (sources publiques)
-des PME françaises dont le capital va probablement changer de mains, 12-18 mois avant le marché.
-Clients cibles : boutiques M&A small-cap et family offices. Un seul cabinet par périmètre.
+Landing one-page d'un service d'origination externe pour boutiques M&A sell-side : un analyste,
+sur pièces, repère au registre (sources publiques) les PME françaises dont la situation réunit
+les conditions d'une transmission (âge du dirigeant, absence de relais, structure de détention).
+Amendement (refonte 2026-08, arbitrage Vincent) : ne JAMAIS prêter une intention au dirigeant
+(« préparent leur sortie » est mort), ne JAMAIS affirmer un horizon (« 12-18 mois avant le
+marché » est mort), ne JAMAIS promettre un flux mensuel ni un délai générique de livraison.
+Quand un acte de préparation existe, il est daté ; on n'affirme rien de plus.
+LISTE BLANCHE DES CHIFFRES : aucun nombre sur le site sauf (1) chiffre mesuré, cité avec sa
+nature exacte, (2) source externe nommée (l'étude Bpifrance/CCI de l'entonnoir), (3) exemple
+explicitement fictif marqué comme tel. Le périmètre du client est mesuré au devis : c'est la
+promesse centrale, le site n'affiche pas de moyennes.
+Clients cibles : boutiques M&A small-cap et family offices ; l'associé est à Paris, le
+sourcing est régional. Un seul cabinet par périmètre.
 La marque : Imbrin Research — toujours via les variables MARQUE/SUFFIXE de src/config/brand.ts,
 jamais en dur. Baseline fixe : "Origination sell-side".
 
@@ -234,7 +244,9 @@ Deux lignes, toutes deux dans src/config/brand.ts :
   annoncé au devis avant tout engagement ; un mois qui passe sous ce volume
   n'est pas facturé.
 - LE MANDAT DE RECHERCHE, 3 500 € HT par mission à la livraison, shortlist
-  vérifiée sous 7 jours, hors périmètres déjà sous exclusivité.
+  vérifiée livrée à la date convenue à la mission (amendement refonte
+  2026-08 : « sous 7 jours » est retiré, on annonce une date, jamais un
+  délai générique), hors périmètres déjà sous exclusivité.
 Un périmètre = une région et une typologie d'entreprises, arrêtées à l'appel
 et inscrites au devis. Un seul cabinet y est servi tant que le contrat court.
 Les mots « zone », « verticale », « abonnement » et « cellule » sont proscrits :
