@@ -38,15 +38,15 @@ export const copy = typoDeep({
        elle, le séparateur peut finir une ligne tout seul quand le libellé
        passe sur deux lignes, ce qui arrive sur téléphone. */
     eyebrow: "Origination sell-side · PME françaises",
-    /* trois lignes découpées à la main, le mot accentué occupe la sienne
-       seul. Les clés portent leur numéro de ligne : elles ne peuvent pas
-       mentir si le découpage change.
-       v40 (arbitrage Vincent, 27/08) : « Nous lisons les actes que
+    /* v40 (arbitrage Vincent, 27/08) : « Nous lisons les actes que
        personne n'ouvre » est mort — l'accroche dit la répartition du
-       travail, pas la méthode. L'accent tombe sur « vous » : le client. */
+       travail, pas la méthode. L'accent tombe sur « vous » : le client.
+       v41 (arbitrage Vincent, 27/08) : DEUX lignes découpées à la main,
+       le mot accentué ouvre la seconde au lieu d'occuper la sienne seul.
+       La ligne 3 est la suite de la ligne 2, elle commence par l'espace. */
     titreLigne1: "Nous trouvons les dossiers,",
     titreLigne2Italique: "vous",
-    titreLigne3: "les traitez.",
+    titreLigne3: " les traitez.",
     /* v40 : « qui en sort » renvoyait aux actes de l'ancienne accroche,
        l'antécédent a disparu avec elle. Le sous-titre raccorde : « les »,
        ce sont les dossiers du titre. */

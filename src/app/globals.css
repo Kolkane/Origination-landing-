@@ -208,9 +208,10 @@ h1 {
   font-family: var(--font-familjen), sans-serif;
   font-weight: 400;
   /* v40 : les 104px de la v39 sont ANNULÉS sur pièce (arbitrage Vincent,
-     27/08 : « bien trop grand »). L'échelle v38 revient et ne remonte pas. */
-  font-size: clamp(42px, 5.6vw, 72px);
-  line-height: 1.06;
+     27/08 : « bien trop grand »). v41 : l'accroche passe sur DEUX lignes
+     et le corps descend d'un cran, 72 -> 62px de plafond. */
+  font-size: clamp(40px, 5vw, 62px);
+  line-height: 1.08;
   /* une grotesque à cette taille s'espace toute seule : le serif n'avait
      pas besoin d'être resserré, elle si */
   letter-spacing: -0.02em;

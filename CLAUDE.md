@@ -260,6 +260,11 @@ trouvé sur vous". Codes attendus : document financier imprimé, pas SaaS IA.
   sous-titre est raccordé (« qui en sort » renvoyait aux actes disparus) :
   « Un analyste, sur pièces, les détecte au registre et les vérifie à la
   main. Un cabinet par périmètre. »
+- Amendement v41 (arbitrage Vincent, 27/08/2026) : l'accroche tient sur
+  DEUX lignes, plus trois — le mot accentué (« vous ») ouvre la seconde
+  au lieu d'occuper la sienne seul, et le corps du h1 descend de 72 à
+  62px de plafond. À 390px le titre casse en trois lignes et « vous les
+  traitez. » reste soudé, vérifié sur pièce.
 - Interdits définitifs (hérités des itérations rejetées) : ticker, métriques animées,
   count-up, grilles de cards, beam/bordures lumineuses, tilt 3D, spotlight souris, pings,
   glow, dégradés colorés, grid de fond, badges/chips, emojis, icônes décoratives,
