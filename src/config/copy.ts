@@ -143,7 +143,7 @@ export const copy = typoDeep({
       metaApres: " · Confidentiel",
       metaLigne2: "Région exemple · Semaine 30",
       ficti: "Société et chiffres inventés",
-      badge: "Vérifié",
+      badge: "Spécimen",
       /* v22 : ces quatre champs ne sont plus dans l'en-tête permanent, ils
          forment la zone 00. Aucune donnée ne change, seul l'endroit où
          elle est montrée. */
