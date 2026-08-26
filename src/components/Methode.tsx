@@ -1,32 +1,28 @@
 import { copy } from "@/config/copy";
 import { grand } from "@/config/typo";
 
-/* v15 · B1 : bande horizontale sur filet continu. L'en-tête tient sur une
-   ligne au lieu d'occuper une colonne de gauche restée aux trois quarts
-   vide, et la lecture devient horizontale, seul endroit de la page. */
+/* v38 : la méthode se tait. L'en-tête en bande (kicker à gauche,
+   statement à droite) et les trois colonnes de la v15-B1 sont remplacés
+   par un empilement : statement à l'échelle display, puis trois entrées
+   sur filets, numéro mono, titre, texte. La page ne porte plus qu'une
+   seule voix, l'objet papier du dossier fait le reste.
+   Direction validée sur MAQUETTE-V38-OBJET.html. */
 export default function Methode() {
   const m = copy.methode;
   return (
     <section className="method" id="methode">
       <div className="wrap">
-        <div className="m-head">
-          <p className="m-kicker kicker mono rev">{m.kicker}</p>
-          <div className="m-head-t rev">
-            <h2 className="m-statement mask">{grand(m.statement)}</h2>
-            <p className="m-sous">{m.sousTitre}</p>
-          </div>
-        </div>
-
-        <div className="rail rev">
-          <div className="steps-h">
-            {m.lignes.map((ligne) => (
-              <div className="st" key={ligne.num}>
-                <span className="st-n mono">{ligne.num}</span>
-                <h3 className="st-t">{grand(ligne.titre)}</h3>
-                <p className="st-p">{ligne.texte}</p>
-              </div>
-            ))}
-          </div>
+        <p className="kicker mono rev">{m.kicker}</p>
+        <h2 className="m-statement mask rev">{grand(m.statement)}</h2>
+        <p className="m-sous rev">{m.sousTitre}</p>
+        <div className="m-entrees rev">
+          {m.lignes.map((ligne) => (
+            <div className="m-entree" key={ligne.num}>
+              <span className="me-n mono">{ligne.num}</span>
+              <h3 className="me-t">{grand(ligne.titre)}</h3>
+              <p className="me-p">{ligne.texte}</p>
+            </div>
+          ))}
         </div>
       </div>
     </section>

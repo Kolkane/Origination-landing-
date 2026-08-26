@@ -320,8 +320,11 @@ section.block {
 .statement {
   font-family: var(--font-familjen), sans-serif;
   font-weight: 400;
-  font-size: clamp(26px, 3.4vw, 40px);
-  line-height: 1.2;
+  /* v38 : l'échelle monte (40 -> 50px). Plafond à 50px : la borne posée
+     par l'arbitrage v17 sur les engagements vaut pour tous les statements
+     hors hero. */
+  font-size: clamp(28px, 3.8vw, 50px);
+  line-height: 1.12;
   letter-spacing: -0.015em;
   max-width: 26ch;
 }
@@ -734,9 +737,16 @@ footer a:hover {
 }
 
 /* ============================================================
-   v14 : « ce que vous recevez ». La nav des éléments et le document
-   ne font plus qu'une section. Portée de imbrin-section-presentation.html,
-   avec les tokens du repo à la place des hex de la maquette.
+   v38 : « ce que vous recevez » — L'OBJET. Le viseur sombre et
+   ses sept zones (v14-v35) sont remplacés par le dossier EN
+   PAPIER : un feuillet (la bande claire de la charte), composé
+   comme le gabarit A4 réel — rail / corps, rubriques au vin
+   plein (6,8:1 sur papier), chronologie datée, pied en bas de
+   page. La profondeur est un second feuillet décalé : aucune
+   ombre portée, aucun dégradé. Direction validée sur
+   MAQUETTE-V38-OBJET.html (arbitrage Vincent, 26/08/2026),
+   après analyse de références réelles : un seul objet signature
+   rendu matériellement, et le reste de la page se tait.
    ============================================================ */
 
 /* encres sur papier : le repo n'avait que des hex posés au cas par cas */
@@ -747,878 +757,226 @@ footer a:hover {
   --ink-line: rgba(23, 19, 16, 0.14);
   --ink-line-2: rgba(23, 19, 16, 0.28);
   --wine-tint: rgba(142, 36, 56, 0.06);
-}
-
-/* la gravure est claire sur alpha : on l'inverse pour le papier */
-.logo-encre-sombre {
-  filter: invert(1);
+  --papier: #ece7df;
+  --papier-2: #ddd6cb;              /* le feuillet de dessous */
 }
 
 .recu {
-  padding: 120px 0;
+  padding: clamp(80px, 9vw, 130px) 0;
   border-top: 1px solid var(--line-soft);
-}
-/* le titre est dans la colonne de gauche, donc plus de max-width qui
-   laisserait un blanc : c'est la colonne qui donne la mesure */
-.recu-chapo {
-  margin-top: 18px;
-  font-size: 16px;
-  line-height: 1.6;
-  color: var(--txt-2);
 }
 .recu-grid {
   display: grid;
-  grid-template-columns: minmax(0, 0.4fr) minmax(0, 0.6fr);
-  gap: clamp(28px, 4vw, 56px);
+  grid-template-columns: minmax(0, 1fr) minmax(0, 700px);
+  gap: clamp(34px, 4.5vw, 60px);
   align-items: start;
 }
-/* colonne de gauche : titre, chapô et accordéon. Le document en face
-   démarre à la même hauteur, il ne pend plus sous le titre. */
-.recu-col {
-  min-width: 0;
-}
 .recu-col .statement {
-  max-width: 15ch;
+  max-width: 12ch;
 }
-
-/* ---------- nav des éléments ---------- */
-.recu-nav {
-  margin-top: clamp(34px, 4vw, 52px);
-  border-left: 1px solid var(--line-soft);
-  padding-left: 2px;
-}
-.recu-item {
-  display: block;
-  width: 100%;
-  text-align: left;
-  background: none;
-  border: none;
-  cursor: pointer;
-  border-left: 2px solid transparent;
-  margin-left: -3px;
-  padding: 18px 0 18px 22px;
-  color: var(--txt-3);
-  font-family: inherit;
-  transition: color 0.25s var(--ease), border-color 0.25s var(--ease);
-}
-.recu-item + .recu-item {
-  border-top: 1px solid var(--line-soft);
-}
-.recu-item:hover {
+.recu-chapo {
+  margin-top: 26px;
+  font-size: 16px;
+  line-height: 1.65;
   color: var(--txt-2);
+  max-width: 30rem;
 }
-.recu-item.active {
-  border-left-color: var(--wine);
-  color: var(--txt);
-}
-.recu-item-top {
-  display: flex;
-  align-items: baseline;
-  gap: 12px;
-}
-.recu-idx {
-  font-size: 11px;
-  letter-spacing: 0.1em;
-  color: var(--txt-3);
-  transition: color 0.25s var(--ease);
-}
-.recu-item.active .recu-idx {
-  color: var(--wine);
-}
-/* l'écho de la description n'existe qu'en bande mobile */
-.recu-echo {
-  display: none;
-}
-.recu-t {
-  font-size: 17.5px;
-  font-weight: 400;
-  line-height: 1.25;
-}
-.recu-d {
-  display: block;
-  padding-left: 24px;
-  margin-top: 0;
-  max-height: 0;
-  opacity: 0;
-  overflow: hidden;
+.recu-note {
+  margin-top: 14px;
   font-size: 14px;
-  line-height: 1.55;
-  color: var(--txt-2);
-  transition: max-height 0.3s var(--ease), opacity 0.3s var(--ease),
-    margin 0.3s var(--ease);
-}
-.recu-item.active .recu-d {
-  max-height: 160px;
-  opacity: 1;
-  margin-top: 10px;
-}
-
-/* ---------- viseur ---------- */
-.viseur {
-  background: var(--bg-2);
-  border: 1px solid var(--line-soft);
-  padding: 14px;
-}
-.viseur-bar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 16px;
-  padding: 6px 8px 14px;
-  font-size: 10px;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
+  line-height: 1.65;
   color: var(--txt-3);
+  max-width: 30rem;
 }
-.viseur-bar .warn {
-  color: var(--wine);
-}
-/* v19 : le cadre ne défile plus, il cadre. La hauteur reste celle d'avant,
-   en plancher et non en plafond : si la plus haute des six zones demande
-   davantage, le cadre grandit au lieu de rogner. */
-.doc-cadre {
-  min-height: 640px;
-  display: flex;
-  background: var(--paper);
+.recu-meta {
+  margin-top: 36px;
+  padding-top: 18px;
+  border-top: 1px solid var(--line-soft);
+  font-size: 10px;
+  color: var(--txt-3);
+  line-height: 2.1;
 }
 
-/* ---------- le document ---------- */
-/* le document occupe tout le cadre : en-tête et pied fixes, la scène prend
-   ce qui reste */
-.doc {
+/* ---------- l'objet ---------- */
+.feuillets {
+  position: relative;
+}
+.feuille-2 {
+  position: absolute;
+  inset: 14px -14px -14px 14px;
+  background: var(--papier-2);
+  border: 1px solid rgba(0, 0, 0, 0.25);
+}
+.feuille {
+  position: relative;
   display: flex;
   flex-direction: column;
-  width: 100%;
-  position: relative;
+  background: var(--papier);
   color: var(--ink);
-  padding: clamp(24px, 3vw, 40px);
+  border: 1px solid rgba(0, 0, 0, 0.25);
+  padding: clamp(22px, 2.8vw, 40px);
+  min-height: 880px;
 }
-.d-head {
+.f-tete {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  gap: 16px;
-  padding-bottom: 16px;
-  border-bottom: 1.5px solid var(--ink);
+  gap: 18px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--ink);
 }
-.d-brand {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-.d-brand img {
-  display: block;
-  flex-shrink: 0;
-}
-.d-word {
-  font-size: 22px;
-  line-height: 1;
-}
-.d-meta {
-  text-align: right;
-  font-size: 9px;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
+.f-marque {
+  font-size: 8.5px;
+  letter-spacing: 0.24em;
   color: var(--ink-3);
-  line-height: 1.9;
 }
-.d-meta b {
-  color: var(--ink-2);
-  font-weight: 500;
-}
-.d-ref {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 16px;
-  padding-top: 14px;
-}
-.d-ficti {
-  font-size: 10px;
-  letter-spacing: 0.13em;
-  text-transform: uppercase;
-  color: var(--wine);
-}
-.d-badge {
-  font-size: 9px;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--wine);
-  border: 1px solid var(--wine);
-  padding: 5px 12px;
-}
-/* v22 : le titre vit dans la zone 00 et non plus dans l'en-tête, c'est le
-   label de zone qui le précède et donne l'écart du haut */
-.d-title {
+.f-titre {
+  margin-top: 12px;
   font-family: var(--font-familjen), sans-serif;
   font-weight: 400;
-  font-size: clamp(28px, 3.4vw, 40px);
-  line-height: 1.04;
-  letter-spacing: -0.015em;
-  margin: 0 0 12px;
+  font-size: 26px;
+  letter-spacing: -0.01em;
+  color: var(--ink);
 }
-.d-interlo {
-  margin-top: 14px;
-  padding-top: 12px;
-  border-top: 1px solid var(--ink-line);
+.f-sous {
+  margin-top: 6px;
   font-size: 11px;
+  letter-spacing: 0.06em;
+  text-transform: none;
   color: var(--ink-2);
 }
-.d-interlo b {
-  color: var(--ink);
-  font-weight: 500;
-  letter-spacing: 0.07em;
-  text-transform: uppercase;
-  margin-right: 14px;
+/* le tampon du spécimen : rectangulaire, filet fin, jamais arrondi */
+.tampon-sp {
+  flex: none;
+  border: 1.5px solid var(--wine);
+  color: var(--wine);
+  font-size: 8px;
+  letter-spacing: 0.22em;
+  padding: 6px 9px 5px;
+  white-space: nowrap;
+  transform: rotate(-1.2deg);
 }
-/* la scène : les six zones occupent la MÊME cellule de grille. La scène
-   prend donc la hauteur de la plus haute et ne bouge plus quand on change
-   de zone, sans rien rogner. flex:1 lui donne le reste du cadre. */
-.d-scene {
-  flex: 1;
-  min-height: 0;
+/* rail / corps : les proportions du gabarit A4 */
+.f-corps {
   display: grid;
+  grid-template-columns: 29% minmax(0, 1fr);
+  gap: 26px;
   margin-top: 20px;
-  padding-top: 20px;
-  border-top: 1px solid var(--ink-line);
 }
-.doc .lbl {
-  font-size: 10.5px;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--ink-3);
-  margin-bottom: 16px;
+.rail-l {
+  border-right: 1px solid var(--ink-line);
+  padding-right: 20px;
 }
-
-/* une zone à la fois. Les inactives gardent leur place dans le DOM et dans
-   l'arbre d'accessibilité : ni display:none, ni visibility, ni aria-hidden,
-   seulement une opacité nulle. Un lecteur d'écran les parcourt toutes. */
-/* v20 : la bascule d'une zone à l'autre est une MISE AU POINT, pas un fondu.
-   Deux animations jouées en même temps, pas une transition symétrique : la
-   transition ne pouvait pas donner à la sortie et à l'entrée des valeurs
-   distinctes, et surtout elle aurait laissé un blur permanent sur les cinq
-   zones inactives, donc un filtre au repos et cinq calques à composer.
-   En animations, l'état de repos reste net : ni filtre, ni transform. */
-.zone {
-  grid-area: 1 / 1;
-  align-self: start;
-  opacity: 0;
-  transform-origin: 50% 28%;
-  pointer-events: none;
-  /* l'intensité du flou est sortie en variable pour être réglable d'un
-     seul endroit. Mesure faite avant de l'atténuer sur téléphone : à
-     390px et CPU bridé x6, le nombre d'images perdues est le MÊME à
-     flou 0, 3,5, 6 et 12px (entre 4,3 et 4,8 sur 900ms, pire intervalle
-     33,4ms dans tous les cas). Le flou n'est donc pas le coût, c'est le
-     recalcul de styles au clic. L'effet reste identique sur mobile. */
-  --flou-entree: 6px;
-  --flou-sortie: 7px;
+.rl {
+  padding: 7px 0 6px;
+  border-bottom: 1px solid var(--ink-line);
 }
-/* v23 : la zone entière fait sa mise au point pendant que ses lignes se
-   RÉVÈLENT PAR BALAYAGE, de gauche à droite, à bord fondu. C'est le geste
-   d'un tirage photographique qui se développe, pas un fondu d'interface :
-   c'est ce qui distingue la section d'un gabarit acheté.
-
-   Le masque n'est déclaré QUE dans les images-clés. Hors animation il
-   n'existe pas : ni masque ni filtre ne subsistent au repos. */
-.zone.lit {
-  opacity: 1;
-  pointer-events: auto;
-  animation: cadrage 0.55s cubic-bezier(0.16, 1, 0.3, 1);
-}
-@keyframes cadrage {
-  from {
-    transform: scale(1.02);
-    filter: blur(var(--flou-entree));
-  }
-  to {
-    transform: scale(1);
-    filter: blur(0);
-  }
-}
-
-/* chaque élément est balayé puis se pose. backwards : il reste à l'état
-   initial pendant son délai, donc invisible, et retrouve son état naturel
-   une fois l'animation finie. */
-.zone.lit > * {
-  animation: balayage 0.62s cubic-bezier(0.16, 1, 0.3, 1) backwards;
-}
-.zone.lit > *:nth-child(1) {
-  animation-delay: 0.04s;
-}
-.zone.lit > *:nth-child(2) {
-  animation-delay: 0.1s;
-}
-.zone.lit > *:nth-child(3) {
-  animation-delay: 0.155s;
-}
-.zone.lit > *:nth-child(4) {
-  animation-delay: 0.205s;
-}
-/* le balai : un dégradé trois fois plus large que l'élément, dont on fait
-   glisser la position. La frange fondue traverse la ligne de gauche à
-   droite et la révèle au passage. */
-@keyframes balayage {
-  from {
-    opacity: 0;
-    transform: translateY(9px);
-    -webkit-mask-image: linear-gradient(90deg, #000 0 40%, transparent 62%);
-    mask-image: linear-gradient(90deg, #000 0 40%, transparent 62%);
-    -webkit-mask-size: 300% 100%;
-    mask-size: 300% 100%;
-    -webkit-mask-position: 100% 0;
-    mask-position: 100% 0;
-  }
-  to {
-    opacity: 1;
-    transform: none;
-    -webkit-mask-image: linear-gradient(90deg, #000 0 40%, transparent 62%);
-    mask-image: linear-gradient(90deg, #000 0 40%, transparent 62%);
-    -webkit-mask-size: 300% 100%;
-    mask-size: 300% 100%;
-    -webkit-mask-position: 0 0;
-    mask-position: 0 0;
-  }
-}
-
-/* second niveau de cadence, sur les deux zones qui ont une structure :
-   les chiffres et les jalons de la frise entrent l'un après l'autre.
-   Déplacement et opacité seulement, le flou du parent leur suffit et
-   multiplier les filtres coûterait cher pour rien. */
-.zone.lit .fig,
-.zone.lit .tl li,
-.zone.lit .serie-l,
-.zone.lit .ident li,
-.zone.lit .coord-l li {
-  animation: monte 0.5s cubic-bezier(0.16, 1, 0.3, 1) backwards;
-}
-.zone.lit .fig:nth-child(1),
-.zone.lit .tl li:nth-child(1),
-.zone.lit .serie-l:nth-child(1),
-.zone.lit .ident li:nth-child(1),
-.zone.lit .coord-l li:nth-child(1) {
-  animation-delay: 0.13s;
-}
-.zone.lit .fig:nth-child(2),
-.zone.lit .tl li:nth-child(2),
-.zone.lit .serie-l:nth-child(2),
-.zone.lit .ident li:nth-child(2),
-.zone.lit .coord-l li:nth-child(2) {
-  animation-delay: 0.185s;
-}
-.zone.lit .fig:nth-child(3),
-.zone.lit .tl li:nth-child(3),
-.zone.lit .serie-l:nth-child(3),
-.zone.lit .ident li:nth-child(3),
-.zone.lit .coord-l li:nth-child(3) {
-  animation-delay: 0.24s;
-}
-.zone.lit .fig:nth-child(4),
-.zone.lit .tl li:nth-child(4),
-.zone.lit .ident li:nth-child(4) {
-  animation-delay: 0.295s;
-}
-.zone.lit .tl li:nth-child(5) {
-  animation-delay: 0.35s;
-}
-/* la barre de la série se tire ensuite, dans le sens de la lecture : c'est
-   elle qui donne l'impression que le document se dessine sous les yeux */
-.zone.lit .serie-barre {
-  animation: tire 0.66s cubic-bezier(0.16, 1, 0.3, 1) backwards;
-  transform-origin: 0 50%;
-}
-.zone.lit .serie-l:nth-child(1) .serie-barre {
-  animation-delay: 0.22s;
-}
-.zone.lit .serie-l:nth-child(2) .serie-barre {
-  animation-delay: 0.275s;
-}
-.zone.lit .serie-l:nth-child(3) .serie-barre {
-  animation-delay: 0.33s;
-}
-@keyframes tire {
-  from {
-    transform: scaleX(0);
-  }
-  to {
-    transform: scaleX(1);
-  }
-}
-@keyframes monte {
-  from {
-    opacity: 0;
-    transform: translateY(11px);
-  }
-  to {
-    opacity: 1;
-    transform: none;
-  }
-}
-
-/* la sortie est brève et sans cérémonie : une sortie qui s'admire retarde
-   l'entrée, qui est le vrai sujet. Elle recule et se défocalise. */
-.zone.sortante {
-  animation: retrait 0.3s cubic-bezier(0.4, 0, 0.9, 0.5);
-}
-@keyframes retrait {
-  from {
-    opacity: 1;
-    transform: scale(1);
-    filter: blur(0);
-  }
-  to {
-    opacity: 0;
-    transform: scale(1.05);
-    filter: blur(var(--flou-sortie));
-  }
-}
-
-/* finances. La zone occupe désormais toute la largeur du document : les
-   quatre chiffres passent en deux colonnes plutôt qu'en pile étroite, et
-   ils sont à l'échelle où on les lit, pas à celle où on les devine. */
-.figs {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  column-gap: clamp(20px, 3vw, 44px);
-}
-.fig {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 10px;
-  padding: 12px 0;
-  border-top: 1px solid var(--ink-line);
-}
-.fig-n {
-  font-size: clamp(28px, 2.6vw, 34px);
-  line-height: 1;
-  /* v30 : ces chiffres sont rendus par Familjen (.fig-n, .step-n) ou par
-     Geist Mono (.serie-an, .serie-v), jamais par la police de corps : la
-     bascule v30 ne les touche pas. La déclaration reste, elle protège la
-     colonne le jour où la police porteuse changerait. */
-  font-variant-numeric: tabular-nums;
-}
-.fig-k {
-  font-size: 9.5px;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--ink-3);
-  text-align: right;
-  line-height: 1.4;
-  max-width: 12ch;
-}
-/* la série, forme propre à la zone 01. Un tableau dont chaque ligne porte
-   sa barre : la valeur reste lisible sans la barre, la barre donne la
-   grandeur d'un coup d'oeil. Une seule série, en encre : pas de couleur à
-   décoder, donc pas de légende. Base à ZÉRO, jamais tronquée, sinon la
-   pente serait flattée. Marque fine, extrémité carrée, pas d'arrondi :
-   la charte proscrit les formes arrondies. */
-.serie {
-  margin-top: 22px;
-}
-.serie-l {
-  display: grid;
-  grid-template-columns: 3rem minmax(0, 1fr) 5rem;
-  align-items: center;
-  gap: 12px;
-  padding: 7px 0;
-}
-.serie-l + .serie-l {
-  border-top: 1px solid var(--ink-line);
-}
-.serie-an {
-  font-size: 11px;
-  color: var(--ink-3);
-  font-variant-numeric: tabular-nums;
-  /* v30 : ces chiffres sont rendus par Familjen (.fig-n, .step-n) ou par
-     Geist Mono (.serie-an, .serie-v), jamais par la police de corps : la
-     bascule v30 ne les touche pas. La déclaration reste, elle protège la
-     colonne le jour où la police porteuse changerait. */
-  font-variant-numeric: tabular-nums;
-}
-.serie-piste {
+.rl .k {
   display: block;
-  height: 7px;
+  font-size: 7.5px;
+  letter-spacing: 0.14em;
+  color: var(--ink-3);
+  margin-bottom: 2px;
 }
-.serie-barre {
-  display: block;
-  height: 100%;
-  background: var(--ink-2);
-}
-.serie-v {
+.rl .v {
   font-size: 12px;
+  line-height: 1.35;
   color: var(--ink);
-  font-weight: 500;
-  text-align: right;
-  font-variant-numeric: tabular-nums;
-  /* v30 : ces chiffres sont rendus par Familjen (.fig-n, .step-n) ou par
-     Geist Mono (.serie-an, .serie-v), jamais par la police de corps : la
-     bascule v30 ne les touche pas. La déclaration reste, elle protège la
-     colonne le jour où la police porteuse changerait. */
-  font-variant-numeric: tabular-nums;
+  overflow-wrap: anywhere;
 }
-.trend-tag {
+.rl .v small {
   font-size: 9.5px;
-  letter-spacing: 0.11em;
-  text-transform: uppercase;
   color: var(--ink-2);
-  margin-top: 12px;
 }
-
-/* frise */
-.tl {
+.rub {
+  margin-top: 16px;
+}
+.rub:first-child {
+  margin-top: 0;
+}
+/* le vin en texte, comme sur le gabarit : uniquement sur papier */
+.r-lbl {
+  font-size: 8.5px;
+  color: var(--wine);
+  margin-bottom: 7px;
+}
+.r-p {
+  font-size: 12px;
+  line-height: 1.6;
+  color: var(--ink);
+}
+.r-p b {
+  font-weight: 500;
+}
+.chrono {
   list-style: none;
   margin: 0;
   padding: 0;
 }
-.tl li {
-  position: relative;
-  padding: 0 0 18px 22px;
-}
-.tl li:last-child {
-  padding-bottom: 0;
-}
-.tl li::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 5px;
-  width: 6px;
-  height: 6px;
-  border: 1px solid var(--ink);
-  background: var(--paper);
-}
-.tl li.key::before {
-  background: var(--wine);
-  border-color: var(--wine);
-}
-.tl li::after {
-  content: "";
-  position: absolute;
-  left: 2.5px;
-  top: 12px;
-  bottom: -1px;
-  width: 1px;
-  background: var(--ink-line);
-}
-.tl li:last-child::after {
-  display: none;
-}
-.tl .yr {
-  display: block;
-  font-size: 10.5px;
-  letter-spacing: 0.1em;
-  color: var(--ink-3);
-  margin-bottom: 4px;
-}
-.tl .yr.key {
-  color: var(--wine);
-}
-.tl .ev {
-  font-size: 14.5px;
-  line-height: 1.45;
-  color: var(--ink);
-}
-
-/* ---- zone 00 · la fiche d'identité, seule zone en cases ---- */
-.ident {
-  list-style: none;
-  margin: 0 0 18px;
-  padding: 0;
+.chrono li {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: 64px minmax(0, 1fr);
+  gap: 12px;
+  padding: 5px 0;
   border-top: 1px solid var(--ink-line);
-}
-.ident li {
   font-size: 11.5px;
-  letter-spacing: 0.04em;
-  color: var(--ink-2);
-  padding: 11px 0;
-  border-bottom: 1px solid var(--ink-line);
-}
-.ident li:nth-child(odd) {
-  padding-right: 18px;
-}
-.ident li:nth-child(even) {
-  padding-left: 18px;
-  border-left: 1px solid var(--ink-line);
-}
-
-/* ---- zone 05 · les coordonnées. Écrites depuis la v35 : la société du
-   spécimen est inventée, il n'y avait rien à protéger, et le caviardage
-   empruntait la forme des barres du graphe de la zone 01. ---- */
-.coord-s {
-  font-size: 11px;
-  color: var(--ink-2);
-  margin-bottom: 16px;
-}
-/* v35 : la liste des coordonnées porte ses VALEURS. Elle s'appelait
-   .caviard et rendait trois barres noires ; le nom comme la forme ont été
-   retirés ensemble. La société du spécimen étant inventée, il n'y avait rien
-   à masquer, et ces barres avaient exactement la forme de celles du graphe
-   de la zone 01 : l'oeil y lisait une donnée là où il n'y en avait aucune. */
-.coord-l {
-  list-style: none;
-  margin: 0 0 18px;
-  padding: 0;
-}
-.coord-l li {
-  display: grid;
-  grid-template-columns: 8.625rem minmax(0, 1fr);
-  align-items: baseline;
-  gap: 16px;
-  padding: 10px 0;
-  border-top: 1px solid var(--ink-line);
-}
-.coord-k {
-  font-size: 10.5px;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--ink-3);
-}
-.coord-v {
-  font-size: 12.5px;
-  color: var(--ink);
-  font-variant-numeric: tabular-nums;
-  overflow-wrap: anywhere;
-}
-.coord-d {
-  font-size: 14px;
-  line-height: 1.6;
-  color: var(--ink-2);
-  max-width: 32.1875rem;
-}
-
-/* ---- zone 02 · le constat. Seule zone où une phrase passe à l'échelle
-   du display : c'est la trouvaille, elle mérite le corps. ---- */
-.sig-amorce {
-  font-size: 13.5px;
-  line-height: 1.6;
-  color: var(--ink-3);
-  max-width: 33.5625rem;
-  margin-bottom: 14px;
-}
-.sig-fort {
-  font-size: clamp(21px, 2.4vw, 28px);
-  line-height: 1.22;
-  letter-spacing: -0.015em;
-  color: var(--ink);
-  /* mesure élargie : à 26ch, « ans. » retombait seul sur une ligne */
-  max-width: 34ch;
-  margin-bottom: 16px;
-}
-.sig-suite {
-  font-size: 14px;
-  line-height: 1.65;
-  color: var(--ink-2);
-  max-width: 36.4375rem;
-  padding-top: 14px;
-  border-top: 1px solid var(--ink-line);
-}
-.angle-t {
-  font-family: var(--font-familjen), sans-serif;
-  font-weight: 400;
-  font-size: clamp(21px, 2.6vw, 27px);
-  line-height: 1.12;
-  letter-spacing: -0.01em;
-  margin-bottom: 14px;
-}
-.angle-p {
-  font-size: 15px;
-  line-height: 1.65;
-  color: var(--ink-2);
-  margin-bottom: 14px;
-  max-width: 38.3125rem;
-}
-.angle-p:last-of-type {
-  margin-bottom: 0;
-}
-.angle-p b {
-  color: var(--ink);
-  font-weight: 500;
-}
-/* ---- zone 04 · la chute détachée. C'est la phrase qui fait vendre, elle
-   ne doit pas mourir en fin de paragraphe. ---- */
-.angle-chute {
-  margin-top: 16px;
-  padding-top: 14px;
-  border-top: 1px solid var(--ink-2);
-  font-size: 15.5px;
   line-height: 1.5;
   color: var(--ink);
-  font-weight: 500;
-  max-width: 33.875rem;
 }
-
-/* ---- zone 06 · la réserve. Seule zone encadrée : dans un rapport, une
-   réserve se signale, elle ne se fond pas dans le texte. ---- */
-.reserve {
-  border: 1px solid var(--ink-line-2);
-  padding: clamp(18px, 2.2vw, 26px);
+.chrono li:first-child {
+  border-top: 0;
 }
-.unknown {
-  font-size: 15px;
-  line-height: 1.62;
-  color: var(--ink-2);
-  max-width: 37.3125rem;
-}
-.unknown b {
-  color: var(--ink);
-  font-weight: 500;
-}
-/* pas de chips : elles énonçaient des critères de détection. Le cartouche
-   VÉRIFIÉ reste, c'est un tampon de document, pas un badge marketing. */
-
-.d-foot {
-  margin-top: 30px;
-  padding-top: 18px;
-  border-top: 1.5px solid var(--ink);
-}
-.d-legal {
+.chrono .d {
   font-size: 9px;
-  line-height: 1.7;
-  color: var(--ink-3);
+  letter-spacing: 0.08em;
+  color: var(--wine);
+  padding-top: 2px;
 }
-.d-legal .ficti {
+.chrono li.cle {
+  font-weight: 500;
+}
+.f-pied {
+  margin-top: auto;
+  padding-top: 12px;
+  border-top: 1px solid var(--ink);
+  font-size: 9.5px;
+  line-height: 1.6;
+  color: var(--ink-2);
+}
+.f-pied .ficti {
   color: var(--wine);
 }
 
 @media (max-width: 920px) {
   .recu-grid {
     grid-template-columns: minmax(0, 1fr);
-    gap: 34px;
+    gap: 38px;
   }
-  .recu-nav {
-    border-left: none;
-    padding-left: 0;
-  }
-  .recu-item {
-    padding: 16px 0 16px 18px;
-  }
-  /* la nav passe au-dessus, le cadre dessous : c'est l'ordre du DOM, rien
-     à réordonner. Le plancher de 640px saute. */
-  .doc-cadre {
+  .feuille {
     min-height: 0;
   }
-  /* sur petit écran le cadre épouse la zone active au lieu de réserver la
-     hauteur de la plus haute : sinon « Les coordonnées », qui est courte,
-     laissait trois cents pixels de vide avant le pied. La zone active
-     reprend le flux, les inactives en sortent sans quitter le DOM. */
-  .d-scene {
-    display: block;
-    position: relative;
-  }
-  .d-scene .zone {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-  }
-  .d-scene .zone.lit {
-    position: static;
-  }
-  /* une zone inactive plus haute que l'active continuait d'étendre la zone
-     de défilement du cadre, alors qu'elle est invisible : on la borne à la
-     hauteur de la scène. La sortante est exclue, elle doit rester entière
-     le temps de son animation. Ni display:none ni visibility ici : le
-     texte reste dans l'arbre d'accessibilité. */
-  .d-scene .zone:not(.lit):not(.sortante) {
-    max-height: 100%;
-    overflow: hidden;
+  .feuille-2 {
+    inset: 10px -10px -10px 10px;
   }
 }
-@media (max-width: 760px) {
-  .recu {
-    padding: 80px 0;
-  }
-  .viseur {
-    padding: 10px;
-  }
-  /* sur téléphone la zone doit se lire, pas se deviner : les quatre
-     chiffres repassent en une colonne pour garder leur corps, et les
-     textes restent au-dessus de 14px. */
-  .figs {
+@media (max-width: 640px) {
+  .f-corps {
     grid-template-columns: minmax(0, 1fr);
   }
-  .doc {
-    padding: 22px 18px;
-  }
-  .d-scene {
-    margin-top: 20px;
-    padding-top: 18px;
-  }
-  /* l'en-tête passe en pile : en deux colonnes, « SEMAINE 30 » se coupait
-     et laissait le 30 seul sur sa ligne */
-  .d-head {
-    flex-direction: column;
-    gap: 12px;
-  }
-  .d-meta {
-    text-align: left;
-  }
-  .fig-n {
-    font-size: 30px;
-  }
-  /* plancher de 10,5px sur les légendes mono : en dessous, sur un
-     téléphone, elles ne se lisent plus, elles se devinent */
-  .fig-k,
-  .trend-tag,
-  .d-meta {
-    font-size: 10.5px;
-  }
-  .angle-p {
-    font-size: 15px;
-  }
-  .unknown {
-    font-size: 15px;
-  }
-  .tl .ev,
-  .coord-d,
-  .sig-suite {
-    font-size: 14.5px;
-  }
-  /* la fiche d'identité et les coordonnées repassent en une colonne : à
-     390px, deux cases côte à côte couperaient les libellés */
-  .ident {
-    grid-template-columns: minmax(0, 1fr);
-  }
-  .ident li:nth-child(odd) {
+  .rail-l {
+    border-right: 0;
     padding-right: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 16px;
+    border-bottom: 1px solid var(--ink-line-2);
+    padding-bottom: 8px;
   }
-  .ident li:nth-child(even) {
-    padding-left: 0;
-    border-left: 0;
+  .f-tete {
+    flex-direction: column;
   }
-  .coord-l li {
-    grid-template-columns: minmax(0, 1fr);
-    gap: 8px;
-  }
-}
-@media (prefers-reduced-motion: reduce) {
-  /* la chorégraphie est purement décorative : elle disparaît en entier,
-     cadence comprise. Le changement de zone devient instantané, sans
-     flou, sans échelle et sans décalage. */
-  .zone,
-  .zone.lit,
-  .zone.sortante,
-  .zone.lit > *,
-  .zone.lit .fig,
-  .zone.lit .tl li,
-  .zone.lit .serie-l,
-  .zone.lit .serie-barre,
-  .zone.lit .ident li,
-  .zone.lit .coord-l li {
-    animation: none !important;
-    transition: none !important;
-    transform: none !important;
-    filter: none !important;
-    -webkit-mask-image: none !important;
-    mask-image: none !important;
-  }
-  .recu-item,
-  .recu-idx,
-  .recu-d {
-    transition: none !important;
+  .tampon-sp {
+    align-self: flex-start;
   }
 }
 
@@ -1787,136 +1145,80 @@ footer a:hover {
 }
 
 /* ============================================================
-   v15 · B1, la méthode en bande horizontale. Portée de
-   MAQUETTE-V15-B1-METHODE.html. Classes préfixées .m- et .st
-   pour ne pas croiser le .step de l'entonnoir.
+   v38 : la méthode se tait. L'en-tête en bande et les trois
+   colonnes de la v15-B1 sont remplacés : statement à l'échelle
+   display, entrées sur filets en lignes empilées, numéro mono.
+   MAQUETTE-V15-B1-METHODE.html devient une ARCHIVE. Direction
+   validée sur MAQUETTE-V38-OBJET.html (arbitrage Vincent,
+   26/08/2026). Classes .m- et .me- pour ne croiser ni le .step
+   de l'entonnoir ni les .st d'ailleurs.
    ============================================================ */
 
-/* l'en-tête tient sur une ligne au lieu d'occuper une colonne :
-   c'est le trou noir de l'ancienne colonne de gauche qui disparaît */
-.m-head {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  gap: 40px;
-  flex-wrap: wrap;
-  margin-bottom: clamp(46px, 6vw, 78px);
-}
-.m-kicker {
-  flex: none;
-  margin-bottom: 0;
-}
-/* le statement tient sur UNE ligne tant que la largeur le permet : pas de
-   max-width qui le casse en deux alors qu'il y a la place */
-.m-head-t {
-  flex: 1 1 auto;
-  text-align: right;
-}
-/* le sous-titre lève l'ambiguïté du titre : il précise ce qui est montré
-   et ce qui ne l'est pas, sans lui disputer l'échelle */
-.m-sous {
-  margin: 14px 0 0 auto;
-  max-width: 41.125rem;
-  font-size: 14.5px;
-  line-height: 1.65;
-  color: var(--txt-2);
+.method {
+  padding: clamp(80px, 9vw, 130px) 0;
+  border-top: 1px solid var(--line-soft);
 }
 .m-statement {
+  margin-top: 22px;
   font-family: var(--font-familjen), sans-serif;
   font-weight: 400;
-  font-size: clamp(23px, 2.85vw, 36px);
+  font-size: clamp(34px, 4.6vw, 62px);
+  line-height: 1.04;
+  letter-spacing: -0.02em;
+  max-width: 16ch;
+}
+.m-sous {
+  margin-top: 24px;
+  max-width: 41.125rem;
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--txt-2);
+}
+.m-entrees {
+  margin-top: clamp(44px, 5vw, 72px);
+  border-top: 1px solid var(--line);
+}
+.m-entree {
+  display: grid;
+  grid-template-columns: 96px minmax(0, 380px) minmax(0, 1fr);
+  gap: clamp(20px, 3vw, 40px);
+  padding: 34px 0 30px;
+}
+.m-entree + .m-entree {
+  border-top: 1px solid var(--line-soft);
+}
+.me-n {
+  font-size: 10px;
+  color: var(--txt-3);
+  padding-top: 8px;
+}
+.me-t {
+  font-family: var(--font-familjen), sans-serif;
+  font-weight: 400;
+  font-size: clamp(21px, 1.9vw, 27px);
   line-height: 1.15;
   letter-spacing: -0.01em;
 }
-
-/* le filet continu porte la section, les étapes y sont accrochées */
-.rail {
-  border-top: 1px solid var(--line);
-}
-.steps-h {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-}
-.st {
-  position: relative;
-  padding: 34px clamp(22px, 2.4vw, 42px) 8px 0;
-}
-.st + .st {
-  padding-left: clamp(22px, 2.4vw, 42px);
-  border-left: 1px solid var(--line-soft);
-}
-/* la graduation : la seule touche de vin de la section */
-.st::before {
-  content: "";
-  position: absolute;
-  top: -1px;
-  left: 0;
-  width: 34px;
-  height: 1px;
-  background: var(--wine);
-}
-.st + .st::before {
-  left: clamp(22px, 2.4vw, 42px);
-}
-.st-n {
-  display: block;
-  font-size: 11px;
-  letter-spacing: 0.2em;
-  color: var(--txt-3);
-  margin-bottom: 16px;
-}
-.st-t {
-  font-family: var(--font-familjen), sans-serif;
-  font-weight: 400;
-  font-size: clamp(19px, 1.7vw, 25px);
-  line-height: 1.18;
-  letter-spacing: -0.01em;
-  margin-bottom: 12px;
-  max-width: 16ch;
-}
-.st-p {
-  font-size: 14px;
-  line-height: 1.65;
+.me-p {
+  font-size: 14.5px;
+  line-height: 1.7;
   color: var(--txt-2);
-  max-width: 20.25rem;
+  max-width: 44rem;
+  padding-top: 4px;
 }
-
 @media (max-width: 860px) {
-  .m-head-t {
-    text-align: left;
+  .m-entree {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 10px;
+    padding: 26px 0 22px;
   }
-  .steps-h {
-    grid-template-columns: 1fr;
+  .me-n {
+    padding-top: 0;
   }
-  /* le filet bascule à la verticale : même vocabulaire, pas un
-     second gabarit à maintenir */
-  .rail {
-    border-top: none;
-    border-left: 1px solid var(--line);
-    padding-left: 26px;
-  }
-  .st,
-  .st + .st {
-    padding: 0 0 34px;
-    border-left: none;
-  }
-  .st + .st {
-    padding-top: 34px;
-    border-top: 1px solid var(--line-soft);
-  }
-  .st::before,
-  .st + .st::before {
-    top: 0;
-    left: -27px;
-    width: 1px;
-    height: 34px;
-  }
-  .st:first-child::before {
-    height: 22px;
+  .me-p {
+    padding-top: 0;
   }
 }
-
-
 /* ============================================================
    v15 · B5, l'offre : un plat principal et un complément.
    Portée de MAQUETTE-V15-B5-OFFRE.html.

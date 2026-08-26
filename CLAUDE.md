@@ -207,6 +207,22 @@ trouvé sur vous". Codes attendus : document financier imprimé, pas SaaS IA.
   aucune légende puisqu'il n'y a qu'une série, et la valeur reste écrite à
   côté de la barre. Pas d'infobulle : c'est l'image d'un document imprimé,
   pas un tableau de bord.
+- Amendement v38 (arbitrage Vincent, 26/08/2026) : L'OBJET. Après analyse de
+  références réelles (planche MAQUETTE-V38-OBJET.html à la racine, qui fait
+  foi), la section dossier abandonne le viseur sombre à zones (v14-v35) : le
+  spécimen est un FEUILLET PAPIER (#ECE7DF), composé comme le gabarit A4
+  réel — rail/corps, rubriques au vin plein (6,8:1 sur papier), chronologie
+  datée, pied ancré en bas de feuille, tampon SPÉCIMEN. La profondeur est un
+  second feuillet décalé : toujours ni ombre portée ni dégradé. Les
+  mouvements « mise au point » et « balayage » disparaissent avec le viseur ;
+  la section entre par le .rev commun. La méthode passe en lignes empilées,
+  statement à l'échelle display ; la bande v15-B1 est remplacée et
+  MAQUETTE-V15-B1-METHODE.html devient une ARCHIVE. Le .statement générique
+  monte de 40 à 50px (le plafond est la borne v17 des engagements). Les
+  systèmes « folio / tampon partout » des maquettes V36-V37 ont été REJETÉS
+  (ils déguisaient la page) : le vin en aplat et le registre ne vivent QUE
+  dans le spécimen. La règle qui reste : UN objet signature rendu
+  matériellement, et le reste de la page se tait.
 - Interdits définitifs (hérités des itérations rejetées) : ticker, métriques animées,
   count-up, grilles de cards, beam/bordures lumineuses, tilt 3D, spotlight souris, pings,
   glow, dégradés colorés, grid de fond, badges/chips, emojis, icônes décoratives,
