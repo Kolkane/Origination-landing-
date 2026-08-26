@@ -113,8 +113,10 @@ body {
     180deg,
     rgba(10, 10, 10, 0.55) 0%,
     rgba(10, 10, 10, 0.12) 34%,
-    rgba(10, 10, 10, 0.1) 58%,
-    rgba(10, 10, 10, 0.72) 100%
+    rgba(10, 10, 10, 0.12) 58%,
+    /* v39 : le pied s'assombrit d'un cran, le titre agrandi doit rester
+       lisible sur les remous clairs de la fin de boucle */
+    rgba(10, 10, 10, 0.8) 100%
   );
 }
 .no-video .veil {
@@ -191,7 +193,11 @@ body {
   left: 40px;
   bottom: 110px;
   z-index: 2;
-  max-width: 640px;
+  /* v39 : la colonne s'élargit pour porter le titre à sa nouvelle échelle,
+     mesurée pour que « Nous lisons les actes que » tienne sur SA ligne à
+     104px (~1014px rendus). Sans cette largeur, « que » tombait orphelin.
+     Le sous-titre garde sa propre mesure, plus étroite. */
+  max-width: 1240px;
 }
 .eyebrow {
   font-size: 10.5px;
@@ -203,11 +209,15 @@ body {
 h1 {
   font-family: var(--font-familjen), sans-serif;
   font-weight: 400;
-  font-size: clamp(42px, 5.6vw, 72px);
-  line-height: 1.06;
+  /* v39 (arbitrage Vincent : passe hero poussée en prod pour jugement sur
+     pièce) : le titre devient LA voix du premier écran, 72 -> 104px de
+     plafond, interligne resserré. Le plancher reste à 40px : sur téléphone
+     l'échelle actuelle était déjà juste. */
+  font-size: clamp(40px, 7.2vw, 104px);
+  line-height: 0.98;
   /* une grotesque à cette taille s'espace toute seule : le serif n'avait
      pas besoin d'être resserré, elle si */
-  letter-spacing: -0.02em;
+  letter-spacing: -0.025em;
 }
 /* l'accent du hero s'aligne enfin sur celui de l'entonnoir, qui portait déjà
    italique + vin. Le vin est en --wine-lift : sur l'encre, le vin plein ne
@@ -231,7 +241,11 @@ h1 em {
   font-size: 12px;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  border-bottom: 1px solid var(--line);
+  /* v39 : le souligné vin, qui n'apparaissait qu'au survol, devient l'état
+     de repos de l'appel PRINCIPAL : c'est le seul accent rouge du premier
+     écran, il désigne l'action. Les appels secondaires (.cta-2) gardent le
+     filet neutre, le vin reste leur survol. */
+  border-bottom: 1px solid var(--wine);
   padding-bottom: 6px;
   transition: border-color 0.25s, letter-spacing 0.25s;
 }
@@ -731,6 +745,10 @@ footer a:hover {
 }
 .cta-2 {
   color: var(--txt-2);
+  border-bottom-color: var(--line);
+}
+.cta-2:hover {
+  border-bottom-color: var(--wine);
 }
 .cta-2:hover {
   color: var(--txt);

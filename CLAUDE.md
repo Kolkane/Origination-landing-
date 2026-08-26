@@ -235,6 +235,18 @@ trouvé sur vous". Codes attendus : document financier imprimé, pas SaaS IA.
   zéro se lit comme du vide, pas comme une preuve — la section reprend la
   grammaire des entrées sur filets, sans repère. Ne remettre ni le
   feuillet statique, ni un grand chiffre d'affiche dans la Mesure.
+- Amendement v39 (arbitrage Vincent, 27/08/2026, poussé en prod pour
+  jugement sur pièce, planche sautée sur son ordre) : LA PASSE HERO. Le
+  titre devient LA voix du premier écran : 104px de plafond (interligne
+  0,98, colonne à 1240px mesurée pour que « Nous lisons les actes que »
+  tienne sur SA ligne, sinon « que » tombe orphelin). L'eyebrow ne
+  surplombe plus le titre : le libellé vit dans la légende bas-droite,
+  deux lignes (marché, puis sujet). Le souligné VIN devient l'état de
+  repos de l'appel principal — seul accent rouge du premier écran ; les
+  appels secondaires gardent le filet neutre. Le voile s'assombrit d'un
+  cran en pied (0,8) pour la lisibilité du titre agrandi. Le plancher
+  mobile reste à 40px : à 390px le titre casse naturellement en quatre
+  lignes et « personne » garde la sienne, vérifié sur pièce.
 - Interdits définitifs (hérités des itérations rejetées) : ticker, métriques animées,
   count-up, grilles de cards, beam/bordures lumineuses, tilt 3D, spotlight souris, pings,
   glow, dégradés colorés, grid de fond, badges/chips, emojis, icônes décoratives,
