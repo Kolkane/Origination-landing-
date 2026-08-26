@@ -1,38 +1,15 @@
-"use client";
-
-import { useEffect, useRef, useState } from "react";
 import { copy } from "@/config/copy";
 import { grand } from "@/config/typo";
 
-/* v15 : « Le constat » et la bande de chiffres en un seul geste.
-   Les barres se déploient quand la section entre dans le champ, pas au
-   chargement de la page : une animation CSS pure serait terminée avant
-   que le lecteur n'arrive dessus, la section est sous la ligne de flottaison. */
+/* Refonte 2026-08, second temps : la grammaire « entonnoir » supposait des
+   quantités, il n'y en a plus par décision, la forme suit. La cascade des
+   quatre critères reprend la grammaire du dossier A4 : filets fins, label
+   en petites capitales espacées, une phrase en serif par marche. Plus
+   d'animation propre à la section : les barres et leur déploiement sont
+   morts ensemble, la cascade entre par le vocabulaire .rev commun. Le
+   composant redevient donc un composant serveur. */
 export default function Entonnoir() {
   const e = copy.entonnoir;
-  const ref = useRef<HTMLDivElement>(null);
-  const [deploye, setDeploye] = useState(false);
-
-  useEffect(() => {
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      setDeploye(true);
-      return;
-    }
-    const cible = ref.current;
-    if (!cible) return;
-    const io = new IntersectionObserver(
-      (entrees) => {
-        entrees.forEach((entree) => {
-          if (!entree.isIntersecting) return;
-          setDeploye(true);
-          io.disconnect();
-        });
-      },
-      { threshold: 0.25 }
-    );
-    io.observe(cible);
-    return () => io.disconnect();
-  }, []);
 
   return (
     <section className="entonnoir" id="filtre">
@@ -45,35 +22,27 @@ export default function Entonnoir() {
         <p className="ent-intro rev">{e.intro}</p>
 
         {/* la seule preuve de marché sourcée à un tiers : elle précède
-            l'ordre de grandeur régional, qui est le nôtre */}
+            les critères, qui sont notre méthode */}
         <div className="ancrage rev">
           <p className="ancrage-t">{e.ancrage}</p>
           <p className="ancrage-s mono">{e.ancrageSource}</p>
         </div>
 
-        <div
-          className={`funnel${deploye ? " deploye" : ""}`}
-          ref={ref}
-          role="list"
-          aria-label={e.ariaPaliers}
-        >
-          {e.paliers.map((p, i) => (
-            <div
-              className={`step s${i + 1}${p.prise ? " catch" : ""}`}
-              key={p.n}
-              role="listitem"
-            >
-              <span className="step-n display">{p.n}</span>
-              <span className="step-l">
-                <b>{p.fort}</b>
-                {p.suite}
-              </span>
-            </div>
+        <ol className="criteres" aria-label={e.ariaCriteres}>
+          {e.criteres.map((c) => (
+            <li className="crit rev" key={c.num}>
+              <p className="crit-l mono">
+                <span className="crit-n">{c.num}</span>
+                {c.label}
+              </p>
+              <p className="crit-p">{c.texte}</p>
+            </li>
           ))}
-        </div>
+        </ol>
 
-        {/* le stock et le flux. Sans cette distinction, un prospect divise 45
-            par le rythme mensuel et conclut que trois mois lui suffisent. */}
+        {/* le stock et le flux. Sans cette distinction, un prospect divise
+            le stock par le rythme mensuel et conclut que trois mois lui
+            suffisent. */}
         <div className="bascule rev">
           <p className="bascule-t">
             {e.bascule1Avant}
@@ -83,18 +52,14 @@ export default function Entonnoir() {
           <p className="bascule-t bascule-flux">{e.bascule2}</p>
         </div>
 
+        {/* la chute pleine largeur, puis la note en corps normal : les deux
+            sont ancrées à gauche sur le filet de section */}
         <div className="ent-foot rev">
           <p className="ent-kicker">
             {e.piedAvant}
             <em>{e.piedItalique}</em>
           </p>
-          <p className="ent-note mono">
-            {e.noteAvant}
-            <b>{e.noteFort}</b>
-            {e.noteApres}
-            <br />
-            {e.noteLigne2}
-          </p>
+          <p className="ent-note">{e.note}</p>
         </div>
       </div>
     </section>

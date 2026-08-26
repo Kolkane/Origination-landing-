@@ -1623,19 +1623,20 @@ footer a:hover {
 }
 
 /* ============================================================
-   v15 · l'entonnoir. Portée de imbrin-entonnoir.html, tokens du repo.
-   Deux écarts assumés à la maquette, signalés à Vincent :
-   le fond de la barre de prise est un aplat et non un dégradé
-   (interdit absolu du CLAUDE.md), et #B32E46 est déclaré comme la
-   variante AA du vin pour le grand texte, pas comme une couleur de
-   plus (même précédent que le tertiaire éclairci en v7-2 : le vin
-   plein ne donne que 2,3:1 sur l'encre, il n'est pas lisible).
+   v15 · l'entonnoir, refondu 2026-08 (arbitrage Vincent, chantier
+   « Le filtre ») en CASCADE DE CRITÈRES. Les barres à largeur
+   décroissante sont mortes avec les quantités qu'elles dessinaient :
+   la grammaire « entonnoir » suppose des nombres, il n'y en a plus.
+   La cascade reprend la grammaire du dossier A4 (rail 29 / corps 71) :
+   filets fins, label en petites capitales espacées, une phrase en
+   serif par marche. #B32E46 reste déclaré comme la variante AA du vin
+   pour le grand texte, pas comme une couleur de plus (même précédent
+   que le tertiaire éclairci en v7-2 : le vin plein ne donne que 2,3:1
+   sur l'encre, il n'est pas lisible en texte courant).
    ============================================================ */
 
 :root {
   --wine-lift: #b32e46;              /* vin éclairci, 3,2:1 sur l'encre, grand texte seulement */
-  --fill-bar: rgba(244, 242, 239, 0.07);
-  --fill-bar-edge: rgba(244, 242, 239, 0.18);
 }
 
 .entonnoir {
@@ -1699,158 +1700,53 @@ footer a:hover {
   white-space: nowrap;
 }
 
-/* l'entonnoir : des barres qui se resserrent, pas des cartes */
-.funnel {
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-  margin: clamp(40px, 6vw, 68px) 0 34px;
+/* la cascade : quatre critères sur filets, grammaire du dossier A4.
+   Le vin ne touche que le numéro, même vocabulaire que .recu-idx (index
+   du dossier, vin plein sur mono 11px). Aucune animation propre : la
+   cascade entre par le .rev commun, le déploiement des barres est mort
+   avec elles. */
+.criteres {
+  list-style: none;
+  margin: clamp(40px, 6vw, 68px) 0 0;
+  padding: 0;
+  border-top: 1px solid var(--line);
 }
-.step {
-  position: relative;
-  display: flex;
-  align-items: center;
-  gap: clamp(16px, 3vw, 34px);
-  padding: 20px 26px;
-  min-height: 84px;
-  border: 1px solid var(--fill-bar-edge);
-  background: var(--fill-bar);
-  transform-origin: left center;
-  overflow: hidden;
+.crit {
+  display: grid;
+  /* le rail du gabarit A4 : 29 % de la ligne pour le label, le reste
+     pour la phrase. Le plancher en rem garde le label lisible quand la
+     colonne se resserre. */
+  grid-template-columns: minmax(11.5rem, 29%) 1fr;
+  gap: clamp(20px, 4vw, 56px);
+  align-items: baseline;
+  padding: 20px 0;
 }
-.step-n {
-  font-size: clamp(34px, 5vw, 58px);
-  line-height: 0.9;
-  letter-spacing: -0.02em;
-  white-space: nowrap;
-  flex: none;
-  min-width: 4.5ch;
-  /* v30 : ces chiffres sont rendus par Familjen (.fig-n, .step-n) ou par
-     Geist Mono (.serie-an, .serie-v), jamais par la police de corps : la
-     bascule v30 ne les touche pas. La déclaration reste, elle protège la
-     colonne le jour où la police porteuse changerait. */
-  font-variant-numeric: tabular-nums;
+.crit + .crit {
+  border-top: 1px solid var(--line-soft);
 }
-.step-l {
-  font-size: 14.5px;
-  line-height: 1.4;
+.crit-l {
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
   color: var(--txt-2);
 }
-.step-l b {
-  color: var(--txt);
-  font-weight: 400;
+.crit-n {
+  color: var(--wine);
+  margin-right: 14px;
+  font-variant-numeric: tabular-nums;
 }
-.s1 {
-  width: 100%;
-}
-.s2 {
-  width: 78%;
-}
-.s3 {
-  width: 55%;
-}
-.s4 {
-  width: 34%;
+.crit-p {
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--txt-2);
+  max-width: var(--mesure);
 }
 
-/* la prise sort de la boîte : ni fond ni cadre, elle se lit sur l'encre de
-   la section. Il ne reste que le filet vin à gauche. Le bord transparent
-   conserve la géométrie, donc le 45 reste aligné sur les trois chiffres
-   au-dessus, et la largeur libérée évite que le libellé se casse. */
-.step.catch {
-  width: 100%;
-  background: none;
-  border-color: transparent;
-}
-.step.catch .step-n {
-  color: var(--wine-lift);
-}
-/* la chute passe sous l'énoncé au lieu de le suivre en ligne : le blanc de
-   début de ligne est supprimé par le navigateur, la copy ne bouge pas */
-.step.catch .step-l b {
-  display: block;
-  color: var(--txt);
-  margin-bottom: 3px;
-}
-.step.catch::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  width: 3px;
-  background: var(--wine);
-}
-
-/* déploiement : déclenché à l'entrée de la section, pas au chargement
-   de la page. Voir Entonnoir.tsx, la section est sous la flottaison. */
-.funnel .step {
-  opacity: 0;
-  transform: scaleX(0.4);
-}
-.funnel .step-n,
-.funnel .step-l {
-  opacity: 0;
-}
-.funnel.deploye .step {
-  animation: grow 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-}
-.funnel.deploye .step-n,
-.funnel.deploye .step-l {
-  animation: rise 0.6s ease forwards;
-}
-.funnel.deploye .s1 {
-  animation-delay: 0.05s;
-}
-.funnel.deploye .s1 .step-n,
-.funnel.deploye .s1 .step-l {
-  animation-delay: 0.3s;
-}
-.funnel.deploye .s2 {
-  animation-delay: 0.17s;
-}
-.funnel.deploye .s2 .step-n,
-.funnel.deploye .s2 .step-l {
-  animation-delay: 0.42s;
-}
-.funnel.deploye .s3 {
-  animation-delay: 0.29s;
-}
-.funnel.deploye .s3 .step-n,
-.funnel.deploye .s3 .step-l {
-  animation-delay: 0.54s;
-}
-.funnel.deploye .s4 {
-  animation-delay: 0.41s;
-}
-.funnel.deploye .s4 .step-n,
-.funnel.deploye .s4 .step-l {
-  animation-delay: 0.66s;
-}
-@keyframes grow {
-  to {
-    opacity: 1;
-    transform: scaleX(1);
-  }
-}
-@keyframes rise {
-  from {
-    opacity: 0;
-    transform: translateY(6px);
-  }
-  to {
-    opacity: 1;
-    transform: none;
-  }
-}
-
-/* pied de section */
+/* pied de section : la chute pleine largeur, puis la note en corps
+   normal. Fini le flottement bas-droite : les deux lignes sont ancrées
+   à gauche, l'une sous l'autre, sur le filet de section. */
 .ent-foot {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  gap: 28px;
-  flex-wrap: wrap;
+  margin-top: clamp(30px, 3.4vw, 44px);
   padding-top: 26px;
   border-top: 1px solid var(--line);
 }
@@ -1860,64 +1756,33 @@ footer a:hover {
   font-size: clamp(19px, 2.4vw, 26px);
   line-height: 1.25;
   letter-spacing: -0.01em;
-  max-width: 34ch;
 }
 .ent-kicker em {
   font-style: italic;
   color: var(--wine-lift);
 }
 .ent-note {
-  font-size: 11px;
-  letter-spacing: 0.05em;
+  margin-top: 14px;
+  font-size: 15px;
   line-height: 1.7;
-  color: var(--txt-3);
-  max-width: 30ch;
-  text-align: right;
-}
-.ent-note b {
   color: var(--txt-2);
-  font-weight: 400;
+  max-width: 44.75rem;
 }
 
 @media (max-width: 720px) {
-  /* le resserrement doit survivre au téléphone : à largeur égale ce ne
-     serait plus un entonnoir, juste quatre barres empilées */
-  .s1 {
-    width: 100%;
+  /* la cascade s'empile : le label au-dessus de sa phrase */
+  .crit {
+    grid-template-columns: 1fr;
+    gap: 8px;
+    padding: 16px 0;
   }
-  .s2 {
-    width: 88%;
-  }
-  .s3 {
-    width: 74%;
-  }
-  .s4 {
-    width: 58%;
-  }
-  .step {
-    min-height: 0;
-    padding: 16px 18px;
-    gap: 16px;
-  }
-  .ent-foot,
   .ancrage {
     flex-direction: column;
     gap: 16px;
   }
-  .ent-note,
   .ancrage-s {
     text-align: left;
     white-space: normal;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .funnel .step,
-  .funnel .step-n,
-  .funnel .step-l {
-    opacity: 1;
-    transform: none;
-    animation: none !important;
   }
 }
 

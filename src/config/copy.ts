@@ -258,40 +258,40 @@ export const copy = typoDeep({
        du marché et n'est jamais rapporté aux 58 000. */
     ancrage: `Les dirigeants de 58 000 PME comptent transmettre d’ici 2030, sur un marché de 370 000 entreprises. Au rythme actuel, 130 000 aboutiraient.`,
     ancrageSource: `Bpifrance Le Lab · CCI France · CMA France · C.R.A · 27 novembre 2025 · ≈ 5 000 réponses`,
-    /* refonte 2026-08 : l'entonnoir chiffré 8 000/740/310/45 était un
-       générique jamais mesuré, il est mort. Les barres portent désormais
-       les QUATRE FILTRES du registre, sans nombre : le seul décompte
-       honnête est celui du périmètre du client, et il est au devis. */
-    ariaPaliers: "Les quatre filtres du périmètre",
-    paliers: [
+    /* refonte 2026-08, second temps : la grammaire « entonnoir » supposait
+       des quantités, il n'y en a plus par décision. Cascade de quatre
+       critères dans la grammaire du dossier A4 : filets fins, label en
+       petites capitales espacées, une phrase en serif par marche. */
+    ariaCriteres: "Les quatre critères du périmètre",
+    criteres: [
       {
-        n: "Tout",
-        fort: "votre périmètre",
-        suite: " : les sociétés de la région et de la typologie arrêtées avec vous",
+        num: "01",
+        label: "Le périmètre",
+        texte:
+          "Région et typologie d’entreprises, arrêtées avec vous. C’est lui que nous mesurons, pas un marché théorique.",
       },
       {
-        n: "L’âge",
-        fort: "du dirigeant",
-        suite: ", lu au registre, pas déclaré",
+        num: "02",
+        label: "L’âge du dirigeant",
+        texte: "Lu au registre, pas déclaré.",
       },
       {
-        n: "Le relais",
-        fort: "absent",
-        suite: " : personne au capital ni aux mandats pour prendre la suite",
+        num: "03",
+        label: "Le relais",
+        texte: "Personne au capital ni aux mandats pour prendre la suite.",
       },
       {
-        n: "Le fait",
-        fort: "daté, quand il existe.",
-        suite: " Un acte déposé, jamais une intention supposée.",
-        prise: true,
+        num: "04",
+        label: "Le fait daté",
+        texte:
+          "Quand il existe : un acte déposé, jamais une intention supposée.",
       },
-    ] as { n: string; fort: string; suite: string; prise?: boolean }[],
+    ],
     piedAvant: "Combien dans votre région ? ",
     piedItalique: "Nous les comptons avant que vous signiez.",
-    noteAvant: "Le taux d’écart à la vérification est ",
-    noteFort: "mesuré sur votre périmètre",
-    noteApres: " et livré avec chaque lot.",
-    noteLigne2: "Ce qui reste est livré. Rien d’autre.",
+    /* la chute est pleine largeur, la note passe en corps normal sous
+       elle : fini le flottement bas-droite du pied de section */
+    note: "Le taux d’écart à la vérification est mesuré sur votre périmètre et livré avec chaque lot. Ce qui reste est livré. Rien d’autre.",
     /* le stock et le flux. Sans cette distinction, un prospect divise le
        stock par le rythme mensuel, conclut que trois mois lui suffisent, et
        lit dans la page une invitation à partir à l'échéance de son
