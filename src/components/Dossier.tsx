@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import LogoImbrin from "@/components/LogoImbrin";
 import { brand } from "@/config/brand";
 import { copy } from "@/config/copy";
 import { grand } from "@/config/typo";
@@ -134,10 +133,17 @@ export default function Dossier() {
                     au-dessus des six zones et les faisait toutes se
                     ressembler. Il reste l'ancrage net de la mise au point. */}
                 <header className="d-head">
-                  <span className="d-brand">
-                    <LogoImbrin taille={20} ton="sombre" />
-                    <span className="d-word display">{brand.MARQUE}</span>
-                  </span>
+                  {/* v43 (arbitrage Vincent, 27/08) : le lockup officiel
+                      remplace le médaillon + mot-marque composés en HTML.
+                      Image encre sur transparent, posée sur le papier ;
+                      alt porté par les variables de marque. */}
+                  <img
+                    className="d-lockup"
+                    src="/logo-dossier.png"
+                    alt={`${brand.MARQUE} ${brand.SUFFIXE} · ${brand.BASELINE}`}
+                    width={900}
+                    height={327}
+                  />
                   <span className="d-meta mono">
                     {doc.metaAvant}
                     <b>{doc.metaFort}</b>

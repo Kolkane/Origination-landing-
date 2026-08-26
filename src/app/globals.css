@@ -911,18 +911,16 @@ footer a:hover {
   padding-bottom: 16px;
   border-bottom: 1.5px solid var(--ink);
 }
-.d-brand {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-.d-brand img {
+/* v43 : le lockup officiel (médaillon + IMBRIN RESEARCH + baseline vin)
+   remplace le médaillon seul + mot-marque HTML. Hauteur bornée, largeur
+   dérivée : l'image ne dicte jamais la largeur de l'en-tête. */
+.d-lockup {
   display: block;
+  /* 84px : mesuré pour que la baseline vin du lockup reste lisible
+     (~9px de capitales) sans écraser la méta de droite */
+  height: 84px;
+  width: auto;
   flex-shrink: 0;
-}
-.d-word {
-  font-size: 22px;
-  line-height: 1;
 }
 .d-meta {
   text-align: right;
