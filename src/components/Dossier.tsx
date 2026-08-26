@@ -22,6 +22,11 @@ import { grand } from "@/config/typo";
    sont à opacité nulle mais ne sont ni display:none ni aria-hidden : un
    lecteur d'écran les parcourt toutes. Sans JavaScript, le noscript du
    layout remet la scène en flux normal et le dossier se lit en entier. */
+/* durée d'une zone en lecture automatique. La même valeur vit dans
+   l'animation CSS .recu-prog (globals.css) : changer l'une sans l'autre
+   désynchronise la barre et le passage de zone. */
+const DUREE_LECTURE = 4000;
+
 export default function Dossier() {
   const d = copy.dossier;
   const doc = d.doc;
@@ -29,8 +34,53 @@ export default function Dossier() {
      exercice. Dérivé de la donnée affichée, jamais saisi à la main. */
   const maxTendance = Math.max(...doc.tendance.map((t) => t.n));
   const navRef = useRef<HTMLElement>(null);
+  const sectionRef = useRef<HTMLElement>(null);
   const [actif, setActif] = useState(d.defaut);
   const [sortante, setSortante] = useState<string | null>(null);
+
+  /* v44 : LA LECTURE (arbitrage Vincent, 27/08). Le dossier se feuillette
+     seul : la barre vin de l'élément actif avance en 4 s, puis la zone
+     suivante prend la mise au point. Quatre garde-fous, non négociables :
+     un clic de l'utilisateur ARRÊTE la lecture définitivement (sa main
+     prime) ; UN SEUL TOUR puis arrêt sur la page de garde (jamais de
+     boucle, la charte interdit les mouvements perpétuels) ; pause quand
+     la section sort du champ ; désactivée en prefers-reduced-motion. */
+  const [lecture, setLecture] = useState(true);
+  const [enVue, setEnVue] = useState(false);
+
+  useEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      setLecture(false);
+    }
+  }, []);
+
+  useEffect(() => {
+    const el = sectionRef.current;
+    if (!el) return;
+    const io = new IntersectionObserver(
+      (entrees) => entrees.forEach((e) => setEnVue(e.isIntersecting)),
+      { threshold: 0.35 }
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
+
+  useEffect(() => {
+    if (!lecture || !enVue) return;
+    const t = setTimeout(() => {
+      const i = d.elements.findIndex((el) => el.cible === actif);
+      const suivant = d.elements[i + 1];
+      setSortante(actif);
+      if (suivant) {
+        setActif(suivant.cible);
+      } else {
+        /* fin du tour : retour à la page de garde, et la lecture s'éteint */
+        setActif(d.elements[0].cible);
+        setLecture(false);
+      }
+    }, DUREE_LECTURE);
+    return () => clearTimeout(t);
+  }, [lecture, enVue, actif, d.elements]);
 
   /* v20 : la zone qui perd le focus garde une classe le temps de son
      animation. Sans elle, elle disparaîtrait d'un coup et on ne verrait
@@ -45,6 +95,9 @@ export default function Dossier() {
   }, [sortante]);
 
   function choisir(cible: string, bouton?: HTMLElement) {
+    /* la main de l'utilisateur prime : tout clic éteint la lecture,
+       définitivement — elle ne redémarre jamais toute seule */
+    setLecture(false);
     if (cible === actif) return;
     setSortante(actif);
     setActif(cible);
@@ -76,7 +129,7 @@ export default function Dossier() {
     actif === cible ? ({ "aria-current": "true" } as const) : {};
 
   return (
-    <section className="recu" id="dossier">
+    <section className="recu" id="dossier" ref={sectionRef}>
       <div className="wrap">
         <div className="recu-grid">
           {/* le titre vit dans la colonne de gauche : sinon le document
@@ -87,7 +140,16 @@ export default function Dossier() {
             <p className="recu-chapo rev">{d.chapo}</p>
 
             {/* ---------- nav des éléments ---------- */}
-            <nav className="recu-nav rev" aria-label={d.kicker} ref={navRef}>
+            {/* l'état de lecture vit dans un attribut data-, PAS dans
+                className : Reveal pose « vis » à la main sur le DOM, et
+                un className recalculé par React l'effacerait (vécu : la
+                nav restait à opacité nulle). */}
+            <nav
+              className="recu-nav rev"
+              data-lecture={lecture && enVue ? "" : undefined}
+              aria-label={d.kicker}
+              ref={navRef}
+            >
               {d.elements.map((el) => (
                 <button
                   type="button"
@@ -96,6 +158,11 @@ export default function Dossier() {
                   aria-current={actif === el.cible ? "true" : undefined}
                   onClick={(e) => choisir(el.cible, e.currentTarget)}
                 >
+                  {/* la barre de lecture : remontée à chaque zone (key),
+                      elle avance en 4 s là où vivait le filet vin */}
+                  {lecture && enVue && actif === el.cible && (
+                    <span className="recu-prog" aria-hidden="true" key={actif} />
+                  )}
                   <span className="recu-item-top">
                     <span className="recu-idx mono">{el.idx}</span>
                     <span className="recu-t">{grand(el.titre)}</span>

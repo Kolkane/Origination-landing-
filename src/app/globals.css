@@ -798,6 +798,7 @@ footer a:hover {
   padding-left: 2px;
 }
 .recu-item {
+  position: relative;               /* porte la barre de lecture v44 */
   display: block;
   width: 100%;
   text-align: left;
@@ -820,6 +821,39 @@ footer a:hover {
 .recu-item.active {
   border-left-color: var(--wine);
   color: var(--txt);
+}
+/* v44 : LA LECTURE — le dossier se feuillette seul, la barre vin de
+   l'élément actif avance en 4 s (même durée que DUREE_LECTURE dans
+   Dossier.tsx) puis la zone suivante prend la mise au point. Pendant la
+   lecture, le filet plein de l'actif s'efface : c'est la barre qui le
+   dessine en avançant. Un clic éteint tout, un seul tour, jamais de
+   boucle. */
+.recu-prog {
+  position: absolute;
+  /* -2px : les offsets absolus partent du padding box, la barre doit
+     recouvrir exactement la position du border-left de 2px */
+  left: -2px;
+  top: 0;
+  width: 2px;
+  height: 100%;
+  background: var(--wine);
+  transform: scaleY(0);
+  transform-origin: top;
+  animation: lecture-prog 4s linear forwards;
+}
+@keyframes lecture-prog {
+  to {
+    transform: scaleY(1);
+  }
+}
+.recu-nav[data-lecture] .recu-item.active {
+  border-left-color: transparent;
+}
+@media (prefers-reduced-motion: reduce) {
+  .recu-prog {
+    animation: none !important;
+    transform: none;
+  }
 }
 .recu-item-top {
   display: flex;

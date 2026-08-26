@@ -181,6 +181,19 @@ trouvé sur vous". Codes attendus : document financier imprimé, pas SaaS IA.
   développe, choisi parce qu'il appartient au registre imprimé de la marque
   et non au vocabulaire d'interface. Le masque n'existe QUE dans les
   images-clés : au repos, aucune zone ne porte masque, filtre ni transform.
+  Amendement v44 (arbitrage Vincent, 27/08/2026) : LA LECTURE entre dans
+  la liste. Le dossier se feuillette seul : la barre vin de l'élément
+  actif avance en 4 s puis la zone suivante prend la mise au point.
+  Quatre garde-fous, NON NÉGOCIABLES : un clic de l'utilisateur arrête
+  la lecture définitivement ; UN SEUL TOUR puis arrêt sur la page de
+  garde (jamais de boucle, ce n'est pas un carrousel) ; pause quand la
+  section sort du champ ; désactivée en prefers-reduced-motion. La durée
+  vit en double (DUREE_LECTURE dans Dossier.tsx, animation .recu-prog
+  dans globals.css) : changer l'une sans l'autre désynchronise.
+  Leçon de code apprise en la posant : Reveal pose « vis » à la main sur
+  le DOM ; un className recalculé par React sur le même élément
+  l'efface. Les états qui varient se portent en attribut data-, jamais
+  dans le className d'un élément .rev.
   La liste reste fermée : tout nouveau mouvement demande un arbitrage.
 - Section dossier, formes des zones (v23, carte blanche) : les sept zones ont
   chacune une FORME propre, c'est la règle. Elles se ressemblaient toutes et
