@@ -72,13 +72,14 @@ export default function Hero() {
             descendu en légende, arbitrage Vincent du 27/08 : la première
             ligne qualifiante fait partie de la composition. */}
         <p className="eyebrow mono fade f2">{h.eyebrow}</p>
-        {/* v41 : DEUX lignes, plus trois — le mot accentué ne prend plus
-            sa ligne seul, il ouvre la seconde (arbitrage Vincent, 27/08). */}
+        {/* v42 : deux lignes, l'accent vin sur le verbe du métier au
+            milieu de la première (arbitrage Vincent, 27/08). */}
         <h1 className="fade f3">
-          {grand(h.titreLigne1)}
+          {grand(h.titreAvant)}
+          <em>{grand(h.titreItalique)}</em>
+          {grand(h.titreApres)}
           <br />
-          <em>{grand(h.titreLigne2Italique)}</em>
-          {grand(h.titreLigne3)}
+          {grand(h.titreLigne2)}
         </h1>
         <p className="hero-sub fade f4">{h.sousTitre}</p>
         <div className="cta-row fade f4">

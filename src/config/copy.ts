@@ -40,13 +40,15 @@ export const copy = typoDeep({
     eyebrow: "Origination sell-side · PME françaises",
     /* v40 (arbitrage Vincent, 27/08) : « Nous lisons les actes que
        personne n'ouvre » est mort — l'accroche dit la répartition du
-       travail, pas la méthode. L'accent tombe sur « vous » : le client.
-       v41 (arbitrage Vincent, 27/08) : DEUX lignes découpées à la main,
-       le mot accentué ouvre la seconde au lieu d'occuper la sienne seul.
-       La ligne 3 est la suite de la ligne 2, elle commence par l'espace. */
-    titreLigne1: "Nous trouvons les dossiers,",
-    titreLigne2Italique: "vous",
-    titreLigne3: " les traitez.",
+       travail, pas la méthode. v41 : DEUX lignes.
+       v42 (arbitrage Vincent, 27/08) : le « vous » en vin faisait
+       bizarre — l'accent passe sur le verbe du métier, « détectons »,
+       au milieu de la première ligne. Les clés suivent la structure :
+       avant + italique + après forment la ligne 1, ligne2 est entière. */
+    titreAvant: "Nous ",
+    titreItalique: "détectons",
+    titreApres: " les dossiers,",
+    titreLigne2: "vous les traitez.",
     /* v40 : « qui en sort » renvoyait aux actes de l'ancienne accroche,
        l'antécédent a disparu avec elle. Le sous-titre raccorde : « les »,
        ce sont les dossiers du titre. */
