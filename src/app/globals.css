@@ -1686,18 +1686,17 @@ footer a:hover {
   padding: clamp(60px, 9vw, 128px) 0;
   border-top: 1px solid var(--line-soft);
 }
-/* la maquette pose une mesure plus courte que le reste du site : c'est
-   elle qui donne à la section son air de planche, on la garde */
-.entonnoir .wrap {
-  max-width: 1100px;
-}
+/* v45 (arbitrage Vincent, 27/08 : titre « empâté », section qui
+   semblait plus étroite que les autres) : la mesure spéciale de 1100px
+   saute, la section reprend le wrap commun, et le titre descend à
+   l'échelle des statements du site, sur UNE ligne — plus de pavé de
+   trois lignes serrées. */
 .ent-h2 {
   font-family: var(--font-familjen), sans-serif;
   font-weight: 400;
-  font-size: clamp(32px, 5vw, 58px);
-  line-height: 1.03;
+  font-size: clamp(28px, 3.8vw, 50px);
+  line-height: 1.12;
   letter-spacing: -0.015em;
-  max-width: 16ch;
   margin-bottom: 14px;
 }
 .ent-h2 em {
@@ -1705,7 +1704,8 @@ footer a:hover {
   color: var(--wine-lift);
 }
 .ent-intro {
-  max-width: 34.8125rem;
+  /* v45 : la mesure s'aligne sur celle des sous-titres du site */
+  max-width: 41.125rem;
   color: var(--txt-2);
   font-size: 16.5px;
   line-height: 1.55;

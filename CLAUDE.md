@@ -289,6 +289,16 @@ trouvé sur vous". Codes attendus : document financier imprimé, pas SaaS IA.
   fichier avec le médaillon proportionné au slogan (900x212 après
   rognage), hauteur 72px. L'alt passe par les variables de marque.
   LogoImbrin (le composant) reste en usage au hero et au footer.
+- Amendement v45 (arbitrage Vincent, 27/08/2026) : LE FILTRE s'aligne.
+  Le titre était « empâté » (trois lignes serrées à 58px sur 16ch) : il
+  passe à l'échelle des statements (50px), sur une ligne, et la mesure
+  spéciale de la section (1100px) saute au profit du wrap commun. Dans
+  les critères, L'ÂGE sort de la liste affichée (le dossier le porte
+  déjà, doublon) et LA DÉTENTION entre à sa place — elle est dans la
+  thèse et manquait. Le vocabulaire « rattrapage » / « veille » est
+  remplacé par LIVRAISONS (première livraison, puis les livraisons
+  suivent les faits), section et FAQ Q3 accordées. « La veille du
+  périmètre » reste dans le corps de l'offre, où elle nomme le service.
 - Interdits définitifs (hérités des itérations rejetées) : ticker, métriques animées,
   count-up, grilles de cards, beam/bordures lumineuses, tilt 3D, spotlight souris, pings,
   glow, dégradés colorés, grid de fond, badges/chips, emojis, icônes décoratives,

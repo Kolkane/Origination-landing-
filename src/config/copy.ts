@@ -278,10 +278,13 @@ export const copy = typoDeep({
         texte:
           "Région et typologie d’entreprises, arrêtées avec vous. C’est lui que nous mesurons, pas un marché théorique.",
       },
+      /* v45 : l'âge sort des critères affichés — le dossier le porte déjà
+         (63 ans), le redire ici faisait doublon. La détention entre à sa
+         place : elle est dans la thèse et manquait à la liste. */
       {
         num: "02",
-        label: "L’âge du dirigeant",
-        texte: "Lu au registre, pas déclaré.",
+        label: "La détention",
+        texte: "Qui tient le capital, quels mouvements de titres. Lu dans les actes, pas déduit d’une base.",
       },
       {
         num: "03",
@@ -305,11 +308,13 @@ export const copy = typoDeep({
        lit dans la page une invitation à partir à l'échéance de son
        engagement. Aucun chiffre ici, ni de stock ni de flux : le stock est
        compté au devis, le flux est constaté, le plancher protège. */
+    /* v45 : « rattrapage » et « veille » sortent du vocabulaire de la
+       section — on parle de LIVRAISONS (arbitrage Vincent, 27/08) */
     bascule1Avant: "Ce que votre périmètre contient déjà forme votre ",
-    bascule1Fort: "rattrapage",
-    bascule1Apres: " : compté au devis, livré dans les premières semaines.",
+    bascule1Fort: "première livraison",
+    bascule1Apres: " : comptée au devis, dans les premières semaines.",
     bascule2:
-      "Ensuite, la veille. Le flux n’est pas promis, il est constaté : quand une situation bascule dans votre périmètre, le dossier suit. Le plancher chiffré au devis vous protège, un mois qui passe dessous n’est pas facturé.",
+      "Ensuite, les livraisons suivent les faits : quand une situation bascule dans votre périmètre, le dossier arrive, vérifié. Le plancher chiffré au devis vous protège, un mois qui passe dessous n’est pas facturé.",
   },
   /* v15 · B1 : trois étapes, pas quatre. L'ancienne « Le dossier
      d'approche » est absorbée par la section qui montre le document,
@@ -489,7 +494,7 @@ export const copy = typoDeep({
       {
         question: "Sous combien de temps les premiers dossiers ?",
         reponse:
-          "Le délai du premier lot vous est annoncé au devis, comme le périmètre et le plancher. Le rattrapage part d’abord, la veille suit, chaque livraison à date annoncée.",
+          "Le délai de la première livraison vous est annoncé au devis, comme le périmètre et le plancher. Les suivantes suivent les faits, chacune à date annoncée.",
       },
       {
         question: "Que se passe-t-il après les trois mois ?",
