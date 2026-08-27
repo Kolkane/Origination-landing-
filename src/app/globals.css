@@ -1815,22 +1815,33 @@ footer a:hover {
   height: 3px;
   background: var(--txt-3);
 }
-/* la sortie latérale : ce qui n'arrive pas sur le bureau */
+/* v46b : l'amorce sous l'étiquette d'entrée, la règle du dispositif */
+.trav-amorce {
+  padding-left: 34px;
+  margin: -8px 0 18px;
+  font-size: 13.5px;
+  line-height: 1.6;
+  color: var(--txt-3);
+  max-width: 30rem;
+}
+/* la note de sortie, rattachée à la marche de la détention : même
+   filet que les marches, léger retrait, en corps et non en capitales */
 .trav-sortie {
   position: relative;
   list-style: none;
-  padding: 10px 0 10px 60px;
-  font-size: 10px;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
+  padding: 12px 0 12px 94px;
+  border-top: 1px solid var(--line-soft);
+  font-size: 13px;
+  line-height: 1.6;
   color: var(--txt-3);
+  max-width: 44rem;
 }
 .trav-sortie::before {
   content: "";
   position: absolute;
   left: 11px;
   top: 50%;
-  width: 38px;
+  width: 70px;
   height: 1px;
   background: rgba(255, 255, 255, 0.2);
 }
@@ -1898,8 +1909,15 @@ footer a:hover {
     padding: 16px 0 14px 30px;
   }
   .trav-entree,
+  .trav-amorce,
   .trav-chute {
     padding-left: 30px;
+  }
+  .trav-sortie {
+    padding-left: 58px;
+  }
+  .trav-sortie::before {
+    width: 36px;
   }
   .ancrage {
     flex-direction: column;

@@ -32,6 +32,8 @@ export default function Entonnoir() {
 
         <div className="trav rev" role="group" aria-label={e.ariaCriteres}>
           <p className="trav-entree mono">{e.entree}</p>
+          {/* v46b : l'amorce dit la règle du dispositif avant les marches */}
+          <p className="trav-amorce">{e.amorce}</p>
           <ol className="portes">
             {/* la trajectoire : une ligne qui se trace du haut vers la
                 pointe, à travers les portes */}
@@ -52,9 +54,10 @@ export default function Entonnoir() {
                   </p>
                   <p className="crit-p">{c.texte}</p>
                 </li>
-                {/* la sortie latérale, entre deux portes : ce qui est
-                    arrêté ne disparaît pas, c'est une information livrée */}
-                {i === 1 && <li className="trav-sortie mono">{e.sortie}</li>}
+                {/* v46b : la note de sortie se rattache à la marche de la
+                    détention (03, index 2) : c'est là que sortent les
+                    filiales et les contrôles déjà basculés */}
+                {i === 2 && <li className="trav-sortie">{e.sortie}</li>}
               </Fragment>
             ))}
           </ol>

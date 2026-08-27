@@ -311,6 +311,16 @@ trouvé sur vous". Codes attendus : document financier imprimé, pas SaaS IA.
   trajectoire (stroke-dashoffset, 1,2 s, une fois, déclenché par la
   classe .in que Reveal pose sur .trav ; état final immédiat en
   prefers-reduced-motion).
+  Amendement v46b (texte de Vincent, 27/08/2026) : CINQ marches, plus
+  quatre — LE DIRIGEANT entre en 02 (« qui dirige, depuis quand, dans
+  quelle configuration »). L'entrée gagne son AMORCE (« Chaque société
+  de votre périmètre descend ces marches. Peu arrivent en bas. »). La
+  note de sortie se RATTACHE à la marche détention (03) : même filet,
+  léger retrait, en corps et non en capitales (« C'est ici que sortent
+  les filiales et les contrôles déjà basculés... »). Le second
+  paragraphe du pied dit désormais que les dossiers sortent au fur et à
+  mesure que la lecture les trouve. Les tirets cadratins du brief ont
+  été transposés en deux-points, règle de charte.
 - Interdits définitifs (hérités des itérations rejetées) : ticker, métriques animées,
   count-up, grilles de cards, beam/bordures lumineuses, tilt 3D, spotlight souris, pings,
   glow, dégradés colorés, grid de fond, badges/chips, emojis, icônes décoratives,

@@ -270,12 +270,16 @@ export const copy = typoDeep({
        des quantités, il n'y en a plus par décision. Cascade de quatre
        critères dans la grammaire du dossier A4 : filets fins, label en
        petites capitales espacées, une phrase en serif par marche. */
-    ariaCriteres: "Les quatre critères du périmètre",
-    /* v46 : LA TRAVERSÉE — la trajectoire d'une société à travers les
-       quatre portes. L'entrée nomme ce qui descend, la sortie latérale
-       montre ce qui n'arrive PAS sur le bureau. */
+    ariaCriteres: "Les cinq critères du périmètre",
+    /* v46b (texte de Vincent, 27/08) : l'entrée gagne son amorce, le
+       dirigeant entre comme marche 02, la note de sortie se rattache à
+       la marche détention. Les tirets cadratins du brief sont transposés
+       en deux-points, règle de charte. */
     entree: "Une société du registre",
-    sortie: "Arrêtée ici : la raison de ne pas appeler, livrée aussi.",
+    amorce:
+      "Chaque société de votre périmètre descend ces marches. Peu arrivent en bas.",
+    sortie:
+      "C’est ici que sortent les filiales et les contrôles déjà basculés. Une société qui sort, sort avec sa raison écrite : la raison de ne pas appeler est livrée aussi.",
     criteres: [
       {
         num: "01",
@@ -283,21 +287,24 @@ export const copy = typoDeep({
         texte:
           "Région et typologie d’entreprises, arrêtées avec vous. C’est lui que nous mesurons, pas un marché théorique.",
       },
-      /* v45 : l'âge sort des critères affichés — le dossier le porte déjà
-         (63 ans), le redire ici faisait doublon. La détention entre à sa
-         place : elle est dans la thèse et manquait à la liste. */
       {
         num: "02",
+        label: "Le dirigeant",
+        texte:
+          "Qui dirige, depuis quand, dans quelle configuration : lu au registre, pas déclaré.",
+      },
+      {
+        num: "03",
         label: "La détention",
         texte: "Qui tient le capital, quels mouvements de titres. Lu dans les actes, pas déduit d’une base.",
       },
       {
-        num: "03",
+        num: "04",
         label: "Le relais",
         texte: "Personne au capital ni aux mandats pour prendre la suite.",
       },
       {
-        num: "04",
+        num: "05",
         label: "Le fait daté",
         texte:
           "Quand il existe : un acte déposé, jamais une intention supposée.",
@@ -319,7 +326,7 @@ export const copy = typoDeep({
     bascule1Fort: "première livraison",
     bascule1Apres: " : comptée au devis, dans les premières semaines.",
     bascule2:
-      "Ensuite, les livraisons suivent les faits : quand une situation bascule dans votre périmètre, le dossier arrive, vérifié. Le plancher chiffré au devis vous protège, un mois qui passe dessous n’est pas facturé.",
+      "Ensuite, les dossiers sortent au fur et à mesure que la lecture les trouve : quand une situation bascule dans votre périmètre, le dossier suit, vérifié. Le plancher chiffré au devis vous protège, un mois qui passe dessous n’est pas facturé.",
   },
   /* v15 · B1 : trois étapes, pas quatre. L'ancienne « Le dossier
      d'approche » est absorbée par la section qui montre le document,
