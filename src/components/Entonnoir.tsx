@@ -145,11 +145,10 @@ export default function Entonnoir() {
             ))}
           </div>
 
-          <p className="toise-chute">
-            {e.bascule1Avant}
-            <b>{e.bascule1Fort}</b>
-            {e.bascule1Apres}
-          </p>
+          <div className="toise-chute">
+            <p>{e.chute1}</p>
+            <p>{e.chute2}</p>
+          </div>
         </div>
 
         <div className="ent-foot rev">

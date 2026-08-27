@@ -1929,14 +1929,15 @@ footer a:hover {
   margin-top: clamp(26px, 3vw, 36px);
   padding-top: 20px;
   border-top: 1px solid var(--line-soft);
+}
+.toise-chute p {
   font-size: 15px;
   line-height: 1.7;
   color: var(--txt-2);
   max-width: 44.75rem;
 }
-.toise-chute b {
-  color: var(--txt);
-  font-weight: 500;
+.toise-chute p + p {
+  margin-top: 12px;
 }
 
 @media (max-width: 720px) {

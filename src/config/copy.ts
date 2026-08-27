@@ -273,9 +273,10 @@ export const copy = typoDeep({
        critères dans la grammaire du dossier A4 : filets fins, label en
        petites capitales espacées, une phrase en serif par marche. */
     ariaCriteres: "Les cinq critères du périmètre",
-    /* v50b : le temps terminal de la toise — la destination de la
-       mesure, compression de bascule1Fort */
-    finLbl: "Première livraison",
+    /* v50d (texte de Vincent, 27/08) : le terminus est LE DOSSIER —
+       une société qui passe les cinq critères devient un dossier,
+       l'unité du produit, pas une fournée. */
+    finLbl: "Le dossier",
     criteres: [
       {
         num: "01",
@@ -318,12 +319,13 @@ export const copy = typoDeep({
        compté au devis, le flux est constaté, le plancher protège. */
     /* v45 : « rattrapage » et « veille » sortent du vocabulaire de la
        section — on parle de LIVRAISONS (arbitrage Vincent, 27/08) */
-    /* v50 : la chute tient en UNE phrase ; l'ancien second paragraphe
-       (plancher, dossiers au fil de la lecture) vit déjà dans la fiche
-       de l'offre et dans la FAQ, il ne se répète plus ici. */
-    bascule1Avant: "Ce que votre périmètre contient déjà forme votre ",
-    bascule1Fort: "première livraison",
-    bascule1Apres: " : comptée au devis, dans les premières semaines.",
+    /* v50d (texte de Vincent, 27/08) : plus de « première livraison »
+       ni de fournée de départ — une lecture continue. Le tiret cadratin
+       du brief est transposé en deux-points, règle de charte. */
+    chute1:
+      "Les dossiers sortent un par un, au fur et à mesure que la lecture les trouve : qu’une situation soit en place depuis des mois dans votre périmètre ou qu’elle vienne de basculer. Même filtre, même exigence, même dossier : il n’y a pas de fournée de départ puis un régime de croisière, il y a une lecture continue de votre périmètre.",
+    chute2:
+      "Ce qu’il contient est compté au devis, avec un plancher chiffré : un mois qui passe dessous n’est pas facturé.",
   },
   /* v15 · B1 : trois étapes, pas quatre. L'ancienne « Le dossier
      d'approche » est absorbée par la section qui montre le document,

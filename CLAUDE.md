@@ -373,6 +373,15 @@ trouvé sur vous". Codes attendus : document financier imprimé, pas SaaS IA.
   horizontal, hauteur en vertical), la pointe regarde vers le bas et la
   destination « Première livraison » reprend sa place au pied de la
   règle.
+  Amendement v50d (texte de Vincent, 27/08/2026) : le terminus devient
+  LE DOSSIER — une société qui passe les cinq critères devient un
+  dossier, l'unité du produit, pas une fournée. Le texte sous la frise
+  est remplacé intégralement : les dossiers sortent UN PAR UN au fil
+  d'une LECTURE CONTINUE (pas de fournée de départ puis un régime de
+  croisière), et le périmètre est compté au devis avec le plancher.
+  « Première livraison » et « rattrapage » sont morts dans cette
+  section. La chute « Combien dans votre région ? » et la note du taux
+  d'écart sont inchangées.
 - Amendement v47 (arbitrage Vincent, 27/08/2026) : L'OFFRE EN DIPTYQUE.
   Inspirée d'une référence externe fournie par Vincent (gabarit d'étude
   de cas), adaptée à la charte : ni pictogrammes, ni statistiques, ni
