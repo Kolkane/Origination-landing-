@@ -365,6 +365,14 @@ trouvé sur vous". Codes attendus : document financier imprimé, pas SaaS IA.
   seule l'aboutissement. L'état fin vit en attribut data-fin : la leçon
   v44 (className recalculé efface le .in de Reveal) a mordu une
   deuxième fois avant d'être appliquée.
+  Amendement v50c (arbitrage Vincent, 27/08/2026) : sous 720px LA FRISE
+  PASSE EN VERTICAL — la règle descend le bord gauche, les crans
+  s'empilent avec leurs labels (la verticale leur rend la place), les
+  graduations deviennent horizontales, la mesure vin descend en hauteur
+  (l'avancée vit dans la variable --toise-avancee, largeur en
+  horizontal, hauteur en vertical), la pointe regarde vers le bas et la
+  destination « Première livraison » reprend sa place au pied de la
+  règle.
 - Amendement v47 (arbitrage Vincent, 27/08/2026) : L'OFFRE EN DIPTYQUE.
   Inspirée d'une référence externe fournie par Vincent (gabarit d'étude
   de cas), adaptée à la charte : ni pictogrammes, ni statistiques, ni

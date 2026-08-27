@@ -1771,13 +1771,17 @@ footer a:hover {
   position: absolute;
   left: 0;
   top: 0;
+  /* v50c : l'avancée vient du composant en variable, largeur ici,
+     hauteur quand la frise passe en vertical */
+  width: var(--toise-avancee, 2px);
   height: 2px;
   background: var(--wine);
   opacity: 0;
 }
 .toise.in .toise-mesure {
   opacity: 1;
-  transition: opacity 0.3s ease-out 1.2s, width 0.6s var(--ease);
+  transition: opacity 0.3s ease-out 1.2s, width 0.6s var(--ease),
+    height 0.6s var(--ease);
 }
 .toise-ligne {
   position: absolute;
@@ -1936,27 +1940,84 @@ footer a:hover {
 }
 
 @media (max-width: 720px) {
+  /* v50c (arbitrage Vincent, 27/08) : LA FRISE PASSE EN VERTICAL.
+     La règle descend le bord gauche, les crans s'empilent avec leurs
+     labels (visibles, la verticale leur rend la place), les
+     graduations deviennent horizontales, la mesure vin descend en
+     hauteur, la pointe regarde vers le bas et la destination reprend
+     sa place au pied de la règle. */
+  .toise-scale {
+    display: block;
+    padding: 4px 0 0 26px;
+  }
+  .toise-ligne {
+    display: none;
+  }
+  .toise-scale::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: -8px;
+    width: 2px;
+    background: rgba(255, 255, 255, 0.28);
+  }
+  .toise-mesure {
+    width: 2px;
+    height: var(--toise-avancee, 2px);
+  }
+  .toise-scale::after {
+    right: auto;
+    left: -3px;
+    top: auto;
+    bottom: -15px;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 7px solid rgba(255, 255, 255, 0.28);
+    border-bottom: none;
+  }
+  .toise[data-fin] .toise-scale::after {
+    border-left-color: transparent;
+    border-top-color: var(--wine);
+  }
   .cran {
-    padding-right: 6px;
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    width: 100%;
+    padding: 9px 0;
+    transform: translateY(4px);
+  }
+  .cran::before {
+    left: -26px;
+    top: 50%;
+    width: 12px;
+    height: 2px;
+    transition: background 0.25s var(--ease), width 0.25s var(--ease);
+  }
+  .cran.actif::before {
+    width: 18px;
+    height: 2px;
+    top: 50%;
+  }
+  .cran-n {
+    margin-bottom: 0;
   }
   .cran-l {
-    display: none;
+    display: block;
   }
-  /* la destination n'a pas la place sur téléphone : la pointe vin
-     qui s'allume porte seule l'aboutissement */
+  /* la destination retrouve sa place : au pied de la règle */
   .cran-fin {
-    display: none;
+    display: block;
+    grid-column: auto;
+    text-align: left;
+    padding: 9px 0 0;
   }
   .td-l {
-    display: block;
-    font-size: 10px;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    color: var(--txt-3);
-    margin-bottom: 6px;
+    display: none;
   }
   .toise-detail {
-    min-height: 7em;
+    min-height: 6em;
   }
 }
 @media (prefers-reduced-motion: reduce) {

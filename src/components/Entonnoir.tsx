@@ -100,12 +100,18 @@ export default function Entonnoir() {
             </svg>
             {/* v50b : la mesure — le trait se remplit de vin jusqu'au
                 cran actif, et jusqu'à la pointe quand elle aboutit */}
+            {/* v50c : l'avancée passe par une variable CSS — largeur en
+                horizontal, hauteur quand la frise devient verticale */}
             <span
               className="toise-mesure"
               aria-hidden="true"
-              style={{
-                width: fin ? "100%" : `calc(${(actif * 100) / (nb + 1)}% + 2px)`,
-              }}
+              style={
+                {
+                  "--toise-avancee": fin
+                    ? "100%"
+                    : `calc(${(actif * 100) / (nb + 1)}% + 2px)`,
+                } as React.CSSProperties
+              }
             />
             {e.criteres.map((c, i) => (
               <button
