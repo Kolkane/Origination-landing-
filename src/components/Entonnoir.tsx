@@ -124,7 +124,8 @@ export default function Entonnoir() {
                 onMouseEnter={() => prendre(i)}
                 onClick={() => prendre(i)}
               >
-                <span className="cran-n mono">{c.num}</span>
+                {/* v51 : plus de numéro imprimé — une règle graduée n'en a
+                    pas besoin, ses graduations font le travail */}
                 <span className="cran-l mono">{c.label}</span>
               </button>
             ))}

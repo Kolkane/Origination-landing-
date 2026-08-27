@@ -17,8 +17,9 @@ export default function Methode() {
         <p className="m-sous rev">{m.sousTitre}</p>
         <div className="m-entrees rev">
           {m.lignes.map((ligne) => (
+            /* v51 : plus de numéros de chrome — trois entrées titrées sur
+               filets n'ont pas besoin d'être comptées */
             <div className="m-entree" key={ligne.num}>
-              <span className="me-n mono">{ligne.num}</span>
               <h3 className="me-t">{grand(ligne.titre)}</h3>
               <p className="me-p">{ligne.texte}</p>
             </div>

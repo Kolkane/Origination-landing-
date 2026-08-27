@@ -382,6 +382,19 @@ trouvé sur vous". Codes attendus : document financier imprimé, pas SaaS IA.
   « Première livraison » et « rattrapage » sont morts dans cette
   section. La chute « Combien dans votre région ? » et la note du taux
   d'écart sont inchangées.
+- Amendement v51 (arbitrage Vincent, 27/08/2026) : LA DÉNUMÉROTATION DU
+  CHROME. Deux familles de chiffres sur la page : les chiffres de
+  CONTENU (prix, ancrage sourcé, spécimen fictif marqué) qui restent,
+  et les chiffres de CHROME (les index de liste 01-05 de la toise,
+  01-03 de la méthode) qui SAUTENT — quinze numéros qui ne portaient
+  aucune information et saturaient la page. Une règle graduée n'a pas
+  besoin de nombres imprimés, ses graduations font le travail ; trois
+  entrées titrées n'ont pas besoin d'être comptées. Les index 00-06 du
+  dossier RESTENT : ils sont fonctionnels (la lecture avance dessus).
+  Et la réponse aux « icônes » envisagées : NON, deux fois tuées par la
+  charte à raison — remplacer du bruit numérique par du bruit
+  symbolique ne désature rien. Aucun chiffre de chrome, aucune icône :
+  des titres, des filets, des graduations.
 - Amendement v47 (arbitrage Vincent, 27/08/2026) : L'OFFRE EN DIPTYQUE.
   Inspirée d'une référence externe fournie par Vincent (gabarit d'étude
   de cas), adaptée à la charte : ni pictogrammes, ni statistiques, ni

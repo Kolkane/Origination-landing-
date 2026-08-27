@@ -1864,14 +1864,6 @@ footer a:hover {
 .toise.in .cran:nth-of-type(5) {
   transition-delay: 1.05s;
 }
-.cran-n {
-  display: block;
-  font-size: 10px;
-  letter-spacing: 0.2em;
-  color: var(--wine);
-  margin-bottom: 5px;
-  font-variant-numeric: tabular-nums;
-}
 .cran-l {
   display: block;
   font-size: 11px;
@@ -2001,9 +1993,6 @@ footer a:hover {
     height: 2px;
     top: 50%;
   }
-  .cran-n {
-    margin-bottom: 0;
-  }
   .cran-l {
     display: block;
   }
@@ -2109,17 +2098,12 @@ footer a:hover {
 }
 .m-entree {
   display: grid;
-  grid-template-columns: 96px minmax(0, 380px) minmax(0, 1fr);
+  grid-template-columns: minmax(0, 380px) minmax(0, 1fr);
   gap: clamp(20px, 3vw, 40px);
   padding: 34px 0 30px;
 }
 .m-entree + .m-entree {
   border-top: 1px solid var(--line-soft);
-}
-.me-n {
-  font-size: 10px;
-  color: var(--txt-3);
-  padding-top: 8px;
 }
 .me-t {
   font-family: var(--font-familjen), sans-serif;
@@ -2140,9 +2124,6 @@ footer a:hover {
     grid-template-columns: minmax(0, 1fr);
     gap: 10px;
     padding: 26px 0 22px;
-  }
-  .me-n {
-    padding-top: 0;
   }
   .me-p {
     padding-top: 0;
