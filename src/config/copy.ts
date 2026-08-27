@@ -264,7 +264,16 @@ export const copy = typoDeep({
        précisément celui que les travaux du secteur donnent pour mauvais
        prédicteur de cession. L'écart 370 000 / 130 000 porte sur l'ensemble
        du marché et n'est jamais rapporté aux 58 000. */
-    ancrage: `Les dirigeants de 58 000 PME comptent transmettre d’ici 2030, sur un marché de 370 000 entreprises. Au rythme actuel, 130 000 aboutiraient.`,
+    /* v48 : l'ancrage passe de la prose aux TROIS COMPTEURS, dans le
+       panneau du diptyque — les seuls grands chiffres du site, et ils
+       sont sourcés. Les légendes gardent les garde-fous : l'énoncé est
+       fondé sur l'INTENTION déclarée, et l'écart 370 000 / 130 000
+       porte sur l'ensemble du marché, jamais rapporté aux 58 000. */
+    ancrageItems: [
+      { n: "58 000", l: "PME dont les dirigeants comptent transmettre d’ici 2030" },
+      { n: "370 000", l: "entreprises sur l’ensemble du marché" },
+      { n: "130 000", l: "aboutiraient au rythme actuel" },
+    ],
     ancrageSource: `Bpifrance Le Lab · CCI France · CMA France · C.R.A · 27 novembre 2025 · ≈ 5 000 réponses`,
     /* refonte 2026-08, second temps : la grammaire « entonnoir » supposait
        des quantités, il n'y en a plus par décision. Cascade de quatre

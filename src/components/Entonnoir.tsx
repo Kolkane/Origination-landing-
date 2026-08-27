@@ -23,14 +23,13 @@ export default function Entonnoir() {
         </h2>
         <p className="ent-intro rev">{e.intro}</p>
 
-        {/* la seule preuve de marché sourcée à un tiers : elle précède
-            les critères, qui sont notre méthode */}
-        <div className="ancrage rev">
-          <p className="ancrage-t">{e.ancrage}</p>
-          <p className="ancrage-s mono">{e.ancrageSource}</p>
-        </div>
-
-        <div className="trav rev" role="group" aria-label={e.ariaCriteres}>
+        {/* v48 : LE DIPTYQUE DU FILTRE (arbitrage Vincent, 27/08) — la
+            traversée à gauche, et à droite le panneau sombre : le grand
+            énoncé du décompte au devis, la note du taux d'écart, et
+            l'ancrage Bpifrance en trois compteurs, les seuls grands
+            chiffres du site, sourcés. */}
+        <div className="fdipt rev">
+          <div className="fd-trav trav" role="group" aria-label={e.ariaCriteres}>
           <p className="trav-entree mono">{e.entree}</p>
           {/* v46b : l'amorce dit la règle du dispositif avant les marches */}
           <p className="trav-amorce">{e.amorce}</p>
@@ -73,16 +72,25 @@ export default function Entonnoir() {
             </p>
             <p className="bascule-t bascule-flux">{e.bascule2}</p>
           </div>
-        </div>
+          </div>
 
-        {/* la chute pleine largeur, puis la note en corps normal : les deux
-            sont ancrées à gauche sur le filet de section */}
-        <div className="ent-foot rev">
-          <p className="ent-kicker">
-            {e.piedAvant}
-            <em>{e.piedItalique}</em>
-          </p>
-          <p className="ent-note">{e.note}</p>
+          {/* le panneau : l'énoncé, la note, et les compteurs sourcés */}
+          <div className="fd-pan">
+            <p className="fd-statement">
+              {e.piedAvant}
+              <em>{e.piedItalique}</em>
+            </p>
+            <p className="fd-note">{e.note}</p>
+            <div className="fd-anc">
+              {e.ancrageItems.map((a) => (
+                <div className="fd-a" key={a.n}>
+                  <p className="fd-a-n">{a.n}</p>
+                  <p className="fd-a-l">{a.l}</p>
+                </div>
+              ))}
+              <p className="ancrage-s mono">{e.ancrageSource}</p>
+            </div>
+          </div>
         </div>
       </div>
     </section>

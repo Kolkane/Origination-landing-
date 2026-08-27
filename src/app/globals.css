@@ -1711,30 +1711,6 @@ footer a:hover {
   line-height: 1.55;
 }
 
-/* ancrage national : la preuve externe, avant l'ordre de grandeur interne */
-.ancrage {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  gap: 28px;
-  flex-wrap: wrap;
-  margin-top: clamp(30px, 4vw, 44px);
-  padding-top: 22px;
-  border-top: 1px solid var(--line-soft);
-  /* v33 · le seul encadré de l'entonnoir à recevoir la mesure de section.
-     Ses deux lignes ne tiennent pas côte à côte, elles passent à la ligne :
-     le filet courait donc 265px au-delà de la plus longue (708px de source
-     dans un encadré de 973px). Borné, il s'arrête 60px après elle.
-     Les PALIERS ne sont pas touchés : leur décroissance est la rhétorique
-     de la section, elle a besoin de toute la largeur. */
-  max-width: var(--mesure);
-}
-.ancrage-t {
-  max-width: 34.0625rem;
-  font-size: 15px;
-  line-height: 1.6;
-  color: var(--txt-2);
-}
 .ancrage-s {
   font-size: 11px;
   letter-spacing: 0.13em;
@@ -1749,8 +1725,75 @@ footer a:hover {
    sortie latérale montre la raison de ne pas appeler, la chute est la
    première livraison. Aucune quantité dessinée. Le vin ne touche
    toujours que les numéros. */
-.trav {
+.fdipt {
+  display: grid;
+  grid-template-columns: minmax(0, 1.08fr) minmax(0, 0.92fr);
   margin-top: clamp(40px, 6vw, 68px);
+  border: 1px solid var(--line-soft);
+}
+.fd-trav {
+  padding: clamp(24px, 3vw, 44px);
+  border-right: 1px solid var(--line-soft);
+}
+/* dans le demi-panneau, la colonne des labels rend de la place au texte */
+.fd-trav .porte {
+  grid-template-columns: minmax(9rem, 200px) minmax(0, 1fr);
+}
+.fd-pan {
+  background: var(--bg-2);
+  padding: clamp(28px, 3.4vw, 52px);
+  display: flex;
+  flex-direction: column;
+}
+.fd-statement {
+  font-family: var(--font-familjen), sans-serif;
+  font-weight: 400;
+  font-size: clamp(24px, 2.5vw, 34px);
+  line-height: 1.18;
+  letter-spacing: -0.01em;
+  max-width: 16ch;
+}
+.fd-statement em {
+  font-style: italic;
+  color: var(--wine-lift);
+}
+.fd-note {
+  margin-top: 18px;
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--txt-2);
+  max-width: 27rem;
+}
+/* les compteurs sourcés, poussés au bas du panneau */
+.fd-anc {
+  margin-top: auto;
+  padding-top: 40px;
+}
+.fd-a {
+  display: grid;
+  grid-template-columns: minmax(0, 150px) minmax(0, 1fr);
+  gap: 18px;
+  align-items: baseline;
+  padding: 12px 0 11px;
+  border-top: 1px solid var(--line-soft);
+}
+.fd-a-n {
+  font-family: var(--font-familjen), sans-serif;
+  font-weight: 400;
+  font-size: clamp(26px, 2.6vw, 36px);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  font-variant-numeric: tabular-nums;
+}
+.fd-a-l {
+  font-size: 12.5px;
+  line-height: 1.5;
+  color: var(--txt-2);
+}
+.fd-anc .ancrage-s {
+  display: block;
+  margin-top: 14px;
+  white-space: normal;
 }
 .trav-entree {
   font-size: 10px;
@@ -1873,37 +1916,23 @@ footer a:hover {
   max-width: var(--mesure);
 }
 
-/* pied de section : la chute pleine largeur, puis la note en corps
-   normal. Fini le flottement bas-droite : les deux lignes sont ancrées
-   à gauche, l'une sous l'autre, sur le filet de section. */
-.ent-foot {
-  margin-top: clamp(30px, 3.4vw, 44px);
-  padding-top: 26px;
-  border-top: 1px solid var(--line);
+@media (max-width: 1040px) {
+  .fdipt {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .fd-trav {
+    border-right: 0;
+    border-bottom: 1px solid var(--line-soft);
+  }
 }
-.ent-kicker {
-  font-family: var(--font-familjen), sans-serif;
-  font-weight: 400;
-  font-size: clamp(19px, 2.4vw, 26px);
-  line-height: 1.25;
-  letter-spacing: -0.01em;
-}
-.ent-kicker em {
-  font-style: italic;
-  color: var(--wine-lift);
-}
-.ent-note {
-  margin-top: 14px;
-  font-size: 15px;
-  line-height: 1.7;
-  color: var(--txt-2);
-  max-width: 44.75rem;
-}
-
 @media (max-width: 720px) {
   /* la traversée s'empile : le label au-dessus de sa phrase, la
      trajectoire reste au bord gauche */
-  .porte {
+  /* .fd-trav .porte est plus spécifique que .porte : l'empilement doit
+     le redire à la même spécificité, sinon le texte reste en colonne
+     famélique à côté du label */
+  .porte,
+  .fd-trav .porte {
     grid-template-columns: minmax(0, 1fr);
     gap: 8px;
     padding: 16px 0 14px 30px;
@@ -1918,10 +1947,6 @@ footer a:hover {
   }
   .trav-sortie::before {
     width: 36px;
-  }
-  .ancrage {
-    flex-direction: column;
-    gap: 16px;
   }
   .ancrage-s {
     text-align: left;
