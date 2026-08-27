@@ -256,8 +256,10 @@ export const copy = typoDeep({
     kicker: "Le filtre",
     titreAvant: "Tout un marché, réduit à votre ",
     titreItalique: "périmètre",
+    /* v50 : LA TOISE — l'intro absorbe la sortie (la raison de ne pas
+       appeler) et porte seule tout le récit ; le reste est l'instrument. */
     intro:
-      "Le marché visible est un marché en retard : il ne montre que les dirigeants déjà engagés dans un processus. La valeur est en amont, chez ceux qui n’ont rien annoncé mais dont la situation au registre réunit déjà les conditions. Vous êtes à Paris ; ces dossiers sont en région. Voici comment un périmètre se resserre.",
+      "Le marché visible est un marché en retard : la valeur est chez ceux qui n’ont rien annoncé. Cinq critères, lus au registre, resserrent le vôtre. Peu de sociétés les passent tous, et celles qui sortent, sortent avec leur raison écrite : la raison de ne pas appeler est livrée aussi.",
     /* l'ancrage porte le SOUS-TOTAL PME, pas les 370 000 tous formats : le
        marché d'Imbrin, ce sont les 58 000. L'énoncé est fondé sur l'INTENTION
        déclarée, pas sur l'âge des dirigeants : le critère de l'âge est
@@ -271,15 +273,6 @@ export const copy = typoDeep({
        critères dans la grammaire du dossier A4 : filets fins, label en
        petites capitales espacées, une phrase en serif par marche. */
     ariaCriteres: "Les cinq critères du périmètre",
-    /* v46b (texte de Vincent, 27/08) : l'entrée gagne son amorce, le
-       dirigeant entre comme marche 02, la note de sortie se rattache à
-       la marche détention. Les tirets cadratins du brief sont transposés
-       en deux-points, règle de charte. */
-    entree: "Une société du registre",
-    amorce:
-      "Chaque société de votre périmètre descend ces marches. Peu arrivent en bas.",
-    sortie:
-      "C’est ici que sortent les filiales et les contrôles déjà basculés. Une société qui sort, sort avec sa raison écrite : la raison de ne pas appeler est livrée aussi.",
     criteres: [
       {
         num: "01",
@@ -322,11 +315,12 @@ export const copy = typoDeep({
        compté au devis, le flux est constaté, le plancher protège. */
     /* v45 : « rattrapage » et « veille » sortent du vocabulaire de la
        section — on parle de LIVRAISONS (arbitrage Vincent, 27/08) */
+    /* v50 : la chute tient en UNE phrase ; l'ancien second paragraphe
+       (plancher, dossiers au fil de la lecture) vit déjà dans la fiche
+       de l'offre et dans la FAQ, il ne se répète plus ici. */
     bascule1Avant: "Ce que votre périmètre contient déjà forme votre ",
     bascule1Fort: "première livraison",
     bascule1Apres: " : comptée au devis, dans les premières semaines.",
-    bascule2:
-      "Ensuite, les dossiers sortent au fur et à mesure que la lecture les trouve : quand une situation bascule dans votre périmètre, le dossier suit, vérifié. Le plancher chiffré au devis vous protège, un mois qui passe dessous n’est pas facturé.",
   },
   /* v15 · B1 : trois étapes, pas quatre. L'ancienne « Le dossier
      d'approche » est absorbée par la section qui montre le document,

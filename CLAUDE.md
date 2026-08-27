@@ -335,6 +335,24 @@ trouvé sur vous". Codes attendus : document financier imprimé, pas SaaS IA.
   noscript du layout révèle tous les étages ET trace la ligne (les
   étages cachés hors .in ne doivent jamais dépendre de JavaScript pour
   se lire).
+- Amendement v50 (arbitrage Vincent, 27/08/2026, carte blanche « plus
+  concis, plus sobre, plus différenciant ») : LA TOISE. La traversée
+  verticale (v46-v49) est remplacée par une RÈGLE GRADUÉE horizontale :
+  cinq crans, cinq labels mono, UN SEUL texte de critère visible à la
+  fois (les cinq empilés dans la même cellule de grille, zéro décalage
+  de mise en page). C'est l'instrument de celui qui compte : la
+  métaphore exacte du métier. La section perd la moitié de sa hauteur :
+  l'intro absorbe la raison de ne pas appeler, la chute tient en une
+  phrase (le plancher et le fil des livraisons vivent dans l'offre et
+  la FAQ, plus de redite). MOUVEMENTS (remplacent ceux de la
+  traversée dans la liste fermée) : le trait se trace (1,1 s), les
+  crans se posent en cascade, puis LA LECTURE avance le cran actif
+  toutes les 3,2 s (DUREE_CRAN dans Entonnoir.tsx) — mêmes garde-fous
+  que la lecture du dossier : survol ou clic éteint définitivement, un
+  seul passage puis retour au cran 01, pause hors champ, rien en
+  reduced-motion. Sans JavaScript, le noscript pose tout : crans,
+  trait, et les cinq textes reprennent le flux. Sur téléphone, la
+  règle ne garde que les numéros, le label redescend dans le texte.
 - Amendement v47 (arbitrage Vincent, 27/08/2026) : L'OFFRE EN DIPTYQUE.
   Inspirée d'une référence externe fournie par Vincent (gabarit d'étude
   de cas), adaptée à la charte : ni pictogrammes, ni statistiques, ni

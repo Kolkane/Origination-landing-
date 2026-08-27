@@ -1,17 +1,66 @@
-import { Fragment } from "react";
+"use client";
+
+import { useEffect, useRef, useState } from "react";
 import { copy } from "@/config/copy";
 import { grand } from "@/config/typo";
 
-/* v46 : LA TRAVERSÉE (arbitrage Vincent, 27/08). La liste de critères sur
-   filets disait une énumération ; le filtre est un PASSAGE. La trajectoire
-   d'UNE société du registre descend à travers les quatre critères, posés
-   en portes qu'elle franchit. La ligne se trace à l'entrée dans le champ
-   (classe .in posée par Reveal sur le bloc .trav), la sortie latérale
-   montre ce qui n'arrive PAS sur le bureau (la raison de ne pas appeler),
-   et la chute du dispositif est la première livraison. Aucune quantité
-   dessinée : une trajectoire qualitative, le décompte reste au devis. */
+/* v50 : LA TOISE (arbitrage Vincent, 27/08 — carte blanche : « plus
+   concis, plus sobre, plus différenciant »). La traversée verticale et
+   ses cinq paragraphes affichés d'un bloc sont remplacés par une RÈGLE
+   GRADUÉE horizontale : cinq crans, cinq labels, et UN SEUL texte
+   visible à la fois. C'est l'instrument de celui qui compte, la
+   métaphore exacte du métier (« nous les comptons avant que vous
+   signiez »). La section perd la moitié de sa hauteur.
+
+   La toise se LIT toute seule : le cran actif avance toutes les 3,2 s,
+   une fois, comme la lecture du dossier — mêmes garde-fous : la main de
+   l'utilisateur (survol ou clic) éteint la lecture définitivement, un
+   seul passage, pause hors du champ, désactivée en reduced-motion. */
+
+const DUREE_CRAN = 3200;
+
 export default function Entonnoir() {
   const e = copy.entonnoir;
+  const [actif, setActif] = useState(0);
+  const [lecture, setLecture] = useState(true);
+  const [enVue, setEnVue] = useState(false);
+  const toiseRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      setLecture(false);
+    }
+  }, []);
+
+  useEffect(() => {
+    const el = toiseRef.current;
+    if (!el) return;
+    const io = new IntersectionObserver(
+      (entrees) => entrees.forEach((en) => setEnVue(en.isIntersecting)),
+      { threshold: 0.4 }
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
+
+  useEffect(() => {
+    if (!lecture || !enVue) return;
+    const t = setTimeout(() => {
+      if (actif >= e.criteres.length - 1) {
+        setLecture(false);
+        setActif(0);
+      } else {
+        setActif(actif + 1);
+      }
+    }, DUREE_CRAN);
+    return () => clearTimeout(t);
+  }, [lecture, enVue, actif, e.criteres.length]);
+
+  /* la main prime : survol ou clic, la lecture s'éteint pour de bon */
+  function prendre(i: number) {
+    setLecture(false);
+    setActif(i);
+  }
 
   return (
     <section className="entonnoir" id="filtre">
@@ -23,60 +72,56 @@ export default function Entonnoir() {
         </h2>
         <p className="ent-intro rev">{e.intro}</p>
 
-        {/* la seule preuve de marché sourcée à un tiers : elle précède
-            les critères, qui sont notre méthode */}
+        {/* la seule preuve de marché sourcée à un tiers */}
         <div className="ancrage rev">
           <p className="ancrage-t">{e.ancrage}</p>
           <p className="ancrage-s mono">{e.ancrageSource}</p>
         </div>
 
-        <div className="trav rev" role="group" aria-label={e.ariaCriteres}>
-          <p className="trav-entree mono">{e.entree}</p>
-          {/* v46b : l'amorce dit la règle du dispositif avant les marches */}
-          <p className="trav-amorce">{e.amorce}</p>
-          <ol className="portes">
-            {/* la trajectoire : une ligne qui se trace du haut vers la
-                pointe, à travers les portes */}
+        <div className="toise rev" ref={toiseRef}>
+          <div className="toise-scale" role="group" aria-label={e.ariaCriteres}>
+            {/* la règle : un trait qui se trace, une pointe à droite */}
             <svg
-              className="trav-ligne"
+              className="toise-ligne"
               aria-hidden="true"
               preserveAspectRatio="none"
-              viewBox="0 0 2 100"
+              viewBox="0 0 100 2"
             >
-              <line x1="1" y1="0" x2="1" y2="100" pathLength="1" />
+              <line x1="0" y1="1" x2="100" y2="1" pathLength="1" />
             </svg>
             {e.criteres.map((c, i) => (
-              <Fragment key={c.num}>
-                <li className="porte">
-                  <p className="crit-l mono">
-                    <span className="crit-n">{c.num}</span>
-                    {c.label}
-                  </p>
-                  <p className="crit-p">{c.texte}</p>
-                </li>
-                {/* v46b : la note de sortie se rattache à la marche de la
-                    détention (03, index 2) : c'est là que sortent les
-                    filiales et les contrôles déjà basculés */}
-                {i === 2 && <li className="trav-sortie">{e.sortie}</li>}
-              </Fragment>
+              <button
+                type="button"
+                key={c.num}
+                className={`cran${i === actif ? " actif" : ""}`}
+                aria-current={i === actif ? "true" : undefined}
+                onMouseEnter={() => prendre(i)}
+                onClick={() => prendre(i)}
+              >
+                <span className="cran-n mono">{c.num}</span>
+                <span className="cran-l mono">{c.label}</span>
+              </button>
             ))}
-          </ol>
-          {/* la chute du dispositif : ce qui arrive au bout de la ligne.
-              Le stock et le flux restent distincts — sans cette
-              distinction, un prospect divise le stock par le rythme
-              mensuel et conclut que trois mois lui suffisent. */}
-          <div className="trav-chute">
-            <p className="bascule-t">
-              {e.bascule1Avant}
-              <b>{e.bascule1Fort}</b>
-              {e.bascule1Apres}
-            </p>
-            <p className="bascule-t bascule-flux">{e.bascule2}</p>
           </div>
+
+          {/* un seul texte à la fois : les cinq sont empilés dans la même
+              cellule, aucun décalage de mise en page au changement */}
+          <div className="toise-detail">
+            {e.criteres.map((c, i) => (
+              <p className={`td${i === actif ? " lit" : ""}`} key={c.num}>
+                <span className="td-l mono">{c.label}</span>
+                {c.texte}
+              </p>
+            ))}
+          </div>
+
+          <p className="toise-chute">
+            {e.bascule1Avant}
+            <b>{e.bascule1Fort}</b>
+            {e.bascule1Apres}
+          </p>
         </div>
 
-        {/* la chute pleine largeur, puis la note en corps normal : les deux
-            sont ancrées à gauche sur le filet de section */}
         <div className="ent-foot rev">
           <p className="ent-kicker">
             {e.piedAvant}
