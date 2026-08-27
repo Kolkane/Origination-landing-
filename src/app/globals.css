@@ -1759,8 +1759,25 @@ footer a:hover {
 .toise-scale {
   position: relative;
   display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
+  /* v50b : six temps — cinq crans et la destination sous la pointe */
+  grid-template-columns: repeat(6, minmax(0, 1fr));
   padding-top: 14px;
+}
+/* v50b : LA MESURE — le trait se remplit de vin jusqu'au cran actif
+   pendant la lecture, et jusqu'à la pointe quand elle aboutit. La
+   largeur vient du composant (état actif / fin), le vin plein est le
+   vin des filets, conforme charte. */
+.toise-mesure {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 2px;
+  background: var(--wine);
+  opacity: 0;
+}
+.toise.in .toise-mesure {
+  opacity: 1;
+  transition: opacity 0.3s ease-out 1.2s, width 0.6s var(--ease);
 }
 .toise-ligne {
   position: absolute;
@@ -1863,6 +1880,23 @@ footer a:hover {
 .cran:hover .cran-l {
   color: var(--txt);
 }
+/* v50b : la mémoire du passage — les crans déjà mesurés restent d'un
+   cran plus clairs que les crans à venir */
+.cran.passe:not(.actif) .cran-l {
+  color: var(--txt-2);
+}
+/* le temps terminal : la destination, alignée sous la pointe */
+.cran-fin {
+  grid-column: 6;
+  text-align: right;
+  padding: 16px 0 2px;
+}
+.toise[data-fin] .cran-fin .cran-l {
+  color: var(--txt);
+}
+.toise[data-fin] .toise-scale::after {
+  border-left-color: var(--wine);
+}
 /* un seul texte à la fois, tous empilés dans la même cellule de
    grille : le changement ne décale jamais la mise en page */
 .toise-detail {
@@ -1908,6 +1942,11 @@ footer a:hover {
   .cran-l {
     display: none;
   }
+  /* la destination n'a pas la place sur téléphone : la pointe vin
+     qui s'allume porte seule l'aboutissement */
+  .cran-fin {
+    display: none;
+  }
   .td-l {
     display: block;
     font-size: 10px;
@@ -1926,7 +1965,8 @@ footer a:hover {
     stroke-dashoffset: 0;
   }
   .cran,
-  .toise-scale::after {
+  .toise-scale::after,
+  .toise-mesure {
     opacity: 1 !important;
     transform: none !important;
     transition: none !important;

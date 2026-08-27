@@ -353,6 +353,18 @@ trouvé sur vous". Codes attendus : document financier imprimé, pas SaaS IA.
   reduced-motion. Sans JavaScript, le noscript pose tout : crans,
   trait, et les cinq textes reprennent le flux. Sur téléphone, la
   règle ne garde que les numéros, le label redescend dans le texte.
+  Amendement v50b (arbitrage Vincent, 27/08/2026, « optimise-la ») : LA
+  MESURE. Le trait se remplit de VIN PLEIN (vin des filets, conforme
+  charte) jusqu'au cran actif pendant la lecture ; les crans passés
+  gardent leur label éclairci (mémoire du passage) ; et la règle a une
+  DESTINATION : un sixième temps sous la pointe, « Première livraison »
+  (finLbl). Quand la lecture franchit le cran 05, le remplissage court
+  jusqu'à la flèche qui passe au vin, le label terminal s'allume, et la
+  mesure RESTE aboutie (état fin acquis, même si la main reprend les
+  crans). Sur téléphone la destination disparaît, la pointe vin porte
+  seule l'aboutissement. L'état fin vit en attribut data-fin : la leçon
+  v44 (className recalculé efface le .in de Reveal) a mordu une
+  deuxième fois avant d'être appliquée.
 - Amendement v47 (arbitrage Vincent, 27/08/2026) : L'OFFRE EN DIPTYQUE.
   Inspirée d'une référence externe fournie par Vincent (gabarit d'étude
   de cas), adaptée à la charte : ni pictogrammes, ni statistiques, ni

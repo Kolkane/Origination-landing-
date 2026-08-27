@@ -273,6 +273,9 @@ export const copy = typoDeep({
        critères dans la grammaire du dossier A4 : filets fins, label en
        petites capitales espacées, une phrase en serif par marche. */
     ariaCriteres: "Les cinq critères du périmètre",
+    /* v50b : le temps terminal de la toise — la destination de la
+       mesure, compression de bascule1Fort */
+    finLbl: "Première livraison",
     criteres: [
       {
         num: "01",

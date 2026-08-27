@@ -23,8 +23,13 @@ export default function Entonnoir() {
   const e = copy.entonnoir;
   const [actif, setActif] = useState(0);
   const [lecture, setLecture] = useState(true);
+  /* v50b : la mesure aboutit — après le cran 05, le remplissage court
+     jusqu'à la pointe et y RESTE. L'état est acquis une fois pour
+     toutes, même si la main reprend les crans ensuite. */
+  const [fin, setFin] = useState(false);
   const [enVue, setEnVue] = useState(false);
   const toiseRef = useRef<HTMLDivElement>(null);
+  const nb = e.criteres.length;
 
   useEffect(() => {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
@@ -46,15 +51,17 @@ export default function Entonnoir() {
   useEffect(() => {
     if (!lecture || !enVue) return;
     const t = setTimeout(() => {
-      if (actif >= e.criteres.length - 1) {
+      if (actif >= nb - 1) {
+        /* la mesure est prise : la lecture s'arrête sur la pointe,
+           le dernier texte reste affiché */
+        setFin(true);
         setLecture(false);
-        setActif(0);
       } else {
         setActif(actif + 1);
       }
     }, DUREE_CRAN);
     return () => clearTimeout(t);
-  }, [lecture, enVue, actif, e.criteres.length]);
+  }, [lecture, enVue, actif, nb]);
 
   /* la main prime : survol ou clic, la lecture s'éteint pour de bon */
   function prendre(i: number) {
@@ -78,7 +85,9 @@ export default function Entonnoir() {
           <p className="ancrage-s mono">{e.ancrageSource}</p>
         </div>
 
-        <div className="toise rev" ref={toiseRef}>
+        {/* l'état fin vit en data- : un className recalculé effacerait le
+            .in posé par Reveal (leçon v44, déjà consignée, déjà mordu) */}
+        <div className="toise rev" data-fin={fin ? "" : undefined} ref={toiseRef}>
           <div className="toise-scale" role="group" aria-label={e.ariaCriteres}>
             {/* la règle : un trait qui se trace, une pointe à droite */}
             <svg
@@ -89,11 +98,22 @@ export default function Entonnoir() {
             >
               <line x1="0" y1="1" x2="100" y2="1" pathLength="1" />
             </svg>
+            {/* v50b : la mesure — le trait se remplit de vin jusqu'au
+                cran actif, et jusqu'à la pointe quand elle aboutit */}
+            <span
+              className="toise-mesure"
+              aria-hidden="true"
+              style={{
+                width: fin ? "100%" : `calc(${(actif * 100) / (nb + 1)}% + 2px)`,
+              }}
+            />
             {e.criteres.map((c, i) => (
               <button
                 type="button"
                 key={c.num}
-                className={`cran${i === actif ? " actif" : ""}`}
+                className={`cran${i === actif ? " actif" : ""}${
+                  i < actif || fin ? " passe" : ""
+                }`}
                 aria-current={i === actif ? "true" : undefined}
                 onMouseEnter={() => prendre(i)}
                 onClick={() => prendre(i)}
@@ -102,6 +122,10 @@ export default function Entonnoir() {
                 <span className="cran-l mono">{c.label}</span>
               </button>
             ))}
+            {/* le temps terminal : la destination de la mesure */}
+            <p className="cran-fin">
+              <span className="cran-l mono">{e.finLbl}</span>
+            </p>
           </div>
 
           {/* un seul texte à la fois : les cinq sont empilés dans la même
