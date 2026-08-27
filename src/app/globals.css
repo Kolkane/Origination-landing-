@@ -1743,29 +1743,106 @@ footer a:hover {
   white-space: nowrap;
 }
 
-/* la cascade : quatre critères sur filets, grammaire du dossier A4.
-   Le vin ne touche que le numéro, même vocabulaire que .recu-idx (index
-   du dossier, vin plein sur mono 11px). Aucune animation propre : la
-   cascade entre par le .rev commun, le déploiement des barres est mort
-   avec elles. */
-.criteres {
-  list-style: none;
-  margin: clamp(40px, 6vw, 68px) 0 0;
-  padding: 0;
-  border-top: 1px solid var(--line);
+/* v46 : LA TRAVERSÉE. La trajectoire d'UNE société du registre descend
+   à travers les quatre critères, posés en portes. La ligne se trace à
+   l'entrée dans le champ (classe .in posée par Reveal sur .trav), la
+   sortie latérale montre la raison de ne pas appeler, la chute est la
+   première livraison. Aucune quantité dessinée. Le vin ne touche
+   toujours que les numéros. */
+.trav {
+  margin-top: clamp(40px, 6vw, 68px);
 }
-.crit {
+.trav-entree {
+  font-size: 10px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--txt-3);
+  padding-left: 34px;
+  margin-bottom: 16px;
+}
+.portes {
+  position: relative;
+  list-style: none;
+  margin: 0;
+  padding: 0 0 30px;
+}
+/* la trajectoire : remonte de 28px pour naître sous l'étiquette
+   d'entrée, et s'arrête sur la pointe */
+.trav-ligne {
+  position: absolute;
+  left: 10px;
+  top: -28px;
+  width: 2px;
+  height: calc(100% + 28px);
+  overflow: visible;
+}
+.trav-ligne line {
+  stroke: rgba(255, 255, 255, 0.28);
+  stroke-width: 2;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+}
+.trav.in .trav-ligne line {
+  stroke-dashoffset: 0;
+  transition: stroke-dashoffset 1.2s ease-out 0.15s;
+}
+/* la pointe : la ligne aboutit à la chute */
+.portes::after {
+  content: "";
+  position: absolute;
+  left: 6px;
+  bottom: -2px;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 7px solid rgba(255, 255, 255, 0.28);
+}
+.porte {
+  position: relative;
   display: grid;
-  /* le rail du gabarit A4 : 29 % de la ligne pour le label, le reste
-     pour la phrase. Le plancher en rem garde le label lisible quand la
-     colonne se resserre. */
-  grid-template-columns: minmax(11.5rem, 29%) 1fr;
+  grid-template-columns: minmax(11rem, 330px) minmax(0, 1fr);
   gap: clamp(20px, 4vw, 56px);
   align-items: baseline;
-  padding: 20px 0;
-}
-.crit + .crit {
+  padding: 22px 0 20px 34px;
   border-top: 1px solid var(--line-soft);
+}
+/* la porte : le segment plein qui barre la trajectoire */
+.porte::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: -2px;
+  width: 24px;
+  height: 3px;
+  background: var(--txt-3);
+}
+/* la sortie latérale : ce qui n'arrive pas sur le bureau */
+.trav-sortie {
+  position: relative;
+  list-style: none;
+  padding: 10px 0 10px 60px;
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--txt-3);
+}
+.trav-sortie::before {
+  content: "";
+  position: absolute;
+  left: 11px;
+  top: 50%;
+  width: 38px;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.2);
+}
+.trav-chute {
+  margin-top: 26px;
+  padding-left: 34px;
+}
+@media (prefers-reduced-motion: reduce) {
+  .trav-ligne line {
+    transition: none !important;
+    stroke-dashoffset: 0;
+  }
 }
 .crit-l {
   font-size: 11px;
@@ -1813,11 +1890,16 @@ footer a:hover {
 }
 
 @media (max-width: 720px) {
-  /* la cascade s'empile : le label au-dessus de sa phrase */
-  .crit {
-    grid-template-columns: 1fr;
+  /* la traversée s'empile : le label au-dessus de sa phrase, la
+     trajectoire reste au bord gauche */
+  .porte {
+    grid-template-columns: minmax(0, 1fr);
     gap: 8px;
-    padding: 16px 0;
+    padding: 16px 0 14px 30px;
+  }
+  .trav-entree,
+  .trav-chute {
+    padding-left: 30px;
   }
   .ancrage {
     flex-direction: column;

@@ -299,6 +299,18 @@ trouvé sur vous". Codes attendus : document financier imprimé, pas SaaS IA.
   remplacé par LIVRAISONS (première livraison, puis les livraisons
   suivent les faits), section et FAQ Q3 accordées. « La veille du
   périmètre » reste dans le corps de l'offre, où elle nomme le service.
+- Amendement v46 (arbitrage Vincent, 27/08/2026) : LA TRAVERSÉE. La
+  liste de critères sur filets disait une énumération ; le filtre est un
+  PASSAGE. La trajectoire d'UNE société du registre descend à travers
+  les quatre critères posés en PORTES (segments pleins qui barrent la
+  ligne), avec une SORTIE LATÉRALE entre les portes 02 et 03 (« arrêtée
+  ici : la raison de ne pas appeler, livrée aussi ») et une POINTE qui
+  aboutit sur la première livraison, devenue la chute du dispositif.
+  Aucune quantité dessinée : trajectoire qualitative, le décompte reste
+  au devis. MOUVEMENT ajouté à la liste fermée : le tracé de la
+  trajectoire (stroke-dashoffset, 1,2 s, une fois, déclenché par la
+  classe .in que Reveal pose sur .trav ; état final immédiat en
+  prefers-reduced-motion).
 - Interdits définitifs (hérités des itérations rejetées) : ticker, métriques animées,
   count-up, grilles de cards, beam/bordures lumineuses, tilt 3D, spotlight souris, pings,
   glow, dégradés colorés, grid de fond, badges/chips, emojis, icônes décoratives,

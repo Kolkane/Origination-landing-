@@ -271,6 +271,11 @@ export const copy = typoDeep({
        critères dans la grammaire du dossier A4 : filets fins, label en
        petites capitales espacées, une phrase en serif par marche. */
     ariaCriteres: "Les quatre critères du périmètre",
+    /* v46 : LA TRAVERSÉE — la trajectoire d'une société à travers les
+       quatre portes. L'entrée nomme ce qui descend, la sortie latérale
+       montre ce qui n'arrive PAS sur le bureau. */
+    entree: "Une société du registre",
+    sortie: "Arrêtée ici : la raison de ne pas appeler, livrée aussi.",
     criteres: [
       {
         num: "01",
