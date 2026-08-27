@@ -321,6 +321,20 @@ trouvé sur vous". Codes attendus : document financier imprimé, pas SaaS IA.
   paragraphe du pied dit désormais que les dossiers sortent au fur et à
   mesure que la lecture les trouve. Les tirets cadratins du brief ont
   été transposés en deux-points, règle de charte.
+  Le DIPTYQUE du filtre (v48, traversée en panneau gauche + compteurs
+  Bpifrance à droite) a été essayé et ANNULÉ le jour même (arbitrage
+  Vincent : « au final c'est nul ») : ne pas y revenir. La traversée
+  vit PLEINE LARGEUR.
+  Amendement v49 (arbitrage Vincent, 27/08/2026) : LA SÉQUENCE. La mise
+  en valeur du filtre est le JEU du dispositif, pas son cadre : la
+  trajectoire se trace en 2,6 s linéaire et chaque étage s'allume à son
+  passage (entrée, amorce, cinq portes, note de sortie, pointe, chute),
+  délais échelonnés approchant la position des étages — la ligne mène,
+  la synchronisation exacte n'est pas requise. Une fois, à l'entrée
+  dans le champ, état final immédiat en prefers-reduced-motion, et le
+  noscript du layout révèle tous les étages ET trace la ligne (les
+  étages cachés hors .in ne doivent jamais dépendre de JavaScript pour
+  se lire).
 - Amendement v47 (arbitrage Vincent, 27/08/2026) : L'OFFRE EN DIPTYQUE.
   Inspirée d'une référence externe fournie par Vincent (gabarit d'étude
   de cas), adaptée à la charte : ni pictogrammes, ni statistiques, ni
@@ -335,20 +349,6 @@ trouvé sur vous". Codes attendus : document financier imprimé, pas SaaS IA.
   porte avec le préavis. Le gabarit v15-B5/v33 est remplacé :
   MAQUETTE-V15-B5-OFFRE.html et les planches C1-C4 sont des ARCHIVES,
   l'arbitrage v33 (seuil 1390px, colonne du prix) n'a plus d'objet.
-- Amendement v48 (arbitrage Vincent, 27/08/2026) : LE DIPTYQUE DU
-  FILTRE — la référence externe visait cette section-ci, pas l'offre
-  (v47 posée par erreur d'interprétation, conservée sur validation).
-  La traversée passe dans le panneau gauche d'un diptyque encadré ; à
-  droite, le panneau sombre porte le grand énoncé (« Combien dans
-  votre région ? Nous les comptons avant que vous signiez. »), la note
-  du taux d'écart, et L'ANCRAGE BPIFRANCE EN TROIS COMPTEURS (58 000 /
-  370 000 / 130 000 avec légendes et source) : les seuls grands
-  chiffres du site, et ils sont sourcés. Les garde-fous de l'ancrage
-  tiennent : intention déclarée, écart jamais rapporté aux 58 000. Le
-  pied de section (ent-foot) est absorbé par le panneau. Leçon CSS
-  consignée : une règle scopée (.fd-trav .porte) bat la règle mobile
-  (.porte) à toute largeur — l'empilement doit être redit à la même
-  spécificité dans la media query.
 - Interdits définitifs (hérités des itérations rejetées) : ticker, métriques animées,
   count-up, grilles de cards, beam/bordures lumineuses, tilt 3D, spotlight souris, pings,
   glow, dégradés colorés, grid de fond, badges/chips, emojis, icônes décoratives,

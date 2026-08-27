@@ -94,6 +94,10 @@ export default function RootLayout({
                 /* refonte 2026-08 : les sélecteurs .funnel/.step ont disparu
                    avec les barres de l'entonnoir, la cascade passe par .rev */
                 ".rev,.mask,.rule,.c-cell{opacity:1!important;transform:none!important;clip-path:none!important}" +
+                /* v49 : la séquence de la traversée cache ses étages tant
+                   que Reveal n'a pas posé .in ; sans JavaScript ils doivent
+                   se lire, et la trajectoire doit être tracée */
+                ".portes li,.trav-entree,.trav-amorce,.trav-chute{opacity:1!important;transform:none!important}.trav-ligne line{stroke-dashoffset:0!important}.portes::after{opacity:1!important}" +
                 /* le viseur du dossier n'a plus de nav pour changer de zone :
                    la scène repasse en flux normal et les six zones se lisent
                    à la suite, comme un document entier */
