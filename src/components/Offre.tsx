@@ -2,9 +2,14 @@ import { brand } from "@/config/brand";
 import { copy } from "@/config/copy";
 import { grand } from "@/config/typo";
 
-/* v15 · B5 : un plat principal et un complément. Ce ne sont pas deux offres
-   égales, et la structure le dit avant le texte : un bloc massif, puis une
-   bande fine. Les deux ne sont donc plus une liste qu'on parcourt. */
+/* v47 : L'OFFRE EN DIPTYQUE (arbitrage Vincent, 27/08). À gauche LA FICHE
+   du devis, sur papier : le nom, le lead, puis les clauses tabulées sur
+   filets (périmètre, exclusivité, engagement, plancher, veille) et le
+   livrable en pied — la tenue d'un devis, pas d'un pricing de SaaS. À
+   droite LE PANNEAU sombre : le prix, l'arithmétique, et le grand énoncé
+   « pas de commission » à l'échelle display — notre contrepartie honnête
+   à la citation client des gabarits d'études de cas. Le mandat de
+   recherche reste une bande fine dessous. */
 export default function Offre() {
   const o = copy.offre;
   const p = o.principal;
@@ -22,30 +27,49 @@ export default function Offre() {
           <p className="b-def-t">{o.definition.texte}</p>
         </div>
 
-        {/* ---------- le plat principal ---------- */}
-        <div className="primaire rev" id={p.ancre}>
-          <h3 className="p-nom mono">{p.nom}</h3>
-          <p className="p-lead">{p.lead}</p>
-
-          <div className="p-tarif">
-            <p className="p-chiffre">{p.prix}</p>
-            <p className="p-meta mono">
-              <b>{p.metaFort}</b>
-              {p.metaSuite}
-              <br />
-              {p.metaLigne2}
+        {/* ---------- le diptyque ---------- */}
+        <div className="dipt rev" id={p.ancre}>
+          <div className="fiche-o">
+            <h3 className="fo-nom mono">{p.nom}</h3>
+            <p className="fo-lead">{p.lead}</p>
+            <ul className="fo-rows">
+              {p.fiche.rows.map((r) => (
+                <li key={r.k}>
+                  <span className="fo-k mono">{r.k}</span>
+                  <span className="fo-v">{r.v}</span>
+                </li>
+              ))}
+            </ul>
+            <p className="fo-livrable">
+              <span className="fo-k mono">{p.fiche.livrableLbl}</span>
+              <span className="fo-v">
+                <b>{p.fiche.livrable}</b>
+              </span>
             </p>
+            <p className="fo-note">{p.fiche.note}</p>
           </div>
 
-          {/* l'arithmétique posée à la place du prospect : le prix mensuel
-              ramené à l'année, face à ce qu'il sait déjà valoir chez lui */}
-          <p className="p-arith">{p.arithmetique}</p>
-
-          {p.corps.map((para) => (
-            <p className="p-corps" key={para}>
-              {para}
+          <div className="panneau">
+            <p className="pan-chiffre">{p.prix}</p>
+            <p className="pan-meta mono">
+              <b>{p.metaFort}</b>
+              {p.metaSuite}
             </p>
-          ))}
+            {/* l'arithmétique posée à la place du prospect : le prix
+                mensuel ramené à l'année, face à ce qu'il sait déjà
+                valoir chez lui */}
+            <p className="pan-arith">{p.arithmetique}</p>
+            <p className="pan-statement">{grand(o.pied.fort)}</p>
+            <p className="pan-suite">{o.pied.suite}</p>
+            <a
+              className="cta mono"
+              href={brand.CALENDLY_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {o.cta}
+            </a>
+          </div>
         </div>
 
         {/* ---------- le complément ---------- */}
@@ -60,21 +84,6 @@ export default function Offre() {
               {s.metaLigne2}
             </p>
           </div>
-        </div>
-
-        <div className="b-fin rev">
-          <p className="b-pied">
-            <b>{o.pied.fort}</b>
-            {o.pied.suite}
-          </p>
-          <a
-            className="cta mono"
-            href={brand.CALENDLY_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            {o.cta}
-          </a>
         </div>
       </div>
     </section>

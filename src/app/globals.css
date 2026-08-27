@@ -2059,85 +2059,150 @@ footer a:hover {
   max-width: 47.5625rem;
 }
 
-/* ---------- le plat principal ---------- */
-.primaire {
-  position: relative;
+/* ---------- le diptyque (v47) ---------- */
+/* La fiche du devis sur papier, le panneau du prix sur l'encre.
+   Inspiré d'une référence externe fournie par Vincent (gabarit
+   d'étude de cas), adaptée à la charte : ni pictogrammes, ni
+   statistiques, ni témoignage. Les labels de la fiche sont au vin
+   plein : on est sur papier, 6,8:1. Le grand énoncé du panneau
+   (« pas de commission ») est notre contrepartie honnête à la
+   citation client de la référence. Remplace le gabarit v15-B5/v33 ;
+   MAQUETTE-V15-B5-OFFRE.html et les planches C1-C4 sont des
+   ARCHIVES. */
+.dipt {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   margin-top: clamp(56px, 7vw, 92px);
-  padding-top: clamp(34px, 3.6vw, 48px);
-  border-top: 1px solid var(--line);
+  border: 1px solid var(--line-soft);
 }
-/* la seule touche de vin de la section, sur le bloc qui compte */
-.primaire::before {
-  content: "";
-  position: absolute;
-  top: -1px;
-  left: 0;
-  width: 56px;
-  height: 1px;
-  background: var(--wine);
+.dipt[id] {
+  scroll-margin-top: clamp(32px, 8vh, 90px);
 }
-.p-nom {
-  font-weight: 500;
-  font-size: 15px;
-  letter-spacing: 0.22em;
+.fiche-o {
+  background: var(--paper);
+  color: var(--ink);
+  padding: clamp(28px, 3.4vw, 52px);
+}
+.fo-nom {
+  font-size: 12.5px;
+  letter-spacing: 0.24em;
   text-transform: uppercase;
-  color: var(--txt);
-  margin-bottom: 18px;
+  color: var(--ink-2);
 }
-.p-lead {
-  font-size: clamp(16px, 1.35vw, 18.5px);
+.fo-lead {
+  margin-top: 18px;
+  font-size: 15.5px;
+  line-height: 1.65;
+  color: var(--ink);
+  max-width: 34rem;
+}
+.fo-rows {
+  list-style: none;
+  margin: 26px 0 0;
+  padding: 0;
+  border-top: 1px solid var(--ink-line-2);
+}
+.fo-rows li,
+.fo-livrable {
+  display: grid;
+  grid-template-columns: minmax(0, 130px) minmax(0, 1fr);
+  gap: clamp(16px, 2vw, 28px);
+  padding: 12px 0 11px;
+  border-bottom: 1px solid var(--ink-line);
+}
+.fo-k {
+  font-size: 9px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--wine);
+  padding-top: 3px;
+}
+.fo-v {
+  font-size: 13.5px;
   line-height: 1.55;
-  color: var(--txt);
-  max-width: 40.75rem;
+  color: var(--ink);
 }
-
-/* le prix domine son espace. La métadonnée passe à droite du nombre, en
-   mono tertiaire : elle informe, elle ne le concurrence plus. */
-.p-tarif {
+.fo-v b {
+  font-weight: 500;
+}
+.fo-livrable {
+  border-bottom: 1.5px solid var(--ink);
+}
+.fo-note {
+  margin-top: 16px;
+  font-size: 11px;
+  line-height: 1.6;
+  color: var(--ink-3);
+}
+.panneau {
+  background: var(--bg-2);
+  padding: clamp(28px, 3.4vw, 52px);
   display: flex;
-  align-items: baseline;
-  gap: clamp(24px, 3.4vw, 52px);
-  flex-wrap: wrap;
-  margin-top: clamp(38px, 4.4vw, 58px);
+  flex-direction: column;
 }
-/* MESURÉ (v33) : c'est le plus gros corps de la page, donc l'endroit où une
-   chaîne insécable coûte le plus cher. Depuis la règle R7 de typo.ts,
-   « 2 000 € HT » est un seul jeton indivisible.
-   En une colonne : 214,0px à 48px, le plancher du clamp, dans un conteneur
-   de 276px à 320px de viewport, soit 62px de marge. Il tient jusqu'à 258px
-   de viewport, sous tout appareil réel.
-   En deux colonnes : 410,2px à 92px, le plafond du clamp, dans une colonne
-   qui vaut le conteneur moins 768px de mesure et 72px de gouttière. Elle
-   n'atteint 410px qu'à partir de 1390px de viewport — d'où le point de
-   bascule de la grille ci-dessous, mesuré et non choisi.
-   Si le prix gagne un chiffre, compter environ 55px de plus à 92px et
-   revenir vérifier les deux cas. */
-.p-chiffre {
+.pan-chiffre {
   font-family: var(--font-familjen), sans-serif;
   font-weight: 400;
-  font-size: clamp(48px, 7vw, 92px);
-  line-height: 0.92;
+  font-size: clamp(44px, 5.4vw, 76px);
+  line-height: 0.95;
   letter-spacing: -0.03em;
 }
-.p-meta {
+.pan-meta {
+  margin-top: 14px;
   font-size: 10.5px;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
   color: var(--txt-3);
-  line-height: 2;
-  max-width: 34ch;
 }
-.p-meta b {
+.pan-meta b {
   color: var(--txt-2);
   font-weight: 400;
 }
-.p-corps {
-  font-size: 14.5px;
+.pan-arith {
+  margin-top: 22px;
+  font-size: 14px;
   line-height: 1.7;
   color: var(--txt-2);
-  margin-top: clamp(38px, 4.4vw, 56px);
-  max-width: 48.0625rem;
+  max-width: 30rem;
 }
+/* le grand énoncé, poussé au bas du panneau : il ferme la lecture */
+.pan-statement {
+  margin-top: auto;
+  padding-top: 34px;
+  font-family: var(--font-familjen), sans-serif;
+  font-weight: 400;
+  font-size: clamp(22px, 2.3vw, 31px);
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  max-width: 15ch;
+}
+.pan-suite {
+  margin-top: 14px;
+  font-size: 13px;
+  line-height: 1.65;
+  color: var(--txt-2);
+  max-width: 30rem;
+}
+.panneau .cta {
+  align-self: flex-start;
+}
+
+@media (max-width: 1000px) {
+  .dipt {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .pan-statement {
+    margin-top: 30px;
+  }
+}
+@media (max-width: 640px) {
+  .fo-rows li,
+  .fo-livrable {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 4px;
+  }
+}
+
 /* ---------- le complément ---------- */
 /* une bande, pas un bloc : filet plus fin, corps plus petits, couleurs
    d'un cran en dessous, tout tient sur une seule rangée */
@@ -2184,43 +2249,10 @@ footer a:hover {
   margin-top: 8px;
 }
 
-/* ---------- sortie de section ---------- */
-.b-fin {
-  display: flex;
-  justify-content: space-between;
-  align-items: end;
-  gap: 44px;
-  flex-wrap: wrap;
-  margin-top: clamp(34px, 3.6vw, 46px);
-}
-.b-pied {
-  font-size: 14.5px;
-  line-height: 1.7;
-  color: var(--txt-2);
-  max-width: 40.875rem;
-}
-.b-pied b {
-  color: var(--txt);
-  font-weight: 500;
-}
-/* .cta porte un margin-top de 30px hérité du hero, sans objet ici */
-.b-fin .cta {
-  margin-top: 0;
-  white-space: nowrap;
-}
-
-/* la ligne visée par l'appel secondaire du hero */
-.primaire[id] {
-  scroll-margin-top: clamp(32px, 8vh, 90px);
-}
-
 @media (max-width: 900px) {
   .b-def {
     grid-template-columns: minmax(0, 1fr);
     gap: 10px;
-  }
-  .p-tarif {
-    gap: 18px;
   }
   .secondaire {
     grid-template-columns: minmax(0, 1fr);
@@ -2988,44 +3020,3 @@ footer a:hover {
   text-wrap: balance;
 }
 
-/* ============================================================
-   v33 · L'OFFRE EN DEUX COLONNES. Le bloc principal portait un
-   filet sur 1313px au-dessus d'un corps qui s'arrête à 809px :
-   568px de trait sous du vide, le plus gros écart mesuré de la
-   page. Le tarif existait déjà, posé SOUS le corps ; il monte
-   dans le vide au lieu qu'on rétrécisse le filet. Le corps ne
-   bouge pas d'un pixel, c'est la condition de l'arbitrage.
-
-   1390px et pas 1200px, mesuré au navigateur : la colonne de
-   droite vaut le conteneur moins 768px de mesure et 72px de
-   gouttière, et « 2 000 € HT » lié fait 410,2px à 92px. Elle
-   n'atteint 410px qu'à 1390px. À 1366px il manque 4,4px, à
-   1280px il en manque 72. En dessous, la colonne de gauche
-   passerait en plus sous les 768px et le corps se recomposerait.
-   Les écrans 1366 gardent donc la disposition en une colonne :
-   c'est un moins bon sort que prévu, mais c'est le chiffre.
-   ============================================================ */
-@media (min-width: 1390px) {
-  .primaire {
-    display: grid;
-    grid-template-columns: minmax(0, var(--mesure)) minmax(20rem, 1fr);
-    column-gap: 4.5rem;
-    align-items: start;
-  }
-  /* ::before est en position absolue, il ne devient pas un élément de grille */
-  .primaire > * {
-    grid-column: 1;
-  }
-  .primaire > .p-tarif {
-    grid-column: 2;
-    grid-row: 2;
-    /* en colonne, le prix et sa métadonnée s'empilent : côte à côte ils
-       demanderaient 410 + 52 + 214, soit plus que la colonne ne donne */
-    display: block;
-    margin-top: 6px;
-  }
-  .primaire > .p-tarif .p-meta {
-    max-width: none;
-    margin-top: 20px;
-  }
-}

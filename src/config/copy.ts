@@ -381,20 +381,45 @@ export const copy = typoDeep({
       prix: brand.PRICING.origination.prixPlancher,
       metaFort: `À partir de, ${brand.PRICING.origination.periode}`,
       metaSuite: ", selon le périmètre convenu",
-      metaLigne2: `Engagement ${brand.PRICING.origination.engagement}, puis reconduction mensuelle`,
       /* l'arithmétique posée à la place du prospect, sans un chiffre de
          marché : les « 3 à 5 % sur 5 à 15 M€ » étaient des ordres de
          grandeur non sourcés, retirés à la refonte. La déférence reste :
          c'est lui qui connaît ses honoraires, et aucune fraction n'est
          chiffrée pour ne rien avoir à défendre. */
       arithmetique: `${brand.PRICING.origination.prixPlancher} par mois, soit ${brand.PRICING.origination.prixAnnuel} sur l’année. Vous connaissez vos honoraires de succès : l’année pèse une fraction d’un seul mandat.`,
-      /* un tableau, pas une chaîne : le corps se lit en paragraphes et le
-         composant les rend tels quels. Un seul élément aujourd'hui. */
-      /* « livrées sous 7 jours » est retiré : on annonce une DATE au devis,
-         jamais un délai générique de recalcul (contrainte de production). */
-      corps: [
-        "Le périmètre est arrêté avec vous à l’appel : région, typologie d’entreprises, ce que vous voulez voir détecté. Nous mesurons ce qu’il contient et nous vous l’annonçons au devis, avant tout engagement. Le plancher mensuel y est chiffré, avant votre signature : un mois qui passe sous ce nombre n’est pas facturé. Ce que vous payez chaque mois, c’est la veille du périmètre : les nouvelles bascules vous reviennent vérifiées, à la date annoncée au devis.",
-      ],
+      /* v47 : LE DIPTYQUE — le corps en paragraphe devient la FICHE du
+         devis : les mêmes faits (périmètre, exclusivité, engagement,
+         plancher, veille), tabulés sur filets comme une pièce. Le grand
+         énoncé du pied (« pas de commission ») monte dans le panneau
+         sombre, face au prix. L'engagement quitte la méta du prix : la
+         fiche le porte, avec le préavis de la FAQ. */
+      fiche: {
+        rows: [
+          {
+            k: "Périmètre",
+            v: "Une région, une typologie d’entreprises, arrêtés avec vous à l’appel.",
+          },
+          {
+            k: "Exclusivité",
+            v: "Un seul cabinet servi tant que le contrat court.",
+          },
+          {
+            k: "Engagement",
+            v: `${brand.PRICING.origination.engagement}, puis reconduction mensuelle, un mois de préavis.`,
+          },
+          {
+            k: "Plancher",
+            v: "Chiffré au devis : un mois qui passe dessous n’est pas facturé.",
+          },
+          {
+            k: "Veille",
+            v: "Quand une situation bascule, le dossier suit, vérifié, à date annoncée.",
+          },
+        ],
+        livrableLbl: "Livrable",
+        livrable: "Le dossier d’approche",
+        note: "Le volume de votre périmètre est mesuré et annoncé au devis, avant tout engagement.",
+      },
     },
     complement: {
       nom: "Le mandat de recherche",

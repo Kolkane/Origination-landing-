@@ -321,6 +321,20 @@ trouvé sur vous". Codes attendus : document financier imprimé, pas SaaS IA.
   paragraphe du pied dit désormais que les dossiers sortent au fur et à
   mesure que la lecture les trouve. Les tirets cadratins du brief ont
   été transposés en deux-points, règle de charte.
+- Amendement v47 (arbitrage Vincent, 27/08/2026) : L'OFFRE EN DIPTYQUE.
+  Inspirée d'une référence externe fournie par Vincent (gabarit d'étude
+  de cas), adaptée à la charte : ni pictogrammes, ni statistiques, ni
+  témoignage. À gauche LA FICHE du devis sur papier (clauses tabulées
+  sur filets d'encre, labels au vin plein 6,8:1 : périmètre,
+  exclusivité, engagement, plancher, veille, livrable en pied). À
+  droite LE PANNEAU sombre : le prix, l'arithmétique, et le grand
+  énoncé « Pas de commission sur la transaction, jamais. » à l'échelle
+  display, contrepartie honnête de la citation client de la référence.
+  Le corps en paragraphe de la v15-B5 est ABSORBÉ par la fiche (mêmes
+  faits, tabulés) ; l'engagement quitte la méta du prix, la fiche le
+  porte avec le préavis. Le gabarit v15-B5/v33 est remplacé :
+  MAQUETTE-V15-B5-OFFRE.html et les planches C1-C4 sont des ARCHIVES,
+  l'arbitrage v33 (seuil 1390px, colonne du prix) n'a plus d'objet.
 - Interdits définitifs (hérités des itérations rejetées) : ticker, métriques animées,
   count-up, grilles de cards, beam/bordures lumineuses, tilt 3D, spotlight souris, pings,
   glow, dégradés colorés, grid de fond, badges/chips, emojis, icônes décoratives,
