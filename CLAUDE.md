@@ -395,6 +395,19 @@ trouvé sur vous". Codes attendus : document financier imprimé, pas SaaS IA.
   charte à raison — remplacer du bruit numérique par du bruit
   symbolique ne désature rien. Aucun chiffre de chrome, aucune icône :
   des titres, des filets, des graduations.
+- Amendement v52 (arbitrage Vincent, 27/08/2026) : LA ROTATION DES
+  COULEURS ET LA MORT DES ENGAGEMENTS. Le filtre prend la couleur de
+  la méthode (bg-2, l'encre éclaircie) ; la méthode prend la couleur
+  des engagements (papier #ECE7DF, encre) et devient LA bande claire
+  pleine largeur du site ; la section « Nos engagements » est
+  SUPPRIMÉE (composant, copy, CSS). Ses quatre principes vivent
+  ailleurs et continuent d'y vivre : scores prédictifs dans la méthode
+  02, premier contact et données grises dans la FAQ RGPD, opt-out dans
+  le pied de l'offre, chiffres invérifiables dans la mesure — ne pas
+  les laisser mourir avec la section. Les arbitrages v15-B2 et v17
+  (grille 2×2, plafond 50px du statement des engagements) n'ont plus
+  d'objet ; le plafond de 50px reste la borne des statements du site.
+  MAQUETTE-V15-B2-ENGAGEMENTS.html reste une archive.
 - Amendement v47 (arbitrage Vincent, 27/08/2026) : L'OFFRE EN DIPTYQUE.
   Inspirée d'une référence externe fournie par Vincent (gabarit d'étude
   de cas), adaptée à la charte : ni pictogrammes, ni statistiques, ni

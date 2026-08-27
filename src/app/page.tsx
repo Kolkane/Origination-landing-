@@ -2,7 +2,6 @@ import Analyses from "@/components/Analyses";
 import BarreAction from "@/components/BarreAction";
 import CtaFinal from "@/components/CtaFinal";
 import Dossier from "@/components/Dossier";
-import Engagements from "@/components/Engagements";
 import Entonnoir from "@/components/Entonnoir";
 import Faq from "@/components/Faq";
 import Fondateur from "@/components/Fondateur";
@@ -24,7 +23,10 @@ export default function Home() {
       <Entonnoir />
       <Methode />
       <Offre />
-      <Engagements />
+      {/* v52 : les engagements sont supprimés (arbitrage Vincent, 27/08) —
+          leurs quatre principes vivent déjà ailleurs : scores dans la
+          méthode, premier contact et données grises dans la FAQ RGPD,
+          opt-out dans le pied de l'offre, chiffres dans la mesure. */}
       <Mesure />
       <Fondateur />
       <Analyses />

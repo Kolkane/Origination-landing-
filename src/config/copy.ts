@@ -434,33 +434,10 @@ export const copy = typoDeep({
     },
     cta: CTA,
   },
-  engagements: {
-    kicker: "Nos engagements",
-    statement: "Ce que nous ne faisons pas.",
-    /* l'intro tient la droite de la bande d'en-tête : le titre a été réduit,
-       la place ainsi libérée porte du sens au lieu de rester vide */
-    intro:
-      "Quatre limites que nous nous imposons, et qui font la valeur de ce que nous livrons.",
-    nots: [
-      {
-        fort: "Pas de scores prédictifs inventés.",
-        suite: " Des signaux observables, sourcés, datés.",
-      },
-      {
-        fort: "Pas de contact du patrimoine privé.",
-        suite: " Le premier contact passe toujours par l’entreprise.",
-      },
-      {
-        fort: "Pas de données grises.",
-        suite:
-          " Registres publics et fournisseurs contractualisés. Opt-out définitif honoré, information art. 14 jointe.",
-      },
-      {
-        fort: "Pas de chiffres invérifiables.",
-        suite: " Ce que nous publions, nous le mesurons.",
-      },
-    ],
-  },
+  /* v52 : la section engagements est supprimée (arbitrage Vincent,
+     27/08) — ses quatre principes vivent ailleurs : scores prédictifs
+     dans la méthode, premier contact et données grises dans la FAQ
+     RGPD, opt-out dans le pied de l'offre, chiffres dans la mesure. */
   /* refonte 2026-08 : le « ≈ 1/3 publié depuis l'ouverture » n'était pas
      mesuré, il est mort. Le grand repère « 0 » qui l'avait remplacé est
      mort aussi (arbitrage Vincent, 26/08) : un grand zéro se lit comme du

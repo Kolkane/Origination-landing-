@@ -569,7 +569,6 @@ footer a:hover {
 /* 02 · méthode : colonne étroite, légère élévation */
 .method {
   padding: 120px 0;
-  background: var(--bg-2);
   border-top: 1px solid var(--line-soft);
 }
 /* 06 · fondateur */
@@ -1684,6 +1683,8 @@ footer a:hover {
 
 .entonnoir {
   padding: clamp(60px, 9vw, 128px) 0;
+  /* v52 : la couleur de la methode (arbitrage Vincent, 27/08) */
+  background: var(--bg-2);
   border-top: 1px solid var(--line-soft);
 }
 /* v45 (arbitrage Vincent, 27/08 : titre « empâté », section qui
@@ -2074,7 +2075,27 @@ footer a:hover {
 
 .method {
   padding: clamp(80px, 9vw, 130px) 0;
-  border-top: 1px solid var(--line-soft);
+  /* v52 : la méthode prend la couleur des engagements (papier, encre)
+     et devient la bande claire pleine largeur du site — les
+     engagements sont supprimés (arbitrage Vincent, 27/08). Sur papier,
+     pas de filet de section : la couleur fait la césure. */
+  background: var(--paper);
+  color: var(--ink);
+}
+.method .kicker {
+  color: var(--ink-3);
+}
+.method .m-sous {
+  color: var(--ink-2);
+}
+.method .m-entrees {
+  border-top-color: var(--ink-line-2);
+}
+.method .m-entree + .m-entree {
+  border-top-color: var(--ink-line);
+}
+.method .me-p {
+  color: var(--ink-2);
 }
 .m-statement {
   margin-top: 22px;
@@ -2514,133 +2535,6 @@ footer a:hover {
 }
 .faq .a {
   max-width: 43.25rem;
-}
-
-/* ============================================================
-   v15 · B2, les engagements en manifeste.
-   Reprise de MAQUETTE-V15-B2-ENGAGEMENTS.html, refondue sous le
-   régime 2 (gabarit d'une section existante, décision au brief).
-   Ce qui change et pourquoi :
-   - grille 2×2 à filets en croix au lieu de quatre lignes pleine
-     largeur. La section faisait le double de la hauteur utile.
-   - l'explication passe SOUS son principe. En pleine largeur elle
-     lui faisait face à l'autre bout de la ligne : on lisait deux
-     colonnes indépendantes, pas quatre engagements.
-   - le statement est réduit d'un tiers (76px → 50px de plafond) et
-     n'est donc plus à l'échelle du hero. Il gardait à lui seul près
-     d'un écran de hauteur. La place libérée à sa droite porte
-     l'intro plutôt que du vide.
-   Zéro rouge, inchangé : la section tient par le blanc et les filets.
-   Après la fusion de l'entonnoir, c'est la seule bande claire
-   pleine largeur du site, donc rien ne peut l'annuler.
-   ============================================================ */
-
-.commit {
-  background: var(--paper);
-  color: var(--ink);
-  padding: clamp(64px, 8vw, 108px) 0;
-}
-.commit .wrap {
-  max-width: 1240px;
-}
-
-/* bande d'en-tête : titre à gauche, intro calée en pied à droite,
-   les deux sur la même ligne de base optique */
-.c-tete {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 0.78fr);
-  gap: clamp(20px, 5vw, 80px);
-  align-items: end;
-  margin-bottom: clamp(32px, 4vw, 54px);
-}
-.c-kicker {
-  color: var(--ink-3);
-  margin-bottom: clamp(18px, 2.2vw, 28px);
-}
-.c-statement {
-  font-family: var(--font-familjen), sans-serif;
-  font-weight: 400;
-  font-size: clamp(28px, 4vw, 50px);
-  line-height: 1.04;
-  letter-spacing: -0.02em;
-  color: var(--ink);
-  max-width: 14ch;
-}
-.c-intro {
-  font-size: 14.5px;
-  line-height: 1.7;
-  color: var(--ink-2);
-  max-width: 26.0625rem;
-  padding-bottom: 0.35em;
-}
-
-/* la croix : le filet vertical est porté par la colonne de gauche,
-   le filet horizontal par la première rangée. Le bloc est fermé en
-   haut et en bas seulement, comme les autres tableaux de la page. */
-.c-grille {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  border-top: 1px solid var(--ink-line);
-  border-bottom: 1px solid var(--ink-line);
-}
-.c-cell {
-  padding: clamp(22px, 2.4vw, 32px) 0;
-}
-.c-cell:nth-child(odd) {
-  padding-right: clamp(26px, 4vw, 64px);
-  border-right: 1px solid var(--ink-line);
-}
-.c-cell:nth-child(even) {
-  padding-left: clamp(26px, 4vw, 64px);
-}
-.c-cell:nth-child(1),
-.c-cell:nth-child(2) {
-  border-bottom: 1px solid var(--ink-line);
-}
-.c-p {
-  font-family: var(--font-familjen), sans-serif;
-  font-weight: 400;
-  font-size: clamp(21px, 2.1vw, 27px);
-  line-height: 1.16;
-  letter-spacing: -0.01em;
-  max-width: 20ch;
-  margin-bottom: 12px;
-}
-.c-e {
-  font-size: 14.5px;
-  line-height: 1.7;
-  color: var(--ink-2);
-  max-width: 28.25rem;
-}
-
-/* révélation en cascade, déclenchée à l'entrée de la section et jouée
-   une seule fois. Voir Engagements.tsx. Opacité et transform seulement,
-   aucun reflow. Sans JavaScript, le noscript du layout rend les quatre
-   cellules d'emblée : l'animation ne conditionne jamais la lecture. */
-.c-cell {
-  opacity: 0;
-  transform: translateY(10px);
-  transition: opacity 0.62s var(--ease), transform 0.62s var(--ease);
-}
-.c-grille.revelee .c-cell {
-  opacity: 1;
-  transform: none;
-}
-.c-grille.revelee .c-cell:nth-child(2) {
-  transition-delay: 0.1s;
-}
-.c-grille.revelee .c-cell:nth-child(3) {
-  transition-delay: 0.2s;
-}
-.c-grille.revelee .c-cell:nth-child(4) {
-  transition-delay: 0.3s;
-}
-@media (prefers-reduced-motion: reduce) {
-  .c-cell {
-    opacity: 1 !important;
-    transform: none !important;
-    transition: none !important;
-  }
 }
 
 /* ============================================================
