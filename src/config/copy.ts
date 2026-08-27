@@ -438,33 +438,11 @@ export const copy = typoDeep({
      27/08) — ses quatre principes vivent ailleurs : scores prédictifs
      dans la méthode, premier contact et données grises dans la FAQ
      RGPD, opt-out dans le pied de l'offre, chiffres dans la mesure. */
-  /* refonte 2026-08 : le « ≈ 1/3 publié depuis l'ouverture » n'était pas
-     mesuré, il est mort. Le grand repère « 0 » qui l'avait remplacé est
-     mort aussi (arbitrage Vincent, 26/08) : un grand zéro se lit comme du
-     vide, pas comme une preuve. La section reprend la grammaire des
-     entrées sur filets, sans repère. Le taux d'écart, lui, est mesuré sur
-     le périmètre et livré avec chaque lot. */
-  mesure: {
-    kicker: "La mesure",
-    statement: "Ce que nous mesurons sur nous-mêmes",
-    items: [
-      {
-        titre: "Zéro chiffre générique sur ce site",
-        texte:
-          "Aucun entonnoir type, aucune moyenne de marché, aucun taux d’affiche. Un chiffre n’est publié que mesuré, avec sa source et sa date. Le décompte qui vous concerne est celui de votre périmètre, et il est au devis.",
-      },
-      {
-        titre: "Le taux d’écart, livré avec chaque lot",
-        texte:
-          "Des détections sont écartées à la vérification, et vous devez savoir combien. Le taux d’écart est mesuré sur votre périmètre et livré avec chaque lot, écrit.",
-      },
-      {
-        titre: "Suivi des dossiers livrés",
-        texte:
-          "Chaque dossier est suivi jusqu’à son issue, cession ou non. Les résultats sont communiqués à nos clients, échecs compris, et publiés ici dès qu’une cohorte complète atteint dix-huit mois.",
-      },
-    ],
-  },
+  /* v53 : la section mesure est supprimée (arbitrage Vincent, 27/08) —
+     deux de ses trois énoncés étaient devenus des redites (zéro chiffre
+     générique : FAQ ; taux d'écart par lot : note du filtre) et le
+     troisième, le SUIVI DES COHORTES, déménage en FAQ où il vit
+     désormais : c'est le seul endroit qui le porte, ne pas le perdre. */
   /* v15 : composition centrée, seul endroit centré d'une page alignée à
      gauche de bout en bout. La citation en grand remplace le statement :
      elle disait déjà « un seul interlocuteur », le dire deux fois à la
@@ -486,6 +464,10 @@ export const copy = typoDeep({
   faq: {
     kicker: "Questions fréquentes",
     statement: "Ce qu’on nous demande avant de signer.",
+    /* v53 : la colonne de gauche du nouveau gabarit porte la note et
+       l'appel — la question absente se pose au rendez-vous */
+    note: "Une question absente ? Elle se pose au premier échange, avec le fondateur.",
+    cta: CTA,
     /* v27 : les questions traitent ce que le fil de la page ne peut pas
        aborder. Les sept d'origine redisaient la page, une seule portait une
        information unique, celle sur le RGPD : elle est conservée.
@@ -508,6 +490,13 @@ export const copy = typoDeep({
         question: "Sous combien de temps les premiers dossiers ?",
         reponse:
           "Le délai de la première livraison vous est annoncé au devis, comme le périmètre et le plancher. Les suivantes suivent les faits, chacune à date annoncée.",
+      },
+      /* v53 : le suivi des cohortes, relogé depuis la section mesure
+         supprimée — seul endroit du site qui porte cet engagement */
+      {
+        question: "Que devient un dossier après la livraison ?",
+        reponse:
+          "Chaque dossier est suivi jusqu’à son issue, cession ou non. Les résultats sont communiqués à nos clients, échecs compris, et publiés sur ce site dès qu’une cohorte complète atteint dix-huit mois.",
       },
       {
         question: "Que se passe-t-il après les trois mois ?",

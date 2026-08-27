@@ -408,6 +408,20 @@ trouvé sur vous". Codes attendus : document financier imprimé, pas SaaS IA.
   (grille 2×2, plafond 50px du statement des engagements) n'ont plus
   d'objet ; le plafond de 50px reste la borne des statements du site.
   MAQUETTE-V15-B2-ENGAGEMENTS.html reste une archive.
+- Amendement v53 (arbitrage Vincent, 27/08/2026) : LA MESURE MEURT, LA
+  FAQ PASSE EN DEUX COLONNES. La section « Ce que nous mesurons sur
+  nous-mêmes » est supprimée : deux de ses trois énoncés étaient des
+  redites (zéro chiffre générique : FAQ ; taux d'écart par lot : note
+  du filtre), et le troisième — LE SUIVI DES COHORTES (dossiers suivis
+  jusqu'à l'issue, résultats échecs compris, publication à dix-huit
+  mois) — est RELOGÉ en FAQ (« Que devient un dossier après la
+  livraison ? ») : c'est désormais le SEUL endroit du site qui porte
+  cet engagement, ne pas le perdre. La FAQ passe en deux colonnes
+  (référence externe adaptée : filets, pas de boîtes arrondies) :
+  en-tête, note (« Une question absente ? Elle se pose au premier
+  échange, avec le fondateur. ») et appel à gauche, l'accordéon à
+  droite, mécanique inchangée. Le balisage FAQPage suit tout seul, il
+  est généré depuis copy.faq.items.
 - Amendement v47 (arbitrage Vincent, 27/08/2026) : L'OFFRE EN DIPTYQUE.
   Inspirée d'une référence externe fournie par Vincent (gabarit d'étude
   de cas), adaptée à la charte : ni pictogrammes, ni statistiques, ni

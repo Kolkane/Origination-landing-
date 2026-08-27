@@ -583,14 +583,42 @@ footer a:hover {
   background: var(--bg-2);
   border-top: 1px solid var(--line-soft);
 }
+/* v53 : DEUX COLONNES — l'en-tête, la note et l'appel à gauche, les
+   questions à droite. La liste pleine largeur rendait la section
+   monotone et énorme (arbitrage Vincent, 27/08 ; référence externe
+   adaptée : filets, pas de boîtes arrondies). */
+.faq-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.42fr) minmax(0, 0.58fr);
+  gap: clamp(36px, 5vw, 84px);
+  align-items: start;
+}
+.faq-note {
+  margin-top: 22px;
+  font-size: 14.5px;
+  line-height: 1.7;
+  color: var(--txt-2);
+  max-width: 24rem;
+}
+.faq-head .cta {
+  margin-top: 26px;
+}
 .faq-s .faq {
-  margin-top: 48px;
+  margin-top: 0;
+  border-top: 1px solid var(--line-soft);
 }
 .faq summary {
   font-size: 16px;
+  padding: 20px 0;
 }
 .faq .a {
   max-width: 38.4375rem;
+}
+@media (max-width: 900px) {
+  .faq-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 34px;
+  }
 }
 
 /* cta final : pleine hauteur, centré */
@@ -2538,57 +2566,6 @@ footer a:hover {
 }
 
 /* ============================================================
-   La mesure, sans repère. Le « ≈ 1/3 » (jamais mesuré) puis le
-   grand « 0 » qui l'avait remplacé sont morts : un grand zéro se
-   lit comme du vide, pas comme une preuve (arbitrage Vincent,
-   26/08/2026). La section reprend la grammaire des entrées sur
-   filets : titre à gauche, énoncé à droite.
-   ============================================================ */
-.mesure {
-  padding: clamp(80px, 9vw, 130px) 0;
-  border-top: 1px solid var(--line-soft);
-}
-.mes-kicker {
-  margin-bottom: 18px;
-}
-.mes-liste {
-  margin-top: clamp(38px, 4.5vw, 60px);
-  border-top: 1px solid var(--line);
-}
-.mes-item {
-  display: grid;
-  grid-template-columns: minmax(0, 380px) minmax(0, 1fr);
-  gap: clamp(20px, 3vw, 40px);
-  padding: 30px 0 26px;
-}
-.mes-item + .mes-item {
-  border-top: 1px solid var(--line-soft);
-}
-.mes-t {
-  font-family: var(--font-familjen), sans-serif;
-  font-weight: 400;
-  font-size: clamp(20px, 1.8vw, 25px);
-  line-height: 1.18;
-  letter-spacing: -0.01em;
-}
-.mes-p {
-  font-size: 14.5px;
-  line-height: 1.7;
-  color: var(--txt-2);
-  max-width: 44rem;
-  padding-top: 3px;
-}
-@media (max-width: 860px) {
-  .mes-item {
-    grid-template-columns: minmax(0, 1fr);
-    gap: 8px;
-    padding: 24px 0 20px;
-  }
-  .mes-p {
-    padding-top: 0;
-  }
-}
-/* ============================================================
    v16 · les analyses. Portée de imbrin-analyses.html.
    Index : des lignes sur filets, gabarit inédit sur la page.
    Page article : une colonne de lecture étroite, sobre.
@@ -2926,11 +2903,6 @@ footer a:hover {
     display: none;
   }
 
-  /* la mesure portait 192px de padding pour 771px de section, soit un quart
-     de vide. Son clamp plafonnait au plancher dès 390px de large. */
-  .mesure {
-    padding: 64px 0;
-  }
 }
 
 /* ============================================================
@@ -3032,7 +3004,6 @@ footer a:hover {
 .b-titre,
 .a-titre,
 .c-statement,
-.mes-statement,
 .m-statement,
 .final h2,
 .ap-h1 {

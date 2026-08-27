@@ -1,31 +1,45 @@
+import { brand } from "@/config/brand";
 import { copy } from "@/config/copy";
 import { grand } from "@/config/typo";
 
-/* v15 : nouvelle enveloppe, accordéon inchangé. Le titre tenait une colonne
-   collante à gauche, cinquième emploi du même moule sur la page ; il passe
-   pleine largeur au-dessus, les questions occupent toute la mesure. */
+/* v53 : DEUX COLONNES (arbitrage Vincent, 27/08, référence externe
+   adaptée à la charte : filets, pas de boîtes arrondies). La liste
+   pleine largeur rendait la section monotone et énorme. À gauche
+   l'en-tête, la note et l'appel ; à droite l'accordéon, inchangé dans
+   sa mécanique. */
 export default function Faq() {
   const f = copy.faq;
   return (
     <section className="faq-s" id="faq">
       <div className="wrap">
-        <div className="faq-head">
-          <p className="kicker mono rev">{f.kicker}</p>
-          <h2 className="statement mask rev">{grand(f.statement)}</h2>
-        </div>
+        <div className="faq-grid">
+          <div className="faq-head">
+            <p className="kicker mono rev">{f.kicker}</p>
+            <h2 className="statement mask rev">{grand(f.statement)}</h2>
+            <p className="faq-note rev">{f.note}</p>
+            <a
+              className="cta mono rev"
+              href={brand.CALENDLY_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {f.cta}
+            </a>
+          </div>
 
-        <div className="faq rev">
-          {f.items.map((item) => (
-            <details key={item.question}>
-              <summary>
-                {grand(item.question)}
-                <span className="plus" aria-hidden="true">
-                  +
-                </span>
-              </summary>
-              <p className="a">{item.reponse}</p>
-            </details>
-          ))}
+          <div className="faq rev">
+            {f.items.map((item) => (
+              <details key={item.question}>
+                <summary>
+                  {grand(item.question)}
+                  <span className="plus" aria-hidden="true">
+                    +
+                  </span>
+                </summary>
+                <p className="a">{item.reponse}</p>
+              </details>
+            ))}
+          </div>
         </div>
       </div>
     </section>

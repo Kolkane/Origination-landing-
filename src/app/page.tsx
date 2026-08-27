@@ -7,7 +7,6 @@ import Faq from "@/components/Faq";
 import Fondateur from "@/components/Fondateur";
 import Hero from "@/components/Hero";
 import JsonLd from "@/components/JsonLd";
-import Mesure from "@/components/Mesure";
 import Methode from "@/components/Methode";
 import Offre from "@/components/Offre";
 import Reveal from "@/components/Reveal";
@@ -27,7 +26,9 @@ export default function Home() {
           leurs quatre principes vivent déjà ailleurs : scores dans la
           méthode, premier contact et données grises dans la FAQ RGPD,
           opt-out dans le pied de l'offre, chiffres dans la mesure. */}
-      <Mesure />
+      {/* v53 : la mesure est supprimée — le suivi des cohortes vit en FAQ,
+          le taux d'écart par lot dans la note du filtre, le zéro chiffre
+          générique dans la FAQ. */}
       <Fondateur />
       <Analyses />
       <Faq />
