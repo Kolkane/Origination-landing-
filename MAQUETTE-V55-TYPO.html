@@ -1,0 +1,1025 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Planche typographique Imbrin</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:ital,wght@0,400..700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400..600;1,8..60,400&family=Geist+Mono:wght@100..900&family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=EB+Garamond:ital,wght@0,400..700;1,400&family=Spectral:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Cutive+Mono&family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,400&display=swap">
+
+<style>
+  :root {
+    --encre: #0a0a0a;
+    --encre-2: #0e0e0e;
+    --papier: #ece7df;
+    --txt: #f4f2ef;
+    --txt-2: #b9b6b2;
+    --txt-3: #83807c;
+    --filet: rgba(255, 255, 255, 0.12);
+    --filet-doux: rgba(255, 255, 255, 0.06);
+    --filet-tete: rgba(255, 255, 255, 0.26);
+    --ink: #171310;
+    --ink-2: #3a342e;
+    --ink-3: #6c6257;
+    --ink-filet: rgba(23, 19, 16, 0.14);
+    --ink-filet-2: rgba(23, 19, 16, 0.28);
+    --ink-tete: rgba(23, 19, 16, 0.34);
+    --vin: #8e2438;
+    --vin-lift: #b32e46;
+
+    /* la police de l'INSTRUMENT. Volontairement neutre et distincte des
+       quatre candidates : une planche qui plaide dans l'une d'elles
+       fausserait le jugement. */
+    --f-chrome: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--encre);
+    color: var(--txt);
+    font-family: var(--f-chrome);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .enveloppe {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 0 clamp(20px, 4vw, 56px);
+  }
+
+  /* ---------------- chrome de la planche ---------------- */
+
+  .tete {
+    padding: clamp(56px, 9vw, 104px) 0 clamp(36px, 5vw, 56px);
+    border-bottom: 2px solid var(--filet-tete);
+  }
+  .surtitre {
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--txt-3);
+    margin: 0 0 20px;
+  }
+  h1 {
+    font-family: var(--f-chrome);
+    font-weight: 500;
+    font-size: clamp(28px, 4.4vw, 46px);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin: 0;
+    max-width: 20ch;
+    text-wrap: balance;
+  }
+  .chapo {
+    margin: 26px 0 0;
+    max-width: 64ch;
+    font-size: 16px;
+    line-height: 1.65;
+    color: var(--txt-2);
+  }
+  .chapo + .chapo { margin-top: 14px; }
+  .chapo b { color: var(--txt); font-weight: 600; }
+
+  .constat {
+    margin-top: 34px;
+    padding-left: 18px;
+    border-left: 2px solid var(--vin);
+    max-width: 64ch;
+  }
+  .constat p {
+    margin: 0;
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--txt-2);
+  }
+  .constat p + p { margin-top: 10px; }
+
+  .mode-emploi {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: clamp(18px, 3vw, 40px);
+    padding: clamp(28px, 4vw, 44px) 0;
+    border-bottom: 1px solid var(--filet);
+  }
+  .mode-emploi h2 {
+    grid-column: 1 / -1;
+    margin: 0;
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--txt-3);
+    font-weight: 500;
+  }
+  .mode-emploi p {
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--txt-2);
+  }
+
+  /* ---------------- un bloc de système ---------------- */
+
+  .systeme {
+    padding: clamp(52px, 7vw, 88px) 0;
+    border-bottom: 1px solid var(--filet-doux);
+  }
+  .sys-tete {
+    display: grid;
+    grid-template-columns: minmax(0, 200px) minmax(0, 1fr);
+    column-gap: clamp(24px, 3.4vw, 60px);
+    row-gap: 18px;
+    align-items: start;
+    margin-bottom: clamp(30px, 4vw, 44px);
+  }
+  .sys-index {
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--txt-3);
+    padding-top: 0.5em;
+    margin: 0;
+  }
+  .sys-index.actuel { color: var(--txt-3); }
+  .sys-corps { min-width: 0; }
+  .sys-nom {
+    margin: 0;
+    font-family: var(--f-chrome);
+    font-weight: 500;
+    font-size: clamp(23px, 2.8vw, 32px);
+    line-height: 1.14;
+    letter-spacing: -0.015em;
+  }
+  .sys-faces {
+    margin: 16px 0 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 26px;
+    padding: 0;
+    list-style: none;
+  }
+  .sys-faces li {
+    font-size: 13px;
+    color: var(--txt-2);
+    display: flex;
+    gap: 8px;
+    align-items: baseline;
+  }
+  .sys-faces .role {
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--txt-3);
+  }
+  .sys-arg {
+    margin: 18px 0 0;
+    max-width: 62ch;
+    font-size: 14.5px;
+    line-height: 1.65;
+    color: var(--txt-2);
+  }
+  .sys-arg b { color: var(--txt); font-weight: 600; }
+  .sys-risque {
+    margin: 14px 0 0;
+    max-width: 62ch;
+    font-size: 13.5px;
+    line-height: 1.6;
+    color: var(--txt-3);
+  }
+  .sys-risque span {
+    color: var(--vin-lift);
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    font-size: 10px;
+    margin-right: 8px;
+  }
+
+  /* ---------------- la feuille du spécimen ---------------- */
+
+  .feuille {
+    background: var(--papier);
+    color: var(--ink);
+    padding: clamp(26px, 3.6vw, 46px) clamp(22px, 3.4vw, 44px) clamp(22px, 3vw, 34px);
+    font-family: var(--f-corps);
+  }
+  .feuille-rang {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: clamp(20px, 3vw, 30px);
+  }
+  @media (min-width: 860px) {
+    .feuille-rang { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+  }
+
+  /* l'en-tête du document */
+  .d-tete {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px;
+    flex-wrap: wrap;
+    padding-bottom: 16px;
+    border-bottom: 2px solid var(--ink-tete);
+  }
+  .d-marque {
+    font-family: var(--f-display);
+    font-size: clamp(17px, 1.9vw, 22px);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin: 0;
+    line-height: 1.2;
+  }
+  .d-baseline {
+    display: block;
+    font-family: var(--f-label);
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    margin-top: 6px;
+  }
+  .d-meta {
+    font-family: var(--f-label);
+    font-size: 10.5px;
+    line-height: 1.9;
+    letter-spacing: var(--label-ls);
+    text-transform: var(--label-tt);
+    color: var(--ink-2);
+    text-align: right;
+    margin: 0;
+  }
+  .d-meta b { font-weight: 600; }
+
+  .d-ref {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+    padding: 10px 0 22px;
+  }
+  .d-ficti {
+    font-family: var(--f-label);
+    font-size: 10px;
+    letter-spacing: var(--label-ls);
+    text-transform: uppercase;
+    color: var(--ink-3);
+  }
+  .d-tampon {
+    font-family: var(--f-label);
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--vin);
+    border: 1px solid var(--vin);
+    padding: 4px 10px;
+  }
+
+  /* une rubrique */
+  .rub { margin: 0 0 22px; }
+  .rub-l {
+    font-family: var(--f-label);
+    font-size: var(--label-size);
+    letter-spacing: var(--label-ls);
+    text-transform: var(--label-tt);
+    color: var(--vin);
+    margin: 0 0 12px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid var(--ink-filet);
+  }
+
+  .d-titre {
+    font-family: var(--f-display);
+    font-weight: 500;
+    font-size: clamp(22px, 2.6vw, 30px);
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+    margin: 0 0 14px;
+  }
+  .ident {
+    margin: 0 0 14px;
+    padding: 0;
+    list-style: none;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--ink-filet);
+    border: 1px solid var(--ink-filet);
+  }
+  .ident li {
+    background: var(--papier);
+    padding: 9px 11px;
+    font-family: var(--f-label);
+    font-size: 11.5px;
+    line-height: 1.4;
+    color: var(--ink-2);
+  }
+  .d-interlo {
+    margin: 0;
+    font-family: var(--f-label);
+    font-size: 11.5px;
+    color: var(--ink-2);
+  }
+  .d-interlo b {
+    display: block;
+    font-size: 9.5px;
+    letter-spacing: var(--label-ls);
+    text-transform: uppercase;
+    color: var(--ink-3);
+    margin-bottom: 4px;
+    font-weight: 400;
+  }
+
+  .figs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px 18px;
+    margin-bottom: 18px;
+  }
+  .fig-n {
+    display: block;
+    font-family: var(--f-display);
+    font-size: clamp(19px, 2.1vw, 25px);
+    line-height: 1;
+    font-variant-numeric: tabular-nums;
+  }
+  .fig-k {
+    display: block;
+    font-family: var(--f-label);
+    font-size: 9.5px;
+    letter-spacing: var(--label-ls);
+    text-transform: uppercase;
+    color: var(--ink-3);
+    margin-top: 6px;
+  }
+
+  .serie { margin-bottom: 12px; }
+  .serie-l {
+    display: grid;
+    grid-template-columns: 46px minmax(0, 1fr) 72px;
+    align-items: center;
+    gap: 12px;
+    padding: 5px 0;
+  }
+  .serie-an, .serie-v {
+    font-family: var(--f-label);
+    font-size: 10.5px;
+    color: var(--ink-2);
+    font-variant-numeric: tabular-nums;
+  }
+  .serie-v { text-align: right; }
+  .serie-piste { height: 7px; background: rgba(23, 19, 16, 0.08); }
+  .serie-barre { display: block; height: 7px; background: var(--ink); }
+  .serie-tag {
+    font-family: var(--f-label);
+    font-size: 9.5px;
+    letter-spacing: var(--label-ls);
+    text-transform: uppercase;
+    color: var(--ink-3);
+    margin: 0;
+  }
+
+  .sig-amorce, .sig-suite {
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--ink-2);
+  }
+  .sig-fort {
+    font-family: var(--f-display);
+    font-weight: 500;
+    font-size: clamp(20px, 2.4vw, 28px);
+    line-height: 1.14;
+    letter-spacing: -0.012em;
+    margin: 12px 0;
+    color: var(--ink);
+    text-wrap: balance;
+  }
+
+  .tl { margin: 0; padding: 0; list-style: none; }
+  .tl li {
+    display: grid;
+    grid-template-columns: 78px minmax(0, 1fr);
+    gap: 14px;
+    padding: 8px 0;
+    border-top: 1px solid var(--ink-filet);
+    font-size: 13.5px;
+    line-height: 1.45;
+    color: var(--ink-2);
+  }
+  .tl .an {
+    font-family: var(--f-label);
+    font-size: 10.5px;
+    letter-spacing: var(--label-ls);
+    color: var(--ink-3);
+    font-variant-numeric: tabular-nums;
+  }
+  .tl li.cle { color: var(--ink); }
+  .tl li.cle .an { color: var(--vin); }
+
+  .d-pied {
+    margin-top: clamp(20px, 3vw, 30px);
+    padding-top: 14px;
+    border-top: 1px solid var(--ink-filet-2);
+    font-family: var(--f-label);
+    font-size: 9.5px;
+    line-height: 1.9;
+    letter-spacing: var(--label-ls);
+    text-transform: var(--label-tt);
+    color: var(--ink-3);
+    margin-bottom: 0;
+  }
+  .d-pied .ficti { color: var(--vin); }
+
+  /* ---------------- la bande de page (fond encre) ---------------- */
+
+  .bande {
+    margin-top: 22px;
+    padding: clamp(28px, 4vw, 44px) clamp(22px, 3.4vw, 44px);
+    border: 1px solid var(--filet-doux);
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 20px;
+  }
+  @media (min-width: 900px) {
+    .bande { grid-template-columns: minmax(0, 170px) minmax(0, 1fr); column-gap: 46px; }
+  }
+  .bande-l {
+    font-family: var(--f-label);
+    font-size: var(--label-size);
+    letter-spacing: var(--label-ls);
+    text-transform: var(--label-tt);
+    color: var(--txt-3);
+    margin: 0;
+    padding-top: 0.6em;
+  }
+  .bande-h {
+    font-family: var(--f-display);
+    font-weight: 400;
+    font-size: clamp(26px, 3.6vw, 44px);
+    line-height: 1.1;
+    letter-spacing: -0.018em;
+    margin: 0;
+    max-width: 22ch;
+    text-wrap: balance;
+  }
+  .bande-h em { font-style: italic; color: var(--vin-lift); }
+  .bande-p {
+    margin: 20px 0 0;
+    font-family: var(--f-corps);
+    font-size: 15.5px;
+    line-height: 1.7;
+    color: var(--txt-2);
+    max-width: 58ch;
+  }
+
+  /* ---------------- les quatre systèmes ---------------- */
+  /* seules ces variables changent d'un bloc à l'autre */
+
+  .sys-0 {
+    --f-display: "Familjen Grotesk", sans-serif;
+    --f-corps: "Source Serif 4", Georgia, serif;
+    --f-label: "Geist Mono", ui-monospace, monospace;
+    --label-ls: 0.2em;
+    --label-tt: uppercase;
+    --label-size: 10px;
+  }
+  .sys-a {
+    --f-display: "EB Garamond", Garamond, serif;
+    --f-corps: "EB Garamond", Garamond, serif;
+    --f-label: "Courier Prime", Courier, monospace;
+    --label-ls: 0.1em;
+    --label-tt: uppercase;
+    --label-size: 11px;
+  }
+  .sys-b {
+    --f-display: "Spectral", Georgia, serif;
+    --f-corps: "Spectral", Georgia, serif;
+    --f-label: "Spectral", Georgia, serif;
+    --label-ls: 0.16em;
+    --label-tt: uppercase;
+    --label-size: 10.5px;
+  }
+  .sys-c {
+    --f-display: "Fraunces", Georgia, serif;
+    --f-corps: "Spectral", Georgia, serif;
+    --f-label: "Cutive Mono", Courier, monospace;
+    --label-ls: 0.12em;
+    --label-tt: uppercase;
+    --label-size: 11px;
+  }
+  /* le corps de EB Garamond a une petite hauteur d'x : on le remonte d'un
+     cran pour que la comparaison porte sur le dessin, pas sur la taille */
+  .sys-a .feuille { font-size: 17px; }
+  .sys-a .sig-amorce, .sys-a .sig-suite, .sys-a .tl li { font-size: 15px; }
+  .sys-a .bande-p { font-size: 17px; }
+  /* Fraunces en display : on lui donne son optique de titre */
+  .sys-c .bande-h, .sys-c .sig-fort, .sys-c .d-titre { font-variation-settings: "SOFT" 0, "WONK" 1, "opsz" 100; }
+
+  /* ---------------- verdict ---------------- */
+
+  .verdict { padding: clamp(52px, 7vw, 88px) 0 clamp(64px, 9vw, 110px); }
+  .verdict h2 {
+    margin: 0 0 24px;
+    font-size: clamp(24px, 3.2vw, 34px);
+    font-weight: 500;
+    letter-spacing: -0.015em;
+    line-height: 1.15;
+  }
+  .verdict p {
+    margin: 0 0 14px;
+    max-width: 66ch;
+    font-size: 15.5px;
+    line-height: 1.68;
+    color: var(--txt-2);
+  }
+  .verdict b { color: var(--txt); font-weight: 600; }
+  .verdict .appui {
+    margin-top: 30px;
+    padding: 22px 24px;
+    border: 1px solid var(--filet);
+  }
+  .verdict .appui p:last-child { margin-bottom: 0; }
+
+  .note-bas {
+    padding: 26px 0 60px;
+    border-top: 1px solid var(--filet-doux);
+    font-size: 12.5px;
+    line-height: 1.7;
+    color: var(--txt-3);
+    max-width: 74ch;
+  }
+
+  a { color: inherit; }
+  :focus-visible { outline: 2px solid var(--txt); outline-offset: 3px; }
+</style>
+
+</head>
+<body>
+<div class="enveloppe">
+
+  <header class="tete">
+    <p class="surtitre">Imbrin Research · planche de comparaison · 29 août 2026</p>
+    <h1>Le dossier, composé quatre fois</h1>
+    <p class="chapo">
+      Une seule question ici : <b>quelle typographie fait que le spécimen ressemble
+      à un document produit par quelqu'un</b>, et non à une maquette d'interface
+      déguisée en papier. Le contenu ne bouge d'un bloc à l'autre ni d'un mot ni
+      d'un filet. Seules les polices changent.
+    </p>
+    <p class="chapo">
+      Chaque système est montré deux fois : sur la <b>feuille du dossier</b>, qui est
+      l'endroit du problème, puis sur une <b>bande de page</b> sur fond encre, parce
+      qu'une police qui tient sur le papier peut s'effondrer en clair sur sombre.
+    </p>
+
+    <div class="constat">
+      <p>
+        Ce que dit déjà la charte, amendement v28 : Geist Sans est retirée du site
+        parce qu'elle est « la police maison de Vercel, devenue le signe des sites
+        générés ». Dernière ligne du même amendement : « GEIST MONO RESTE, inchangé. »
+      </p>
+      <p>
+        Or c'est elle qui compose les libellés du dossier : 25 poses de la classe
+        <code>mono</code> dans le seul composant du spécimen. Un acte, un Kbis, un
+        rapport de commissaire aux comptes n'étiquettent jamais leurs champs en
+        capitales monospace espacées. Ça, c'est le vocabulaire d'un tableau de bord.
+      </p>
+    </div>
+  </header>
+
+  <section class="mode-emploi">
+    <h2>Comment juger</h2>
+    <p>
+      Regardez d'abord <b>les libellés de rubrique</b> : ce sont eux qui décident si
+      la page dit « document » ou « logiciel ».
+    </p>
+    <p>
+      Puis <b>les chiffres</b> des finances et de la chronologie : un dossier
+      financier vit sur des nombres, ils doivent tenir en colonne et avoir du poids.
+    </p>
+    <p>
+      Enfin <b>la phrase de constat</b> à l'échelle du titre : c'est la trouvaille du
+      dossier, elle doit porter sans crier.
+    </p>
+  </section>
+
+  <!-- ================= SYSTÈME 0 · L'ACTUEL ================= -->
+  <section class="systeme sys-0">
+    <div class="sys-tete">
+      <p class="sys-index actuel">En ligne aujourd'hui</p>
+      <div class="sys-corps">
+        <h2 class="sys-nom">L'actuel</h2>
+        <ul class="sys-faces">
+          <li><span class="role">Titres</span> Familjen Grotesk</li>
+          <li><span class="role">Corps</span> Source Serif 4</li>
+          <li><span class="role">Libellés</span> Geist Mono</li>
+        </ul>
+        <p class="sys-arg">
+          Référence, pour que la comparaison ait un point zéro. Trois polices
+          gratuites et ubiquitaires : une grotesque Google, la serif open source
+          d'Adobe, et le monospace de Vercel. Aucune n'est mauvaise ; ensemble elles
+          composent la signature exacte d'un document généré, parce que ce sont les
+          trois valeurs par défaut des générateurs.
+        </p>
+      </div>
+    </div>
+
+    <div class="feuille">
+      <div class="d-tete">
+        <p class="d-marque">Imbrin Research<span class="d-baseline">Origination sell-side</span></p>
+        <p class="d-meta">Dossier · <b>Exemple</b> · Confidentiel<br>Région exemple · Semaine 30</p>
+      </div>
+      <div class="d-ref">
+        <span class="d-ficti">Société et chiffres inventés</span>
+        <span class="d-tampon">Spécimen</span>
+      </div>
+      <div class="feuille-rang">
+        <div>
+          <div class="rub">
+            <p class="rub-l">Identité</p>
+            <h3 class="d-titre">Établissements Vasseur</h3>
+            <ul class="ident">
+              <li>Génie climatique</li><li>60-99 salariés</li>
+              <li>Agglomération type</li><li>SAS, titres cessibles</li>
+            </ul>
+            <p class="d-interlo"><b>Interlocuteur</b>Gérard Vasseur · Président · 63 ans</p>
+          </div>
+          <div class="rub">
+            <p class="rub-l">Finances · 2025</p>
+            <div class="figs">
+              <div><span class="fig-n">640 K€</span><span class="fig-k">Résultat net 2025</span></div>
+              <div><span class="fig-n">1,9 M€</span><span class="fig-k">Trésorerie</span></div>
+              <div><span class="fig-n">2,1 M€</span><span class="fig-k">Fonds de roulement</span></div>
+              <div><span class="fig-n">≈ 0,2</span><span class="fig-k">Gearing</span></div>
+            </div>
+            <div class="serie">
+              <div class="serie-l"><span class="serie-an">2023</span><span class="serie-piste"><span class="serie-barre" style="width:79.7%"></span></span><span class="serie-v">~510 K€</span></div>
+              <div class="serie-l"><span class="serie-an">2024</span><span class="serie-piste"><span class="serie-barre" style="width:92.2%"></span></span><span class="serie-v">~590 K€</span></div>
+              <div class="serie-l"><span class="serie-an">2025</span><span class="serie-piste"><span class="serie-barre" style="width:100%"></span></span><span class="serie-v">~640 K€</span></div>
+            </div>
+            <p class="serie-tag">Résultat net · trois exercices en hausse</p>
+          </div>
+        </div>
+        <div>
+          <div class="rub">
+            <p class="rub-l">Structure de détention</p>
+            <p class="sig-amorce">Gérard Vasseur détient et dirige seul depuis 2011, à 63 ans. Au registre :</p>
+            <p class="sig-fort">pas d'associé entré, aucun mouvement de titres en treize ans.</p>
+            <p class="sig-suite">L'affaire est saine, trois exercices en hausse, quasiment pas de dette. En 2023, les murs sont sortis dans une SCI : le fait est daté, il est dans la chronologie.</p>
+          </div>
+          <div class="rub">
+            <p class="rub-l">Le fait daté</p>
+            <ul class="tl">
+              <li><span class="an">1998</span><span>Création, transmission familiale</span></li>
+              <li><span class="an">2011</span><span>Reprise par le dirigeant actuel</span></li>
+              <li class="cle"><span class="an">2023</span><span>Constitution d'une SCI, murs d'exploitation isolés</span></li>
+              <li><span class="an">04 / 2026</span><span>Dernier dépôt de comptes, clos 12/2025</span></li>
+              <li><span class="an">07 / 2026</span><span>Vérification registre : dirigeant actif, aucun relais</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <p class="d-pied"><span class="ficti">Spécimen, données fictives.</span> Sources publiques, registre du commerce et dépôts de comptes. Aucun contact n'a été pris avec le dirigeant.</p>
+    </div>
+
+    <div class="bande">
+      <p class="bande-l">Le filtre</p>
+      <div>
+        <h3 class="bande-h">Cinq critères, et <em>rien</em> qui ressemble à une intention prêtée.</h3>
+        <p class="bande-p">Chaque société du périmètre descend ces marches. Peu arrivent en bas. Ce qui sort n'est pas une liste d'entreprises à vendre, c'est un dossier dont la situation réunit les conditions, avec la date de chaque fait qui l'établit.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= SYSTÈME A · LE TAPUSCRIT ================= -->
+  <section class="systeme sys-a">
+    <div class="sys-tete">
+      <p class="sys-index">Direction A</p>
+      <div class="sys-corps">
+        <h2 class="sys-nom">Le tapuscrit</h2>
+        <ul class="sys-faces">
+          <li><span class="role">Titres</span> EB Garamond</li>
+          <li><span class="role">Corps</span> EB Garamond</li>
+          <li><span class="role">Libellés</span> Courier Prime</li>
+        </ul>
+        <p class="sys-arg">
+          Le geste : remplacer le monospace de code par une <b>vraie machine à
+          écrire</b>. Courier Prime a été dessinée pour le scénario, pas pour le
+          terminal ; elle dit « tapé par quelqu'un ». Et le texte passe au
+          <b>Garamont</b>, taillé à Paris vers 1530, qui est à peu près le contraire
+          d'une police de gabarit. C'est la direction la plus humaine des trois, et
+          la seule qui soit franchement française.
+        </p>
+        <p class="sys-risque">
+          <span>Risque</span>Le registre peut basculer vers l'ancien ou le
+          littéraire. La hauteur d'x du Garamont est basse : le corps doit être
+          remonté, il l'est ici.
+        </p>
+      </div>
+    </div>
+
+    <div class="feuille">
+      <div class="d-tete">
+        <p class="d-marque">Imbrin Research<span class="d-baseline">Origination sell-side</span></p>
+        <p class="d-meta">Dossier · <b>Exemple</b> · Confidentiel<br>Région exemple · Semaine 30</p>
+      </div>
+      <div class="d-ref">
+        <span class="d-ficti">Société et chiffres inventés</span>
+        <span class="d-tampon">Spécimen</span>
+      </div>
+      <div class="feuille-rang">
+        <div>
+          <div class="rub">
+            <p class="rub-l">Identité</p>
+            <h3 class="d-titre">Établissements Vasseur</h3>
+            <ul class="ident">
+              <li>Génie climatique</li><li>60-99 salariés</li>
+              <li>Agglomération type</li><li>SAS, titres cessibles</li>
+            </ul>
+            <p class="d-interlo"><b>Interlocuteur</b>Gérard Vasseur · Président · 63 ans</p>
+          </div>
+          <div class="rub">
+            <p class="rub-l">Finances · 2025</p>
+            <div class="figs">
+              <div><span class="fig-n">640 K€</span><span class="fig-k">Résultat net 2025</span></div>
+              <div><span class="fig-n">1,9 M€</span><span class="fig-k">Trésorerie</span></div>
+              <div><span class="fig-n">2,1 M€</span><span class="fig-k">Fonds de roulement</span></div>
+              <div><span class="fig-n">≈ 0,2</span><span class="fig-k">Gearing</span></div>
+            </div>
+            <div class="serie">
+              <div class="serie-l"><span class="serie-an">2023</span><span class="serie-piste"><span class="serie-barre" style="width:79.7%"></span></span><span class="serie-v">~510 K€</span></div>
+              <div class="serie-l"><span class="serie-an">2024</span><span class="serie-piste"><span class="serie-barre" style="width:92.2%"></span></span><span class="serie-v">~590 K€</span></div>
+              <div class="serie-l"><span class="serie-an">2025</span><span class="serie-piste"><span class="serie-barre" style="width:100%"></span></span><span class="serie-v">~640 K€</span></div>
+            </div>
+            <p class="serie-tag">Résultat net · trois exercices en hausse</p>
+          </div>
+        </div>
+        <div>
+          <div class="rub">
+            <p class="rub-l">Structure de détention</p>
+            <p class="sig-amorce">Gérard Vasseur détient et dirige seul depuis 2011, à 63 ans. Au registre :</p>
+            <p class="sig-fort">pas d'associé entré, aucun mouvement de titres en treize ans.</p>
+            <p class="sig-suite">L'affaire est saine, trois exercices en hausse, quasiment pas de dette. En 2023, les murs sont sortis dans une SCI : le fait est daté, il est dans la chronologie.</p>
+          </div>
+          <div class="rub">
+            <p class="rub-l">Le fait daté</p>
+            <ul class="tl">
+              <li><span class="an">1998</span><span>Création, transmission familiale</span></li>
+              <li><span class="an">2011</span><span>Reprise par le dirigeant actuel</span></li>
+              <li class="cle"><span class="an">2023</span><span>Constitution d'une SCI, murs d'exploitation isolés</span></li>
+              <li><span class="an">04 / 2026</span><span>Dernier dépôt de comptes, clos 12/2025</span></li>
+              <li><span class="an">07 / 2026</span><span>Vérification registre : dirigeant actif, aucun relais</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <p class="d-pied"><span class="ficti">Spécimen, données fictives.</span> Sources publiques, registre du commerce et dépôts de comptes. Aucun contact n'a été pris avec le dirigeant.</p>
+    </div>
+
+    <div class="bande">
+      <p class="bande-l">Le filtre</p>
+      <div>
+        <h3 class="bande-h">Cinq critères, et <em>rien</em> qui ressemble à une intention prêtée.</h3>
+        <p class="bande-p">Chaque société du périmètre descend ces marches. Peu arrivent en bas. Ce qui sort n'est pas une liste d'entreprises à vendre, c'est un dossier dont la situation réunit les conditions, avec la date de chaque fait qui l'établit.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= SYSTÈME B · LE LIVRE ================= -->
+  <section class="systeme sys-b">
+    <div class="sys-tete">
+      <p class="sys-index">Direction B</p>
+      <div class="sys-corps">
+        <h2 class="sys-nom">Le livre</h2>
+        <ul class="sys-faces">
+          <li><span class="role">Titres</span> Spectral</li>
+          <li><span class="role">Corps</span> Spectral</li>
+          <li><span class="role">Libellés</span> Spectral, capitales</li>
+        </ul>
+        <p class="sys-arg">
+          Le geste le plus radical, et le plus simple : <b>plus aucun monospace nulle
+          part</b>. Les libellés sont composés dans la serif du texte, en petites
+          capitales espacées, comme un imprimeur le ferait. Une seule famille pour
+          tout le site. Spectral est dessinée par <b>Production Type</b>, fonderie
+          parisienne, et commandée par Google pour la lecture à l'écran : c'est une
+          serif de travail, pas une serif d'affiche.
+        </p>
+        <p class="sys-risque">
+          <span>Risque</span>Une seule famille peut manquer de contraste entre le
+          libellé et le texte. C'est la direction la plus sobre : à toi de dire si
+          c'est la bonne sobriété ou celle que tu viens de refuser.
+        </p>
+      </div>
+    </div>
+
+    <div class="feuille">
+      <div class="d-tete">
+        <p class="d-marque">Imbrin Research<span class="d-baseline">Origination sell-side</span></p>
+        <p class="d-meta">Dossier · <b>Exemple</b> · Confidentiel<br>Région exemple · Semaine 30</p>
+      </div>
+      <div class="d-ref">
+        <span class="d-ficti">Société et chiffres inventés</span>
+        <span class="d-tampon">Spécimen</span>
+      </div>
+      <div class="feuille-rang">
+        <div>
+          <div class="rub">
+            <p class="rub-l">Identité</p>
+            <h3 class="d-titre">Établissements Vasseur</h3>
+            <ul class="ident">
+              <li>Génie climatique</li><li>60-99 salariés</li>
+              <li>Agglomération type</li><li>SAS, titres cessibles</li>
+            </ul>
+            <p class="d-interlo"><b>Interlocuteur</b>Gérard Vasseur · Président · 63 ans</p>
+          </div>
+          <div class="rub">
+            <p class="rub-l">Finances · 2025</p>
+            <div class="figs">
+              <div><span class="fig-n">640 K€</span><span class="fig-k">Résultat net 2025</span></div>
+              <div><span class="fig-n">1,9 M€</span><span class="fig-k">Trésorerie</span></div>
+              <div><span class="fig-n">2,1 M€</span><span class="fig-k">Fonds de roulement</span></div>
+              <div><span class="fig-n">≈ 0,2</span><span class="fig-k">Gearing</span></div>
+            </div>
+            <div class="serie">
+              <div class="serie-l"><span class="serie-an">2023</span><span class="serie-piste"><span class="serie-barre" style="width:79.7%"></span></span><span class="serie-v">~510 K€</span></div>
+              <div class="serie-l"><span class="serie-an">2024</span><span class="serie-piste"><span class="serie-barre" style="width:92.2%"></span></span><span class="serie-v">~590 K€</span></div>
+              <div class="serie-l"><span class="serie-an">2025</span><span class="serie-piste"><span class="serie-barre" style="width:100%"></span></span><span class="serie-v">~640 K€</span></div>
+            </div>
+            <p class="serie-tag">Résultat net · trois exercices en hausse</p>
+          </div>
+        </div>
+        <div>
+          <div class="rub">
+            <p class="rub-l">Structure de détention</p>
+            <p class="sig-amorce">Gérard Vasseur détient et dirige seul depuis 2011, à 63 ans. Au registre :</p>
+            <p class="sig-fort">pas d'associé entré, aucun mouvement de titres en treize ans.</p>
+            <p class="sig-suite">L'affaire est saine, trois exercices en hausse, quasiment pas de dette. En 2023, les murs sont sortis dans une SCI : le fait est daté, il est dans la chronologie.</p>
+          </div>
+          <div class="rub">
+            <p class="rub-l">Le fait daté</p>
+            <ul class="tl">
+              <li><span class="an">1998</span><span>Création, transmission familiale</span></li>
+              <li><span class="an">2011</span><span>Reprise par le dirigeant actuel</span></li>
+              <li class="cle"><span class="an">2023</span><span>Constitution d'une SCI, murs d'exploitation isolés</span></li>
+              <li><span class="an">04 / 2026</span><span>Dernier dépôt de comptes, clos 12/2025</span></li>
+              <li><span class="an">07 / 2026</span><span>Vérification registre : dirigeant actif, aucun relais</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <p class="d-pied"><span class="ficti">Spécimen, données fictives.</span> Sources publiques, registre du commerce et dépôts de comptes. Aucun contact n'a été pris avec le dirigeant.</p>
+    </div>
+
+    <div class="bande">
+      <p class="bande-l">Le filtre</p>
+      <div>
+        <h3 class="bande-h">Cinq critères, et <em>rien</em> qui ressemble à une intention prêtée.</h3>
+        <p class="bande-p">Chaque société du périmètre descend ces marches. Peu arrivent en bas. Ce qui sort n'est pas une liste d'entreprises à vendre, c'est un dossier dont la situation réunit les conditions, avec la date de chaque fait qui l'établit.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= SYSTÈME C · LE REGISTRE ================= -->
+  <section class="systeme sys-c">
+    <div class="sys-tete">
+      <p class="sys-index">Direction C</p>
+      <div class="sys-corps">
+        <h2 class="sys-nom">Le registre</h2>
+        <ul class="sys-faces">
+          <li><span class="role">Titres</span> Fraunces</li>
+          <li><span class="role">Corps</span> Spectral</li>
+          <li><span class="role">Libellés</span> Cutive Mono</li>
+        </ul>
+        <p class="sys-arg">
+          Le compromis, et la direction la plus <b>caractérisée</b>. Cutive Mono est
+          une machine à écrire plus discrète que Courier, sans le cliché du scénario.
+          Et les titres passent à <b>Fraunces</b>, une variable dessinée avec un axe
+          optique et un axe « wonk » qui rend ses italiques et ses terminaisons
+          franchement irrégulières : c'est une police qui a l'air d'avoir été
+          <b>dessinée à la main</b>, ce qu'aucun générateur ne produit.
+        </p>
+        <p class="sys-risque">
+          <span>Risque</span>Fraunces a du caractère, donc elle peut fatiguer.
+          Trois familles à charger là où B n'en demande qu'une.
+        </p>
+      </div>
+    </div>
+
+    <div class="feuille">
+      <div class="d-tete">
+        <p class="d-marque">Imbrin Research<span class="d-baseline">Origination sell-side</span></p>
+        <p class="d-meta">Dossier · <b>Exemple</b> · Confidentiel<br>Région exemple · Semaine 30</p>
+      </div>
+      <div class="d-ref">
+        <span class="d-ficti">Société et chiffres inventés</span>
+        <span class="d-tampon">Spécimen</span>
+      </div>
+      <div class="feuille-rang">
+        <div>
+          <div class="rub">
+            <p class="rub-l">Identité</p>
+            <h3 class="d-titre">Établissements Vasseur</h3>
+            <ul class="ident">
+              <li>Génie climatique</li><li>60-99 salariés</li>
+              <li>Agglomération type</li><li>SAS, titres cessibles</li>
+            </ul>
+            <p class="d-interlo"><b>Interlocuteur</b>Gérard Vasseur · Président · 63 ans</p>
+          </div>
+          <div class="rub">
+            <p class="rub-l">Finances · 2025</p>
+            <div class="figs">
+              <div><span class="fig-n">640 K€</span><span class="fig-k">Résultat net 2025</span></div>
+              <div><span class="fig-n">1,9 M€</span><span class="fig-k">Trésorerie</span></div>
+              <div><span class="fig-n">2,1 M€</span><span class="fig-k">Fonds de roulement</span></div>
+              <div><span class="fig-n">≈ 0,2</span><span class="fig-k">Gearing</span></div>
+            </div>
+            <div class="serie">
+              <div class="serie-l"><span class="serie-an">2023</span><span class="serie-piste"><span class="serie-barre" style="width:79.7%"></span></span><span class="serie-v">~510 K€</span></div>
+              <div class="serie-l"><span class="serie-an">2024</span><span class="serie-piste"><span class="serie-barre" style="width:92.2%"></span></span><span class="serie-v">~590 K€</span></div>
+              <div class="serie-l"><span class="serie-an">2025</span><span class="serie-piste"><span class="serie-barre" style="width:100%"></span></span><span class="serie-v">~640 K€</span></div>
+            </div>
+            <p class="serie-tag">Résultat net · trois exercices en hausse</p>
+          </div>
+        </div>
+        <div>
+          <div class="rub">
+            <p class="rub-l">Structure de détention</p>
+            <p class="sig-amorce">Gérard Vasseur détient et dirige seul depuis 2011, à 63 ans. Au registre :</p>
+            <p class="sig-fort">pas d'associé entré, aucun mouvement de titres en treize ans.</p>
+            <p class="sig-suite">L'affaire est saine, trois exercices en hausse, quasiment pas de dette. En 2023, les murs sont sortis dans une SCI : le fait est daté, il est dans la chronologie.</p>
+          </div>
+          <div class="rub">
+            <p class="rub-l">Le fait daté</p>
+            <ul class="tl">
+              <li><span class="an">1998</span><span>Création, transmission familiale</span></li>
+              <li><span class="an">2011</span><span>Reprise par le dirigeant actuel</span></li>
+              <li class="cle"><span class="an">2023</span><span>Constitution d'une SCI, murs d'exploitation isolés</span></li>
+              <li><span class="an">04 / 2026</span><span>Dernier dépôt de comptes, clos 12/2025</span></li>
+              <li><span class="an">07 / 2026</span><span>Vérification registre : dirigeant actif, aucun relais</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <p class="d-pied"><span class="ficti">Spécimen, données fictives.</span> Sources publiques, registre du commerce et dépôts de comptes. Aucun contact n'a été pris avec le dirigeant.</p>
+    </div>
+
+    <div class="bande">
+      <p class="bande-l">Le filtre</p>
+      <div>
+        <h3 class="bande-h">Cinq critères, et <em>rien</em> qui ressemble à une intention prêtée.</h3>
+        <p class="bande-p">Chaque société du périmètre descend ces marches. Peu arrivent en bas. Ce qui sort n'est pas une liste d'entreprises à vendre, c'est un dossier dont la situation réunit les conditions, avec la date de chaque fait qui l'établit.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="verdict">
+    <h2>Ce que je recommande</h2>
+    <p>
+      <b>A, le tapuscrit.</b> C'est la seule des trois qui change le registre du
+      document et pas seulement son habillage. Le monospace de code est le tell
+      principal du spécimen ; le remplacer par une machine à écrire ne « corrige »
+      pas un détail, ça déplace l'objet entier du côté de la pièce administrative.
+      Et le Garamont raconte quelque chose de vrai sur ce que tu vends : la lecture
+      d'actes, à la main, dans un pays qui imprime des actes depuis cinq siècles.
+    </p>
+    <p>
+      <b>C en repli</b> si A te paraît trop daté : elle garde la machine à écrire,
+      qui est l'essentiel, et remplace le Garamont par un couple plus contemporain.
+    </p>
+    <p>
+      <b>B est la plus élégante et la plus risquée pour toi</b>, parce qu'elle va
+      exactement dans la direction que tu viens de refuser : plus sobre encore.
+      Je la montre parce qu'elle est juste typographiquement, pas parce que je la
+      recommande aujourd'hui.
+    </p>
+    <div class="appui">
+      <p>
+        Dans tous les cas, <b>Geist Mono sort du dépôt</b>. La garder après avoir
+        retiré Geist Sans pour motif de « signe des sites générés » est une
+        incohérence de la charte, et c'est elle qui compose les 25 libellés du
+        dossier.
+      </p>
+      <p>
+        Dis-moi une lettre, et je pose le système sur tout le site dans la foulée :
+        polices, échelle, et les libellés du spécimen. Si aucune ne te va, dis-moi
+        ce qui cloche dans celle qui s'en approche le plus, c'est plus rapide que
+        de repartir de zéro.
+      </p>
+    </div>
+  </section>
+
+  <p class="note-bas">
+    Deux réserves d'honnêteté sur cette planche. Le vrai en-tête du dossier porte le
+    lockup en image (<code>logo-dossier.png</code>) : il ne change pas avec la
+    police, il est composé ici en texte pour que le bloc reste lisible. Et la
+    planche montre les rubriques du spécimen en vin, ce qui est déjà l'arbitrage
+    v38 ; le vin n'est pas une variable de cette comparaison.
+  </p>
+
+</div>
+
+</body>
+</html>
