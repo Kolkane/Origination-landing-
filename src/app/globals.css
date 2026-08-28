@@ -978,9 +978,9 @@ footer a:hover {
 .d-lockup {
   display: block;
   /* v43c (arbitrage Vincent, 27/08 : « plus discret, plus léger ») :
-     72 -> 50px. Le lockup est un en-tête de papier à lettres, pas une
+     72 -> 50px, puis v43e : 50 -> 40px, le lockup noir est plus plat (5:1) et paraissait plus gros. Un en-tête de papier à lettres, pas une
      enseigne ; la baseline vin garde ~9px de capitales, lisible. */
-  height: 50px;
+  height: 40px;
   width: auto;
   flex-shrink: 0;
 }
