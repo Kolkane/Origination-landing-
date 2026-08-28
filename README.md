@@ -1,36 +1,46 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# imbrin.fr
 
-## Getting Started
+Landing one-page d'Imbrin Research, service d'origination externe pour boutiques
+M&A sell-side. Site statique, aucun backend, aucun formulaire, aucun traceur.
 
-First, run the development server:
+**Avant toute modification, lire `CLAUDE.md`.** Ce fichier n'est pas de la
+documentation : c'est la charte du projet, et chacune de ses lignes est un
+arbitrage rendu sur pièce, souvent après annulation d'une version précédente.
+Il prime sur ce README.
+
+## Lancer
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev     # http://localhost:3000
+npm run build   # build de production
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Où vit quoi
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+| Chemin | Contenu |
+| --- | --- |
+| `src/config/brand.ts` | marque, entité, contact, prix. **Tout chiffre affiché part d'ici.** |
+| `src/config/copy.ts` | les textes de la page |
+| `src/config/analyses.ts` | les articles ; en ajouter un suffit à créer sa page, son entrée d'index et son sitemap |
+| `src/config/schema.ts` | les graphes structurés, dérivés des précédents |
+| `src/config/site.ts` | le domaine de production |
+| `src/components/` | un fichier par section |
+| `src/app/globals.css` | toute la mise en forme, pilotée par tokens |
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Règle de fond : **rien codé en dur dans le JSX**, ni texte ni valeur.
 
-## Learn More
+## Deux conventions de style à connaître
 
-To learn more about Next.js, take a look at the following resources:
+- `.papier` retourne une section entière sur le fond clair en redéfinissant les
+  tokens de couleur. Ne jamais écrire d'exception de couleur enfant par enfant.
+- `.sect` place le libellé de section dans la marge gauche et le contenu à
+  droite. Les sections qui ont déjà une colonne de gauche ne la portent pas.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Stack
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Next 14 App Router, TypeScript strict, Tailwind, next/font. Zéro dépendance UI
+externe : les apparitions passent par IntersectionObserver et des classes CSS.
+Polices : Familjen Grotesk et Source Serif 4 via `next/font/google`, Geist Mono
+en local. Geist, Instrument Serif et Literata ont été retirées du site à la
+suite d'arbitrages documentés dans `CLAUDE.md` : ne pas les réintroduire.

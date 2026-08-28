@@ -19,6 +19,12 @@
   --line: rgba(255, 255, 255, 0.12);
   --line-soft: rgba(255, 255, 255, 0.06);
   --wine: #8e2438;
+  /* v54 · hiérarchie de filets. Un filet unique à 12 % servait à tout :
+     ouvrir une section, séparer deux entrées, souligner un appel. En
+     imprimerie le POIDS dit le rang. Trois emplois, trois valeurs :
+     --line-tete ouvre un ensemble (2px), --line sépare deux entrées,
+     --line-soft tabule à l'intérieur d'une entrée. */
+  --line-tete: rgba(255, 255, 255, 0.26);
   --grade: saturate(0.82) contrast(1.06) brightness(0.94);
   --ease: cubic-bezier(0.22, 0.75, 0.25, 1);
   /* v33 · mesure de section. Bord droit partagé par une prose et par ce qui
@@ -53,12 +59,6 @@ body {
   text-wrap: pretty;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
-}
-
-.narrow {
-  max-width: 720px;
-  margin: 0 auto;
-  padding: 0 40px;
 }
 
 .mono {
@@ -121,23 +121,6 @@ body {
   background:
     radial-gradient(900px 520px at 62% 46%, rgba(38, 52, 50, 0.55), transparent 70%),
     linear-gradient(180deg, #0c0d0d, #0a0b0b);
-}
-/* le fallback n'est monté qu'en cas d'erreur vidéo (voir Hero.tsx) :
-   plus de masquage CSS, donc plus de texte fantôme dans le HTML servi */
-.no-video .video-note {
-  display: block;
-  position: absolute;
-  left: 50%;
-  top: 46%;
-  transform: translate(-50%, -50%);
-  z-index: 1;
-  font-size: 11px;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--txt-3);
-  text-align: center;
-  line-height: 2;
-  max-width: 420px;
 }
 .nav {
   position: absolute;
@@ -342,16 +325,6 @@ section.block {
   color: var(--txt-2);
   max-width: 38.5625rem;
 }
-.exergue {
-  margin-top: 34px;
-  font-family: var(--font-familjen), sans-serif;
-  font-style: italic;
-  font-size: 20px;
-  letter-spacing: -0.01em;
-  color: var(--txt-2);
-  padding-left: 18px;
-  border-left: 1px solid var(--wine);
-}
 .rev {
   opacity: 0;
   transform: translateY(16px);
@@ -362,51 +335,6 @@ section.block {
   transform: none;
 }
 
-.rows {
-  margin-top: 56px;
-  border-top: 1px solid var(--line-soft);
-}
-.row {
-  display: grid;
-  grid-template-columns: 64px 220px 1fr;
-  gap: 28px;
-  align-items: baseline;
-  padding: 30px 0;
-  border-bottom: 1px solid var(--line-soft);
-}
-.row .n {
-  font-size: 11px;
-  color: var(--txt-3);
-  letter-spacing: 0.2em;
-}
-.row h3 {
-  font-size: 16px;
-  font-weight: 500;
-}
-.row p {
-  font-size: 14px;
-  color: var(--txt-2);
-  line-height: 1.7;
-  max-width: 32.5rem;
-}
-
-/* ---------- engagements ---------- */
-.nots {
-  margin-top: 56px;
-  border-top: 1px solid var(--line-soft);
-}
-.not {
-  padding: 22px 0;
-  border-bottom: 1px solid var(--line-soft);
-  font-size: 14px;
-  color: var(--txt-2);
-  line-height: 1.7;
-  max-width: 38.3125rem;
-}
-.not b {
-  color: var(--txt);
-  font-weight: 500;
-}
 /* ---------- FAQ ---------- */
 .faq {
   margin-top: 56px;
@@ -449,7 +377,6 @@ section.block {
 /* ---------- CTA final ---------- */
 .final {
   padding: 130px 0 140px;
-  border-top: 1px solid var(--line-soft);
 }
 .final .statement {
   max-width: 22ch;
@@ -517,15 +444,6 @@ footer a:hover {
     transition: none;
   }
 }
-@media (max-width: 860px) {
-  .row {
-    grid-template-columns: 44px 1fr;
-    grid-template-rows: auto auto;
-  }
-  .row p {
-    grid-column: 2;
-  }
-}
 @media (max-width: 760px) {
   .nav {
     padding: 20px 22px;
@@ -569,19 +487,15 @@ footer a:hover {
 /* 02 · méthode : colonne étroite, légère élévation */
 .method {
   padding: 120px 0;
-  border-top: 1px solid var(--line-soft);
 }
 /* 06 · fondateur */
 .founder-s {
-  padding: 120px 0;
-  border-top: 1px solid var(--line-soft);
+  padding: clamp(96px, 11vw, 168px) 0;
 }
 
 /* 07 · faq */
 .faq-s {
-  padding: 120px 0;
-  background: var(--bg-2);
-  border-top: 1px solid var(--line-soft);
+  padding: clamp(88px, 10vw, 148px) 0;
 }
 /* v53 : DEUX COLONNES — l'en-tête, la note et l'appel à gauche, les
    questions à droite. La liste pleine largeur rendait la section
@@ -628,8 +542,6 @@ footer a:hover {
   place-items: center;
   text-align: center;
   padding: 120px 0;
-  border-top: 1px solid var(--line-soft);
-  background: radial-gradient(700px 380px at 50% 40%, rgba(142, 36, 56, 0.1), transparent 70%);
 }
 .final .kicker {
   margin-bottom: 24px;
@@ -652,9 +564,6 @@ footer a:hover {
 }
 
 @media (max-width: 760px) {
-  .narrow {
-    padding: 0 22px;
-  }
   .method,
   .founder-s,
   .faq-s {
@@ -671,31 +580,10 @@ footer a:hover {
    la droite. L'espace horizontal travaille au lieu de se vider.
    ============================================================ */
 
-.wrap,
-.narrow {
+.wrap {
   max-width: 1440px;
   margin: 0 auto;
   padding: 0 clamp(22px, 4.4vw, 76px);
-}
-
-/* grille de 12 colonnes commune à toutes les sections */
-.g12 {
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  column-gap: clamp(18px, 2.2vw, 40px);
-  align-items: start;
-}
-
-/* le trait qui ouvre une section se dessine au reveal */
-.rule {
-  height: 1px;
-  background: var(--line-soft);
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 1.1s var(--ease);
-}
-.rule.in {
-  transform: scaleX(1);
 }
 
 /* les grands titres se dévoilent par le bas, sans bouger */
@@ -707,6 +595,61 @@ footer a:hover {
   clip-path: inset(0 0 -10% 0);
 }
 
+
+/* ============================================================
+   v54 · LA NOTE MARGINALE. Huit sections ouvraient sur le même
+   triptyque empilé : libellé mono, puis titre, puis corps, tous au
+   même fer à gauche, tous précédés du même filet à 6 %. Le lecteur
+   voyait huit fois la même dalle, et c'est cette répétition, bien
+   plus qu'une police, qui fait « page générée ».
+   Le libellé quitte le haut de la pile pour la MARGE. C'est une note
+   d'imprimé, pas un en-tête d'interface — et ce n'est pas une
+   invention : c'est l'intention déclarée en v10, « le libellé de
+   section tient la marge gauche, le contenu occupe la droite »,
+   restée à l'état de .g12 jamais posé sur un seul élément. Elle est
+   enfin appliquée, et .g12 supprimé faute d'usage.
+   PÉRIMÈTRE : les quatre sections qui étaient une pile plate, filtre,
+   méthode, offre, analyses. Le dossier et la FAQ ont déjà une colonne
+   de gauche qui tient le même rôle ; le fondateur et l'appel final
+   sont centrés, et ce centrage est un contraste voulu (v15).
+   Le prix en largeur est assumé : la colonne de contenu perd la marge,
+   ce qui rapproche du même coup les blocs bornés à --mesure de leur
+   bord droit — le vide de 545px que l'arbitrage v33 assumait tombe
+   à moins de 300px sans qu'aucune mesure de lecture n'ait bougé.
+   ============================================================ */
+.sect {
+  display: grid;
+  grid-template-columns: clamp(132px, 13vw, 208px) minmax(0, 1fr);
+  column-gap: clamp(24px, 3.2vw, 64px);
+  align-items: start;
+}
+.sect > .kicker {
+  grid-column: 1;
+  grid-row: 1;
+  margin: 0;
+  /* alignement optique sur la première ligne du titre et non sur le
+     haut de sa boîte : une capitale de 10,5px et une de 62px ne
+     commencent pas à la même distance du bord de leur ligne */
+  padding-top: 0.7em;
+}
+.sect > :not(.kicker) {
+  grid-column: 2;
+}
+/* le titre ouvre la colonne : sa marge d'empilement n'a plus d'objet */
+.sect > .kicker + * {
+  margin-top: 0;
+}
+/* sous 1100px la marge n'a plus la place d'exister sans étrangler la
+   colonne de lecture : la note reprend sa place au-dessus du titre */
+@media (max-width: 1100px) {
+  .sect {
+    display: block;
+  }
+  .sect > .kicker {
+    padding-top: 0;
+    margin-bottom: 18px;
+  }
+}
 
 /* 07 · faq : intitulé en marge, questions à droite */
 .faq-s .faq {
@@ -747,9 +690,7 @@ footer a:hover {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .rule,
   .mask {
-    transform: none !important;
     clip-path: none !important;
     transition: none !important;
   }
@@ -780,7 +721,13 @@ footer a:hover {
 :root {
   --ink: #171310;
   --ink-2: #3a342e;
-  --ink-3: #7a6f63;
+  /* v54 : #7a6f63 ne donnait que 3,99:1 sur le papier, sous le seuil AA
+     du petit texte — défaut antérieur à cette passe, il touchait déjà le
+     libellé de la bande méthode et tous les labels du spécimen. Assombri
+     le long de la MÊME teinte jusqu'à 4,84:1. Même précédent que le
+     tertiaire sombre, éclairci de #7A7774 à #83807C en v7-2 : la valeur
+     bouge pour le contraste, la teinte ne bouge pas. */
+  --ink-3: #6c6257;
   --ink-line: rgba(23, 19, 16, 0.14);
   --ink-line-2: rgba(23, 19, 16, 0.28);
   --wine-tint: rgba(142, 36, 56, 0.06);
@@ -791,9 +738,70 @@ footer a:hover {
   filter: invert(1);
 }
 
+/* ============================================================
+   v54 · LES SURFACES. Le papier n'était pas un fond, c'était une
+   liste d'exceptions : .method redéclarait cinq de ses enfants un
+   par un pour leur rendre l'encre, et tout ce qu'on y aurait ajouté
+   ensuite serait revenu en clair sur clair. Une surface se déclare
+   désormais en REDÉFINISSANT LES TOKENS sur la section : les 87
+   var(--txt*) et les 46 var(--line*) du fichier la suivent d'eux
+   mêmes, sans qu'un seul sélecteur enfant soit dupliqué.
+   La correspondance reproduit exactement les cinq exceptions de la
+   v52, elle ne réinvente aucune valeur : txt->ink, txt-2->ink-2,
+   txt-3->ink-3, line->ink-line-2, line-soft->ink-line.
+   ============================================================ */
+.papier {
+  --txt: var(--ink);
+  --txt-2: var(--ink-2);
+  --txt-3: var(--ink-3);
+  --line: var(--ink-line-2);
+  --line-soft: var(--ink-line);
+  --line-tete: rgba(23, 19, 16, 0.34);
+  /* le vin éclairci n'existe QUE sur l'encre : le lift avait été créé
+     parce que le vin plein n'y donne que 2,3:1. Sur papier le vin plein
+     donne 6,8:1, la charte le dit, le lift n'a donc rien à y faire. */
+  --wine-lift: var(--wine);
+  background: var(--paper);
+  color: var(--ink);
+}
+
+/* LE CORPS SUR PAPIER. L'échelle typographique de la page tenait dans
+   un mouchoir — 10,5 / 15 / 50 / 62px, un seul vrai saut — et une
+   échelle plate se lit comme un réglage par défaut. Le contraste se
+   gagne par le BAS plutôt que par le haut, l'agrandissement du hero
+   ayant été annulé sur pièce en v40 : l'encre sur papier porte un
+   corps plus grand que le clair sur sombre, où la diffusion des blancs
+   grossit déjà le texte. La page obtient ce qui lui manquait, une PAGE
+   DE TEXTE face à des pages d'affichage, sans toucher au plafond de
+   50px des statements (v17, v38). */
+.papier .m-sous,
+.papier .f-corps {
+  font-size: 16.5px;
+}
+.papier .me-p,
+.papier .faq .a,
+.papier .faq-note {
+  font-size: 16px;
+}
+
+/* LA RUBRICATION. Le vin était partout un peu — souligné d'appel,
+   survol, trois mots italiques, rubriques du spécimen, mesure de la
+   toise — donc nulle part vraiment. Il prend UN emploi : la note
+   marginale sur papier, où il donne 6,8:1. Ce n'est pas un usage
+   nouveau, c'est celui que la v38 a déjà validé dans le feuillet du
+   spécimen (« rubriques au vin plein »), étendu à la surface qui
+   porte le même papier. Sur l'encre il reste impossible : 2,3:1 en
+   vin plein, 3,2:1 en lift, et un libellé de 10,5px est du petit
+   texte, il lui faut 4,5:1. Le fondateur en est exclu, l'arbitrage
+   v15 dit « aucun rouge dans cette section » et il tient. */
+.papier .kicker:not(.f-kicker) {
+  color: var(--wine);
+}
+
+
 .recu {
   padding: 120px 0;
-  border-top: 1px solid var(--line-soft);
+  border-top: 1px solid var(--line);
 }
 /* le titre est dans la colonne de gauche, donc plus de max-width qui
    laisserait un blanc : c'est la colonne qui donne la mesure */
@@ -1713,7 +1721,7 @@ footer a:hover {
   padding: clamp(60px, 9vw, 128px) 0;
   /* v52 : la couleur de la methode (arbitrage Vincent, 27/08) */
   background: var(--bg-2);
-  border-top: 1px solid var(--line-soft);
+  border-top: 1px solid var(--line);
 }
 /* v45 (arbitrage Vincent, 27/08 : titre « empâté », section qui
    semblait plus étroite que les autres) : la mesure spéciale de 1100px
@@ -2104,26 +2112,11 @@ footer a:hover {
 .method {
   padding: clamp(80px, 9vw, 130px) 0;
   /* v52 : la méthode prend la couleur des engagements (papier, encre)
-     et devient la bande claire pleine largeur du site — les
-     engagements sont supprimés (arbitrage Vincent, 27/08). Sur papier,
-     pas de filet de section : la couleur fait la césure. */
-  background: var(--paper);
-  color: var(--ink);
-}
-.method .kicker {
-  color: var(--ink-3);
-}
-.method .m-sous {
-  color: var(--ink-2);
-}
-.method .m-entrees {
-  border-top-color: var(--ink-line-2);
-}
-.method .m-entree + .m-entree {
-  border-top-color: var(--ink-line);
-}
-.method .me-p {
-  color: var(--ink-2);
+     et devient une bande claire du site — les engagements sont
+     supprimés (arbitrage Vincent, 27/08). Sur papier, pas de filet de
+     section : la couleur fait la césure.
+     v54 : le fond et les cinq exceptions de couleur sont portés par
+     la classe .papier, posée sur la section dans Methode.tsx. */
 }
 .m-statement {
   margin-top: 22px;
@@ -2143,7 +2136,7 @@ footer a:hover {
 }
 .m-entrees {
   margin-top: clamp(44px, 5vw, 72px);
-  border-top: 1px solid var(--line);
+  border-top: 2px solid var(--line-tete);
 }
 .m-entree {
   display: grid;
@@ -2192,7 +2185,6 @@ footer a:hover {
 
 .offre {
   padding: clamp(84px, 9vw, 130px) 0;
-  border-top: 1px solid var(--line-soft);
 }
 
 /* en-tête à GAUCHE : la méthode juste au-dessus a le sien à droite,
@@ -2556,7 +2548,8 @@ footer a:hover {
    lisible : une réponse sur 1300px ne se lit pas */
 .faq-s .faq {
   margin-top: 0;
-  border-top: 1px solid var(--line);
+  /* v54 : filet de tête, il ouvre l'ensemble des questions */
+  border-top: 2px solid var(--line-tete);
 }
 .faq summary {
   font-size: clamp(16px, 1.45vw, 21px);
@@ -2574,7 +2567,6 @@ footer a:hover {
 
 .analyses {
   padding: clamp(72px, 9vw, 120px) 0;
-  border-top: 1px solid var(--line-soft);
 }
 .analyses .wrap {
   max-width: 1240px;
@@ -2600,7 +2592,7 @@ footer a:hover {
 }
 
 .a-list {
-  border-top: 1px solid var(--line);
+  border-top: 2px solid var(--line-tete);
 }
 .a-row {
   display: grid;

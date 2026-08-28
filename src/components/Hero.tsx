@@ -38,15 +38,11 @@ export default function Hero() {
         <source src="/imbrin.mp4" type="video/mp4" onError={() => setSansVideo(true)} />
       </video>
       <div className="veil" />
-      {/* le fallback ne doit pas exister dans le HTML servi : masqué en CSS, il
-          restait extractible par les crawlers et les extracteurs de texte */}
-      {sansVideo && (
-        <p className="video-note mono">
-          {h.note1}
-          <br />
-          {h.note2}
-        </p>
-      )}
+      {/* v54 : le fallback n'affiche plus rien. Il portait « Déposez votre
+          vidéo imbrin.mp4 dans public/, puis rechargez » — une consigne de
+          développement, lisible par un associé de cabinet le jour où la
+          vidéo ne charge pas. Le voile de .no-video tient le premier écran
+          seul, et le titre s'y lit sans elle. */}
 
       <div className="nav">
         <span className="brand mono fade f1">

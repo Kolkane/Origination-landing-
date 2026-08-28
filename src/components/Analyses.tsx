@@ -10,12 +10,12 @@ export default function Analyses() {
   const a = copy.analyses;
   return (
     <section className="analyses" id="analyses">
-      <div className="wrap">
-        <p className="a-kicker kicker mono rev">{a.kicker}</p>
-        <h2 className="a-titre mask rev">{grand(a.titre)}</h2>
-        <p className="a-intro rev">{a.intro}</p>
+      <div className="wrap sect">
+        <p className="a-kicker kicker mono">{a.kicker}</p>
+        <h2 className="a-titre mask">{grand(a.titre)}</h2>
+        <p className="a-intro">{a.intro}</p>
 
-        <div className="a-list rev">
+        <div className="a-list">
           {analyses.map((article) => (
             <Link
               className="a-row"

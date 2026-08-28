@@ -93,7 +93,7 @@ export default function RootLayout({
               __html:
                 /* refonte 2026-08 : les sélecteurs .funnel/.step ont disparu
                    avec les barres de l'entonnoir, la cascade passe par .rev */
-                ".rev,.mask,.rule{opacity:1!important;transform:none!important;clip-path:none!important}" +
+                ".rev,.mask{opacity:1!important;transform:none!important;clip-path:none!important}" +
                 /* v50 : la toise cache ses crans et n'affiche qu'un texte à
                    la fois ; sans JavaScript, tout se lit : crans posés,
                    trait tracé, et les cinq textes reprennent le flux au

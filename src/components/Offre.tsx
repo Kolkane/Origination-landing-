@@ -16,19 +16,19 @@ export default function Offre() {
   const s = o.complement;
   return (
     <section className="offre" id="offre">
-      <div className="wrap">
-        <p className="b-kicker kicker mono rev">{o.kicker}</p>
-        <h2 className="b-titre mask rev">{grand(o.statement)}</h2>
+      <div className="wrap sect">
+        <p className="b-kicker kicker mono">{o.kicker}</p>
+        <h2 className="b-titre mask">{grand(o.statement)}</h2>
 
         {/* la définition gouverne les deux offres : elle est en tête, pas
             derrière la seconde où elle passait pour une clause du mandat */}
-        <div className="b-def rev">
+        <div className="b-def">
           <p className="b-def-k mono">{o.definition.k}</p>
           <p className="b-def-t">{o.definition.texte}</p>
         </div>
 
         {/* ---------- le diptyque ---------- */}
-        <div className="dipt rev" id={p.ancre}>
+        <div className="dipt" id={p.ancre}>
           <div className="fiche-o">
             <h3 className="fo-nom mono">{p.nom}</h3>
             <p className="fo-lead">{p.lead}</p>
@@ -73,7 +73,7 @@ export default function Offre() {
         </div>
 
         {/* ---------- le complément ---------- */}
-        <div className="secondaire rev">
+        <div className="secondaire">
           <h3 className="s-nom mono">{s.nom}</h3>
           <p className="s-lead">{s.lead}</p>
           <div className="s-tarif">

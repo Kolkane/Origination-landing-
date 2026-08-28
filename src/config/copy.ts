@@ -62,8 +62,6 @@ export const copy = typoDeep({
     /* la légende ne décrit que le sujet : ni l'origine ni la durée du média
        ne sont revendiquées (arbitrage Vincent, v8-4) */
     legende1: "Plongeon imbrin en chasse",
-    note1: "Déposez votre vidéo « imbrin.mp4 »",
-    note2: "dans public/, puis rechargez.",
   },
   /* v14 : la description du livrable et l'exemple de dossier ne font plus
      qu'une section. Depuis la v19, cliquer un élément ne surligne plus une

@@ -71,16 +71,16 @@ export default function Entonnoir() {
 
   return (
     <section className="entonnoir" id="filtre">
-      <div className="wrap">
-        <p className="kicker mono rev">{e.kicker}</p>
-        <h2 className="ent-h2 mask rev">
+      <div className="wrap sect">
+        <p className="kicker mono">{e.kicker}</p>
+        <h2 className="ent-h2 mask">
           {grand(e.titreAvant)}
           <em>{grand(e.titreItalique)}</em>.
         </h2>
-        <p className="ent-intro rev">{e.intro}</p>
+        <p className="ent-intro">{e.intro}</p>
 
         {/* la seule preuve de marché sourcée à un tiers */}
-        <div className="ancrage rev">
+        <div className="ancrage">
           <p className="ancrage-t">{e.ancrage}</p>
           <p className="ancrage-s mono">{e.ancrageSource}</p>
         </div>
@@ -152,7 +152,7 @@ export default function Entonnoir() {
           </div>
         </div>
 
-        <div className="ent-foot rev">
+        <div className="ent-foot">
           <p className="ent-kicker">
             {e.piedAvant}
             <em>{e.piedItalique}</em>

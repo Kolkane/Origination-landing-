@@ -8,13 +8,13 @@ import { grand } from "@/config/typo";
 export default function Fondateur() {
   const f = copy.fondateur;
   return (
-    <section className="founder-s" id="fondateur">
+    <section className="founder-s papier" id="fondateur">
       <div className="wrap">
         {/* le kicker porte une phrase et non une étiquette depuis la v15 :
             c'est l'énoncé de la section, donc son h2. Rendu inchangé. */}
-        <h2 className="kicker mono rev f-kicker">{f.kicker}</h2>
+        <h2 className="kicker mono f-kicker">{f.kicker}</h2>
 
-        <div className="f-portrait rev">
+        <div className="f-portrait">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src="/portrait-vincent-fournier.webp"
@@ -24,19 +24,19 @@ export default function Fondateur() {
           />
         </div>
 
-        <blockquote className="f-citation mask rev">{grand(f.citation)}</blockquote>
+        <blockquote className="f-citation mask">{grand(f.citation)}</blockquote>
 
-        <p className="f-corps rev">{f.corps}</p>
+        <p className="f-corps">{f.corps}</p>
 
-        <p className="f-nom rev">{f.nom}</p>
-        <p className="f-lieu mono rev">{f.lieu}</p>
-        <p className="f-tel mono rev">
+        <p className="f-nom">{f.nom}</p>
+        <p className="f-lieu mono">{f.lieu}</p>
+        <p className="f-tel mono">
           <a href={brand.TELEPHONE.lien}>{brand.TELEPHONE.affiche}</a>
         </p>
 
-        <div className="f-filet rev" aria-hidden="true" />
+        <div className="f-filet" aria-hidden="true" />
 
-        <p className="f-id mono rev">
+        <p className="f-id mono">
           {f.id}
           <br />
           <a href={brand.LINKEDIN_URL} target="_blank" rel="noopener noreferrer">

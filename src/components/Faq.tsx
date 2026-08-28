@@ -10,15 +10,15 @@ import { grand } from "@/config/typo";
 export default function Faq() {
   const f = copy.faq;
   return (
-    <section className="faq-s" id="faq">
+    <section className="faq-s papier" id="faq">
       <div className="wrap">
         <div className="faq-grid">
           <div className="faq-head">
-            <p className="kicker mono rev">{f.kicker}</p>
-            <h2 className="statement mask rev">{grand(f.statement)}</h2>
-            <p className="faq-note rev">{f.note}</p>
+            <p className="kicker mono">{f.kicker}</p>
+            <h2 className="statement mask">{grand(f.statement)}</h2>
+            <p className="faq-note">{f.note}</p>
             <a
-              className="cta mono rev"
+              className="cta mono"
               href={brand.CALENDLY_URL}
               target="_blank"
               rel="noopener noreferrer"
@@ -27,7 +27,7 @@ export default function Faq() {
             </a>
           </div>
 
-          <div className="faq rev">
+          <div className="faq">
             {f.items.map((item) => (
               <details key={item.question}>
                 <summary>

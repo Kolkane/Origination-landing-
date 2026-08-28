@@ -135,9 +135,9 @@ export default function Dossier() {
           {/* le titre vit dans la colonne de gauche : sinon le document
               démarre sous lui et pend très bas par rapport au texte */}
           <div className="recu-col">
-            <p className="kicker mono rev">{d.kicker}</p>
-            <h2 className="statement mask rev">{grand(d.titre)}</h2>
-            <p className="recu-chapo rev">{d.chapo}</p>
+            <p className="kicker mono">{d.kicker}</p>
+            <h2 className="statement mask">{grand(d.titre)}</h2>
+            <p className="recu-chapo">{d.chapo}</p>
 
             {/* ---------- nav des éléments ---------- */}
             {/* l'état de lecture vit dans un attribut data-, PAS dans
@@ -145,7 +145,7 @@ export default function Dossier() {
                 un className recalculé par React l'effacerait (vécu : la
                 nav restait à opacité nulle). */}
             <nav
-              className="recu-nav rev"
+              className="recu-nav"
               data-lecture={lecture && enVue ? "" : undefined}
               aria-label={d.kicker}
               ref={navRef}
@@ -183,7 +183,7 @@ export default function Dossier() {
           </div>
 
           {/* ---------- document ---------- */}
-          <div className="viseur rev">
+          <div className="viseur">
             <div className="viseur-bar mono">
               <span>{d.viewer.titre}</span>
               <span className="warn">{d.viewer.mention}</span>
@@ -204,6 +204,7 @@ export default function Dossier() {
                       remplace le médaillon + mot-marque composés en HTML.
                       Image encre sur transparent, posée sur le papier ;
                       alt porté par les variables de marque. */}
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     className="d-lockup"
                     src="/logo-dossier.png"

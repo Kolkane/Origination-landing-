@@ -443,6 +443,120 @@ trouvé sur vous". Codes attendus : document financier imprimé, pas SaaS IA.
   porte avec le préavis. Le gabarit v15-B5/v33 est remplacé :
   MAQUETTE-V15-B5-OFFRE.html et les planches C1-C4 sont des ARCHIVES,
   l'arbitrage v33 (seuil 1390px, colonne du prix) n'a plus d'objet.
+- Amendement v54 (arbitrage Vincent, 28-29/08/2026, CARTE BLANCHE :
+  « rendre le site vraiment au top »). Motif donné : « encore un peu trop
+  sobre, pas assez démarqué, ça fait beaucoup site généré par l'IA ».
+  DIAGNOSTIC, à garder parce qu'il explique tout ce qui suit : cette charte
+  est une liste d'INTERDITS, et elle a parfaitement fonctionné, plus un
+  seul tell de 2023 sur la page. Mais soustraire ne distingue pas. Ce qui
+  restait après soustraction, fond encre + type clair + filets à 12 % +
+  labels mono en capitales + un accent rouge, est devenu le préréglage des
+  générateurs de 2026. Les tells de la génération précédente avaient été
+  tués et la page était arrivée sur le défaut de la suivante. Le problème
+  n'était plus typographique, il était STRUCTUREL. Six passes, toutes des
+  refontes de gabarits existants (régime 2), aucune section nouvelle.
+  1. LE MOUVEMENT. 46 poses de .rev, soit fade + translateY(16px) sur à
+     peu près tout ce qui existait. C'est aujourd'hui le mouvement le plus
+     reconnaissable d'une page générée, et il noyait les trois mouvements
+     sur mesure qui, eux, ne ressemblent à rien d'autre. 42 retirés. Il
+     ne reste .rev QUE sur .toise, dont le .in pilote le tracé, la cascade
+     des crans et le remplissage de la mesure. Les .mask des grands titres
+     restent, le dévoilement par clip-path est un dispositif. NE PAS
+     remettre de .rev sur du corps de texte, une liste ou un libellé :
+     une page où rien n'apparaît au scroll est plus singulière, en 2026,
+     qu'une page où tout apparaît.
+  2. LES SURFACES. Le papier n'était pas un fond, c'était une liste
+     d'exceptions : .method redéclarait cinq de ses enfants un par un pour
+     leur rendre l'encre, et tout ce qu'on y aurait ajouté ensuite serait
+     revenu en clair sur clair. La classe .papier REDÉFINIT LES TOKENS
+     (--txt, --txt-2, --txt-3, --line, --line-soft, --line-tete,
+     --wine-lift) : les 87 var(--txt*) et les 46 var(--line*) du fichier
+     la suivent d'eux-mêmes. La correspondance reproduit exactement les
+     cinq exceptions de la v52, aucune valeur n'a été inventée. Retourner
+     une section, c'est désormais poser une classe. NE PLUS jamais écrire
+     d'exception de couleur enfant par enfant.
+  3. LE RYTHME DES FONDS. Le point « Rythme v9 » ci-dessus prescrivait une
+     alternance de bandes sombres et claires sur trois sections ; la v52 en
+     a rotationné une et les v52/v53 ont tué les deux autres avec les
+     engagements et la mesure. Personne n'a rétabli le rythme : il restait
+     UNE bande claire, et CINQ sections sombres d'affilée dont l'écart de
+     fond (0A contre 0E) vaut 4 valeurs sur 255, donc invisible. La moitié
+     basse du site était un seul bloc noir. Le FONDATEUR et la FAQ passent
+     sur papier. Séquence désormais : hero E, dossier E, filtre E,
+     méthode P, offre E, fondateur P, analyses E, faq P, appel E. La
+     moitié basse alterne strictement.
+     Le DOSSIER et l'OFFRE restent sur l'encre, et ce n'est pas un oubli :
+     tous deux posent un feuillet de papier (le spécimen, la fiche du
+     devis) qui doit se DÉTACHER de son fond. Papier sur papier tuerait la
+     figure et, avec elle, ce que le papier signifie sur ce site, l'objet
+     qu'on remet. Ne pas les basculer.
+  4. LA DOCTRINE DU FILET. Un filet unique à 12 % servait à tout : ouvrir
+     une section, séparer deux entrées, souligner un appel. En imprimerie
+     le POIDS dit le rang. RÈGLE : un filet de section ne sert que là où
+     la couleur ne coupe pas. Sept sections en portaient un, identique ;
+     il n'en reste que deux, entre deux sections d'encre (.recu,
+     .entonnoir), et ils montent de --line-soft à --line pour se voir
+     enfin. Nouveau token --line-tete, 2px, qui OUVRE un ensemble
+     d'entrées (.a-list, .m-entrees, la FAQ).
+  5. LA NOTE MARGINALE (.sect). Huit sections ouvraient sur le même
+     triptyque empilé, libellé mono puis titre puis corps, au même fer à
+     gauche : le lecteur voyait huit fois la même dalle, et c'est cette
+     répétition, bien plus qu'une police, qui faisait « généré ». Le
+     libellé quitte le haut de la pile pour la MARGE GAUCHE. Ce n'est pas
+     une invention : c'est l'intention déclarée en v10, « le libellé de
+     section tient la marge gauche, le contenu occupe la droite », restée
+     à l'état de .g12 jamais posé sur un seul élément. .g12 est supprimé,
+     l'intention est appliquée. Portée : filtre, méthode, offre, analyses,
+     les quatre sections qui étaient une pile plate. Le dossier et la FAQ
+     ont déjà une colonne de gauche qui tient le même rôle ; le fondateur
+     et l'appel final sont centrés, et ce centrage est le contraste voulu
+     par la v15. Sous 1100px la marge n'a plus la place d'exister sans
+     étrangler la colonne de lecture : la note reprend sa place au-dessus
+     du titre. Effet de bord favorable sur l'arbitrage v33 : la colonne de
+     contenu perd la largeur de la marge, donc le vide de 545px à droite
+     des blocs bornés à --mesure tombe sous 300px sans qu'aucune mesure de
+     lecture n'ait bougé.
+  6. LE CORPS SUR PAPIER, ET LA RUBRICATION. L'échelle typographique
+     tenait dans un mouchoir, 10,5 / 15 / 50 / 62px, un seul vrai saut, et
+     une échelle plate se lit comme un réglage par défaut. Le contraste se
+     gagne par le BAS, l'agrandissement du hero ayant été annulé sur pièce
+     en v40 : sur papier le corps monte de 1,5px, l'encre sur papier
+     portant un corps plus grand que le clair sur sombre, où la diffusion
+     des blancs grossit déjà le texte. La page obtient une PAGE DE TEXTE
+     face à des pages d'affichage, sans toucher au plafond de 50px des
+     statements. Et le VIN prend enfin un emploi : il était partout un
+     peu, souligné d'appel, survol, trois mots italiques, rubriques du
+     spécimen, mesure de la toise, donc nulle part vraiment. Il porte la
+     note marginale SUR PAPIER, où il donne 6,94:1. Usage non nouveau : la
+     v38 l'a déjà validé dans le feuillet (« rubriques au vin plein »),
+     étendu ici à la surface qui porte le même papier. Sur l'encre il
+     reste impossible, 2,3:1 en plein et 3,2:1 en lift, et un libellé de
+     10,5px est du petit texte, il lui faut 4,5:1. LE FONDATEUR EN EST
+     EXCLU : l'arbitrage v15 dit « aucun rouge dans cette section », il
+     tient.
+  TROIS CORRECTIONS au passage, toutes antérieures à cette passe :
+  le HALO du CTA final (radial-gradient de vin à 10 %, posé en v9) est
+  supprimé, un glow coloré étant aux interdits absolus, et c'était le
+  pixel le plus « généré » de la page ; --ink-3 passe de #7a6f63 à
+  #6c6257, parce qu'il ne donnait que 3,99:1 sur le papier, sous le seuil
+  AA du petit texte, alors qu'il portait déjà le libellé de la bande
+  méthode et tous les labels du spécimen (assombri le long de la MÊME
+  teinte, jusqu'à 4,84:1 ; même précédent que le tertiaire sombre éclairci
+  en v7-2) ; et la note de repli de la vidéo du hero, « Déposez votre
+  vidéo imbrin.mp4 dans public/, puis rechargez », est supprimée, c'était
+  une consigne de développement que lisait un associé de cabinet le jour
+  où la vidéo ne chargeait pas. 97 lignes de CSS mort partent avec
+  (.rows/.row de la méthode d'avant la v38, .nots/.not des engagements
+  morts en v52, .exergue, .narrow, .g12, .rule, jamais montés sur un
+  élément).
+  N'ONT PAS BOUGÉ, et ne doivent pas : le spécimen et sa loupe, la toise
+  et ses quatre garde-fous, le plafond de 50px des statements, l'échelle
+  du hero, les trois polices, la séquence d'apparition au chargement.
+  RESTE À JUGER SUR PIÈCE, non fait : la MATIÈRE du papier. Les bandes
+  claires sont des aplats pleine largeur, elles n'ont pas de bord ; le
+  spécimen sait déjà faire une feuille (second feuillet décalé, ni ombre
+  ni dégradé) et ce vocabulaire pourrait monter au niveau de la page.
+  À arbitrer devant l'écran, pas dans le code.
 - Interdits définitifs (hérités des itérations rejetées) : ticker, métriques animées,
   count-up, grilles de cards, beam/bordures lumineuses, tilt 3D, spotlight souris, pings,
   glow, dégradés colorés, grid de fond, badges/chips, emojis, icônes décoratives,

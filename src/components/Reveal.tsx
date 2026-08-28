@@ -2,8 +2,14 @@
 
 import { useEffect } from "react";
 
-/* Apparitions au scroll : fade des blocs .rev, dévoilement par masque des
-   grands titres .mask, tracé des filets .rule. Une seule fois.
+/* Apparitions au scroll : dévoilement par masque des grands titres .mask,
+   et .in sur les rares blocs .rev qui pilotent un dispositif (la toise).
+   Une seule fois.
+
+   v54 : le fade + translateY générique a été retiré de 42 éléments. Il
+   ne restait plus de lui qu'un tell : tout ce qui entrait dans le champ
+   montait de 16px en fondu, ce que produit n'importe quelle page
+   générée. Le mouvement ne sert plus qu'à ce qui EST un dispositif.
 
    Un élément masqué par clip-path a une aire d'intersection nulle : le
    navigateur ne le considère jamais comme visible et il ne se révélerait
@@ -13,7 +19,7 @@ export default function Reveal() {
   useEffect(() => {
     const masques = Array.from(document.querySelectorAll<HTMLElement>(".mask"));
     const simples = Array.from(
-      document.querySelectorAll<HTMLElement>(".rev, .rule")
+      document.querySelectorAll<HTMLElement>(".rev")
     ).filter((e) => !e.classList.contains("mask"));
 
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {

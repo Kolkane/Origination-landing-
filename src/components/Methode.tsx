@@ -10,12 +10,12 @@ import { grand } from "@/config/typo";
 export default function Methode() {
   const m = copy.methode;
   return (
-    <section className="method" id="methode">
-      <div className="wrap">
-        <p className="kicker mono rev">{m.kicker}</p>
-        <h2 className="m-statement mask rev">{grand(m.statement)}</h2>
-        <p className="m-sous rev">{m.sousTitre}</p>
-        <div className="m-entrees rev">
+    <section className="method papier" id="methode">
+      <div className="wrap sect">
+        <p className="kicker mono">{m.kicker}</p>
+        <h2 className="m-statement mask">{grand(m.statement)}</h2>
+        <p className="m-sous">{m.sousTitre}</p>
+        <div className="m-entrees">
           {m.lignes.map((ligne) => (
             /* v51 : plus de numéros de chrome — trois entrées titrées sur
                filets n'ont pas besoin d'être comptées */
