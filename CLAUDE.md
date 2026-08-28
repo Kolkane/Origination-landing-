@@ -289,6 +289,13 @@ trouvé sur vous". Codes attendus : document financier imprimé, pas SaaS IA.
   fichier avec le médaillon proportionné au slogan (900x212 après
   rognage), hauteur 72px. L'alt passe par les variables de marque.
   LogoImbrin (le composant) reste en usage au hero et au footer.
+  Amendement v43d (arbitrage Vincent, 28/08/2026) : la baseline du lockup
+  passe du vin au NOIR (« l'écriture en noir, c'est plus classe »). Le
+  fichier fourni avait un fond blanc opaque : détouré par luminance
+  (blanc -> transparent, encre conservée, possible parce que le lockup
+  est désormais entièrement noir et gris), rogné, 900x180. Plus aucun
+  vin dans le lockup du dossier ; le tampon Spécimen reste le seul vin
+  de l'en-tête.
 - Amendement v45 (arbitrage Vincent, 27/08/2026) : LE FILTRE s'aligne.
   Le titre était « empâté » (trois lignes serrées à 58px sur 16ch) : il
   passe à l'échelle des statements (50px), sur une ligne, et la mesure
