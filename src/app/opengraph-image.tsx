@@ -23,9 +23,15 @@ async function policeGoogle(famille: string, poids: number, texte: string) {
 export default async function Image() {
   const marque = `${brand.MARQUE} ${brand.SUFFIXE}`;
   const baseline = brand.BASELINE.toUpperCase();
-  const [familjen, geistMono] = await Promise.all([
-    policeGoogle("Familjen+Grotesk", 400, marque),
-    policeGoogle("Geist+Mono", 400, `${baseline} ·`),
+  /* v55 : les polices suivent la bascule du site. La charte v18 pose
+     que l'image OG n'echappe pas aux arbitrages de police, elle avait
+     alors perdu Instrument Serif ; elle perd ici Familjen et Geist Mono.
+     Fraunces est demandee a wght@400 sans ses axes SOFT et WONK : la
+     carte sociale n'a pas besoin du dessin irregulier, et une requete
+     multi-axes de plus serait un point de casse pour un PNG statique. */
+  const [display, label] = await Promise.all([
+    policeGoogle("Fraunces", 400, marque),
+    policeGoogle("Cutive+Mono", 400, `${baseline} ·`),
   ]);
 
   return new ImageResponse(
@@ -46,7 +52,7 @@ export default async function Image() {
         <div
           style={{
             marginTop: 44,
-            fontFamily: "Familjen Grotesk",
+            fontFamily: "Fraunces",
             fontSize: 120,
             letterSpacing: "-0.02em",
             color: "#F4F2EF",
@@ -58,7 +64,7 @@ export default async function Image() {
         <div
           style={{
             marginTop: 34,
-            fontFamily: "Geist Mono",
+            fontFamily: "Cutive Mono",
             fontSize: 24,
             letterSpacing: "0.28em",
             color: "#B9B6B2",
@@ -71,8 +77,8 @@ export default async function Image() {
     {
       ...size,
       fonts: [
-        { name: "Familjen Grotesk", data: familjen, weight: 400 },
-        { name: "Geist Mono", data: geistMono, weight: 400 },
+        { name: "Fraunces", data: display, weight: 400 },
+        { name: "Cutive Mono", data: label, weight: 400 },
       ],
     }
   );

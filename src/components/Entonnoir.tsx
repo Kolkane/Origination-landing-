@@ -72,7 +72,7 @@ export default function Entonnoir() {
   return (
     <section className="entonnoir" id="filtre">
       <div className="wrap sect">
-        <p className="kicker mono">{e.kicker}</p>
+        <p className="kicker label">{e.kicker}</p>
         <h2 className="ent-h2 mask">
           {grand(e.titreAvant)}
           <em>{grand(e.titreItalique)}</em>.
@@ -82,7 +82,7 @@ export default function Entonnoir() {
         {/* la seule preuve de marché sourcée à un tiers */}
         <div className="ancrage">
           <p className="ancrage-t">{e.ancrage}</p>
-          <p className="ancrage-s mono">{e.ancrageSource}</p>
+          <p className="ancrage-s label">{e.ancrageSource}</p>
         </div>
 
         {/* l'état fin vit en data- : un className recalculé effacerait le
@@ -126,12 +126,12 @@ export default function Entonnoir() {
               >
                 {/* v51 : plus de numéro imprimé — une règle graduée n'en a
                     pas besoin, ses graduations font le travail */}
-                <span className="cran-l mono">{c.label}</span>
+                <span className="cran-l label">{c.label}</span>
               </button>
             ))}
             {/* le temps terminal : la destination de la mesure */}
             <p className="cran-fin">
-              <span className="cran-l mono">{e.finLbl}</span>
+              <span className="cran-l label">{e.finLbl}</span>
             </p>
           </div>
 
@@ -140,7 +140,7 @@ export default function Entonnoir() {
           <div className="toise-detail">
             {e.criteres.map((c, i) => (
               <p className={`td${i === actif ? " lit" : ""}`} key={c.num}>
-                <span className="td-l mono">{c.label}</span>
+                <span className="td-l label">{c.label}</span>
                 {c.texte}
               </p>
             ))}

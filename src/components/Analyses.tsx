@@ -11,7 +11,7 @@ export default function Analyses() {
   return (
     <section className="analyses" id="analyses">
       <div className="wrap sect">
-        <p className="a-kicker kicker mono">{a.kicker}</p>
+        <p className="a-kicker kicker label">{a.kicker}</p>
         <h2 className="a-titre mask">{grand(a.titre)}</h2>
         <p className="a-intro">{a.intro}</p>
 
@@ -26,7 +26,7 @@ export default function Analyses() {
                 <span className="a-row-t">{grand(article.titre)}</span>
                 <span className="a-row-s">{article.standfirst}</span>
               </span>
-              <span className="a-row-cta mono">
+              <span className="a-row-cta label">
                 {a.lire}
                 <span className="arw" aria-hidden="true">
                   →

@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
-import { Familjen_Grotesk, Source_Serif_4 } from "next/font/google";
-import localFont from "next/font/local";
+import { Cutive_Mono, Fraunces, Spectral } from "next/font/google";
 import Footer from "@/components/Footer";
 import JsonLd from "@/components/JsonLd";
 import { fondateurSchema, organisationSchema } from "@/config/schema";
@@ -8,49 +7,75 @@ import { copy } from "@/config/copy";
 import { SITE_URL } from "@/config/site";
 import "./globals.css";
 
-/* Display v18 : grotesque à la place du serif. Familjen Grotesk est variable
-   (wght 400-700), on ne fixe donc pas de poids : les titres restent à 400.
-   Son italique est une VRAIE italique, aux formes redessinées (le « a » passe
-   de deux étages à un seul), pas une oblique penchée. C'est ce qui permet de
-   garder l'accent italique du hero et de l'entonnoir après la bascule. */
-const familjen = Familjen_Grotesk({
+/* ============================================================
+   v55 · LA BASCULE TYPOGRAPHIQUE (arbitrage Vincent, 29/08/2026,
+   sur la planche MAQUETTE-V55-TYPO.html, qui fait foi).
+   Direction C pour le SITE, direction B pour les DOCUMENTS.
+
+   Motif : « ça fait beaucoup site généré par l'IA, encore moins
+   dans les documents ». Le diagnostic tenait en une incohérence de
+   cette charte : la v28 a retiré Geist Sans au motif qu'elle est
+   « la police maison de Vercel, devenue le signe des sites
+   générés », et la dernière ligne du même amendement disait
+   « GEIST MONO RESTE ». Or c'est Geist Mono qui composait les 25
+   libellés du spécimen. Un acte, un Kbis, un rapport de commissaire
+   aux comptes n'étiquettent jamais leurs champs en capitales
+   monospace espacées : c'est le vocabulaire d'un tableau de bord,
+   et c'est ce qui faisait que le document « se voyait généré ».
+
+   Les VARIABLES SONT NOMMÉES PAR RÔLE, pas par police. C'est le
+   principe déjà posé en v18 (.serif renommée .display) et en v28
+   (la clé « sans » renommée « corps ») : le nom ne doit pas mentir
+   à la prochaine bascule. Celle-ci est la quatrième, elle n'aurait
+   pas dû toucher autre chose que ce fichier, et elle a quand même
+   dû renommer --font-familjen dans vingt-trois déclarations. Plus
+   maintenant : globals.css ne connaît que --f-display, --f-corps
+   et --f-label.
+   ============================================================ */
+
+/* DISPLAY · Fraunces. Variable, avec deux axes qui n'existent chez
+   presque personne : SOFT (adoucissement des terminaisons) et WONK
+   (bascule vers des dessins volontairement irréguliers). Réglés à
+   SOFT 0, WONK 1 dans globals.css, c'est-à-dire terminaisons nettes
+   et lettres irrégulières : une police qui a l'air DESSINÉE, ce
+   qu'aucun générateur ne produit. L'optique reste automatique.
+   Elle reprend les trois italiques du site, que Familjen portait. */
+const display = Fraunces({
   subsets: ["latin"],
   style: ["normal", "italic"],
-  variable: "--font-familjen",
+  axes: ["SOFT", "WONK", "opsz"],
+  variable: "--font-display",
   display: "swap",
 });
 
-/* Corps v30 : Source Serif 4 remplace Literata. Le motif de la v28 tient
-   toujours, une serif de labeur plutôt qu'une grotesque, mais Literata a été
-   dessinée pour la lecture longue sur liseuse : elle est trop littéraire pour
-   un document financier. Source Serif est une serif de travail, du même
-   registre que les caractères des documents imprimés que la page revendique.
-   400 et 500 seulement, romain : les trois italiques du site sont tous portés
-   par Familjen, aucun ne tombe dans du texte de corps.
-
-   OBSERVATION, à trancher en prod et hors de ce commit : la hauteur d'x tombe
-   de 50,7 % du corps (Literata) à 47,5 % (Source Serif 4), contre 53,0 % pour
-   Geist. À font-size égale le texte paraîtra donc plus petit. AUCUNE font-size
-   n'a été touchée ici : la taille apparente est une seconde variable, on la
-   juge sur pièce avant d'y toucher, sinon deux changements se masquent l'un
-   l'autre. C'est exactement ce qui s'est produit en v28, où le choix de
-   Literata avait été calé sur sa hauteur d'x et où le déplacement réel, celui
-   des largeurs en ch, est passé inaperçu. */
-const sourceSerif = Source_Serif_4({
+/* CORPS · Spectral, dessinée par Production Type, fonderie
+   parisienne, commandée par Google pour la lecture à l'écran :
+   une serif de travail, du registre des documents imprimés que la
+   page revendique. 400 et 500, romain, latin — exactement le
+   gabarit que tenait Source Serif 4, pour que les <b> continuent
+   de tomber sur 500 et qu'aucune graisse ne se synthétise.
+   Aucun italique : les trois du site sont portés par le display. */
+const corps = Spectral({
   subsets: ["latin"],
   weight: ["400", "500"],
   style: ["normal"],
-  variable: "--font-source-serif",
+  variable: "--font-corps",
   display: "swap",
 });
 
-/* Geist Mono reste : absent du catalogue next/font/google de Next 14.2
-   (snapshot antérieur à sa publication), self-hosté avec le woff2 variable
-   officiel servi par Google Fonts, même rendu. */
-const geistMono = localFont({
-  src: "../../public/fonts/geist-mono-variable.woff2",
-  weight: "100 900",
-  variable: "--font-geist-mono",
+/* LIBELLÉS · Cutive Mono. Une machine à écrire, pas une police de
+   code : c'est tout le sujet de la bascule. Plus sobre que Courier,
+   sans son cliché de scénario. Un seul dessin, une seule graisse,
+   comme une vraie machine.
+   Elle ne compose QUE la page. Dans les documents — le spécimen du
+   dossier et la fiche du devis — les libellés passent à Spectral,
+   sans aucun monospace : c'est la direction B, retenue là pour son
+   espacement, plus confortable à l'oeil. La bascule se fait par le
+   token --f-label, redéfini sur .doc et .fiche-o dans globals.css. */
+const label = Cutive_Mono({
+  subsets: ["latin"],
+  weight: "400",
+  variable: "--font-label",
   display: "swap",
 });
 
@@ -81,7 +106,7 @@ export default function RootLayout({
   return (
     <html
       lang="fr"
-      className={`${familjen.variable} ${sourceSerif.variable} ${geistMono.variable}`}
+      className={`${display.variable} ${corps.variable} ${label.variable}`}
     >
       <head>
         {/* sans JavaScript, aucun bloc animé ne doit rester invisible :

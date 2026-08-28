@@ -14,7 +14,7 @@ export default function Confidentialite() {
         <h1 className="statement">{grand(page.titre)}</h1>
         {page.sections.map((section) => (
           <section key={section.titre} className="mt-12 first-of-type:mt-0">
-            <h2 className="kicker mono">{section.titre}</h2>
+            <h2 className="kicker label">{section.titre}</h2>
             {(Array.isArray(section.corps) ? section.corps : [section.corps]).map(
               (para) => (
                 <p
@@ -26,7 +26,7 @@ export default function Confidentialite() {
               )
             )}
             {section.email ? (
-              <a href={`mailto:${section.email}`} className="cta mono">
+              <a href={`mailto:${section.email}`} className="cta label">
                 {section.email}
               </a>
             ) : null}

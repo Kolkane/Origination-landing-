@@ -8,9 +8,13 @@
 
    U+00A0 et non U+202F, l'espace fine insécable qui serait
    l'usage français devant les ponctuations hautes. Vérifié sur
-   le binaire : le sous-ensemble latin que next/font/google
-   embarque pour Source Serif 4 ne contient PAS le glyphe
-   U+202F, alors que son unicode-range (u+2000-206f) le couvre.
+   le binaire à l'époque de Source Serif 4 : le sous-ensemble
+   latin que next/font/google embarque n'y contenait PAS le
+   glyphe U+202F, alors que son unicode-range (u+2000-206f) le
+   couvre. La v55 a changé les trois polices du site, la réserve
+   vaut donc à nouveau et n'a PAS été revérifiée sur Spectral,
+   Fraunces et Cutive Mono : U+00A0 reste le choix sûr, il est
+   servi par tous les sous-ensembles latins de Google.
    Le navigateur retiendrait donc la fonte, n'y trouverait rien,
    et retomberait sur Georgia puis sur la serif système : une
    espace à la largeur d'une autre fonte, variable selon la

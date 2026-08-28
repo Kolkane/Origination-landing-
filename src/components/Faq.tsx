@@ -14,11 +14,11 @@ export default function Faq() {
       <div className="wrap">
         <div className="faq-grid">
           <div className="faq-head">
-            <p className="kicker mono">{f.kicker}</p>
+            <p className="kicker label">{f.kicker}</p>
             <h2 className="statement mask">{grand(f.statement)}</h2>
             <p className="faq-note">{f.note}</p>
             <a
-              className="cta mono"
+              className="cta label"
               href={brand.CALENDLY_URL}
               target="_blank"
               rel="noopener noreferrer"

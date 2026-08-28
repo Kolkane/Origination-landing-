@@ -12,7 +12,7 @@ export default function Methode() {
   return (
     <section className="method papier" id="methode">
       <div className="wrap sect">
-        <p className="kicker mono">{m.kicker}</p>
+        <p className="kicker label">{m.kicker}</p>
         <h2 className="m-statement mask">{grand(m.statement)}</h2>
         <p className="m-sous">{m.sousTitre}</p>
         <div className="m-entrees">

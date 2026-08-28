@@ -19,17 +19,16 @@ const config: Config = {
         wine: "#8E2438",
       },
       fontFamily: {
-        /* v18 : le display est une grotesque, la clé prend le nom du rôle.
-           Aucun composant n'utilisait font-serif, le renommage ne casse rien. */
-        display: ["var(--font-familjen)", "system-ui", "sans-serif"],
-        /* v28 : « sans » devient « corps ». Le corps est passé en serif, une
-           clé nommée sans pointant sur une serif mentirait, exactement ce que
-           l'amendement v18 voulait éviter en renommant serif en display : le
-           nom dit le RÔLE, pas la classification. La v30 change la police
-           derrière la clé, pas la clé : c'est ce que le nommage par rôle
-           devait permettre. */
-        corps: ["var(--font-source-serif)", "Georgia", "serif"],
-        mono: ["var(--font-geist-mono)", "ui-monospace", "monospace"],
+        /* v55 : les clés pointent sur les tokens de rôle, plus sur des
+           noms de polices. C'est l'aboutissement de ce que v18 et v28
+           avaient commencé : le nom dit le RÔLE, et la bascule d'une
+           fonte ne touche plus que layout.tsx.
+           « mono » devient « label » pour la même raison : la police
+           derrière n'est monospace que sur la page, dans les documents
+           --f-label vaut la serif du corps. */
+        display: ["var(--f-display)", "Georgia", "serif"],
+        corps: ["var(--f-corps)", "Georgia", "serif"],
+        label: ["var(--f-label)", "ui-monospace", "monospace"],
       },
       transitionTimingFunction: {
         v7: "cubic-bezier(.22,.75,.25,1)",

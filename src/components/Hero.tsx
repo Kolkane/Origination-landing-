@@ -45,7 +45,7 @@ export default function Hero() {
           seul, et le titre s'y lit sans elle. */}
 
       <div className="nav">
-        <span className="brand mono fade f1">
+        <span className="brand label fade f1">
           <LogoImbrin taille={18} />
           <span>
             {brand.MARQUE} <small>· {brand.SUFFIXE}</small>
@@ -53,11 +53,11 @@ export default function Hero() {
         </span>
         <nav className="nav-r fade f1">
           {h.nav.map((lien) => (
-            <a key={lien.ancre} href={lien.ancre} className="mono">
+            <a key={lien.ancre} href={lien.ancre} className="label">
               {lien.label}
             </a>
           ))}
-          <a href={h.navAppel.ancre} className="mono keep">
+          <a href={h.navAppel.ancre} className="label keep">
             {h.navAppel.label}
           </a>
         </nav>
@@ -67,7 +67,7 @@ export default function Hero() {
         {/* v40 : l'eyebrow REVIENT au-dessus du titre — la v39 l'avait
             descendu en légende, arbitrage Vincent du 27/08 : la première
             ligne qualifiante fait partie de la composition. */}
-        <p className="eyebrow mono fade f2">{h.eyebrow}</p>
+        <p className="eyebrow label fade f2">{h.eyebrow}</p>
         {/* v42 : deux lignes, l'accent vin sur le verbe du métier au
             milieu de la première (arbitrage Vincent, 27/08). */}
         <h1 className="fade f3">
@@ -80,23 +80,23 @@ export default function Hero() {
         <p className="hero-sub fade f4">{h.sousTitre}</p>
         <div className="cta-row fade f4">
           <a
-            className="cta mono"
+            className="cta label"
             href={brand.CALENDLY_URL}
             target="_blank"
             rel="noopener noreferrer"
           >
             {h.cta}
           </a>
-          <a className="cta cta-2 mono" href={h.ctaSecondaire.ancre}>
+          <a className="cta cta-2 label" href={h.ctaSecondaire.ancre}>
             {h.ctaSecondaire.label}
           </a>
         </div>
         {/* métadonnée, pas un troisième appel : ni bouton ni encadré */}
-        <p className="hero-signature mono fade f5">{h.signature}</p>
+        <p className="hero-signature label fade f5">{h.signature}</p>
       </div>
 
       <div className="scroll-cue fade f5" aria-hidden="true" />
-      <p className="caption mono fade f5">{h.legende1}</p>
+      <p className="caption label fade f5">{h.legende1}</p>
     </section>
   );
 }

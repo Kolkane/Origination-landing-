@@ -47,13 +47,13 @@ export default function Analyse({ params }: Props) {
     <main className="article-page">
       <JsonLd data={articleSchema(article)} />
       <div className="wrap">
-        <Link className="ap-back mono" href="/#analyses">
+        <Link className="ap-back label" href="/#analyses">
           <span aria-hidden="true">←</span>
           {a.retour}
         </Link>
 
         <article className="ap-col">
-          <p className="ap-eyebrow mono">{a.kicker}</p>
+          <p className="ap-eyebrow label">{a.kicker}</p>
           <h1 className="ap-h1">{grand(article.titre)}</h1>
           <p className="ap-standfirst">{article.standfirst}</p>
 
@@ -66,7 +66,7 @@ export default function Analyse({ params }: Props) {
           <div className="ap-foot">
             <p className="ap-foot-t">{a.piedTexte}</p>
             <a
-              className="cta mono"
+              className="cta label"
               href={brand.CALENDLY_URL}
               target="_blank"
               rel="noopener noreferrer"

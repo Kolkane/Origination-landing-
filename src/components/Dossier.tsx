@@ -135,7 +135,7 @@ export default function Dossier() {
           {/* le titre vit dans la colonne de gauche : sinon le document
               démarre sous lui et pend très bas par rapport au texte */}
           <div className="recu-col">
-            <p className="kicker mono">{d.kicker}</p>
+            <p className="kicker label">{d.kicker}</p>
             <h2 className="statement mask">{grand(d.titre)}</h2>
             <p className="recu-chapo">{d.chapo}</p>
 
@@ -164,7 +164,7 @@ export default function Dossier() {
                     <span className="recu-prog" aria-hidden="true" key={actif} />
                   )}
                   <span className="recu-item-top">
-                    <span className="recu-idx mono">{el.idx}</span>
+                    <span className="recu-idx label">{el.idx}</span>
                     <span className="recu-t">{grand(el.titre)}</span>
                   </span>
                   <span className="recu-d">{el.texte}</span>
@@ -184,13 +184,13 @@ export default function Dossier() {
 
           {/* ---------- document ---------- */}
           <div className="viseur">
-            <div className="viseur-bar mono">
+            <div className="viseur-bar label">
               <span>{d.viewer.titre}</span>
               <span className="warn">{d.viewer.mention}</span>
             </div>
             {/* l'objection « montrez-m'en un vrai » se retourne ici, juste
                 sous la mention de fiction, plutôt que d'être laissée en l'air */}
-            <p className="viseur-note mono">{d.viewerNote}</p>
+            <p className="viseur-note label">{d.viewerNote}</p>
 
             <div className="doc-cadre">
               <article className="doc" aria-label={doc.aria}>
@@ -212,7 +212,7 @@ export default function Dossier() {
                     width={900}
                     height={180}
                   />
-                  <span className="d-meta mono">
+                  <span className="d-meta label">
                     {doc.metaAvant}
                     <b>{doc.metaFort}</b>
                     {doc.metaApres}
@@ -222,8 +222,8 @@ export default function Dossier() {
                 </header>
 
                 <div className="d-ref">
-                  <span className="d-ficti mono">{doc.ficti}</span>
-                  <span className="d-badge mono">{doc.badge}</span>
+                  <span className="d-ficti label">{doc.ficti}</span>
+                  <span className="d-badge label">{doc.badge}</span>
                 </div>
 
                 {/* la scène : les sept zones dans la même cellule, une seule
@@ -237,30 +237,30 @@ export default function Dossier() {
                     id="z-societe"
                     {...marque("z-societe")}
                   >
-                    <p className="lbl mono">{doc.societeLbl}</p>
+                    <p className="lbl label">{doc.societeLbl}</p>
                     <h3 className="d-title">{grand(doc.titre)}</h3>
                     {/* fiche d'identité en cases : la seule zone qui présente
                         des faits bruts sans phrase */}
                     <ul className="ident">
                       {doc.descItems.map((x) => (
-                        <li className="mono" key={x}>
+                        <li className="label" key={x}>
                           {x}
                         </li>
                       ))}
                     </ul>
-                    <p className="d-interlo mono">
+                    <p className="d-interlo label">
                       <b>{doc.interloLbl}</b>
                       {doc.interlo}
                     </p>
                   </div>
 
                   <div className={zone("z-fin")} id="z-fin" {...marque("z-fin")}>
-                    <p className="lbl mono">{doc.finLbl}</p>
+                    <p className="lbl label">{doc.finLbl}</p>
                     <div className="figs">
                       {doc.figures.map((f) => (
                         <div className="fig" key={f.k}>
                           <span className="fig-n display">{f.n}</span>
-                          <span className="fig-k mono">{f.k}</span>
+                          <span className="fig-k label">{f.k}</span>
                         </div>
                       ))}
                     </div>
@@ -271,18 +271,18 @@ export default function Dossier() {
                     <div className="serie">
                       {doc.tendance.map((t) => (
                         <div className="serie-l" key={t.a}>
-                          <span className="serie-an mono">{t.a}</span>
+                          <span className="serie-an label">{t.a}</span>
                           <span className="serie-piste">
                             <span
                               className="serie-barre"
                               style={{ width: `${(t.n / maxTendance) * 100}%` }}
                             />
                           </span>
-                          <span className="serie-v mono">{t.v}</span>
+                          <span className="serie-v label">{t.v}</span>
                         </div>
                       ))}
                     </div>
-                    <p className="trend-tag mono">{doc.tendanceTag}</p>
+                    <p className="trend-tag label">{doc.tendanceTag}</p>
                   </div>
 
                   {/* le constat : la seule zone où une phrase passe à
@@ -292,7 +292,7 @@ export default function Dossier() {
                     id="z-signal"
                     {...marque("z-signal")}
                   >
-                    <p className="lbl mono">{doc.signalLbl}</p>
+                    <p className="lbl label">{doc.signalLbl}</p>
                     <p className="sig-amorce">{doc.signalAvant}</p>
                     <p className="sig-fort display">{grand(doc.signalFort)}</p>
                     <p className="sig-suite">{doc.signalApres}</p>
@@ -303,7 +303,7 @@ export default function Dossier() {
                     id="z-parcours"
                     {...marque("z-parcours")}
                   >
-                    <p className="lbl mono">{doc.parcoursLbl}</p>
+                    <p className="lbl label">{doc.parcoursLbl}</p>
                     <ul className="tl">
                       {doc.parcours.map((p) => (
                         <li className={p.cle ? "key" : undefined} key={p.an}>
@@ -321,7 +321,7 @@ export default function Dossier() {
                     id="z-angle"
                     {...marque("z-angle")}
                   >
-                    <p className="lbl mono">{doc.angleLbl}</p>
+                    <p className="lbl label">{doc.angleLbl}</p>
                     <h4 className="angle-t">{grand(doc.angleTitre)}</h4>
                     <p className="angle-p">{doc.angleP1}</p>
                     <p className="angle-p">{doc.angleP2Avant}</p>
@@ -340,13 +340,13 @@ export default function Dossier() {
                     id="z-coord"
                     {...marque("z-coord")}
                   >
-                    <p className="lbl mono">{doc.coordLbl}</p>
-                    <p className="coord-s mono">{doc.coordS}</p>
+                    <p className="lbl label">{doc.coordLbl}</p>
+                    <p className="coord-s label">{doc.coordS}</p>
                     <ul className="coord-l">
                       {doc.coordItems.map((c) => (
                         <li key={c.k}>
-                          <span className="coord-k mono">{c.k}</span>
-                          <span className="coord-v mono">{c.v}</span>
+                          <span className="coord-k label">{c.k}</span>
+                          <span className="coord-v label">{c.v}</span>
                         </li>
                       ))}
                     </ul>
@@ -358,7 +358,7 @@ export default function Dossier() {
                     id="z-unknown"
                     {...marque("z-unknown")}
                   >
-                    <p className="lbl mono">{doc.inconnuLbl}</p>
+                    <p className="lbl label">{doc.inconnuLbl}</p>
                     {/* la seule zone encadrée : une réserve se signale comme
                         telle dans un rapport, elle ne se fond pas au texte */}
                     <div className="reserve">
@@ -372,7 +372,7 @@ export default function Dossier() {
                 </div>
 
                 <footer className="d-foot">
-                  <p className="d-legal mono">
+                  <p className="d-legal label">
                     <span className="ficti">{doc.legalFicti}</span>
                     {doc.legal}
                   </p>

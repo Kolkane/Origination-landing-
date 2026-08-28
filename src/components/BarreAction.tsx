@@ -81,7 +81,7 @@ export default function BarreAction() {
   return (
     <div ref={ref} className={`barre-action${visible ? " visible" : ""}`}>
       <a
-        className="mono"
+        className="label"
         href={brand.CALENDLY_URL}
         target="_blank"
         rel="noopener noreferrer"

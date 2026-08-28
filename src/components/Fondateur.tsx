@@ -12,7 +12,7 @@ export default function Fondateur() {
       <div className="wrap">
         {/* le kicker porte une phrase et non une étiquette depuis la v15 :
             c'est l'énoncé de la section, donc son h2. Rendu inchangé. */}
-        <h2 className="kicker mono f-kicker">{f.kicker}</h2>
+        <h2 className="kicker label f-kicker">{f.kicker}</h2>
 
         <div className="f-portrait">
           {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -29,14 +29,14 @@ export default function Fondateur() {
         <p className="f-corps">{f.corps}</p>
 
         <p className="f-nom">{f.nom}</p>
-        <p className="f-lieu mono">{f.lieu}</p>
-        <p className="f-tel mono">
+        <p className="f-lieu label">{f.lieu}</p>
+        <p className="f-tel label">
           <a href={brand.TELEPHONE.lien}>{brand.TELEPHONE.affiche}</a>
         </p>
 
         <div className="f-filet" aria-hidden="true" />
 
-        <p className="f-id mono">
+        <p className="f-id label">
           {f.id}
           <br />
           <a href={brand.LINKEDIN_URL} target="_blank" rel="noopener noreferrer">

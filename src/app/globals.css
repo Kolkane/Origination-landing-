@@ -32,6 +32,25 @@
      de lecture de la page, .p-corps à 48,0625rem, arrondie au rem. Rien n'a
      donc à s'élargir, et tout ce qu'on y borne tient déjà dedans. */
   --mesure: 48rem;
+
+  /* v55 · LES TROIS RÔLES TYPOGRAPHIQUES. Le fichier ne nomme plus
+     aucune police : il nomme des emplois. Changer de fonte, c'est
+     désormais toucher layout.tsx et rien d'autre — ce que les
+     renommages v18 et v28 visaient sans jamais l'obtenir, faute
+     d'avoir sorti les noms de familles d'ici. */
+  --f-display: var(--font-display), Georgia, serif;
+  --f-corps: var(--font-corps), Georgia, serif;
+  --f-label: var(--font-label), "Courier New", monospace;
+}
+
+/* v55 · les deux axes propres à Fraunces : terminaisons nettes
+   (SOFT 0) et dessins irréguliers (WONK 1). Posés à la racine,
+   ils sont hérités partout et simplement ignorés par Spectral et
+   Cutive Mono, qui n'ont pas ces axes. L'optique (opsz) reste
+   automatique : un titre de 62px prend son dessin de titre, une
+   ligne de 15px le sien, sans qu'on ait à l'écrire. */
+:root {
+  font-variation-settings: "SOFT" 0, "WONK" 1;
 }
 
 html {
@@ -47,11 +66,23 @@ html {
    deux font-size en clamp sont reproduites borne par borne, clamp étant
    homogène pour un facteur positif. Les 22 déclarations en ch qui restent
    dans ce fichier sont portées par Familjen ou par le mono : elles ne
-   dépendent pas de la police du corps, elles peuvent rester. */
+   dépendent pas de la police du corps, elles peuvent rester.
+   v55, ET C'EST UNE ALERTE : cette dernière phrase N'EST PLUS VRAIE.
+   Familjen et le mono viennent d'être remplacés par Fraunces et Cutive
+   Mono, dont l'avance du « 0 » n'est pas la même. Les 15 déclarations en
+   ch qui subsistent — toutes des max-width de TITRES — ont donc changé
+   de valeur en silence, et le découpage des titres a bougé. Ce n'était
+   pas évitable en une passe : figer ces largeurs en rem en même temps
+   que la police aurait fait deux changements simultanés qui se masquent
+   l'un l'autre, exactement l'erreur que la v28 a commise et que ce
+   paragraphe raconte. L'ordre est donc : juger les polices sur pièce,
+   PUIS réancrer ces 15 largeurs en rem, bornes de clamp comprises, aux
+   valeurs rendues sous Fraunces. Ne pas ajouter de nouvelle largeur en
+   ch entre-temps. */
 body {
   background: var(--bg);
   color: var(--txt);
-  font-family: var(--font-source-serif), Georgia, serif;
+  font-family: var(--f-corps);
   /* v29 : Chromium ne retravaille que la queue du paragraphe, l'effet
      mesuré est donc faible, deux cas sur douze et jamais sur le drapeau.
      Posé quand même : coût nul, ignoré là où il n'est pas supporté, et
@@ -61,14 +92,20 @@ body {
   overflow-x: hidden;
 }
 
-.mono {
-  font-family: var(--font-geist-mono), monospace;
+/* v55 : .mono est renommée .label, pour la raison exacte qui avait fait
+   renommer .serif en .display. La classe ne rend plus un monospace
+   partout : dans les documents, --f-label vaut la serif du corps. Un nom
+   qui dit la police ment à la première bascule ; un nom qui dit le rôle
+   survit. .mono n'était utilisée qu'ici en CSS, le renommage est sans
+   effet de bord. */
+.label {
+  font-family: var(--f-label);
 }
 /* la classe s'appelait .serif tant que le display était Instrument Serif.
    Le display est une grotesque depuis la v18 : le nom décrit désormais le
    RÔLE, pas la classification, sinon il ment à la prochaine bascule. */
 .display {
-  font-family: var(--font-familjen), sans-serif;
+  font-family: var(--f-display);
   font-weight: 400;
 }
 .wrap {
@@ -188,7 +225,7 @@ body {
   margin-bottom: 22px;
 }
 h1 {
-  font-family: var(--font-familjen), sans-serif;
+  font-family: var(--f-display);
   font-weight: 400;
   /* v40 : les 104px de la v39 sont ANNULÉS sur pièce (arbitrage Vincent,
      27/08 : « bien trop grand »). v41 : l'accroche passe sur DEUX lignes
@@ -308,7 +345,7 @@ section.block {
   margin-bottom: 18px;
 }
 .statement {
-  font-family: var(--font-familjen), sans-serif;
+  font-family: var(--f-display);
   font-weight: 400;
   /* v38 : l'échelle monte (40 -> 50px). Plafond à 50px : la borne posée
      par l'arbitrage v17 sur les engagements vaut pour tous les statements
@@ -358,7 +395,7 @@ section.block {
   display: none;
 }
 .faq .plus {
-  font-family: var(--font-geist-mono), monospace;
+  font-family: var(--f-label);
   color: var(--txt-3);
   font-size: 14px;
   transition: transform 0.25s var(--ease);
@@ -547,7 +584,7 @@ footer a:hover {
   margin-bottom: 24px;
 }
 .final h2 {
-  font-family: var(--font-familjen), sans-serif;
+  font-family: var(--f-display);
   font-weight: 400;
   font-size: clamp(32px, 4.6vw, 58px);
   line-height: 1.1;
@@ -731,6 +768,26 @@ footer a:hover {
   --ink-line: rgba(23, 19, 16, 0.14);
   --ink-line-2: rgba(23, 19, 16, 0.28);
   --wine-tint: rgba(142, 36, 56, 0.06);
+}
+
+/* ============================================================
+   v55 · LE SYSTÈME DES DOCUMENTS (direction B de la planche).
+   Le spécimen du dossier et la fiche du devis sont des PIÈCES, pas
+   des sections de page : ils ont leur propre typographie, et c'est
+   précisément ce qui les fait lire comme des objets posés sur la
+   page plutôt que comme des div maquillées en papier.
+   Plus AUCUN monospace à l'intérieur : les libellés sont composés
+   dans la serif du texte, en capitales espacées, comme un imprimeur
+   le ferait. Retenu sur son espacement, « plus confortable
+   visuellement » (arbitrage Vincent, 29/08).
+   Une seule ligne suffit : les vingt-cinq libellés du spécimen et
+   les six de la fiche passent par la classe .label, qui lit
+   --f-label, redéfini ici. Le tracking n'a pas à changer, il était
+   déjà entre 0,10 et 0,18em dans les documents, contre 0,28em sur
+   la page : la valeur de la direction B. */
+.doc,
+.fiche-o {
+  --f-label: var(--f-corps);
 }
 
 /* la gravure est claire sur alpha : on l'inverse pour le papier */
@@ -1028,7 +1085,7 @@ footer a:hover {
 /* v22 : le titre vit dans la zone 00 et non plus dans l'en-tête, c'est le
    label de zone qui le précède et donne l'écart du haut */
 .d-title {
-  font-family: var(--font-familjen), sans-serif;
+  font-family: var(--f-display);
   font-weight: 400;
   font-size: clamp(28px, 3.4vw, 40px);
   line-height: 1.04;
@@ -1494,7 +1551,7 @@ footer a:hover {
   border-top: 1px solid var(--ink-line);
 }
 .angle-t {
-  font-family: var(--font-familjen), sans-serif;
+  font-family: var(--f-display);
   font-weight: 400;
   font-size: clamp(21px, 2.6vw, 27px);
   line-height: 1.12;
@@ -1729,7 +1786,7 @@ footer a:hover {
    l'échelle des statements du site, sur UNE ligne — plus de pavé de
    trois lignes serrées. */
 .ent-h2 {
-  font-family: var(--font-familjen), sans-serif;
+  font-family: var(--f-display);
   font-weight: 400;
   font-size: clamp(28px, 3.8vw, 50px);
   line-height: 1.12;
@@ -2070,7 +2127,7 @@ footer a:hover {
   border-top: 1px solid var(--line);
 }
 .ent-kicker {
-  font-family: var(--font-familjen), sans-serif;
+  font-family: var(--f-display);
   font-weight: 400;
   font-size: clamp(19px, 2.4vw, 26px);
   line-height: 1.25;
@@ -2120,7 +2177,7 @@ footer a:hover {
 }
 .m-statement {
   margin-top: 22px;
-  font-family: var(--font-familjen), sans-serif;
+  font-family: var(--f-display);
   font-weight: 400;
   font-size: clamp(34px, 4.6vw, 62px);
   line-height: 1.04;
@@ -2148,7 +2205,7 @@ footer a:hover {
   border-top: 1px solid var(--line-soft);
 }
 .me-t {
-  font-family: var(--font-familjen), sans-serif;
+  font-family: var(--f-display);
   font-weight: 400;
   font-size: clamp(21px, 1.9vw, 27px);
   line-height: 1.15;
@@ -2193,7 +2250,7 @@ footer a:hover {
   margin-bottom: 20px;
 }
 .b-titre {
-  font-family: var(--font-familjen), sans-serif;
+  font-family: var(--f-display);
   font-weight: 400;
   font-size: clamp(38px, 5.2vw, 64px);
   line-height: 1.03;
@@ -2307,7 +2364,7 @@ footer a:hover {
   flex-direction: column;
 }
 .pan-chiffre {
-  font-family: var(--font-familjen), sans-serif;
+  font-family: var(--f-display);
   font-weight: 400;
   font-size: clamp(44px, 5.4vw, 76px);
   line-height: 0.95;
@@ -2335,7 +2392,7 @@ footer a:hover {
 .pan-statement {
   margin-top: auto;
   padding-top: 34px;
-  font-family: var(--font-familjen), sans-serif;
+  font-family: var(--f-display);
   font-weight: 400;
   font-size: clamp(22px, 2.3vw, 31px);
   line-height: 1.15;
@@ -2399,7 +2456,7 @@ footer a:hover {
   text-align: right;
 }
 .s-chiffre {
-  font-family: var(--font-familjen), sans-serif;
+  font-family: var(--f-display);
   font-weight: 400;
   font-size: clamp(24px, 2.3vw, 30px);
   line-height: 1;
@@ -2468,7 +2525,7 @@ footer a:hover {
 /* la citation tient le rôle que tenait le statement : à cette échelle et
    sur cette mesure, c'est elle l'énoncé de la section */
 .f-citation {
-  font-family: var(--font-familjen), sans-serif;
+  font-family: var(--f-display);
   font-weight: 400;
   font-size: clamp(26px, 3.4vw, 44px);
   line-height: 1.14;
@@ -2575,7 +2632,7 @@ footer a:hover {
   margin-bottom: 20px;
 }
 .a-titre {
-  font-family: var(--font-familjen), sans-serif;
+  font-family: var(--f-display);
   font-weight: 400;
   font-size: clamp(30px, 4.4vw, 52px);
   line-height: 1.04;
@@ -2613,7 +2670,7 @@ footer a:hover {
 }
 .a-row-t {
   display: block;
-  font-family: var(--font-familjen), sans-serif;
+  font-family: var(--f-display);
   font-weight: 400;
   font-size: clamp(23px, 2.6vw, 33px);
   line-height: 1.12;
@@ -2685,7 +2742,7 @@ footer a:hover {
   margin-bottom: 22px;
 }
 .ap-h1 {
-  font-family: var(--font-familjen), sans-serif;
+  font-family: var(--f-display);
   font-weight: 400;
   font-size: clamp(34px, 5vw, 58px);
   line-height: 1.05;

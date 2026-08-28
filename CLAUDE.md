@@ -557,6 +557,85 @@ trouvé sur vous". Codes attendus : document financier imprimé, pas SaaS IA.
   spécimen sait déjà faire une feuille (second feuillet décalé, ni ombre
   ni dégradé) et ce vocabulaire pourrait monter au niveau de la page.
   À arbitrer devant l'écran, pas dans le code.
+- Amendement v55 (arbitrage Vincent, 29/08/2026, sur la planche
+  MAQUETTE-V55-TYPO.html qui FAIT FOI) : LA BASCULE TYPOGRAPHIQUE.
+  Direction C pour le SITE, direction B pour les DOCUMENTS.
+  Motif : « ça fait beaucoup site généré par l'IA, et encore moins dans
+  les documents ; je veux quelque chose d'humain, de naturel ». Retour
+  rendu sur la v54, jugée insuffisante : « je m'attendais à mieux, je
+  voulais un effet WOW, j'ai juste vu des changements de couleur ».
+  CE QUI L'AVAIT PRODUIT, et c'est une incohérence de cette charte : la
+  v28 a retiré Geist Sans du site au motif qu'elle est « la police maison
+  de Vercel, devenue le signe des sites générés », et la dernière ligne du
+  même amendement disait « GEIST MONO RESTE, inchangé ». Or c'est Geist
+  Mono qui composait les libellés du spécimen, 25 poses de la classe dans
+  le seul composant du dossier. Un acte, un Kbis, un rapport de
+  commissaire aux comptes n'étiquettent jamais leurs champs en capitales
+  monospace espacées : c'est le vocabulaire d'un tableau de bord, et
+  c'était la vraie raison pour laquelle le document « se voyait généré ».
+  La police du tell avait été tuée, sa jumelle était restée partout.
+  LE SITE (direction C) :
+  DISPLAY Fraunces, variable, avec ses deux axes propres, SOFT à 0
+  (terminaisons nettes) et WONK à 1 (dessins volontairement irréguliers),
+  posés une fois à la racine et hérités ; l'optique reste automatique.
+  C'est une police qui a l'air DESSINÉE, ce qu'aucun générateur ne sort.
+  Elle reprend les trois italiques du site, que Familjen portait.
+  CORPS Spectral, dessinée par Production Type, fonderie parisienne,
+  commandée par Google pour la lecture à l'écran : une serif de travail,
+  du registre des documents imprimés que la page revendique. 400 et 500,
+  romain, latin, exactement le gabarit que tenait Source Serif 4, pour
+  que les <b> continuent de tomber sur 500 sans synthèse de graisse.
+  LIBELLÉS Cutive Mono, une machine à écrire et non une police de code.
+  C'est tout le sujet : le monospace de terminal devient un tapuscrit.
+  LES DOCUMENTS (direction B), et c'est le point le plus important de
+  l'amendement : LE SPÉCIMEN ET LA FICHE DU DEVIS ONT LEUR PROPRE
+  SYSTÈME TYPOGRAPHIQUE. Aucun monospace à l'intérieur ; les libellés y
+  sont composés dans la serif du texte, en capitales espacées, comme un
+  imprimeur le ferait. Retenu par Vincent sur son ESPACEMENT, « plus
+  confortable visuellement ». Ce n'est pas une exception, c'est la règle
+  qui fait qu'une pièce se lit comme un OBJET POSÉ sur la page et non
+  comme une div maquillée en papier : un dossier imprimé par un cabinet
+  n'est pas composé dans les polices de son site. Ne pas réunifier.
+  Une seule ligne le porte, .doc et .fiche-o redéfinissant --f-label sur
+  --f-corps ; les vingt-cinq libellés du spécimen et les six de la fiche
+  suivent. Le tracking n'a pas eu à bouger, il était déjà entre 0,10 et
+  0,18em dans les documents contre 0,28em sur la page, c'est-à-dire déjà
+  la valeur de la direction B.
+  NOMMAGE. globals.css ne nomme plus AUCUNE police : il nomme trois
+  emplois, --f-display, --f-corps, --f-label. C'est ce que les renommages
+  v18 (.serif -> .display) et v28 (la clé « sans » -> « corps »)
+  cherchaient sans l'obtenir, faute d'avoir sorti les noms de familles du
+  CSS : cette bascule-ci est la quatrième et a encore dû remplacer
+  --font-familjen dans dix-huit déclarations. La prochaine ne touchera
+  que layout.tsx. Pour la même raison la classe .mono devient .label :
+  elle ne rend plus un monospace partout, un nom qui dit la police ment à
+  la première bascule. Elle n'était utilisée qu'une fois en CSS.
+  L'IMAGE OPENGRAPH SUIT, précédent v18 où elle avait perdu Instrument
+  Serif : elle passe à Fraunces et Cutive Mono. Fraunces y est demandée
+  à wght@400 sans SOFT ni WONK, une carte sociale n'ayant pas besoin du
+  dessin irrégulier et une requête multi-axes de plus étant un point de
+  casse pour un PNG statique.
+  Familjen Grotesk, Source Serif 4 et Geist Mono sont RETIRÉES du dépôt,
+  le woff2 local compris. Ne pas les réintroduire.
+  AUCUNE FONT-SIZE N'A ÉTÉ TOUCHÉE, discipline posée en v30 : la taille
+  apparente est une seconde variable, elle se juge sur pièce et se traite
+  à part, sinon deux changements se masquent l'un l'autre.
+  ALERTE, ET ELLE EST OUVERTE : la v30 autorisait 22 largeurs en ch au
+  motif qu'elles étaient « portées par Familjen ou par le mono, elles ne
+  dépendent pas de la police du corps ». Cette phrase EST MORTE avec le
+  présent amendement. Les 15 qui subsistent sont toutes des max-width de
+  TITRES, elles ont changé de valeur en silence et le découpage des
+  titres a bougé. Ce n'était pas évitable en une passe : les figer en rem
+  en même temps que la police aurait fait les deux changements
+  simultanés que la v28 avait justement ratés. L'ORDRE EST DONC : juger
+  les polices sur pièce, PUIS réancrer ces 15 largeurs en rem, bornes de
+  clamp comprises, aux valeurs rendues sous Fraunces. Ne pas ajouter de
+  nouvelle largeur en ch entre-temps.
+  RESTE OUVERT, dit à Vincent et non fait : l'effet recherché ne viendra
+  pas de la typographie seule. Il est dans LE SPÉCIMEN, seul objet de la
+  page, qui doit cesser d'être une div maquillée en papier pour devenir
+  une pièce qu'on a l'impression d'avoir sortie d'une chemise. La
+  typographie est la première marche, la matière est la suivante.
 - Interdits définitifs (hérités des itérations rejetées) : ticker, métriques animées,
   count-up, grilles de cards, beam/bordures lumineuses, tilt 3D, spotlight souris, pings,
   glow, dégradés colorés, grid de fond, badges/chips, emojis, icônes décoratives,

@@ -14,10 +14,10 @@ export default function MentionsLegales() {
         <h1 className="statement">{grand(page.titre)}</h1>
         {page.sections.map((section) => (
           <section key={section.titre} className="mt-12 first-of-type:mt-0">
-            <h2 className="kicker mono">{section.titre}</h2>
+            <h2 className="kicker label">{section.titre}</h2>
             <p className="text-[15px] leading-[1.7] text-txt-2">{section.corps}</p>
             {section.email ? (
-              <a href={`mailto:${section.email}`} className="cta mono">
+              <a href={`mailto:${section.email}`} className="cta label">
                 {section.email}
               </a>
             ) : null}
