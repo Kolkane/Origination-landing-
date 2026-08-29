@@ -2508,24 +2508,85 @@ footer a:hover {
 }
 
 /* ============================================================
-   v15 · le fondateur en composition centrée.
-   C'est le seul endroit centré d'une page alignée à gauche de
-   bout en bout : c'est ce qui le distingue de ses voisines et
-   ce qui le réchauffe. Aucun rouge dans cette section.
+   v57 · LE FONDATEUR : refonte de la hiérarchie verticale
+   (arbitrage Vincent, 29/08/2026). Composition centrée conservée
+   — c'est le seul endroit centré d'une page alignée à gauche de
+   bout en bout, et c'est ce qui le distingue de ses voisines —
+   AUCUNE colonne, aucun texte réécrit. Seul l'ordre change.
+   Ce qui n'allait pas : le portrait était posé entre le kicker et
+   la citation, il coupait donc la lecture en deux avant qu'elle
+   ait commencé ; et le numéro était une ligne perdue au-dessus
+   d'un filet, alors que c'est la conversion de la page.
+   Le « aucun rouge dans cette section » de la v15 TOMBE ici, sur
+   décision explicite : l'eyebrow passe au vin (6,94:1 sur le
+   papier, il passe AA en petit texte).
+   Les blancs sont donnés au pixel dans le brief et reproduits tels
+   quels, puis réduits d'un tiers sous 900px. Ils vivent tous en
+   margin-bottom, jamais en margin-top : aucun voisin n'en porte,
+   donc aucun ne se chevauche ni ne s'additionne.
    ============================================================ */
 
 .founder-s .wrap {
   max-width: 900px;
   text-align: center;
 }
+
+/* 1 · l'eyebrow */
 .f-kicker {
-  margin-bottom: clamp(40px, 5vw, 62px);
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--wine);
+  margin: 0 0 56px;
 }
-/* portrait rectangulaire : la page est à angles vifs, un cercle y serait
-   le seul arrondi de tout le site */
+
+/* 2 · la citation tient le rôle du statement : à cette échelle et sur
+   cette mesure, c'est elle l'énoncé de la section, et elle se lit AVANT
+   le portrait. Mesure en px et non en ch : le ch dépend de la police
+   qui la porte, c'est l'alerte ouverte par la v55. */
+.f-citation {
+  font-family: var(--f-display);
+  font-weight: 400;
+  font-size: 34px;
+  line-height: 1.22;
+  letter-spacing: -0.015em;
+  color: var(--txt);
+  max-width: 620px;
+  margin: 0 auto 40px;
+}
+
+/* 3 · l'aparté. Encadré de deux filets courts, il devient une respiration
+   assumée au lieu d'une légende perdue. Les filets sont posés en pseudo
+   éléments du paragraphe, donc centrés avec lui, sans balise vide. */
+.f-corps {
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--txt-3);
+  max-width: 460px;
+  margin: 0 auto 64px;
+}
+.f-corps::before,
+.f-corps::after {
+  content: "";
+  display: block;
+  width: 120px;
+  height: 1px;
+  background: var(--line-soft);
+  margin-left: auto;
+  margin-right: auto;
+}
+.f-corps::before {
+  margin-bottom: 22px;
+}
+.f-corps::after {
+  margin-top: 22px;
+}
+
+/* 4 · le portrait illustre la signature qui suit. Rectangulaire : la page
+   est à angles vifs, un cercle y serait le seul arrondi du site. */
 .f-portrait {
-  width: clamp(120px, 12vw, 150px);
-  margin: 0 auto;
+  width: 200px;
+  margin: 0 auto 20px;
   overflow: hidden;
 }
 .f-portrait img {
@@ -2536,71 +2597,91 @@ footer a:hover {
   object-fit: cover;
   filter: grayscale(1) contrast(1.02);
 }
-/* la citation tient le rôle que tenait le statement : à cette échelle et
-   sur cette mesure, c'est elle l'énoncé de la section */
-.f-citation {
-  font-family: var(--f-display);
-  font-weight: 400;
-  font-size: clamp(26px, 3.4vw, 44px);
-  line-height: 1.14;
-  letter-spacing: -0.015em;
-  color: var(--txt);
-  max-width: 26ch;
-  margin: clamp(36px, 4.4vw, 58px) auto 0;
-}
-/* le corps : une seule phrase, sur une mesure courte pour rester centrée
-   sans devenir un pavé */
-.f-corps {
-  margin: clamp(26px, 3vw, 36px) auto 0;
-  max-width: 34.3125rem;
-  font-size: 15px;
-  line-height: 1.7;
-  color: var(--txt-2);
-}
-/* le kicker porte désormais une phrase, pas une étiquette : le suivi
-   large des labels la rendrait illisible, on le resserre ici seulement */
-.founder-s .f-kicker {
-  font-size: 11px;
-  letter-spacing: 0.16em;
-  color: var(--txt-2);
-}
+
+/* 5 · la signature */
 .f-nom {
-  margin-top: clamp(30px, 3.6vw, 46px);
-  font-size: 15px;
-  line-height: 1.6;
+  font-size: 16px;
+  line-height: 1.5;
   color: var(--txt-2);
+  margin: 0;
 }
 .f-lieu {
-  margin-top: 6px;
-  font-size: 10.5px;
-  letter-spacing: 0.18em;
+  font-size: 10px;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--txt-3);
+  margin: 8px 0 40px;
 }
-.f-filet {
-  width: 56px;
-  height: 1px;
-  background: var(--line);
-  margin: clamp(34px, 4vw, 52px) auto 0;
-}
-.f-id {
-  margin-top: clamp(24px, 2.8vw, 34px);
-  font-size: 10.5px;
-  letter-spacing: 0.14em;
+
+/* 6 · le numéro. Terme de la section et conversion de la page : il est le
+   seul élément de tout le fondateur à l'échelle du display après la
+   citation. Chiffres tabulaires, sinon un numéro en dix chiffres danse. */
+.f-appel-l {
+  font-size: 10px;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--txt-3);
-  line-height: 2.2;
+  margin: 0 0 10px;
 }
-.f-id a {
+.f-tel {
+  font-family: var(--f-display);
+  font-size: 28px;
+  line-height: 1.1;
+  color: var(--txt);
+  font-variant-numeric: tabular-nums;
+  margin: 0;
+}
+.f-tel a {
+  color: inherit;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  padding-bottom: 3px;
+  transition: border-color 0.2s var(--ease);
+}
+.f-tel a:hover {
+  border-bottom-color: var(--wine);
+}
+/* l'adresse accompagne le numéro sans le concurrencer */
+.f-mail {
+  margin: 14px 0 0;
+  font-size: 11px;
+  letter-spacing: 0.1em;
   color: var(--txt-3);
+}
+.f-mail a {
+  color: inherit;
   text-decoration: none;
   border-bottom: 1px solid var(--line-soft);
   padding-bottom: 2px;
   transition: color 0.2s var(--ease), border-color 0.2s var(--ease);
 }
-.f-id a:hover {
+.f-mail a:hover {
   color: var(--txt-2);
   border-color: var(--line);
+}
+
+/* mobile : même ordre, blancs réduits d'un tiers */
+@media (max-width: 900px) {
+  .f-kicker {
+    margin-bottom: 37px;
+  }
+  .f-citation {
+    font-size: 24px;
+    margin-bottom: 27px;
+  }
+  .f-corps {
+    margin-bottom: 43px;
+  }
+  .f-portrait {
+    width: 160px;
+    margin-bottom: 13px;
+  }
+  .f-lieu {
+    margin-bottom: 27px;
+  }
+  .f-tel {
+    font-size: 22px;
+  }
 }
 
 /* ============================================================

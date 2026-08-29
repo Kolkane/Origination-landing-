@@ -18,6 +18,7 @@ export default function Footer() {
         <a href={brand.LINKEDIN_URL} target="_blank" rel="noopener noreferrer">
           {f.linkedin}
         </a>
+        <span>{f.entite}</span>
         <span>{f.note}</span>
       </div>
     </footer>

@@ -674,6 +674,42 @@ trouvé sur vous". Codes attendus : document financier imprimé, pas SaaS IA.
   fonte, sont marquées immuables, elles ne se repaient plus à chaque
   partage. Le sous-ensemblage au texte réellement composé était déjà
   en place.
+- Amendement v57 (arbitrage Vincent, 29/08/2026) : LE FONDATEUR, HIÉRARCHIE
+  VERTICALE. Composition centrée CONSERVÉE, aucune colonne, aucun texte
+  réécrit ; seul l'ORDRE change, et avec lui les poids.
+  Ce qui n'allait pas : le portrait était posé entre le kicker et la
+  citation, il coupait donc la lecture en deux avant qu'elle ait commencé ;
+  et le numéro était une ligne perdue au-dessus d'un filet alors que c'est
+  la conversion de la page.
+  L'ordre est désormais : eyebrow, CITATION (34px, mesure 620px), aparté
+  entre deux filets courts de 120px, PORTRAIT (200px, 4/5, noir et blanc),
+  signature, puis LE NUMÉRO annoncé par « Appelez directement » et composé
+  à 28px en encre pleine, souligné vin au survol. Blancs donnés au pixel
+  dans le brief, 56/40/64/20/40, réduits d'un tiers sous 900px, où la
+  citation tombe à 24px, le portrait à 160px et le numéro à 22px. Tous en
+  margin-bottom et jamais en margin-top : aucun voisin n'en porte, donc
+  aucun ne se chevauche ni ne s'additionne.
+  LE « AUCUN ROUGE DANS CETTE SECTION » DE LA v15 TOMBE, sur décision
+  explicite : l'eyebrow passe au vin. 6,94:1 sur le papier, il passe AA en
+  petit texte. C'est le seul rouge de la section, ne pas en ajouter.
+  Le gris de l'aparté est le token --ink-3 et non le #6E6960 du brief :
+  mesuré, ce dernier donne 4,43:1 sur le papier, SOUS le seuil AA du petit
+  texte, quand --ink-3 donne 4,84:1 pour une teinte distante de deux
+  valeurs. Même précédent que le tertiaire éclairci en v7-2 et que --ink-3
+  lui-même en v54 : la valeur cède au contraste, la teinte ne bouge pas.
+  DESCENDUS AU PIED DE PAGE, et vérifiés présents AVANT d'être retirés :
+  l'identité juridique (raison sociale et SIREN), qui n'y était pas et qui
+  y a été ajoutée d'abord, et LinkedIn, qui y était déjà. Ils fermaient la
+  section sur une mention administrative ; ils appartiennent au pied.
+  L'adresse de contact ajoutée en v56 n'était pas nommée dans l'ordre du
+  brief : elle RESTE sous le numéro, à l'échelle d'un libellé, pour ne pas
+  lui disputer la place qu'il vient de gagner. À trancher si c'est faux.
+  La mesure de la citation passe de 26ch à 620px, ce qui retire une des 15
+  largeurs en ch signalées par l'alerte v55. Il en reste 14.
+  NON FAIT, et demandé : la capture à 390px. Aucun outil de rendu dans la
+  session qui a produit cet amendement ; les valeurs résolues à cette
+  largeur sont écrites dans le message de commit, la capture est à prendre
+  sur la préview.
 - Interdits définitifs (hérités des itérations rejetées) : ticker, métriques animées,
   count-up, grilles de cards, beam/bordures lumineuses, tilt 3D, spotlight souris, pings,
   glow, dégradés colorés, grid de fond, badges/chips, emojis, icônes décoratives,

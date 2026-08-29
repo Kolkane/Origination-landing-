@@ -456,8 +456,9 @@ export const copy = typoDeep({
       "La détection est outillée ; la lecture des actes, elle, se fait à la main.",
     nom: "Vincent Fournier, fondateur",
     lieu: "entre Paris et Bayonne",
-    id: `${brand.ENTITY.raisonSociale} · SIREN ${brand.ENTITY.siren}`,
-    linkedin: "LinkedIn ↗",
+    /* v57 : le libellé qui annonce le numéro, devenu le terme de la
+       section. « id » et « linkedin » sont partis au pied de page. */
+    appelLbl: "Appelez directement",
   },
   faq: {
     kicker: "Questions fréquentes",
@@ -655,6 +656,10 @@ export const copy = typoDeep({
   },
   footer: {
     gauche: `${brand.MARQUE} ${brand.SUFFIXE} · ${brand.BASELINE}`,
+    /* v57 : l'identité juridique descend du fondateur, où elle fermait la
+       section sur une mention administrative. Elle appartient au pied de
+       page, LinkedIn y était déjà. Posée ICI AVANT d'être retirée là-haut. */
+    entite: `${brand.ENTITY.raisonSociale} · SIREN ${brand.ENTITY.siren}`,
     mentions: { label: "Mentions légales", href: "/mentions-legales" },
     confidentialite: { label: "Confidentialité", href: "/confidentialite" },
     linkedin: "LinkedIn",
