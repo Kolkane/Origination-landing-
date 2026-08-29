@@ -34,16 +34,25 @@ import "./globals.css";
    ============================================================ */
 
 /* DISPLAY · Fraunces. Variable, avec deux axes qui n'existent chez
-   presque personne : SOFT (adoucissement des terminaisons) et WONK
-   (bascule vers des dessins volontairement irréguliers). Réglés à
-   SOFT 0, WONK 1 dans globals.css, c'est-à-dire terminaisons nettes
-   et lettres irrégulières : une police qui a l'air DESSINÉE, ce
-   qu'aucun générateur ne produit. L'optique reste automatique.
-   Elle reprend les trois italiques du site, que Familjen portait. */
+   presque personne : WONK, qui bascule vers des dessins volontairement
+   irréguliers, réglé à 1 dans globals.css. Une police qui a l'air
+   DESSINÉE, ce qu'aucun générateur ne produit. L'optique (opsz) reste
+   demandée, elle s'applique automatiquement selon la taille.
+   Elle reprend les trois italiques du site, que Familjen portait.
+   v58 : L'AXE SOFT EST SORTI DE LA LISTE. Il était demandé puis réglé
+   à 0 dans globals.css, c'est-à-dire à sa PROPRE VALEUR PAR DÉFAUT :
+   il ne changeait rien au rendu et se payait quand même, parce qu'un
+   axe demandé fait servir la fonte variable sur cet axe. Mesuré au
+   build : 305 Ko de fontes préchargées avec lui, 187 Ko sans, et 677
+   contre 425 Ko en tout. 118 Ko préchargés pour rien.
+   Retirer aussi opsz descendrait à 121 Ko préchargés, mais coûterait
+   l'optique automatique, qui elle se voit entre un titre de 62px et
+   un libellé de 10px : ce serait un arbitrage de rendu, pas un gain
+   gratuit, et il n'a pas été pris. */
 const display = Fraunces({
   subsets: ["latin"],
   style: ["normal", "italic"],
-  axes: ["SOFT", "WONK", "opsz"],
+  axes: ["WONK", "opsz"],
   variable: "--font-display",
   display: "swap",
 });

@@ -710,6 +710,39 @@ trouvé sur vous". Codes attendus : document financier imprimé, pas SaaS IA.
   session qui a produit cet amendement ; les valeurs résolues à cette
   largeur sont écrites dans le message de commit, la capture est à prendre
   sur la préview.
+- Amendement v58 (29/08/2026) : LE POIDS. Passe d'optimisation mesurée au
+  build, aucun rendu modifié.
+  L'AXE SOFT SORT DE FRAUNCES. Il était demandé dans layout.tsx puis réglé
+  à 0 dans globals.css, c'est-à-dire à SA PROPRE VALEUR PAR DÉFAUT : la
+  déclaration ne changeait donc rien au rendu, mais demander un axe fait
+  servir la fonte variable SUR cet axe, et ça se paie. Mesuré : 305 Ko de
+  fontes préchargées avec lui contre 187 sans, 677 Ko contre 425 en tout.
+  118 Ko sur le chemin critique et 252 Ko au total, pour un no-op.
+  Leçon générale, elle vaut pour la prochaine fonte variable : ne demander
+  un axe que si on lui donne une valeur DIFFÉRENTE de son défaut.
+  L'AXE OPSZ RESTE, et c'est un choix. Le retirer descendrait à 121 Ko
+  préchargés, 66 de moins, mais coûterait l'optique automatique, qui se
+  voit entre un titre de 62px et un libellé de 10px. Ce serait un
+  arbitrage de RENDU, pas un gain gratuit : il n'a pas été pris ici.
+  WONK 1 est inchangé, c'est le dessin irrégulier retenu en v55.
+  IMAGES HORS DU PREMIER ÉCRAN : le lockup du dossier (48 Ko) et le
+  portrait du fondateur (31 Ko) passent en loading="lazy" et
+  decoding="async". 79 Ko qui ne pèsent plus sur le premier rendu. Le
+  logo du hero reste en chargement immédiat, il est dans le premier écran.
+  NON FAIT, FAUTE D'OUTIL, et c'est le premier poste de tous : la VIDÉO
+  DU HERO pèse 1,68 Mo, soit quatre fois tout le reste réuni, et elle est
+  en preload="auto" donc téléchargée entièrement au premier écran. Une
+  boucle muette de fond bien réencodée tombe couramment entre 300 et
+  500 Ko. La session n'a ni ffmpeg ni encodeur d'image ; le « convert »
+  du PATH est l'utilitaire Windows qui convertit FAT en NTFS, pas
+  ImageMagick, et il ne doit jamais être appelé ici. Même réserve pour
+  les deux logos surdimensionnés : logo-dossier.png sert 900x180 pour un
+  rendu de 40px de haut, logo-imbrin.png 17,5 Ko pour 18px.
+  next/image les redimensionnerait tout seul, mais enclencherait
+  l'optimisation d'images FACTURÉE par l'hébergeur sur un site
+  aujourd'hui entièrement statique : arbitrage à prendre, pas pris.
+  Pour mémoire, le JS est à 109 Ko au premier chargement et il n'y a rien
+  à y faire, zéro dépendance UI.
 - Interdits définitifs (hérités des itérations rejetées) : ticker, métriques animées,
   count-up, grilles de cards, beam/bordures lumineuses, tilt 3D, spotlight souris, pings,
   glow, dégradés colorés, grid de fond, badges/chips, emojis, icônes décoratives,

@@ -43,14 +43,18 @@
   --f-label: var(--font-label), "Courier New", monospace;
 }
 
-/* v55 · les deux axes propres à Fraunces : terminaisons nettes
-   (SOFT 0) et dessins irréguliers (WONK 1). Posés à la racine,
-   ils sont hérités partout et simplement ignorés par Spectral et
-   Cutive Mono, qui n'ont pas ces axes. L'optique (opsz) reste
-   automatique : un titre de 62px prend son dessin de titre, une
-   ligne de 15px le sien, sans qu'on ait à l'écrire. */
+/* v55 · l'axe propre à Fraunces : WONK à 1, les dessins irréguliers.
+   Posé à la racine, il est hérité partout et simplement ignoré par
+   Spectral et Cutive Mono, qui ne l'ont pas. L'optique (opsz) reste
+   automatique : un titre de 62px prend son dessin de titre, une ligne
+   de 15px le sien, sans qu'on ait à l'écrire.
+   v58 : « SOFT 0 » est retiré d'ici et de la liste des axes demandés
+   dans layout.tsx. 0 EST la valeur par défaut de SOFT : la déclaration
+   ne changeait rien au rendu, mais demander l'axe faisait servir une
+   fonte variable sur cet axe. 118 Ko préchargés, mesurés au build,
+   pour une déclaration qui était un no-op. */
 :root {
-  font-variation-settings: "SOFT" 0, "WONK" 1;
+  font-variation-settings: "WONK" 1;
 }
 
 html {

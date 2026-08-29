@@ -204,9 +204,15 @@ export default function Dossier() {
                       remplace le médaillon + mot-marque composés en HTML.
                       Image encre sur transparent, posée sur le papier ;
                       alt porté par les variables de marque. */}
+                  {/* v58 : hors du premier écran, donc différée. 48 Ko qui
+                      ne pèsent plus sur le premier rendu. Le fichier reste
+                      surdimensionné, 900x180 servis pour 40px de haut : le
+                      réencoder demande un outil que la session n'a pas. */}
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     className="d-lockup"
+                    loading="lazy"
+                    decoding="async"
                     src="/logo-dossier.png"
                     alt={`${brand.MARQUE} ${brand.SUFFIXE} · ${brand.BASELINE}`}
                     width={900}

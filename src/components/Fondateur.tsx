@@ -38,6 +38,8 @@ export default function Fondateur() {
         <div className="f-portrait">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
+            loading="lazy"
+            decoding="async"
             src="/portrait-vincent-fournier.webp"
             alt={f.portraitAlt}
             width={300}
