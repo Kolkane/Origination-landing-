@@ -439,8 +439,14 @@ export const copy = typoDeep({
   /* v53 : la section mesure est supprimée (arbitrage Vincent, 27/08) —
      deux de ses trois énoncés étaient devenus des redites (zéro chiffre
      générique : FAQ ; taux d'écart par lot : note du filtre) et le
-     troisième, le SUIVI DES COHORTES, déménage en FAQ où il vit
-     désormais : c'est le seul endroit qui le porte, ne pas le perdre. */
+     troisième, le SUIVI DES COHORTES, avait déménagé en FAQ.
+     v59 : CETTE PHRASE N'EST PLUS VRAIE. La question qui le portait, « Que
+     devient un dossier après la livraison ? », est supprimée sur arbitrage
+     du 29/08. Le suivi des cohortes — dossiers suivis jusqu'à leur issue,
+     résultats communiqués échecs compris, publication à dix-huit mois — ne
+     figure donc PLUS NULLE PART sur le site. Ce n'est pas un oubli, c'est
+     une suppression demandée et signalée. Si l'engagement doit revivre, il
+     lui faut un nouvel endroit, il n'en a plus. */
   /* v15 : composition centrée, seul endroit centré d'une page alignée à
      gauche de bout en bout. La citation en grand remplace le statement :
      elle disait déjà « un seul interlocuteur », le dire deux fois à la
@@ -470,33 +476,21 @@ export const copy = typoDeep({
     /* v27 : les questions traitent ce que le fil de la page ne peut pas
        aborder. Les sept d'origine redisaient la page, une seule portait une
        information unique, celle sur le RGPD : elle est conservée.
-       Refonte 2026-08 : deux questions s'ajoutent, la différence avec un
-       agrégateur et le pourquoi de l'absence de chiffres.
+       v59 (arbitrage Vincent, 29/08) : de neuf on passe à QUATRE. Sont
+       retirées « qui contacte le dirigeant », « et si un dirigeant refuse
+       d'être recontacté », « sous combien de temps les premiers dossiers »,
+       « que devient un dossier après la livraison » et « pourquoi si peu de
+       chiffres sur ce site ».
+       Vérifié avant de les retirer, et c'est la raison pour laquelle trois
+       de ces suppressions ne coûtent rien : le premier contact adressé à
+       l'entreprise et l'opt-out définitif sont portés par la question RGPD
+       ci-dessous, par le pied de l'offre et par la page Confidentialité ;
+       le délai annoncé au devis est répété dans le filtre, l'offre et la
+       fiche du devis. La quatrième, le SUIVI DES COHORTES, n'avait aucun
+       autre point de chute : il quitte le site, voir la note v59 plus haut.
        Les details sont fermés au chargement, donc seule la longueur des
        QUESTIONS pèse sur la hauteur, jamais celle des réponses. */
     items: [
-      {
-        question: "Qui contacte le dirigeant ?",
-        reponse:
-          "Vous. Nous ne contactons jamais le dirigeant, à aucun moment. Le dossier arrive sur votre bureau, l’approche est la vôtre et se fait sous votre nom.",
-      },
-      {
-        question: "Et si un dirigeant refuse d’être recontacté ?",
-        reponse:
-          "Son opposition est honorée sans condition et sans limitation de durée. Si son dossier vous a déjà été livré, vous êtes prévenu le jour même et le dossier ne doit plus être exploité.",
-      },
-      {
-        question: "Sous combien de temps les premiers dossiers ?",
-        reponse:
-          "Le délai de la première livraison vous est annoncé au devis, comme le périmètre et le plancher. Les suivantes suivent les faits, chacune à date annoncée.",
-      },
-      /* v53 : le suivi des cohortes, relogé depuis la section mesure
-         supprimée — seul endroit du site qui porte cet engagement */
-      {
-        question: "Que devient un dossier après la livraison ?",
-        reponse:
-          "Chaque dossier est suivi jusqu’à son issue, cession ou non. Les résultats sont communiqués à nos clients, échecs compris, et publiés sur ce site dès qu’une cohorte complète atteint dix-huit mois.",
-      },
       {
         question: "Que se passe-t-il après les trois mois ?",
         reponse:
@@ -517,11 +511,7 @@ export const copy = typoDeep({
         reponse:
           "Une base affiche des métadonnées : la mention qu’un acte existe, sa date de dépôt. Nous ouvrons l’acte, y compris quand c’est un scan que personne ne lit : la répartition du capital, les conditions suspensives, le motif réel de l’opération. Et quand la lecture dit qu’il ne faut pas appeler, c’est ce que nous livrons.",
       },
-      {
-        question: "Pourquoi si peu de chiffres sur ce site ?",
-        reponse:
-          "Parce qu’un chiffre honnête porte sa source, sa méthode, sa date et son périmètre, et qu’une moyenne d’affiche n’a rien de tout cela. Le seul décompte qui vous concerne, celui de votre périmètre, est mesuré avant votre engagement et inscrit au devis.",
-      },
+    
     ],
   },
   /* la section d’accueil et le gabarit des pages article. Les textes des

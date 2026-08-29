@@ -743,6 +743,39 @@ trouvé sur vous". Codes attendus : document financier imprimé, pas SaaS IA.
   aujourd'hui entièrement statique : arbitrage à prendre, pas pris.
   Pour mémoire, le JS est à 109 Ko au premier chargement et il n'y a rien
   à y faire, zéro dépendance UI.
+- Amendement v59 (arbitrage Vincent, 29/08/2026) : LA FAQ PASSE DE NEUF À
+  QUATRE QUESTIONS. Sont retirées « Qui contacte le dirigeant ? », « Et si
+  un dirigeant refuse d'être recontacté ? », « Sous combien de temps les
+  premiers dossiers ? », « Que devient un dossier après la livraison ? » et
+  « Pourquoi si peu de chiffres sur ce site ? ». Restent les quatre qui
+  portent une information que le fil de la page ne dit pas : la sortie des
+  trois mois, le périmètre déjà servi, le RGPD, et la différence avec un
+  agrégateur. Le balisage FAQPage suit tout seul, il est généré depuis
+  copy.faq.items : vérifié à 4 entrées dans le HTML produit.
+  VÉRIFIÉ AVANT DE RETIRER, et c'est pourquoi trois de ces suppressions ne
+  coûtent rien : le PREMIER CONTACT toujours adressé à l'entreprise et
+  l'OPT-OUT définitif sont portés par la question RGPD qui reste, par le
+  pied de l'offre (« le registre d'opposition et l'opt-out sont pris en
+  charge ») et par la page Confidentialité, qui les détaille ; le DÉLAI
+  annoncé au devis est répété dans le filtre, dans l'offre, dans la fiche
+  du devis et dans sa note.
+  CE QUI MEURT VRAIMENT, ET IL FAUT LE SAVOIR : le SUIVI DES COHORTES,
+  c'est-à-dire les dossiers suivis jusqu'à leur issue, les résultats
+  communiqués aux clients échecs compris, et la publication sur le site dès
+  qu'une cohorte atteint dix-huit mois. L'amendement v53 l'avait relogé
+  dans « Que devient un dossier après la livraison ? » en écrivant
+  « c'est désormais le SEUL endroit du site qui porte cet engagement, ne
+  pas le perdre ». CETTE INSTRUCTION EST CADUQUE : la question est
+  supprimée sur arbitrage, l'engagement ne figure plus nulle part sur le
+  site. Ce n'est pas un oubli, c'est une suppression demandée et signalée
+  avant d'être faite. S'il doit revivre, il lui faut un nouvel endroit :
+  il n'en a aucun. Ne pas « restaurer » la question au motif de la v53.
+  À JUGER SUR PIÈCE, non vérifiable ici : la FAQ est en deux colonnes
+  depuis la v53, l'en-tête, la note et l'appel à gauche, l'accordéon à
+  droite. Avec quatre questions au lieu de neuf, la colonne de droite
+  devient plus courte que celle de gauche et l'équilibre du gabarit peut
+  se retourner. Si le déséquilibre se voit, c'est le gabarit qu'il faut
+  reprendre, pas les questions qu'il faut remettre.
 - Interdits définitifs (hérités des itérations rejetées) : ticker, métriques animées,
   count-up, grilles de cards, beam/bordures lumineuses, tilt 3D, spotlight souris, pings,
   glow, dégradés colorés, grid de fond, badges/chips, emojis, icônes décoratives,
