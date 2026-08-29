@@ -2,6 +2,17 @@ import { ImageResponse } from "next/og";
 import { LOGO_DATA_URI } from "@/components/logo-imbrin-image";
 import { brand } from "@/config/brand";
 
+/* v56 · RUNTIME. Retirer cette ligne prégénérerait le PNG au build au
+   lieu de le rendre à la demande, ce qui serait le vrai gain : l'image
+   ne change jamais entre deux déploiements. ESSAYÉ, ET REPOSÉ : sans
+   edge, le prérendu casse à l'intérieur de @vercel/og, au chargement du
+   module, sur un fileURLToPath appliqué à une chaîne qui n'est pas une
+   URL. Impossible de savoir depuis un poste Windows si le défaut y est
+   propre ou s'il vaut aussi pour les serveurs de build : dans le doute,
+   on ne troque pas un build de production contre une image sociale.
+   À reprendre sur une branche, où Vercel bâtira une préview qui tranche.
+   Ce qui EST optimisé ici, et qui vaut dans les deux runtimes : les
+   quatre requêtes réseau de la génération sont marquées immuables. */
 export const runtime = "edge";
 
 export const alt = `${brand.MARQUE} ${brand.SUFFIXE}, ${brand.BASELINE}`;
@@ -10,14 +21,19 @@ export const contentType = "image/png";
 
 /* sous-ensemble TTF via l'API css2 de Google (résolu à la génération) */
 async function policeGoogle(famille: string, poids: number, texte: string) {
+  /* une URL css2 avec un sous-ensemble figé rend toujours le même CSS, et
+     l'URL de fonte qu'elle contient est versionnée donc immuable : les deux
+     requêtes sont marquées en cache permanent. Sans cela, chaque partage de
+     lien repayait quatre allers-retours vers Google. */
   const css = await (
     await fetch(
-      `https://fonts.googleapis.com/css2?family=${famille}:wght@${poids}&text=${encodeURIComponent(texte)}`
+      `https://fonts.googleapis.com/css2?family=${famille}:wght@${poids}&text=${encodeURIComponent(texte)}`,
+      { cache: "force-cache" }
     )
   ).text();
   const url = css.match(/src: url\((.+?)\) format\('(?:opentype|truetype)'\)/)?.[1];
   if (!url) throw new Error(`police introuvable : ${famille}`);
-  return (await fetch(url)).arrayBuffer();
+  return (await fetch(url, { cache: "force-cache" })).arrayBuffer();
 }
 
 export default async function Image() {

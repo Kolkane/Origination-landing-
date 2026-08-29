@@ -21,6 +21,9 @@ export default function CtaFinal() {
         <p className="final-tel label">
           {f.telAvant}
           <a href={brand.TELEPHONE.lien}>{brand.TELEPHONE.affiche}</a>
+          <br />
+          {f.mailAvant}
+          <a href={`mailto:${brand.CONTACT_EMAIL}`}>{brand.CONTACT_EMAIL}</a>
         </p>
       </div>
     </section>

@@ -154,10 +154,24 @@ body {
     rgba(10, 10, 10, 0.72) 100%
   );
 }
-.no-video .veil {
-  background:
-    radial-gradient(900px 520px at 62% 46%, rgba(38, 52, 50, 0.55), transparent 70%),
-    linear-gradient(180deg, #0c0d0d, #0a0b0b);
+/* v56 · LE REPLI DE LA VIDÉO. Il peignait sur le voile un halo VERT
+   (rgba(38,52,50,.55)) doublé d'un dégradé : une couleur hors palette,
+   un dégradé coloré, donc deux interdits absolus, et par-dessus le
+   marché il RECOUVRAIT le poster, qui existe pourtant déjà et qui est
+   l'image de la vidéo. Le premier écran perdait son sujet pour un aplat
+   verdâtre le jour où le fichier ne chargeait pas.
+   Désormais le poster prend la place : le hero garde exactement son
+   image, il cesse seulement de bouger. Le voile reste celui du cas
+   nominal, c'est un fond de lisibilité pour le titre, pas une décoration.
+   La balise vidéo est retirée de l'image : selon le navigateur, une
+   source en échec laisse un cadre vide ou une icône de média cassé. */
+.no-video {
+  background-image: url("/imbrin-poster.jpg");
+  background-size: cover;
+  background-position: center;
+}
+.no-video video {
+  display: none;
 }
 .nav {
   position: absolute;

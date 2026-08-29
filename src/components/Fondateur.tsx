@@ -30,8 +30,12 @@ export default function Fondateur() {
 
         <p className="f-nom">{f.nom}</p>
         <p className="f-lieu label">{f.lieu}</p>
+        {/* v56 : l'adresse de contact sous le numéro (arbitrage Vincent,
+            29/08). Les deux voies directes se lisent ensemble. */}
         <p className="f-tel label">
           <a href={brand.TELEPHONE.lien}>{brand.TELEPHONE.affiche}</a>
+          <br />
+          <a href={`mailto:${brand.CONTACT_EMAIL}`}>{brand.CONTACT_EMAIL}</a>
         </p>
 
         <div className="f-filet" aria-hidden="true" />

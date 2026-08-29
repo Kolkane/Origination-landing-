@@ -38,11 +38,12 @@ export default function Hero() {
         <source src="/imbrin.mp4" type="video/mp4" onError={() => setSansVideo(true)} />
       </video>
       <div className="veil" />
-      {/* v54 : le fallback n'affiche plus rien. Il portait « Déposez votre
-          vidéo imbrin.mp4 dans public/, puis rechargez » — une consigne de
-          développement, lisible par un associé de cabinet le jour où la
-          vidéo ne charge pas. Le voile de .no-video tient le premier écran
-          seul, et le titre s'y lit sans elle. */}
+      {/* v54 : plus de note de repli. Elle portait « Déposez votre vidéo
+          imbrin.mp4 dans public/, puis rechargez », une consigne de
+          développement que lisait un associé de cabinet le jour où la
+          vidéo ne chargeait pas.
+          v56 : le repli montre le POSTER (voir .no-video dans globals.css).
+          Le premier écran garde son image, il cesse juste de bouger. */}
 
       <div className="nav">
         <span className="brand label fade f1">

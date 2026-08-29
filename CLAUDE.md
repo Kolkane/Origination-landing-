@@ -636,6 +636,44 @@ trouvé sur vous". Codes attendus : document financier imprimé, pas SaaS IA.
   page, qui doit cesser d'être une div maquillée en papier pour devenir
   une pièce qu'on a l'impression d'avoir sortie d'une chemise. La
   typographie est la première marche, la matière est la suivante.
+- Amendement v56 (arbitrage Vincent, 29/08/2026) : L'ADRESSE DE CONTACT
+  ET LE REPLI DU HERO.
+  CONTACT. contact@imbrin.fr est arrêtée comme adresse de contact, la
+  réserve de site.ts n'a plus d'objet. Elle s'affiche SOUS LE NUMÉRO,
+  aux trois endroits où celui-ci vit déjà et à ceux-là seulement :
+  fondateur, pied de page, appel final. Les deux voies directes se
+  lisent ensemble ; l'appel Calendly reste le chemin principal, elles
+  ne le concurrencent pas. Jamais dans le hero, la règle du numéro
+  vaut pour elle. Elle était déjà dans le schema.org, où elle reste.
+  REPLI DE LA VIDÉO. Quand imbrin.mp4 ne charge pas, le premier écran
+  peignait un halo VERT sur le voile, rgba(38,52,50,.55) doublé d'un
+  dégradé : une couleur hors palette et un dégradé coloré, donc deux
+  interdits absolus, posés là depuis l'origine et jamais vus parce que
+  le cas ne se produit pas en développement. Pire, cet aplat
+  RECOUVRAIT le poster, qui existe pourtant (public/imbrin-poster.jpg)
+  et qui est l'image de la vidéo. Le hero perdait son sujet au moment
+  précis où il aurait fallu le garder. Désormais le poster prend la
+  place et la balise vidéo est retirée de l'image, une source en échec
+  laissant selon le navigateur un cadre vide ou une icône de média
+  cassé. Le voile ne bouge pas, c'est un fond de lisibilité pour le
+  titre, pas une décoration. La note de développement qui s'affichait
+  là était morte en v54.
+  IMAGE OPENGRAPH. Optimisation DEMANDÉE, faite à moitié, et la moitié
+  manquante est documentée dans le fichier. Le vrai gain serait de
+  retirer le runtime edge : la route sortirait prégénérée au build au
+  lieu d'être rendue à chaque partage de lien, pour une image qui ne
+  change jamais entre deux déploiements. Essayé : sans edge, le
+  prérendu casse à l'intérieur de @vercel/og, au chargement du module,
+  sur un fileURLToPath appliqué à une chaîne qui n'est pas une URL.
+  Impossible de trancher depuis un poste Windows si le défaut y est
+  propre ou s'il vaudrait aussi pour les serveurs de build, et on ne
+  troque pas un build de production contre une image sociale : le
+  runtime edge est REPOSÉ. À reprendre sur une branche, où une préview
+  Vercel tranchera en une minute. Ce qui est acquis : les quatre
+  requêtes réseau de la génération, deux CSS et deux binaires de
+  fonte, sont marquées immuables, elles ne se repaient plus à chaque
+  partage. Le sous-ensemblage au texte réellement composé était déjà
+  en place.
 - Interdits définitifs (hérités des itérations rejetées) : ticker, métriques animées,
   count-up, grilles de cards, beam/bordures lumineuses, tilt 3D, spotlight souris, pings,
   glow, dégradés colorés, grid de fond, badges/chips, emojis, icônes décoratives,

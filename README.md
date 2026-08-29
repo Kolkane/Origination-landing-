@@ -30,17 +30,26 @@ npm run build   # build de production
 
 Règle de fond : **rien codé en dur dans le JSX**, ni texte ni valeur.
 
-## Deux conventions de style à connaître
+## Quatre conventions de style à connaître
 
 - `.papier` retourne une section entière sur le fond clair en redéfinissant les
   tokens de couleur. Ne jamais écrire d'exception de couleur enfant par enfant.
 - `.sect` place le libellé de section dans la marge gauche et le contenu à
   droite. Les sections qui ont déjà une colonne de gauche ne la portent pas.
+- `--f-display`, `--f-corps`, `--f-label` sont les trois **rôles**
+  typographiques. `globals.css` ne nomme aucune police : changer de fonte ne
+  touche que `layout.tsx`.
+- Les **documents** (`.doc`, le spécimen du dossier, et `.fiche-o`, la fiche du
+  devis) ont leur propre typographie : ils redéfinissent `--f-label` sur la
+  serif du corps, donc aucun monospace à l'intérieur. C'est délibéré, c'est ce
+  qui les fait lire comme des pièces posées sur la page.
 
 ## Stack
 
 Next 14 App Router, TypeScript strict, Tailwind, next/font. Zéro dépendance UI
 externe : les apparitions passent par IntersectionObserver et des classes CSS.
-Polices : Familjen Grotesk et Source Serif 4 via `next/font/google`, Geist Mono
-en local. Geist, Instrument Serif et Literata ont été retirées du site à la
-suite d'arbitrages documentés dans `CLAUDE.md` : ne pas les réintroduire.
+
+Polices, toutes via `next/font/google` : **Fraunces** en titres, **Spectral** en
+corps, **Cutive Mono** en libellés. Instrument Serif, Geist, Literata, Familjen
+Grotesk et Source Serif 4 ont toutes été retirées du site à la suite
+d'arbitrages documentés dans `CLAUDE.md` : ne pas les réintroduire.

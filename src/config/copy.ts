@@ -541,6 +541,8 @@ export const copy = typoDeep({
     lead: "Ce qu’il contient vous est annoncé au devis, plancher mensuel chiffré. Un mois qui passe sous ce nombre n’est pas facturé. Trente minutes, avec le fondateur.",
     cta: CTA,
     telAvant: "ou appelez directement le ",
+    /* v56 : la seconde voie directe, sous la première */
+    mailAvant: "ou écrivez à ",
   },
   /* v25 : la barre d'action mobile. Le libellé passe par la constante CTA
      comme les autres appels : trois copies indépendantes avaient déjà

@@ -8,7 +8,10 @@ export const brand = typoDeep({
   LINKEDIN_URL: "https://www.linkedin.com/in/vincent-fournier-939021170/",
   CONTACT_EMAIL: "contact@imbrin.fr",
   /* ligne directe du fondateur : affichée à trois endroits seulement,
-     fondateur, footer et appel final. Jamais dans le hero. */
+     fondateur, footer et appel final. Jamais dans le hero. Depuis la v56
+     CONTACT_EMAIL l'accompagne aux trois, posée sous elle (arbitrage
+     Vincent, 29/08) : les deux voies de contact directes se lisent
+     ensemble, l'appel Calendly reste le chemin principal. */
   TELEPHONE: { affiche: "06 81 28 54 33", lien: "tel:+33681285433", e164: "+33681285433" },
   ENTITY: {
     raisonSociale: "Jungle.Block Solutions",  // la nouvelle entité la remplacera plus tard
