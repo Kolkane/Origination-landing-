@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>V60 · Ce que nous ne faisons pas</title>
+<!-- ============================================================
+     ATTENTION, ET C'EST LA LEÇON DE CETTE PLANCHE : les hauteurs
+     mesurées ICI ne font PAS foi, celles du site construit oui.
+     Deux écarts l'ont fait mentir de 21px sur sa première version.
+     1. .wrap était à 40px de padding au lieu de clamp(22,4.4vw,76),
+        soit 93px de rangée en trop. Corrigé ci-dessous.
+     2. Fraunces ne rend pas la même largeur selon qu'elle vient de
+        l'API css2 de Google (cette planche) ou de next/font (le
+        site). Mesuré sur « Contact du patrimoine privé » à 18px :
+        197,6px ici contre 239,1px sur le site, 21 pour cent
+        d'écart, à font-size, graisse, tracking et WONK identiques.
+        L'axe opsz ne se sert pas pareil de part et d'autre. Cet
+        écart-là n'est PAS corrigeable dans une planche statique.
+     RÈGLE QUI EN SORT : une planche vaut pour la FORME et pour les
+     couleurs ; toute hauteur ou largeur de texte se revérifie sur
+     le site construit avant d'être annoncée.
+     Valeurs vraies, relevées sur le build : 195px de 1440 à 1600,
+     194px à 1366, 214px à 1280 (le plus long remplacement y prend
+     une troisième ligne), 463px à 390.
+     ============================================================ -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,WONK,opsz,wght@0,0..1,9..144,300..700;1,0..1,9..144,400&family=Spectral:wght@400;500&family=Cutive+Mono&display=swap">
+
+<style>
+/* ============================================================
+   Tokens du dépôt, recopiés à l'identique depuis globals.css.
+   Aucune valeur inventée ici : la planche doit mentir le moins
+   possible sur ce que donnera le code.
+   ============================================================ */
+:root {
+  --bg: #0a0a0a;
+  --bg-2: #0e0e0e;
+  --paper: #ece7df;
+  --txt: #f4f2ef;
+  --txt-2: #b9b6b2;
+  --txt-3: #83807c;
+  --line: rgba(255, 255, 255, 0.12);
+  --line-soft: rgba(255, 255, 255, 0.06);
+  --line-tete: rgba(255, 255, 255, 0.26);
+  --wine: #8e2438;
+  --wine-lift: #b32e46;
+  --ink: #171310;
+  --ink-2: #3a342e;
+  --ink-3: #6c6257;
+  --ink-line: rgba(23, 19, 16, 0.14);
+  --ink-line-2: rgba(23, 19, 16, 0.28);
+  --mesure: 48rem;
+  --f-display: "Fraunces", Georgia, serif;
+  --f-corps: "Spectral", Georgia, serif;
+  --f-label: "Cutive Mono", "Courier New", monospace;
+  font-variation-settings: "WONK" 1;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--txt);
+  font-family: var(--f-corps);
+  text-wrap: pretty;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+.label { font-family: var(--f-label); }
+/* CORRIGÉ : le dépôt vaut clamp(22px, 4.4vw, 76px), pas 40px. La
+   planche donnait 1360px de conteneur là où le site en donne 1313,
+   soit 93px de colonne en trop et une rangée qui mesurait faux. */
+.wrap { max-width: 1440px; margin: 0 auto; padding: 0 clamp(22px, 4.4vw, 76px); }
+.kicker {
+  font-size: 10.5px; letter-spacing: 0.28em; text-transform: uppercase;
+  color: var(--txt-3); margin-bottom: 18px;
+}
+.sect {
+  display: grid;
+  grid-template-columns: clamp(132px, 13vw, 208px) minmax(0, 1fr);
+  column-gap: clamp(24px, 3.2vw, 64px);
+  align-items: start;
+}
+.sect > .kicker { grid-column: 1; grid-row: 1; margin: 0; padding-top: 0.7em; }
+.sect > :not(.kicker) { grid-column: 2; }
+.sect > .kicker + * { margin-top: 0; }
+@media (max-width: 1100px) {
+  .sect { display: block; }
+  .sect > .kicker { padding-top: 0; margin-bottom: 18px; }
+}
+.papier {
+  --txt: var(--ink);
+  --txt-2: var(--ink-2);
+  --txt-3: var(--ink-3);
+  --line: var(--ink-line-2);
+  --line-soft: var(--ink-line);
+  --line-tete: rgba(23, 19, 16, 0.34);
+  --wine-lift: var(--wine);
+  background: var(--paper);
+  color: var(--ink);
+}
+.papier .kicker:not(.f-kicker) { color: var(--wine); }
+
+/* ---- voisinage : queue de la méthode ---- */
+.method { padding: clamp(80px, 9vw, 130px) 0; }
+.m-entrees { border-top: 2px solid var(--line-tete); }
+.m-entree {
+  display: grid; grid-template-columns: minmax(0, 380px) minmax(0, 1fr);
+  gap: clamp(20px, 3vw, 40px); padding: 34px 0 30px;
+}
+.m-entree + .m-entree { border-top: 1px solid var(--line-soft); }
+.me-t {
+  font-family: var(--f-display); font-weight: 400;
+  font-size: clamp(21px, 1.9vw, 27px); line-height: 1.15; letter-spacing: -0.01em;
+  margin: 0;
+}
+.me-p {
+  font-size: 14.5px; line-height: 1.7; color: var(--txt-2);
+  max-width: 44rem; padding-top: 4px; margin: 0;
+}
+.papier .me-p { font-size: 16px; }
+@media (max-width: 860px) {
+  .m-entree { grid-template-columns: minmax(0, 1fr); gap: 10px; padding: 26px 0 22px; }
+  .me-p { padding-top: 0; }
+}
+
+/* ============================================================
+   V60 · CE QUE NOUS NE FAISONS PAS.
+   Le dispositif est la MENTION RAYÉE : un terme barré d'un trait
+   fin en vin, et sous lui la ligne courte qui le remplace. C'est
+   le geste du registre — on ne gomme pas une entrée, on la raye
+   et on écrit à côté.
+
+   POURQUOI PAPIER, et ce n'est pas une préférence : sur l'encre
+   le vin plein donne 2,32:1, mesuré. Un trait de 1px à 2,32:1 sur
+   du noir ne se voit pas, et la charte v15 interdit explicitement
+   le --wine-lift sur un filet (« jamais sur un filet : les aplats
+   et les filets restent en #8E2438 »). Sur le papier le même vin
+   donne 6,94:1. La surface est donc dictée par le dispositif.
+
+   LE FILET DE TÊTE fait deux métiers d'un coup : il ouvre
+   l'ensemble d'entrées (emploi de --line-tete, v54) ET il coupe
+   entre deux bandes de même couleur (« un filet de section ne
+   sert que là où la couleur ne coupe pas », v54). Un seul filet,
+   pas deux empilés à 40px d'écart.
+   ============================================================ */
+/* le padding est court, et c'est mesuré : la méthode ferme sur 130px
+   et l'offre ouvre sur 120px, le filet de tête a donc déjà 160px d'air
+   au-dessus et la bande papier 150px en dessous. Une section compacte
+   n'a pas à repayer l'air que ses voisines lui donnent. */
+.nfp { padding: 20px 0; }
+.nfp-row {
+  list-style: none; margin: 0; padding: 18px 0 0;
+  border-top: 2px solid var(--line-tete);
+  display: grid; grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-rows: auto auto;
+  column-gap: clamp(22px, 2.4vw, 34px);
+  row-gap: 8px;
+}
+/* subgrid : « Contact du patrimoine privé » demande 239px et n'en reçoit
+   que 210, il tombe donc sur deux lignes à toutes les largeurs de bureau.
+   Sans piste partagée, son remplacement descendait d'un cran sous les
+   trois autres et la rangée devenait bancale. */
+.nfp-i { display: grid; grid-template-rows: subgrid; grid-row: span 2; }
+/* filets verticaux : des filets de colonne de journal, pas des
+   boîtes. Aucun fond, aucun rayon, aucune ombre — ce n'est pas
+   une grille de cards. */
+.nfp-i + .nfp-i {
+  border-left: 1px solid var(--line-soft);
+  padding-left: clamp(22px, 2.4vw, 34px);
+}
+/* le terme refusé ne prend pas l'encre pleine : une entrée rayée
+   n'affirme plus rien. Ce qui reste debout, c'est le remplacement,
+   et c'est lui qui porte l'encre. */
+.nfp-non {
+  margin: 0;
+  font-family: var(--f-display); font-weight: 400;
+  font-size: clamp(16px, 1.28vw, 18px); line-height: 1.2;
+  letter-spacing: -0.01em;
+  /* le terme recule d'un cran de plus que prévu : à --txt-2 le trait
+     de vin se confondait avec l'encre de la lettre et la mention ne se
+     lisait plus comme RAYÉE, juste comme sombre. À --ink-3 (4,84:1,
+     AA tenu pour un corps de 18px) le vin se détache et le geste se voit. */
+  color: var(--txt-3);
+  text-decoration-line: line-through;
+  text-decoration-color: var(--wine);
+  text-decoration-thickness: 1.5px;
+}
+.nfp-oui {
+  margin: 0;
+  font-size: 15px; line-height: 1.5; color: var(--txt);
+}
+.nfp-pied {
+  margin: 16px 0 0;
+  max-width: var(--mesure);
+  font-size: 14.5px; line-height: 1.6; color: var(--txt-2);
+}
+/* mobile : les quatre passent en colonne, une entrée par ligne.
+   Les filets verticaux deviennent horizontaux, le rang ne change
+   pas, seule l'orientation change. */
+@media (max-width: 860px) {
+  .nfp { padding: 34px 0 36px; }
+  .nfp-row { grid-template-columns: minmax(0, 1fr); grid-template-rows: none; row-gap: 0; padding-top: 0; }
+  .nfp-i { display: block; padding: 18px 0 0; }
+  .nfp-i + .nfp-i {
+    border-left: 0; padding-left: 0;
+    border-top: 1px solid var(--line-soft);
+  }
+  .nfp-oui { margin-top: 6px; }
+  .nfp-pied { margin-top: 22px; }
+}
+
+/* ---- voisinage : tête de l'offre ---- */
+.offer { padding: 120px 0 60px; border-top: 1px solid var(--line); }
+.statement {
+  font-family: var(--f-display); font-weight: 400;
+  font-size: clamp(28px, 3.8vw, 50px); line-height: 1.12;
+  letter-spacing: -0.015em; max-width: 26ch; margin: 0;
+  text-wrap: balance;
+}
+
+/* ---- chrome de la planche, jamais du site ---- */
+.note {
+  font: 12px/1.6 ui-sans-serif, system-ui, sans-serif;
+  color: #6f6f6f; background: #060606;
+  padding: 14px 40px; border-top: 1px dashed #262626;
+}
+.note b { color: #b9b6b2; font-weight: 600; }
+#mesures { white-space: pre; }
+</style>
+</head>
+<body>
+
+<!-- ============ queue de la méthode (bande papier) ============ -->
+<section class="method papier">
+  <div class="wrap sect">
+    <p class="kicker label">La méthode</p>
+    <div class="m-entrees">
+      <div class="m-entree">
+        <h3 class="me-t">La détection, puis la lecture</h3>
+        <p class="me-p">RNE, SIRENE, BODACC : des faits observables et datés, pas de scores prédictifs inventés. Chaque détection est reprise à la main, l’acte est ouvert et lu, y compris quand c’est un scan. Les critères du filtre ont été testés sur l’historique des cessions au registre avant d’être retenus.</p>
+      </div>
+      <div class="m-entree">
+        <h3 class="me-t">Le dossier, ou la raison de ne pas appeler</h3>
+        <p class="me-p">Aucun dossier ne sort sans deux vérifications le jour de la livraison : la fiche au registre, puis la lecture de l’acte. Ce qui tient est livré, et le périmètre reste sous veille. Quand la raison de ne pas appeler existe, vous la recevez : société déjà conseillée, filiale d’un groupe, contrôle déjà basculé. Un dossier de moins est aussi une information.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ LA SECTION ============ -->
+<section class="nfp papier" id="nfp">
+  <div class="wrap sect">
+    <p class="kicker label">Ce que nous ne faisons pas</p>
+    <ul class="nfp-row">
+      <li class="nfp-i">
+        <p class="nfp-non">Scores prédictifs</p>
+        <p class="nfp-oui">Des faits au registre, datés.</p>
+      </li>
+      <li class="nfp-i">
+        <p class="nfp-non">Contact du patrimoine privé</p>
+        <p class="nfp-oui">Le premier contact passe par l’entreprise.</p>
+      </li>
+      <li class="nfp-i">
+        <p class="nfp-non">Données grises</p>
+        <p class="nfp-oui">Registres publics, fournisseurs contractualisés.</p>
+      </li>
+      <li class="nfp-i">
+        <p class="nfp-non">Chiffres invérifiables</p>
+        <p class="nfp-oui">Ce que nous publions, nous le mesurons.</p>
+      </li>
+    </ul>
+    <p class="nfp-pied">Le taux d’écart de chaque lot est livré au client, et publié ici dès qu’une première cohorte atteint dix-huit mois.</p>
+  </div>
+</section>
+
+<!-- ============ tête de l'offre (retour à l'encre) ============ -->
+<section class="offer">
+  <div class="wrap sect">
+    <p class="kicker label">L’offre</p>
+    <h2 class="statement">Un cabinet par périmètre, arrêté au devis.</h2>
+  </div>
+</section>
+
+<div class="note" id="mesures">mesure en cours…</div>
+
+<script>
+document.fonts.ready.then(function () {
+  var s = document.getElementById('nfp');
+  var row = s.querySelector('.nfp-row');
+  var pied = s.querySelector('.nfp-pied');
+  var items = s.querySelectorAll('.nfp-i');
+  var last = items[items.length - 1];
+  var oui = last.querySelector('.nfp-oui');
+  var cs = getComputedStyle(oui);
+  var lh = parseFloat(cs.lineHeight);
+  // vide à droite du dernier « oui » : ce qui ANCRE le bord droit
+  var vide = Math.round(last.getBoundingClientRect().right - oui.getBoundingClientRect().right);
+  var lignesPied = Math.round(pied.getBoundingClientRect().height / parseFloat(getComputedStyle(pied).lineHeight));
+  document.getElementById('mesures').innerHTML =
+    '<b>largeur ' + window.innerWidth + 'px</b>  ·  section ' + Math.round(s.getBoundingClientRect().height) + 'px'
+    + '  ·  rangée ' + Math.round(row.getBoundingClientRect().height) + 'px'
+    + '  ·  pied ' + Math.round(pied.getBoundingClientRect().height) + 'px sur ' + lignesPied + ' ligne(s)'
+    + '\ncolonne d’un engagement ' + Math.round(items[0].getBoundingClientRect().width) + 'px'
+    + '  ·  vide sous le bord droit de la dernière colonne ' + vide + 'px'
+    + '  ·  interligne du « oui » ' + lh + 'px';
+});
+</script>
+</body>
+</html>

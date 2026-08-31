@@ -776,6 +776,70 @@ trouvé sur vous". Codes attendus : document financier imprimé, pas SaaS IA.
   devient plus courte que celle de gauche et l'équilibre du gabarit peut
   se retourner. Si le déséquilibre se voit, c'est le gabarit qu'il faut
   reprendre, pas les questions qu'il faut remettre.
+- Amendement v60 (arbitrage Vincent, 31/08/2026) : CE QUE NOUS NE FAISONS
+  PAS revient, en bande compacte entre la méthode et l'offre. La section
+  avait existé sous le nom « Nos engagements » et la v52 l'avait
+  supprimée ; elle ne revient PAS sous cette forme. Quatre engagements sur
+  UNE rangée, sans paragraphe, sans icône, et le dispositif est la MENTION
+  RAYÉE : un terme barré d'un trait fin en vin, sous lui la ligne courte
+  qui le remplace. C'est le geste du registre, on ne gomme pas une entrée,
+  on la raye et on écrit à côté. Planche MAQUETTE-V60-NEFAITPAS.html.
+  ELLE EST SUR PAPIER, ET ELLE JOUXTE LA MÉTHODE QUI L'EST DÉJÀ. C'est une
+  dérogation assumée à l'alternance stricte des fonds posée en v54, et le
+  dispositif la commande : sur l'encre le vin plein donne 2,32:1, mesuré,
+  un trait de 1,5px à ce contraste ne se voit pas, et l'amendement v15
+  interdit le --wine-lift sur un filet (« les aplats et les filets restent
+  en #8E2438 »). Sur le papier le même vin donne 6,94:1. Un trait de vin
+  lisible n'existe que sur cette surface. Ne pas « rétablir l'alternance »
+  en basculant la section sur l'encre : ce serait effacer son seul geste.
+  Le filet de tête fait alors DEUX métiers d'un coup, il ouvre l'ensemble
+  d'entrées (emploi de --line-tete) et il coupe là où la couleur ne coupe
+  pas (règle du filet de section, v54). Un seul filet, pas deux empilés :
+  ne pas ajouter de border-top à la section.
+  Le terme rayé recule à --ink-3 et non --ink-2 : à --ink-2 le trait se
+  confondait avec l'encre de la lettre et la mention se lisait sombre, pas
+  rayée. 4,84:1, AA tenu pour un corps de 18px. Le remplacement garde
+  l'encre pleine, une entrée annulée n'affirme plus rien.
+  LE SUIVI DES COHORTES REVIT, et le pied de cette section est le seul
+  endroit du site qui le porte. L'instruction de la v59, « l'engagement ne
+  figure plus nulle part, s'il doit revivre il lui faut un nouvel endroit :
+  il n'en a aucun », EST DONC CADUQUE À SON TOUR. Il en a un.
+  DEUX REDITES CORRIGÉES DANS LE MÊME GESTE, parce que la section les
+  rendait visibles : « pas de scores prédictifs inventés » sort de l'étape
+  02 de la méthode, la mention rayée le dit à 200px de là dans la même
+  bande ; et « et livré avec chaque lot » sort de la note du filtre, le
+  pied de la section porte désormais la livraison du taux d'écart et sa
+  suite. La note du filtre garde ce qu'elle est seule à dire, la mesure
+  sur VOTRE périmètre.
+  DEUX PHRASES AJOUTÉES À LA MÉTHODE au même moment : les critères testés
+  sur l'historique des cessions en fin d'étape 02, et les deux
+  vérifications du jour de la livraison en tête d'étape 03. La seconde a
+  été FUSIONNÉE, pas empilée : l'étape disait « ce qui tient à la lecture
+  est livré », la lecture de l'acte étant maintenant nommée juste avant,
+  les deux mots sautent.
+  HAUTEUR, mesurée sur le build et non sur la planche : 195px de 1440 à
+  1600, 194px à 1366, 214px à 1280, 463px à 390. La rangée porte un
+  SUBGRID, et il n'est pas décoratif : « Contact du patrimoine privé »
+  demande 239px et n'en reçoit que 210, il tombe sur deux lignes à toutes
+  les largeurs de bureau, et sans piste partagée son remplacement
+  descendait d'un cran sous les trois autres. Coût en hauteur nul.
+  LEÇON DE MÉTHODE, ET ELLE VAUT POUR TOUTE PLANCHE FUTURE : la première
+  version de celle-ci annonçait 198px, le build en a donné 219. Deux
+  causes. Elle portait .wrap à 40px de padding quand le dépôt vaut
+  clamp(22px, 4.4vw, 76px), soit 93px de rangée en trop. Et surtout,
+  Fraunces ne rend pas la même largeur selon qu'elle vient de l'API css2
+  de Google, ce qu'une planche charge, ou de next/font, ce que sert le
+  site : 197,6px contre 239,1px pour la même chaîne à 18px, à graisse,
+  tracking et WONK identiques, l'axe opsz ne se servant pas pareil de part
+  et d'autre. Cet écart n'est pas corrigeable dans une planche statique.
+  UNE PLANCHE FAIT DONC FOI SUR LA FORME ET SUR LES COULEURS, JAMAIS SUR
+  UNE HAUTEUR NI SUR UNE LARGEUR DE TEXTE : celles-là se revérifient sur
+  le site construit avant d'être annoncées. Même famille d'erreur que le
+  ch de la v30 et que la bascule de la v55, un couplage typographique
+  invisible qui déplace une mesure sans qu'aucune déclaration ne bouge.
+  AUCUN .rev sur cette section, la règle v54 tient : rien n'y apparaît au
+  scroll. Aucun chiffre non plus, « dix-huit mois » est écrit en lettres
+  et c'est un seuil d'engagement, pas un résultat annoncé.
 - Interdits définitifs (hérités des itérations rejetées) : ticker, métriques animées,
   count-up, grilles de cards, beam/bordures lumineuses, tilt 3D, spotlight souris, pings,
   glow, dégradés colorés, grid de fond, badges/chips, emojis, icônes décoratives,

@@ -2247,6 +2247,132 @@ footer a:hover {
   }
 }
 /* ============================================================
+   v60 · CE QUE NOUS NE FAISONS PAS. Bande compacte, une rangée de
+   quatre mentions rayées, un pied d'une phrase. 198px à 1440 et
+   196px à 1280, mesurés au navigateur sur la planche
+   MAQUETTE-V60-NEFAITPAS.html, qui fait foi.
+
+   POURQUOI PAPIER, alors que la méthode juste au-dessus l'est déjà
+   et que la v54 prescrit d'alterner : le dispositif l'impose. Sur
+   l'encre le vin plein donne 2,32:1, mesuré ; un trait de 1,5px à
+   ce contraste ne se voit pas, et la charte v15 interdit le
+   --wine-lift sur un filet (« les aplats et les filets restent en
+   #8E2438 »). Sur le papier le même vin donne 6,94:1. Un trait de
+   vin lisible n'existe donc que sur cette surface, et l'exception
+   à l'alternance est le prix du dispositif, pas un oubli.
+
+   LE FILET DE TÊTE fait deux métiers d'un coup : il ouvre un
+   ensemble d'entrées (emploi de --line-tete posé en v54) ET il
+   coupe là où la couleur ne coupe pas, ce qui est la règle v54 du
+   filet de section mot pour mot. Un seul filet, pas deux empilés.
+   Ne pas ajouter de border-top à la section.
+   ============================================================ */
+
+/* le padding est court, et c'est mesuré : la méthode ferme sur 130px
+   et l'offre ouvre sur 120px, le filet de tête a donc déjà 160px d'air
+   au-dessus et la bande papier 150px en dessous. Une section compacte
+   ne repaie pas l'air que ses voisines lui donnent. */
+.nfp {
+  padding: 20px 0;
+}
+/* SUBGRID, et il n'est pas décoratif. « Contact du patrimoine privé »
+   demande 239px et n'en reçoit que 210 : le terme tombe sur deux lignes
+   à toutes les largeurs de bureau, ce qui poussait son remplacement un
+   cran plus bas que les trois autres et rendait la rangée bancale. Les
+   deux pistes de la rangée sont donc partagées par les quatre entrées :
+   tous les termes sur la première, tous les remplacements sur la
+   seconde, alignés quoi qu'il arrive. Coût en hauteur : nul, la piste
+   valait déjà la hauteur du plus haut. */
+.nfp-row {
+  list-style: none;
+  margin: 0;
+  padding: 18px 0 0;
+  border-top: 2px solid var(--line-tete);
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-rows: auto auto;
+  column-gap: clamp(22px, 2.4vw, 34px);
+  row-gap: 8px;
+}
+.nfp-i {
+  display: grid;
+  grid-template-rows: subgrid;
+  grid-row: span 2;
+}
+/* des filets de colonne de journal, pas des boîtes : aucun fond, aucun
+   rayon, aucune ombre. Ce n'est pas une grille de cards. */
+.nfp-i + .nfp-i {
+  border-left: 1px solid var(--line-soft);
+  padding-left: clamp(22px, 2.4vw, 34px);
+}
+/* le terme refusé recule de DEUX crans, pas d'un : à --txt-2 le trait de
+   vin se confondait avec l'encre de la lettre et la mention se lisait
+   sombre, pas rayée. À --txt-3 (4,84:1 sur le papier, AA tenu pour un
+   corps de 18px) le vin se détache et le geste se voit. Ce qui reste
+   debout, c'est le remplacement, et c'est lui qui garde l'encre pleine :
+   une entrée annulée n'affirme plus rien. */
+.nfp-non {
+  margin: 0;
+  font-family: var(--f-display);
+  font-weight: 400;
+  font-size: clamp(16px, 1.28vw, 18px);
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  color: var(--txt-3);
+  text-decoration-line: line-through;
+  text-decoration-color: var(--wine);
+  text-decoration-thickness: 1.5px;
+}
+.nfp-oui {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--txt);
+}
+/* le pied est une prose, il prend la mesure de section. La rangée, elle,
+   ne la prend PAS et n'en a pas besoin : mesuré, le « oui » de la
+   quatrième colonne ancre le bord droit à 0px de vide, exactement le
+   critère de la règle de méthode v33. */
+.nfp-pied {
+  margin: 16px 0 0;
+  max-width: var(--mesure);
+  font-size: 14.5px;
+  line-height: 1.6;
+  color: var(--txt-2);
+}
+/* mobile : les quatre passent en colonne, une entrée par ligne. Les
+   filets verticaux deviennent horizontaux, le rang ne change pas, seule
+   l'orientation change. */
+@media (max-width: 860px) {
+  .nfp {
+    padding: 34px 0 36px;
+  }
+  .nfp-row {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: none;
+    row-gap: 0;
+    padding-top: 0;
+  }
+  /* empilées, les entrées n'ont plus de voisine à aligner : le subgrid
+     est défait et chacune reprend son flux. */
+  .nfp-i {
+    display: block;
+    padding: 18px 0 0;
+  }
+  .nfp-oui {
+    margin-top: 6px;
+  }
+  .nfp-i + .nfp-i {
+    border-left: 0;
+    padding-left: 0;
+    border-top: 1px solid var(--line-soft);
+  }
+  .nfp-pied {
+    margin-top: 22px;
+  }
+}
+
+/* ============================================================
    v15 · B5, l'offre : un plat principal et un complément.
    Portée de MAQUETTE-V15-B5-OFFRE.html.
    La hiérarchie n'est pas dite, elle est construite. L'Origination

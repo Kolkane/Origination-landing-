@@ -312,7 +312,11 @@ export const copy = typoDeep({
     piedItalique: "Nous les comptons avant que vous signiez.",
     /* la chute est pleine largeur, la note passe en corps normal sous
        elle : fini le flottement bas-droite du pied de section */
-    note: "Le taux d’écart à la vérification est mesuré sur votre périmètre et livré avec chaque lot. Ce qui reste est livré. Rien d’autre.",
+    /* v60 : « et livré avec chaque lot » est retiré. La section « ce que
+       nous ne faisons pas » porte désormais la livraison du taux d’écart,
+       et sa suite, la publication à dix-huit mois. Ici la note dit ce
+       qu’elle est seule à dire : la mesure se fait sur VOTRE périmètre. */
+    note: "Le taux d’écart à la vérification est mesuré sur votre périmètre. Ce qui reste est livré. Rien d’autre.",
     /* le stock et le flux. Sans cette distinction, un prospect divise le
        stock par le rythme mensuel, conclut que trois mois lui suffisent, et
        lit dans la page une invitation à partir à l'échéance de son
@@ -352,16 +356,54 @@ export const copy = typoDeep({
         num: "02",
         titre: "La détection, puis la lecture",
         texte:
-          "RNE, SIRENE, BODACC : des faits observables et datés, pas de scores prédictifs inventés. Chaque détection est reprise à la main, l’acte est ouvert et lu, y compris quand c’est un scan.",
+          "RNE, SIRENE, BODACC : des faits observables et datés. Chaque détection est reprise à la main, l’acte est ouvert et lu, y compris quand c’est un scan. Les critères du filtre ont été testés sur l’historique des cessions au registre avant d’être retenus.",
       },
       {
         num: "03",
         titre: "Le dossier, ou la raison de ne pas appeler",
         texte:
-          "Ce qui tient à la lecture est livré, et le périmètre reste sous veille. Quand la raison de ne pas appeler existe, vous la recevez : société déjà conseillée, filiale d’un groupe, contrôle déjà basculé. Un dossier de moins est aussi une information.",
+          "Aucun dossier ne sort sans deux vérifications le jour de la livraison : la fiche au registre, puis la lecture de l’acte. Ce qui tient est livré, et le périmètre reste sous veille. Quand la raison de ne pas appeler existe, vous la recevez : société déjà conseillée, filiale d’un groupe, contrôle déjà basculé. Un dossier de moins est aussi une information.",
       },
     ],
   },
+  /* ============================================================
+     v60 · CE QUE NOUS NE FAISONS PAS. La section avait existé sous le
+     nom « Nos engagements », elle est morte en v52 ; elle revient en
+     bande compacte, une seule rangée, sans paragraphe et sans icône.
+     Le dispositif est la MENTION RAYÉE : un terme barré d'un trait fin
+     en vin, et sous lui la ligne courte qui le remplace. C'est le geste
+     du registre, on ne gomme pas une entrée, on la raye et on écrit à
+     côté. Pas une fiche produit, pas une liste de promesses.
+     Le quatrième item porte le seul engagement que la v59 avait laissé
+     sans domicile : voir le pied.
+     Planche : MAQUETTE-V60-NEFAITPAS.html, qui fait foi.
+     ============================================================ */
+  neFaitPas: {
+    kicker: "Ce que nous ne faisons pas",
+    items: [
+      { non: "Scores prédictifs", oui: "Des faits au registre, datés." },
+      {
+        non: "Contact du patrimoine privé",
+        oui: "Le premier contact passe par l’entreprise.",
+      },
+      {
+        non: "Données grises",
+        oui: "Registres publics, fournisseurs contractualisés.",
+      },
+      {
+        non: "Chiffres invérifiables",
+        oui: "Ce que nous publions, nous le mesurons.",
+      },
+    ],
+    /* LE SUIVI DES COHORTES REVIENT ICI, et c'est le seul endroit du site
+       qui le porte. L'amendement v59 avait supprimé la question de FAQ qui
+       l'abritait en écrivant « l'engagement ne figure plus nulle part, s'il
+       doit revivre il lui faut un nouvel endroit : il n'en a aucun ».
+       Il en a un. Ne pas le déplacer sans lui en trouver un autre. */
+    pied:
+      "Le taux d’écart de chaque lot est livré au client, et publié ici dès qu’une première cohorte atteint dix-huit mois.",
+  },
+
   /* v15 · B5 : ce ne sont pas deux offres égales, la structure le dit.
      L'origination est le produit, le mandat un complément ponctuel. */
   offre: {
