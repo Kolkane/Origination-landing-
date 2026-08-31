@@ -147,7 +147,10 @@ export const copy = typoDeep({
       metaAvant: "Dossier · ",
       metaFort: "Exemple",
       metaApres: " · Confidentiel",
-      metaLigne2: "Région exemple · Semaine 30",
+      /* la mention de semaine est retirée : elle datait le spécimen et
+         laissait entendre une périodicité de livraison, que le site
+         n’annonce jamais. Le périmètre reste seul, il n’est pas daté. */
+      metaLigne2: "Région exemple",
       ficti: "Société et chiffres inventés",
       badge: "Spécimen",
       /* v22 : ces quatre champs ne sont plus dans l'en-tête permanent, ils
