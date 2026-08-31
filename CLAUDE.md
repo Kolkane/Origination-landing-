@@ -818,7 +818,7 @@ trouvé sur vous". Codes attendus : document financier imprimé, pas SaaS IA.
   est livré », la lecture de l'acte étant maintenant nommée juste avant,
   les deux mots sautent.
   HAUTEUR, mesurée sur le build et non sur la planche : 195px de 1440 à
-  1600, 194px à 1366, 214px à 1280, 463px à 390. La rangée porte un
+  1600, 194px à 1366, 192px à 1280, 463px à 390. La rangée porte un
   SUBGRID, et il n'est pas décoratif : « Contact du patrimoine privé »
   demande 239px et n'en reçoit que 210, il tombe sur deux lignes à toutes
   les largeurs de bureau, et sans piste partagée son remplacement
@@ -840,6 +840,19 @@ trouvé sur vous". Codes attendus : document financier imprimé, pas SaaS IA.
   AUCUN .rev sur cette section, la règle v54 tient : rien n'y apparaît au
   scroll. Aucun chiffre non plus, « dix-huit mois » est écrit en lettres
   et c'est un seuil d'engagement, pas un résultat annoncé.
+  Amendement v60b (arbitrage Vincent, 31/08/2026) : « fournisseurs
+  contractualisés » devient « fournisseurs sous contrat » dans la mention
+  rayée des données grises. Le mot long faisait tomber le remplacement sur
+  une TROISIÈME ligne à 1280, et le subgrid propageait cette ligne aux
+  quatre entrées : la section y pesait 214px quand elle en pesait 195 plus
+  haut. Mesuré avant et après, la chaîne passe de 319 à 299px sans
+  césure pour 185,2px disponibles, et la rangée tombe de 135 à 112px, la
+  section de 214 à 192px. Rien d'autre n'a bougé, aucune déclaration CSS
+  n'a été touchée : c'est le seul cas de cette page où un mot de copy est
+  la variable de mise en page, et c'est pourquoi il est consigné.
+  Le terme « contractualisés » RESTE ailleurs et doit y rester : le
+  spécimen l'emploie deux fois et la réponse RGPD de la FAQ une fois, où
+  il qualifie un rapport de fourniture et non une liste de refus.
 - Interdits définitifs (hérités des itérations rejetées) : ticker, métriques animées,
   count-up, grilles de cards, beam/bordures lumineuses, tilt 3D, spotlight souris, pings,
   glow, dégradés colorés, grid de fond, badges/chips, emojis, icônes décoratives,

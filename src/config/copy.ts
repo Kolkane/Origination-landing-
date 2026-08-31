@@ -388,7 +388,7 @@ export const copy = typoDeep({
       },
       {
         non: "Données grises",
-        oui: "Registres publics, fournisseurs contractualisés.",
+        oui: "Registres publics, fournisseurs sous contrat.",
       },
       {
         non: "Chiffres invérifiables",
