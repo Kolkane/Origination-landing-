@@ -10,7 +10,7 @@ export default function Analyses() {
   const a = copy.analyses;
   return (
     <section className="analyses" id="analyses">
-      <div className="wrap sect">
+      <div className="wrap">
         <p className="a-kicker kicker label">{a.kicker}</p>
         <h2 className="a-titre mask">{grand(a.titre)}</h2>
         <p className="a-intro">{a.intro}</p>

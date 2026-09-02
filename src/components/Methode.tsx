@@ -11,7 +11,7 @@ export default function Methode() {
   const m = copy.methode;
   return (
     <section className="method papier" id="methode">
-      <div className="wrap sect">
+      <div className="wrap">
         <p className="kicker label">{m.kicker}</p>
         <h2 className="m-statement mask">{grand(m.statement)}</h2>
         <p className="m-sous">{m.sousTitre}</p>

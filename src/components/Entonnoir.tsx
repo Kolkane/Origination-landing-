@@ -71,7 +71,7 @@ export default function Entonnoir() {
 
   return (
     <section className="entonnoir" id="filtre">
-      <div className="wrap sect">
+      <div className="wrap">
         <p className="kicker label">{e.kicker}</p>
         <h2 className="ent-h2 mask">
           {grand(e.titreAvant)}

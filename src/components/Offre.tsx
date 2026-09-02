@@ -16,7 +16,7 @@ export default function Offre() {
   const s = o.complement;
   return (
     <section className="offre" id="offre">
-      <div className="wrap sect">
+      <div className="wrap">
         <p className="b-kicker kicker label">{o.kicker}</p>
         <h2 className="b-titre mask">{grand(o.statement)}</h2>
 

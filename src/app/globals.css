@@ -125,6 +125,23 @@ body {
 
 /* ---------- hero ---------- */
 .hero {
+  /* v61 · LE BORD DE PAGE. Le hero n'utilise pas .wrap : ses quatre
+     éléments étaient posés en absolu à 40px du bord de l'écran, quand
+     les sections vivent dans un conteneur de 1440px CENTRÉ. Sur un
+     écran de 1920 le contenu des sections commence donc à 316px, et le
+     titre du hero à 40 : 276px de décrochage entre le premier écran et
+     tout ce qui suit. C'est la cause principale du « site centré à
+     droite » (arbitrage Vincent, 29/08).
+     La valeur reproduit EXACTEMENT la géométrie de .wrap : le même
+     rembourrage tant que la page tient dans 1440px, puis la moitié du
+     débord une fois le conteneur centré. Elle est exprimée en % et non
+     en vw à dessein : le pourcentage se résout sur la boîte du hero,
+     qui exclut la barre de défilement, alors que 100vw l'inclut et
+     décalerait de sa demi-largeur. */
+  --bord: max(
+    clamp(22px, 4.4vw, 76px),
+    calc((100% - 1440px) / 2 + clamp(22px, 4.4vw, 76px))
+  );
   position: relative;
   height: 100svh;
   min-height: 640px;
@@ -186,7 +203,7 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 26px 40px;
+  padding: 26px var(--bord);
 }
 .brand {
   display: flex;
@@ -226,7 +243,7 @@ body {
 }
 .hero-copy {
   position: absolute;
-  left: 40px;
+  left: var(--bord);
   bottom: 110px;
   z-index: 2;
   /* v40 : 640 -> 830px, mesuré au rendu (deux passes : 700 ne suffisait
@@ -286,7 +303,7 @@ h1 em {
 }
 .caption {
   position: absolute;
-  right: 40px;
+  right: var(--bord);
   bottom: 40px;
   z-index: 2;
   text-align: right;
@@ -298,7 +315,7 @@ h1 em {
 }
 .scroll-cue {
   position: absolute;
-  left: 40px;
+  left: var(--bord);
   bottom: 40px;
   z-index: 2;
   width: 1px;
@@ -652,59 +669,39 @@ footer a:hover {
 
 
 /* ============================================================
-   v54 · LA NOTE MARGINALE. Huit sections ouvraient sur le même
-   triptyque empilé : libellé mono, puis titre, puis corps, tous au
-   même fer à gauche, tous précédés du même filet à 6 %. Le lecteur
-   voyait huit fois la même dalle, et c'est cette répétition, bien
-   plus qu'une police, qui fait « page générée ».
-   Le libellé quitte le haut de la pile pour la MARGE. C'est une note
-   d'imprimé, pas un en-tête d'interface — et ce n'est pas une
-   invention : c'est l'intention déclarée en v10, « le libellé de
-   section tient la marge gauche, le contenu occupe la droite »,
-   restée à l'état de .g12 jamais posé sur un seul élément. Elle est
-   enfin appliquée, et .g12 supprimé faute d'usage.
-   PÉRIMÈTRE : les quatre sections qui étaient une pile plate, filtre,
-   méthode, offre, analyses. Le dossier et la FAQ ont déjà une colonne
-   de gauche qui tient le même rôle ; le fondateur et l'appel final
-   sont centrés, et ce centrage est un contraste voulu (v15).
-   Le prix en largeur est assumé : la colonne de contenu perd la marge,
-   ce qui rapproche du même coup les blocs bornés à --mesure de leur
-   bord droit — le vide de 545px que l'arbitrage v33 assumait tombe
-   à moins de 300px sans qu'aucune mesure de lecture n'ait bougé.
+   v61 · LA NOTE MARGINALE EST ANNULÉE (arbitrage Vincent,
+   29/08/2026) : « le site est centré à droite, les petits titres
+   de section en majuscule sont à gauche, ça crée un décalage
+   perturbant ». Jugé sur pièce, et c'est exact.
+   Ce que la v54 avait posé : le libellé de section quittait le haut
+   de la pile pour la marge gauche, et tout le contenu descendait
+   dans une seconde colonne. L'intention était de casser le gabarit
+   répété huit fois, et le motif venait du dépôt lui-même, la v10
+   ayant déclaré « le libellé de section tient la marge gauche ».
+   POURQUOI ÇA NE MARCHAIT PAS. La marginalia d'imprimé fonctionne
+   quand la marge porte du contenu RÉCURRENT — des notes, des dates,
+   des références. Ici elle ne tenait qu'un mot de neuf caractères
+   par section : la marge paraissait vide et le retrait paraissait
+   accidentel. Surtout, la classe n'était posée que sur quatre
+   sections des neuf. La page comptait donc QUATRE bords gauches
+   différents : le contenu retiré du filtre, de la méthode, de
+   l'offre et des analyses ; la colonne à 40 % du dossier et de la
+   FAQ ; le centrage du fondateur et de l'appel ; et le bord franc
+   du hero. Ce n'était pas une grille, c'était quatre alignements.
+   L'argument de la v54, « la bande gauche porte toujours l'identité
+   de la section », était une cohérence affirmée sans avoir été
+   vérifiée à l'écran.
+   DÉSORMAIS : un seul bord gauche pour toute la page. Le libellé
+   revient au-dessus de son titre, au même fer que lui, et le
+   premier élément de chaque section part du bord du .wrap — y
+   compris dans le dossier et la FAQ, dont la colonne de gauche
+   commence exactement là. Restent hors règle, et c'est voulu depuis
+   la v15, les deux compositions centrées, fondateur et appel final.
+   NE PAS REMETTRE de retrait de section : la variété que la v54
+   cherchait est aujourd'hui portée par l'alternance encre/papier
+   (v54 ③), la hiérarchie des filets (v54 ④) et la bascule
+   typographique (v55), qui ne coûtent aucun alignement.
    ============================================================ */
-.sect {
-  display: grid;
-  grid-template-columns: clamp(132px, 13vw, 208px) minmax(0, 1fr);
-  column-gap: clamp(24px, 3.2vw, 64px);
-  align-items: start;
-}
-.sect > .kicker {
-  grid-column: 1;
-  grid-row: 1;
-  margin: 0;
-  /* alignement optique sur la première ligne du titre et non sur le
-     haut de sa boîte : une capitale de 10,5px et une de 62px ne
-     commencent pas à la même distance du bord de leur ligne */
-  padding-top: 0.7em;
-}
-.sect > :not(.kicker) {
-  grid-column: 2;
-}
-/* le titre ouvre la colonne : sa marge d'empilement n'a plus d'objet */
-.sect > .kicker + * {
-  margin-top: 0;
-}
-/* sous 1100px la marge n'a plus la place d'exister sans étrangler la
-   colonne de lecture : la note reprend sa place au-dessus du titre */
-@media (max-width: 1100px) {
-  .sect {
-    display: block;
-  }
-  .sect > .kicker {
-    padding-top: 0;
-    margin-bottom: 18px;
-  }
-}
 
 /* 07 · faq : intitulé en marge, questions à droite */
 .faq-s .faq {
@@ -2274,6 +2271,12 @@ footer a:hover {
    ne repaie pas l'air que ses voisines lui donnent. */
 .nfp {
   padding: 20px 0;
+  /* v61 · la bande suit la méthode, et toutes deux sont sur papier. La
+     doctrine du filet posée en v54 dit qu'un filet de section ne sert
+     que là où la COULEUR NE COUPE PAS : c'est exactement ce cas, le
+     seul de la page où deux surfaces identiques se suivent. Sans lui
+     les deux sections fusionnent en un seul aplat crème sans césure. */
+  border-top: 1px solid var(--line);
 }
 /* SUBGRID, et il n'est pas décoratif. « Contact du patrimoine privé »
    demande 239px et n'en reçoit que 210 : le terme tombe sur deux lignes

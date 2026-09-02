@@ -9,7 +9,7 @@ export default function NeFaitPas() {
   const n = copy.neFaitPas;
   return (
     <section className="nfp papier" id="ne-faisons-pas">
-      <div className="wrap sect">
+      <div className="wrap">
         <p className="kicker label">{n.kicker}</p>
         <ul className="nfp-row">
           {n.items.map((item) => (

@@ -853,6 +853,47 @@ trouvé sur vous". Codes attendus : document financier imprimé, pas SaaS IA.
   Le terme « contractualisés » RESTE ailleurs et doit y rester : le
   spécimen l'emploie deux fois et la réponse RGPD de la FAQ une fois, où
   il qualifie un rapport de fourniture et non une liste de refus.
+- Amendement v61 (arbitrage Vincent, 29/08/2026) : UN SEUL BORD GAUCHE.
+  Jugé sur pièce en version ordinateur : « le site est centré à droite,
+  les petits titres de section en majuscule sont à gauche, ça crée un
+  décalage perturbant ». C'est exact, et il y avait DEUX causes, dont une
+  bien plus grosse que l'autre.
+  1. LA NOTE MARGINALE DE LA v54 EST ANNULÉE. Elle sortait le libellé de
+  section dans la marge et poussait tout le contenu dans une seconde
+  colonne. L'intention, casser le gabarit répété huit fois, était juste ;
+  le moyen ne l'était pas. La marginalia d'imprimé ne tient que si la
+  marge porte du contenu RÉCURRENT, des notes, des dates, des références.
+  Ici elle ne tenait qu'un mot de neuf caractères par section : la marge
+  paraissait vide et le retrait accidentel. Et la classe n'était posée que
+  sur quatre sections des neuf, si bien que la page comptait QUATRE bords
+  gauches — le contenu retiré du filtre, de la méthode, de l'offre et des
+  analyses ; la colonne à 40 % du dossier et de la FAQ ; le centrage du
+  fondateur et de l'appel ; le bord franc du hero. L'argument de la v54,
+  « la bande gauche porte toujours l'identité de la section », était une
+  cohérence AFFIRMÉE SANS AVOIR ÉTÉ VÉRIFIÉE À L'ÉCRAN. Le libellé revient
+  au-dessus de son titre, au même fer que lui.
+  2. LE HERO N'ÉTAIT PAS DANS LE MÊME CONTENEUR, et c'est la cause
+  principale. Il n'utilise pas .wrap : ses quatre éléments — la nav, le
+  bloc de titre, la légende et l'indice de défilement — étaient posés en
+  absolu à 40px du bord de l'écran, alors que les sections vivent dans un
+  conteneur de 1440px CENTRÉ. Sur un écran de 1920, le contenu des
+  sections commence donc à 316px et le titre du hero à 40 : 276px de
+  décrochage entre le premier écran et tout ce qui suit. Personne ne
+  l'avait vu parce que la maquette d'origine était jugée à 1440, où
+  l'écart tombe à 23px.
+  La variable --bord, posée sur .hero, reproduit exactement la géométrie
+  de .wrap : le même rembourrage tant que la page tient dans 1440px, puis
+  la moitié du débord une fois le conteneur centré. Elle est exprimée en
+  POURCENTAGE et non en vw à dessein : le pourcentage se résout sur la
+  boîte du hero, qui exclut la barre de défilement, quand 100vw l'inclut
+  et décalerait de sa demi-largeur. Vérifié à quatre largeurs : 1920 donne
+  316px, 1440 donne 63, 1280 donne 56, 390 donne 22, identiques au .wrap.
+  RESTENT HORS RÈGLE, et c'est voulu depuis la v15 : les deux compositions
+  centrées, le fondateur et l'appel final. Ce sont les seules.
+  NE PAS REMETTRE de retrait de section. La variété que la v54 cherchait
+  est aujourd'hui portée par l'alternance encre/papier, la hiérarchie des
+  filets et la bascule typographique de la v55 : aucune ne coûte un
+  alignement.
 - Interdits définitifs (hérités des itérations rejetées) : ticker, métriques animées,
   count-up, grilles de cards, beam/bordures lumineuses, tilt 3D, spotlight souris, pings,
   glow, dégradés colorés, grid de fond, badges/chips, emojis, icônes décoratives,
