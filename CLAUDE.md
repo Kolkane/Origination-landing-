@@ -894,6 +894,32 @@ trouvé sur vous". Codes attendus : document financier imprimé, pas SaaS IA.
   est aujourd'hui portée par l'alternance encre/papier, la hiérarchie des
   filets et la bascule typographique de la v55 : aucune ne coûte un
   alignement.
+- Amendement v62 (arbitrage Vincent, 02/09/2026) : LE PIED DE LA BANDE
+  « CE QUE NOUS NE FAISONS PAS ». Deux corrections, dont la première
+  annule une erreur de la v61.
+  1. LE FILET DE SECTION AJOUTÉ EN v61 EST RETIRÉ. Il avait été posé au
+  motif que deux bandes de papier se suivent et que la couleur ne coupe
+  donc pas — application littérale de la doctrine v54. Le motif était
+  juste et la conclusion fausse : la césure EXISTAIT DÉJÀ. Le filet de
+  tête de .nfp-row fait les deux métiers d'un coup, il ouvre l'ensemble
+  d'entrées ET il coupe entre les deux bandes de même couleur. La planche
+  MAQUETTE-V60-NEFAITPAS.html le disait en toutes lettres, « un seul
+  filet, pas deux empilés à 40px d'écart », et la v61 a posé le second
+  très exactement à cette distance. LEÇON, elle vaut au-delà de ce cas :
+  lire la planche avant d'appliquer une doctrine à la section qu'elle
+  décrit, la doctrine peut y être déjà appliquée autrement.
+  2. LE PIED RESPIRE. Le raisonnement d'origine comptait « 150px d'air en
+  dessous », soit les 20px de la bande plus les 130 de l'offre, comme si
+  le fond était continu. IL NE L'EST PAS : la couleur change à 20px. Le
+  feuillet de papier était donc coupé vingt pixels sous sa dernière
+  ligne, et les cent trente suivants appartenaient visuellement à
+  l'encre, pas à lui. Le rembourrage passe de 20px à clamp(56, 6vw, 88)
+  en bas, et de 36 à clamp(44, 9vw, 60) sous 860px.
+  LE HAUT NE BOUGE PAS, et c'est délibéré : là-haut aucune frontière
+  n'est visible, le papier continue depuis la méthode et l'air est
+  réellement partagé, donc le raisonnement d'origine y tient. D'où un
+  rembourrage ASYMÉTRIQUE, qui est la conclusion juste d'un fond qui ne
+  coupe que d'un seul côté. Ne pas le « corriger » en le symétrisant.
 - Interdits définitifs (hérités des itérations rejetées) : ticker, métriques animées,
   count-up, grilles de cards, beam/bordures lumineuses, tilt 3D, spotlight souris, pings,
   glow, dégradés colorés, grid de fond, badges/chips, emojis, icônes décoratives,

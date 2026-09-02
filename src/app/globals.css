@@ -2269,14 +2269,27 @@ footer a:hover {
    et l'offre ouvre sur 120px, le filet de tête a donc déjà 160px d'air
    au-dessus et la bande papier 150px en dessous. Une section compacte
    ne repaie pas l'air que ses voisines lui donnent. */
+/* v62 · DEUX CORRECTIONS ICI, et la première annule une erreur de la v61.
+   1. LE FILET DE SECTION AJOUTÉ EN v61 EST RETIRÉ. Il était posé au motif
+   que deux bandes papier se suivent et que la couleur ne coupe pas. C'est
+   vrai, mais la césure existait DÉJÀ : le filet de tête de .nfp-row fait
+   les deux métiers d'un coup, il ouvre l'ensemble d'entrées et il coupe
+   entre les deux bandes. La maquette le disait en toutes lettres, « un
+   seul filet, pas deux empilés à 40px d'écart », et la v61 a posé le
+   second exactement à cette distance. Lire la planche avant d'appliquer
+   une doctrine : la doctrine y était déjà appliquée.
+   2. LE PIED DE LA BANDE RESPIRE (arbitrage Vincent, 02/09). Le
+   raisonnement d'origine comptait « 150px d'air en dessous », soit les
+   20px d'ici plus les 130 de l'offre, comme si le fond était continu.
+   IL NE L'EST PAS : la couleur change à 20px. Le feuillet de papier était
+   donc coupé 20px sous sa dernière ligne, et les 130px suivants
+   appartenaient visuellement à l'encre, pas à lui. Le haut, lui, reste
+   court à raison : là-haut aucune frontière n'est visible, le papier
+   continue depuis la méthode et l'air est réellement partagé.
+   D'où un rembourrage ASYMÉTRIQUE, ce qui est la conclusion juste d'un
+   fond qui coupe d'un seul côté. */
 .nfp {
-  padding: 20px 0;
-  /* v61 · la bande suit la méthode, et toutes deux sont sur papier. La
-     doctrine du filet posée en v54 dit qu'un filet de section ne sert
-     que là où la COULEUR NE COUPE PAS : c'est exactement ce cas, le
-     seul de la page où deux surfaces identiques se suivent. Sans lui
-     les deux sections fusionnent en un seul aplat crème sans césure. */
-  border-top: 1px solid var(--line);
+  padding: 20px 0 clamp(56px, 6vw, 88px);
 }
 /* SUBGRID, et il n'est pas décoratif. « Contact du patrimoine privé »
    demande 239px et n'en reçoit que 210 : le terme tombe sur deux lignes
@@ -2348,7 +2361,10 @@ footer a:hover {
    l'orientation change. */
 @media (max-width: 860px) {
   .nfp {
-    padding: 34px 0 36px;
+    /* v62 : le bas gagne de l'air ici aussi, la frontière de couleur y
+       est la même. Le haut garde sa valeur, l'air y vient du papier de
+       la méthode qui continue sans césure visible. */
+    padding: 34px 0 clamp(44px, 9vw, 60px);
   }
   .nfp-row {
     grid-template-columns: minmax(0, 1fr);
