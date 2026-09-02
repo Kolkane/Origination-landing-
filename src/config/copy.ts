@@ -384,7 +384,10 @@ export const copy = typoDeep({
       { non: "Scores prédictifs", oui: "Des faits au registre, datés." },
       {
         non: "Contact du patrimoine privé",
-        oui: "Le premier contact passe par l’entreprise.",
+        /* v63 : le « oui » affirmait un passage par le standard qui n'a
+           jamais eu lieu. Le « non » au-dessus reste vrai, il n'a pas
+           bougé : le patrimoine privé n'est pas ciblé. */
+        oui: "Le dirigeant dans sa fonction, rien d’autre.",
       },
       {
         non: "Données grises",
@@ -549,7 +552,7 @@ export const copy = typoDeep({
       {
         question: "D’où viennent vos données, et est-ce conforme au RGPD ?",
         reponse:
-          "L’identité, les chiffres et la structure viennent des registres publics français (RNE/INPI, SIRENE, BODACC). Les coordonnées du dirigeant viennent de fournisseurs d’enrichissement B2B, sourcés et contractualisés, et chaque coordonnée livrée porte son statut écrit, vérifiée ou non, aucune donnée grise. Base légale de l’intérêt légitime en B2B, information art. 14 rendue publiquement accessible sur notre page Confidentialité, opt-out définitif honoré, premier contact toujours adressé à l’entreprise.",
+          "L’identité, les chiffres et la structure viennent des registres publics français (RNE/INPI, SIRENE, BODACC). Les coordonnées du dirigeant viennent de fournisseurs d’enrichissement B2B, sourcés et contractualisés, et chaque coordonnée livrée porte son statut écrit, vérifiée ou non, aucune donnée grise. Base légale de l’intérêt légitime en B2B, information art. 14 rendue publiquement accessible sur notre page Confidentialité, le dirigeant est contacté en sa qualité de dirigeant, jamais à titre privé ; l’opt-out est définitif et honoré.",
       },
       {
         question: "En quoi est-ce différent d’une base de données ou d’un agrégateur ?",
@@ -646,18 +649,18 @@ export const copy = typoDeep({
         {
           titre: "Finalité et base légale",
           corps: [
-            "Nous identifions des sociétés dont la situation au registre réunit les conditions d’une transmission : âge du dirigeant, absence de relais identifiable, structure de détention. Nous transmettons ces informations à un cabinet de fusions acquisitions, un seul par périmètre, qui pourra prendre contact avec le dirigeant, par l’entreprise.",
-            "Le traitement repose sur l’intérêt légitime : faciliter la transmission d’entreprises en mettant en relation leurs dirigeants avec des professionnels du conseil en cession. Il ne porte que sur des personnes dans l’exercice de leurs fonctions professionnelles.",
+            "Nous identifions des sociétés dont la situation au registre réunit les conditions d’une transmission : âge du dirigeant, absence de relais identifiable, structure de détention. Nous transmettons ces informations à un cabinet de fusions acquisitions, un seul par périmètre, qui pourra prendre contact avec le dirigeant.",
+            "Le traitement repose sur l’intérêt légitime : faciliter la transmission d’entreprises en mettant en relation leurs dirigeants avec des professionnels du conseil en cession. Il n’a pas d’autre finalité que celle-là : le dirigeant est contacté en sa qualité de dirigeant, jamais à titre privé, et aucune démarche ne vise son patrimoine personnel.",
           ],
         },
         {
           titre: "Données traitées",
-          corps: "Les données concernent le dirigeant dans son rôle professionnel : identité, fonction, âge, société dirigée, chiffres publiés, actes et structure de détention, coordonnées professionnelles.",
+          corps: "Les données traitées sont l’identité et la fonction du dirigeant, son âge, la société qu’il dirige, ses chiffres publiés, les actes et la structure de détention, et une coordonnée de contact, qui peut être une ligne directe du dirigeant.",
         },
         {
           titre: "Origine des données",
           corps: [
-            "L’identité, la société, les chiffres, les actes et la structure de détention viennent des registres publics français (RNE, SIRENE, BODACC). Les coordonnées professionnelles viennent de prestataires d’enrichissement B2B contractualisés.",
+            "L’identité, la société, les chiffres, les actes et la structure de détention viennent des registres publics français (RNE, SIRENE, BODACC). Les coordonnées proviennent de prestataires d’enrichissement B2B ; elles peuvent inclure une ligne directe du dirigeant. Chaque coordonnée livrée porte son statut. Le dirigeant est contacté en sa qualité de dirigeant, jamais à titre privé. L’opt-out est définitif.",
             "Ces données ne sont pas collectées auprès du dirigeant. L’information prévue à l’article 14 du RGPD est rendue publiquement accessible par cette page.",
           ],
         },

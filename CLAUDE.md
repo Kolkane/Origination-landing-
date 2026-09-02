@@ -920,6 +920,40 @@ trouvé sur vous". Codes attendus : document financier imprimé, pas SaaS IA.
   réellement partagé, donc le raisonnement d'origine y tient. D'où un
   rembourrage ASYMÉTRIQUE, qui est la conclusion juste d'un fond qui ne
   coupe que d'un seul côté. Ne pas le « corriger » en le symétrisant.
+- Amendement v63 (arbitrage Vincent, 29/08/2026) : CORRECTION RGPD. Le site
+  affirmait « le premier contact passe par l'entreprise » ; c'est FAUX, et
+  c'était faux à quatre endroits, dont deux mentions légales. La pratique
+  réelle : le cabinet client contacte le dirigeant DIRECTEMENT, sur une
+  coordonnée fournie par un prestataire d'enrichissement, sans passer par le
+  standard. Le motif n'est pas un contournement, c'est une protection : un
+  appel au standard sur un sujet de cession fait fuiter l'information à
+  l'intérieur de l'entreprise du dirigeant avant qu'il ait décidé quoi que
+  ce soit.
+  DEUX CORRECTIONS SÛRES. La bande « ce que nous ne faisons pas » : le
+  « non » restait vrai, le patrimoine privé n'est pas ciblé, seul le « oui »
+  mentait ; il devient « Le dirigeant dans sa fonction, rien d'autre. » Et
+  l'information de l'article 14, page Confidentialité : trois mots retirés,
+  « qui pourra prendre contact avec le dirigeant, PAR L'ENTREPRISE ».
+  QUATRE FORMULATIONS PROVISOIRES, et elles sont provisoires EXPRÈS. Elles
+  décrivent la pratique et NE QUALIFIENT PAS la donnée, parce que la
+  qualification des coordonnées d'enrichissement — professionnelles ou
+  personnelles — engage la base légale et demande un avocat. Sont retirées
+  jusqu'à cet avis : « premier contact toujours adressé à l'entreprise »,
+  « coordonnées professionnelles » (deux endroits, la rubrique Origine ET la
+  rubrique Données traitées, cette seconde n'était pas dans le brief et
+  portait le même défaut), et « ne porte que sur des personnes dans
+  l'exercice de leurs fonctions professionnelles », dont la portée est
+  reformulée sur la FINALITÉ du traitement et non sur la nature des données.
+  NE PAS « rétablir » ces phrases au motif qu'elles sonnent mieux : elles
+  affirment une qualification juridique non validée.
+  Le point est inscrit au BACKLOG.md, créé pour l'occasion : c'est le
+  premier fichier du dépôt qui liste ce qui est provisoire et le sait.
+  LA PLANCHE MAQUETTE-V60-NEFAITPAS.html porte encore la phrase fausse.
+  Elle n'est PAS modifiée, c'est une archive de ce qui a été validé, mais
+  elle est annotée en tête de ligne : sur ce point précis, elle ne fait
+  plus foi. Vérifié après correction, par grep sur tout src/ : plus aucune
+  occurrence de « par l'entreprise », « adressé à l'entreprise »,
+  « coordonnées professionnelles » ni « fonctions professionnelles ».
 - Interdits définitifs (hérités des itérations rejetées) : ticker, métriques animées,
   count-up, grilles de cards, beam/bordures lumineuses, tilt 3D, spotlight souris, pings,
   glow, dégradés colorés, grid de fond, badges/chips, emojis, icônes décoratives,
