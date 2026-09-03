@@ -34,10 +34,13 @@ Règle de fond : **rien codé en dur dans le JSX**, ni texte ni valeur.
 
 - `.papier` retourne une section entière sur le fond clair en redéfinissant les
   tokens de couleur. Ne jamais écrire d'exception de couleur enfant par enfant.
-- **Un seul bord gauche** : le premier élément de chaque section part du bord
-  du `.wrap`, et le hero s'y aligne par la variable `--bord`. Seules deux
-  sections font exception et c'est voulu : le fondateur et l'appel final,
-  centrés. Ne pas introduire de retrait de section.
+- **Un seul bord gauche pour les sections** : le premier élément de chaque
+  section part du bord du `.wrap`. Deux exceptions, voulues : le fondateur et
+  l'appel final, centrés. Ne pas introduire de retrait de section.
+- **Le hero, lui, est excentré** et le reste : ce n'est pas une section, c'est
+  une plaque pleine page. Son texte tient les bords de l'écran quelle que
+  soit sa taille, comme la couverture d'un imprimé. Le décrochage avec les
+  sections est délibéré, ne pas le « corriger ».
 - `--f-display`, `--f-corps`, `--f-label` sont les trois **rôles**
   typographiques. `globals.css` ne nomme aucune police : changer de fonte ne
   touche que `layout.tsx`.

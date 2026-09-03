@@ -125,23 +125,20 @@ body {
 
 /* ---------- hero ---------- */
 .hero {
-  /* v61 · LE BORD DE PAGE. Le hero n'utilise pas .wrap : ses quatre
-     éléments étaient posés en absolu à 40px du bord de l'écran, quand
-     les sections vivent dans un conteneur de 1440px CENTRÉ. Sur un
-     écran de 1920 le contenu des sections commence donc à 316px, et le
-     titre du hero à 40 : 276px de décrochage entre le premier écran et
-     tout ce qui suit. C'est la cause principale du « site centré à
-     droite » (arbitrage Vincent, 29/08).
-     La valeur reproduit EXACTEMENT la géométrie de .wrap : le même
-     rembourrage tant que la page tient dans 1440px, puis la moitié du
-     débord une fois le conteneur centré. Elle est exprimée en % et non
-     en vw à dessein : le pourcentage se résout sur la boîte du hero,
-     qui exclut la barre de défilement, alors que 100vw l'inclut et
-     décalerait de sa demi-largeur. */
-  --bord: max(
-    clamp(22px, 4.4vw, 76px),
-    calc((100% - 1440px) / 2 + clamp(22px, 4.4vw, 76px))
-  );
+  /* v64 · LE HERO EST EXCENTRÉ, ET C'EST UN CHOIX (arbitrage Vincent,
+     02/09/2026, après avoir vu les deux). La v61 l'avait aligné sur le
+     conteneur centré des sections pour supprimer un décrochage de 276px
+     sur écran large. L'alignement du RESTE de la page était le bon
+     correctif et il reste acquis ; celui du hero, non.
+     Le hero n'est pas une section, c'est une PLAQUE pleine page, avec sa
+     vidéo au bord de l'écran. Son texte est excentré sur les côtés quelle
+     que soit la taille de l'écran, comme la couverture d'un document
+     imprimé, qui n'a jamais la marge de son bloc de texte. Le décrochage
+     avec les sections n'est donc pas un défaut à corriger : c'est la
+     frontière entre la couverture et le corps.
+     NE PAS RÉ-ALIGNER LE HERO sur .wrap. Si le décalage se remarque, il
+     se remarque comme une bascule voulue. Le calcul de bord posé en v61
+     est supprimé, plus rien ne l'utilisait. */
   position: relative;
   height: 100svh;
   min-height: 640px;
@@ -203,7 +200,7 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 26px var(--bord);
+  padding: 26px 40px;
 }
 .brand {
   display: flex;
@@ -243,7 +240,7 @@ body {
 }
 .hero-copy {
   position: absolute;
-  left: var(--bord);
+  left: 40px;
   bottom: 110px;
   z-index: 2;
   /* v40 : 640 -> 830px, mesuré au rendu (deux passes : 700 ne suffisait
@@ -303,7 +300,7 @@ h1 em {
 }
 .caption {
   position: absolute;
-  right: var(--bord);
+  right: 40px;
   bottom: 40px;
   z-index: 2;
   text-align: right;
@@ -315,7 +312,7 @@ h1 em {
 }
 .scroll-cue {
   position: absolute;
-  left: var(--bord);
+  left: 40px;
   bottom: 40px;
   z-index: 2;
   width: 1px;

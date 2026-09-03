@@ -954,6 +954,22 @@ trouvé sur vous". Codes attendus : document financier imprimé, pas SaaS IA.
   plus foi. Vérifié après correction, par grep sur tout src/ : plus aucune
   occurrence de « par l'entreprise », « adressé à l'entreprise »,
   « coordonnées professionnelles » ni « fonctions professionnelles ».
+- Amendement v64 (arbitrage Vincent, 02/09/2026, rendu APRÈS avoir vu les
+  deux états) : LE HERO EST EXCENTRÉ, ET IL LE RESTE. La v61 avait aligné
+  ses quatre éléments — nav, bloc de titre, légende, indice de défilement —
+  sur le conteneur centré des sections, pour supprimer un décrochage de
+  276px sur écran large. Le diagnostic de la v61 était bon pour LE RESTE DE
+  LA PAGE et cet alignement reste acquis ; il ne l'était pas pour le hero.
+  Le hero n'est pas une section, c'est une PLAQUE pleine page, avec sa
+  vidéo au bord de l'écran. Son texte tient les bords quelle que soit la
+  taille de l'écran, 40px sur ordinateur et 22px sous 760px, comme la
+  couverture d'un document imprimé, qui n'a jamais la marge de son bloc de
+  texte. Le décrochage entre le premier écran et les sections n'est donc
+  pas un défaut : c'est la frontière entre la couverture et le corps.
+  NE PAS RÉ-ALIGNER LE HERO sur .wrap, et ne pas relire l'amendement v61
+  comme s'il valait encore ici : sur ce point précis il est annulé, sur
+  tout le reste il tient. Le calcul de bord qu'il avait introduit est
+  supprimé, plus rien ne l'utilisait.
 - Interdits définitifs (hérités des itérations rejetées) : ticker, métriques animées,
   count-up, grilles de cards, beam/bordures lumineuses, tilt 3D, spotlight souris, pings,
   glow, dégradés colorés, grid de fond, badges/chips, emojis, icônes décoratives,
