@@ -423,21 +423,20 @@ export const copy = typoDeep({
       nom: "L’Origination",
       ancre: "origination",
       lead: "Nous tenons votre périmètre sous veille : quand la situation d’une société réunit les conditions au registre, le dossier d’approche arrive sur votre bureau, vérifié.",
-      prix: brand.PRICING.origination.prixPlancher,
-      metaFort: `À partir de, ${brand.PRICING.origination.periode}`,
-      metaSuite: ", selon le périmètre convenu",
-      /* l'arithmétique posée à la place du prospect, sans un chiffre de
-         marché : les « 3 à 5 % sur 5 à 15 M€ » étaient des ordres de
-         grandeur non sourcés, retirés à la refonte. La déférence reste :
-         c'est lui qui connaît ses honoraires, et aucune fraction n'est
-         chiffrée pour ne rien avoir à défendre. */
-      arithmetique: `${brand.PRICING.origination.prixPlancher} par mois, soit ${brand.PRICING.origination.prixAnnuel} sur l’année. Vous connaissez vos honoraires de succès : l’année pèse une fraction d’un seul mandat.`,
+      /* v65 : LE PRIX SORT, LA STRUCTURE RESTE. Le site donne désormais la
+         forme de la rémunération et jamais un nombre ni un pourcentage :
+         tout chiffre est renvoyé au devis. Le grand nombre et son « à
+         partir de » sont remplacés par ce principe, et l'arithmétique qui
+         ramenait le mensuel à l'année n'a plus d'objet, faute de mensuel
+         affiché. */
+      principe:
+        "Le prix suit le périmètre. Il est mesuré et annoncé avant tout engagement.",
       /* v47 : LE DIPTYQUE — le corps en paragraphe devient la FICHE du
-         devis : les mêmes faits (périmètre, exclusivité, engagement,
-         plancher, veille), tabulés sur filets comme une pièce. Le grand
-         énoncé du pied (« pas de commission ») monte dans le panneau
-         sombre, face au prix. L'engagement quitte la méta du prix : la
-         fiche le porte, avec le préavis de la FAQ. */
+         devis, tabulée sur filets comme une pièce. v65 : la fiche porte
+         désormais périmètre, exclusivité, RÉMUNÉRATION, engagement,
+         PROTECTION et veille. Le plancher en est sorti, il appartenait au
+         modèle au volume ; le grand énoncé du panneau n'est plus « pas de
+         commission » mais la frontière de rôle qui l'a remplacé. */
       fiche: {
         rows: [
           {
@@ -448,13 +447,22 @@ export const copy = typoDeep({
             k: "Exclusivité",
             v: "Un seul cabinet servi tant que le contrat court.",
           },
+          /* v65 : les trois composantes de la rémunération, tabulées comme
+             le reste de la fiche. Aucune n'est chiffrée ici : elles le sont
+             au devis, avant signature. */
           {
-            k: "Engagement",
-            v: `${brand.PRICING.origination.engagement}, puis reconduction mensuelle, un mois de préavis.`,
+            k: "Rémunération",
+            v: "Trois composantes, chiffrées au devis, avant signature : un retainer mensuel modeste, qui paie l’exclusivité de votre périmètre et la veille ; un fee à la signature de chaque mandat obtenu sur un dossier livré ; une part des honoraires de succès au closing.",
           },
           {
-            k: "Plancher",
-            v: "Chiffré au devis : un mois qui passe dessous n’est pas facturé.",
+            k: "Engagement",
+            v: "Six mois.",
+          },
+          /* v65 : la protection du dossier livré. Elle survit au contrat,
+             c'est ce qui la rend utile de part et d'autre. */
+          {
+            k: "Protection",
+            v: "Chaque dossier livré reste protégé vingt-quatre mois : un mandat signé avec une société que nous vous avons apportée nous est dû, contrat en cours ou non.",
           },
           {
             k: "Veille",
@@ -469,14 +477,21 @@ export const copy = typoDeep({
     complement: {
       nom: "Le mandat de recherche",
       lead: "Quand un mandat de recherche arrive sur votre bureau, nous l’alimentons à la mission : vos critères, une shortlist de cibles vérifiées, livrée à la date convenue à la mission.",
-      prix: brand.PRICING.mandat.prix,
-      metaLigne1: "Par mission, à la livraison",
+      /* v65 : le montant par mission sort, comme le reste. */
+      prix: "À la mission",
+      metaLigne1: "Rémunération fixée au devis",
       metaLigne2: "Hors périmètres déjà sous exclusivité",
     },
     pied: {
-      fort: "Pas de commission sur la transaction, jamais.",
+      /* v65 : « pas de commission sur la transaction, jamais » est MORT, et
+         la phrase qui le suivait l'était avec lui : la rémunération dépend
+         désormais du closing, par la part des honoraires de succès. Le
+         principe qui la remplace n'est pas une promesse de prix, c'est une
+         frontière de rôle, et elle tient : nous apportons le dossier, le
+         cabinet traite l'opération. */
+      fort: "Notre rémunération au succès est déclarée au contrat.",
       suite:
-        " Notre rémunération ne dépend ni du closing, ni du prix de cession. Vous réglez le contrat mensuel, et une mission de recherche quand vous en confiez une. Rien d’autre. L’information des personnes, le registre d’opposition et l’opt-out sont pris en charge.",
+        "Nous n’intervenons jamais dans la transaction elle-même : ni conseil, ni négociation. L’information des personnes, le registre d’opposition et l’opt-out sont pris en charge.",
     },
     cta: CTA,
   },
@@ -540,7 +555,7 @@ export const copy = typoDeep({
        QUESTIONS pèse sur la hauteur, jamais celle des réponses. */
     items: [
       {
-        question: "Que se passe-t-il après les trois mois ?",
+        question: "Que se passe-t-il après les six mois ?",
         reponse:
           "Il se reconduit au mois, résiliable avec un mois de préavis.",
       },

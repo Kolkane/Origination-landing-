@@ -2447,9 +2447,10 @@ footer a:hover {
    Inspiré d'une référence externe fournie par Vincent (gabarit
    d'étude de cas), adaptée à la charte : ni pictogrammes, ni
    statistiques, ni témoignage. Les labels de la fiche sont au vin
-   plein : on est sur papier, 6,8:1. Le grand énoncé du panneau
-   (« pas de commission ») est notre contrepartie honnête à la
-   citation client de la référence. Remplace le gabarit v15-B5/v33 ;
+   plein : on est sur papier, 6,8:1. Le grand énoncé du panneau était
+   « pas de commission » ; depuis la v65 il porte la frontière de rôle
+   qui l'a remplacé, la rémunération au succès étant désormais déclarée
+   au contrat. Remplace le gabarit v15-B5/v33 ;
    MAQUETTE-V15-B5-OFFRE.html et les planches C1-C4 sont des
    ARCHIVES. */
 .dipt {
@@ -2523,30 +2524,20 @@ footer a:hover {
   display: flex;
   flex-direction: column;
 }
-.pan-chiffre {
+/* v65 · le slot du prix devient celui d'un ÉNONCÉ. Le panneau portait un
+   nombre à 76px ; il porte maintenant la phrase qui gouverne le prix, et
+   une phrase ne se compose pas à l'échelle d'un chiffre. L'échelle
+   descend donc, sans que le panneau change de composition : un énoncé en
+   tête, le grand énoncé toujours poussé en pied, l'appel dessous.
+   .pan-meta et .pan-arith sont supprimées : elles ne servaient qu'à
+   qualifier un montant qui n'existe plus. */
+.pan-principe {
   font-family: var(--f-display);
   font-weight: 400;
-  font-size: clamp(44px, 5.4vw, 76px);
-  line-height: 0.95;
-  letter-spacing: -0.03em;
-}
-.pan-meta {
-  margin-top: 14px;
-  font-size: 10.5px;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--txt-3);
-}
-.pan-meta b {
-  color: var(--txt-2);
-  font-weight: 400;
-}
-.pan-arith {
-  margin-top: 22px;
-  font-size: 14px;
-  line-height: 1.7;
-  color: var(--txt-2);
-  max-width: 30rem;
+  font-size: clamp(24px, 2.6vw, 34px);
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  max-width: 22ch;
 }
 /* le grand énoncé, poussé au bas du panneau : il ferme la lecture */
 .pan-statement {

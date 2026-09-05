@@ -6,10 +6,10 @@ import { grand } from "@/config/typo";
    du devis, sur papier : le nom, le lead, puis les clauses tabulées sur
    filets (périmètre, exclusivité, engagement, plancher, veille) et le
    livrable en pied — la tenue d'un devis, pas d'un pricing de SaaS. À
-   droite LE PANNEAU sombre : le prix, l'arithmétique, et le grand énoncé
-   « pas de commission » à l'échelle display — notre contrepartie honnête
-   à la citation client des gabarits d'études de cas. Le mandat de
-   recherche reste une bande fine dessous. */
+   droite LE PANNEAU sombre. v65 : il ne porte plus ni prix ni
+   arithmétique, mais deux énoncés — le principe qui gouverne le prix en
+   tête, et en pied la frontière de rôle qui a remplacé « pas de
+   commission ». Le mandat de recherche reste une bande fine dessous. */
 export default function Offre() {
   const o = copy.offre;
   const p = o.principal;
@@ -50,15 +50,10 @@ export default function Offre() {
           </div>
 
           <div className="panneau">
-            <p className="pan-chiffre">{p.prix}</p>
-            <p className="pan-meta label">
-              <b>{p.metaFort}</b>
-              {p.metaSuite}
-            </p>
-            {/* l'arithmétique posée à la place du prospect : le prix
-                mensuel ramené à l'année, face à ce qu'il sait déjà
-                valoir chez lui */}
-            <p className="pan-arith">{p.arithmetique}</p>
+            {/* v65 : le grand nombre est remplacé par le principe qui le
+                gouverne. La méta et l'arithmétique tombent avec lui : elles
+                ne servaient qu'à qualifier un montant qui n'est plus là. */}
+            <p className="pan-principe">{grand(p.principe)}</p>
             <p className="pan-statement">{grand(o.pied.fort)}</p>
             <p className="pan-suite">{o.pied.suite}</p>
             <a

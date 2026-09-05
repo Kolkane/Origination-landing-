@@ -39,6 +39,29 @@ ait décidé quoi que ce soit : ne pas y passer protège le dirigeant.
 
 ---
 
+## Le plancher mensuel survit hors de la section Offre
+
+**Contradiction vivante sur le site. Une décision suffit à la lever.**
+
+La v65 a retiré le plancher mensuel de la fiche du devis : il appartenait au
+modèle au volume, où un mois passé sous le volume annoncé n'était pas
+facturé. Un retainer mensuel contredit cette promesse.
+
+Deux textes le portent encore, tous deux **hors** de la section Offre, donc
+laissés intacts faute de mandat pour y toucher :
+
+| Où | Ce qui est écrit |
+| --- | --- |
+| Chute du filtre (`copy.ts`, `entonnoir.chute2`) | « Ce qu'il contient est compté au devis, avec un plancher chiffré : un mois qui passe dessous n'est pas facturé. » |
+| Chapô de l'appel final (`copy.ts`, `final.lead`) | « …annoncé au devis, plancher mensuel chiffré. Un mois qui passe sous ce nombre n'est pas facturé. » |
+
+Si le plancher n'existe plus dans le contrat, ces deux phrases sont fausses
+et doivent tomber. S'il survit **à côté** du retainer, alors c'est la fiche
+du devis qu'il faut corriger, pas elles. Question à trancher, puis un commit
+d'une ligne dans chaque cas.
+
+---
+
 ## Autres points ouverts
 
 - **Entité juridique.** Les mentions légales affichent encore

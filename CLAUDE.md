@@ -970,6 +970,32 @@ trouvé sur vous". Codes attendus : document financier imprimé, pas SaaS IA.
   comme s'il valait encore ici : sur ce point précis il est annulé, sur
   tout le reste il tient. Le calcul de bord qu'il avait introduit est
   supprimé, plus rien ne l'utilisait.
+- Amendement v65 (arbitrage Vincent, 02/09/2026) : LA TARIFICATION SORT DU
+  SITE, LA STRUCTURE RESTE. Voir la section « L'offre v15 » ci-dessus, qui
+  remplace la v13 et porte le modèle. Ce qui change dans le CODE : le grand
+  nombre du panneau et son « à partir de » sont remplacés par un énoncé,
+  « Le prix suit le périmètre. Il est mesuré et annoncé avant tout
+  engagement. » ; l'arithmétique qui ramenait le mensuel à l'année tombe
+  avec lui, faute de mensuel ; la fiche du devis perd sa ligne Plancher et
+  gagne Rémunération et Protection ; le mandat passe de « 3 500 € HT » à
+  « À la mission, rémunération fixée au devis » ; la FAQ passe de trois à
+  six mois. PRICING et SHOW_PRICING sont supprimés de brand.ts, ce dernier
+  n'étant lu nulle part.
+  DESIGN INCHANGÉ, à une adaptation près et elle était inévitable : le
+  panneau portait un nombre à 76px, une PHRASE ne se compose pas à cette
+  échelle. Le slot descend à clamp(24, 2,6vw, 34) et devient .pan-principe ;
+  .pan-meta et .pan-arith sont supprimées, elles ne qualifiaient qu'un
+  montant disparu. La composition du panneau ne bouge pas : un énoncé en
+  tête, le grand énoncé toujours poussé en pied, l'appel dessous.
+  VÉRIFIÉ PAR GREP après correction. « 3 500 » : plus aucune occurrence.
+  « 2 000 » et « 24 000 » : plus rien dans le contenu, il ne restait qu'un
+  commentaire de typo.ts décrivant la règle R7, mis à jour — la règle est
+  conservée bien que son motif ait disparu, elle est juste et reprendra
+  d'elle-même si un montant revenait. « commission » : plus rien dans le
+  contenu, quatre commentaires de code décrivaient l'ancien panneau, tous
+  mis à jour. « jamais » : six occurrences en texte affiché, toutes
+  légitimes et étrangères au prix — faits contre intentions, données
+  grises, contact jamais à titre privé, et la nouvelle frontière de rôle.
 - Interdits définitifs (hérités des itérations rejetées) : ticker, métriques animées,
   count-up, grilles de cards, beam/bordures lumineuses, tilt 3D, spotlight souris, pings,
   glow, dégradés colorés, grid de fond, badges/chips, emojis, icônes décoratives,
@@ -1000,24 +1026,41 @@ trouvé sur vous". Codes attendus : document financier imprimé, pas SaaS IA.
   décrit plus le code depuis la refonte v17 (voir l'amendement Typo). Ne pas
   s'en servir pour « remettre la section conforme à sa planche ».
 
-## L'offre v13 (définitive, remplace la v12 et la grille régionale)
-Deux lignes, toutes deux dans src/config/brand.ts :
-- L'ORIGINATION, à partir de 2 000 € HT / mois selon le périmètre convenu,
-  engagement 3 mois puis reconduction mensuelle. Le volume est mesuré et
-  annoncé au devis avant tout engagement ; un mois qui passe sous ce volume
-  n'est pas facturé.
-- LE MANDAT DE RECHERCHE, 3 500 € HT par mission à la livraison, shortlist
-  vérifiée livrée à la date convenue à la mission (amendement refonte
-  2026-08 : « sous 7 jours » est retiré, on annonce une date, jamais un
-  délai générique), hors périmètres déjà sous exclusivité.
+## L'offre v15 (arbitrage Vincent, 02/09/2026 — remplace la v13)
+PRINCIPE, et il gouverne tout le reste : le site donne la STRUCTURE de la
+rémunération, JAMAIS un nombre ni un pourcentage. Tout chiffre est renvoyé
+au devis. Les montants publiés par la v13 — 2 000 € HT par mois, 24 000 €
+sur l'année, 3 500 € HT par mission — sont retirés du site, et PRICING est
+supprimé de brand.ts faute de chiffre à porter.
+- L'ORIGINATION SUR PÉRIMÈTRE, trois composantes, chiffrées au devis avant
+  signature : un retainer mensuel modeste, qui paie l'exclusivité du
+  périmètre et la veille ; un fee à la signature de chaque mandat obtenu
+  sur un dossier livré ; une part des honoraires de succès au closing.
+  Engagement de SIX MOIS, plus trois. Chaque dossier livré reste protégé
+  VINGT-QUATRE MOIS : un mandat signé avec une société apportée est dû,
+  contrat en cours ou non.
+- LE MANDAT DE RECHERCHE, rémunération à la mission, fixée au devis.
+  Shortlist vérifiée livrée à la date convenue à la mission ; on annonce
+  une date, jamais un délai générique. Hors périmètres déjà sous
+  exclusivité.
 Un périmètre = une région et une typologie d'entreprises, arrêtées à l'appel
 et inscrites au devis. Un seul cabinet y est servi tant que le contrat court.
 Les mots « zone », « verticale », « abonnement » et « cellule » sont proscrits :
 le périmètre se définit au rendez-vous, ce n'est pas un découpage préétabli.
-Le prix est calibré au périmètre : ne jamais écrire que la grille est publique
-ni qu'il n'existe aucun accord hors grille, ces deux phrases sont retirées.
-Pas de commission sur la transaction : la rémunération ne dépend ni du closing
-ni du prix de cession. Ne promettre aucun volume en chiffre rond.
+Ne jamais écrire que la grille est publique ni qu'il n'existe aucun accord
+hors grille. Ne promettre aucun volume en chiffre rond.
+« PAS DE COMMISSION SUR LA TRANSACTION, JAMAIS » EST MORT, et la phrase qui
+le suivait avec lui : la rémunération DÉPEND désormais du closing, par la
+part des honoraires de succès. Écrire encore qu'elle n'en dépend pas serait
+faux. Ce qui le remplace n'est pas une promesse de prix mais une frontière
+de rôle, et elle tient : « Notre rémunération au succès est déclarée au
+contrat. Nous n'intervenons jamais dans la transaction elle-même : ni
+conseil, ni négociation. »
+LE PLANCHER MENSUEL EST MORT AVEC LE MODÈLE AU VOLUME. Il appartenait à une
+tarification où un mois sous le volume annoncé n'était pas facturé, ce
+qu'un retainer contredit. Il est retiré de la fiche du devis. ATTENTION, il
+SURVIT dans deux textes hors de la section offre, laissés intacts faute de
+mandat : la chute du filtre et le chapô de l'appel final. Voir BACKLOG.md.
 Le livrable s'appelle « dossier d'approche », jamais « brief », jamais « fiche ».
 
 ## Interdits absolus (si l'un apparaît, le supprimer immédiatement)

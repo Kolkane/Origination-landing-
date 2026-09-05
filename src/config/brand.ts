@@ -23,27 +23,16 @@ export const brand = typoDeep({
     codePostal: "40230",
     ville: "Saint-Vincent-de-Tyrosse",
   },
-  SHOW_PRICING: true,
-  /* PROOF est mort en deux temps : le « ≈ 1/3 » n'était pas mesuré, puis
-     le repère « 0 » qui l'avait remplacé a été retiré (un grand zéro se
-     lit comme du vide). Le taux d'écart réel est mesuré sur le périmètre
-     et livré avec chaque lot, jamais affiché en moyenne sur le site. */
-  /* Deux prix, deux seulement. Toute valeur affichée sur la page part d'ici.
-     L'origination est calibrée au périmètre : le montant affiché est un
-     plancher, pas une grille. */
-  PRICING: {
-    origination: {
-      prixPlancher: "2 000 € HT",         // affiché seul et en grand, la période suit
-      periode: "par mois",
-      prixAnnuel: "24 000 €",           // 12 x le plancher, affiché tel quel
-      engagement: "3 mois",               // puis reconduction mensuelle
-    },
-    mandat: {
-      prix: "3 500 € HT",                 // par mission, à la livraison
-      /* « delai: 7 jours » retiré à la refonte 2026-08 : la shortlist est
-         livrée à la date convenue à la mission, jamais sous délai générique */
-    },
-  },
+  /* v65 : PRICING et SHOW_PRICING sont SUPPRIMÉS. Le site ne publie plus
+     aucun montant : ni le plancher mensuel, ni son report annuel, ni le
+     prix du mandat. La rémunération est donnée par sa STRUCTURE — un
+     retainer, un fee à la signature, une part des honoraires de succès —
+     et chiffrée au devis, avant signature. La règle « tout chiffre affiché
+     vient d'ici » n'est pas abandonnée, elle n'a simplement plus de
+     chiffre à porter. SHOW_PRICING n'était lu nulle part.
+     Ne pas réintroduire de montant sans arbitrage : c'est la liste
+     blanche des chiffres de la charte qui le décide, pas le confort
+     d'un gabarit. */
 } as const);
 
 export type RegionStatus = "disponible" | "en_discussion" | "exclusivite";

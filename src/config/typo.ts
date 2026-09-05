@@ -41,13 +41,14 @@ const R5F = / (?=»)/g;
 /* R7 · le symbole monétaire et la mention de taxe qui le suit. « 2 000 € HT »
    devient un seul jeton, ce que R2 et R3 ne savaient pas faire : elles lient
    le nombre à son symbole, aucune ne liait un symbole au mot suivant.
-   Bornée à HT et TTC, PAS à « tout mot qui suit ». Une règle large lierait
-   « 24 000 € sur l'année », composé au runtime dans copy.ts.arithmetique, et
-   produirait une chaîne de trois mots là où le prix s'arrête au symbole.
-   Motif : en deux colonnes, l'offre affiche le prix à 92px dans une colonne
-   de 473px. Sans cette règle, « HT » retombe sous le nombre dès que la
-   colonne se resserre. Mesuré : la chaîne liée fait 410,2px et tient à
-   partir de 1390px de viewport, d'où le point de bascule de la grille. */
+   Bornée à HT et TTC, PAS à « tout mot qui suit », pour ne pas produire une
+   chaîne de trois mots là où le prix s'arrête au symbole.
+   v65 : LE MOTIF D'ORIGINE A DISPARU. La règle était née du prix affiché à
+   grande échelle dans le panneau de l'offre, où « HT » retombait sous le
+   nombre quand la colonne se resserrait. Le site ne publie plus aucun
+   montant, la règle ne s'applique donc plus à rien. Elle est CONSERVÉE
+   telle quelle : elle est juste, elle ne coûte rien, et elle reprendra
+   d'elle-même le jour où un montant reviendrait. */
 const R7 = /(€) (?=HT\b|TTC\b)/g;
 
 /* R6 · mot d'une seule lettre en fin de ligne possible. JAMAIS automatique :
