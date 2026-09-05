@@ -12,6 +12,10 @@ type Page = {
    build et non celle du contenu, ce qui n'apprend rien à un robot. */
 const PAGES: Page[] = [
   { chemin: "/", priorite: 1, frequence: "monthly" },
+  /* v68 : la page des dirigeants est INDEXABLE et compte : elle est le
+     point d'arrivée de celui qui cherche « Imbrin Research » après avoir
+     reçu un courrier. Priorité au-dessus des pages légales. */
+  { chemin: "/dirigeants", priorite: 0.6, frequence: "yearly" },
   { chemin: "/mentions-legales", priorite: 0.2, frequence: "yearly" },
   { chemin: "/confidentialite", priorite: 0.2, frequence: "yearly" },
 ];

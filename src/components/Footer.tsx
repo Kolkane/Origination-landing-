@@ -11,6 +11,7 @@ export default function Footer() {
         {f.gauche}
       </span>
       <div className="links label">
+        <a href={f.dirigeants.href}>{f.dirigeants.label}</a>
         <a href={f.mentions.href}>{f.mentions.label}</a>
         <a href={f.confidentialite.href}>{f.confidentialite.label}</a>
         <a href={brand.TELEPHONE.lien}>{brand.TELEPHONE.affiche}</a>

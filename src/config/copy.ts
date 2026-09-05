@@ -7,8 +7,22 @@ const CTA = "Réserver un échange";
 
 export type NomIcone = "couverture" | "veille" | "exclusivite";
 
+/* v68 · la page /dirigeants. Un bloc porte un intitulé et des paragraphes ;
+   celui des trois possibilités porte en plus une liste, dont chaque entrée
+   ouvre sur sa décision en toutes lettres. */
+export type BlocDirigeant = {
+  titre: string;
+  corps: string[];
+  choix?: { fort: string; suite: string }[];
+};
+
 export type SectionLegale = {
   titre: string;
+  /* v68 : un renvoi facultatif, sur le modèle de l'email ci-dessous. Il
+     sert à pointer la page /dirigeants depuis la notice : la même
+     information, écrite pour la personne concernée et non pour le
+     juriste. L'art. 14 demande une information « aisément accessible ». */
+  lien?: { label: string; href: string };
   /* une chaîne, ou plusieurs paragraphes. Les mentions légales n'en
      utilisent qu'une, la page Confidentialité en a besoin de plusieurs. */
   corps: string | string[];
@@ -624,6 +638,94 @@ export const copy = typoDeep({
       },
     },
   },
+  /* ============================================================
+     v68 · LA PAGE DES DIRIGEANTS (/dirigeants).
+     Elle existe parce qu'Imbrin écrit à des dirigeants de PME avant
+     qu'un cabinet les approche. Ces dirigeants chercheront « Imbrin » et
+     tomberaient sinon sur un site écrit pour des cabinets, qui parle
+     d'eux à la troisième personne. Ici on s'adresse à eux, à la
+     deuxième, et ON NE VEND RIEN : aucun prix, aucune offre, aucun appel
+     à réserver un échange, aucun lien vers la section Offre.
+     VOCABULAIRE PROSCRIT SUR CETTE PAGE, et la liste est absolue :
+     « cible », « détecter », « gisement », « périmètre », « exclusivité »,
+     « vous aider », « vous accompagner », « valoriser ». Un dirigeant
+     n'est pas une ressource, et cette page ne promet aucun service.
+     DEUX ÉCARTS AU BRIEF, tous deux assumés et signalés :
+     1. les deux tirets cadratins du brief sont transposés, règle de
+        charte v8, même transposition qu'en v46b ;
+     2. « nous vous écrivons à votre entreprise » est devenu « nous vous
+        écrivons dans votre fonction de dirigeant ». La première
+        formulation est celle que la v63 a RETIRÉE du site parce qu'elle
+        était fausse : le contact passe par une ligne directe, pas par
+        l'entreprise. La règle du brief, « tout ce qui y est écrit doit
+        être vrai le jour de la publication », l'interdit donc.
+     ============================================================ */
+  dirigeants: {
+    metaTitre: "Vous avez reçu un courrier d’Imbrin Research",
+    kicker: "Vous avez reçu un courrier d’Imbrin Research",
+    titre:
+      "Ce que nous faisons, ce que nous ne faisons pas, et ce que vous pouvez décider.",
+    chapo:
+      "Cette page existe parce que vous devez pouvoir vérifier ce que nous vous avons écrit.",
+    blocs: [
+      {
+        titre: "Ce que nous faisons",
+        corps: [
+          "Nous préparons des dossiers pour des cabinets de conseil qui accompagnent des dirigeants de PME dans la transmission de leur entreprise. Ces dossiers sont établis à partir de registres publics : registre du commerce, actes déposés au greffe, comptes annuels. Rien d’autre. Aucune donnée privée, aucun renseignement sur votre patrimoine, aucune source qui ne soit pas publique.",
+        ],
+      },
+      {
+        titre: "Ce que nous ne faisons pas",
+        corps: [
+          /* « nous vous écrivons à votre entreprise » est retiré : voir la
+             note de tête, la v63 a établi que c'était faux. La capacité
+             remplace le canal, et elle, elle est vraie. */
+          "Nous ne sommes ni acquéreur, ni conseil. Nous n’avons aucune offre à vous transmettre. Nous ne prenons aucune part à une éventuelle transaction, et vous ne nous devez rien, ni aujourd’hui, ni plus tard. Nous ne contactons jamais un dirigeant à titre privé : nous vous écrivons dans votre fonction de dirigeant.",
+        ],
+      },
+      {
+        titre: "Ce que vous pouvez décider",
+        corps: [
+          "Avant qu’un cabinet vous approche, nous vous écrivons. Vous avez trois possibilités.",
+        ],
+        choix: [
+          {
+            fort: "Ne rien faire.",
+            suite:
+              "Nous vous appellerons une fois, à la date indiquée dans notre courrier, et nous n’insisterons pas.",
+          },
+          {
+            fort: "Refuser.",
+            suite:
+              "Un message suffit, par mail ou par téléphone. Ce refus est définitif : personne ne vous contactera par notre intermédiaire.",
+          },
+          {
+            fort: "Nous dire que la question vous intéresse,",
+            /* le tiret cadratin du brief est transposé en virgule, règle
+               de charte v8, même transposition qu'en v46b */
+            suite:
+              "même de loin, même sans échéance. Nous vous montrerons alors ce que le registre laisse voir de votre société, et ce qu’il ne laisse pas voir. Vous jugerez seul si un échange avec un cabinet, un seul, choisi pour votre secteur, vaut la peine. C’est vous qui décidez, à chaque étape.",
+          },
+        ],
+      },
+      {
+        titre: "Vos droits",
+        corps: [
+          `Les informations qui ont permis notre courrier proviennent exclusivement de registres publics. Vous pouvez à tout moment vous opposer à leur utilisation, demander ce que nous détenons vous concernant, ou en demander la suppression. Une demande à l’adresse ci-dessous suffit ; elle est traitée sous ${brand.DELAI_OPPOSITION}, et l’opposition est définitive.`,
+        ],
+      },
+    ] as BlocDirigeant[],
+    pied: {
+      intro: "Pour refuser, pour vérifier, ou pour toute question :",
+      /* ligne de labels : le « · » y est conforme, c'est son seul emploi
+         autorisé par la charte v8 */
+      entite: `${brand.MARQUE} ${brand.SUFFIXE} · ${brand.ENTITY.raisonSociale} · SIREN ${brand.ENTITY.siren}`,
+      lien: {
+        label: "La notice d’information complète",
+        href: "/confidentialite",
+      },
+    },
+  },
   legales: {
     mentions: {
       titre: "Mentions légales",
@@ -680,7 +782,9 @@ export const copy = typoDeep({
           corps: [
             "L’identité, la société, les chiffres, les actes et la structure de détention viennent des registres publics français (RNE, SIRENE, BODACC). Les coordonnées proviennent de prestataires d’enrichissement B2B ; elles peuvent inclure une ligne directe du dirigeant. Chaque coordonnée livrée porte son statut. Le dirigeant est contacté en sa qualité de dirigeant, jamais à titre privé. L’opt-out est définitif.",
             "Ces données ne sont pas collectées auprès du dirigeant. L’information prévue à l’article 14 du RGPD est rendue publiquement accessible par cette page.",
+            "Une version lisible de cette information, écrite pour le dirigeant qui a reçu un courrier de notre part, est publiée à part.",
           ],
+          lien: { label: "Vous avez reçu un courrier ?", href: "/dirigeants" },
         },
         {
           titre: "Destinataires",
@@ -719,6 +823,10 @@ export const copy = typoDeep({
     mentions: { label: "Mentions légales", href: "/mentions-legales" },
     confidentialite: { label: "Confidentialité", href: "/confidentialite" },
     linkedin: "LinkedIn",
+    /* v68 : la porte d'entrée du dirigeant qui a reçu un courrier et
+       cherche à vérifier. Discrète, dans le pied, jamais dans la nav :
+       la page d'accueil s'adresse aux cabinets, pas à lui. */
+    dirigeants: { label: "Vous avez reçu un courrier ?", href: "/dirigeants" },
     note: "Site sans traceurs · © 2026",
   },
 });

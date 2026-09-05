@@ -996,6 +996,45 @@ trouvé sur vous". Codes attendus : document financier imprimé, pas SaaS IA.
   mis à jour. « jamais » : six occurrences en texte affiché, toutes
   légitimes et étrangères au prix — faits contre intentions, données
   grises, contact jamais à titre privé, et la nouvelle frontière de rôle.
+- Amendement v68 (arbitrage Vincent, 06/09/2026) : LA PAGE DES DIRIGEANTS,
+  /dirigeants. Elle existe parce qu'Imbrin écrit à des dirigeants de PME
+  AVANT qu'un cabinet les approche : ces dirigeants chercheront « Imbrin »
+  et tomberaient sinon sur un site écrit pour des cabinets, qui parle
+  d'eux à la troisième personne. Elle s'adresse à eux, à la deuxième, et
+  ELLE NE VEND RIEN.
+  RÈGLES ABSOLUES DE LA PAGE, elles priment sur tout confort de gabarit :
+  aucun élément commercial, ni prix, ni offre, ni appel à réserver un
+  échange, ni lien vers la section Offre ; aucune promesse
+  d'accompagnement, Imbrin n'étant ni acquéreur ni conseil et ne prenant
+  aucune part à une transaction ; aucun mot qui traite le dirigeant comme
+  une ressource, donc ni « cible », ni « détecter », ni « gisement », ni
+  « périmètre », ni « exclusivité » ; et tout ce qui y figure doit être
+  VRAI le jour de la publication. Vérifié après build sur le HTML produit :
+  zéro occurrence de chacun de ces mots, zéro lien Calendly.
+  DEUX ÉCARTS AU BRIEF, assumés et signalés. Les deux tirets cadratins du
+  texte fourni sont transposés, règle de charte v8, même transposition
+  qu'en v46b. Et « nous vous écrivons À VOTRE ENTREPRISE, dans votre
+  fonction » est devenu « nous vous écrivons DANS VOTRE FONCTION de
+  dirigeant » : la première formulation est exactement celle que la v63 a
+  retirée du site parce qu'elle était fausse, le contact passant par une
+  ligne directe. La règle du brief l'interdisait donc elle-même.
+  LE CANONIQUE EST DÉCLARÉ SUR LA PAGE, et ce n'est pas cosmétique : le
+  layout pose alternates.canonical = « / » pour tout le site, valeur
+  héritée par toute page qui ne la redéclare pas. Sans cette ligne, la
+  page se déclarerait copie de l'accueil et aucun moteur n'aurait de
+  raison de l'indexer, alors qu'être trouvée est sa seule fonction.
+  Les deux pages légales héritent encore du défaut, voir BACKLOG.md.
+  PIÈGE ÉVITÉ, à retenir pour toute page hors accueil : la classe .mask
+  masque son élément par clip-path jusqu'à ce que Reveal lui pose « in »,
+  et Reveal n'est monté QUE sur l'accueil. Un titre en .mask sur une page
+  intérieure reste invisible. Ne pas en poser hors de l'accueil.
+  Le délai de traitement d'une opposition vit en constante,
+  brand.DELAI_OPPOSITION, et non en texte : c'est un engagement pris
+  devant la personne concernée, il doit changer à un seul endroit.
+  Le « · » de puce du brief n'a pas été repris pour les trois
+  possibilités : la charte le réserve aux lignes de labels, et les
+  entrées sur filets sont l'idiome du site, qui reste vertical en mobile
+  sans rien avoir à déclarer.
 - Interdits définitifs (hérités des itérations rejetées) : ticker, métriques animées,
   count-up, grilles de cards, beam/bordures lumineuses, tilt 3D, spotlight souris, pings,
   glow, dégradés colorés, grid de fond, badges/chips, emojis, icônes décoratives,

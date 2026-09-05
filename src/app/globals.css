@@ -3291,3 +3291,161 @@ footer a:hover {
   text-wrap: balance;
 }
 
+
+
+/* ============================================================
+   v68 · LA PAGE DES DIRIGEANTS (/dirigeants).
+   Une colonne, une mesure de lecture, des blancs larges. Aucun
+   gabarit n'est inventé : elle emprunte au site sa colonne, ses
+   filets et ses trois rôles typographiques. Elle se distingue par
+   ce qu'elle N'A PAS — ni image, ni vidéo, ni chiffre, ni appel
+   commercial, ni navigation.
+   La mesure est à 640px, celle des pages légales : c'est un texte
+   qu'on lit en entier, pas une page qu'on parcourt. Le corps monte
+   à 16px, au-dessus des 15 du site : la page s'adresse à un
+   dirigeant qui vérifie une lettre reçue, pas à un lecteur qui
+   scanne une offre.
+   ============================================================ */
+.dir {
+  padding: clamp(48px, 6vw, 76px) 0 clamp(80px, 10vw, 132px);
+}
+/* la marque tient lieu d'en-tête à elle seule : celui qui arrive ici
+   vient vérifier QUI lui a écrit */
+.dir-marque {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--txt-2);
+  margin: 0 0 clamp(56px, 8vw, 104px);
+}
+.dir-col {
+  max-width: 640px;
+}
+.dir-kicker {
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  /* tertiaire et non vin : à 10px c'est du petit texte, il lui faut
+     4,5:1, et le vin éclairci n'en donne que 3,2 sur l'encre */
+  color: var(--txt-3);
+  margin: 0 0 22px;
+}
+.dir-h1 {
+  font-family: var(--f-display);
+  font-weight: 400;
+  font-size: clamp(28px, 3.4vw, 42px);
+  line-height: 1.14;
+  letter-spacing: -0.02em;
+  margin: 0;
+  text-wrap: balance;
+}
+.dir-chapo {
+  margin: 26px 0 0;
+  font-size: 17px;
+  line-height: 1.7;
+  color: var(--txt-2);
+}
+.dir-bloc {
+  margin-top: clamp(44px, 5.5vw, 68px);
+  padding-top: clamp(22px, 2.6vw, 30px);
+  border-top: 1px solid var(--line-soft);
+}
+.dir-bloc-t {
+  margin: 0 0 18px;
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--txt-3);
+}
+.dir-p {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.75;
+  color: var(--txt-2);
+}
+.dir-p + .dir-p {
+  margin-top: 16px;
+}
+/* les trois possibilités : des entrées sur filets, jamais des puces.
+   Le « · » de puce du brief est réservé par la charte aux lignes de
+   labels ; le filet est l'idiome du site, et il reste vertical en
+   mobile sans rien avoir à déclarer. */
+.dir-choix {
+  list-style: none;
+  margin: 26px 0 0;
+  padding: 0;
+  border-top: 1px solid var(--line-soft);
+}
+.dir-choix li {
+  padding: 18px 0;
+  border-bottom: 1px solid var(--line-soft);
+  font-size: 16px;
+  line-height: 1.75;
+  color: var(--txt-2);
+}
+.dir-choix b {
+  color: var(--txt);
+  font-weight: 500;
+}
+.dir-pied {
+  margin-top: clamp(52px, 6.5vw, 80px);
+  padding-top: clamp(24px, 3vw, 32px);
+  border-top: 2px solid var(--line-tete);
+}
+/* le contact est le seul appel de la page, et ce n'en est pas un :
+   il sert à refuser autant qu'à répondre */
+.dir-contact {
+  margin: 14px 0 0;
+  font-size: 15px;
+  letter-spacing: 0.04em;
+  color: var(--txt);
+}
+.dir-contact a {
+  color: inherit;
+  text-decoration: none;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 2px;
+  transition: border-color 0.2s var(--ease);
+}
+.dir-contact a:hover {
+  border-color: var(--wine);
+}
+.dir-entite {
+  margin: 20px 0 0;
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--txt-3);
+}
+.dir-notice {
+  display: inline-block;
+  margin-top: 18px;
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--txt-3);
+  text-decoration: none;
+  border-bottom: 1px solid var(--line-soft);
+  padding-bottom: 3px;
+  transition: color 0.2s var(--ease), border-color 0.2s var(--ease);
+}
+.dir-notice:hover {
+  color: var(--txt-2);
+  border-color: var(--line);
+}
+
+@media (max-width: 760px) {
+  .dir {
+    padding: 40px 0 72px;
+  }
+  .dir-marque {
+    margin-bottom: 48px;
+  }
+  .dir-chapo {
+    font-size: 16px;
+  }
+}

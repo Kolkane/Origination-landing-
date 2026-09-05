@@ -7,6 +7,13 @@ export const brand = typoDeep({
   CALENDLY_URL: "https://calendly.com/fnr-vincent-pro/echange",
   LINKEDIN_URL: "https://www.linkedin.com/in/vincent-fournier-939021170/",
   CONTACT_EMAIL: "contact@imbrin.fr",
+  /* v68 : le délai de traitement d'une demande d'opposition ou d'accès.
+     Constante et non texte en dur : il est annoncé au dirigeant sur la
+     page qui lui est destinée, et il devra changer à UN endroit si la
+     pratique change. Écrit en toutes lettres, pas en chiffre : c'est un
+     engagement de délai, pas une donnée mesurée, et la liste blanche des
+     chiffres de la charte ne couvre pas les nombres écrits. */
+  DELAI_OPPOSITION: "huit jours",
   /* ligne directe du fondateur : affichée à trois endroits seulement,
      fondateur, footer et appel final. Jamais dans le hero. Depuis la v56
      CONTACT_EMAIL l'accompagne aux trois, posée sous elle (arbitrage

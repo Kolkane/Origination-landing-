@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { copy } from "@/config/copy";
 import { grand } from "@/config/typo";
 
@@ -25,6 +26,11 @@ export default function Confidentialite() {
                 </p>
               )
             )}
+            {section.lien ? (
+              <Link href={section.lien.href} className="cta label">
+                {section.lien.label}
+              </Link>
+            ) : null}
             {section.email ? (
               <a href={`mailto:${section.email}`} className="cta label">
                 {section.email}
