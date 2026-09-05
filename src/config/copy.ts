@@ -321,7 +321,10 @@ export const copy = typoDeep({
        stock par le rythme mensuel, conclut que trois mois lui suffisent, et
        lit dans la page une invitation à partir à l'échéance de son
        engagement. Aucun chiffre ici, ni de stock ni de flux : le stock est
-       compté au devis, le flux est constaté, le plancher protège. */
+       compté au devis, le flux est constaté. v66 : « le plancher protège »
+       est retiré de ce raisonnement, le plancher mensuel est mort avec le
+       modèle au volume (v65). Ce qui protège désormais, c'est qu'un mois
+       sans dossier livré n'est pas facturé. */
     /* v45 : « rattrapage » et « veille » sortent du vocabulaire de la
        section — on parle de LIVRAISONS (arbitrage Vincent, 27/08) */
     /* v50d (texte de Vincent, 27/08) : plus de « première livraison »
@@ -330,7 +333,7 @@ export const copy = typoDeep({
     chute1:
       "Les dossiers sortent un par un, au fur et à mesure que la lecture les trouve : qu’une situation soit en place depuis des mois dans votre périmètre ou qu’elle vienne de basculer. Même filtre, même exigence, même dossier : il n’y a pas de fournée de départ puis un régime de croisière, il y a une lecture continue de votre périmètre.",
     chute2:
-      "Ce qu’il contient est compté au devis, avec un plancher chiffré : un mois qui passe dessous n’est pas facturé.",
+      "Ce qu’il contient est compté au devis. Et un mois sans dossier livré n’est pas facturé.",
   },
   /* v15 · B1 : trois étapes, pas quatre. L'ancienne « Le dossier
      d'approche » est absorbée par la section qui montre le document,
