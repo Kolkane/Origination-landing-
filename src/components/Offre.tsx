@@ -4,7 +4,8 @@ import { grand } from "@/config/typo";
 
 /* v47 : L'OFFRE EN DIPTYQUE (arbitrage Vincent, 27/08). À gauche LA FICHE
    du devis, sur papier : le nom, le lead, puis les clauses tabulées sur
-   filets (périmètre, exclusivité, engagement, plancher, veille) et le
+   filets (périmètre, exclusivité, rémunération, engagement, protection,
+   veille — le plancher en est sorti en v65) et le
    livrable en pied — la tenue d'un devis, pas d'un pricing de SaaS. À
    droite LE PANNEAU sombre. v65 : il ne porte plus ni prix ni
    arithmétique, mais deux énoncés — le principe qui gouverne le prix en

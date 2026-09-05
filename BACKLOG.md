@@ -39,6 +39,32 @@ ait décidé quoi que ce soit : ne pas y passer protège le dirigeant.
 
 ---
 
+## La fiche de devis ne produit aucun prix — question ouverte
+
+**Concerne l'AUTRE dépôt : `validation/devis.py` dans `Veillor.com`.**
+
+Demandé le 06/09 : que la fiche de devis « cesse de calculer un plancher :
+elle annonce un nombre de situations et un prix, rien d'autre ». Vérifié
+dans le script : il n'y a **rien à retirer et rien à annoncer**.
+
+`devis.py` est un rapport de mesure de périmètre, pas un devis commercial.
+Il produit la population SIRENE et sa ventilation, la cascade vers
+l'inventaire vendable lue depuis `passe_cellule`, la densité d'actes lue
+depuis un magasin `rne_balayage`, puis une section empreintes et limites.
+Il ne calcule **aucun montant** : pas une occurrence de prix, tarif,
+montant ou euro dans tout le fichier.
+
+Son unique « plancher » est une **borne basse de données** — « métadonnée
+RNE 2024-2025 = plancher (typeRdd effondré) » — c'est-à-dire un aveu
+d'incertitude sur la mesure. Le retirer abîmerait l'honnêteté du rapport,
+il n'a rien à voir avec le plancher tarifaire mort en v65.
+
+**La question qui reste** : faut-il que `devis.py` produise aussi un prix,
+et devienne un vrai devis ? C'est un changement de nature du script, pas
+une correction. À trancher.
+
+---
+
 ## Le plancher mensuel survit hors de la section Offre
 
 **Contradiction vivante sur le site. Une décision suffit à la lever.**
