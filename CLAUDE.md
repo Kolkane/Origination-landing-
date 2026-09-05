@@ -1035,6 +1035,41 @@ trouvé sur vous". Codes attendus : document financier imprimé, pas SaaS IA.
   possibilités : la charte le réserve aux lignes de labels, et les
   entrées sur filets sont l'idiome du site, qui reste vertical en mobile
   sans rien avoir à déclarer.
+- Amendement v69 (arbitrage Vincent, 06/09/2026) : TROIS CORRECTIONS DE
+  VISIBILITÉ ET DE VÉRACITÉ.
+  1. LES CANONIQUES. Chaque page déclare le sien. Le layout posait
+  alternates.canonical = « / » pour tout le site, valeur héritée par toute
+  page qui ne la redéclare pas : /confidentialite et /mentions-legales
+  s'annonçaient donc aux moteurs comme des copies de l'accueil,
+  c'est-à-dire comme des pages à ne pas indexer. Ce n'était pas un détail
+  de référencement, c'était l'invisibilité des DEUX pages qu'un dirigeant
+  doit pouvoir trouver. Les pages d'analyses déclaraient déjà le leur et
+  n'étaient pas touchées. Vérifié après build : quatre canoniques
+  distincts servis.
+  2. LA NOTICE ART. 14 DÉCRIT LE TRAITEMENT RÉEL. Elle disait que le
+  CABINET prenait contact avec le dirigeant. C'est Imbrin qui écrit la
+  première depuis la v68, et une notice décrit ce qui est fait, pas ce
+  qu'on faisait. La qualification des données n'est PAS touchée, elle
+  reste en attente d'avis juridique.
+  ÉCART AU BRIEF, signalé : « à votre entreprise » n'a pas été repris. Le
+  même brief annonce quatre canaux de contact choisis selon l'âge du
+  dirigeant, lettre, mail, LinkedIn et téléphone, dont ni un profil
+  LinkedIn ni un mobile ne sont l'entreprise. La notice dit « dans votre
+  fonction de dirigeant », vrai des quatre. C'est la TROISIÈME fois que
+  cette formulation est proposée et écartée, v63 sur le site, v68 sur la
+  page des dirigeants, v69 ici : si le premier contact passe toujours par
+  l'entreprise, elle peut revenir en une ligne ; sinon elle doit rester
+  dehors. Voir BACKLOG.md.
+  3. LE VOCABULAIRE. Le kicker et le titre de /dirigeants passent de
+  « Vous avez reçu un courrier » à « Vous avez été contacté », pour
+  couvrir les quatre canaux ; le corps garde « courrier » là où il parle
+  de la lettre. Et les deux dernières occurrences de « cible » du texte
+  affiché de l'accueil tombent : « taille de cible » devient « taille
+  d'entreprise » dans la méthode, « shortlist de cibles vérifiées »
+  devient « shortlist de sociétés vérifiées » dans l'offre. Un dirigeant
+  n'est pas une cible, et le site n'a plus à l'écrire.
+  LE HERO NE BOUGE PAS : « Nous détectons les dossiers » porte sur des
+  dossiers et c'est le mot choisi en v42. Ne pas l'adoucir.
 - Interdits définitifs (hérités des itérations rejetées) : ticker, métriques animées,
   count-up, grilles de cards, beam/bordures lumineuses, tilt 3D, spotlight souris, pings,
   glow, dégradés colorés, grid de fond, badges/chips, emojis, icônes décoratives,

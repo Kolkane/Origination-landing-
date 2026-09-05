@@ -367,7 +367,7 @@ export const copy = typoDeep({
         num: "01",
         titre: "Le périmètre, arrêté avec vous",
         texte:
-          "Région, typologie d’entreprises, taille de cible, structure de détention. Inscrit au devis.",
+          "Région, typologie d’entreprises, taille d’entreprise, structure de détention. Inscrit au devis.",
       },
       {
         num: "02",
@@ -493,7 +493,7 @@ export const copy = typoDeep({
     },
     complement: {
       nom: "Le mandat de recherche",
-      lead: "Quand un mandat de recherche arrive sur votre bureau, nous l’alimentons à la mission : vos critères, une shortlist de cibles vérifiées, livrée à la date convenue à la mission.",
+      lead: "Quand un mandat de recherche arrive sur votre bureau, nous l’alimentons à la mission : vos critères, une shortlist de sociétés vérifiées, livrée à la date convenue à la mission.",
       /* v65 : le montant par mission sort, comme le reste. */
       prix: "À la mission",
       metaLigne1: "Rémunération fixée au devis",
@@ -661,8 +661,12 @@ export const copy = typoDeep({
         être vrai le jour de la publication », l'interdit donc.
      ============================================================ */
   dirigeants: {
-    metaTitre: "Vous avez reçu un courrier d’Imbrin Research",
-    kicker: "Vous avez reçu un courrier d’Imbrin Research",
+    /* v69 : « reçu un courrier » devient « été contacté ». Quatre canaux
+       seront utilisés selon l'âge du dirigeant, lettre, mail, LinkedIn et
+       téléphone : le titre doit les couvrir tous. Le CORPS garde
+       « courrier » là où il parle de la lettre elle-même. */
+    metaTitre: "Vous avez été contacté par Imbrin Research",
+    kicker: "Vous avez été contacté par Imbrin Research",
     titre:
       "Ce que nous faisons, ce que nous ne faisons pas, et ce que vous pouvez décider.",
     chapo:
@@ -769,7 +773,19 @@ export const copy = typoDeep({
         {
           titre: "Finalité et base légale",
           corps: [
-            "Nous identifions des sociétés dont la situation au registre réunit les conditions d’une transmission : âge du dirigeant, absence de relais identifiable, structure de détention. Nous transmettons ces informations à un cabinet de fusions acquisitions, un seul par périmètre, qui pourra prendre contact avec le dirigeant.",
+            /* v69 : LA NOTICE DÉCRIT LE TRAITEMENT RÉEL. Elle disait que le
+               CABINET prenait contact ; c'est Imbrin qui écrit la première
+               depuis la page /dirigeants, et une notice décrit ce qui est
+               fait. La qualification des données n'est PAS touchée ici,
+               elle reste en attente d'avis juridique (voir BACKLOG.md).
+               DEUX ÉCARTS AU BRIEF, signalés à Vincent : les tirets
+               cadratins sont transposés en virgules, règle de charte v8 ;
+               et « à votre entreprise » est écrit « dans votre fonction de
+               dirigeant », parce que le même brief annonce quatre canaux
+               de contact dont LinkedIn et le téléphone, dont aucun n'est
+               l'entreprise. Une notice d'information ne peut pas annoncer
+               un canal que la pratique dément. */
+            "Nous identifions des sociétés dont la situation au registre réunit les conditions d’une transmission : âge du dirigeant, absence de relais identifiable, structure de détention. Imbrin Research vous écrit d’abord, dans votre fonction de dirigeant, avant toute démarche d’un cabinet. Un cabinet de fusions acquisitions, un seul, choisi pour votre secteur, ne vous approche que si vous l’avez accepté ; c’est à lui, et à lui seul, que ces informations sont transmises.",
             "Le traitement repose sur l’intérêt légitime : faciliter la transmission d’entreprises en mettant en relation leurs dirigeants avec des professionnels du conseil en cession. Il n’a pas d’autre finalité que celle-là : le dirigeant est contacté en sa qualité de dirigeant, jamais à titre privé, et aucune démarche ne vise son patrimoine personnel.",
           ],
         },

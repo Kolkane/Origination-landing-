@@ -39,42 +39,30 @@ ait décidé quoi que ce soit : ne pas y passer protège le dirigeant.
 
 ---
 
-## Le canonique de toutes les pages pointe vers l'accueil
+## Notice art. 14 — le canal du premier contact reste à confirmer
 
-**Défaut d'indexation, préexistant, vu en construisant `/dirigeants`.**
+**Le fond est corrigé, une clause reste ouverte.**
 
-`src/app/layout.tsx` déclare `alternates: { canonical: "/" }`. En App
-Router cette valeur est **héritée** par toute page qui ne la redéclare pas.
-Aujourd'hui `/confidentialite` et `/mentions-legales` se déclarent donc
-comme des copies de l'accueil, ce qui demande explicitement aux moteurs de
-ne pas les indexer séparément.
+Corrigé le 06/09 (v69) : la rubrique *Finalité* décrivait le CABINET comme
+celui qui prend contact. Elle décrit désormais le traitement réel, Imbrin
+écrit la première, un cabinet n'approche qu'après acceptation.
 
-`/dirigeants` pose son propre canonique et échappe au défaut, parce
-qu'elle DOIT être trouvée par un dirigeant qui cherche « Imbrin Research ».
-Les deux pages légales, non : elles n'étaient pas dans le périmètre du
-commit. Correction : soit chaque page pose son canonique, soit le layout
-cesse d'en poser un, ce qui laisse Next le déduire de l'URL.
+**Ce qui reste ouvert.** Le brief demandait d'écrire « Imbrin Research vous
+écrit d'abord, **à votre entreprise** ». Cette clause n'a pas été reprise,
+et c'est délibéré : le même brief annonce **quatre canaux** de contact
+choisis selon l'âge du dirigeant, lettre, mail, LinkedIn et téléphone. Ni
+un profil LinkedIn ni un mobile direct ne sont « votre entreprise ». La
+notice dit donc « dans votre fonction de dirigeant », qui est vrai des
+quatre canaux.
 
----
+C'est la troisième fois que la formulation « par l'entreprise » est
+proposée et écartée : v63 sur le site, v68 sur `/dirigeants`, v69 ici.
 
-## La notice art. 14 ne décrit pas le premier contact d'Imbrin
-
-**Écart entre la pratique décrite et la pratique réelle. Demande un
-arbitrage, pas une correction mécanique.**
-
-La rubrique *Finalité et base légale* de la page Confidentialité dit :
-« Nous transmettons ces informations à un cabinet de fusions acquisitions,
-un seul par périmètre, qui pourra prendre contact avec le dirigeant. »
-
-Elle décrit donc le CABINET comme celui qui contacte. Or la page
-`/dirigeants`, publiée le 06/09, dit l'inverse et dit vrai : « Avant qu'un
-cabinet vous approche, **nous** vous écrivons », puis « nous vous
-appellerons une fois ». Imbrin est désormais le premier contact.
-
-Une notice d'information doit décrire le traitement réellement mis en
-œuvre. Celle-ci ne mentionne nulle part qu'Imbrin écrit et appelle
-elle-même le dirigeant. À reprendre avec le point RGPD ci-dessus, dans le
-même avis juridique : les deux touchent la description du traitement.
+**Si le premier contact d'Imbrin passe TOUJOURS par l'entreprise**, la
+clause peut revenir, et il suffit d'une ligne. **Sinon elle doit rester
+dehors** : une notice d'information ne peut pas annoncer un canal que la
+pratique dément. À trancher avec le point de qualification des données
+ci-dessous, dans le même avis juridique.
 
 ---
 
