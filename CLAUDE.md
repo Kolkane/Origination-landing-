@@ -1115,6 +1115,26 @@ trouvé sur vous". Codes attendus : document financier imprimé, pas SaaS IA.
   d'un canonique par accident.
   VÉRIFIÉ SUR LE HTML PRODUIT, huit pages balayées : zéro occurrence de
   « par l'entreprise », « à votre entreprise » et « adressé à l'entreprise ».
+- Amendement v71 (arbitrage Vincent, 06/09/2026) : LE PLI FERMÉ DEVIENT
+  LISIBLE. L'invariant de la v70 décrivait un courrier « sous pli
+  Personnel — Confidentiel », mais la charte seule le portait : le site ne
+  le promettait nulle part. C'est pourtant la garantie la plus CONCRÈTE du
+  dispositif, la seule qui empêche matériellement un tiers d'ouvrir, et
+  elle doit être lisible par celui qu'elle protège. La phrase entre donc
+  aux deux endroits qui s'adressent au dirigeant : le bloc 2 de
+  /dirigeants et la notice de l'article 14.
+  Et le canal cesse d'être présumé dans le bloc 3 : « à la date indiquée
+  dans notre courrier » devient « dans notre message », puisque quatre
+  canaux sont utilisés et qu'un dirigeant approché par LinkedIn n'a aucun
+  courrier à consulter. « Courrier » ne subsiste que là où il désigne la
+  lettre elle-même, vérifié sur le HTML produit : une fois sur /dirigeants,
+  deux fois dans la notice.
+  EXCEPTION DE PONCTUATION, ET ELLE EST DÉLIBÉRÉE : le tiret cadratin de
+  « Personnel — Confidentiel » est CONSERVÉ, alors que la règle v8
+  l'interdit dans les textes du site. Ce n'en est pas : c'est la citation
+  d'une mention réellement imprimée sur une enveloppe, et la transposer
+  reviendrait à mal citer un objet physique. C'est le seul tiret cadratin
+  du site, il est commenté à son emplacement, NE PAS le « corriger ».
 - Interdits définitifs (hérités des itérations rejetées) : ticker, métriques animées,
   count-up, grilles de cards, beam/bordures lumineuses, tilt 3D, spotlight souris, pings,
   glow, dégradés colorés, grid de fond, badges/chips, emojis, icônes décoratives,

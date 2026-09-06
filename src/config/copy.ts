@@ -684,7 +684,7 @@ export const copy = typoDeep({
           /* « nous vous écrivons à votre entreprise » est retiré : voir la
              note de tête, la v63 a établi que c'était faux. La capacité
              remplace le canal, et elle, elle est vraie. */
-          "Nous ne sommes ni acquéreur, ni conseil. Nous n’avons aucune offre à vous transmettre. Nous ne prenons aucune part à une éventuelle transaction, et vous ne nous devez rien, ni aujourd’hui, ni plus tard. Nous ne contactons jamais un dirigeant à titre privé : nous vous écrivons personnellement, dans votre fonction de dirigeant, et jamais par vos équipes.",
+          "Nous ne sommes ni acquéreur, ni conseil. Nous n’avons aucune offre à vous transmettre. Nous ne prenons aucune part à une éventuelle transaction, et vous ne nous devez rien, ni aujourd’hui, ni plus tard. Nous ne contactons jamais un dirigeant à titre privé : nous vous écrivons personnellement, dans votre fonction de dirigeant, et jamais par vos équipes. Un courrier vous arrive sous pli fermé, marqué « Personnel — Confidentiel », à votre nom.",
         ],
       },
       {
@@ -696,7 +696,7 @@ export const copy = typoDeep({
           {
             fort: "Ne rien faire.",
             suite:
-              "Nous vous appellerons une fois, à la date indiquée dans notre courrier, et nous n’insisterons pas.",
+              "Nous vous appellerons une fois, à la date indiquée dans notre message, et nous n’insisterons pas.",
           },
           {
             fort: "Refuser.",
@@ -794,8 +794,12 @@ export const copy = typoDeep({
                fuiter l'information dans l'entreprise du dirigeant.
                Voir la section positionnement du CLAUDE.md, qui la porte.
                Les tirets cadratins du brief sont transposés en virgules,
-               règle de charte v8. */
-            "Nous identifions des sociétés dont la situation au registre réunit les conditions d’une transmission : âge du dirigeant, absence de relais identifiable, structure de détention. Imbrin Research vous écrit d’abord, vous seul, dans votre fonction de dirigeant, par un courrier ou un message qui vous est personnellement adressé. Nous ne passons jamais par votre standard ni par vos équipes. Un cabinet, un seul, choisi pour votre secteur, ne vous approche que si vous l’avez accepté ; c’est à lui, et à lui seul, que ces informations sont transmises.",
+               règle de charte v8. EXCEPTION, v71 : celui de « Personnel —
+               Confidentiel » est CONSERVÉ. Ce n'est pas de la ponctuation,
+               c'est la citation d'une mention réellement imprimée sur
+               l'enveloppe : la transposer reviendrait à mal citer un objet
+               physique. Ne pas le « corriger ». */
+            "Nous identifions des sociétés dont la situation au registre réunit les conditions d’une transmission : âge du dirigeant, absence de relais identifiable, structure de détention. Imbrin Research vous écrit d’abord, vous seul, dans votre fonction de dirigeant, par un courrier ou un message qui vous est personnellement adressé. Un courrier vous arrive sous pli fermé, marqué « Personnel — Confidentiel », à votre nom. Nous ne passons jamais par votre standard ni par vos équipes. Un cabinet, un seul, choisi pour votre secteur, ne vous approche que si vous l’avez accepté ; c’est à lui, et à lui seul, que ces informations sont transmises.",
             "Le traitement repose sur l’intérêt légitime : faciliter la transmission d’entreprises en mettant en relation leurs dirigeants avec des professionnels du conseil en cession. Il n’a pas d’autre finalité que celle-là : le dirigeant est contacté en sa qualité de dirigeant, jamais à titre privé, et aucune démarche ne vise son patrimoine personnel.",
           ],
         },
