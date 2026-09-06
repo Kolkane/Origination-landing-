@@ -17,6 +17,21 @@ sourcing est régional. Un seul cabinet par périmètre.
 La marque : Imbrin Research — toujours via les variables MARQUE/SUFFIXE de src/config/brand.ts,
 jamais en dur. Baseline fixe : "Origination sell-side".
 
+INVARIANT DU PREMIER CONTACT (arbitrage Vincent, 06/09/2026). Imbrin contacte le
+dirigeant SEUL, dans sa fonction, par un canal personnel et confidentiel : courrier
+sous pli « Personnel — Confidentiel » à son nom au siège, mail à son adresse
+nominative, ligne directe, ou LinkedIn. JAMAIS par le standard, jamais par un
+collaborateur, jamais par une adresse générique de l'entreprise. Le contenu du
+premier contact ne révèle jamais son sujet à un tiers. La base légale est sa
+fonction de dirigeant, jamais sa personne privée.
+La formulation « premier contact par l'entreprise » est ABANDONNÉE : elle désignait
+un canal (le standard) qui est précisément celui qui fait fuiter l'information dans
+l'entreprise du dirigeant.
+Cette règle a sauté trois fois sous une formulation fausse ; ne pas la reformuler.
+Elle gouverne la notice d'information de l'article 14, la page /dirigeants et toute
+copie future. Les amendements v59, v63, v68 et v69 en gardent l'historique : ils ne
+sont pas réécrits, ce sont les procès-verbaux des trois rechutes.
+
 ## Le public
 Des associés de cabinets M&A et des family officers qui font une due diligence fournisseur
 avant de payer ~24 k€/an. Le site a UN job : survivre au réflexe "j'ai cherché, je n'ai rien
@@ -1070,6 +1085,36 @@ trouvé sur vous". Codes attendus : document financier imprimé, pas SaaS IA.
   n'est pas une cible, et le site n'a plus à l'écrire.
   LE HERO NE BOUGE PAS : « Nous détectons les dossiers » porte sur des
   dossiers et c'est le mot choisi en v42. Ne pas l'adoucir.
+- Amendement v70 (arbitrage Vincent, 06/09/2026) : L'INVARIANT DU PREMIER
+  CONTACT EST FIXÉ. Il vit désormais dans la SECTION POSITIONNEMENT de ce
+  fichier, en tête, et non dans un amendement : c'est une règle de fond,
+  pas une décision de gabarit. Elle gouverne la notice de l'article 14, la
+  page /dirigeants et toute copie future.
+  Ce qu'elle dit, et pourquoi la formulation précédente était mauvaise :
+  Imbrin contacte le dirigeant SEUL, par un canal personnel et
+  confidentiel, jamais par le standard ni par ses équipes. « Premier
+  contact par l'entreprise » désignait précisément le standard, c'est-à-dire
+  LE canal qui fait fuiter l'information dans l'entreprise du dirigeant
+  avant qu'il ait rien décidé. La phrase disait donc l'inverse de ce
+  qu'elle voulait promettre.
+  CETTE RÈGLE A SAUTÉ TROIS FOIS sous une formulation fausse, v63, v68,
+  v69 : ne pas la reformuler. Les amendements qui en gardent l'historique
+  ne sont PAS réécrits, ce sont les procès-verbaux des trois rechutes.
+  CE QUI CHANGE DANS LE CODE : la notice art. 14 porte l'invariant mot pour
+  mot ; le bloc 2 de /dirigeants dit « nous vous écrivons personnellement,
+  dans votre fonction de dirigeant, et jamais par vos équipes » ; le bloc 4
+  parle des informations « qui ont permis de vous contacter » et non plus
+  « notre courrier » ; les deux libellés de lien passent de « Vous avez
+  reçu un courrier ? » à « Vous avez été contacté ? », ainsi que la phrase
+  de la notice qui les annonçait.
+  LE CANONIQUE DE L'ACCUEIL DEVIENT EXPLICITE, et le piège est retiré à sa
+  racine : la déclaration quitte le layout, où elle était HÉRITÉE en
+  silence par toute page qui ne la redéclarait pas, et descend dans
+  src/app/page.tsx. C'est cette valeur héritée qui avait désindexé les deux
+  pages légales pendant des mois. Plus aucune page ne peut désormais hériter
+  d'un canonique par accident.
+  VÉRIFIÉ SUR LE HTML PRODUIT, huit pages balayées : zéro occurrence de
+  « par l'entreprise », « à votre entreprise » et « adressé à l'entreprise ».
 - Interdits définitifs (hérités des itérations rejetées) : ticker, métriques animées,
   count-up, grilles de cards, beam/bordures lumineuses, tilt 3D, spotlight souris, pings,
   glow, dégradés colorés, grid de fond, badges/chips, emojis, icônes décoratives,

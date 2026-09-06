@@ -684,7 +684,7 @@ export const copy = typoDeep({
           /* « nous vous écrivons à votre entreprise » est retiré : voir la
              note de tête, la v63 a établi que c'était faux. La capacité
              remplace le canal, et elle, elle est vraie. */
-          "Nous ne sommes ni acquéreur, ni conseil. Nous n’avons aucune offre à vous transmettre. Nous ne prenons aucune part à une éventuelle transaction, et vous ne nous devez rien, ni aujourd’hui, ni plus tard. Nous ne contactons jamais un dirigeant à titre privé : nous vous écrivons dans votre fonction de dirigeant.",
+          "Nous ne sommes ni acquéreur, ni conseil. Nous n’avons aucune offre à vous transmettre. Nous ne prenons aucune part à une éventuelle transaction, et vous ne nous devez rien, ni aujourd’hui, ni plus tard. Nous ne contactons jamais un dirigeant à titre privé : nous vous écrivons personnellement, dans votre fonction de dirigeant, et jamais par vos équipes.",
         ],
       },
       {
@@ -715,7 +715,7 @@ export const copy = typoDeep({
       {
         titre: "Vos droits",
         corps: [
-          `Les informations qui ont permis notre courrier proviennent exclusivement de registres publics. Vous pouvez à tout moment vous opposer à leur utilisation, demander ce que nous détenons vous concernant, ou en demander la suppression. Une demande à l’adresse ci-dessous suffit ; elle est traitée sous ${brand.DELAI_OPPOSITION}, et l’opposition est définitive.`,
+          `Les informations qui ont permis de vous contacter proviennent exclusivement de registres publics. Vous pouvez à tout moment vous opposer à leur utilisation, demander ce que nous détenons vous concernant, ou en demander la suppression. Une demande à l’adresse ci-dessous suffit ; elle est traitée sous ${brand.DELAI_OPPOSITION}, et l’opposition est définitive.`,
         ],
       },
     ] as BlocDirigeant[],
@@ -785,7 +785,17 @@ export const copy = typoDeep({
                de contact dont LinkedIn et le téléphone, dont aucun n'est
                l'entreprise. Une notice d'information ne peut pas annoncer
                un canal que la pratique dément. */
-            "Nous identifions des sociétés dont la situation au registre réunit les conditions d’une transmission : âge du dirigeant, absence de relais identifiable, structure de détention. Imbrin Research vous écrit d’abord, dans votre fonction de dirigeant, avant toute démarche d’un cabinet. Un cabinet de fusions acquisitions, un seul, choisi pour votre secteur, ne vous approche que si vous l’avez accepté ; c’est à lui, et à lui seul, que ces informations sont transmises.",
+            /* v70 : L'INVARIANT DU PREMIER CONTACT, écrit ici dans sa forme
+               définitive. Imbrin contacte le dirigeant SEUL, dans sa
+               fonction, par un canal personnel et confidentiel, et jamais
+               par le standard ni par ses équipes. La formulation « premier
+               contact par l'entreprise » est ABANDONNÉE : elle désignait
+               le standard, c'est-à-dire précisément le canal qui fait
+               fuiter l'information dans l'entreprise du dirigeant.
+               Voir la section positionnement du CLAUDE.md, qui la porte.
+               Les tirets cadratins du brief sont transposés en virgules,
+               règle de charte v8. */
+            "Nous identifions des sociétés dont la situation au registre réunit les conditions d’une transmission : âge du dirigeant, absence de relais identifiable, structure de détention. Imbrin Research vous écrit d’abord, vous seul, dans votre fonction de dirigeant, par un courrier ou un message qui vous est personnellement adressé. Nous ne passons jamais par votre standard ni par vos équipes. Un cabinet, un seul, choisi pour votre secteur, ne vous approche que si vous l’avez accepté ; c’est à lui, et à lui seul, que ces informations sont transmises.",
             "Le traitement repose sur l’intérêt légitime : faciliter la transmission d’entreprises en mettant en relation leurs dirigeants avec des professionnels du conseil en cession. Il n’a pas d’autre finalité que celle-là : le dirigeant est contacté en sa qualité de dirigeant, jamais à titre privé, et aucune démarche ne vise son patrimoine personnel.",
           ],
         },
@@ -798,9 +808,9 @@ export const copy = typoDeep({
           corps: [
             "L’identité, la société, les chiffres, les actes et la structure de détention viennent des registres publics français (RNE, SIRENE, BODACC). Les coordonnées proviennent de prestataires d’enrichissement B2B ; elles peuvent inclure une ligne directe du dirigeant. Chaque coordonnée livrée porte son statut. Le dirigeant est contacté en sa qualité de dirigeant, jamais à titre privé. L’opt-out est définitif.",
             "Ces données ne sont pas collectées auprès du dirigeant. L’information prévue à l’article 14 du RGPD est rendue publiquement accessible par cette page.",
-            "Une version lisible de cette information, écrite pour le dirigeant qui a reçu un courrier de notre part, est publiée à part.",
+            "Une version lisible de cette information, écrite pour le dirigeant que nous avons contacté, est publiée à part.",
           ],
-          lien: { label: "Vous avez reçu un courrier ?", href: "/dirigeants" },
+          lien: { label: "Vous avez été contacté ?", href: "/dirigeants" },
         },
         {
           titre: "Destinataires",
@@ -842,7 +852,7 @@ export const copy = typoDeep({
     /* v68 : la porte d'entrée du dirigeant qui a reçu un courrier et
        cherche à vérifier. Discrète, dans le pied, jamais dans la nav :
        la page d'accueil s'adresse aux cabinets, pas à lui. */
-    dirigeants: { label: "Vous avez reçu un courrier ?", href: "/dirigeants" },
+    dirigeants: { label: "Vous avez été contacté ?", href: "/dirigeants" },
     note: "Site sans traceurs · © 2026",
   },
 });

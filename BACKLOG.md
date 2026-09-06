@@ -37,32 +37,10 @@ passer par le standard. Un appel au standard sur un sujet de cession fait
 fuiter l'information à l'intérieur de l'entreprise du dirigeant avant qu'il
 ait décidé quoi que ce soit : ne pas y passer protège le dirigeant.
 
----
-
-## Notice art. 14 — le canal du premier contact reste à confirmer
-
-**Le fond est corrigé, une clause reste ouverte.**
-
-Corrigé le 06/09 (v69) : la rubrique *Finalité* décrivait le CABINET comme
-celui qui prend contact. Elle décrit désormais le traitement réel, Imbrin
-écrit la première, un cabinet n'approche qu'après acceptation.
-
-**Ce qui reste ouvert.** Le brief demandait d'écrire « Imbrin Research vous
-écrit d'abord, **à votre entreprise** ». Cette clause n'a pas été reprise,
-et c'est délibéré : le même brief annonce **quatre canaux** de contact
-choisis selon l'âge du dirigeant, lettre, mail, LinkedIn et téléphone. Ni
-un profil LinkedIn ni un mobile direct ne sont « votre entreprise ». La
-notice dit donc « dans votre fonction de dirigeant », qui est vrai des
-quatre canaux.
-
-C'est la troisième fois que la formulation « par l'entreprise » est
-proposée et écartée : v63 sur le site, v68 sur `/dirigeants`, v69 ici.
-
-**Si le premier contact d'Imbrin passe TOUJOURS par l'entreprise**, la
-clause peut revenir, et il suffit d'une ligne. **Sinon elle doit rester
-dehors** : une notice d'information ne peut pas annoncer un canal que la
-pratique dément. À trancher avec le point de qualification des données
-ci-dessous, dans le même avis juridique.
+**Le CANAL du premier contact n'est plus une question ouverte** : il est
+tranché depuis le 06/09 et vit comme invariant dans la section
+positionnement de `CLAUDE.md`. Ce qui reste à l'avocat est la seule
+QUALIFICATION des coordonnées, professionnelles ou personnelles.
 
 ---
 

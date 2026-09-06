@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Analyses from "@/components/Analyses";
 import BarreAction from "@/components/BarreAction";
 import CtaFinal from "@/components/CtaFinal";
@@ -12,6 +13,13 @@ import NeFaitPas from "@/components/NeFaitPas";
 import Offre from "@/components/Offre";
 import Reveal from "@/components/Reveal";
 import { faqSchema } from "@/config/schema";
+
+/* v70 : le canonique de l'accueil est EXPLICITE, comme sur toutes les
+   autres pages. Il était hérité du layout, ce qui le rendait invisible
+   ici et le posait en silence sur les pages qui n'en déclaraient pas. */
+export const metadata: Metadata = {
+  alternates: { canonical: "/" },
+};
 
 export default function Home() {
   return (

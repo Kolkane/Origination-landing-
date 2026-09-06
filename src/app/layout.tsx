@@ -92,7 +92,12 @@ export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: copy.meta.title,
   description: copy.meta.description,
-  alternates: { canonical: "/" },
+  /* v70 : PLUS DE CANONIQUE ICI. Une valeur posée sur le layout est
+     HÉRITÉE par toute page qui ne la redéclare pas, et c'est ainsi que
+     /confidentialite et /mentions-legales se sont annoncées pendant des
+     mois comme des copies de l'accueil, donc comme des pages à ne pas
+     indexer (corrigé en v69). Le piège est retiré à sa racine : chaque
+     page déclare le sien, l'accueil compris, dans src/app/page.tsx. */
   twitter: {
     card: "summary_large_image",
     title: copy.meta.title,
