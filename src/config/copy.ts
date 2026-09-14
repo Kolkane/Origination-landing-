@@ -422,7 +422,14 @@ export const copy = typoDeep({
   neFaitPas: {
     kicker: "Ce que nous ne faisons pas",
     items: [
-      { non: "Scores prédictifs", oui: "Des faits au registre, datés." },
+      /* v75 : le remplacement dit les deux moitiés de la mesure, les faits
+         datés et les critères mesurés, et ferme sur ce qui n'est jamais
+         livré. Le mot est la variable de mise en page de cette bande
+         (v60b) : la hauteur se remesure sur le build. */
+      {
+        non: "Scores prédictifs",
+        oui: "Des faits datés, et des critères mesurés. Aucun score livré.",
+      },
       {
         non: "Contact du patrimoine privé",
         /* v63 : le « oui » affirmait un passage par le standard qui n'a
