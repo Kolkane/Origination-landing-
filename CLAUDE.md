@@ -8,6 +8,11 @@ Amendement (refonte 2026-08, arbitrage Vincent) : ne JAMAIS prêter une intentio
 (« préparent leur sortie » est mort), ne JAMAIS affirmer un horizon (« 12-18 mois avant le
 marché » est mort), ne JAMAIS promettre un flux mensuel ni un délai générique de livraison.
 Quand un acte de préparation existe, il est daté ; on n'affirme rien de plus.
+Amendement (backtest national, arbitrage Vincent, 14/09/2026) : le DÉCLENCHEUR
+d'un dossier est un acte déposé et daté ; l'âge du dirigeant, la détention et
+le relais sont des LECTURES qui pèsent, jamais des portes. La parenthèse
+« âge du dirigeant, absence de relais, structure de détention » ci-dessus est
+l'ancienne définition, gardée comme procès-verbal. Voir l'amendement v72.
 LISTE BLANCHE DES CHIFFRES : aucun nombre sur le site sauf (1) chiffre mesuré, cité avec sa
 nature exacte, (2) source externe nommée (l'étude Bpifrance/CCI de l'entonnoir), (3) exemple
 explicitement fictif marqué comme tel. Le périmètre du client est mesuré au devis : c'est la
@@ -1135,6 +1140,44 @@ trouvé sur vous". Codes attendus : document financier imprimé, pas SaaS IA.
   d'une mention réellement imprimée sur une enveloppe, et la transposer
   reviendrait à mal citer un objet physique. C'est le seul tiret cadratin
   du site, il est commenté à son emplacement, NE PAS le « corriger ».
+- Amendement v72 à v76 (arbitrage Vincent, 14/09/2026, sur le backtest
+  national du dépôt Veillor.com, docs/protocole_backtest_20260914.md et
+  mesures_20260914.md) : LE DÉCLENCHEUR ET LES LECTURES. Mesuré à
+  l'échelle nationale sur l'historique des transmissions au registre :
+  l'âge du dirigeant seul ne sélectionne rien, et le relais n'est pas un
+  filtre. DÉCISION : le déclencheur d'un dossier est un ACTE DÉPOSÉ ET
+  DATÉ ; âge, détention et relais sont des LECTURES qui pèsent, jamais des
+  portes. Le site le dit. AUCUN résultat chiffré du backtest n'est publié,
+  et rien n'est préparé pour lui : ni page Mesure, ni question de FAQ, ni
+  article, ni la phrase « dix-huit mois ».
+  v72, LE FILTRE. L'intro dit « un déclencheur, quatre lectures ». Le fait
+  daté passe EN TÊTE de la toise, suivi du périmètre, du dirigeant, de la
+  détention et du relais ; la destination reste le dossier. Le relais est
+  écrit « une lecture, pas un filtre ». La toise ne portait déjà ni étape
+  d'âge (sortie en v45) ni effectif de cascade : rien à retirer, l'ancrage
+  Bpifrance reste. Le « 45 ans » de l'intro est un exemple dans une phrase
+  de Vincent, pas un chiffre mesuré : il vaut par décision, comme le
+  « dix-huit mois » de la v60. Les « num » des crans ne sont que des clés
+  React depuis la v51 et suivent le nouvel ordre.
+  v73, LA MÉTHODE, étape 02 : les critères sont MESURÉS sur l'historique
+  des transmissions au registre, à l'échelle nationale, et ce que la
+  mesure dit est publié, y compris quand un critère ne tient pas. La
+  phrase v60 « testés avant d'être retenus » est morte.
+  v74, LE SPÉCIMEN. Le déclencheur entre dans la chronologie, « 03 / 2026
+  Transformation en SAS, titres rendus cessibles, acte déposé », et la
+  vérification de juillet dit « aucun mouvement de contrôle à 24 mois ».
+  Les deux lignes datées de 2023 et de mars 2026 portent la marque vin :
+  ce sont deux actes déposés. Les 63 ans du dirigeant restent, tout reste
+  fictif et marqué tel. La cascade CSS de la frise gagne sa sixième ligne.
+  v75, CE QUE NOUS NE FAISONS PAS : sous « Scores prédictifs », « Des
+  faits datés, et des critères mesurés. Aucun score livré. » Le mot est la
+  variable de mise en page de cette bande (v60b) : la hauteur se remesure
+  sur le build.
+  v76, LA NOTICE. La finalité, page Confidentialité, ne décrit plus la
+  sélection par l'âge ni par l'absence de relais : elle décrit l'acte
+  déposé, puis les lectures. « Son âge » RESTE dans les données traitées,
+  l'âge est lu, il n'est plus une porte, et une notice liste ce qui est
+  traité. Les trois articles d'Analyses ne sont pas touchés.
 - Interdits définitifs (hérités des itérations rejetées) : ticker, métriques animées,
   count-up, grilles de cards, beam/bordures lumineuses, tilt 3D, spotlight souris, pings,
   glow, dégradés colorés, grid de fond, badges/chips, emojis, icônes décoratives,

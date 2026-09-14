@@ -273,8 +273,13 @@ export const copy = typoDeep({
     titreItalique: "périmètre",
     /* v50 : LA TOISE — l'intro absorbe la sortie (la raison de ne pas
        appeler) et porte seule tout le récit ; le reste est l'instrument. */
+    /* v72 : UN DÉCLENCHEUR, QUATRE LECTURES (backtest national, 14/09/2026).
+       L'acte déposé et daté déclenche la lecture ; périmètre, dirigeant,
+       détention et relais pèsent, ils n'éliminent pas. Le fait daté passe
+       en tête de la toise. Le « 45 ans » est un exemple posé par Vincent
+       dans sa phrase, pas un chiffre mesuré : il vaut par décision. */
     intro:
-      "Le marché visible est un marché en retard : la valeur est chez ceux qui n’ont rien annoncé. Cinq critères, lus au registre, resserrent le vôtre. Peu de sociétés les passent tous, et celles qui sortent, sortent avec leur raison écrite : la raison de ne pas appeler est livrée aussi.",
+      "Le marché visible est un marché en retard : la valeur est chez ceux qui n’ont rien annoncé. Un déclencheur, quatre lectures. Le déclencheur : un acte déposé, daté, lu. Les lectures : qui dirige, qui détient, qui pourrait prendre la suite, dans le périmètre que vous avez arrêté. Elles pèsent, elles n’éliminent pas. Un dirigeant de 45 ans qui vient de rendre ses titres cessibles est un dossier. Ce qui sort après lecture sort avec sa raison écrite : la raison de ne pas appeler est livrée aussi.",
     /* l'ancrage porte le SOUS-TOTAL PME, pas les 370 000 tous formats : le
        marché d'Imbrin, ce sont les 58 000. L'énoncé est fondé sur l'INTENTION
        déclarée, pas sur l'âge des dirigeants : le critère de l'âge est
@@ -292,34 +297,38 @@ export const copy = typoDeep({
        une société qui passe les cinq critères devient un dossier,
        l'unité du produit, pas une fournée. */
     finLbl: "Le dossier",
+    /* v72 : le fait daté passe EN TÊTE, c'est lui qui déclenche ; les
+       quatre lectures suivent, et le relais est écrit pour ce qu'il est,
+       une lecture, pas un filtre. « num » n'est plus qu'une clé React
+       depuis la v51, il suit l'ordre. */
     criteres: [
       {
         num: "01",
+        label: "Le fait daté",
+        texte:
+          "Un acte déposé, jamais une intention supposée. C’est lui qui déclenche la lecture.",
+      },
+      {
+        num: "02",
         label: "Le périmètre",
         texte:
           "Région et typologie d’entreprises, arrêtées avec vous. C’est lui que nous mesurons, pas un marché théorique.",
       },
       {
-        num: "02",
+        num: "03",
         label: "Le dirigeant",
         texte:
           "Qui dirige, depuis quand, dans quelle configuration : lu au registre, pas déclaré.",
       },
       {
-        num: "03",
+        num: "04",
         label: "La détention",
         texte: "Qui tient le capital, quels mouvements de titres. Lu dans les actes, pas déduit d’une base.",
       },
       {
-        num: "04",
-        label: "Le relais",
-        texte: "Personne au capital ni aux mandats pour prendre la suite.",
-      },
-      {
         num: "05",
-        label: "Le fait daté",
-        texte:
-          "Quand il existe : un acte déposé, jamais une intention supposée.",
+        label: "Le relais",
+        texte: "Qui pourrait prendre la suite, au capital ou aux mandats. Une lecture, pas un filtre.",
       },
     ],
     piedAvant: "Combien dans votre région ? ",
