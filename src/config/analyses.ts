@@ -21,11 +21,17 @@ export const analyses: Article[] = typoDeep([
   {
     slug: "vague-transmission-pme",
     titre: "La vague de transmission des PME françaises",
+    /* v77 : l'âge n'explique plus la vague. Le backtest national a mesuré
+       que l'âge du dirigeant seul ne sélectionne rien ; l'article garde le
+       constat démographique, une génération, et le volume, la vague, et
+       perd la causalité par l'âge. Retouche minimale : deux phrases, le
+       reste ne bouge pas. Le standfirst se propage seul à l'index de
+       l'accueil, à la meta description, à l'OpenGraph et au JSON-LD. */
     standfirst:
-      "Une génération de dirigeants approche de la retraite. Ce que cela change pour qui conseille les cédants.",
+      "Une génération de dirigeants de PME devra transmettre. Ce que cela change pour qui conseille les cédants.",
     datePublished: "2026-08-04",
     corps: [
-      "Une génération de dirigeants de PME françaises arrive à l’âge de la retraite, et une grande partie d’entre eux n’a aucun successeur identifié. Ce n’est pas une conjoncture, c’est une donnée démographique : elle se déroulera quelle que soit la santé de l’économie, parce qu’elle tient à l’âge des dirigeants et non au cycle.",
+      "Une génération de dirigeants de PME françaises devra transmettre, et une grande partie d’entre eux n’a aucun successeur identifié. Ce n’est pas une conjoncture, c’est une donnée démographique : elle se déroulera quelle que soit la santé de l’économie, elle ne tient pas au cycle.",
       "Pour une entreprise saine, l’absence de relais n’est pas un problème comptable. C’est un problème de temps. Un dirigeant seul, sans enfant repreneur ni cadre prêt à prendre la suite, sait qu’il devra un jour transmettre. La plupart repoussent la question, faute d’interlocuteur et faute d’urgence apparente, jusqu’au moment où elle se pose brutalement : un problème de santé, une lassitude, une offre reçue.",
       "Ce décalage entre le moment où la transmission devient inévitable et le moment où elle est traitée est précisément la zone où tout se joue. Une cession préparée plusieurs années à l’avance se négocie mieux, se structure mieux, et laisse au dirigeant le choix de son acquéreur. Une cession décidée dans l’urgence se fait au prix et aux conditions de celui qui se trouve là.",
       "Pour un cabinet de conseil en cession, cette vague représente un flux considérable d’opérations à venir. Mais ce flux n’arrive pas de lui-même sur le bureau des conseils. La majorité de ces dirigeants ne se déclarent nulle part. Ils ne consultent pas de site de cession, ne mandatent pas de banquier d’affaires, ne répondent pas à un appel d’offres. Ils attendent, souvent sans le dire, que quelqu’un vienne poser la bonne question au bon moment.",
