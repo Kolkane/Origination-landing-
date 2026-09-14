@@ -382,7 +382,10 @@ export const copy = typoDeep({
         num: "02",
         titre: "La détection, puis la lecture",
         texte:
-          "RNE, SIRENE, BODACC : des faits observables et datés. Chaque détection est reprise à la main, l’acte est ouvert et lu, y compris quand c’est un scan. Les critères du filtre ont été testés sur l’historique des cessions au registre avant d’être retenus.",
+          /* v73 : les critères sont MESURÉS, à l'échelle nationale, et la
+             mesure est publiée même quand un critère ne tient pas. La phrase
+             v60 « testés avant d'être retenus » est morte. */
+          "RNE, SIRENE, BODACC : des faits observables et datés. Chaque détection est reprise à la main, l’acte est ouvert et lu, y compris quand c’est un scan. Nos critères sont mesurés sur l’historique des transmissions au registre, à l’échelle nationale. Ce que la mesure dit est publié, y compris quand un critère ne tient pas.",
       },
       {
         num: "03",
