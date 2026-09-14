@@ -830,7 +830,13 @@ export const copy = typoDeep({
                c'est la citation d'une mention réellement imprimée sur
                l'enveloppe : la transposer reviendrait à mal citer un objet
                physique. Ne pas le « corriger ». */
-            "Nous identifions des sociétés dont la situation au registre réunit les conditions d’une transmission : âge du dirigeant, absence de relais identifiable, structure de détention. Imbrin Research vous écrit d’abord, vous seul, dans votre fonction de dirigeant, par un courrier ou un message qui vous est personnellement adressé. Un courrier vous arrive sous pli fermé, marqué « Personnel — Confidentiel », à votre nom. Nous ne passons jamais par votre standard ni par vos équipes. Un cabinet, un seul, choisi pour votre secteur, ne vous approche que si vous l’avez accepté ; c’est à lui, et à lui seul, que ces informations sont transmises.",
+            /* v76 : la finalité ne décrit plus une sélection par l'âge ni par
+               l'absence de relais, le backtest national a montré que ni l'un
+               ni l'autre ne sélectionne. Elle décrit ce qui est fait : un
+               acte déposé et daté, puis des lectures. « Son âge » reste dans
+               les données traitées ci-dessous, l'âge est lu, il n'est plus
+               une porte, et une notice liste ce qui est traité. */
+            "Nous identifions des sociétés à partir d’un acte déposé au registre, daté ; nous lisons ensuite qui dirige, qui détient le capital et qui pourrait prendre la suite. Imbrin Research vous écrit d’abord, vous seul, dans votre fonction de dirigeant, par un courrier ou un message qui vous est personnellement adressé. Un courrier vous arrive sous pli fermé, marqué « Personnel — Confidentiel », à votre nom. Nous ne passons jamais par votre standard ni par vos équipes. Un cabinet, un seul, choisi pour votre secteur, ne vous approche que si vous l’avez accepté ; c’est à lui, et à lui seul, que ces informations sont transmises.",
             "Le traitement repose sur l’intérêt légitime : faciliter la transmission d’entreprises en mettant en relation leurs dirigeants avec des professionnels du conseil en cession. Il n’a pas d’autre finalité que celle-là : le dirigeant est contacté en sa qualité de dirigeant, jamais à titre privé, et aucune démarche ne vise son patrimoine personnel.",
           ],
         },
