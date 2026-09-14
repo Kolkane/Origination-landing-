@@ -24,7 +24,7 @@ jamais en dur. Baseline fixe : "Origination sell-side".
 
 INVARIANT DU PREMIER CONTACT (arbitrage Vincent, 06/09/2026). Imbrin contacte le
 dirigeant SEUL, dans sa fonction, par un canal personnel et confidentiel : courrier
-sous pli « Personnel — Confidentiel » à son nom au siège, mail à son adresse
+sous pli « Personnel et confidentiel » à son nom au siège, mail à son adresse
 nominative, ligne directe, ou LinkedIn. JAMAIS par le standard, jamais par un
 collaborateur, jamais par une adresse générique de l'entreprise. Le contenu du
 premier contact ne révèle jamais son sujet à un tiers. La base légale est sa
@@ -1178,6 +1178,23 @@ trouvé sur vous". Codes attendus : document financier imprimé, pas SaaS IA.
   déposé, puis les lectures. « Son âge » RESTE dans les données traitées,
   l'âge est lu, il n'est plus une porte, et une notice liste ce qui est
   traité. Les trois articles d'Analyses ne sont pas touchés.
+- Amendement v77 (arbitrage Vincent, 14/09/2026) : L'ÂGE N'EXPLIQUE PLUS LA
+  VAGUE. L'article « La vague de transmission des PME françaises » est
+  retouché a minima, deux phrases, aucun chiffre ajouté : le standfirst
+  devient « Une génération de dirigeants de PME devra transmettre. », et
+  le premier paragraphe perd « arrive à l'âge de la retraite » et « parce
+  qu'elle tient à l'âge des dirigeants et non au cycle » (devenu « elle ne
+  tient pas au cycle »). Le constat démographique et le volume restent, le
+  paragraphe sur l'absence de relais reste. Le standfirst est une donnée
+  unique de analyses.ts : l'index de l'accueil, la meta description,
+  l'OpenGraph et le JSON-LD Article en dérivent, vérifié sur le HTML.
+- Amendement v78 (arbitrage Vincent, 14/09/2026) : L'EXCEPTION v71 EST
+  LEVÉE. La mention de l'enveloppe s'écrit « Personnel et confidentiel »,
+  sur /dirigeants et dans la notice de l'article 14, et l'invariant du
+  premier contact en tête de ce fichier suit. Plus aucun tiret cadratin
+  sur le site, vérifié par grep sur les sept pages produites. La règle v8
+  n'a donc plus d'exception ; les amendements v71 et suivants qui la
+  décrivent restent en procès-verbal.
 - Interdits définitifs (hérités des itérations rejetées) : ticker, métriques animées,
   count-up, grilles de cards, beam/bordures lumineuses, tilt 3D, spotlight souris, pings,
   glow, dégradés colorés, grid de fond, badges/chips, emojis, icônes décoratives,
