@@ -120,14 +120,14 @@ export const copy = typoDeep({
         cible: "z-signal",
         titre: "La structure de détention",
         texte:
-          "Qui tient le capital, quels mouvements de titres. Lue dans les actes, pas déduite d’une base. Ici, un dirigeant seul, aucun mouvement en treize ans.",
+          "Qui tient le capital, quels mouvements de titres. Lue dans les actes, pas déduite d’une base. Ici, un dirigeant seul, aucun mouvement en treize ans, jusqu’à mars 2026.",
       },
       {
         idx: "03",
         cible: "z-parcours",
         titre: "Le fait daté",
         texte:
-          "La chronologie des actes déposés, chaque ligne datée au registre. Ici, une SCI constituée en 2023 pour isoler les murs. Un fait établi, jamais une intention supposée.",
+          "La chronologie des actes déposés, chaque ligne datée au registre. Ici, une transformation en SAS déposée en mars 2026. Un fait établi, jamais une intention supposée.",
       },
       {
         idx: "04",
@@ -203,12 +203,21 @@ export const copy = typoDeep({
       tendanceTag: "Résultat net · trois exercices en hausse",
 
       parcoursLbl: "Le fait daté",
+      /* v74 : le DÉCLENCHEUR entre dans la chronologie, l'acte de mars 2026.
+         Deux lignes portent la marque vin, la SCI de 2023 et la
+         transformation de 2026 : ce sont deux actes déposés. La
+         vérification de juillet ne dit plus « aucun relais » : le relais
+         est une lecture, pas un filtre ; elle dit ce que le registre
+         montre, aucun mouvement de contrôle à 24 mois. Tout reste fictif.
+         La cascade CSS de la frise (.zone.lit .tl li) compte désormais
+         six lignes, la sixième est posée dans globals.css. */
       parcours: [
         { an: "1998", ev: "Création, transmission familiale" },
         { an: "2011", ev: "Reprise par le dirigeant actuel" },
         { an: "2023", ev: "Constitution d’une SCI, murs d’exploitation isolés", cle: true },
+        { an: "03 / 2026", ev: "Transformation en SAS, titres rendus cessibles, acte déposé", cle: true },
         { an: "04 / 2026", ev: "Dernier dépôt de comptes, clos 12/2025" },
-        { an: "07 / 2026", ev: "Vérification registre : dirigeant actif, aucun relais" },
+        { an: "07 / 2026", ev: "Vérification registre : dirigeant actif, aucun mouvement de contrôle à 24 mois" },
       ] as { an: string; ev: string; cle?: boolean }[],
 
       coordLbl: "Coordonnées",
@@ -240,7 +249,7 @@ export const copy = typoDeep({
       signalAvant:
         "Gérard Vasseur détient et dirige seul depuis 2011, à 63 ans. Au registre : ",
       signalFort:
-        "pas d’associé entré, aucun mouvement de titres en treize ans.",
+        "pas d’associé entré, aucun mouvement de titres en treize ans, jusqu’à l’acte de mars 2026.",
       signalApres:
         " L’affaire est saine, trois exercices en hausse, quasiment pas de dette. En 2023, les murs sont sortis dans une SCI : le fait est daté, il est dans la chronologie.",
 
@@ -248,8 +257,11 @@ export const copy = typoDeep({
       angleTitre: "Entrer par l’homme-clé, pas par la vente.",
       angleP1:
         "Toute la valeur tient sur une personne qui a 63 ans. Un sujet qui s’ouvre sans prononcer le mot cession : que devient l’atelier le jour où il n’est plus là tous les matins.",
+      /* v74 : le second paragraphe porte le déclencheur, l'acte de mars
+         2026, et non plus la SCI, qui reste dans la chronologie et dans la
+         détention. Le titre et la chute ne bougent pas. */
       angleP2Avant:
-        "La SCI de 2023 est un fait, pas une intention : les murs sont sortis de l’exploitation, l’acte est au registre. Ce que ce geste prépare, l’acte ne le dit pas. ",
+        "Les titres viennent d’être rendus cessibles : le geste est daté, l’acte est au registre. Ce qu’il prépare, l’acte ne le dit pas. ",
       angleP2Fort:
         "C’est la question à poser au dirigeant, avant qu’un autre ne la pose.",
 

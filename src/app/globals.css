@@ -1268,6 +1268,12 @@ footer a:hover {
 .zone.lit .tl li:nth-child(5) {
   animation-delay: 0.35s;
 }
+/* v74 : la frise du spécimen compte six lignes depuis l'entrée de l'acte
+   de mars 2026 ; sans ce délai la sixième apparaîtrait avant les cinq
+   autres. Même pas de 0,055 s. */
+.zone.lit .tl li:nth-child(6) {
+  animation-delay: 0.405s;
+}
 /* la barre de la série se tire ensuite, dans le sens de la lecture : c'est
    elle qui donne l'impression que le document se dessine sous les yeux */
 .zone.lit .serie-barre {
