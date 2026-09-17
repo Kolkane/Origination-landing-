@@ -1373,8 +1373,10 @@ sur une hauteur ni une largeur de texte, qui se remesurent sur le build.
   L'image OpenGraph lit emblem-encre-300.png, pas la source de 520 px :
   voir « MISE EN LIGNE, 17/09/2026 » dans les lots.
 - LES ICÔNES. Les quatre SVG inline de la planche (plaque de cabinet, carte de
-  France avec la région remplie en vert, registre, chemise à sangle), dans un
-  composant Icones.tsx, aria-hidden, currentColor. La carte vient de
+  France avec la région remplie en vin depuis la v83, registre, chemise à
+  sangle), dans un composant Icones.tsx, aria-hidden, currentColor. Elles
+  s'animent AU SURVOL depuis la v84, voir « LE MOUVEMENT DES ICÔNES » à la
+  fin des lots. La carte vient de
   src/components/carte/france-paths.ts simplifié. C'est la seule dérogation
   à « aucune icône nulle part » (v12, v51), décidée par le brief V80 : quatre
   icônes au trait, sans cadre ni fond, à cet endroit et à lui seul.
@@ -1841,6 +1843,58 @@ sur une hauteur ni une largeur de texte, qui se remesurent sur le build.
   occurrence de --vert, de --blanc et des quatorze hex V80 dans src/ ;
   captures 1440 et 390 des sept sections, du popup et de la jonction bande de
   rendez-vous / pied.
+
+- LE MOUVEMENT DES ICÔNES, v84 (arbitrage Vincent, 17/09/2026, sur la
+  planche MAQUETTE-V84-ICONES.html, régime 1). Les quatre icônes de la
+  section service s'animent, ET SEULEMENT AU SURVOL DE LA SOURIS. Carte :
+  LE BALAYAGE, le vin saute de région en région puis se pose sur la seule
+  région retenue. Chemise : LA CHEMISE S'ÉCRIT, la sangle puis les lignes se
+  tracent. Registre : LE TAMPON, le sceau se pose d'un coup, trop grand puis
+  net. Cabinet : LA GRAVURE, la plaque se trace, les vis se posent, la
+  gravure suit.
+  CE QUI A ÉTÉ PROPOSÉ ET ÉCARTÉ, et c'est l'arbitrage : la planche
+  recommandait LA CARTE SEULE, au motif qu'une rangée de quatre pictogrammes
+  animés est le code du site SaaS, celui que la v54 a retiré de cette page, et
+  que trois des quatre icônes n'ont rien à raconter dans le temps. Vincent a
+  tranché pour les quatre, EN SURVOL SEULEMENT, et le survol répond
+  précisément à l'objection : ce que la v54 a tué, c'est le mouvement À
+  L'ENTRÉE DANS LE CHAMP, qui joue sans être demandé. Rien ne bouge au scroll.
+  La page défile entièrement immobile, comme depuis la v54 ; le mouvement
+  n'existe que sous la main du visiteur, ce que la doctrine de motion
+  réclamait déjà en v20 (« tous DÉCLENCHÉS PAR L'UTILISATEUR »). La règle v54
+  est donc tenue, pas contournée. Ne pas déclencher ces animations au scroll.
+  ZÉRO JAVASCRIPT, et ce n'est pas une économie, c'est la garantie. Pas
+  d'observateur, pas de classe posée, pas d'état : le survol met l'animation,
+  la sortie l'enlève. La leçon v44 (un className recalculé par React efface ce
+  que le DOM portait) ne peut pas mordre, rien n'est posé sur le DOM.
+  L'ÉTAT DE REPOS EST L'ÉTAT FINAL, toujours. Hors survol, aucune icône ne
+  porte dash, transform, opacité ni filtre : le dessin est celui de la planche
+  V80, au pixel. Sans JavaScript, sur un écran tactile, sous un lecteur
+  d'écran, il ne manque rien. Corollaire pour toute animation future d'icône :
+  ne jamais animer depuis un état vide, l'état vide devient l'état servi.
+  POINTEUR FIN SEULEMENT, (hover: hover) and (pointer: fine). Écarte le survol
+  collant d'iOS, où une première tape lancerait une animation qui resterait
+  ensuite accrochée. Sur téléphone la rangée est fixe, c'est l'arbitrage ;
+  vérifié, la requête média est fausse à 390 px.
+  LA CIBLE EST L'ENTRÉE ENTIÈRE (.service-entree), pas l'icône de 64 px : une
+  cible de 64 px se rate, et le titre et le texte appartiennent au même objet.
+  Aucun curseur pointeur n'est posé, ce n'est pas un bouton.
+  DÉTAIL QUI FAIT LA SÉQUENCE, consigné parce qu'il se reprendra de travers :
+  le balayage est en animation-fill-mode FORWARDS et non « both ». Avec
+  « both », le mode arrière applique la première image PENDANT le délai, donc
+  les quatre régions s'allument ensemble dès le survol au lieu de s'allumer
+  chacune à son tour. Les autres animations gardent « both », elles en ont
+  besoin pour rester à leur première image pendant leur délai.
+  LES QUATRE RÉGIONS DU BALAYAGE vivent en données, clé « etape » de
+  FRANCE_TRACES, et non dans le composant. Aucune n'est nommée, c'est un
+  parcours et non une couverture. Ne pas en ajouter une cinquième, la
+  séquence passerait la seconde et demie.
+  DURÉES, toutes sous 1,2 s : balayage 1,12 s, gravure 1,04 s, chemise
+  0,87 s, tampon 0,50 s. Aucune boucle, aucun état de repos animé.
+  PREFERS-REDUCED-MOTION : rien ne joue, vérifié au navigateur,
+  getAnimations() rend 0 après survol des quatre entrées.
+  LA PLANCHE RESTE au dépôt : elle porte les huit variantes essayées et les
+  trois rangées comparées, elle fait foi sur ce qui a été jugé.
 
 - MÉTHODE DU CHANTIER : cinq lots, un commit par lot, un rapport court et une
   validation entre chaque. 0 préparation (emblèmes, Hanken, tokens, charte) ;
