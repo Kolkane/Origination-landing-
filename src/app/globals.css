@@ -114,19 +114,32 @@
   gap: 48px;
   z-index: 2;
 }
+/* v82 (arbitrage Vincent, 17/09/2026) : le titre est LE titre du site,
+   il doit se lire comme tel. La planche le posait à 34 px sur une ligne,
+   au ras du bas ; il passe à 48 px sur deux lignes (36 px sous 761 px)
+   et le bloc remonte de 52 px au-dessus de la légende. Le paragraphe
+   garde sa mesure de 480 px, seul le titre s'élargit.
+   LA COUPURE DU TITRE est fixée en em, pas en pixels : « pour les
+   cabinets M&A » mesure 9,83 em et « Origination sell-side pour »
+   10,88 em (Hanken 500, mesuré sur le build). À 10,3 em de large, la
+   seule coupure possible tombe après « sell-side », à toute taille de
+   police. À remesurer si le titre change. */
 .hero-texte {
-  max-width: 480px;
+  max-width: 600px;
+  margin-bottom: 52px;
 }
 .hero-texte h1 {
   margin: 0;
-  font-size: 34px;
+  max-width: 10.3em;
+  font-size: 48px;
   font-weight: 500;
-  line-height: 1.15;
-  letter-spacing: -0.01em;
+  line-height: 1.1;
+  letter-spacing: -0.015em;
   color: var(--blanc);
 }
 .hero-texte p {
-  margin: 14px 0 0;
+  max-width: 480px;
+  margin: 18px 0 0;
   font-size: 16px;
   line-height: 1.55;
   color: var(--clair);
@@ -157,6 +170,63 @@
 .hero :focus-visible {
   outline: 2px solid var(--blanc);
   outline-offset: 4px;
+}
+/* v82 : L'APPARITION SÉQUENCÉE, reprise de la V78 (arbitrage Vincent,
+   17/09/2026). Marque et navigation, puis le paragraphe, le lien, enfin
+   la légende : 1,1 s chacun, décalés de 0,15 à 1,4 s, les temps de la
+   V78. LE TITRE N'EST PAS ANIMÉ, et c'est mesuré : le poster et la vidéo
+   couvrent tout l'écran, Chrome ne les compte pas pour le LCP ; le titre
+   est le seul candidat, et un élément qui naît à opacité 0 n'est jamais
+   retenu (Lighthouse : NO_LCP, score 0 ; titre visible d'emblée : 98,
+   LCP 2,3 s sur le h1). Le titre majeur n'attend donc personne, le reste
+   arrive autour de lui. En CSS pur, sans classe posée par JavaScript :
+   « both » tient l'état de départ avant le délai, et sans JavaScript le
+   hero apparaît quand même. L'en-tête est visé à travers .hero, où il
+   reste dans l'arbre même une fois fixe : l'animation ne se rejoue donc
+   pas quand il change d'état, ni au retour en haut de page. Le lien
+   d'évitement n'est pas animé : il doit répondre au premier Tab. Sous
+   prefers-reduced-motion, rien ne bouge. */
+@keyframes apparition {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.hero .entete-marque,
+.hero .entete-nav,
+.hero .entete-menu,
+.hero-texte p,
+.hero-lien,
+.hero-legende {
+  animation: apparition 1.1s cubic-bezier(0.22, 0.75, 0.25, 1) both;
+}
+.hero .entete-marque,
+.hero .entete-nav,
+.hero .entete-menu {
+  animation-delay: 0.15s;
+}
+.hero-texte p {
+  animation-delay: 0.55s;
+}
+.hero-lien {
+  animation-delay: 0.75s;
+}
+.hero-legende {
+  animation-delay: 1.4s;
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero .entete-marque,
+  .hero .entete-nav,
+  .hero .entete-menu,
+  .hero-texte p,
+  .hero-lien,
+  .hero-legende {
+    animation: none;
+  }
 }
 
 /* ---------- en-tête ---------- */
@@ -432,11 +502,18 @@ html {
   .hero-bas {
     padding: 0 24px 32px;
   }
+  .hero-texte {
+    margin-bottom: 32px;
+  }
+  /* deux lignes de 360 à 430 px de large : « pour les cabinets M&A »
+     doit tenir dans la colonne (9,83 em), d'où 30,6 px à 360 (312 px de
+     colonne) et 33 px dès 390 ; au-delà de 33 px la ligne déborde sur
+     les 390 les plus courants. Mesuré sur le build. */
   .hero-texte h1 {
-    font-size: 27px;
+    font-size: clamp(30px, 8.5vw, 33px);
   }
   .hero-texte p {
-    margin-top: 12px;
+    margin-top: 14px;
     font-size: 15px;
   }
   .hero-lien {
@@ -1212,81 +1289,178 @@ html {
 }
 
 /* ---------- les conditions ---------- */
-/* l'origination : le filet vert de 3 px est le seul filet coloré du
-   site, et le seul emploi du vert hors bouton et bande finale, avec les
-   quatre grandes valeurs qu'il coiffe */
-.origination {
-  margin-top: 64px;
+/* v82 : L'OFFRE (arbitrage Vincent, 17/09/2026, troisième passage après
+   la feuille de conditions et le tableau réglé, « toujours difficile à
+   lire »). La section fait écho à une section de prix, et une section de
+   prix a un code que tout le monde lit sans effort : le titre, le prix,
+   ce que vous obtenez, les conditions. L'origination est un seul
+   panneau : filet vert de 3 px en tête (seul filet coloré du site, seul
+   emploi du vert hors bouton et bande finale, avec « Au devis » et les
+   coches), filet fin #C9D0CC autour, celui du bord de la couverture. Ce
+   n'est pas une grille de cartes, c'est un panneau unique. Dedans : à
+   gauche le titre et le prix, à droite six gains cochés, en pied les six
+   termes sur trois colonnes. Le mandat reste en tableau réglé (rangée à
+   fond filet, cases blanches espacées d'un pixel) sous le filet d'encre. */
+.offre {
+  margin-top: 56px;
+  border: 1px solid var(--filet-2);
   border-top: 3px solid var(--vert);
-  padding-top: 36px;
 }
-.origination-tete {
+.offre-haut {
   display: grid;
   grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
-  column-gap: 80px;
-  align-items: start;
+  column-gap: 64px;
+  padding: 40px 40px 44px;
 }
-.origination-titre {
-  margin: 8px 0 0;
+.offre-titre {
+  margin: 6px 0 0;
   font-size: 46px;
   font-weight: 500;
   line-height: 1.05;
   letter-spacing: -0.01em;
 }
-.origination-texte {
-  margin: 6px 0 0;
-  font-size: 19px;
-  line-height: 1.6;
-  color: var(--gris);
+/* à la place du prix : « Au devis », en vert, sa phrase, et le pas
+   suivant en lien texte vers la bande de rendez-vous */
+.offre-prix {
+  margin-top: 28px;
+  padding-top: 24px;
+  border-top: 1px solid var(--filet);
 }
-/* quatre valeurs, quatre colonnes égales, comme la planche ; ce ne sont
-   plus les siennes : l'offre publiée du 17/09/2026 (voir CLAUDE.md) */
-.valeurs {
-  margin-top: 56px;
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  column-gap: 48px;
-}
-.valeur-grande {
+.offre-prix-valeur {
   margin: 6px 0 0;
-  font-size: 30px;
+  font-size: 34px;
   font-weight: 500;
-  line-height: 1.15;
+  line-height: 1.1;
   letter-spacing: -0.01em;
   color: var(--vert);
 }
-.valeur-texte {
-  margin: 12px 0 0;
-  font-size: 15px;
-  line-height: 1.55;
-  color: var(--gris);
-}
-/* le mandat de recherche : un cran en dessous, filet d'encre fin,
-   titre à 28 px, borné à 900 px */
-.mandat {
-  margin-top: 72px;
-  max-width: 900px;
-  border-top: 1px solid var(--encre);
-  padding-top: 28px;
-  display: grid;
-  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
-  column-gap: 80px;
-  align-items: start;
-}
-.mandat-titre {
+.offre-prix-texte {
   margin: 8px 0 0;
-  font-size: 28px;
-  font-weight: 500;
-  line-height: 1.15;
+  max-width: 360px;
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--gris-2);
 }
-.mandat-texte {
+.offre-prix .lien-vin {
+  margin-top: 18px;
+}
+.offre-sous-titre {
+  margin-bottom: 14px;
+}
+/* les gains : une liste cochée, la coche au trait dans le vert, un
+   filet entre les lignes */
+.gains {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.gain {
+  display: grid;
+  grid-template-columns: 22px minmax(0, 1fr);
+  column-gap: 14px;
+  padding: 13px 0;
+  border-top: 1px solid var(--filet);
+  font-size: 18px;
+  line-height: 1.5;
+  color: var(--encre);
+}
+.gain:first-child {
+  padding-top: 4px;
+  border-top: 0;
+}
+.gain-coche {
+  width: 18px;
+  height: 18px;
+  margin-top: 5px;
+  color: var(--vert);
+}
+/* les termes : six définitions sur trois colonnes, le libellé gris
+   au-dessus de la condition en encre */
+.offre-bas {
+  border-top: 1px solid var(--filet-2);
+  padding: 32px 40px 36px;
+}
+.termes {
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 22px 40px;
+}
+.terme dt {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--gris-2);
+}
+.terme dd {
   margin: 4px 0 0;
+  font-size: 16px;
+  line-height: 1.55;
+  color: var(--encre);
+}
+/* le mandat, en tableau réglé : la rangée à fond filet, les cases
+   blanches espacées d'un pixel, l'interstice trace les lignes ; la
+   première case au bord du cadre, les suivantes à 32 px du filet */
+.tableau {
+  margin-top: 56px;
+}
+.rangee {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: 1px;
+  background: var(--filet);
+  border-bottom: 1px solid var(--filet);
+}
+.case {
+  grid-column: span 3;
+  background: var(--blanc);
+  padding: 24px 32px 28px 0;
+}
+.rangee .case + .case {
+  padding-left: 32px;
+}
+.case-tete {
+  grid-column: span 6;
+}
+.case-texte {
+  margin: 12px 0 0;
+  max-width: 440px;
   font-size: 17px;
   line-height: 1.6;
   color: var(--gris);
 }
+.case-cle {
+  margin: 14px 0 0;
+  font-size: 22px;
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  color: var(--encre);
+  text-wrap: balance;
+}
+.case-petit {
+  margin: 12px 0 0;
+  font-size: 16px;
+  line-height: 1.55;
+  color: var(--gris);
+}
+.case-seul {
+  margin: 18px 0 0;
+  font-size: 17px;
+  line-height: 1.55;
+  color: var(--gris);
+}
+.mandat {
+  border-top: 1px solid var(--encre);
+}
+.mandat-titre {
+  margin: 6px 0 0;
+  font-size: 28px;
+  font-weight: 500;
+  line-height: 1.15;
+}
 .conditions-note {
-  margin: 56px 0 0;
+  margin: 48px 0 0;
   font-size: 16px;
   line-height: 1.6;
   color: var(--gris-2);
@@ -1462,14 +1636,32 @@ html {
 /* entre 761 et 1000 px, hors planche : les grilles larges cèdent avant
    le point de rupture, comme au lot 2 */
 @media (max-width: 1000px) {
-  .origination-tete,
-  .mandat {
+  /* l'offre empile ses deux colonnes, les termes vont par deux */
+  .offre-haut {
     grid-template-columns: minmax(0, 1fr);
-    row-gap: 16px;
+    row-gap: 32px;
+    padding: 32px 32px 36px;
   }
-  .valeurs {
+  .offre-bas {
+    padding: 28px 32px 32px;
+  }
+  .termes {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    row-gap: 40px;
+  }
+  /* le tableau du mandat : la case de tête prend la rangée, les deux
+     autres vont par deux ; la première case de chaque rangée reste au
+     bord du cadre */
+  .case {
+    grid-column: span 6;
+  }
+  .case-tete {
+    grid-column: span 12;
+  }
+  .rangee .case + .case {
+    padding-left: 0;
+  }
+  .rangee-tete .case:nth-child(3) {
+    padding-left: 32px;
   }
   .apropos-grille {
     grid-template-columns: minmax(0, 1fr);
@@ -1507,50 +1699,74 @@ html {
     margin-top: 18px;
     font-size: 17px;
   }
-  .origination {
+  /* l'offre sur téléphone : le panneau garde son cadre, 24 px de
+     rembourrage, tout sur une colonne */
+  .offre {
     margin-top: 40px;
-    padding-top: 24px;
   }
-  .origination-tete {
-    display: block;
+  .offre-haut {
+    row-gap: 28px;
+    padding: 24px 24px 28px;
   }
-  .origination-titre {
+  .offre-titre {
     margin-top: 6px;
     font-size: 36px;
   }
-  .origination-texte {
-    margin-top: 16px;
-    font-size: 17px;
+  .offre-prix {
+    margin-top: 22px;
+    padding-top: 20px;
   }
-  /* les quatre valeurs s'empilent sur filets, entre deux filets */
-  .valeurs {
-    margin-top: 20px;
-    display: block;
-    border-bottom: 1px solid var(--filet);
+  .offre-prix-valeur {
+    font-size: 28px;
   }
-  .valeur {
-    padding: 20px 0;
-    border-top: 1px solid var(--filet);
+  .gain {
+    font-size: 16px;
+    padding: 11px 0;
   }
-  .valeur-grande {
+  .gain-coche {
     margin-top: 4px;
-    font-size: 26px;
   }
-  .valeur-texte {
+  .offre-bas {
+    padding: 24px 24px 28px;
+  }
+  .termes {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 18px;
+  }
+  .terme dd {
+    font-size: 15px;
+  }
+  /* le mandat : une case par ligne, toutes au bord du cadre */
+  .tableau {
+    margin-top: 40px;
+  }
+  .case,
+  .case-tete {
+    grid-column: span 12;
+    padding: 20px 0 24px;
+  }
+  .rangee .case + .case,
+  .rangee-tete .case:nth-child(3) {
+    padding-left: 0;
+  }
+  .case-texte {
+    margin-top: 12px;
+    font-size: 16px;
+  }
+  .case-cle {
+    margin-top: 10px;
+    font-size: 20px;
+  }
+  .case-petit {
     margin-top: 8px;
   }
-  .mandat {
-    margin-top: 44px;
-    padding-top: 20px;
-    display: block;
+  .case-seul {
+    margin-top: 10px;
+    font-size: 16px;
   }
   .mandat-titre {
     margin-top: 6px;
     font-size: 24px;
-  }
-  .mandat-texte {
-    margin-top: 12px;
-    font-size: 16px;
   }
   .conditions-note {
     margin-top: 36px;

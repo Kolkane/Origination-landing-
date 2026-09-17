@@ -18,7 +18,7 @@ export default function Hero() {
   return (
     <section className="hero">
       <link rel="preload" as="image" href={m.posterHero} />
-      <VideoHero src={m.videoHero} srcMobile={m.videoHeroMobile} poster={m.posterHero} />
+      <VideoHero src={m.videoHero} poster={m.posterHero} />
       <div className="hero-voile" aria-hidden="true" />
       <Entete cibleContenu="#service" />
       <div className="hero-bas">

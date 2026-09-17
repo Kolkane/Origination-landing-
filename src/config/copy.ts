@@ -307,72 +307,107 @@ export const copy = typoDeep({
   conditions: {
     titre: "Conditions",
     intro:
-      "Deux façons de travailler ensemble. Les montants sont chiffrés au devis, avant signature, après mesure de votre périmètre.",
+      "Deux façons de travailler ensemble : l’origination, en continu, et le mandat de recherche, à la mission.",
+    /* v82 (arbitrage Vincent, 17/09/2026), troisième passage : L'OFFRE.
+       Les quatre grandes valeurs de la planche, puis une feuille de
+       conditions, puis un tableau réglé ont été essayés : « toujours
+       difficile à lire ». La section fait écho à une section de prix, et
+       une section de prix a un code que tout le monde lit sans effort :
+       le titre, le prix, ce que vous obtenez, les conditions. Il ne
+       s'applique qu'à l'origination ; le mandat reste en tableau.
+       Les gains sont des faits déjà publiés, redits à l'indicatif ; les
+       conditions reprennent les phrases de l'offre publiée du 17/09 et du
+       v81. « Au devis » n'est écrit qu'une fois en grand, à la place du
+       prix, et n'est plus répété ailleurs qu'où la règle l'exige. */
     origination: {
       libelle: "En continu",
       titre: "L’origination",
-      texte:
-        "Votre périmètre est tenu sous veille. Chaque dossier vous est livré dès qu’il est vérifié. Le volume du périmètre est mesuré et annoncé au devis, avant tout engagement. L’exclusivité vaut pour un client, sur un périmètre, pendant une durée fixée au devis.",
-      valeurs: [
+      montants: {
+        libelle: "Montants",
+        valeur: "Au devis",
+        texte: "Chiffrés avant signature, après mesure de votre périmètre.",
+      },
+      lien: { label: "Prendre rendez-vous", href: "/#contact" },
+      gainsTitre: "Ce que vous recevez",
+      gains: [
+        "Votre périmètre tenu sous veille, en continu.",
+        "Chaque dossier d’approche livré dès qu’il est vérifié.",
+        "Le volume de votre périmètre mesuré et annoncé avant tout engagement.",
+        "Un premier mois pour juger sur pièces.",
+        "Votre périmètre réservé à un seul cabinet.",
+        "Un mois sans dossier livré n’est pas facturé.",
+      ],
+      termesTitre: "Les conditions",
+      termes: [
         {
-          libelle: "Pour commencer",
-          valeur: "Un mois",
-          texte:
-            "Un premier mois pour juger sur pièces, proposé seulement si la mesure de votre périmètre montre des dossiers à livrer.",
+          libelle: "Périmètre",
+          texte: "Défini ensemble au rendez-vous, mesuré au devis.",
         },
         {
-          libelle: "Ensuite",
-          valeur: "Trois mois",
+          libelle: "Engagement",
           texte:
-            "Des périodes de trois mois, résiliables à chaque échéance avec un mois de préavis.",
+            "Un mois pour commencer, si la mesure montre des dossiers à livrer ; puis des périodes de trois mois.",
         },
-        /* v81 : facturé au mois, un mois sans dossier livré n'est pas facturé ;
-           l'exclusivité est remontée dans le texte de l'origination (un client,
-           un périmètre, une durée fixée au devis) pour garder quatre valeurs. */
         {
-          libelle: "Facturation",
-          valeur: "Au mois",
-          texte: "Un mois sans dossier livré n’est pas facturé.",
+          libelle: "Résiliation",
+          texte: "À chaque échéance, avec un mois de préavis.",
+        },
+        /* v81 : facturé au mois ; le mois sans dossier livré est dans les gains */
+        { libelle: "Facturation", texte: "Au mois." },
+        {
+          libelle: "Exclusivité",
+          texte: "Pour un client, sur un périmètre, pendant une durée fixée au devis.",
         },
         /* la seule mention du premier contact sur le site, et elle est
            commerciale : qui contacte, et comment, se décide au devis
            (arbitrage Vincent, 17/09/2026) */
         {
           libelle: "Premier contact",
-          valeur: "Au devis",
           texte:
             "Qui contacte les dirigeants, et selon quelles modalités, se décide ensemble à la signature.",
         },
       ],
     },
+    /* le mandat de recherche reste en tableau (arbitrage Vincent, 17/09/2026) */
     mandat: {
       libelle: "À la mission",
       titre: "Le mandat de recherche",
-      texte: `Lorsqu’un mandat de recherche arrive au cabinet, ${brand.MARQUE} ${brand.SUFFIXE} constitue, selon vos critères, une liste de sociétés vérifiées, livrée à la date convenue. Rémunération fixée au devis, à la mission. Hors périmètres déjà sous exclusivité.`,
+      texte: `Lorsqu’un mandat de recherche arrive au cabinet, ${brand.MARQUE} ${brand.SUFFIXE} constitue, selon vos critères, une liste de sociétés vérifiées, livrée à la date convenue.`,
+      lignes: [
+        { libelle: "Rémunération", cle: "À la mission", texte: "Fixée au devis." },
+        {
+          libelle: "Périmètres",
+          cle: "Hors exclusivité",
+          texte: "Les périmètres déjà réservés à un client ne sont pas concernés.",
+        },
+      ],
     },
     note: `${brand.MARQUE} ${brand.SUFFIXE} n’intervient pas dans les opérations : ni conseil, ni négociation.`,
   },
-  /* V80 · À PROPOS. Le portrait, deux paragraphes, l'identité juridique.
-     Les crochets de la planche ([Raison sociale], [Adresse du siège]) sont
-     des EMPLACEMENTS : le composant lit brand.ENTITY. Le PARCOURS du
-     fondateur est une chaîne vide, non affichée tant qu'elle l'est : la
-     planche en donne la place, pas le texte. Le nom du fondateur vit ici
-     et nourrit le JSON-LD Person (schema.ts). */
+  /* V80 · À PROPOS. Le portrait, deux paragraphes, les coordonnées.
+     v82 (arbitrage Vincent, 17/09/2026) : la section parle du fondateur,
+     pas de l'entité ; la société (raison sociale, SIREN) et le siège
+     sortent des lignes, ils sont aux mentions légales. Restent le
+     téléphone, l'email et LinkedIn. Le PARCOURS, vide depuis la planche,
+     reçoit le paragraphe de Vincent, mot pour mot ; « plus d'un an » est
+     une durée en lettres, comme « un mois ». Toute la section est à la
+     première personne (second passage, arbitrage Vincent).
+     Le nom du fondateur vit ici et nourrit le JSON-LD Person (schema.ts). */
   apropos: {
     titre: "À propos",
     nom: FONDATEUR,
     portraitAlt: `Portrait de ${FONDATEUR}, fondateur d’${brand.MARQUE} ${brand.SUFFIXE}`,
     legende: `${FONDATEUR}, fondateur`,
-    texte: `${brand.MARQUE} ${brand.SUFFIXE} a été fondé par ${FONDATEUR}, entre Paris et Bayonne. Il conduit lui-même les échanges avec les cabinets et la vérification des dossiers.`,
-    parcours: "",
+    /* v82, second passage (arbitrage Vincent, 17/09/2026) : toute la
+       section à la première personne. Le premier paragraphe se réduit à
+       la présentation ; « il conduit lui-même les échanges et la
+       vérification » est parti, le parcours le dit déjà (« je vérifie
+       chaque dossier », « un seul interlocuteur »). Le nom ne figure
+       plus dans le texte : il est sous le portrait et dans le JSON-LD. */
+    texte: `J’ai fondé ${brand.MARQUE} ${brand.SUFFIXE}, entre Paris et Bayonne.`,
+    parcours:
+      "Je construis des produits de données depuis plus d’un an. En travaillant auprès de conseillers en gestion de patrimoine, j’ai vu le temps que coûte le repérage des sociétés à approcher. J’ai écrit le programme qui lit les registres à l’échelle nationale et je vérifie chaque dossier avant de vous le livrer. Vous avez un seul interlocuteur, du premier échange à la livraison.",
     identite: {
-      societe: "Société",
-      /* composés ici et non dans le JSX : la règle des insécables de
-         typo.ts passe sur la ligne entière, « SIREN » reste collé à son
-         numéro comme aux mentions légales */
-      societeValeur: `${brand.ENTITY.raisonSociale}, SIREN ${brand.ENTITY.siren}`,
-      siege: "Siège",
-      siegeValeur: `${brand.ENTITY.adresse}, ${brand.ENTITY.codePostal} ${brand.ENTITY.ville}`,
       telephone: "Téléphone",
       email: "Email",
       linkedin: "LinkedIn",

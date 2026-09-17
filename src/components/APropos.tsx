@@ -2,10 +2,12 @@ import { brand } from "@/config/brand";
 import { copy } from "@/config/copy";
 import { grand } from "@/config/typo";
 
-/* V80 · À PROPOS. Le portrait à gauche, le titre, le texte et l'identité
-   juridique à droite. L'identité est LUE dans brand.ts : les crochets de
-   la planche étaient des emplacements. Le parcours du fondateur est une
-   chaîne vide dans copy.ts et n'est pas rendu tant qu'elle l'est.
+/* V80 · À PROPOS. Le portrait à gauche, le titre, les deux paragraphes et
+   les coordonnées à droite. v82 (arbitrage Vincent, 17/09/2026) : la
+   société et le siège ne sont plus dans les lignes, la section parle du
+   fondateur, l'entité est aux mentions légales ; restent téléphone, email
+   et LinkedIn, lus dans brand.ts. Le parcours est rendu dès que copy.ts
+   le remplit, ce qui est le cas depuis la v82.
    Sur téléphone la planche met le titre AVANT le portrait : les trois
    blocs sont donc des enfants directs de la grille, placés par zones sur
    ordinateur et laissés dans l'ordre du DOM sur téléphone. */
@@ -33,14 +35,6 @@ export default function APropos() {
           <p className="apropos-texte">{a.texte}</p>
           {a.parcours ? <p className="apropos-texte">{a.parcours}</p> : null}
           <dl className="apropos-identite">
-            <div className="apropos-ligne">
-              <dt>{a.identite.societe}</dt>
-              <dd>{a.identite.societeValeur}</dd>
-            </div>
-            <div className="apropos-ligne">
-              <dt>{a.identite.siege}</dt>
-              <dd>{a.identite.siegeValeur}</dd>
-            </div>
             <div className="apropos-ligne">
               <dt>{a.identite.telephone}</dt>
               <dd>

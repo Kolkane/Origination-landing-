@@ -3,32 +3,31 @@
 import { useEffect, useRef } from "react";
 
 /* V80 · LA VIDÉO DU HERO. Le poster est l'élément LCP : il est dans le
-   HTML (attribut poster) et préchargé depuis Hero.tsx ; la vidéo n'a ni
-   autoplay ni source dans le HTML. C'est ce composant qui, une fois et
-   avant de lancer la lecture, choisit la source d'après la largeur de
-   l'écran : sous 761 px, le recadrage portrait de scripts/video-mobile.mjs
-   (626 × 834, la bande que object-fit: cover montre de toute façon,
-   402 Ko), au-dessus le clip entier (1,68 Mo). Même poster dans les deux
-   cas. Le choix n'est pas refait à la rotation : une vidéo qui recharge
-   en cours de boucle serait pire qu'une bande un peu large.
-   Puis play(), muet, seulement si le visiteur n'a pas demandé moins de
-   mouvement ; sous prefers-reduced-motion elle ne démarre jamais, le
-   poster reste, et un changement de préférence en cours de visite est
-   suivi. Sans JavaScript, même résultat : le poster.
+   HTML (attribut poster) et préchargé depuis Hero.tsx.
+   v82 (arbitrage Vincent, 17/09/2026) : RETOUR À LA MÉCANIQUE V78. La
+   source est dans le HTML, avec autoplay et preload="auto" : le
+   navigateur charge le clip dès la réception de la page et le lance
+   lui-même, sans attendre l'hydratation. Le lot 4 bis avait retiré la
+   source du HTML, mis preload="metadata" et fait poser la source par ce
+   composant avant un play() forcé sur un tampon vide : la vidéo
+   saccadait au départ. Le même lot servait sous 761 px un recadrage à
+   626 px et 407 kb/s, agrandi près de deux fois sur un écran de
+   téléphone : pixellisé. Un seul fichier pour tous, 1112 × 834.
+   Ce qui reste à ce composant : forcer muted en propriété (React ne
+   sérialise pas l'attribut, et sans lui l'autoplay est bloqué) et
+   relancer play() au cas où le navigateur a tenté trop tôt ; ne pas
+   lancer sous prefers-reduced-motion, le poster reste, et suivre un
+   changement de préférence en cours de visite.
    Quand le fichier ne charge pas, le hero prend le poster en fond et la
    balise sort de l'image (v56). */
-type Props = { src: string; srcMobile: string; poster: string };
+type Props = { src: string; poster: string };
 
-export default function VideoHero({ src, srcMobile, poster }: Props) {
+export default function VideoHero({ src, poster }: Props) {
   const ref = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
     const video = ref.current;
     if (!video) return;
-    const sansVideo = () => video.closest(".hero")?.classList.add("sans-video");
-    video.addEventListener("error", sansVideo);
-    video.src = window.matchMedia("(max-width: 760px)").matches ? srcMobile : src;
-
     const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
     const appliquer = () => {
       if (mq.matches) {
@@ -40,21 +39,24 @@ export default function VideoHero({ src, srcMobile, poster }: Props) {
     };
     appliquer();
     mq.addEventListener("change", appliquer);
-    return () => {
-      mq.removeEventListener("change", appliquer);
-      video.removeEventListener("error", sansVideo);
-    };
-  }, [src, srcMobile]);
+    return () => mq.removeEventListener("change", appliquer);
+  }, []);
+
+  const sansVideo = () => ref.current?.closest(".hero")?.classList.add("sans-video");
 
   return (
     <video
       ref={ref}
       className="hero-video"
+      autoPlay
       muted
       loop
       playsInline
-      preload="metadata"
+      preload="auto"
       poster={poster}
-    />
+      onError={sansVideo}
+    >
+      <source src={src} type="video/mp4" onError={sansVideo} />
+    </video>
   );
 }

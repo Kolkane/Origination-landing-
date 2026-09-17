@@ -1331,9 +1331,14 @@ sur une hauteur ni une largeur de texte, qui se remesurent sur le build.
   trait, sans cadre ni fond). « Le dossier d'approche » (bande noire,
   description, couverture cliquable, bouton qui ouvre le dossier en popup).
   « Méthode » (trois étapes numérotées, numéros en vin). « Conditions »
-  (l'origination sous un filet vert épais avec quatre grandes valeurs, le
-  mandat de recherche en dessous sous un filet fin). « À propos » (portrait,
-  texte, coordonnées légales). « Analyses » (trois colonnes, sans date).
+  (l'origination sous un filet vert épais, le mandat de recherche en
+  dessous sous un filet fin ; depuis la v82, l'origination en panneau
+  d'offre, titre, « Au devis », six gains cochés et six termes, le mandat
+  en tableau réglé, et non plus en quatre grandes valeurs). « À
+  propos » (portrait,
+  texte, parcours du fondateur et coordonnées ; la société et le siège en
+  sont sortis à la v82, ils sont aux mentions légales). « Analyses »
+  (trois colonnes, sans date).
   « Prendre rendez-vous » (bande verte, seul bouton commercial du site,
   « Choisir un créneau »). Pied de page noir avec l'emblème clair.
 - LE HERO. public/imbrin.mp4 avec public/imbrin-poster.jpg, autoplay muet en
@@ -1348,6 +1353,14 @@ sur une hauteur ni une largeur de texte, qui se remesurent sur le build.
   plus tant qu'il est ouvert. L'arbitrage v64 (hero excentré, texte aux bords
   de l'écran) survit dans la planche : 48 px de bord contre 48 px de padding
   dans un conteneur de 1200 px pour les sections.
+  v82 (arbitrage Vincent, 17/09/2026, après la mise en ligne) : SUR TROIS
+  POINTS LE HERO S'ÉCARTE DE LA PLANCHE, voir « RETOUCHES v82 » dans les
+  lots. Le titre fait 48 px sur deux lignes (30 à 33 px sur téléphone),
+  coupé après « sell-side », et le bloc de texte remonte de 52 px ; les
+  éléments apparaissent l'un après l'autre comme en V78, sauf le titre,
+  visible d'emblée (le LCP l'exige, voir les lots) ; la vidéo est un
+  seul fichier, chargé et lancé par le HTML. Le voile uniforme, l'absence
+  de zoom et de filtre ne changent pas.
 - L'EMBLÈME. public/emblem-encre.png (traits sombres, pour les fonds clairs) et
   public/emblem-clair.png (traits clairs, pour les fonds sombres) remplacent
   logo-imbrin.png et logo-dossier.png dans les composants. Les anciens
@@ -1642,6 +1655,130 @@ sur une hauteur ni une largeur de texte, qui se remesurent sur le build.
   .next/server/middleware-manifest.json, sommées après gzip. La question
   v56 (sortir du runtime Edge, limite 50 Mo) reste ouverte, ce n'est pas
   le soir d'une mise en ligne qu'on la tranche.
+- RETOUCHES v82, LE HERO (arbitrage Vincent, 17/09/2026, sur le site en
+  ligne, branche v82). Vincent trouvait le texte « dans le coin, en petit »
+  et la vidéo saccadée et pixellisée, alors qu'elle était parfaite en V78.
+  LA VIDÉO, d'abord, et la cause est double. Le lot 4 bis avait retiré la
+  source du HTML (preload="metadata", source posée par VideoHero.tsx après
+  l'hydratation, puis play() forcé sur un tampon vide) : c'est la saccade
+  au départ. Et il servait sous 761 px un recadrage de 626 px de large à
+  407 kb/s, agrandi près de deux fois sur un écran de téléphone : c'est la
+  pixellisation. RETOUR À LA MÉCANIQUE V78 : la source dans le HTML, avec
+  autoplay, muted et preload="auto", un seul fichier (1112 × 834,
+  1670 kb/s, 8 s) pour tous les écrans ; le composant ne garde que le
+  muted forcé, le play() de rattrapage, prefers-reduced-motion et le
+  repli poster. La variante mobile, son script (scripts/video-mobile.mjs,
+  ffmpeg-static) et brand.MEDIAS.videoHeroMobile n'ont plus d'emploi. Ce
+  qu'on rend au passage : le gain Lighthouse mobile du lot 4 bis, mesuré
+  ci-dessous ; la vidéo passe avant le score.
+  LE TITRE : même texte, 48 px en 500 sur deux lignes (la planche : 34 px
+  sur une ligne), le bloc remonté de 52 px au-dessus de la légende, le
+  paragraphe inchangé à 480 px. La coupure est fixée en em, pas en pixels :
+  « pour les cabinets M&A » mesure 9,83 em et « Origination sell-side
+  pour » 10,88 em, donc max-width 10,3 em coupe après « sell-side » à toute
+  taille. Sur téléphone, clamp(30px, 8.5vw, 33px) : deux lignes de 360 à
+  430 px de large, mesuré sur le build (à 36 px, trois lignes à 390). À
+  remesurer si le titre change.
+  L'APPARITION SÉQUENCÉE, reprise de la V78 : marque et navigation à
+  0,15 s, paragraphe 0,55, lien 0,75, légende 1,4 s, 1,1 s chacun, en
+  CSS pur (@keyframes apparition, « both »), sans classe posée par
+  JavaScript ; rien sous prefers-reduced-motion ; le lien d'évitement
+  n'est pas animé. LE TITRE N'EST PAS ANIMÉ, ET C'EST UNE RÈGLE : le
+  poster et la vidéo couvrent tout l'écran et Chrome ne les compte pas
+  pour le LCP ; le titre est le seul candidat, et un élément qui naît à
+  opacité 0 n'est jamais retenu. Mesuré sur le build : titre animé,
+  Lighthouse NO_LCP et performance 0 ; titre visible d'emblée, 98 avec le
+  LCP sur le h1 à 2,3 s, la référence du lot 5. La vidéo revenue dans le
+  HTML ne coûte donc rien au score. L'en-tête est visé à travers .hero
+  pour que l'animation ne se rejoue ni au passage en fixe ni au retour en
+  haut.
+  Les interdits du hero V80 tiennent : voile uniforme, ni dégradé, ni
+  zoom, ni filtre ; le retour de l'étalonnage et du voile en dégradé de la
+  V78 n'a pas été demandé.
+- RETOUCHES v82, LES CONDITIONS (arbitrage Vincent, 17/09/2026, branche
+  v82, trois passages). Vincent : « du grand n'importe quoi, en
+  disposition comme en compréhension ; l'objectif est de comprendre, un
+  rendu original mais sobre ». Le diagnostic : les quatre grandes valeurs
+  de la planche mettaient sur le même plan deux durées, une règle de
+  facturation et une décision reportée, on n'y lisait pas le déroulé ;
+  l'intro annonçait « deux façons de travailler ensemble » mais
+  l'origination était mise en scène comme un titre et le mandat comme
+  une note ; « au devis » revenait cinq fois. Et l'origination pèse bien
+  plus que le mandat : la hiérarchie doit se voir.
+  PROCÈS-VERBAL DES ESSAIS. (1) La feuille de conditions (aa34971) : un
+  term sheet, une ligne par point ; lisible, « trop simpliste ». (2) Le
+  tableau réglé (ec2566e, puis d519931 avec une clé dans chaque case) :
+  une grille de douze colonnes dessinée par des filets, l'origination en
+  case de tête avec ses durées en grand ; « stylé » mais « toujours
+  difficile à lire », l'œil n'a pas de parcours dans une grille. Deux
+  autres directions maquettées et écartées : la ligne du temps, la
+  colonne fixe à six énoncés numérotés (captures A, B, F, G dans
+  V80-captures/v82-conditions). Les icônes ont été écartées au passage :
+  la charte n'en tolère qu'une rangée, celle du service, et des pictos
+  sur des conditions commerciales sont le code du tableau de prix SaaS.
+  FORME RETENUE, L'OFFRE (troisième passage, à la demande de Vincent :
+  « une section type pricing, un tableau de gains avec les conditions,
+  lisible, sans friction », pour l'origination seule). Une section de
+  prix a un code que tout le monde lit sans effort : LE TITRE, LE PRIX,
+  CE QUE VOUS OBTENEZ, LES CONDITIONS. L'origination est un seul
+  panneau, filet vert de 3 px en tête et filet fin #C9D0CC autour (celui
+  du bord de la couverture ; un panneau unique, pas une grille de
+  cartes). À gauche : « En continu », le titre à 46 px, puis à la place
+  du prix « Montants · Au devis » en vert à 34 px, « Chiffrés avant
+  signature, après mesure de votre périmètre », et le pas suivant en
+  lien texte souligné de vin, « Prendre rendez-vous », vers la bande
+  (#contact). À droite : « Ce que vous recevez », six gains cochés à
+  18 px en encre, un filet entre les lignes ; LA COCHE est un SVG inline
+  de 18 px au trait dans le vert, un marqueur de liste et non une icône,
+  aria-hidden. En pied du panneau, sous un filet : « Les conditions »,
+  six termes sur trois colonnes, libellé gris et condition en encre :
+  périmètre, engagement, résiliation, facturation, exclusivité, premier
+  contact. Sous 1000 px le panneau empile ses deux colonnes et les
+  termes vont par deux ; sous 761 px tout sur une colonne, 24 px de
+  rembourrage. LE MANDAT DE RECHERCHE RESTE EN TABLEAU RÉGLÉ (Vincent :
+  « qu'on va garder comme c'est ») : case de tête à 28 px et deux cases
+  avec leur clé (« À la mission », « Hors exclusivité »), sous le filet
+  d'encre fin. La note « ni conseil, ni négociation » ne bouge pas.
+  LES TEXTES : les six gains sont des faits déjà publiés, redits à
+  l'indicatif (veille en continu, dossier livré dès qu'il est vérifié,
+  volume mesuré et annoncé avant tout engagement, premier mois sur
+  pièces, périmètre réservé à un seul cabinet, mois sans dossier livré
+  non facturé) ; les termes reprennent les phrases de l'offre publiée et
+  du v81, le périmètre « défini ensemble au rendez-vous, mesuré au devis »
+  reprend la règle v15. L'intro devient « Deux façons de travailler
+  ensemble : l'origination, en continu, et le mandat de recherche, à la
+  mission. » : la phrase sur les montants est partie à la place du prix.
+  Vérifié sur le HTML produit : six gains, six termes, une seule mention
+  du premier contact, aucune de retainer, fee, honoraires, protection,
+  article 14, aucun tiret, aucun mot proscrit. Captures 1440, 900 et 390
+  (conditions-offre-*) dans V80-captures/v82-conditions.
+- RETOUCHES v82, À PROPOS (arbitrage Vincent, 17/09/2026, branche v82).
+  La section parle du fondateur, pas de l'entité : les lignes « Société »
+  (raison sociale, SIREN) et « Siège » sortent des coordonnées, elles
+  sont aux mentions légales et n'ont rien à faire ici. Restent téléphone,
+  email et LinkedIn, lus dans brand.ts. Le PARCOURS, emplacement vide
+  depuis la planche, reçoit le paragraphe de Vincent, mot pour mot, à la
+  première personne : « Je construis des produits de données depuis plus
+  d'un an. En travaillant auprès de conseillers en gestion de patrimoine,
+  j'ai vu le temps que coûte le repérage des sociétés à approcher. J'ai
+  écrit le programme qui lit les registres à l'échelle nationale et je
+  vérifie chaque dossier avant de vous le livrer. Vous avez un seul
+  interlocuteur, du premier échange à la livraison. » « Plus d'un an » est
+  une durée en lettres, comme « un mois », et ne contredit pas la liste
+  blanche des chiffres. SECOND PASSAGE : le premier paragraphe était à
+  la troisième personne (« a été fondé par… Il conduit lui-même… »), le
+  second à la première ; Vincent a laissé le choix entre des guillemets
+  et une seule voix, « prends une décision ». TOUTE LA SECTION EST À LA
+  PREMIÈRE PERSONNE : c'est une page de présentation sous un portrait et
+  un nom, des guillemets en auraient fait une citation rapportée sur son
+  propre site. Le premier paragraphe se réduit à « J'ai fondé Imbrin
+  Research, entre Paris et Bayonne. » ; « il conduit lui-même les
+  échanges et la vérification » est parti, le parcours le dit déjà. Le
+  nom ne figure plus dans le texte, il est sous le portrait, dans l'alt
+  et dans le JSON-LD Person. Vérifié sur le HTML
+  produit : ni SIREN de l'entité ni adresse du siège sur l'accueil, le
+  paragraphe présent, aucun tiret. Captures 1440 et 390 dans
+  V80-captures/v82-apropos.
 - MÉTHODE DU CHANTIER : cinq lots, un commit par lot, un rapport court et une
   validation entre chaque. 0 préparation (emblèmes, Hanken, tokens, charte) ;
   1 hero, en-tête, pied de page ; 2 service, dossier et popup, méthode ;
@@ -1672,6 +1809,13 @@ de « Pendant le contrat · Un seul cabinet » ; l'exclusivité s'écrit dans le
 bloc, « pour un client, sur un périmètre, pendant une durée fixée au devis » ; la
 quatrième valeur reste « Premier contact · Au devis ». Aligné sur la page « Comment
 je travaille » remise à un cabinet le 18/09/2026.
+COMPLÉMENT v82 (arbitrage Vincent, 17/09/2026) : les « grandes valeurs » n'existent
+plus ; l'origination est un PANNEAU D'OFFRE (titre, « Au devis » à la place du prix,
+six gains cochés, six termes) et le mandat un tableau réglé (voir « RETOUCHES v82,
+LES CONDITIONS » dans les lots V80). Le fond ne change pas : la
+mesure au devis, un mois, trois mois, facturation au mois, exclusivité, premier
+contact au devis pour l'origination ; rémunération à la mission et périmètres hors
+exclusivité pour le mandat. Ce complément ne touche qu'à la forme.
 RESTENT EN VIGUEUR : les règles de vocabulaire de l'offre v15 (« zone »,
 « verticale », « abonnement », « cellule » proscrits, le livrable s'appelle
 « dossier d'approche ») et l'interdit de toute promesse de volume ; la
