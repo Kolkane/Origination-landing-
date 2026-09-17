@@ -345,8 +345,7 @@ export const copy = typoDeep({
         },
         {
           libelle: "Engagement",
-          texte:
-            "Un mois pour commencer, si la mesure montre des dossiers à livrer ; puis des périodes de trois mois.",
+          texte: "Un mois pour commencer ; puis des périodes de trois mois.",
         },
         {
           libelle: "Résiliation",
