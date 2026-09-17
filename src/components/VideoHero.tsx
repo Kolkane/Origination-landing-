@@ -3,24 +3,32 @@
 import { useEffect, useRef } from "react";
 
 /* V80 · LA VIDÉO DU HERO. Le poster est l'élément LCP : il est dans le
-   HTML (attribut poster) et préchargé depuis Hero.tsx ; la vidéo n'est
-   pas en preload="auto", elle ne charge que ses métadonnées tant que rien
-   ne la lance. Pas d'attribut autoplay non plus : c'est ce composant qui
-   appelle play(), muet, et seulement si le visiteur n'a pas demandé moins
-   de mouvement. Sous prefers-reduced-motion elle ne démarre jamais, le
+   HTML (attribut poster) et préchargé depuis Hero.tsx ; la vidéo n'a ni
+   autoplay ni source dans le HTML. C'est ce composant qui, une fois et
+   avant de lancer la lecture, choisit la source d'après la largeur de
+   l'écran : sous 761 px, le recadrage portrait de scripts/video-mobile.mjs
+   (626 × 834, la bande que object-fit: cover montre de toute façon,
+   402 Ko), au-dessus le clip entier (1,68 Mo). Même poster dans les deux
+   cas. Le choix n'est pas refait à la rotation : une vidéo qui recharge
+   en cours de boucle serait pire qu'une bande un peu large.
+   Puis play(), muet, seulement si le visiteur n'a pas demandé moins de
+   mouvement ; sous prefers-reduced-motion elle ne démarre jamais, le
    poster reste, et un changement de préférence en cours de visite est
    suivi. Sans JavaScript, même résultat : le poster.
    Quand le fichier ne charge pas, le hero prend le poster en fond et la
-   balise sort de l'image (v56 : un média en échec laisse un cadre vide
-   ou une icône cassée selon le navigateur). */
-type Props = { src: string; poster: string };
+   balise sort de l'image (v56). */
+type Props = { src: string; srcMobile: string; poster: string };
 
-export default function VideoHero({ src, poster }: Props) {
+export default function VideoHero({ src, srcMobile, poster }: Props) {
   const ref = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
     const video = ref.current;
     if (!video) return;
+    const sansVideo = () => video.closest(".hero")?.classList.add("sans-video");
+    video.addEventListener("error", sansVideo);
+    video.src = window.matchMedia("(max-width: 760px)").matches ? srcMobile : src;
+
     const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
     const appliquer = () => {
       if (mq.matches) {
@@ -32,11 +40,11 @@ export default function VideoHero({ src, poster }: Props) {
     };
     appliquer();
     mq.addEventListener("change", appliquer);
-    return () => mq.removeEventListener("change", appliquer);
-  }, []);
-
-  const sansVideo = () =>
-    ref.current?.closest(".hero")?.classList.add("sans-video");
+    return () => {
+      mq.removeEventListener("change", appliquer);
+      video.removeEventListener("error", sansVideo);
+    };
+  }, [src, srcMobile]);
 
   return (
     <video
@@ -47,9 +55,6 @@ export default function VideoHero({ src, poster }: Props) {
       playsInline
       preload="metadata"
       poster={poster}
-      onError={sansVideo}
-    >
-      <source src={src} type="video/mp4" onError={sansVideo} />
-    </video>
+    />
   );
 }

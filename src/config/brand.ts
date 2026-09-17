@@ -16,6 +16,10 @@ export const brand = typoDeep({
     emblemeEncre: "/emblem-encre.png",
     emblemeClair: "/emblem-clair.png",
     videoHero: "/imbrin.mp4",
+    /* le recadrage portrait pour téléphone, produit par npm run
+       video-mobile (scripts/video-mobile.mjs), choisi par VideoHero.tsx
+       sous 761 px */
+    videoHeroMobile: "/imbrin-mobile.mp4",
     posterHero: "/imbrin-poster.jpg",
     portrait: "/portrait-vincent-fournier.webp",
     /* le PDF du spécimen. Le fichier n'existe PAS encore : le lien

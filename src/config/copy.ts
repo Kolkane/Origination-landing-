@@ -151,7 +151,7 @@ export const copy = typoDeep({
     texte:
       "Chaque société retenue fait l’objet d’un dossier écrit, que l’associé lit avant son premier appel : identité, trois exercices de comptes, structure de détention, chronologie datée des actes, angle d’approche, coordonnées avec leur statut, et ce que les sources ne permettent pas d’établir.",
     sous:
-      "Le spécimen est fictif : société, personnes et chiffres sont inventés. En rendez-vous, un dossier réel de votre périmètre est présenté, en version anonymisée.",
+      "Le spécimen est fictif : société, personnes et chiffres sont inventés. En rendez-vous, un dossier complet est parcouru avec vous, page à page.",
     bouton: "Lire le dossier spécimen",
     couverture: {
       marque: `${brand.MARQUE} ${brand.SUFFIXE}`,
@@ -286,7 +286,7 @@ export const copy = typoDeep({
       {
         titre: "La livraison",
         texte:
-          "Le jour de la livraison, la fiche au registre et l’acte sont vérifiés à nouveau. Si un élément déconseille l’approche, par exemple une société déjà conseillée ou filiale d’un groupe, il figure au dossier.",
+          "Le jour de la livraison, l’extrait du registre et l’acte sont vérifiés à nouveau. Si un élément déconseille l’approche, par exemple une société déjà conseillée ou filiale d’un groupe, il figure au dossier.",
       },
     ],
     /* le lien « La méthode en détail » de la planche n'est pas repris
@@ -303,7 +303,10 @@ export const copy = typoDeep({
      Le libellé « Abonnement » de la planche est remplacé par « En
      continu », en miroir de « À la mission » : la section « L'offre v15 »
      de CLAUDE.md proscrit le mot, et la charte prime (arbitrage Vincent,
-     17/09/2026, lot 4). */
+     17/09/2026, lot 4). La carte « Facturation » de la planche (« Un mois
+     sans dossier livré n'est pas facturé ») est SUPPRIMÉE au lot 4 bis :
+     le plancher mensuel est mort avec le modèle au volume (v65), un
+     retainer le contredit. Trois valeurs restent. */
   conditions: {
     titre: "Conditions",
     intro:
@@ -325,11 +328,7 @@ export const copy = typoDeep({
           texte:
             "Un retainer mensuel, un fee à la signature de chaque mandat obtenu sur un dossier livré, et une part des honoraires de succès.",
         },
-        {
-          libelle: "Facturation",
-          valeur: "Au dossier livré",
-          texte: "Un mois sans dossier livré n’est pas facturé.",
-        },
+
         {
           libelle: "Protection",
           valeur: "Vingt-quatre mois",

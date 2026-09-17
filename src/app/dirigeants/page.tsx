@@ -11,6 +11,21 @@ const page = copy.dirigeants;
 export const metadata: Metadata = {
   title: page.metaTitre,
   description: page.chapo,
+  /* V80, lot 4 bis : la page porte SES textes OpenGraph et Twitter. Elle
+     héritait de ceux du layout, c'est-à-dire de la description commerciale
+     du site, sur la seule page qui ne vend rien. */
+  openGraph: {
+    title: page.metaTitre,
+    description: page.chapo,
+    url: "/dirigeants",
+    type: "website",
+    locale: "fr_FR",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: page.metaTitre,
+    description: page.chapo,
+  },
   /* v68 : LE CANONIQUE EST DÉCLARÉ ICI, ET C'EST INDISPENSABLE. Le layout
      pose alternates.canonical = "/" pour tout le site ; sans cette ligne,
      cette page se déclarerait comme une copie de l'accueil et un moteur

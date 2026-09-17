@@ -70,40 +70,31 @@ une correction. À trancher.
 
 ---
 
-## Le plancher mensuel survit hors de la section Offre
-
-**Contradiction vivante sur le site. Une décision suffit à la lever.**
-
-La v65 a retiré le plancher mensuel de la fiche du devis : il appartenait au
-modèle au volume, où un mois passé sous le volume annoncé n'était pas
-facturé. Un retainer mensuel contredit cette promesse.
-
-Deux textes le portent encore, tous deux **hors** de la section Offre, donc
-laissés intacts faute de mandat pour y toucher :
-
-| Où | Ce qui est écrit |
-| --- | --- |
-| Chute du filtre (`copy.ts`, `entonnoir.chute2`) | « Ce qu'il contient est compté au devis, avec un plancher chiffré : un mois qui passe dessous n'est pas facturé. » |
-| Chapô de l'appel final (`copy.ts`, `final.lead`) | « …annoncé au devis, plancher mensuel chiffré. Un mois qui passe sous ce nombre n'est pas facturé. » |
-
-Si le plancher n'existe plus dans le contrat, ces deux phrases sont fausses
-et doivent tomber. S'il survit **à côté** du retainer, alors c'est la fiche
-du devis qu'il faut corriger, pas elles. Question à trancher, puis un commit
-d'une ligne dans chaque cas.
-
----
-
 ## Autres points ouverts
 
 - **Entité juridique.** Les mentions légales affichent encore
   `Jungle.Block Solutions`, avec un commentaire de `brand.ts` annonçant
   qu'une nouvelle entité la remplacera.
-- **Poids de la vidéo du hero.** `public/imbrin.mp4` pèse 1,68 Mo, quatre
-  fois tout le reste réuni, et se charge au premier écran. Un réencodage
-  la ramènerait entre 300 et 500 Ko. Demande un encodeur (ffmpeg).
+- **Poids de la vidéo du hero.** `public/imbrin.mp4` pèse 1,68 Mo et reste
+  servie sur ordinateur. Depuis le lot 4 bis de la V80, les écrans de moins
+  de 761 px reçoivent `public/imbrin-mobile.mp4` (403 Ko, recadrage
+  portrait, `npm run video-mobile`). Un réencodage du clip d'ordinateur
+  reste possible, il n'a pas été demandé.
 - **Largeurs de titre en `ch`.** Quatorze `max-width` de titres restent
   exprimées en `ch` et ont bougé à la bascule typographique de la v55. À
   réancrer en rem une fois les polices jugées sur pièce (alerte v55).
 - **Image OpenGraph.** Retirer le runtime edge la ferait prégénérer au
   build, mais le prérendu casse dans `@vercel/og` sur poste Windows. À
   reprendre sur une branche, où une préview Vercel tranchera (v56).
+- **Conditions : un point à aligner sur la décision du 2026-09-17, en
+  attente de la confirmation du contrat.** Plus aucun fee sur les mandats :
+  la « Protection » (vingt-quatre mois, rémunération due sur tout mandat
+  signé avec une société issue d'un dossier livré) sortirait, et la
+  « Rémunération » perdrait son fee à la signature de chaque mandat ; ce qui
+  reste de sa structure est à réécrire. La page « Comment je travaille »
+  remise à un cabinet le 2026-09-18 porte déjà le nouveau texte ; le site
+  porte encore l'ancien, dans `src/config/copy.ts` (conditions.origination).
+  La reconduction mensuelle du site est aussi à confirmer contre le contrat.
+  La carte « Facturation » et son « un mois sans dossier livré n'est pas
+  facturé » sont partis au lot 4 bis de la V80 (17/09/2026) : le plancher
+  mensuel ne survit plus nulle part sur le site.

@@ -445,6 +445,14 @@ html {
   .hero-legende {
     display: none;
   }
+  /* sur téléphone le bloc de texte couvre les reflets du plumage : une
+     ombre discrète sous les lettres, et rien d'autre, ni dégradé ni voile
+     plus sombre (arbitrage Vincent, lot 4 bis). Mesurée : voir CLAUDE.md. */
+  .hero-texte h1,
+  .hero-texte p,
+  .hero-lien {
+    text-shadow: 0 1px 3px rgba(6, 10, 8, 0.5);
+  }
   .pied {
     padding: 48px 0 32px;
   }
@@ -1222,10 +1230,12 @@ html {
   line-height: 1.6;
   color: var(--gris);
 }
+/* trois valeurs et non quatre : la carte « Facturation » de la planche est
+   partie au lot 4 bis, le plancher mensuel ne survit nulle part */
 .valeurs {
   margin-top: 56px;
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   column-gap: 48px;
 }
 .valeur-grande {

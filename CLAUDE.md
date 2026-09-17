@@ -1486,6 +1486,39 @@ sur une hauteur ni une largeur de texte, qui se remesurent sur le build.
   images, quelques pixels de reflets passent sous 4,5:1 (pire : 1,5:1 à
   5,75 s), sur au plus 2 % de la zone, la médiane restant à 20:1. NON
   CORRIGÉ, sur consigne : captures fournies, arbitrage à rendre.
+- LOT 4 BIS, FAIT LE 17/09/2026 : copy de l'offre, ombre du hero, vidéo
+  mobile. COPY, en application de « L'offre v15 » : la carte
+  « Facturation » (« Un mois sans dossier livré n'est pas facturé ») est
+  SUPPRIMÉE, les trois valeurs restantes passent en grille de trois ; le
+  plancher mensuel ne survit plus nulle part sur le site, l'entrée du
+  BACKLOG est retirée, et les deux textes que la section v15 signalait
+  (chute du filtre, chapô de l'appel final) étaient morts au lot 3 avec
+  leurs sections. La reconduction mensuelle reste celle de la planche, le
+  contrat sera confirmé ; la charte n'est pas touchée. « La fiche au
+  registre » (méthode, étape 3) devient « l'extrait du registre ». La bande
+  du dossier dit « En rendez-vous, un dossier complet est parcouru avec
+  vous, page à page. » /dirigeants porte ses propres description,
+  OpenGraph et Twitter, repris de son chapô.
+  L'OMBRE DU HERO, sous 761 px, sur le seul texte du hero :
+  text-shadow 0 1px 3px rgba(6,10,8,.5), ni dégradé ni voile plus sombre.
+  MESURÉ lettre contre fond (pixels du fond qui touchent un glyphe, texte
+  transparent pour lire le fond sous l'ombre), sur les 13 images
+  relevées au lot 4, vidéo mobile : sans ombre le pire cas est 2,22:1 à
+  5,75 s, avec l'ombre 2,56:1 au même instant ; cinq images restent sous
+  4,5:1 (4,75 à 5,75 s), les huit autres passent, au mieux 14,3:1. La
+  méthode du lot 4 comptait tout pixel de la zone (1,5:1) ; celle-ci ne
+  compte que le bord des lettres, c'est elle qui vaut désormais. Capture
+  du pire cas dans V80-captures/lot4bis. À arbitrer.
+  LA VIDÉO MOBILE : scripts/video-mobile.mjs (ffmpeg-static, dépendance
+  de développement, « npm run video-mobile ») tire de public/imbrin.mp4 un
+  recadrage centré 3:4 en 626 × 834 à la résolution d'origine, H.264
+  yuv420p, sans audio, +faststart, toutes les images gardées :
+  public/imbrin-mobile.mp4, 403 Ko, CRF 33, aq-mode 3. Jugé à trois fois
+  l'échelle : à 33 les points du plumage restent nets et le noir ne se
+  bande pas, à 35 (320 Ko) les points bavent, à 31 on dépasse 500 Ko.
+  VideoHero.tsx choisit la source UNE FOIS, par
+  matchMedia('(max-width: 760px)'), avant de lancer la lecture ; le HTML
+  ne porte plus de source, seulement le poster, commun aux deux.
 - MÉTHODE DU CHANTIER : cinq lots, un commit par lot, un rapport court et une
   validation entre chaque. 0 préparation (emblèmes, Hanken, tokens, charte) ;
   1 hero, en-tête, pied de page ; 2 service, dossier et popup, méthode ;
