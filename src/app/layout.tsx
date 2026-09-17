@@ -61,23 +61,13 @@ export default function RootLayout({
   return (
     <html lang="fr" className={hanken.variable}>
       <head>
-        {/* sans JavaScript, aucun bloc animé ne doit rester invisible :
-            les apparitions au scroll sont un agrément, jamais une condition
-            d'accès au contenu.
-            V80, lot 0 : ce bloc décrit encore les composants de la DA v7
-            (toise, viseur, Reveal). Il meurt avec eux aux lots 2 et 3. */}
+        {/* sans JavaScript, rien ne doit rester inaccessible : ce qu'un
+            script ouvre doit se lire sans lui. V80 : il ne reste qu'un cas,
+            le dossier spécimen dans son <dialog>. */}
         <noscript>
           <style
             dangerouslySetInnerHTML={{
               __html:
-                /* refonte 2026-08 : les sélecteurs .funnel/.step ont disparu
-                   avec les barres de l'entonnoir, la cascade passe par .rev */
-                ".rev,.mask{opacity:1!important;transform:none!important;clip-path:none!important}" +
-                /* v50 : la toise cache ses crans et n'affiche qu'un texte à
-                   la fois ; sans JavaScript, tout se lit : crans posés,
-                   trait tracé, et les cinq textes reprennent le flux au
-                   lieu de s'empiler dans la même cellule */
-                ".cran{opacity:1!important;transform:none!important}.toise-ligne line{stroke-dashoffset:0!important}.toise-scale::after{opacity:1!important}.toise-detail{display:block!important}.td{opacity:1!important;margin-top:10px}" +
                 /* V80 : le dossier spécimen est rendu par le serveur, il est
                    donc dans le HTML ; mais un <dialog> fermé ne s'affiche
                    pas, et sans JavaScript aucun des deux boutons ne peut

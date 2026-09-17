@@ -3,7 +3,9 @@ import { grand } from "@/config/typo";
 
 /* V80 · LA MÉTHODE. Trois étapes numérotées, chacune sous un filet
    d'encre, le numéro en vin : c'est l'un des quatre emplois du vin de la
-   V80. Puis la note et le lien. Les numéros sont aria-hidden, une liste
+   V80. Puis la note. Le lien « La méthode en détail » de la planche
+   n'est pas repris, il pointait sur la section elle-même (arbitrage
+   Vincent, 17/09/2026). Les numéros sont aria-hidden, une liste
    ordonnée est déjà numérotée pour qui l'écoute.
    La planche au pixel : trois colonnes sur ordinateur, une pile sur
    téléphone. */
@@ -25,9 +27,6 @@ export default function Methode() {
           ))}
         </ol>
         <p className="methode-note">{m.note}</p>
-        <a className="lien-vin" href={m.lien.href}>
-          {m.lien.label}
-        </a>
       </div>
     </section>
   );

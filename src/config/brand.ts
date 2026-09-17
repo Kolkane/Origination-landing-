@@ -57,20 +57,3 @@ export const brand = typoDeep({
      blanche des chiffres de la charte qui le décide, pas le confort
      d'un gabarit. */
 } as const);
-
-export type RegionStatus = "disponible" | "en_discussion" | "exclusivite";
-export const regions: { slug: string; nom: string; statut: RegionStatus }[] = typoDeep([
-  { slug: "ile-de-france", nom: "Île-de-France", statut: "disponible" },
-  { slug: "auvergne-rhone-alpes", nom: "Auvergne-Rhône-Alpes", statut: "en_discussion" },
-  { slug: "nouvelle-aquitaine", nom: "Nouvelle-Aquitaine", statut: "disponible" },
-  { slug: "occitanie", nom: "Occitanie", statut: "disponible" },
-  { slug: "provence-alpes-cote-d-azur", nom: "Provence-Alpes-Côte d'Azur", statut: "disponible" },
-  { slug: "grand-est", nom: "Grand Est", statut: "disponible" },
-  { slug: "hauts-de-france", nom: "Hauts-de-France", statut: "disponible" },
-  { slug: "normandie", nom: "Normandie", statut: "disponible" },
-  { slug: "bretagne", nom: "Bretagne", statut: "disponible" },
-  { slug: "pays-de-la-loire", nom: "Pays de la Loire", statut: "en_discussion" },
-  { slug: "centre-val-de-loire", nom: "Centre-Val de Loire", statut: "disponible" },
-  { slug: "bourgogne-franche-comte", nom: "Bourgogne-Franche-Comté", statut: "disponible" },
-  { slug: "corse", nom: "Corse", statut: "disponible" },
-]);

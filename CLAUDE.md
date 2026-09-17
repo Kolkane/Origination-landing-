@@ -1383,6 +1383,42 @@ sur une hauteur ni une largeur de texte, qui se remesurent sur le build.
   pointe sur la section elle-même (#methode), il n'y a pas de page de
   méthode ; porté tel quel. Même question au lot 3 pour « Toutes les
   analyses ».
+- LOT 3, FAIT LE 17/09/2026 : les conditions, à propos, les analyses,
+  prendre rendez-vous, et la suppression des composants morts. L'accueil
+  est désormais entièrement V80, dans l'ordre des planches.
+  CONDITIONS, deux corrections de copy (arbitrage Vincent) : « sans limite
+  de nombre » sort de l'intro de l'origination ; la protection dit « La
+  rémunération reste due sur tout mandat signé avec une société issue
+  d'un dossier livré, contrat en cours ou non. » À PROPOS lit l'identité
+  juridique dans brand.ENTITY, composée dans copy.ts pour que les
+  insécables passent ; le parcours du fondateur est une chaîne vide, non
+  rendue ; le nom du fondateur vit en constante dans copy.ts et nourrit
+  le JSON-LD Person. ANALYSES : trois colonnes, titres et chapeaux de la
+  planche écrits dans analyses.ts (l'article 3 s'intitule désormais
+  « L'origination dans les cabinets de cession », son corps ne change
+  pas), slugs et datePublished intacts, chaque « Lire » ouvre sa page.
+  RENDEZ-VOUS : bande verte, « Choisir un créneau » ouvre le Calendly de
+  brand.ts, seul bouton commercial du site.
+  LIENS SANS PAGE, tranchés : « La méthode en détail » et « Toutes les
+  analyses » ne sont pas repris. Aucun lien ne pointe sur sa propre
+  section. Le premier reviendra avec une vraie page.
+  SUPPRIMÉS, plus rien ne les importait : Entonnoir, NeFaitPas, Faq,
+  BarreAction, Reveal, IconesOffre, CarteFrance, Diamond, Offre,
+  Fondateur, CtaFinal, carte/france-paths.ts ; le balisage FAQPage ;
+  regions et RegionStatus de brand.ts ; les blocs entonnoir, neFaitPas,
+  offre, fondateur, faq, final, barre et carte de copy.ts. Le CSS qui ne
+  servait qu'à eux part avec eux : globals.css passe de 85 à 50 Ko
+  (97 Ko avant le chantier). RESTENT pour le lot 4, parce que les pages
+  intérieures les lisent encore : les tokens v7 de la racine, body, .wrap,
+  .cta, .kicker, .statement, .label, .display, .ap-*, .dir-*, LogoImbrin,
+  et scripts/build-map.mjs qui générait la carte morte.
+  AJOUTÉ, hors planche, à cause de l'en-tête fixe du lot 1 : chaque
+  section cible d'une ancre porte scroll-margin-top de la hauteur de la
+  barre, 63 px mesurés (69 sur téléphone), sinon un saut depuis le menu
+  posait le titre sous la barre. Vu à la comparaison.
+  SIGNALÉ, NON TRANCHÉ : le libellé « Abonnement » au-dessus de
+  « L'origination » est dans la planche ; la section « L'offre v15 » de
+  cette charte proscrit le mot. Porté tel quel, à arbitrer.
 - MÉTHODE DU CHANTIER : cinq lots, un commit par lot, un rapport court et une
   validation entre chaque. 0 préparation (emblèmes, Hanken, tokens, charte) ;
   1 hero, en-tête, pied de page ; 2 service, dossier et popup, méthode ;

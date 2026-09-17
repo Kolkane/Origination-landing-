@@ -5,7 +5,9 @@ import { typoDeep } from "./typo";
    déjà produit une divergence en v13 */
 const CTA = "Réserver un échange";
 
-export type NomIcone = "couverture" | "veille" | "exclusivite";
+/* le fondateur : son nom nourrit À propos, la légende du portrait et le
+   JSON-LD Person. Une seule chaîne, un seul endroit. */
+const FONDATEUR = "Vincent Fournier";
 
 /* v68 · la page /dirigeants. Un bloc porte un intitulé et des paragraphes ;
    celui des trois possibilités porte en plus une liste, dont chaque entrée
@@ -101,15 +103,15 @@ export const copy = typoDeep({
      intro, puis quatre entrées à icône. « icone » nomme le dessin, il
      est rendu par Icones.tsx : aucun fichier, aucune bibliothèque. */
   service: {
-    titre: "Ce que fait Imbrin Research",
+    titre: `Ce que fait ${brand.MARQUE} ${brand.SUFFIXE}`,
     intro:
-      "Repérer les sociétés à approcher avant qu’un processus soit lancé suppose une lecture régulière des registres et des actes, difficile à tenir en interne à côté des dossiers en cours. Imbrin Research assure ce travail pour votre cabinet, sur un périmètre convenu ensemble.",
+      `Repérer les sociétés à approcher avant qu’un processus soit lancé suppose une lecture régulière des registres et des actes, difficile à tenir en interne à côté des dossiers en cours. ${brand.MARQUE} ${brand.SUFFIXE} assure ce travail pour votre cabinet, sur un périmètre convenu ensemble.`,
     entrees: [
       {
         icone: "cabinet",
         titre: "Les cabinets",
         texte:
-          "Cabinets de conseil en cession small-cap et family offices. L’associé traite les dossiers ; Imbrin Research les repère.",
+          `Cabinets de conseil en cession small-cap et family offices. L’associé traite les dossiers ; ${brand.MARQUE} ${brand.SUFFIXE} les repère.`,
       },
       {
         icone: "carte",
@@ -261,100 +263,6 @@ export const copy = typoDeep({
       },
     },
   },
-  /* v15 : « Le constat » et la bande de chiffres fusionnés en un seul geste.
-     L'ancrage national est la seule preuve de marché sourcée à un tiers, il
-     précède l'entonnoir régional qui, lui, est un ordre de grandeur à nous. */
-  entonnoir: {
-    kicker: "Le filtre",
-    titreAvant: "Tout un marché, réduit à votre ",
-    titreItalique: "périmètre",
-    /* v50 : LA TOISE — l'intro absorbe la sortie (la raison de ne pas
-       appeler) et porte seule tout le récit ; le reste est l'instrument. */
-    /* v72 : UN DÉCLENCHEUR, QUATRE LECTURES (backtest national, 14/09/2026).
-       L'acte déposé et daté déclenche la lecture ; périmètre, dirigeant,
-       détention et relais pèsent, ils n'éliminent pas. Le fait daté passe
-       en tête de la toise. Le « 45 ans » est un exemple posé par Vincent
-       dans sa phrase, pas un chiffre mesuré : il vaut par décision. */
-    intro:
-      "Le marché visible est un marché en retard : la valeur est chez ceux qui n’ont rien annoncé. Un déclencheur, quatre lectures. Le déclencheur : un acte déposé, daté, lu. Les lectures : qui dirige, qui détient, qui pourrait prendre la suite, dans le périmètre que vous avez arrêté. Elles pèsent, elles n’éliminent pas. Un dirigeant de 45 ans qui vient de rendre ses titres cessibles est un dossier. Ce qui sort après lecture sort avec sa raison écrite : la raison de ne pas appeler est livrée aussi.",
-    /* l'ancrage porte le SOUS-TOTAL PME, pas les 370 000 tous formats : le
-       marché d'Imbrin, ce sont les 58 000. L'énoncé est fondé sur l'INTENTION
-       déclarée, pas sur l'âge des dirigeants : le critère de l'âge est
-       précisément celui que les travaux du secteur donnent pour mauvais
-       prédicteur de cession. L'écart 370 000 / 130 000 porte sur l'ensemble
-       du marché et n'est jamais rapporté aux 58 000. */
-    ancrage: `Les dirigeants de 58 000 PME comptent transmettre d’ici 2030, sur un marché de 370 000 entreprises. Au rythme actuel, 130 000 aboutiraient.`,
-    ancrageSource: `Bpifrance Le Lab · CCI France · CMA France · C.R.A · 27 novembre 2025 · ≈ 5 000 réponses`,
-    /* refonte 2026-08, second temps : la grammaire « entonnoir » supposait
-       des quantités, il n'y en a plus par décision. Cascade de quatre
-       critères dans la grammaire du dossier A4 : filets fins, label en
-       petites capitales espacées, une phrase en serif par marche. */
-    ariaCriteres: "Les cinq critères du périmètre",
-    /* v50d (texte de Vincent, 27/08) : le terminus est LE DOSSIER —
-       une société qui passe les cinq critères devient un dossier,
-       l'unité du produit, pas une fournée. */
-    finLbl: "Le dossier",
-    /* v72 : le fait daté passe EN TÊTE, c'est lui qui déclenche ; les
-       quatre lectures suivent, et le relais est écrit pour ce qu'il est,
-       une lecture, pas un filtre. « num » n'est plus qu'une clé React
-       depuis la v51, il suit l'ordre. */
-    criteres: [
-      {
-        num: "01",
-        label: "Le fait daté",
-        texte:
-          "Un acte déposé, jamais une intention supposée. C’est lui qui déclenche la lecture.",
-      },
-      {
-        num: "02",
-        label: "Le périmètre",
-        texte:
-          "Région et typologie d’entreprises, arrêtées avec vous. C’est lui que nous mesurons, pas un marché théorique.",
-      },
-      {
-        num: "03",
-        label: "Le dirigeant",
-        texte:
-          "Qui dirige, depuis quand, dans quelle configuration : lu au registre, pas déclaré.",
-      },
-      {
-        num: "04",
-        label: "La détention",
-        texte: "Qui tient le capital, quels mouvements de titres. Lu dans les actes, pas déduit d’une base.",
-      },
-      {
-        num: "05",
-        label: "Le relais",
-        texte: "Qui pourrait prendre la suite, au capital ou aux mandats. Une lecture, pas un filtre.",
-      },
-    ],
-    piedAvant: "Combien dans votre région ? ",
-    piedItalique: "Nous les comptons avant que vous signiez.",
-    /* la chute est pleine largeur, la note passe en corps normal sous
-       elle : fini le flottement bas-droite du pied de section */
-    /* v60 : « et livré avec chaque lot » est retiré. La section « ce que
-       nous ne faisons pas » porte désormais la livraison du taux d’écart,
-       et sa suite, la publication à dix-huit mois. Ici la note dit ce
-       qu’elle est seule à dire : la mesure se fait sur VOTRE périmètre. */
-    note: "Le taux d’écart à la vérification est mesuré sur votre périmètre. Ce qui reste est livré. Rien d’autre.",
-    /* le stock et le flux. Sans cette distinction, un prospect divise le
-       stock par le rythme mensuel, conclut que trois mois lui suffisent, et
-       lit dans la page une invitation à partir à l'échéance de son
-       engagement. Aucun chiffre ici, ni de stock ni de flux : le stock est
-       compté au devis, le flux est constaté. v66 : « le plancher protège »
-       est retiré de ce raisonnement, le plancher mensuel est mort avec le
-       modèle au volume (v65). Ce qui protège désormais, c'est qu'un mois
-       sans dossier livré n'est pas facturé. */
-    /* v45 : « rattrapage » et « veille » sortent du vocabulaire de la
-       section — on parle de LIVRAISONS (arbitrage Vincent, 27/08) */
-    /* v50d (texte de Vincent, 27/08) : plus de « première livraison »
-       ni de fournée de départ — une lecture continue. Le tiret cadratin
-       du brief est transposé en deux-points, règle de charte. */
-    chute1:
-      "Les dossiers sortent un par un, au fur et à mesure que la lecture les trouve : qu’une situation soit en place depuis des mois dans votre périmètre ou qu’elle vienne de basculer. Même filtre, même exigence, même dossier : il n’y a pas de fournée de départ puis un régime de croisière, il y a une lecture continue de votre périmètre.",
-    chute2:
-      "Ce qu’il contient est compté au devis. Et un mois sans dossier livré n’est pas facturé.",
-  },
   /* V80 · LA MÉTHODE, au mot près de la planche : trois étapes
      numérotées sur filets d'encre, une note, un lien. Les numéros
      reviennent (la v51 les avait retirés) : ils sont l'un des quatre
@@ -378,273 +286,113 @@ export const copy = typoDeep({
           "Le jour de la livraison, la fiche au registre et l’acte sont vérifiés à nouveau. Si un élément déconseille l’approche, par exemple une société déjà conseillée ou filiale d’un groupe, il figure au dossier.",
       },
     ],
+    /* le lien « La méthode en détail » de la planche n'est pas repris
+       (arbitrage Vincent, 17/09/2026) : il pointait sur la section
+       elle-même, faute de page. Il reviendra avec une vraie page. */
     note: "Les critères de repérage sont mesurés sur l’historique national des transmissions de PME.",
-    /* le lien de la planche pointe sur la section elle-même : il n'y a
-       pas de page « méthode en détail ». Porté tel quel, signalé au
-       rapport du lot 2, à trancher. */
-    lien: { label: "La méthode en détail", href: "#methode" },
   },
-  /* ============================================================
-     v60 · CE QUE NOUS NE FAISONS PAS. La section avait existé sous le
-     nom « Nos engagements », elle est morte en v52 ; elle revient en
-     bande compacte, une seule rangée, sans paragraphe et sans icône.
-     Le dispositif est la MENTION RAYÉE : un terme barré d'un trait fin
-     en vin, et sous lui la ligne courte qui le remplace. C'est le geste
-     du registre, on ne gomme pas une entrée, on la raye et on écrit à
-     côté. Pas une fiche produit, pas une liste de promesses.
-     Le quatrième item porte le seul engagement que la v59 avait laissé
-     sans domicile : voir le pied.
-     Planche : MAQUETTE-V60-NEFAITPAS.html, qui fait foi.
-     ============================================================ */
-  neFaitPas: {
-    kicker: "Ce que nous ne faisons pas",
-    items: [
-      /* v75 : le remplacement dit les deux moitiés de la mesure, les faits
-         datés et les critères mesurés, et ferme sur ce qui n'est jamais
-         livré. Le mot est la variable de mise en page de cette bande
-         (v60b) : la hauteur se remesure sur le build. */
-      {
-        non: "Scores prédictifs",
-        oui: "Des faits datés, et des critères mesurés. Aucun score livré.",
-      },
-      {
-        non: "Contact du patrimoine privé",
-        /* v63 : le « oui » affirmait un passage par le standard qui n'a
-           jamais eu lieu. Le « non » au-dessus reste vrai, il n'a pas
-           bougé : le patrimoine privé n'est pas ciblé. */
-        oui: "Le dirigeant dans sa fonction, rien d’autre.",
-      },
-      {
-        non: "Données grises",
-        oui: "Registres publics, fournisseurs sous contrat.",
-      },
-      {
-        non: "Chiffres invérifiables",
-        oui: "Ce que nous publions, nous le mesurons.",
-      },
-    ],
-    /* LE SUIVI DES COHORTES REVIENT ICI, et c'est le seul endroit du site
-       qui le porte. L'amendement v59 avait supprimé la question de FAQ qui
-       l'abritait en écrivant « l'engagement ne figure plus nulle part, s'il
-       doit revivre il lui faut un nouvel endroit : il n'en a aucun ».
-       Il en a un. Ne pas le déplacer sans lui en trouver un autre. */
-    pied:
-      "Le taux d’écart de chaque lot est livré au client, et publié ici dès qu’une première cohorte atteint dix-huit mois.",
-  },
-
-  /* v15 · B5 : ce ne sont pas deux offres égales, la structure le dit.
-     L'origination est le produit, le mandat un complément ponctuel. */
-  offre: {
-    kicker: "L’offre",
-    statement: "Deux façons de travailler ensemble",
-    /* la définition gouverne les DEUX offres : elle est en tête de section,
-       pas derrière la seconde où on la lisait comme une clause du mandat */
-    definition: {
-      k: "Un périmètre",
-      texte:
-        "Un périmètre, c’est une région et une typologie d’entreprises, arrêtées avec vous à l’appel et inscrites au devis. Sur ce périmètre, vous êtes seul servi tant que le contrat court. Un second périmètre reste possible.",
-    },
-    principal: {
-      nom: "L’Origination",
-      ancre: "origination",
-      lead: "Nous tenons votre périmètre sous veille : quand la situation d’une société réunit les conditions au registre, le dossier d’approche arrive sur votre bureau, vérifié.",
-      /* v65 : LE PRIX SORT, LA STRUCTURE RESTE. Le site donne désormais la
-         forme de la rémunération et jamais un nombre ni un pourcentage :
-         tout chiffre est renvoyé au devis. Le grand nombre et son « à
-         partir de » sont remplacés par ce principe, et l'arithmétique qui
-         ramenait le mensuel à l'année n'a plus d'objet, faute de mensuel
-         affiché. */
-      principe:
-        "Le prix suit le périmètre. Il est mesuré et annoncé avant tout engagement.",
-      /* v47 : LE DIPTYQUE — le corps en paragraphe devient la FICHE du
-         devis, tabulée sur filets comme une pièce. v65 : la fiche porte
-         désormais périmètre, exclusivité, RÉMUNÉRATION, engagement,
-         PROTECTION et veille. Le plancher en est sorti, il appartenait au
-         modèle au volume ; le grand énoncé du panneau n'est plus « pas de
-         commission » mais la frontière de rôle qui l'a remplacé. */
-      fiche: {
-        rows: [
-          {
-            k: "Périmètre",
-            v: "Une région, une typologie d’entreprises, arrêtés avec vous à l’appel.",
-          },
-          {
-            k: "Exclusivité",
-            v: "Un seul cabinet servi tant que le contrat court.",
-          },
-          /* v65 : les trois composantes de la rémunération, tabulées comme
-             le reste de la fiche. Aucune n'est chiffrée ici : elles le sont
-             au devis, avant signature. */
-          {
-            k: "Rémunération",
-            v: "Trois composantes, chiffrées au devis, avant signature : un retainer mensuel modeste, qui paie l’exclusivité de votre périmètre et la veille ; un fee à la signature de chaque mandat obtenu sur un dossier livré ; une part des honoraires de succès au closing.",
-          },
-          {
-            k: "Engagement",
-            v: "Six mois.",
-          },
-          /* v65 : la protection du dossier livré. Elle survit au contrat,
-             c'est ce qui la rend utile de part et d'autre. */
-          {
-            k: "Protection",
-            v: "Chaque dossier livré reste protégé vingt-quatre mois : un mandat signé avec une société que nous vous avons apportée nous est dû, contrat en cours ou non.",
-          },
-          {
-            k: "Veille",
-            v: "Quand une situation bascule, le dossier suit, vérifié, à date annoncée.",
-          },
-        ],
-        livrableLbl: "Livrable",
-        livrable: "Le dossier d’approche",
-        note: "Le volume de votre périmètre est mesuré et annoncé au devis, avant tout engagement.",
-      },
-    },
-    complement: {
-      nom: "Le mandat de recherche",
-      lead: "Quand un mandat de recherche arrive sur votre bureau, nous l’alimentons à la mission : vos critères, une shortlist de sociétés vérifiées, livrée à la date convenue à la mission.",
-      /* v65 : le montant par mission sort, comme le reste. */
-      prix: "À la mission",
-      metaLigne1: "Rémunération fixée au devis",
-      metaLigne2: "Hors périmètres déjà sous exclusivité",
-    },
-    pied: {
-      /* v65 : « pas de commission sur la transaction, jamais » est MORT, et
-         la phrase qui le suivait l'était avec lui : la rémunération dépend
-         désormais du closing, par la part des honoraires de succès. Le
-         principe qui la remplace n'est pas une promesse de prix, c'est une
-         frontière de rôle, et elle tient : nous apportons le dossier, le
-         cabinet traite l'opération. */
-      fort: "Notre rémunération au succès est déclarée au contrat.",
-      suite:
-        "Nous n’intervenons jamais dans la transaction elle-même : ni conseil, ni négociation. L’information des personnes, le registre d’opposition et l’opt-out sont pris en charge.",
-    },
-    cta: CTA,
-  },
-  /* v52 : la section engagements est supprimée (arbitrage Vincent,
-     27/08) — ses quatre principes vivent ailleurs : scores prédictifs
-     dans la méthode, premier contact et données grises dans la FAQ
-     RGPD, opt-out dans le pied de l'offre, chiffres dans la mesure. */
-  /* v53 : la section mesure est supprimée (arbitrage Vincent, 27/08) —
-     deux de ses trois énoncés étaient devenus des redites (zéro chiffre
-     générique : FAQ ; taux d'écart par lot : note du filtre) et le
-     troisième, le SUIVI DES COHORTES, avait déménagé en FAQ.
-     v59 : CETTE PHRASE N'EST PLUS VRAIE. La question qui le portait, « Que
-     devient un dossier après la livraison ? », est supprimée sur arbitrage
-     du 29/08. Le suivi des cohortes — dossiers suivis jusqu'à leur issue,
-     résultats communiqués échecs compris, publication à dix-huit mois — ne
-     figure donc PLUS NULLE PART sur le site. Ce n'est pas un oubli, c'est
-     une suppression demandée et signalée. Si l'engagement doit revivre, il
-     lui faut un nouvel endroit, il n'en a plus. */
-  /* v15 : composition centrée, seul endroit centré d'une page alignée à
-     gauche de bout en bout. La citation en grand remplace le statement :
-     elle disait déjà « un seul interlocuteur », le dire deux fois à la
-     même échelle aurait fait doublon. */
-  fondateur: {
-    kicker: "Vous parlez au fondateur, pas à un SDR.",
-    portraitAlt: "Vincent Fournier, fondateur",
-    citation:
-      "« Au téléphone comme en livraison, vous avez un seul interlocuteur : celui qui a construit la machine et qui vérifie vos dossiers. »",
-    /* « pipeline industrialisé » surclamait : 73 % des actes sont des scans,
-       la lecture est humaine, et c'est l'argument, pas un aveu. */
-    corps:
-      "La détection est outillée ; la lecture des actes, elle, se fait à la main.",
-    nom: "Vincent Fournier, fondateur",
-    lieu: "entre Paris et Bayonne",
-    /* v57 : le libellé qui annonce le numéro, devenu le terme de la
-       section. « id » et « linkedin » sont partis au pied de page. */
-    appelLbl: "Appelez directement",
-  },
-  faq: {
-    kicker: "Questions fréquentes",
-    statement: "Ce qu’on nous demande avant de signer.",
-    /* v53 : la colonne de gauche du nouveau gabarit porte la note et
-       l'appel — la question absente se pose au rendez-vous */
-    note: "Une question absente ? Elle se pose au premier échange, avec le fondateur.",
-    cta: CTA,
-    /* v27 : les questions traitent ce que le fil de la page ne peut pas
-       aborder. Les sept d'origine redisaient la page, une seule portait une
-       information unique, celle sur le RGPD : elle est conservée.
-       v59 (arbitrage Vincent, 29/08) : de neuf on passe à QUATRE. Sont
-       retirées « qui contacte le dirigeant », « et si un dirigeant refuse
-       d'être recontacté », « sous combien de temps les premiers dossiers »,
-       « que devient un dossier après la livraison » et « pourquoi si peu de
-       chiffres sur ce site ».
-       Vérifié avant de les retirer, et c'est la raison pour laquelle trois
-       de ces suppressions ne coûtent rien : le premier contact adressé à
-       l'entreprise et l'opt-out définitif sont portés par la question RGPD
-       ci-dessous, par le pied de l'offre et par la page Confidentialité ;
-       le délai annoncé au devis est répété dans le filtre, l'offre et la
-       fiche du devis. La quatrième, le SUIVI DES COHORTES, n'avait aucun
-       autre point de chute : il quitte le site, voir la note v59 plus haut.
-       Les details sont fermés au chargement, donc seule la longueur des
-       QUESTIONS pèse sur la hauteur, jamais celle des réponses. */
-    items: [
-      {
-        question: "Que se passe-t-il après les six mois ?",
-        reponse:
-          "Il se reconduit au mois, résiliable avec un mois de préavis.",
-      },
-      {
-        question: "Et si mon périmètre est déjà servi ?",
-        reponse:
-          "Nous vous le disons à l’appel, avant toute proposition. Vous pouvez être prévenu s’il se libère, et un autre périmètre reste ouvert. Le mandat de recherche n’est pas disponible sur un périmètre déjà sous exclusivité.",
-      },
-      {
-        question: "D’où viennent vos données, et est-ce conforme au RGPD ?",
-        reponse:
-          "L’identité, les chiffres et la structure viennent des registres publics français (RNE/INPI, SIRENE, BODACC). Les coordonnées du dirigeant viennent de fournisseurs d’enrichissement B2B, sourcés et contractualisés, et chaque coordonnée livrée porte son statut écrit, vérifiée ou non, aucune donnée grise. Base légale de l’intérêt légitime en B2B, information art. 14 rendue publiquement accessible sur notre page Confidentialité, le dirigeant est contacté en sa qualité de dirigeant, jamais à titre privé ; l’opt-out est définitif et honoré.",
-      },
-      {
-        question: "En quoi est-ce différent d’une base de données ou d’un agrégateur ?",
-        reponse:
-          "Une base affiche des métadonnées : la mention qu’un acte existe, sa date de dépôt. Nous ouvrons l’acte, y compris quand c’est un scan que personne ne lit : la répartition du capital, les conditions suspensives, le motif réel de l’opération. Et quand la lecture dit qu’il ne faut pas appeler, c’est ce que nous livrons.",
-      },
-    
-    ],
-  },
-  /* la section d’accueil et le gabarit des pages article. Les textes des
-     analyses elles-mêmes vivent dans src/config/analyses.ts */
-  analyses: {
-    kicker: "Analyses",
-    titre: "Ce que nous observons du marché de la transmission.",
+  /* V80 · LES CONDITIONS, au mot près de la planche, à deux corrections
+     près (arbitrage Vincent, 17/09/2026) : « sans limite de nombre » sort
+     de l'intro de l'origination, et la protection dit que la rémunération
+     reste due, pas que le mandat l'est. La structure de la rémunération
+     est donnée, jamais un nombre ni un pourcentage (offre v15) : les
+     montants sont renvoyés au devis dans l'intro.
+     SIGNALÉ, NON TRANCHÉ : le libellé « Abonnement » est dans la planche,
+     et la section « L'offre v15 » de CLAUDE.md proscrit le mot. Porté tel
+     quel, à arbitrer. */
+  conditions: {
+    titre: "Conditions",
     intro:
-      "Quelques repères sur la cession de PME, la démographie des dirigeants et le travail d’origination. Sans jargon, sans recette.",
+      "Deux façons de travailler ensemble. Les montants sont chiffrés au devis, avant signature, après mesure de votre périmètre.",
+    origination: {
+      libelle: "Abonnement",
+      titre: "L’origination",
+      texte:
+        "Votre périmètre est tenu sous veille. Chaque dossier vous est livré dès qu’il est vérifié. Le volume du périmètre est mesuré et annoncé au devis, avant tout engagement.",
+      valeurs: [
+        {
+          libelle: "Engagement",
+          valeur: "Six mois",
+          texte: "Puis reconduction mensuelle, résiliable avec un mois de préavis.",
+        },
+        {
+          libelle: "Rémunération",
+          valeur: "Trois composantes",
+          texte:
+            "Un retainer mensuel, un fee à la signature de chaque mandat obtenu sur un dossier livré, et une part des honoraires de succès.",
+        },
+        {
+          libelle: "Facturation",
+          valeur: "Au dossier livré",
+          texte: "Un mois sans dossier livré n’est pas facturé.",
+        },
+        {
+          libelle: "Protection",
+          valeur: "Vingt-quatre mois",
+          texte:
+            "La rémunération reste due sur tout mandat signé avec une société issue d’un dossier livré, contrat en cours ou non.",
+        },
+      ],
+    },
+    mandat: {
+      libelle: "À la mission",
+      titre: "Le mandat de recherche",
+      texte: `Lorsqu’un mandat de recherche arrive au cabinet, ${brand.MARQUE} ${brand.SUFFIXE} constitue, selon vos critères, une liste de sociétés vérifiées, livrée à la date convenue. Rémunération fixée au devis, à la mission. Hors périmètres déjà sous exclusivité.`,
+    },
+    note: `${brand.MARQUE} ${brand.SUFFIXE} n’intervient pas dans les opérations : ni conseil, ni négociation.`,
+  },
+  /* V80 · À PROPOS. Le portrait, deux paragraphes, l'identité juridique.
+     Les crochets de la planche ([Raison sociale], [Adresse du siège]) sont
+     des EMPLACEMENTS : le composant lit brand.ENTITY. Le PARCOURS du
+     fondateur est une chaîne vide, non affichée tant qu'elle l'est : la
+     planche en donne la place, pas le texte. Le nom du fondateur vit ici
+     et nourrit le JSON-LD Person (schema.ts). */
+  apropos: {
+    titre: "À propos",
+    nom: FONDATEUR,
+    portraitAlt: `Portrait de ${FONDATEUR}, fondateur d’${brand.MARQUE} ${brand.SUFFIXE}`,
+    legende: `${FONDATEUR}, fondateur`,
+    texte: `${brand.MARQUE} ${brand.SUFFIXE} a été fondé par ${FONDATEUR}, entre Paris et Bayonne. Il conduit lui-même les échanges avec les cabinets et la vérification des dossiers.`,
+    parcours: "",
+    identite: {
+      societe: "Société",
+      /* composés ici et non dans le JSX : la règle des insécables de
+         typo.ts passe sur la ligne entière, « SIREN » reste collé à son
+         numéro comme aux mentions légales */
+      societeValeur: `${brand.ENTITY.raisonSociale}, SIREN ${brand.ENTITY.siren}`,
+      siege: "Siège",
+      siegeValeur: `${brand.ENTITY.adresse}, ${brand.ENTITY.codePostal} ${brand.ENTITY.ville}`,
+      telephone: "Téléphone",
+      email: "Email",
+      linkedin: "LinkedIn",
+      linkedinLabel: `Profil de ${FONDATEUR}`,
+    },
+  },
+  /* V80 · LES ANALYSES : trois colonnes, sans date, titres et chapeaux
+     lus dans src/config/analyses.ts, qui nourrit aussi les pages
+     d'article. Le lien « Toutes les analyses » de la planche n'est pas
+     repris (arbitrage Vincent, 17/09/2026) : les trois analyses sont déjà
+     affichées, il pointait sur sa propre section. Les quatre dernières
+     clés servent le gabarit des pages d'article, repris au lot 4. */
+  analyses: {
+    titre: "Analyses",
     lire: "Lire",
+    lireAria: "Lire l’analyse : ",
+    kicker: "Analyses",
     retour: "Analyses",
     piedTexte: "C’est exactement ce que nous faisons, pour un cabinet par périmètre.",
     cta: CTA,
   },
-  final: {
-    kicker: "Prochaine étape",
-    statement: "Nous mesurons votre périmètre avant que vous vous engagiez.",
-    lead: "Ce qu’il contient vous est annoncé au devis. Un mois sans dossier livré n’est pas facturé. Trente minutes, avec le fondateur.",
-    cta: CTA,
-    telAvant: "ou appelez directement le ",
-    /* v56 : la seconde voie directe, sous la première */
-    mailAvant: "ou écrivez à ",
-  },
-  /* v25 : la barre d'action mobile. Le libellé passe par la constante CTA
-     comme les autres appels : trois copies indépendantes avaient déjà
-     divergé en v13. */
-  barre: { cta: CTA },
-  carte: {
-    ariaCarte: "Carte des régions françaises",
-    panneauVide: "Sélectionnez une région.",
-    bouton: CTA,
-    statuts: {
-      disponible: {
-        label: "Disponible",
-        texte: "Périmètre ouvert. La part se prend au premier contrat signé.",
-      },
-      en_discussion: {
-        label: "En discussion",
-        texte: "Des discussions sont en cours sur ce périmètre. Un appel reste possible : premier signé, premier servi.",
-      },
-      exclusivite: {
-        label: "Sous exclusivité",
-        texte: "Ce périmètre est servi en exclusivité. Laissez vos coordonnées à l’appel pour être prévenu si elle se libère.",
-      },
-    },
+  /* V80 · PRENDRE RENDEZ-VOUS, au mot près de la planche : la bande
+     verte, le seul bouton commercial du site (le lien Calendly de
+     brand.ts), et les deux voies directes. */
+  rendezVous: {
+    titre: "Prendre rendez-vous",
+    texte:
+      "Un premier échange de trente minutes permet d’arrêter votre périmètre. Le devis qui suit en indique le contenu et les conditions.",
+    bouton: "Choisir un créneau",
+    telLibelle: "Par téléphone",
+    mailLibelle: "Par email",
   },
   /* ============================================================
      v68 · LA PAGE DES DIRIGEANTS (/dirigeants).

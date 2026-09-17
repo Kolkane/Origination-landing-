@@ -1,10 +1,10 @@
 /* V80 · LA CARTE DE FRANCE de l'icône « périmètre », telle qu'elle est
    dessinée dans MAQUETTE-V80-ACCUEIL.html, tracé pour tracé. C'est le
-   fond de carte de france-paths.ts simplifié : régions au trait, une
+   fond de carte du site simplifié (france-paths.ts, mort au lot 3) : régions au trait, une
    seule remplie, et aucune frontière n'est nommée (la région remplie est
    un exemple de découpage, pas une revendication de couverture).
    Le tracé n'est pas du texte : il vit ici et non dans copy.ts, comme
-   les chemins de CarteFrance vivent dans carte/france-paths.ts.
+   les chemins de l’ancienne CarteFrance vivaient dans carte/france-paths.ts.
    VIEWBOX « -10 20 820 760 » : celle de la planche, à ne pas recadrer,
    le dessin déborderait. */
 export const FRANCE_VUE = "-10 20 820 760";

@@ -11,13 +11,12 @@ import { grand } from "@/config/typo";
    bord sont ceux de la planche, pas ceux du conteneur des sections.
    Le lien de préchargement du poster est rendu ici et hissé dans <head>
    par React : le poster est l'élément LCP, il doit partir avec le HTML.
-   L'id « hero » reste pour BarreAction jusqu'au lot 3 ; « haut », la
-   cible du lien de marque, est sur <main>. */
+   « haut », la cible du lien de marque, est sur <main>. */
 export default function Hero() {
   const h = copy.hero;
   const m = brand.MEDIAS;
   return (
-    <section className="hero" id="hero">
+    <section className="hero">
       <link rel="preload" as="image" href={m.posterHero} />
       <VideoHero src={m.videoHero} poster={m.posterHero} />
       <div className="hero-voile" aria-hidden="true" />

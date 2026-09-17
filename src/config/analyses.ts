@@ -42,8 +42,11 @@ export const analyses: Article[] = typoDeep([
   {
     slug: "cessions-hors-marche",
     titre: "Pourquoi tant de cessions de PME se font hors marché",
+    /* V80 : le chapeau est celui de la planche (« par aucun processus »
+       au lieu de « jamais par un processus »). Le corps ne change pas,
+       les trois articles seront réécrits séparément. */
     standfirst:
-      "Beaucoup de transmissions ne passent jamais par un processus concurrentiel. Ce que cela coûte au cédant.",
+      "Beaucoup de transmissions ne passent par aucun processus concurrentiel. Ce que cela coûte au cédant.",
     datePublished: "2026-08-04",
     corps: [
       "Contrairement à une idée répandue, beaucoup de cessions de PME ne donnent lieu à aucun processus formel. Pas d’appel d’offres, pas de mise en concurrence d’acquéreurs, souvent pas même de conseil du côté du vendeur. Le dirigeant est approché en direct, par un concurrent, un fonds ou un repreneur, et l’opération se noue de gré à gré.",
@@ -56,10 +59,14 @@ export const analyses: Article[] = typoDeep([
   },
   {
     slug: "origination-cabinet-cession",
-    titre:
-      "L’origination : le travail que personne dans un cabinet ne veut faire",
+    /* V80 : titre et chapeau sont ceux de la planche ; ils servent à la
+       fois la colonne de l'accueil et la page de l'article. L'ancien
+       titre, « L'origination : le travail que personne dans un cabinet
+       ne veut faire », reste dans l'historique. Le slug ne bouge pas, ni
+       datePublished, ni le corps. */
+    titre: "L’origination dans les cabinets de cession",
     standfirst:
-      "Tout le monde sait qu’il faudrait sourcer en amont. Presque personne ne le fait. Pourquoi.",
+      "Pourquoi le repérage en amont reste difficile à tenir en interne.",
     datePublished: "2026-08-04",
     corps: [
       "Dans la plupart des cabinets de conseil en cession de taille modeste, l’origination, le fait d’aller chercher activement des dirigeants susceptibles de vendre avant qu’ils ne se manifestent, est un sujet connu, admis comme nécessaire, et presque jamais traité sérieusement. Ce n’est pas une question de compétence. C’est une question de nature du travail.",
