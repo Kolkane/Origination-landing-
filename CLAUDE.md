@@ -1299,7 +1299,10 @@ ordre des sections. Zéro latitude de design : ce qui n'est pas dans la planche
 n'existe pas. Le brief du chantier est PROMPT-CC-V80.md, à la racine. La
 leçon v60 tient : une planche fait foi sur la forme et les couleurs, jamais
 sur une hauteur ni une largeur de texte, qui se remesurent sur le build.
-- PALETTE. Fond blanc #FFFFFF. Encre #16201C : texte, bande noire du dossier,
+- PALETTE. REMPLACÉE PAR LA V83, voir « LA PALETTE V83 » à la fin des lots :
+  plus aucun vert nulle part, fond blanc cassé, encre et gris anthracite. Ce
+  qui suit est le procès-verbal de la palette V80, il ne décrit plus le code.
+  Fond blanc #FFFFFF. Encre #16201C : texte, bande noire du dossier,
   pied de page. Vert #1E3A32 : boutons, bande finale « Prendre rendez-vous »,
   filet épais de l'origination, région remplie de la carte. Filets #DCE1DD et
   #C9D0CC, lignes de tableau du dossier #EEF1EF. Gris de texte #2B3530 et
@@ -1308,7 +1311,9 @@ sur une hauteur ni une largeur de texte, qui se remesurent sur le build.
   bande sombre en tête, avec la bande noire du dossier et le pied de page.
   Les tokens vivent dans globals.css sous leur nom français (--encre, --vert,
   --gris, --filet, --clair, --vin) ; les tokens de la DA v7 sont morts au lot 4.
-- LE VIN À QUATRE ENDROITS, et nulle part ailleurs, exactement comme dans la
+- LE VIN À QUATRE ENDROITS. AMENDÉ PAR LA V83 : il en a sept, les trois qui
+  s'ajoutent reprenant les emplois du vert où la couleur portait un sens. Ce
+  qui suit reste vrai pour les quatre premiers. Exactement comme dans la
   planche : le soulignement des liens texte sur fond blanc
   (text-decoration-color #8E2438, le texte reste encre ; #B32E46 sur le hero ;
   blanc sur la bande verte), les trois numéros de la méthode, la mention
@@ -1368,8 +1373,10 @@ sur une hauteur ni une largeur de texte, qui se remesurent sur le build.
   L'image OpenGraph lit emblem-encre-300.png, pas la source de 520 px :
   voir « MISE EN LIGNE, 17/09/2026 » dans les lots.
 - LES ICÔNES. Les quatre SVG inline de la planche (plaque de cabinet, carte de
-  France avec la région remplie en vert, registre, chemise à sangle), dans un
-  composant Icones.tsx, aria-hidden, currentColor. La carte vient de
+  France avec la région remplie en vin depuis la v83, registre, chemise à
+  sangle), dans un composant Icones.tsx, aria-hidden, currentColor. Elles
+  s'animent AU SURVOL depuis la v84, voir « LE MOUVEMENT DES ICÔNES » à la
+  fin des lots. La carte vient de
   src/components/carte/france-paths.ts simplifié. C'est la seule dérogation
   à « aucune icône nulle part » (v12, v51), décidée par le brief V80 : quatre
   icônes au trait, sans cadre ni fond, à cet endroit et à lui seul.
@@ -1779,6 +1786,116 @@ sur une hauteur ni une largeur de texte, qui se remesurent sur le build.
   produit : ni SIREN de l'entité ni adresse du siège sur l'accueil, le
   paragraphe présent, aucun tiret. Captures 1440 et 390 dans
   V80-captures/v82-apropos.
+- LA PALETTE V83, « blanc cassé, encre froide, vin » (arbitrage Vincent,
+  17/09/2026, après la v82, en deux passes, voir V83b plus bas). LE VERT EST
+  SUPPRIMÉ DU SITE. La palette est désormais un blanc cassé, une encre et des
+  gris anthracite FROIDS, et le vin en pointes. Cet amendement PRIME sur le point PALETTE de la V80 et sur les
+  planches MAQUETTE-V80-*.html, qui restent des archives : elles font encore
+  foi sur les formes, les tailles et les espacements, PLUS SUR AUCUNE
+  COULEUR. Ne pas « remettre la page conforme à sa planche » sur ce point.
+  LE VERT N'ÉTAIT PAS QUE DANS --vert. Les quatre emplois déclarés (filet de
+  tête du panneau d'offre, « Au devis », les coches, la bande de rendez-vous)
+  étaient la partie visible ; les QUATORZE NEUTRES de la V80 étaient tous
+  teintés de vert, #16201C, #2B3530, #56605B, #DCE1DD, #C9D0CC, #EEF1EF,
+  #DDE5E1, #B9C6C0, #9AA7A1, #C9D2CD, #EDF0EC, #0A0E0C et les deux voiles en
+  rgba(6,10,8). C'est de là que venait la dominante, pas des quatre aplats :
+  retirer le seul --vert aurait laissé une page verte. Tous sont repris sur
+  une teinte chaude neutre, À LUMINANCE CONSTANTE, et les contrastes de la
+  planche sont tenus à un dixième près : #5C5751 sur le papier donne 6,57:1
+  quand #56605B sur le blanc donnait 6,52 ; l'encre 15,98 contre 16,70 ; le
+  vin 7,85 contre 8,54 ; le clair sur l'encre 13,59 contre 13,02 ; le plus bas
+  de la page reste le gris-2 à 6,57:1. Tous AA, calculés couple par couple.
+  LE FOND N'EST PLUS BLANC. --blanc est RENOMMÉ --papier et vaut #F7F5F2 : le
+  nom ment à la première bascule (leçon v55), et le token sert aussi bien de
+  fond de page que de texte sur l'encre, ce que « papier » dit et que
+  « blanc » ne disait plus. Les cases du tableau du mandat, la couverture et
+  le feuillet du popup le suivent d'eux-mêmes, ils le lisaient déjà.
+  LE PIED DE PAGE PREND UN CRAN, --noir #121110, ET C'EST LA SEULE VALEUR
+  AJOUTÉE. La bande de rendez-vous passe à l'encre, comme la bande du
+  dossier ; sans ce cran elle se serait fondue dans le pied, qui la suit
+  immédiatement, et la page se serait terminée sur une seule dalle noire de
+  deux écrans. Le vin plein en bande a été écarté : l'arbitrage dit « juste
+  des pointes », un aplat pleine largeur n'en est pas une.
+  LES TROIS EMPLOIS DU VERT QUI PASSENT AU VIN, et pas un de plus : le filet
+  de 3 px en tête du panneau d'offre, les six coches des gains, et la région
+  remplie de la carte du service, seul aplat de couleur du site. Ce sont des
+  marques, pas des surfaces. « AU DEVIS » PASSE À L'ENCRE et non au vin : un
+  prix se lit, il ne se décore pas, et c'était le seul des quatre où la
+  couleur ne portait rien.
+  V83b, LE MÊME JOUR, ET C'EST UNE CORRECTION SUR PIÈCE : « on dirait des
+  marrons, il faudrait des noirs et des gris plus tranchants ». La première
+  reprise posait les quatorze neutres sur une teinte CHAUDE, au motif qu'elle
+  irait avec un blanc cassé ; à l'écran les noirs viraient au brun, parce
+  qu'un rouge supérieur au bleu de cinq valeurs se lit comme une couleur dès
+  que la surface est grande, ce qu'une bande pleine largeur est. Ils sont
+  repris sur une teinte FROIDE, trois valeurs de bleu AU-DESSUS du rouge, et
+  les noirs descendent d'un cran, l'encre à #111213 et le pied à #0A0B0C. Le
+  papier garde sa cassure mais perd sa crème, #F6F5F3. Les contrastes montent
+  tous : l'encre à 17,21:1 contre 15,98, le gris à 12,86 contre 11,92, le
+  clair sur l'encre à 14,87 contre 13,59, le gris-2 tenu à 6,57 par
+  construction. LE VIN NE BOUGE PAS, et c'est le point : il devient la seule
+  chaleur de la page, et une page froide la fait ressortir. LEÇON, elle vaut
+  pour la prochaine palette : un neutre n'est neutre que sur un échantillon,
+  sur un aplat il prend la teinte de son écart rouge-bleu. Choisir le sens de
+  cet écart AVANT de poser les quatorze valeurs.
+  L'IMAGE OPENGRAPH SUIT, précédent v18 et v55 : #F6F5F3, #111213, #55585B.
+  VÉRIFIÉ SUR LE BUILD : build et lint sans erreur ni avertissement ; zéro
+  occurrence de --vert, de --blanc et des quatorze hex V80 dans src/ ;
+  captures 1440 et 390 des sept sections, du popup et de la jonction bande de
+  rendez-vous / pied.
+
+- LE MOUVEMENT DES ICÔNES, v84 (arbitrage Vincent, 17/09/2026, sur la
+  planche MAQUETTE-V84-ICONES.html, régime 1). Les quatre icônes de la
+  section service s'animent, ET SEULEMENT AU SURVOL DE LA SOURIS. Carte :
+  LE BALAYAGE, le vin saute de région en région puis se pose sur la seule
+  région retenue. Chemise : LA CHEMISE S'ÉCRIT, la sangle puis les lignes se
+  tracent. Registre : LE TAMPON, le sceau se pose d'un coup, trop grand puis
+  net. Cabinet : LA GRAVURE, la plaque se trace, les vis se posent, la
+  gravure suit.
+  CE QUI A ÉTÉ PROPOSÉ ET ÉCARTÉ, et c'est l'arbitrage : la planche
+  recommandait LA CARTE SEULE, au motif qu'une rangée de quatre pictogrammes
+  animés est le code du site SaaS, celui que la v54 a retiré de cette page, et
+  que trois des quatre icônes n'ont rien à raconter dans le temps. Vincent a
+  tranché pour les quatre, EN SURVOL SEULEMENT, et le survol répond
+  précisément à l'objection : ce que la v54 a tué, c'est le mouvement À
+  L'ENTRÉE DANS LE CHAMP, qui joue sans être demandé. Rien ne bouge au scroll.
+  La page défile entièrement immobile, comme depuis la v54 ; le mouvement
+  n'existe que sous la main du visiteur, ce que la doctrine de motion
+  réclamait déjà en v20 (« tous DÉCLENCHÉS PAR L'UTILISATEUR »). La règle v54
+  est donc tenue, pas contournée. Ne pas déclencher ces animations au scroll.
+  ZÉRO JAVASCRIPT, et ce n'est pas une économie, c'est la garantie. Pas
+  d'observateur, pas de classe posée, pas d'état : le survol met l'animation,
+  la sortie l'enlève. La leçon v44 (un className recalculé par React efface ce
+  que le DOM portait) ne peut pas mordre, rien n'est posé sur le DOM.
+  L'ÉTAT DE REPOS EST L'ÉTAT FINAL, toujours. Hors survol, aucune icône ne
+  porte dash, transform, opacité ni filtre : le dessin est celui de la planche
+  V80, au pixel. Sans JavaScript, sur un écran tactile, sous un lecteur
+  d'écran, il ne manque rien. Corollaire pour toute animation future d'icône :
+  ne jamais animer depuis un état vide, l'état vide devient l'état servi.
+  POINTEUR FIN SEULEMENT, (hover: hover) and (pointer: fine). Écarte le survol
+  collant d'iOS, où une première tape lancerait une animation qui resterait
+  ensuite accrochée. Sur téléphone la rangée est fixe, c'est l'arbitrage ;
+  vérifié, la requête média est fausse à 390 px.
+  LA CIBLE EST L'ENTRÉE ENTIÈRE (.service-entree), pas l'icône de 64 px : une
+  cible de 64 px se rate, et le titre et le texte appartiennent au même objet.
+  Aucun curseur pointeur n'est posé, ce n'est pas un bouton.
+  DÉTAIL QUI FAIT LA SÉQUENCE, consigné parce qu'il se reprendra de travers :
+  le balayage est en animation-fill-mode FORWARDS et non « both ». Avec
+  « both », le mode arrière applique la première image PENDANT le délai, donc
+  les quatre régions s'allument ensemble dès le survol au lieu de s'allumer
+  chacune à son tour. Les autres animations gardent « both », elles en ont
+  besoin pour rester à leur première image pendant leur délai.
+  LES QUATRE RÉGIONS DU BALAYAGE vivent en données, clé « etape » de
+  FRANCE_TRACES, et non dans le composant. Aucune n'est nommée, c'est un
+  parcours et non une couverture. Ne pas en ajouter une cinquième, la
+  séquence passerait la seconde et demie.
+  DURÉES, toutes sous 1,2 s : balayage 1,12 s, gravure 1,04 s, chemise
+  0,87 s, tampon 0,50 s. Aucune boucle, aucun état de repos animé.
+  PREFERS-REDUCED-MOTION : rien ne joue, vérifié au navigateur,
+  getAnimations() rend 0 après survol des quatre entrées.
+  LA PLANCHE RESTE au dépôt : elle porte les huit variantes essayées et les
+  trois rangées comparées, elle fait foi sur ce qui a été jugé.
+
 - MÉTHODE DU CHANTIER : cinq lots, un commit par lot, un rapport court et une
   validation entre chaque. 0 préparation (emblèmes, Hanken, tokens, charte) ;
   1 hero, en-tête, pied de page ; 2 service, dossier et popup, méthode ;

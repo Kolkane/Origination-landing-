@@ -72,8 +72,13 @@ export const copy = typoDeep({
       { label: "Le dossier", href: "/#dossier" },
       { label: "Méthode", href: "/#methode" },
       { label: "Conditions", href: "/#conditions" },
-      { label: "Analyses", href: "/#analyses" },
+      /* l'ordre des six entrées SUIT l'ordre des sections de la page
+         (page.tsx : conditions, à propos, analyses). « Analyses » était
+         avant « À propos », la nav annonçait donc un ordre que le
+         défilement démentait. Toute section ajoutée se range ici à sa
+         place réelle, pas à la fin. */
       { label: "À propos", href: "/#apropos" },
+      { label: "Analyses", href: "/#analyses" },
     ],
     /* le menu mobile : le bouton, son intitulé accessible dans les deux
        états, le bouton de fermeture du panneau et les libellés des
@@ -345,8 +350,7 @@ export const copy = typoDeep({
         },
         {
           libelle: "Engagement",
-          texte:
-            "Un mois pour commencer, si la mesure montre des dossiers à livrer ; puis des périodes de trois mois.",
+          texte: "Un mois pour commencer ; puis des périodes de trois mois.",
         },
         {
           libelle: "Résiliation",
