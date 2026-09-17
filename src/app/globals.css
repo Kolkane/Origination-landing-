@@ -20,32 +20,38 @@
    la palette est blanc cassé, encre et gris anthracite, et le vin en
    pointe. Aucun token n'a plus de composante verte, ni les neutres,
    qui étaient tous teintés (#16201C, #2B3530, #DCE1DD, #DDE5E1...),
-   ni les voiles. Les neutres V80 sont repris à luminance constante,
-   sur une teinte chaude neutre : les contrastes de la planche sont
-   tenus à un dixième près, vérifiés couple par couple.
+   ni les voiles.
+   V83b, MÊME JOUR : la première reprise posait les neutres sur une
+   teinte CHAUDE, et les noirs y viraient au marron. Ils sont repris
+   sur une teinte FROIDE, trois valeurs de bleu au-dessus du rouge,
+   et les noirs descendent d'un cran : l'encre à #111213 et le pied à
+   #0A0B0C. Les gris sont plus tranchants, les contrastes montent.
+   Le papier garde sa cassure, mais moins crémeuse (#F6F5F3). Le vin
+   ne bouge pas : il est la seule chaleur de la page, et une page
+   froide la fait mieux ressortir.
    ============================================================ */
 :root {
-  --papier: #f7f5f2; /* le fond du site, blanc cassé (V80 : blanc pur) */
-  --encre: #1b1a18; /* texte, bande du dossier, bande de rendez-vous */
-  --noir: #121110; /* le pied de page, seul cran plus sombre que l'encre */
-  --gris: #302e2b; /* corps de texte sur papier, survol du bouton encre */
-  --gris-2: #5c5751; /* libellés, notes, légendes */
-  --survol: #46433e; /* liens texte au survol */
-  --filet: #e2ded8; /* filet courant, bas de l'en-tête fixe */
-  --filet-2: #cfcbc4; /* bord de la couverture, cadre du panneau d'offre */
-  --filet-3: #efede9; /* lignes de tableau du dossier */
-  --clair: #e6e3de; /* texte courant sur fond sombre */
-  --clair-2: #c4c0b9; /* libellés sur la bande de rendez-vous */
-  --clair-3: #a5a199; /* notes sur fond sombre, légende du hero, pied */
-  --clair-pied: #d2cec8; /* liens du pied de page */
+  --papier: #f6f5f3; /* le fond du site, blanc cassé (V80 : blanc pur) */
+  --encre: #111213; /* texte, bande du dossier, bande de rendez-vous */
+  --noir: #0a0b0c; /* le pied de page, seul cran plus sombre que l'encre */
+  --gris: #2a2c2e; /* corps de texte sur papier, survol du bouton encre */
+  --gris-2: #55585b; /* libellés, notes, légendes */
+  --survol: #3f4245; /* liens texte au survol */
+  --filet: #dddedf; /* filet courant, bas de l'en-tête fixe */
+  --filet-2: #c8cacc; /* bord de la couverture, cadre du panneau d'offre */
+  --filet-3: #ecedee; /* lignes de tableau du dossier */
+  --clair: #e4e5e6; /* texte courant sur fond sombre */
+  --clair-2: #bfc1c3; /* libellés sur la bande de rendez-vous */
+  --clair-3: #9ea1a3; /* notes sur fond sombre, légende du hero, pied */
+  --clair-pied: #cdcfd1; /* liens du pied de page */
   --pied-filet: rgba(255, 255, 255, 0.18); /* filet du bas du pied */
-  --bouton-survol: #eae7e2; /* bouton clair au survol */
+  --bouton-survol: #e8e9ea; /* bouton clair au survol */
   --vin: #8e2438; /* soulignés, numéros de la méthode, Confidentiel, rubriques du dossier, filet et coches de l'offre, région de la carte */
   --vin-hero: #b32e46; /* souligné du hero, seul emploi */
-  --hero-fond: #0e0d0c; /* derrière la vidéo, avant qu'elle charge */
-  --voile: rgba(9, 8, 7, 0.16);
-  --voile-mobile: rgba(9, 8, 7, 0.22);
-  --popup-voile: rgba(14, 12, 10, 0.64);
+  --hero-fond: #0a0b0c; /* derrière la vidéo, avant qu'elle charge */
+  --voile: rgba(6, 8, 10, 0.16);
+  --voile-mobile: rgba(6, 8, 10, 0.22);
+  --popup-voile: rgba(10, 12, 14, 0.64);
 
   --anneau: rgba(255, 255, 255, 0.35); /* survol de la couverture */
   --menu-bord: rgba(255, 255, 255, 0.6); /* bouton Menu sur le hero */
@@ -536,9 +542,9 @@ html {
   .hero-texte p,
   .hero-lien {
     text-shadow:
-      0 1px 3px rgba(9, 8, 7, 0.5),
-      0 0 14px rgba(9, 8, 7, 0.45),
-      0 0 28px rgba(9, 8, 7, 0.4);
+      0 1px 3px rgba(6, 8, 10, 0.5),
+      0 0 14px rgba(6, 8, 10, 0.45),
+      0 0 28px rgba(6, 8, 10, 0.4);
   }
   .pied {
     padding: 48px 0 32px;

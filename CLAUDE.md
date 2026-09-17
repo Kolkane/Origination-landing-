@@ -1784,10 +1784,10 @@ sur une hauteur ni une largeur de texte, qui se remesurent sur le build.
   produit : ni SIREN de l'entité ni adresse du siège sur l'accueil, le
   paragraphe présent, aucun tiret. Captures 1440 et 390 dans
   V80-captures/v82-apropos.
-- LA PALETTE V83, « blanc cassé, encre, vin » (arbitrage Vincent,
-  17/09/2026, après la v82). LE VERT EST SUPPRIMÉ DU SITE. La palette est
-  désormais un blanc cassé, une encre et des gris anthracite, et le vin en
-  pointes. Cet amendement PRIME sur le point PALETTE de la V80 et sur les
+- LA PALETTE V83, « blanc cassé, encre froide, vin » (arbitrage Vincent,
+  17/09/2026, après la v82, en deux passes, voir V83b plus bas). LE VERT EST
+  SUPPRIMÉ DU SITE. La palette est désormais un blanc cassé, une encre et des
+  gris anthracite FROIDS, et le vin en pointes. Cet amendement PRIME sur le point PALETTE de la V80 et sur les
   planches MAQUETTE-V80-*.html, qui restent des archives : elles font encore
   foi sur les formes, les tailles et les espacements, PLUS SUR AUCUNE
   COULEUR. Ne pas « remettre la page conforme à sa planche » sur ce point.
@@ -1820,7 +1820,23 @@ sur une hauteur ni une largeur de texte, qui se remesurent sur le build.
   marques, pas des surfaces. « AU DEVIS » PASSE À L'ENCRE et non au vin : un
   prix se lit, il ne se décore pas, et c'était le seul des quatre où la
   couleur ne portait rien.
-  L'IMAGE OPENGRAPH SUIT, précédent v18 et v55 : #F7F5F2, #1B1A18, #5C5751.
+  V83b, LE MÊME JOUR, ET C'EST UNE CORRECTION SUR PIÈCE : « on dirait des
+  marrons, il faudrait des noirs et des gris plus tranchants ». La première
+  reprise posait les quatorze neutres sur une teinte CHAUDE, au motif qu'elle
+  irait avec un blanc cassé ; à l'écran les noirs viraient au brun, parce
+  qu'un rouge supérieur au bleu de cinq valeurs se lit comme une couleur dès
+  que la surface est grande, ce qu'une bande pleine largeur est. Ils sont
+  repris sur une teinte FROIDE, trois valeurs de bleu AU-DESSUS du rouge, et
+  les noirs descendent d'un cran, l'encre à #111213 et le pied à #0A0B0C. Le
+  papier garde sa cassure mais perd sa crème, #F6F5F3. Les contrastes montent
+  tous : l'encre à 17,21:1 contre 15,98, le gris à 12,86 contre 11,92, le
+  clair sur l'encre à 14,87 contre 13,59, le gris-2 tenu à 6,57 par
+  construction. LE VIN NE BOUGE PAS, et c'est le point : il devient la seule
+  chaleur de la page, et une page froide la fait ressortir. LEÇON, elle vaut
+  pour la prochaine palette : un neutre n'est neutre que sur un échantillon,
+  sur un aplat il prend la teinte de son écart rouge-bleu. Choisir le sens de
+  cet écart AVANT de poser les quatorze valeurs.
+  L'IMAGE OPENGRAPH SUIT, précédent v18 et v55 : #F6F5F3, #111213, #55585B.
   VÉRIFIÉ SUR LE BUILD : build et lint sans erreur ni avertissement ; zéro
   occurrence de --vert, de --blanc et des quatorze hex V80 dans src/ ;
   captures 1440 et 390 des sept sections, du popup et de la jonction bande de
