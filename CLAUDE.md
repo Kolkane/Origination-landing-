@@ -1348,6 +1348,14 @@ sur une hauteur ni une largeur de texte, qui se remesurent sur le build.
   plus tant qu'il est ouvert. L'arbitrage v64 (hero excentré, texte aux bords
   de l'écran) survit dans la planche : 48 px de bord contre 48 px de padding
   dans un conteneur de 1200 px pour les sections.
+  v82 (arbitrage Vincent, 17/09/2026, après la mise en ligne) : SUR TROIS
+  POINTS LE HERO S'ÉCARTE DE LA PLANCHE, voir « RETOUCHES v82 » dans les
+  lots. Le titre fait 48 px sur deux lignes (30 à 33 px sur téléphone),
+  coupé après « sell-side », et le bloc de texte remonte de 52 px ; les
+  éléments apparaissent l'un après l'autre comme en V78, sauf le titre,
+  visible d'emblée (le LCP l'exige, voir les lots) ; la vidéo est un
+  seul fichier, chargé et lancé par le HTML. Le voile uniforme, l'absence
+  de zoom et de filtre ne changent pas.
 - L'EMBLÈME. public/emblem-encre.png (traits sombres, pour les fonds clairs) et
   public/emblem-clair.png (traits clairs, pour les fonds sombres) remplacent
   logo-imbrin.png et logo-dossier.png dans les composants. Les anciens
@@ -1642,6 +1650,46 @@ sur une hauteur ni une largeur de texte, qui se remesurent sur le build.
   .next/server/middleware-manifest.json, sommées après gzip. La question
   v56 (sortir du runtime Edge, limite 50 Mo) reste ouverte, ce n'est pas
   le soir d'une mise en ligne qu'on la tranche.
+- RETOUCHES v82, LE HERO (arbitrage Vincent, 17/09/2026, sur le site en
+  ligne, branche v82). Vincent trouvait le texte « dans le coin, en petit »
+  et la vidéo saccadée et pixellisée, alors qu'elle était parfaite en V78.
+  LA VIDÉO, d'abord, et la cause est double. Le lot 4 bis avait retiré la
+  source du HTML (preload="metadata", source posée par VideoHero.tsx après
+  l'hydratation, puis play() forcé sur un tampon vide) : c'est la saccade
+  au départ. Et il servait sous 761 px un recadrage de 626 px de large à
+  407 kb/s, agrandi près de deux fois sur un écran de téléphone : c'est la
+  pixellisation. RETOUR À LA MÉCANIQUE V78 : la source dans le HTML, avec
+  autoplay, muted et preload="auto", un seul fichier (1112 × 834,
+  1670 kb/s, 8 s) pour tous les écrans ; le composant ne garde que le
+  muted forcé, le play() de rattrapage, prefers-reduced-motion et le
+  repli poster. La variante mobile, son script (scripts/video-mobile.mjs,
+  ffmpeg-static) et brand.MEDIAS.videoHeroMobile n'ont plus d'emploi. Ce
+  qu'on rend au passage : le gain Lighthouse mobile du lot 4 bis, mesuré
+  ci-dessous ; la vidéo passe avant le score.
+  LE TITRE : même texte, 48 px en 500 sur deux lignes (la planche : 34 px
+  sur une ligne), le bloc remonté de 52 px au-dessus de la légende, le
+  paragraphe inchangé à 480 px. La coupure est fixée en em, pas en pixels :
+  « pour les cabinets M&A » mesure 9,83 em et « Origination sell-side
+  pour » 10,88 em, donc max-width 10,3 em coupe après « sell-side » à toute
+  taille. Sur téléphone, clamp(30px, 8.5vw, 33px) : deux lignes de 360 à
+  430 px de large, mesuré sur le build (à 36 px, trois lignes à 390). À
+  remesurer si le titre change.
+  L'APPARITION SÉQUENCÉE, reprise de la V78 : marque et navigation à
+  0,15 s, paragraphe 0,55, lien 0,75, légende 1,4 s, 1,1 s chacun, en
+  CSS pur (@keyframes apparition, « both »), sans classe posée par
+  JavaScript ; rien sous prefers-reduced-motion ; le lien d'évitement
+  n'est pas animé. LE TITRE N'EST PAS ANIMÉ, ET C'EST UNE RÈGLE : le
+  poster et la vidéo couvrent tout l'écran et Chrome ne les compte pas
+  pour le LCP ; le titre est le seul candidat, et un élément qui naît à
+  opacité 0 n'est jamais retenu. Mesuré sur le build : titre animé,
+  Lighthouse NO_LCP et performance 0 ; titre visible d'emblée, 98 avec le
+  LCP sur le h1 à 2,3 s, la référence du lot 5. La vidéo revenue dans le
+  HTML ne coûte donc rien au score. L'en-tête est visé à travers .hero
+  pour que l'animation ne se rejoue ni au passage en fixe ni au retour en
+  haut.
+  Les interdits du hero V80 tiennent : voile uniforme, ni dégradé, ni
+  zoom, ni filtre ; le retour de l'étalonnage et du voile en dégradé de la
+  V78 n'a pas été demandé.
 - MÉTHODE DU CHANTIER : cinq lots, un commit par lot, un rapport court et une
   validation entre chaque. 0 préparation (emblèmes, Hanken, tokens, charte) ;
   1 hero, en-tête, pied de page ; 2 service, dossier et popup, méthode ;

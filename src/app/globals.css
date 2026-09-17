@@ -114,19 +114,32 @@
   gap: 48px;
   z-index: 2;
 }
+/* v82 (arbitrage Vincent, 17/09/2026) : le titre est LE titre du site,
+   il doit se lire comme tel. La planche le posait à 34 px sur une ligne,
+   au ras du bas ; il passe à 48 px sur deux lignes (36 px sous 761 px)
+   et le bloc remonte de 52 px au-dessus de la légende. Le paragraphe
+   garde sa mesure de 480 px, seul le titre s'élargit.
+   LA COUPURE DU TITRE est fixée en em, pas en pixels : « pour les
+   cabinets M&A » mesure 9,83 em et « Origination sell-side pour »
+   10,88 em (Hanken 500, mesuré sur le build). À 10,3 em de large, la
+   seule coupure possible tombe après « sell-side », à toute taille de
+   police. À remesurer si le titre change. */
 .hero-texte {
-  max-width: 480px;
+  max-width: 600px;
+  margin-bottom: 52px;
 }
 .hero-texte h1 {
   margin: 0;
-  font-size: 34px;
+  max-width: 10.3em;
+  font-size: 48px;
   font-weight: 500;
-  line-height: 1.15;
-  letter-spacing: -0.01em;
+  line-height: 1.1;
+  letter-spacing: -0.015em;
   color: var(--blanc);
 }
 .hero-texte p {
-  margin: 14px 0 0;
+  max-width: 480px;
+  margin: 18px 0 0;
   font-size: 16px;
   line-height: 1.55;
   color: var(--clair);
@@ -157,6 +170,63 @@
 .hero :focus-visible {
   outline: 2px solid var(--blanc);
   outline-offset: 4px;
+}
+/* v82 : L'APPARITION SÉQUENCÉE, reprise de la V78 (arbitrage Vincent,
+   17/09/2026). Marque et navigation, puis le paragraphe, le lien, enfin
+   la légende : 1,1 s chacun, décalés de 0,15 à 1,4 s, les temps de la
+   V78. LE TITRE N'EST PAS ANIMÉ, et c'est mesuré : le poster et la vidéo
+   couvrent tout l'écran, Chrome ne les compte pas pour le LCP ; le titre
+   est le seul candidat, et un élément qui naît à opacité 0 n'est jamais
+   retenu (Lighthouse : NO_LCP, score 0 ; titre visible d'emblée : 98,
+   LCP 2,3 s sur le h1). Le titre majeur n'attend donc personne, le reste
+   arrive autour de lui. En CSS pur, sans classe posée par JavaScript :
+   « both » tient l'état de départ avant le délai, et sans JavaScript le
+   hero apparaît quand même. L'en-tête est visé à travers .hero, où il
+   reste dans l'arbre même une fois fixe : l'animation ne se rejoue donc
+   pas quand il change d'état, ni au retour en haut de page. Le lien
+   d'évitement n'est pas animé : il doit répondre au premier Tab. Sous
+   prefers-reduced-motion, rien ne bouge. */
+@keyframes apparition {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.hero .entete-marque,
+.hero .entete-nav,
+.hero .entete-menu,
+.hero-texte p,
+.hero-lien,
+.hero-legende {
+  animation: apparition 1.1s cubic-bezier(0.22, 0.75, 0.25, 1) both;
+}
+.hero .entete-marque,
+.hero .entete-nav,
+.hero .entete-menu {
+  animation-delay: 0.15s;
+}
+.hero-texte p {
+  animation-delay: 0.55s;
+}
+.hero-lien {
+  animation-delay: 0.75s;
+}
+.hero-legende {
+  animation-delay: 1.4s;
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero .entete-marque,
+  .hero .entete-nav,
+  .hero .entete-menu,
+  .hero-texte p,
+  .hero-lien,
+  .hero-legende {
+    animation: none;
+  }
 }
 
 /* ---------- en-tête ---------- */
@@ -432,11 +502,18 @@ html {
   .hero-bas {
     padding: 0 24px 32px;
   }
+  .hero-texte {
+    margin-bottom: 32px;
+  }
+  /* deux lignes de 360 à 430 px de large : « pour les cabinets M&A »
+     doit tenir dans la colonne (9,83 em), d'où 30,6 px à 360 (312 px de
+     colonne) et 33 px dès 390 ; au-delà de 33 px la ligne déborde sur
+     les 390 les plus courants. Mesuré sur le build. */
   .hero-texte h1 {
-    font-size: 27px;
+    font-size: clamp(30px, 8.5vw, 33px);
   }
   .hero-texte p {
-    margin-top: 12px;
+    margin-top: 14px;
     font-size: 15px;
   }
   .hero-lien {

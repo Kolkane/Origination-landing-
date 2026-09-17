@@ -15,11 +15,9 @@ export const brand = typoDeep({
   MEDIAS: {
     emblemeEncre: "/emblem-encre.png",
     emblemeClair: "/emblem-clair.png",
+    /* un seul clip pour tous les écrans (v82) : le recadrage mobile du
+       lot 4 bis, 626 px à 407 kb/s, était pixellisé sur téléphone */
     videoHero: "/imbrin.mp4",
-    /* le recadrage portrait pour téléphone, produit par npm run
-       video-mobile (scripts/video-mobile.mjs), choisi par VideoHero.tsx
-       sous 761 px */
-    videoHeroMobile: "/imbrin-mobile.mp4",
     posterHero: "/imbrin-poster.jpg",
     portrait: "/portrait-vincent-fournier.webp",
     /* le PDF du spécimen. Le fichier n'existe PAS encore : le lien
