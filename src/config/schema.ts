@@ -17,7 +17,9 @@ export const organisationSchema = {
   name: `${brand.MARQUE} ${brand.SUFFIXE}`,
   legalName: brand.ENTITY.raisonSociale,
   url: SITE_URL,
-  logo: `${SITE_URL}/logo-imbrin.png`,
+  /* V80 : l'emblème encre, 520 px de côté. logo-imbrin.png était sous le
+     minimum de 112 px que Google demande pour le logo d'une organisation. */
+  logo: `${SITE_URL}${brand.MEDIAS.emblemeEncre}`,
   description: copy.meta.description,
   founder: { "@id": ID_FONDATEUR },
   sameAs: [brand.LINKEDIN_URL],
@@ -47,23 +49,17 @@ export const fondateurSchema = {
   "@context": "https://schema.org",
   "@type": "Person",
   "@id": ID_FONDATEUR,
-  name: copy.fondateur.nom.split(",")[0],
+  /* V80 : le nom vit dans copy.apropos, une seule chaîne pour la section
+     À propos, la légende du portrait et ce graphe */
+  name: copy.apropos.nom,
   jobTitle: "Fondateur",
   worksFor: { "@id": ID_ORGANISATION },
   sameAs: [brand.LINKEDIN_URL],
 };
 
-/* généré depuis copy.faq.items : la FAQ visible et la FAQ balisée ne peuvent
-   pas diverger, elles sortent de la même source */
-export const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: copy.faq.items.map((item) => ({
-    "@type": "Question",
-    name: item.question,
-    acceptedAnswer: { "@type": "Answer", text: item.reponse },
-  })),
-};
+/* V80 : plus de balisage FAQPage, la FAQ a quitté l'accueil avec le
+   lot 3 ; son contenu vit dans Conditions (la reconduction) et sur la
+   page Confidentialité (le RGPD). */
 
 /* Article, dérivé d'une entrée de src/config/analyses.ts. L'auteur et
    l'éditeur sont référencés par @id vers les graphes portés par le layout

@@ -1,0 +1,381 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Imbrin Research, maquette V80, accueil mobile</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600&amp;display=swap">
+  <style>
+    body { margin: 0; background: #FFFFFF; color: #16201C; font-family: 'Hanken Grotesk', 'Helvetica Neue', Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
+    a { color: #16201C; }
+    a:hover { color: #3B4A43; }
+    a:focus-visible, button:focus-visible { outline: 2px solid #16201C; outline-offset: 4px; }
+    .nav-clair { color: #FFFFFF; text-decoration: none; }
+    .nav-clair:hover { color: #FFFFFF; text-decoration: underline; text-underline-offset: 7px; text-decoration-thickness: 1px; }
+    .lien-hero { color: #FFFFFF; text-decoration: underline; text-underline-offset: 6px; text-decoration-thickness: 1px; text-decoration-color: #B32E46; }
+    .lien-hero:hover { color: #FFFFFF; text-decoration-thickness: 2px; }
+    .bouton-clair:hover { background: #EDF0EC; }
+    .bouton-encre:hover { background: #2B3530; color: #FFFFFF; }
+    .lien-clair:hover { color: #FFFFFF; text-decoration-thickness: 2px; }
+    .lien-pied { color: #C9D2CD; text-decoration: none; }
+    .lien-pied:hover { color: #FFFFFF; text-decoration: underline; text-underline-offset: 6px; }
+    .couverture:hover { box-shadow: 0 0 0 3px rgba(255,255,255,0.35); }
+    @keyframes voile-in { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes papier-in { from { opacity: 0; transform: translateY(22px) scale(0.985); } to { opacity: 1; transform: translateY(0) scale(1); } }
+    .voile { animation: voile-in 0.28s ease-out both; }
+    .papier { animation: papier-in 0.4s cubic-bezier(0.22, 0.75, 0.25, 1) both; }
+    @media (prefers-reduced-motion: reduce) { .voile, .papier { animation: none; } }
+</style>
+</head>
+<body>
+<div id="haut-m" style="width: 100%; max-width: 390px; margin: 0 auto; display: flex; flex-direction: column; background: #FFFFFF; color: #16201C; font-family: 'Hanken Grotesk', 'Helvetica Neue', Helvetica, Arial, sans-serif;">
+
+  <section style="flex-shrink: 0; position: relative; height: 100vh; height: 100svh; min-height: 560px; overflow: hidden; background: #0A0E0C; color: #FFFFFF;">
+    <video autoplay muted loop playsinline poster="/imbrin-poster.jpg" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; display: block;">
+      <source src="/imbrin.mp4" type="video/mp4">
+    </video>
+    <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(6, 10, 8, 0.22);"></div>
+    <header style="position: absolute; top: 0; left: 0; width: 100%; box-sizing: border-box; padding: 18px 24px 0; display: flex; align-items: center; justify-content: space-between;">
+      <a href="#haut-m" style="display: flex; align-items: center; gap: 10px; text-decoration: none; color: #FFFFFF;">
+        <img src="/emblem-clair.png" alt="" style="width: 30px; height: 30px; display: block;">
+        <span style="font-size: 16px; font-weight: 600; line-height: 1;">Imbrin Research</span>
+      </a>
+      <button type="button" aria-label="Ouvrir le menu" style="height: 44px; padding: 0 14px; background: transparent; border: 1px solid rgba(255,255,255,0.6); border-radius: 2px; font-family: 'Hanken Grotesk', 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 14px; color: #FFFFFF;">Menu</button>
+    </header>
+    <div style="position: absolute; left: 0; bottom: 0; width: 100%; box-sizing: border-box; padding: 0 24px 32px;">
+      <h1 style="margin: 0; font-size: 27px; font-weight: 500; line-height: 1.15; letter-spacing: -0.01em; color: #FFFFFF;">Origination sell-side pour les cabinets M&amp;A</h1>
+      <p style="margin: 12px 0 0; font-size: 15px; line-height: 1.55; color: #DDE5E1;">Les PME à approcher, repérées au registre et livrées en dossiers vérifiés. Un seul cabinet par périmètre.</p>
+      <a class="lien-hero" href="#dossier-m" style="display: inline-block; margin-top: 16px; font-size: 15px;">Voir un dossier spécimen</a>
+    </div>
+  </section>
+
+  <section id="service-m" style="flex-shrink: 0; padding: 56px 24px;">
+    <h2 style="margin: 0; font-size: 31px; font-weight: 500; line-height: 1.12; letter-spacing: -0.01em; color: #16201C;">Ce que fait Imbrin Research</h2>
+    <p style="margin: 18px 0 0; font-size: 17px; line-height: 1.6; color: #2B3530;">Repérer les sociétés à approcher avant qu’un processus soit lancé suppose une lecture régulière des registres et des actes, difficile à tenir en interne à côté des dossiers en cours. Imbrin Research assure ce travail pour votre cabinet, sur un périmètre convenu ensemble.</p>
+    <div style="margin-top: 40px; display: flex; flex-direction: column; gap: 32px;">
+      <div style="display: grid; grid-template-columns: 44px minmax(0, 1fr); column-gap: 20px; align-items: start;">
+      <svg aria-hidden="true" viewBox="0 0 64 64" width="44" height="44" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="display: block; color: #16201C;"><rect x="6" y="15" width="52" height="34" rx="1"></rect><circle cx="11" cy="20" r="1.2" fill="currentColor" stroke="none"></circle><circle cx="53" cy="20" r="1.2" fill="currentColor" stroke="none"></circle><circle cx="11" cy="44" r="1.2" fill="currentColor" stroke="none"></circle><circle cx="53" cy="44" r="1.2" fill="currentColor" stroke="none"></circle><path d="M18 27h28M18 33h28M24 39h16"></path></svg>
+      <div>
+        <h3 style="margin: 0; font-size: 18px; font-weight: 600; line-height: 1.4;">Les cabinets</h3>
+        <p style="margin: 6px 0 0; font-size: 16px; line-height: 1.6; color: #2B3530;">Cabinets de conseil en cession small-cap et family offices. L’associé traite les dossiers ; Imbrin Research les repère.</p>
+      </div>
+    </div>
+      <div style="display: grid; grid-template-columns: 44px minmax(0, 1fr); column-gap: 20px; align-items: start;">
+      <svg aria-hidden="true" viewBox="-10 20 820 760" width="44" height="44" style="display: block; color: #16201C;"><path d="M515,409L519,395L528,384L540,387L549,396L555,402L565,398L576,399L590,392L583,403L584,410L596,404L597,392L608,389L622,392L625,403L630,413L637,420L636,429L627,434L636,446L638,458L648,467L647,476L635,484L625,487L615,490L606,494L597,490L602,500L605,510L592,510L584,516L575,523L566,527L565,541L558,544L557,551L566,556L567,565L563,565L553,567L541,562L535,557L521,561L511,554L505,555L497,556L491,557L483,556L479,549L470,536L466,520L455,512L446,517L440,506L432,510L424,514L420,525L415,520L409,513L403,508L397,516L390,530L380,528L373,528L369,512L371,503L374,492L379,480L384,471L393,472L390,456L393,447L388,437L397,425L393,410L388,400L380,394L391,383L397,375L405,366L421,362L433,368L442,370L449,370L454,369L458,381L465,386L472,393L468,404L479,408L487,412L495,401L506,403L512,406L514,410ZM525,551L532,552L529,546L526,550Z" fill="none" stroke="currentColor" stroke-width="9" stroke-linejoin="round"></path><path d="M453,366L447,371L440,368L430,371L423,358L420,341L414,322L412,306L417,301L411,290L420,284L423,273L421,258L419,252L426,239L438,237L448,243L451,250L456,257L462,263L467,270L475,272L483,272L495,271L506,266L514,270L520,276L520,286L527,292L537,298L546,294L556,292L560,284L566,277L572,268L577,267L587,269L601,273L615,274L625,281L630,290L637,301L627,307L630,313L628,319L618,333L613,342L604,351L601,363L588,377L582,391L573,401L560,396L553,398L545,391L536,383L522,385L518,402L512,408L508,400L499,401L489,410L483,410L468,408L472,399L468,385L460,382L456,373L453,369Z" fill="none" stroke="currentColor" stroke-width="9" stroke-linejoin="round"></path><path d="M76,202L81,192L91,191L102,189L108,195L116,204L123,214L129,215L142,207L147,209L155,210L162,218L161,208L168,208L184,216L190,225L202,221L207,229L207,247L209,263L199,271L190,278L181,278L171,284L158,284L151,291L145,297L135,300L129,299L124,295L113,297L110,292L116,287L106,288L96,295L95,286L97,277L89,278L77,273L76,268L66,268L54,259L43,261L36,266L31,253L20,247L25,243L39,242L38,234L26,233L26,224L32,227L42,229L33,224L28,222L16,222L17,212L25,204L36,200L47,199L59,195L66,204L72,198L76,201ZM0,212L2,212ZM81,284L81,282ZM92,305L93,311L88,304L90,304Z" fill="none" stroke="currentColor" stroke-width="9" stroke-linejoin="round"></path><path d="M412,306L414,322L420,341L423,358L408,367L397,372L394,383L381,389L370,392L359,390L348,391L336,394L328,394L320,386L311,379L307,365L297,349L291,347L276,349L274,340L267,335L264,324L269,312L272,299L281,300L285,294L294,290L302,279L305,267L307,256L304,246L313,235L311,225L307,217L314,210L324,207L334,203L342,194L346,201L347,216L356,224L362,233L365,241L371,245L383,242L391,248L392,258L404,258L412,256L424,264L419,279L417,286L415,294L414,302L411,304Z" fill="none" stroke="currentColor" stroke-width="9" stroke-linejoin="round"></path><path d="M792,733L792,751L792,754L785,767L779,771L771,764L761,760L761,752L757,747L752,741L756,731L745,729L753,722L746,716L749,705L742,698L746,693L751,680L759,675L771,666L784,665L783,649L790,651L795,677L799,699L794,723L792,732Z" fill="none" stroke="currentColor" stroke-width="9" stroke-linejoin="round"></path><path d="M481,114L497,113L507,100L512,103L512,115L517,127L527,133L536,138L543,148L554,144L565,148L575,151L590,150L602,156L607,167L615,173L621,169L629,173L640,173L650,174L660,178L672,177L687,183L678,198L668,212L665,229L660,247L660,261L657,279L661,294L652,302L643,306L635,298L631,286L621,279L610,271L599,269L585,268L574,269L571,270L563,277L561,286L554,289L544,297L535,294L524,291L523,282L517,273L513,268L502,265L490,271L482,270L472,273L465,269L461,260L452,254L452,248L445,239L439,230L445,222L443,214L442,207L449,195L453,187L451,178L455,176L455,164L463,158L472,158L474,147L476,139L482,130L482,119L480,118Z" fill="none" stroke="currentColor" stroke-width="9" stroke-linejoin="round"></path><path d="M472,158L465,159L457,163L455,174L452,178L452,187L450,194L442,201L435,194L427,182L414,183L404,185L392,179L379,176L366,176L355,175L358,168L354,155L354,150L354,139L354,132L353,119L341,108L344,95L350,94L350,83L349,69L350,51L356,38L373,33L387,29L400,34L406,50L415,57L427,50L432,63L441,72L449,73L456,87L469,84L479,93L481,105L478,113L481,124L481,133L473,140L472,150L472,155Z" fill="none" stroke="currentColor" stroke-width="9" stroke-linejoin="round"></path><path d="M398,184L411,183L423,181L431,191L439,199L441,205L443,213L445,221L442,229L438,237L426,239L419,252L408,257L400,257L392,255L389,248L379,243L369,245L366,237L359,233L352,222L346,213L344,199L341,191L345,184L353,171L362,177L375,175L388,178L396,182Z" fill="#1E3A32" stroke="currentColor" stroke-width="9" stroke-linejoin="round"></path><path d="M209,157L229,158L248,161L272,156L280,152L270,148L280,131L297,122L315,118L338,106L345,111L356,128L353,136L354,144L358,150L356,161L354,168L348,183L340,187L340,197L331,207L322,208L309,211L308,221L313,229L306,239L302,252L291,247L283,238L272,229L264,234L255,225L250,224L238,225L226,227L219,224L208,223L197,222L186,222L184,212L185,204L184,194L183,177L181,164L174,147L174,134L170,125L182,130L194,129L205,137L206,150L207,156Z" fill="none" stroke="currentColor" stroke-width="9" stroke-linejoin="round"></path><path d="M334,396L344,392L354,388L368,391L379,391L385,400L392,405L396,421L391,435L389,443L391,452L392,466L386,471L382,477L375,490L370,501L360,506L351,508L343,499L331,501L328,514L323,524L312,534L309,545L307,550L300,555L302,564L295,568L288,577L278,574L264,577L255,579L250,582L240,582L238,597L236,604L239,609L246,617L249,623L246,633L239,645L233,652L229,667L218,668L213,670L206,660L190,655L177,648L172,643L167,642L166,631L155,629L147,621L165,607L177,564L185,524L195,522L185,519L188,488L195,454L203,462L216,492L217,485L208,458L196,447L191,435L198,424L197,411L192,403L199,394L205,394L214,394L223,393L224,389L224,379L224,370L221,356L214,345L221,343L233,336L241,336L252,337L259,331L268,335L275,340L279,348L291,346L296,352L308,369L312,379L320,388L329,393L333,395ZM243,627L244,626ZM242,636L241,636ZM177,401L187,404L175,402L175,400ZM188,430L180,414L189,423L188,432Z" fill="none" stroke="currentColor" stroke-width="9" stroke-linejoin="round"></path><path d="M349,692L339,687L331,688L324,681L313,680L300,674L285,671L280,681L267,678L258,677L248,679L233,670L231,655L237,647L245,637L248,626L245,619L242,610L233,607L237,599L237,585L248,579L254,583L261,577L275,576L286,574L293,571L299,565L302,556L304,551L311,546L309,536L320,526L326,517L331,509L339,500L350,505L359,504L368,507L372,522L375,530L385,530L395,520L400,511L407,511L412,518L416,528L422,518L429,513L436,507L443,512L452,513L460,515L469,529L475,544L478,555L489,559L495,553L500,554L511,558L516,565L523,581L512,590L510,602L501,606L496,615L484,617L464,624L448,638L429,646L422,672L422,695L428,701L418,700L407,704L397,710L386,708L373,704L360,709L354,701L346,694L347,692ZM359,700L360,700ZM242,636L244,635ZM243,627L243,627Z" fill="none" stroke="currentColor" stroke-width="9" stroke-linejoin="round"></path><path d="M131,301L139,299L147,297L152,287L163,283L175,283L184,275L197,277L202,265L209,257L209,237L208,223L219,224L226,227L238,225L250,224L255,225L264,234L272,229L283,238L291,247L302,252L306,258L306,269L301,280L294,291L285,296L279,299L271,301L269,313L264,326L258,333L250,337L240,335L230,337L220,341L215,346L220,360L225,371L223,380L225,388L222,395L214,393L206,393L196,394L185,391L175,385L160,376L144,352L153,333L141,327L144,315L131,316L129,304L131,303ZM135,359L134,359ZM142,341L141,336L143,343Z" fill="none" stroke="currentColor" stroke-width="9" stroke-linejoin="round"></path><path d="M638,524L634,534L636,542L642,553L652,558L664,565L676,561L684,566L678,577L675,590L665,596L657,602L650,609L643,615L636,621L628,627L628,632L624,640L611,648L600,648L592,650L583,651L575,646L566,643L553,639L547,631L531,626L525,632L508,628L498,623L501,613L506,603L512,597L517,586L519,574L513,563L515,554L524,559L541,555L545,561L557,569L565,564L569,563L565,554L555,550L556,542L568,539L572,526L577,519L584,514L596,510L605,507L601,498L601,490L610,494L618,488L626,496L630,507L641,513L643,521L639,523ZM533,614L539,626L541,621L534,615ZM616,653L618,653ZM605,654L602,655ZM525,551L533,549L524,554L524,552Z" fill="none" stroke="currentColor" stroke-width="9" stroke-linejoin="round"></path></svg>
+      <div>
+        <h3 style="margin: 0; font-size: 18px; font-weight: 600; line-height: 1.4;">Le périmètre</h3>
+        <p style="margin: 6px 0 0; font-size: 16px; line-height: 1.6; color: #2B3530;">Une région et une typologie d’entreprises, arrêtées avec vous et inscrites au devis. Réservé à un seul cabinet tant que le contrat court.</p>
+      </div>
+    </div>
+      <div style="display: grid; grid-template-columns: 44px minmax(0, 1fr); column-gap: 20px; align-items: start;">
+      <svg aria-hidden="true" viewBox="0 0 64 64" width="44" height="44" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="display: block; color: #16201C;"><path d="M14 8h36v48H14z"></path><path d="M14 8v48M20 8v48"></path><path d="M27 20h16M27 27h16M27 34h10"></path><circle cx="41" cy="46" r="4.5"></circle><circle cx="41" cy="46" r="1.6"></circle><path d="M44 8v12l-3-2-3 2V8"></path></svg>
+      <div>
+        <h3 style="margin: 0; font-size: 18px; font-weight: 600; line-height: 1.4;">Les registres</h3>
+        <p style="margin: 6px 0 0; font-size: 16px; line-height: 1.6; color: #2B3530;">RNE, SIRENE, BODACC et comptes déposés. Les actes sont ouverts et lus, y compris lorsqu’il s’agit d’un scan.</p>
+      </div>
+    </div>
+      <div style="display: grid; grid-template-columns: 44px minmax(0, 1fr); column-gap: 20px; align-items: start;">
+      <svg aria-hidden="true" viewBox="0 0 64 64" width="44" height="44" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="display: block; color: #16201C;"><path d="M12 12h18l4 5h18v37H12z"></path><path d="M12 22h40"></path><path d="M38 54l14-14M42 54l10-10" stroke-width="1.2"></path><path d="M20 31h20M20 38h14"></path></svg>
+      <div>
+        <h3 style="margin: 0; font-size: 18px; font-weight: 600; line-height: 1.4;">Le dossier</h3>
+        <p style="margin: 6px 0 0; font-size: 16px; line-height: 1.6; color: #2B3530;">Un dossier d’approche par société retenue, vérifié le jour de sa livraison. Les coordonnées portent leur statut de vérification.</p>
+      </div>
+    </div>
+    </div>
+  </section>
+
+  <section id="dossier-m" style="flex-shrink: 0; background: #16201C; color: #FFFFFF; padding: 56px 24px;">
+    <h2 style="margin: 0; font-size: 31px; font-weight: 500; line-height: 1.12; letter-spacing: -0.01em; color: #FFFFFF;">Le dossier d’approche</h2>
+    <p style="margin: 18px 0 0; font-size: 17px; line-height: 1.6; color: #DDE5E1;">Chaque société retenue fait l’objet d’un dossier écrit, que l’associé lit avant son premier appel : identité, trois exercices de comptes, structure de détention, chronologie datée des actes, angle d’approche, coordonnées avec leur statut, et ce que les sources ne permettent pas d’établir.</p>
+    <p style="margin: 14px 0 0; font-size: 15px; line-height: 1.6; color: #9AA7A1;">Le spécimen est fictif : société, personnes et chiffres sont inventés. En rendez-vous, un dossier réel de votre périmètre est présenté, en version anonymisée.</p>
+    <button type="button" class="couverture" aria-label="Lire le dossier spécimen" data-ouvrir style="margin-top: 32px; box-sizing: border-box; width: 240px; height: 339px; background: #FFFFFF; color: #16201C; border: 1px solid #C9D0CC; padding: 22px 22px 18px; display: flex; flex-direction: column; text-align: left; font-family: 'Hanken Grotesk', 'Helvetica Neue', Helvetica, Arial, sans-serif; cursor: pointer;">
+      <span style="display: flex; align-items: center; gap: 7px; padding-bottom: 9px; border-bottom: 1px solid #16201C;">
+        <img src="/emblem-encre.png" alt="" style="width: 20px; height: 20px; display: block;">
+        <span style="font-size: 11px; font-weight: 600;">Imbrin Research</span>
+      </span>
+      <span style="display: block; margin-top: 80px;">
+        <span style="display: block; font-size: 10px; line-height: 1.5; color: #56605B;">Dossier d’approche</span>
+        <span style="display: block; margin-top: 4px; font-size: 19px; font-weight: 600; line-height: 1.15; letter-spacing: -0.01em;">Établissements Vasseur</span>
+        <span style="display: block; margin-top: 8px; font-size: 10px; line-height: 1.5; color: #2B3530;">Génie climatique, 60 à 99 salariés<br>Région exemple</span>
+      </span>
+      <span style="display: flex; margin-top: auto; padding-top: 9px; border-top: 1px solid #DCE1DD; justify-content: space-between; font-size: 9px; line-height: 1.5; color: #56605B;">
+        <span>Spécimen, données fictives</span>
+        <span style="color: #8E2438; font-weight: 600;">Confidentiel</span>
+      </span>
+    </button>
+    <button type="button" class="bouton-clair" data-ouvrir style="margin-top: 28px; display: flex; align-items: center; justify-content: center; width: 100%; box-sizing: border-box; height: 54px; background: #FFFFFF; color: #16201C; border: 0; border-radius: 2px; font-family: 'Hanken Grotesk', 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 500; cursor: pointer;">Lire le dossier spécimen</button>
+    <div id="popup" hidden>
+<div class="voile" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 50; box-sizing: border-box; padding: 0; display: flex; align-items: center; justify-content: center; background: rgba(10, 16, 13, 0.64);">
+    <button type="button" aria-label="Fermer le dossier" data-fermer style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: transparent; border: 0; padding: 0; cursor: default;"></button>
+    <div class="papier" role="dialog" aria-modal="true" aria-label="Dossier d’approche, spécimen" style="position: relative; z-index: 1; width: 100%; max-width: 100%; max-height: 100%; box-sizing: border-box; display: flex; flex-direction: column; background: #FFFFFF; color: #16201C; box-shadow: 0 30px 80px -30px rgba(0, 0, 0, 0.6);">
+      <div style="flex-shrink: 0; display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 14px 20px 14px 24px; border-bottom: 1px solid #DCE1DD; background: #FFFFFF;">
+        <span style="font-size: 14px; color: #56605B;">Dossier d’approche, spécimen</span>
+        <div style="display: flex; align-items: center; gap: 18px;">
+          <a href="#dossier" style="font-size: 14px; color: #16201C; text-decoration: underline; text-underline-offset: 5px; text-decoration-thickness: 1px; text-decoration-color: #8E2438;">Version PDF</a>
+          <button type="button" class="bouton-encre" data-fermer data-fermer-bouton style="height: 40px; padding: 0 16px; background: #16201C; color: #FFFFFF; border: 0; border-radius: 2px; font-family: 'Hanken Grotesk', 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 14px; font-weight: 500; cursor: pointer;">Fermer</button>
+        </div>
+      </div>
+      <div style="overflow: auto; min-height: 0;">
+        <div style="padding: 24px 20px 20px; font-size: 14px; line-height: 1.55; color: #16201C;">
+  <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; padding-bottom: 14px; border-bottom: 1px solid #16201C;">
+    <div style="display: flex; align-items: center; gap: 9px;">
+      <img src="/emblem-encre.png" alt="" style="width: 28px; height: 28px; display: block;">
+      <span style="font-size: 14px; font-weight: 600;">Imbrin Research</span>
+    </div>
+    <div style="text-align: right; font-size: 12px; line-height: 1.45; color: #56605B;">Dossier d’approche<br>Spécimen, données fictives</div>
+  </div>
+  <div style="margin-top: 28px; display: flex; justify-content: space-between; align-items: baseline; gap: 16px; flex-wrap: wrap;">
+    <div style="font-size: 26px; font-weight: 600; line-height: 1.15; letter-spacing: -0.01em;">Établissements Vasseur</div>
+    <div style="font-size: 12px; color: #56605B;">Région exemple</div>
+  </div>
+  <p style="margin: 8px 0 0; color: #2B3530;">Génie climatique, SAS, 60 à 99 salariés. Dossier établi le 07/2026.</p>
+
+  <div style="margin-top: 30px;"><h3 style="margin: 0; font-size: 14px; font-weight: 600; line-height: 1.5; padding-bottom: 6px; border-bottom: 1px solid #DCE1DD; color: #8E2438;">1. Identité</h3>
+    <dl style="margin: 0;">
+      <div style="display: grid; grid-template-columns: 110px minmax(0, 1fr); column-gap: 16px; padding: 7px 0; border-bottom: 1px solid #EEF1EF;"><dt style="color: #56605B;">Dirigeant</dt><dd style="margin: 0;">Gérard Vasseur, président, 63 ans</dd></div>
+      <div style="display: grid; grid-template-columns: 110px minmax(0, 1fr); column-gap: 16px; padding: 7px 0; border-bottom: 1px solid #EEF1EF;"><dt style="color: #56605B;">Capital</dt><dd style="margin: 0;">Détenu en totalité par le dirigeant depuis 2011</dd></div>
+      <div style="display: grid; grid-template-columns: 110px minmax(0, 1fr); column-gap: 16px; padding: 7px 0; border-bottom: 1px solid #EEF1EF;"><dt style="color: #56605B;">Forme</dt><dd style="margin: 0;">SAS depuis 03/2026, titres cessibles</dd></div>
+      <div style="display: grid; grid-template-columns: 110px minmax(0, 1fr); column-gap: 16px; padding: 7px 0; "><dt style="color: #56605B;">Immobilier</dt><dd style="margin: 0;">Murs d’exploitation logés dans une SCI depuis 2023</dd></div>
+    </dl>
+  </div>
+
+  <div style="margin-top: 26px;"><h3 style="margin: 0; font-size: 14px; font-weight: 600; line-height: 1.5; padding-bottom: 6px; border-bottom: 1px solid #DCE1DD; color: #8E2438;">2. Comptes déposés</h3>
+    <table style="width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums;">
+      <thead><tr>
+        <th scope="col" style="text-align: left; font-weight: 400; color: #56605B; padding: 7px 0; border-bottom: 1px solid #EEF1EF;">Exercice clos au 31/12</th>
+        <th scope="col" style="text-align: right; font-weight: 400; color: #56605B; padding: 7px 0; border-bottom: 1px solid #EEF1EF;">2023</th>
+        <th scope="col" style="text-align: right; font-weight: 400; color: #56605B; padding: 7px 0; border-bottom: 1px solid #EEF1EF;">2024</th>
+        <th scope="col" style="text-align: right; font-weight: 400; color: #56605B; padding: 7px 0; border-bottom: 1px solid #EEF1EF;">2025</th>
+      </tr></thead>
+      <tbody>
+        <tr><th scope="row" style="text-align: left; font-weight: 400; padding: 7px 0; border-bottom: 1px solid #EEF1EF;">Résultat net</th><td style="text-align: right; padding: 7px 0; border-bottom: 1px solid #EEF1EF;">510 K€</td><td style="text-align: right; padding: 7px 0; border-bottom: 1px solid #EEF1EF;">590 K€</td><td style="text-align: right; padding: 7px 0; border-bottom: 1px solid #EEF1EF;">640 K€</td></tr>
+        <tr><th scope="row" style="text-align: left; font-weight: 400; padding: 7px 0; border-bottom: 1px solid #EEF1EF;">Chiffre d’affaires</th><td colspan="3" style="text-align: right; padding: 7px 0; border-bottom: 1px solid #EEF1EF; color: #56605B;">Sous option de confidentialité depuis 2021</td></tr>
+        <tr><th scope="row" style="text-align: left; font-weight: 400; padding: 7px 0; border-bottom: 1px solid #EEF1EF;">Trésorerie au 31/12/2025</th><td colspan="3" style="text-align: right; padding: 7px 0; border-bottom: 1px solid #EEF1EF;">1,9 M€</td></tr>
+        <tr><th scope="row" style="text-align: left; font-weight: 400; padding: 7px 0; border-bottom: 1px solid #EEF1EF;">Fonds de roulement</th><td colspan="3" style="text-align: right; padding: 7px 0; border-bottom: 1px solid #EEF1EF;">2,1 M€</td></tr>
+        <tr><th scope="row" style="text-align: left; font-weight: 400; padding: 7px 0;">Dettes financières / capitaux propres</th><td colspan="3" style="text-align: right; padding: 7px 0;">0,2</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div style="margin-top: 26px;"><h3 style="margin: 0; font-size: 14px; font-weight: 600; line-height: 1.5; padding-bottom: 6px; border-bottom: 1px solid #DCE1DD; color: #8E2438;">3. Détention</h3>
+    <p style="margin: 10px 0 0; color: #2B3530;">Aucune entrée d’associé et aucun mouvement de titres depuis la reprise de 2011, jusqu’à l’acte de mars 2026. L’affaire est saine : trois exercices en hausse, un endettement financier faible. Les murs d’exploitation ont été isolés dans une SCI en 2023 ; l’acte est daté et figure à la chronologie.</p>
+  </div>
+
+  <div style="margin-top: 26px;"><h3 style="margin: 0; font-size: 14px; font-weight: 600; line-height: 1.5; padding-bottom: 6px; border-bottom: 1px solid #DCE1DD; color: #8E2438;">4. Chronologie des actes déposés</h3>
+    <table style="width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums;"><tbody>
+      <tr><td style="width: 110px; vertical-align: top; padding: 7px 0; color: #56605B; border-bottom: 1px solid #EEF1EF;">1998</td><td style="vertical-align: top; padding: 7px 0; border-bottom: 1px solid #EEF1EF;">Création, transmission familiale</td></tr>
+      <tr><td style="width: 110px; vertical-align: top; padding: 7px 0; color: #56605B; border-bottom: 1px solid #EEF1EF;">2011</td><td style="vertical-align: top; padding: 7px 0; border-bottom: 1px solid #EEF1EF;">Reprise par le dirigeant actuel</td></tr>
+      <tr><td style="width: 110px; vertical-align: top; padding: 7px 0; color: #56605B; border-bottom: 1px solid #EEF1EF;">2023</td><td style="vertical-align: top; padding: 7px 0; border-bottom: 1px solid #EEF1EF;">Constitution d’une SCI, murs d’exploitation isolés</td></tr>
+      <tr><td style="width: 110px; vertical-align: top; padding: 7px 0; color: #56605B; border-bottom: 1px solid #EEF1EF;">03/2026</td><td style="vertical-align: top; padding: 7px 0; border-bottom: 1px solid #EEF1EF;">Transformation en SAS, titres rendus cessibles, acte déposé</td></tr>
+      <tr><td style="width: 110px; vertical-align: top; padding: 7px 0; color: #56605B; border-bottom: 1px solid #EEF1EF;">04/2026</td><td style="vertical-align: top; padding: 7px 0; border-bottom: 1px solid #EEF1EF;">Dépôt des comptes clos au 31/12/2025</td></tr>
+      <tr><td style="width: 110px; vertical-align: top; padding: 7px 0; color: #56605B; ">07/2026</td><td style="vertical-align: top; padding: 7px 0; ">Vérification au registre : dirigeant actif, aucun mouvement de contrôle sur 24 mois</td></tr>
+    </tbody></table>
+  </div>
+
+  <div style="margin-top: 26px;"><h3 style="margin: 0; font-size: 14px; font-weight: 600; line-height: 1.5; padding-bottom: 6px; border-bottom: 1px solid #DCE1DD; color: #8E2438;">5. Angle d’approche</h3>
+    <p style="margin: 10px 0 0; color: #2B3530;">La valeur de l’entreprise repose sur son dirigeant, qui a 63 ans. L’échange peut s’ouvrir sur la continuité de l’exploitation, avant toute question de cession.</p>
+    <p style="margin: 10px 0 0; color: #2B3530;">Les titres viennent d’être rendus cessibles : le geste est daté, l’acte est au registre. Ce que le dirigeant prépare, l’acte ne le dit pas. C’est la première question à lui poser.</p>
+  </div>
+
+  <div style="margin-top: 26px;"><h3 style="margin: 0; font-size: 14px; font-weight: 600; line-height: 1.5; padding-bottom: 6px; border-bottom: 1px solid #DCE1DD; color: #8E2438;">6. Ce que les sources n’établissent pas</h3>
+    <p style="margin: 10px 0 0; color: #2B3530;">Le chiffre d’affaires est sous option de confidentialité depuis 2021 : une fourchette est donnée, pas un montant. Les deux enfants du dirigeant sont hors de l’entreprise ; rien n’indique s’ils constituent une piste de reprise. Aucun acte ne renseigne l’intention du dirigeant.</p>
+  </div>
+
+  <div style="margin-top: 26px;"><h3 style="margin: 0; font-size: 14px; font-weight: 600; line-height: 1.5; padding-bottom: 6px; border-bottom: 1px solid #DCE1DD; color: #8E2438;">7. Coordonnées</h3>
+    <table style="width: 100%; border-collapse: collapse;"><tbody>
+      <tr><td style="width: 110px; vertical-align: top; padding: 7px 0; color: #56605B; border-bottom: 1px solid #EEF1EF;">Mobile</td><td style="vertical-align: top; padding: 7px 0; border-bottom: 1px solid #EEF1EF;">Vérifié le 07/2026</td></tr>
+      <tr><td style="width: 110px; vertical-align: top; padding: 7px 0; color: #56605B; border-bottom: 1px solid #EEF1EF;">Email nominatif</td><td style="vertical-align: top; padding: 7px 0; border-bottom: 1px solid #EEF1EF;">Vérifié le 07/2026</td></tr>
+      <tr><td style="width: 110px; vertical-align: top; padding: 7px 0; color: #56605B; ">Ligne directe</td><td style="vertical-align: top; padding: 7px 0; ">Non vérifiée</td></tr>
+    </tbody></table>
+    <p style="margin: 8px 0 0; font-size: 12px; color: #56605B;">Coordonnées masquées dans le spécimen. Elles proviennent de fournisseurs sous contrat ; chaque ligne porte son statut de vérification.</p>
+  </div>
+
+  <div style="margin-top: 26px;"><h3 style="margin: 0; font-size: 14px; font-weight: 600; line-height: 1.5; padding-bottom: 6px; border-bottom: 1px solid #DCE1DD; color: #8E2438;">8. Sources</h3>
+    <p style="margin: 10px 0 0; color: #2B3530;">Registre national des entreprises (INPI) : extrait et actes déposés. Comptes annuels déposés, exercices 2023 à 2025. BODACC. Répertoire SIRENE (INSEE).</p>
+    <p style="margin: 8px 0 0; font-size: 12px; color: #56605B;">Information des personnes : article 14 du RGPD, notice accessible sur la page Confidentialité du site.</p>
+  </div>
+
+  <div style="margin-top: 36px; padding-top: 14px; border-top: 1px solid #DCE1DD; display: flex; justify-content: space-between; gap: 16px; font-size: 12px; color: #56605B;">
+    <span>Spécimen. Société, personnes et chiffres inventés.</span>
+    <span style="color: #8E2438; font-weight: 600;">Confidentiel</span>
+  </div>
+</div>
+      </div>
+    </div>
+  </div>
+</div>
+  </section>
+
+  <section id="methode-m" style="flex-shrink: 0; padding: 56px 24px;">
+    <h2 style="margin: 0; font-size: 31px; font-weight: 500; line-height: 1.12; letter-spacing: -0.01em; color: #16201C;">Méthode</h2>
+    <ol style="margin: 28px 0 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 32px;">
+      <li style="border-top: 1px solid #16201C; padding-top: 18px;">
+        <span aria-hidden="true" style="display: block; font-size: 34px; font-weight: 500; line-height: 1; color: #8E2438;">1</span>
+        <h3 style="margin: 14px 0 0; font-size: 18px; font-weight: 600; line-height: 1.4;">Le périmètre</h3>
+        <p style="margin: 6px 0 0; font-size: 17px; line-height: 1.6; color: #2B3530;">Région, typologie et taille d’entreprises sont arrêtées avec vous. Le périmètre est ensuite mesuré : le devis indique ce qu’il contient, avant tout engagement.</p>
+      </li>
+      <li style="border-top: 1px solid #16201C; padding-top: 18px;">
+        <span aria-hidden="true" style="display: block; font-size: 34px; font-weight: 500; line-height: 1; color: #8E2438;">2</span>
+        <h3 style="margin: 14px 0 0; font-size: 18px; font-weight: 600; line-height: 1.4;">La lecture</h3>
+        <p style="margin: 6px 0 0; font-size: 17px; line-height: 1.6; color: #2B3530;">Les sociétés sont repérées à partir des actes déposés au registre. Chaque cas est repris à la main : l’acte est ouvert et lu, y compris lorsqu’il s’agit d’un scan.</p>
+      </li>
+      <li style="border-top: 1px solid #16201C; padding-top: 18px;">
+        <span aria-hidden="true" style="display: block; font-size: 34px; font-weight: 500; line-height: 1; color: #8E2438;">3</span>
+        <h3 style="margin: 14px 0 0; font-size: 18px; font-weight: 600; line-height: 1.4;">La livraison</h3>
+        <p style="margin: 6px 0 0; font-size: 17px; line-height: 1.6; color: #2B3530;">Le jour de la livraison, la fiche au registre et l’acte sont vérifiés à nouveau. Si un élément déconseille l’approche, par exemple une société déjà conseillée ou filiale d’un groupe, il figure au dossier.</p>
+      </li>
+    </ol>
+    <p style="margin: 32px 0 0; font-size: 16px; line-height: 1.6; color: #56605B;">Les critères de repérage sont mesurés sur l’historique national des transmissions de PME.</p>
+    <a href="#methode-m" style="display: inline-block; margin-top: 12px; font-size: 16px; color: #16201C; text-decoration: underline; text-underline-offset: 6px; text-decoration-thickness: 1px; text-decoration-color: #8E2438;">La méthode en détail</a>
+  </section>
+
+  <section id="conditions-m" style="flex-shrink: 0; border-top: 1px solid #DCE1DD; padding: 56px 24px;">
+    <h2 style="margin: 0; font-size: 31px; font-weight: 500; line-height: 1.12; letter-spacing: -0.01em; color: #16201C;">Conditions</h2>
+    <p style="margin: 18px 0 0; font-size: 17px; line-height: 1.6; color: #2B3530;">Deux façons de travailler ensemble. Les montants sont chiffrés au devis, avant signature, après mesure de votre périmètre.</p>
+    <div style="margin-top: 40px; border-top: 3px solid #1E3A32; padding-top: 24px;">
+      <p style="margin: 0; font-size: 14px; line-height: 1.5; color: #56605B;">Abonnement</p>
+      <h3 style="margin: 6px 0 0; font-size: 36px; font-weight: 500; line-height: 1.05; letter-spacing: -0.01em;">L’origination</h3>
+      <p style="margin: 16px 0 0; font-size: 17px; line-height: 1.6; color: #2B3530;">Votre périmètre est tenu sous veille. Chaque dossier vous est livré dès qu’il est vérifié, sans limite de nombre. Le volume du périmètre est mesuré et annoncé au devis, avant tout engagement.</p>
+      <div style="margin-top: 20px; border-bottom: 1px solid #DCE1DD;">
+        <div style="padding: 20px 0; border-top: 1px solid #DCE1DD;">
+  <p style="margin: 0; font-size: 14px; line-height: 1.5; color: #56605B;">Engagement</p>
+  <p style="margin: 4px 0 0; font-size: 26px; font-weight: 500; line-height: 1.15; letter-spacing: -0.01em; color: #1E3A32;">Six mois</p>
+  <p style="margin: 8px 0 0; font-size: 15px; line-height: 1.55; color: #2B3530;">Puis reconduction mensuelle, résiliable avec un mois de préavis.</p>
+</div>
+        <div style="padding: 20px 0; border-top: 1px solid #DCE1DD;">
+  <p style="margin: 0; font-size: 14px; line-height: 1.5; color: #56605B;">Rémunération</p>
+  <p style="margin: 4px 0 0; font-size: 26px; font-weight: 500; line-height: 1.15; letter-spacing: -0.01em; color: #1E3A32;">Trois composantes</p>
+  <p style="margin: 8px 0 0; font-size: 15px; line-height: 1.55; color: #2B3530;">Un retainer mensuel, un fee à la signature de chaque mandat obtenu sur un dossier livré, et une part des honoraires de succès.</p>
+</div>
+        <div style="padding: 20px 0; border-top: 1px solid #DCE1DD;">
+  <p style="margin: 0; font-size: 14px; line-height: 1.5; color: #56605B;">Facturation</p>
+  <p style="margin: 4px 0 0; font-size: 26px; font-weight: 500; line-height: 1.15; letter-spacing: -0.01em; color: #1E3A32;">Au dossier livré</p>
+  <p style="margin: 8px 0 0; font-size: 15px; line-height: 1.55; color: #2B3530;">Un mois sans dossier livré n’est pas facturé.</p>
+</div>
+        <div style="padding: 20px 0; border-top: 1px solid #DCE1DD;">
+  <p style="margin: 0; font-size: 14px; line-height: 1.5; color: #56605B;">Protection</p>
+  <p style="margin: 4px 0 0; font-size: 26px; font-weight: 500; line-height: 1.15; letter-spacing: -0.01em; color: #1E3A32;">Vingt-quatre mois</p>
+  <p style="margin: 8px 0 0; font-size: 15px; line-height: 1.55; color: #2B3530;">Un mandat signé avec une société issue d’un dossier livré reste dû, contrat en cours ou non.</p>
+</div>
+      </div>
+    </div>
+    <div style="margin-top: 44px; border-top: 1px solid #16201C; padding-top: 20px;">
+      <p style="margin: 0; font-size: 14px; line-height: 1.5; color: #56605B;">À la mission</p>
+      <h3 style="margin: 6px 0 0; font-size: 24px; font-weight: 500; line-height: 1.15;">Le mandat de recherche</h3>
+      <p style="margin: 12px 0 0; font-size: 16px; line-height: 1.6; color: #2B3530;">Lorsqu’un mandat de recherche arrive au cabinet, Imbrin Research constitue, selon vos critères, une liste de sociétés vérifiées, livrée à la date convenue. Rémunération fixée au devis, à la mission. Hors périmètres déjà sous exclusivité.</p>
+    </div>
+    <p style="margin: 36px 0 0; font-size: 16px; line-height: 1.6; color: #56605B;">Imbrin Research n’intervient pas dans les opérations : ni conseil, ni négociation.</p>
+  </section>
+
+  <section id="apropos-m" style="flex-shrink: 0; border-top: 1px solid #DCE1DD; padding: 56px 24px;">
+    <h2 style="margin: 0; font-size: 31px; font-weight: 500; line-height: 1.12; letter-spacing: -0.01em; color: #16201C;">À propos</h2>
+    <figure style="margin: 24px 0 0;">
+      <img src="/portrait-vincent-fournier.webp" alt="Portrait de Vincent Fournier, fondateur d’Imbrin Research" style="display: block; width: 100%; aspect-ratio: 342 / 400; object-fit: cover; object-position: center 25%;">
+      <figcaption style="margin-top: 10px; font-size: 14px; line-height: 1.5; color: #56605B;">Vincent Fournier, fondateur</figcaption>
+    </figure>
+    <p style="margin: 24px 0 0; font-size: 17px; line-height: 1.6; color: #2B3530;">Imbrin Research a été fondé par Vincent Fournier, entre Paris et Bayonne. Il conduit lui-même les échanges avec les cabinets et la vérification des dossiers.</p>
+    <p style="margin: 12px 0 0; font-size: 17px; line-height: 1.6; color: #2B3530;">[Parcours du fondateur : formation, expériences, ce qui l’a conduit à l’origination. À compléter.]</p>
+    <dl style="margin: 28px 0 0; border-bottom: 1px solid #DCE1DD;">
+      <div style="padding: 14px 0; border-top: 1px solid #DCE1DD;"><dt style="font-size: 14px; line-height: 1.5; color: #56605B;">Société</dt><dd style="margin: 2px 0 0; font-size: 17px; line-height: 1.5;">[Raison sociale], SIREN [numéro]</dd></div>
+      <div style="padding: 14px 0; border-top: 1px solid #DCE1DD;"><dt style="font-size: 14px; line-height: 1.5; color: #56605B;">Siège</dt><dd style="margin: 2px 0 0; font-size: 17px; line-height: 1.5;">[Adresse du siège]</dd></div>
+      <div style="padding: 14px 0; border-top: 1px solid #DCE1DD;"><dt style="font-size: 14px; line-height: 1.5; color: #56605B;">Téléphone</dt><dd style="margin: 2px 0 0; font-size: 17px; line-height: 1.5;"><a href="tel:+33681285433" style="color: #16201C; text-decoration: underline; text-underline-offset: 5px; text-decoration-thickness: 1px; text-decoration-color: #8E2438;">06 81 28 54 33</a></dd></div>
+      <div style="padding: 14px 0; border-top: 1px solid #DCE1DD;"><dt style="font-size: 14px; line-height: 1.5; color: #56605B;">Email</dt><dd style="margin: 2px 0 0; font-size: 17px; line-height: 1.5;"><a href="mailto:contact@imbrin.fr" style="color: #16201C; text-decoration: underline; text-underline-offset: 5px; text-decoration-thickness: 1px; text-decoration-color: #8E2438;">contact@imbrin.fr</a></dd></div>
+      <div style="padding: 14px 0; border-top: 1px solid #DCE1DD;"><dt style="font-size: 14px; line-height: 1.5; color: #56605B;">LinkedIn</dt><dd style="margin: 2px 0 0; font-size: 17px; line-height: 1.5;"><a href="https://www.linkedin.com/in/vincent-fournier-939021170/" style="color: #16201C; text-decoration: underline; text-underline-offset: 5px; text-decoration-thickness: 1px; text-decoration-color: #8E2438;">Profil de Vincent Fournier</a></dd></div>
+    </dl>
+  </section>
+
+  <section id="analyses-m" style="flex-shrink: 0; border-top: 1px solid #DCE1DD; padding: 56px 24px;">
+    <h2 style="margin: 0; font-size: 31px; font-weight: 500; line-height: 1.12; letter-spacing: -0.01em; color: #16201C;">Analyses</h2>
+    <div style="margin-top: 28px; display: flex; flex-direction: column; gap: 28px;">
+      <article style="border-top: 1px solid #16201C; padding-top: 18px;">
+        <h3 style="margin: 0; font-size: 22px; font-weight: 500; line-height: 1.25; color: #16201C;">La vague de transmission des PME françaises</h3>
+        <p style="margin: 8px 0 0; font-size: 16px; line-height: 1.55; color: #2B3530;">Une génération de dirigeants de PME devra transmettre. Ce que cela change pour qui conseille les cédants.</p>
+        <a href="#analyses-m" aria-label="Lire l’analyse : La vague de transmission des PME françaises" style="display: inline-block; margin-top: 12px; font-size: 16px; color: #16201C; text-decoration: underline; text-underline-offset: 6px; text-decoration-thickness: 1px; text-decoration-color: #8E2438;">Lire</a>
+      </article>
+      <article style="border-top: 1px solid #16201C; padding-top: 18px;">
+        <h3 style="margin: 0; font-size: 22px; font-weight: 500; line-height: 1.25; color: #16201C;">Pourquoi tant de cessions de PME se font hors marché</h3>
+        <p style="margin: 8px 0 0; font-size: 16px; line-height: 1.55; color: #2B3530;">Beaucoup de transmissions ne passent par aucun processus concurrentiel. Ce que cela coûte au cédant.</p>
+        <a href="#analyses-m" aria-label="Lire l’analyse : Pourquoi tant de cessions de PME se font hors marché" style="display: inline-block; margin-top: 12px; font-size: 16px; color: #16201C; text-decoration: underline; text-underline-offset: 6px; text-decoration-thickness: 1px; text-decoration-color: #8E2438;">Lire</a>
+      </article>
+      <article style="border-top: 1px solid #16201C; padding-top: 18px;">
+        <h3 style="margin: 0; font-size: 22px; font-weight: 500; line-height: 1.25; color: #16201C;">L’origination dans les cabinets de cession</h3>
+        <p style="margin: 8px 0 0; font-size: 16px; line-height: 1.55; color: #2B3530;">Pourquoi le repérage en amont reste difficile à tenir en interne.</p>
+        <a href="#analyses-m" aria-label="Lire l’analyse : L’origination dans les cabinets de cession" style="display: inline-block; margin-top: 12px; font-size: 16px; color: #16201C; text-decoration: underline; text-underline-offset: 6px; text-decoration-thickness: 1px; text-decoration-color: #8E2438;">Lire</a>
+      </article>
+    </div>
+    <a href="#analyses-m" style="display: inline-block; margin-top: 24px; font-size: 16px; color: #16201C; text-decoration: underline; text-underline-offset: 6px; text-decoration-thickness: 1px; text-decoration-color: #8E2438;">Toutes les analyses</a>
+  </section>
+
+  <section id="contact-m" style="flex-shrink: 0; background: #1E3A32; color: #FFFFFF; padding: 56px 24px;">
+    <h2 style="margin: 0; font-size: 31px; font-weight: 500; line-height: 1.12; letter-spacing: -0.01em; color: #FFFFFF;">Prendre rendez-vous</h2>
+    <p style="margin: 18px 0 0; font-size: 17px; line-height: 1.6; color: #DDE5E1;">Un premier échange de trente minutes permet d’arrêter votre périmètre. Le devis qui suit en indique le contenu et les conditions.</p>
+    <a href="https://calendly.com/fnr-vincent-pro/echange" style="margin-top: 26px; display: flex; align-items: center; justify-content: center; width: 100%; box-sizing: border-box; height: 54px; background: #FFFFFF; color: #16201C; font-size: 16px; font-weight: 500; text-decoration: none; border-radius: 2px;">Choisir un créneau</a>
+    <div style="margin-top: 32px; display: flex; flex-direction: column; gap: 18px;">
+      <div>
+        <p style="margin: 0; font-size: 14px; line-height: 1.5; color: #B9C6C0;">Par téléphone</p>
+        <a href="tel:+33681285433" style="display: inline-block; margin-top: 4px; font-size: 22px; font-weight: 500; line-height: 1.25; color: #FFFFFF; text-decoration: underline; text-underline-offset: 6px; text-decoration-thickness: 1px;">06 81 28 54 33</a>
+      </div>
+      <div>
+        <p style="margin: 0; font-size: 14px; line-height: 1.5; color: #B9C6C0;">Par email</p>
+        <a href="mailto:contact@imbrin.fr" style="display: inline-block; margin-top: 4px; font-size: 22px; font-weight: 500; line-height: 1.25; color: #FFFFFF; text-decoration: underline; text-underline-offset: 6px; text-decoration-thickness: 1px;">contact@imbrin.fr</a>
+      </div>
+    </div>
+  </section>
+
+  <footer style="flex-grow: 1; background: #16201C; color: #FFFFFF; padding: 48px 24px 32px;">
+    <img src="/emblem-clair.png" alt="Emblème d’Imbrin Research, un plongeon imbrin gravé" style="display: block; width: 104px; height: 104px;">
+    <p style="margin: 18px 0 0; font-size: 19px; font-weight: 600; line-height: 1.2; color: #FFFFFF;">Imbrin Research</p>
+    <p style="margin: 2px 0 0; font-size: 14px; line-height: 1.5; color: #9AA7A1;">Origination sell-side</p>
+    <div style="margin-top: 32px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px 24px;">
+      <nav aria-label="Pages du site" style="display: flex; flex-direction: column; gap: 8px;">
+        <p style="margin: 0 0 4px; font-size: 14px; font-weight: 600; line-height: 1.5; color: #FFFFFF;">Le site</p>
+        <a class="lien-pied" href="#service-m" style="font-size: 15px; line-height: 1.6;">Le service</a>
+        <a class="lien-pied" href="#dossier-m" style="font-size: 15px; line-height: 1.6;">Le dossier</a>
+        <a class="lien-pied" href="#methode-m" style="font-size: 15px; line-height: 1.6;">Méthode</a>
+        <a class="lien-pied" href="#conditions-m" style="font-size: 15px; line-height: 1.6;">Conditions</a>
+        <a class="lien-pied" href="#analyses-m" style="font-size: 15px; line-height: 1.6;">Analyses</a>
+        <a class="lien-pied" href="#apropos-m" style="font-size: 15px; line-height: 1.6;">À propos</a>
+      </nav>
+      <div style="display: flex; flex-direction: column; gap: 8px;">
+        <p style="margin: 0 0 4px; font-size: 14px; font-weight: 600; line-height: 1.5; color: #FFFFFF;">Informations</p>
+        <a class="lien-pied" href="#haut-m" style="font-size: 15px; line-height: 1.6;">Vous avez été contacté ?</a>
+        <a class="lien-pied" href="#haut-m" style="font-size: 15px; line-height: 1.6;">Mentions légales</a>
+        <a class="lien-pied" href="#haut-m" style="font-size: 15px; line-height: 1.6;">Confidentialité</a>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 8px;">
+        <p style="margin: 0 0 4px; font-size: 14px; font-weight: 600; line-height: 1.5; color: #FFFFFF;">Contact</p>
+        <a class="lien-pied" href="tel:+33681285433" style="font-size: 15px; line-height: 1.6;">06 81 28 54 33</a>
+        <a class="lien-pied" href="mailto:contact@imbrin.fr" style="font-size: 15px; line-height: 1.6;">contact@imbrin.fr</a>
+        <a class="lien-pied" href="https://www.linkedin.com/in/vincent-fournier-939021170/" style="font-size: 15px; line-height: 1.6;">LinkedIn</a>
+      </div>
+    </div>
+    <div style="margin-top: 32px; padding-top: 16px; border-top: 1px solid rgba(255, 255, 255, 0.18); display: flex; justify-content: space-between; gap: 12px; font-size: 13px; line-height: 1.5; color: #9AA7A1;">
+      <span>© 2026 Imbrin Research</span>
+      <span>Site sans traceurs</span>
+    </div>
+  </footer>
+
+</div>
+<script>
+(function () {
+  var popup = document.getElementById('popup');
+  var derniereCible = null;
+  function ouvrir(e) {
+    derniereCible = e.currentTarget;
+    popup.hidden = false;
+    document.body.style.overflow = 'hidden';
+    var fermer = popup.querySelector('[data-fermer-bouton]');
+    if (fermer) fermer.focus();
+  }
+  function fermer() {
+    popup.hidden = true;
+    document.body.style.overflow = '';
+    if (derniereCible) derniereCible.focus();
+  }
+  document.querySelectorAll('[data-ouvrir]').forEach(function (b) { b.addEventListener('click', ouvrir); });
+  document.querySelectorAll('[data-fermer]').forEach(function (b) { b.addEventListener('click', fermer); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !popup.hidden) fermer(); });
+})();
+</script>
+</body>
+</html>

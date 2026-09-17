@@ -1,18 +1,13 @@
 import type { Metadata } from "next";
 import Analyses from "@/components/Analyses";
-import BarreAction from "@/components/BarreAction";
-import CtaFinal from "@/components/CtaFinal";
+import APropos from "@/components/APropos";
+import Conditions from "@/components/Conditions";
 import Dossier from "@/components/Dossier";
-import Entonnoir from "@/components/Entonnoir";
-import Faq from "@/components/Faq";
-import Fondateur from "@/components/Fondateur";
+import Footer from "@/components/Footer";
 import Hero from "@/components/Hero";
-import JsonLd from "@/components/JsonLd";
 import Methode from "@/components/Methode";
-import NeFaitPas from "@/components/NeFaitPas";
-import Offre from "@/components/Offre";
-import Reveal from "@/components/Reveal";
-import { faqSchema } from "@/config/schema";
+import RendezVous from "@/components/RendezVous";
+import Service from "@/components/Service";
 
 /* v70 : le canonique de l'accueil est EXPLICITE, comme sur toutes les
    autres pages. Il était hérité du layout, ce qui le rendait invisible
@@ -21,38 +16,26 @@ export const metadata: Metadata = {
   alternates: { canonical: "/" },
 };
 
+/* V80 · L'ACCUEIL, dans l'ordre des planches : hero, ce que fait Imbrin
+   Research, le dossier d'approche, la méthode, les conditions, à propos,
+   les analyses, prendre rendez-vous, puis le pied de page.
+   Rien n'apparaît au défilement, rien ne se recouvre : plus de Reveal,
+   plus de barre d'action mobile, plus de FAQ ni de balisage FAQPage.
+   « haut » est la cible du lien de marque de l'en-tête et du pied. */
 export default function Home() {
   return (
-    <main>
-      {/* la FAQ n'existe que sur l'accueil : son balisage y reste */}
-      <JsonLd data={faqSchema} />
-      <Hero />
-      <Dossier />
-      <Entonnoir />
-      <Methode />
-      {/* v60 : la bande des refus se pose entre la méthode et l'offre —
-          elle ferme la méthode sur ce qu'elle s'interdit, juste avant que
-          l'offre demande de l'argent. Papier, comme la méthode : le trait
-          de vin de la mention rayée ne donne que 2,32:1 sur l'encre et la
-          charte v15 interdit le lift sur un filet. Mesuré : 198px à 1440. */}
-      <NeFaitPas />
-      <Offre />
-      {/* v52 : les engagements sont supprimés (arbitrage Vincent, 27/08) —
-          leurs quatre principes vivent déjà ailleurs : scores dans la
-          méthode, premier contact et données grises dans la FAQ RGPD,
-          opt-out dans le pied de l'offre, chiffres dans la mesure. */}
-      {/* v53 : la mesure est supprimée — le suivi des cohortes vit en FAQ,
-          le taux d'écart par lot dans la note du filtre, le zéro chiffre
-          générique dans la FAQ. */}
-      <Fondateur />
-      <Analyses />
-      <Faq />
-      <CtaFinal />
-      <Reveal />
-      {/* v25 : posée en dernier, elle recouvre la page sans jamais s'insérer
-          dans sa lecture. Elle n'existe que sur l'accueil, seule page à porter
-          les deux ancres qu'elle observe. */}
-      <BarreAction />
-    </main>
+    <>
+      <main id="haut">
+        <Hero />
+        <Service />
+        <Dossier />
+        <Methode />
+        <Conditions />
+        <APropos />
+        <Analyses />
+        <RendezVous />
+      </main>
+      <Footer />
+    </>
   );
 }

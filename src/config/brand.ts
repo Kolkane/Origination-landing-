@@ -7,6 +7,26 @@ export const brand = typoDeep({
   CALENDLY_URL: "https://calendly.com/fnr-vincent-pro/echange",
   LINKEDIN_URL: "https://www.linkedin.com/in/vincent-fournier-939021170/",
   CONTACT_EMAIL: "contact@imbrin.fr",
+  /* V80 : les fichiers de public/ que les composants montrent. Deux
+     emblèmes, l'encre pour les fonds clairs et le clair pour les fonds
+     sombres ; la vidéo du hero et son poster ; le portrait. Les anciens
+     logo-imbrin.png et logo-dossier.png restent dans public/ sans être
+     référencés ici : la signature mail pointe encore dessus. */
+  MEDIAS: {
+    emblemeEncre: "/emblem-encre.png",
+    emblemeClair: "/emblem-clair.png",
+    videoHero: "/imbrin.mp4",
+    /* le recadrage portrait pour téléphone, produit par npm run
+       video-mobile (scripts/video-mobile.mjs), choisi par VideoHero.tsx
+       sous 761 px */
+    videoHeroMobile: "/imbrin-mobile.mp4",
+    posterHero: "/imbrin-poster.jpg",
+    portrait: "/portrait-vincent-fournier.webp",
+    /* le PDF du spécimen. Le fichier n'existe PAS encore : le lien
+       « Version PDF » du popup ne s'affiche que si Dossier.tsx le trouve
+       sur le disque au build. Déposer le fichier suffit à l'afficher. */
+    specimenPdf: "/specimen-imbrin.pdf",
+  },
   /* v68 : le délai de traitement d'une demande d'opposition ou d'accès.
      Constante et non texte en dur : il est annoncé au dirigeant sur la
      page qui lui est destinée, et il devra changer à UN endroit si la
@@ -32,29 +52,12 @@ export const brand = typoDeep({
   },
   /* v65 : PRICING et SHOW_PRICING sont SUPPRIMÉS. Le site ne publie plus
      aucun montant : ni le plancher mensuel, ni son report annuel, ni le
-     prix du mandat. La rémunération est donnée par sa STRUCTURE — un
-     retainer, un fee à la signature, une part des honoraires de succès —
-     et chiffrée au devis, avant signature. La règle « tout chiffre affiché
+     prix du mandat. V80, offre publiée le 17/09/2026 : la structure de la
+     rémunération elle-même ne se traite plus qu'au devis, le site ne la
+     décrit plus. La règle « tout chiffre affiché
      vient d'ici » n'est pas abandonnée, elle n'a simplement plus de
      chiffre à porter. SHOW_PRICING n'était lu nulle part.
      Ne pas réintroduire de montant sans arbitrage : c'est la liste
      blanche des chiffres de la charte qui le décide, pas le confort
      d'un gabarit. */
 } as const);
-
-export type RegionStatus = "disponible" | "en_discussion" | "exclusivite";
-export const regions: { slug: string; nom: string; statut: RegionStatus }[] = typoDeep([
-  { slug: "ile-de-france", nom: "Île-de-France", statut: "disponible" },
-  { slug: "auvergne-rhone-alpes", nom: "Auvergne-Rhône-Alpes", statut: "en_discussion" },
-  { slug: "nouvelle-aquitaine", nom: "Nouvelle-Aquitaine", statut: "disponible" },
-  { slug: "occitanie", nom: "Occitanie", statut: "disponible" },
-  { slug: "provence-alpes-cote-d-azur", nom: "Provence-Alpes-Côte d'Azur", statut: "disponible" },
-  { slug: "grand-est", nom: "Grand Est", statut: "disponible" },
-  { slug: "hauts-de-france", nom: "Hauts-de-France", statut: "disponible" },
-  { slug: "normandie", nom: "Normandie", statut: "disponible" },
-  { slug: "bretagne", nom: "Bretagne", statut: "disponible" },
-  { slug: "pays-de-la-loire", nom: "Pays de la Loire", statut: "en_discussion" },
-  { slug: "centre-val-de-loire", nom: "Centre-Val de Loire", statut: "disponible" },
-  { slug: "bourgogne-franche-comte", nom: "Bourgogne-Franche-Comté", statut: "disponible" },
-  { slug: "corse", nom: "Corse", statut: "disponible" },
-]);

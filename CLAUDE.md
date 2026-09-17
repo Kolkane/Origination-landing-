@@ -1,5 +1,16 @@
 # CLAUDE.md — Règles du projet (ne jamais dévier)
 
+## Préséance (arbitrage Vincent, 17/09/2026)
+La direction artistique V80, « blanc, encre, une seule grotesque » (section
+plus bas, avec ses lots), PRIME sur toutes les règles de direction artistique
+antérieures de ce fichier : la DA v7 et ses amendements v7 à v78 sont des
+procès-verbaux, ils disent ce qui a été essayé et pourquoi, ils ne décrivent
+plus le code. RESTENT EN VIGUEUR, et priment sur la V80 quand elle les
+contredit : la charte d'honnêteté et la liste blanche des chiffres, le
+vocabulaire de l'offre (section « L'offre v15 »), l'invariant du premier
+contact et les règles absolues de la page /dirigeants (v68). Rien d'autre
+n'est effacé.
+
 ## Ce qu'est ce site
 Landing one-page d'un service d'origination externe pour boutiques M&A sell-side : un analyste,
 sur pièces, repère au registre (sources publiques) les PME françaises dont la situation réunit
@@ -1224,6 +1235,371 @@ trouvé sur vous". Codes attendus : document financier imprimé, pas SaaS IA.
   validé. Exception : MAQUETTE-V15-B2-ENGAGEMENTS.html est une ARCHIVE, elle ne
   décrit plus le code depuis la refonte v17 (voir l'amendement Typo). Ne pas
   s'en servir pour « remettre la section conforme à sa planche ».
+
+## Direction artistique V80, « blanc, encre, une seule grotesque » (arbitrage Vincent, 17/09/2026)
+REMPLACE la DA v7 « Sanjaya / sombre » ci-dessus. Les amendements v7 à v78
+restent en procès-verbal : ils ne décrivent plus le code, ils disent pourquoi
+il a été fait ainsi et ce qui a déjà été essayé. Les planches
+MAQUETTE-V80-ACCUEIL.html (ordinateur, 1440 px) et
+MAQUETTE-V80-ACCUEIL-MOBILE.html (390 px), à la racine, FONT FOI sur la page
+d'accueil : mêmes couleurs, mêmes tailles, mêmes espacements, même copy, même
+ordre des sections. Zéro latitude de design : ce qui n'est pas dans la planche
+n'existe pas. Le brief du chantier est PROMPT-CC-V80.md, à la racine. La
+leçon v60 tient : une planche fait foi sur la forme et les couleurs, jamais
+sur une hauteur ni une largeur de texte, qui se remesurent sur le build.
+- PALETTE. Fond blanc #FFFFFF. Encre #16201C : texte, bande noire du dossier,
+  pied de page. Vert #1E3A32 : boutons, bande finale « Prendre rendez-vous »,
+  filet épais de l'origination, région remplie de la carte. Filets #DCE1DD et
+  #C9D0CC, lignes de tableau du dossier #EEF1EF. Gris de texte #2B3530 et
+  #56605B. Sur fonds sombres : #DDE5E1, #B9C6C0, #9AA7A1, et #C9D2CD pour les
+  liens du pied. Le hero vidéo reste plein écran et sombre : c'est la seule
+  bande sombre en tête, avec la bande noire du dossier et le pied de page.
+  Les tokens vivent dans globals.css sous leur nom français (--encre, --vert,
+  --gris, --filet, --clair, --vin) ; les tokens de la DA v7 sont morts au lot 4.
+- LE VIN À QUATRE ENDROITS, et nulle part ailleurs, exactement comme dans la
+  planche : le soulignement des liens texte sur fond blanc
+  (text-decoration-color #8E2438, le texte reste encre ; #B32E46 sur le hero ;
+  blanc sur la bande verte), les trois numéros de la méthode, la mention
+  « Confidentiel » de la couverture, et dans le dossier lui-même les titres de
+  rubriques et le « Confidentiel » du pied. Pas de bouton, pas d'aplat, pas de
+  filet en vin. Sur les fonds sombres, #8E2438 et #B32E46 ne composent jamais
+  du texte (contraste insuffisant), seulement un soulignement. Le vert garde
+  les boutons, la bande finale et l'offre.
+- TYPOGRAPHIE. Une seule famille, Hanken Grotesk, via next/font/google, en
+  400, 500 et 600, romain. Fraunces, Spectral et Cutive Mono sortent du site,
+  image OpenGraph comprise : ne pas les réintroduire. Les trois rôles de
+  globals.css restent (--f-display, --f-corps, --f-label) et pointent tous sur
+  Hanken. Plus aucune capitale espacée en mono, plus aucun mot en italique
+  dans un titre, plus aucun point médian hors pied de page. L'axe WONK (v55,
+  v58) et l'alerte v55 sur les largeurs en ch n'ont plus d'objet : les
+  largeurs V80 sont celles de la planche.
+- STRUCTURE DE L'ACCUEIL, dans cet ordre. Hero vidéo plein écran (en-tête
+  transparent par-dessus, bloc de texte en bas à gauche, légende en bas à
+  droite). « Ce que fait Imbrin Research » (intro, rangée de quatre icônes au
+  trait, sans cadre ni fond). « Le dossier d'approche » (bande noire,
+  description, couverture cliquable, bouton qui ouvre le dossier en popup).
+  « Méthode » (trois étapes numérotées, numéros en vin). « Conditions »
+  (l'origination sous un filet vert épais avec quatre grandes valeurs, le
+  mandat de recherche en dessous sous un filet fin). « À propos » (portrait,
+  texte, coordonnées légales). « Analyses » (trois colonnes, sans date).
+  « Prendre rendez-vous » (bande verte, seul bouton commercial du site,
+  « Choisir un créneau »). Pied de page noir avec l'emblème clair.
+- LE HERO. public/imbrin.mp4 avec public/imbrin-poster.jpg, autoplay muet en
+  boucle, playsinline, object-fit cover, hauteur 100svh (repli 100vh), voile
+  UNIFORME rgba(6,10,8,.16) sur ordinateur et .22 sur mobile, jamais de
+  dégradé, jamais de zoom, aucun filtre. Sous prefers-reduced-motion la vidéo
+  ne se lance pas et le poster reste. L'en-tête est transparent sur le hero
+  (emblème clair, nom en blanc, navigation en blanc), puis devient fixe, blanc
+  et opaque (emblème encre, texte encre, filet #DCE1DD en bas) dès que le
+  visiteur a quitté le hero. Sur mobile, le bouton « Menu » ouvre un panneau
+  plein écran avec les six entrées et les coordonnées ; le corps ne défile
+  plus tant qu'il est ouvert. L'arbitrage v64 (hero excentré, texte aux bords
+  de l'écran) survit dans la planche : 48 px de bord contre 48 px de padding
+  dans un conteneur de 1200 px pour les sections.
+- L'EMBLÈME. public/emblem-encre.png (traits sombres, pour les fonds clairs) et
+  public/emblem-clair.png (traits clairs, pour les fonds sombres) remplacent
+  logo-imbrin.png et logo-dossier.png dans les composants. Les anciens
+  fichiers RESTENT dans public/ : la signature mail pointe encore dessus.
+- LES ICÔNES. Les quatre SVG inline de la planche (plaque de cabinet, carte de
+  France avec la région remplie en vert, registre, chemise à sangle), dans un
+  composant Icones.tsx, aria-hidden, currentColor. La carte vient de
+  src/components/carte/france-paths.ts simplifié. C'est la seule dérogation
+  à « aucune icône nulle part » (v12, v51), décidée par le brief V80 : quatre
+  icônes au trait, sans cadre ni fond, à cet endroit et à lui seul.
+- LE POPUP DU DOSSIER. Un vrai <dialog> HTML ouvert par showModal() : focus
+  piégé, Échap, aria-labelledby, fermeture au clic sur le voile et sur
+  « Fermer », retour du focus sur l'élément déclencheur, corps non défilant
+  pendant l'ouverture. Entrée conforme à la planche (voile en fondu 0,28 s,
+  page qui monte de 22 px en 0,4 s), coupée sous prefers-reduced-motion. Huit
+  rubriques, dans copy.ts, présentes dans le DOM sans JavaScript. Le lien
+  « Version PDF » ne s'affiche que si public/specimen-imbrin.pdf existe : pas
+  de lien mort. L'interdit « popup/chatbot » vise les fenêtres non
+  sollicitées ; ce dossier ne s'ouvre qu'au clic du visiteur, et le brief V80
+  le demande.
+- CE QUI DISPARAÎT DE L'ACCUEIL : Entonnoir (la toise), NeFaitPas, Faq,
+  BarreAction (le CTA mobile), Reveal (plus aucune animation d'entrée, ni
+  .rev ni .mask, ni séquence de chargement), IconesOffre, CarteFrance si elle
+  n'est plus montée, et le viseur interactif du dossier avec sa lecture
+  automatique. Les composants et le CSS mort qui ne servent qu'à eux sont
+  supprimés. Le contenu de la FAQ ne se perd pas : la reconduction est dans
+  Conditions, le RGPD est sur la page Confidentialité.
+- CE QUI NE CHANGE PAS : la charte d'honnêteté et la liste blanche des
+  chiffres (le spécimen est fictif et le dit), l'invariant du premier contact,
+  la page /dirigeants, zéro tiret cadratin ni demi-cadratin, brand.ts seule
+  source des constantes, le JSON-LD, le sitemap, robots.ts, l'image OpenGraph
+  (repeinte en blanc, encre, emblème encre), le lien Calendly, « Site sans
+  traceurs ». Les crochets [Raison sociale], [Adresse du siège], [Parcours du
+  fondateur] de la planche sont des EMPLACEMENTS : À propos lit brand.ENTITY,
+  et le parcours reste une chaîne vide, masquée tant qu'elle n'est pas remplie.
+- CONTRADICTION SIGNALÉE, NON TRANCHÉE : l'ombre portée du popup
+  (0 30px 80px -30px rgba(0,0,0,.6)) est dans la planche et contredit
+  « shadow-md et au-delà » des interdits absolus. La planche est portée telle
+  quelle ; à arbitrer devant l'écran.
+- LOT 1, FAIT LE 17/09/2026 : hero, en-tête, pied de page, menu mobile.
+  Hors planche, décidé au lot et à juger sur pièce : l'état FIXE de
+  l'en-tête garde la composition de la planche avec un rembourrage
+  symétrique de 14 px (12 px sur téléphone), un fond blanc, l'encre et le
+  filet #DCE1DD ; le passage est décidé par un IntersectionObserver posé
+  sur le hero, jamais par un écouteur de défilement. Le PANNEAU du menu
+  mobile est blanc, plein écran : en tête la marque en encre et un bouton
+  « Fermer » (44 px, filet encre, rayon 2 px), puis les six entrées en
+  27 px / 500 sur filets #DCE1DD sous un filet encre, et en bas les
+  coordonnées, libellés en #56605B, numéro et adresse soulignés vin. Le
+  bouton « Menu » porte aria-expanded et aria-controls, Échap ferme, le
+  corps est bloqué, la tabulation reste dans le panneau, le focus revient
+  au bouton sauf quand c'est un lien qui a fermé. La VIDÉO n'a ni autoplay
+  ni preload="auto" : preload="metadata", poster préchargé depuis le
+  <head> (c'est l'élément LCP), et VideoHero.tsx appelle play(), muet,
+  hors prefers-reduced-motion. Le contour de focus est blanc sur le hero
+  et sur le pied, encre partout ailleurs. L'identité juridique (raison
+  sociale, SIREN) quitte le pied, la planche ne l'a pas : elle vit aux
+  mentions légales et revient dans À propos au lot 3. Le logo du JSON-LD
+  Organization passe sur emblem-encre.png (520 px ; logo-imbrin.png était
+  sous le minimum de 112 px), le reste du JSON-LD ne change pas.
+  POIDS SIGNALÉ, à traiter au lot 4 : les deux emblèmes font 357 et 381 Ko
+  pour des rendus de 30 à 132 px. Solution envisagée : des variantes
+  réduites générées depuis les fichiers sources (sharp en dépendance de
+  développement), sans toucher aux fichiers déposés.
+- LOT 2, FAIT LE 17/09/2026 : le service et ses icônes, la bande du
+  dossier et son popup, la méthode. Trois sections portées au pixel des
+  planches, mesurées sur le build, entre le hero et les six sections v7
+  qui restent jusqu'au lot 3.
+  LES ICÔNES vivent dans Icones.tsx, quatre SVG inline en currentColor,
+  aria-hidden, sans cadre ni fond ; le tracé de la carte est dans
+  carte/france-icone.ts, tracé pour tracé celui de la planche, une seule
+  région remplie en vert. LE POPUP est un <dialog> natif (showModal) :
+  focus piégé et Échap par le navigateur ; ajoutés ici, le corps bloqué,
+  la fermeture au clic sur le voile (le dialog EST le voile, le papier est
+  son enfant), le focus rendu au déclencheur qui a ouvert, couverture ou
+  bouton, et l'ouverture sur « Fermer » comme dans la planche. SANS OMBRE
+  PORTÉE : arbitrage Vincent, la contradiction signalée au lot 0 est
+  tranchée dans le sens de l'interdit. Le dossier est rendu par le
+  serveur, huit rubriques typées dans copy.ts (RubriqueDossier : cinq
+  formes), et le noscript du layout le sort de sa boîte pour qu'il se lise
+  sans JavaScript. Le lien « Version PDF » n'existe que si
+  public/specimen-imbrin.pdf est sur le disque au build (Dossier.tsx,
+  enveloppe serveur) : déposer le fichier suffit. Le spécimen dit qu'il
+  est fictif à quatre endroits visibles, la rubrique 7 ne porte que des
+  statuts, aucune coordonnée.
+  HORS PLANCHE, décidé au lot : entre 761 et 1000 px, la rangée d'icônes
+  passe à deux colonnes, la bande du dossier à une, la méthode à deux ;
+  sur téléphone la couverture précède le bouton par display:contents sur
+  le bloc de texte et un ordre CSS, le DOM ne bouge pas. Les sections
+  blanches DÉCLARENT leur couleur de texte (color: var(--encre)), le body
+  portant encore l'encre claire de la DA v7 jusqu'au lot 3 : sans cela
+  les h3 sortaient en blanc sur blanc, vu à la comparaison. Le texte se
+  coupe parfois autrement que dans la planche : text-wrap: pretty (v29)
+  reste posé sur le body, la planche ne l'a pas.
+  SIGNALÉ, NON TRANCHÉ : le lien « La méthode en détail » de la planche
+  pointe sur la section elle-même (#methode), il n'y a pas de page de
+  méthode ; porté tel quel. Même question au lot 3 pour « Toutes les
+  analyses ».
+- LOT 3, FAIT LE 17/09/2026 : les conditions, à propos, les analyses,
+  prendre rendez-vous, et la suppression des composants morts. L'accueil
+  est désormais entièrement V80, dans l'ordre des planches.
+  CONDITIONS, deux corrections de copy (arbitrage Vincent) : « sans limite
+  de nombre » sort de l'intro de l'origination ; la protection dit « La
+  rémunération reste due sur tout mandat signé avec une société issue
+  d'un dossier livré, contrat en cours ou non. » À PROPOS lit l'identité
+  juridique dans brand.ENTITY, composée dans copy.ts pour que les
+  insécables passent ; le parcours du fondateur est une chaîne vide, non
+  rendue ; le nom du fondateur vit en constante dans copy.ts et nourrit
+  le JSON-LD Person. ANALYSES : trois colonnes, titres et chapeaux de la
+  planche écrits dans analyses.ts (l'article 3 s'intitule désormais
+  « L'origination dans les cabinets de cession », son corps ne change
+  pas), slugs et datePublished intacts, chaque « Lire » ouvre sa page.
+  RENDEZ-VOUS : bande verte, « Choisir un créneau » ouvre le Calendly de
+  brand.ts, seul bouton commercial du site.
+  LIENS SANS PAGE, tranchés : « La méthode en détail » et « Toutes les
+  analyses » ne sont pas repris. Aucun lien ne pointe sur sa propre
+  section. Le premier reviendra avec une vraie page.
+  SUPPRIMÉS, plus rien ne les importait : Entonnoir, NeFaitPas, Faq,
+  BarreAction, Reveal, IconesOffre, CarteFrance, Diamond, Offre,
+  Fondateur, CtaFinal, carte/france-paths.ts ; le balisage FAQPage ;
+  regions et RegionStatus de brand.ts ; les blocs entonnoir, neFaitPas,
+  offre, fondateur, faq, final, barre et carte de copy.ts. Le CSS qui ne
+  servait qu'à eux part avec eux : globals.css passe de 85 à 50 Ko
+  (97 Ko avant le chantier). RESTENT pour le lot 4, parce que les pages
+  intérieures les lisent encore : les tokens v7 de la racine, body, .wrap,
+  .cta, .kicker, .statement, .label, .display, .ap-*, .dir-*, LogoImbrin,
+  et scripts/build-map.mjs qui générait la carte morte.
+  AJOUTÉ, hors planche, à cause de l'en-tête fixe du lot 1 : chaque
+  section cible d'une ancre porte scroll-margin-top de la hauteur de la
+  barre, 63 px mesurés (69 sur téléphone), sinon un saut depuis le menu
+  posait le titre sous la barre. Vu à la comparaison.
+  SIGNALÉ, NON TRANCHÉ : le libellé « Abonnement » au-dessus de
+  « L'origination » est dans la planche ; la section « L'offre v15 » de
+  cette charte proscrit le mot. Porté tel quel, à arbitrer.
+- LOT 4, FAIT LE 17/09/2026 : les pages intérieures, le nettoyage, les
+  emblèmes, l'accessibilité, le mobile, Lighthouse.
+  « ABONNEMENT » SORT : le libellé de la planche devient « En continu »,
+  en miroir de « À la mission » ; la règle de vocabulaire de l'offre prime
+  sur la planche. Les autres écarts de vocabulaire relevés sur la copy
+  V80 sont listés au rapport du lot, non appliqués.
+  PAGES INTÉRIEURES, sans planche : elles reprennent l'échelle de
+  l'accueil (titre de section, libellé, lien souligné de vin) dans une
+  colonne de lecture de 580 px, soit 70 caractères par ligne pleine en
+  18 px, interligne 1,7, MESURÉ sur le texte réel des articles (la
+  convention « 68ch » du CSS, qui compte des zéros, aurait donné 685 px
+  et 83 caractères). Intertitres en 500 quand les articles en auront,
+  aucune date affichée. L'en-tête y est fixe et blanc dès le chargement
+  (prop « fixe »), la page réserve sa hauteur ; le pied est rendu par
+  chaque page et non plus par le layout. Le libellé « Analyses » au-dessus
+  du titre d'article est retiré : le lien de retour porte déjà le mot.
+  /DIRIGEANTS garde ses règles absolues (v68) : en-tête SANS navigation
+  ni menu (les six entrées mènent aux conditions, qui sont l'offre), pied
+  SANS la colonne « Le site », pour la même raison. La marque en tête de
+  page, qui tenait lieu d'en-tête, est portée par l'en-tête lui-même. Le
+  point médian n'est plus posé dans le JSX entre les deux liens du pied ;
+  il reste dans la chaîne « entite » de copy.ts, contenu inchangé, à
+  arbitrer (la V80 ne veut plus de point médian hors pied de page).
+  NETTOYAGE : les tokens v7, le body v7 et son overflow-x caché, .wrap,
+  .cta, .kicker, .statement, .label, .display, .ap-*, .dir-*, LogoImbrin,
+  scripts/build-map.mjs et scripts/data, la dépendance d3-geo et le script
+  build:map, les extensions Tailwind (Tailwind ne sert plus que son
+  socle), les couleurs déclarées par section au lot 2 et 3, devenues
+  redondantes une fois le body sur blanc et encre. logo-imbrin.png et
+  logo-dossier.png restent dans public/. Aucun débordement horizontal à
+  360 ni à 390 sur les cinq pages, vérifié sans filet.
+  EMBLÈMES : scripts/emblemes.mjs (sharp, dépendance de développement,
+  « npm run emblemes ») tire des deux fichiers déposés des variantes à
+  deux fois le rendu, 72 et 88 pour l'en-tête, 208 et 264 pour le pied,
+  72 pour la couverture et le spécimen ; Embleme.tsx choisit par emploi,
+  en srcset. Les fichiers de 520 px restent pour le JSON-LD et l'image
+  OpenGraph. Les deux fichiers de 520 px pesaient 738 Ko par page ; les
+  variantes servies pèsent de 35 à 110 Ko selon la densité d'écran, dont
+  10 à 14 au premier écran.
+  ACCESSIBILITÉ : lien d'évitement « Aller au contenu », premier élément
+  focusable de chaque page, visible au focus seulement ; contour de focus
+  encre à 4 px partout, blanc sur les fonds sombres ; scroll-padding-top
+  sur html (63 px, 69 sur téléphone) pour que ni une ancre ni un focus
+  ne passent sous la barre fixe, il remplace le scroll-margin-top du lot
+  3 ; le nom accessible de la couverture commence par « Lire le dossier
+  spécimen » puis porte son texte visible (l'aria-label seul de la
+  planche échouait l'audit label-content-name-mismatch). Parcours clavier
+  réel vérifié sur les cinq pages. Contrastes calculés sur chaque couple
+  de couleurs des planches : tous AA, le plus bas étant 6,5:1 (#56605B sur
+  blanc) et 3,1:1 pour le souligné vin du hero, non textuel.
+  LE TEXTE DU HERO SUR LA VIDÉO, mesuré sur le poster et sur 33 images du
+  clip (une toutes les 0,25 s, voile compris) : à 1440, le pixel le plus
+  clair de la zone du texte reste au-dessus de 9,7:1 ; à 390, sur 13
+  images, quelques pixels de reflets passent sous 4,5:1 (pire : 1,5:1 à
+  5,75 s), sur au plus 2 % de la zone, la médiane restant à 20:1. NON
+  CORRIGÉ, sur consigne : captures fournies, arbitrage à rendre.
+- LOT 4 BIS, FAIT LE 17/09/2026 : copy de l'offre, ombre du hero, vidéo
+  mobile. COPY, en application de « L'offre v15 » : la carte
+  « Facturation » (« Un mois sans dossier livré n'est pas facturé ») est
+  SUPPRIMÉE, les trois valeurs restantes passent en grille de trois ; le
+  plancher mensuel ne survit plus nulle part sur le site, l'entrée du
+  BACKLOG est retirée, et les deux textes que la section v15 signalait
+  (chute du filtre, chapô de l'appel final) étaient morts au lot 3 avec
+  leurs sections. La reconduction mensuelle reste celle de la planche, le
+  contrat sera confirmé ; la charte n'est pas touchée. « La fiche au
+  registre » (méthode, étape 3) devient « l'extrait du registre ». La bande
+  du dossier dit « En rendez-vous, un dossier complet est parcouru avec
+  vous, page à page. » /dirigeants porte ses propres description,
+  OpenGraph et Twitter, repris de son chapô.
+  L'OMBRE DU HERO, sous 761 px, sur le seul texte du hero :
+  text-shadow 0 1px 3px rgba(6,10,8,.5), ni dégradé ni voile plus sombre.
+  MESURÉ lettre contre fond (pixels du fond qui touchent un glyphe, texte
+  transparent pour lire le fond sous l'ombre), sur les 13 images
+  relevées au lot 4, vidéo mobile : sans ombre le pire cas est 2,22:1 à
+  5,75 s, avec l'ombre 2,56:1 au même instant ; cinq images restent sous
+  4,5:1 (4,75 à 5,75 s), les huit autres passent, au mieux 14,3:1. La
+  méthode du lot 4 comptait tout pixel de la zone (1,5:1) ; celle-ci ne
+  compte que le bord des lettres, c'est elle qui vaut désormais. Capture
+  du pire cas dans V80-captures/lot4bis. À arbitrer.
+  LA VIDÉO MOBILE : scripts/video-mobile.mjs (ffmpeg-static, dépendance
+  de développement, « npm run video-mobile ») tire de public/imbrin.mp4 un
+  recadrage centré 3:4 en 626 × 834 à la résolution d'origine, H.264
+  yuv420p, sans audio, +faststart, toutes les images gardées :
+  public/imbrin-mobile.mp4, 403 Ko, CRF 33, aq-mode 3. Jugé à trois fois
+  l'échelle : à 33 les points du plumage restent nets et le noir ne se
+  bande pas, à 35 (320 Ko) les points bavent, à 31 on dépasse 500 Ko.
+  VideoHero.tsx choisit la source UNE FOIS, par
+  matchMedia('(max-width: 760px)'), avant de lancer la lecture ; le HTML
+  ne porte plus de source, seulement le poster, commun aux deux.
+- LOT 4 TER, FAIT LE 17/09/2026 : l'offre publiée et l'ombre du hero.
+  CONDITIONS : les trois valeurs du bloc « L'origination » sont celles de
+  l'amendement « Offre publiée, 17/09/2026 » (plus bas) : « Pour
+  commencer, Un mois », « Ensuite, Trois mois », « Pendant le contrat, Un
+  seul cabinet ». Les intros et le bloc du mandat ne changent pas. Plus
+  aucune mention sur le site du retainer, du fee, de la part des
+  honoraires ni de la protection de vingt-quatre mois, métadonnées et
+  JSON-LD compris, vérifié sur le HTML des cinq pages ; le « 24 mois » du
+  spécimen est une fenêtre de vérification au registre, pas la protection,
+  il reste. Le commentaire de brand.ts qui décrivait l'ancienne structure
+  est mis à jour, la note du BACKLOG aussi : ce qui reste à trancher ne
+  concerne plus que le contrat.
+  L'OMBRE DU HERO, remesurée ÉLÉMENT PAR ÉLÉMENT avec les bons seuils :
+  le titre fait 27 px, c'est du grand texte au sens des WCAG, seuil 3:1 ;
+  le paragraphe (15 px, #DDE5E1) et le lien (15 px, blanc) restent à
+  4,5:1. Mesure lettre contre fond, luminance réelle de chaque texte, sur
+  les treize images de la vidéo mobile. Sans ombre : titre 2,22:1,
+  paragraphe 5,42:1, lien 19,7:1 ; seul le titre échoue, sur cinq images.
+  Réglage retenu, le plus léger qui tient le titre sur les treize, monté
+  par petits pas : 0 1px 3px rgba(6,10,8,.5), 0 0 14px rgba(6,10,8,.45),
+  0 0 28px rgba(6,10,8,.4), le même sur les trois éléments, sous 761 px
+  seulement, ni dégradé, ni bande, ni voile plus sombre. Avec : titre
+  3,07:1 (pire à 5,75 s), paragraphe 6,56:1, lien 20:1. Les paliers
+  intermédiaires : la couche 14 px à .45 seule donne 2,88 (une image
+  sous le seuil), la couche 28 px à .3 donne 3,00 tout juste sous le seuil
+  sur une image. Captures avant et après dans V80-captures/lot4ter.
+- LOT 5, FAIT LE 17/09/2026, dernier avant la relecture de la préview.
+  PREMIER CONTACT : une seule mention sur le site, et elle est
+  commerciale. Conditions, bloc « L'origination », quatrième valeur après
+  « Pendant le contrat » : « Premier contact, Au devis, Qui contacte les
+  dirigeants, et selon quelles modalités, se décide ensemble à la
+  signature. » Grille de quatre colonnes égales sur ordinateur, valeurs
+  empilées entre filets sur téléphone. La bande du dossier dit « que
+  l'associé lit avant le premier contact ». /dirigeants, la notice de
+  confidentialité, l'invariant en tête de ce fichier et l'entrée RGPD du
+  BACKLOG ne changent pas ; aucune mention juridique n'est ajoutée.
+  SPÉCIMEN, rubrique « Sources » : la ligne « Information des personnes :
+  article 14 du RGPD… » est retirée, le reste ne change pas.
+  ARTICLES : l'appel de pied (« C'est exactement ce que nous faisons… »
+  et le lien « Réserver un échange ») est remplacé par la bande « Prendre
+  rendez-vous » de l'accueil, à l'identique, entre l'article et le pied.
+  Ni /dirigeants ni les pages légales ne la reçoivent. La constante CTA
+  de copy.ts n'avait plus d'emploi, elle part.
+  CONTRÔLE AVANT FUSION, sur le build : build et lint sans erreur ni
+  avertissement ; 74 liens internes vérifiés sur les sept pages, ancres
+  comprises, aucun cassé ; aucune trace de Fraunces, Spectral, Cutive
+  Mono ni des tokens v7 dans le CSS et le JS produits ; aucun tiret
+  cadratin ni demi-cadratin dans les textes rendus ; aucune mention de
+  retainer, fee, honoraires de succès, protection ni article 14 hors
+  /confidentialite et /dirigeants ; Lighthouse mobile de l'accueil : voir
+  le rapport du lot (référence à tenir 98/100/100/100).
+- MÉTHODE DU CHANTIER : cinq lots, un commit par lot, un rapport court et une
+  validation entre chaque. 0 préparation (emblèmes, Hanken, tokens, charte) ;
+  1 hero, en-tête, pied de page ; 2 service, dossier et popup, méthode ;
+  3 conditions, à propos, analyses, rendez-vous, suppression des composants
+  morts ; 4 pages intérieures, mobile, qualité. Référence Lighthouse mobile de
+  l'accueil à tenir : 88 / 96 / 100 / 100 (V78, médiane de trois passes) ; pas
+  de recul sur la performance, et si la vidéo pèse, une solution sans la
+  retirer.
+
+## Offre publiée, 17/09/2026 (arbitrage Vincent)
+POUR LE SITE, cet amendement SUPPLANTE la durée d'engagement et les trois
+composantes de la rémunération de la section « L'offre v15 » ci-dessous.
+Ce que le site montre, section Conditions, bloc « L'origination », et rien
+de plus : un PREMIER MOIS pour juger sur pièces, proposé seulement si la
+mesure du périmètre montre des dossiers à livrer ; ensuite des PÉRIODES DE
+TROIS MOIS, résiliables à chaque échéance avec un mois de préavis ;
+l'EXCLUSIVITÉ pendant le contrat, le périmètre est réservé à un seul
+cabinet ; et le RENVOI AU DEVIS pour les montants. La structure de la
+rémunération ne se traite qu'au devis : plus aucune mention sur le site du
+retainer, du fee à la signature, de la part des honoraires de succès ni de
+la protection de vingt-quatre mois, métadonnées et JSON-LD compris,
+vérifié sur le HTML produit. Le mandat de recherche ne change pas
+(rémunération fixée au devis, à la mission). La note « ni conseil, ni
+négociation » reste.
+RESTENT EN VIGUEUR : les règles de vocabulaire de l'offre v15 (« zone »,
+« verticale », « abonnement », « cellule » proscrits, le livrable s'appelle
+« dossier d'approche ») et l'interdit de toute promesse de volume ; la
+liste blanche des chiffres, « un mois » et « trois mois » étant des durées
+d'engagement écrites en lettres, comme « trente minutes ». La section v15
+reste en procès-verbal.
 
 ## L'offre v15 (arbitrage Vincent, 02/09/2026 — remplace la v13)
 PRINCIPE, et il gouverne tout le reste : le site donne la STRUCTURE de la
