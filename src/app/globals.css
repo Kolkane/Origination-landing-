@@ -2069,6 +2069,395 @@ body {
 .colonne-lecture {
   max-width: 580px;
 }
+
+/* ============================================================
+   v85 · LA PAGE D'ARTICLE (arbitrage Vincent : « trop vide, les
+   paragraphes sont trop similaires, c'est trop plat »).
+   LE DIAGNOSTIC, parce qu'il explique la forme : la mesure de 580 px
+   était juste, et elle laissait 620 px de blanc à sa droite dans un
+   conteneur de 1200. Élargir la colonne aurait cassé la mesure, seule
+   valeur mesurée de la page. La réponse n'est donc pas d'élargir la
+   prose, c'est de FAIRE TRAVAILLER LES DEUX MARGES : un rail à gauche,
+   et à droite un débordement réservé aux blocs qui ne sont pas de la
+   prose. Le texte courant ne bouge pas d'un pixel.
+   ============================================================ */
+.article-grille {
+  margin-top: 8px;
+}
+.article-colonne {
+  max-width: 580px;
+}
+.article-titre {
+  max-width: 800px;
+}
+@media (min-width: 1101px) {
+  /* rail 200, colonne 580, et le reste en débord de droite. 200 + 56 +
+     580 = 836 px : les 364 px qui restent dans le conteneur de 1200 ne
+     sont plus du vide, les figures et les exergues les prennent. */
+  .article-grille {
+    display: grid;
+    grid-template-columns: 200px 580px minmax(0, 1fr);
+    column-gap: 56px;
+  }
+  .article-colonne {
+    grid-column: 2;
+    max-width: none;
+  }
+  /* le titre et le chapeau passent au-dessus des deux colonnes de
+     droite : la page s'ouvre large, la prose reste étroite */
+  .article-titre,
+  .article-chapeau {
+    width: calc(100% + 56px + ((1200px - 836px) - 56px));
+    max-width: none;
+  }
+  /* LE RAIL. Exception assumée à la v61, « un seul bord gauche », que
+     l'amendement prévoyait lui-même : la marginalia ne tient que si la
+     marge porte du contenu RÉCURRENT. Un sommaire qui suit la lecture en
+     est un ; le libellé de neuf caractères de la v54 n'en était pas.
+     Collant sous la barre fixe, 63 px, plus l'air d'un titre. */
+  .article-rail {
+    grid-column: 1;
+    grid-row: 1;
+    position: sticky;
+    top: 103px;
+    align-self: start;
+    /* il commence au corps du texte, pas au titre : il accompagne la
+       lecture, il ne la surplombe pas */
+    margin-top: 0;
+  }
+  /* les blocs qui ne sont pas de la prose débordent dans la marge de
+     droite ; c'est eux, et eux seuls, qui remplissent la page */
+  .article-corps .figure,
+  .article-corps .article-exergue,
+  .article-corps .article-chute {
+    width: calc(100% + 56px + ((1200px - 836px) - 56px));
+  }
+}
+.article-rail-titre {
+  margin: 0 0 14px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--encre);
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.4;
+}
+.article-rail-liste {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: rail;
+}
+.article-rail-liste li {
+  margin-bottom: 12px;
+}
+.article-rail-liste a {
+  display: block;
+  font-size: 15px;
+  line-height: 1.4;
+  color: var(--gris-2);
+  text-decoration: none;
+}
+.article-rail-liste a:hover {
+  color: var(--encre);
+  text-decoration: underline;
+  text-underline-offset: 5px;
+  text-decoration-thickness: 1px;
+  text-decoration-color: var(--vin);
+}
+/* sous 1101 px le rail redevient un bloc dans le flux, au-dessus du
+   corps : il garde son utilité sur un écran étroit, où l'article est
+   long, et il ne coûte plus une colonne */
+@media (max-width: 1100px) {
+  .article-rail {
+    max-width: 580px;
+    margin: 36px 0 0;
+  }
+}
+
+/* L'EXERGUE. Une phrase DÉJÀ ÉCRITE dans l'article, reprise à l'échelle
+   du display, entre deux filets d'encre. Ce n'est pas une citation, il
+   n'y a donc ni guillemets ni italique : c'est un ralentissement. */
+.article-corps .article-exergue {
+  margin: 40px 0;
+  padding: 26px 0;
+  border-top: 1px solid var(--encre);
+  border-bottom: 1px solid var(--encre);
+  max-width: 780px;
+  font-size: clamp(22px, 2.4vw, 28px);
+  font-weight: 500;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  color: var(--encre);
+}
+/* LA CHUTE. La dernière phrase de l'article se compose plus grand que le
+   corps : un article qui se termine sur un paragraphe de la même taille
+   que les autres n'a pas de fin, il s'arrête. */
+.article-corps .article-chute {
+  margin: 36px 0 0;
+  padding-top: 26px;
+  border-top: 1px solid var(--encre);
+  font-size: 21px;
+  font-weight: 500;
+  line-height: 1.45;
+  color: var(--encre);
+}
+
+/* LA FIGURE. Un dessin au trait dans l'idiome des icônes du service, une
+   seule marque en vin, et sa légende dessous. Ni cadre, ni fond, ni
+   ombre : la figure est posée sur le papier, pas enfermée dans une
+   boîte. Elle ne porte AUCUNE quantité, voir FigureAnalyse.tsx. */
+.figure {
+  margin: 40px 0;
+  padding: 32px 0 0;
+  border-top: 1px solid var(--filet-2);
+}
+/* le dessin : des filets et une grille, aucune coordonnée. Les libellés
+   français sont longs et de longueur inconnue, ils ne peuvent pas vivre
+   à une position fixe (première version, corrigée sur pièce). */
+.fig {
+  color: var(--encre);
+  font-size: 15px;
+  line-height: 1.4;
+}
+.fig p {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.4;
+  color: var(--encre);
+}
+.fig-pointe {
+  width: 8px;
+  height: 12px;
+  flex: none;
+  color: var(--gris-2);
+}
+
+/* LE DÉCALAGE : une ligne, deux bornes, la zone en vin entre les deux,
+   et sous chaque borne l'issue qui lui correspond. */
+.fig-decalage {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 6fr) minmax(0, 5fr);
+  align-items: end;
+  row-gap: 0;
+}
+.fig-borne {
+  padding-bottom: 12px;
+  font-weight: 500;
+}
+/* la borne gauche s'aligne sur SON tiret, donc elle s'arrête à la fin de
+   la colonne 1 : sur 1 / 3 elle se calait sur le tiret de droite, vu à la
+   capture */
+.fig-borne-g {
+  grid-column: 1;
+  text-align: right;
+  padding-right: 12px;
+}
+.fig-borne-d {
+  grid-column: 3;
+  padding-left: 12px;
+}
+.fig-ligne {
+  grid-column: 1 / 4;
+  display: grid;
+  grid-template-columns: subgrid;
+  align-items: center;
+  height: 15px;
+}
+.fig-seg {
+  display: block;
+  height: 1px;
+  background: var(--encre);
+  position: relative;
+}
+/* les deux bornes : un tiret vertical à la jonction des segments */
+.fig-seg-vin {
+  height: 2px;
+  background: var(--vin);
+}
+.fig-seg-vin::before,
+.fig-seg-vin::after {
+  content: "";
+  position: absolute;
+  top: -7px;
+  width: 1px;
+  height: 15px;
+  background: var(--encre);
+}
+.fig-seg-vin::before {
+  left: 0;
+}
+.fig-seg-vin::after {
+  right: 0;
+}
+.fig-zone {
+  grid-column: 2;
+  padding-top: 12px;
+  text-align: center;
+  color: var(--vin) !important;
+  font-weight: 500;
+}
+.fig-issue {
+  padding-top: 28px;
+  color: var(--gris-2) !important;
+}
+.fig-issue-g {
+  grid-column: 1 / 2;
+}
+.fig-issue-d {
+  grid-column: 3;
+  text-align: right;
+}
+
+/* LA BIFURCATION : une origine, deux branches, deux aboutissements.
+   Chaque branche est une rangée réglée ; la première porte le vin. */
+.fig-bifurcation {
+  display: grid;
+  row-gap: 0;
+}
+.fig-origine {
+  padding-bottom: 14px;
+  color: var(--gris-2) !important;
+}
+.fig-branche {
+  display: grid;
+  grid-template-columns: minmax(0, 4fr) 8px minmax(0, 5fr);
+  align-items: center;
+  column-gap: 18px;
+  padding: 16px 0;
+  border-top: 1px solid var(--filet-2);
+}
+.fig-branche:last-child {
+  border-bottom: 1px solid var(--filet-2);
+}
+.fig-branche-nom {
+  font-weight: 500;
+}
+.fig-branche-fin {
+  color: var(--gris) !important;
+}
+/* la branche dont parle l'article : filet de tête en vin et nom en vin.
+   Elle n'est pas dite plus fréquente, aucune part n'est publiée. */
+.fig-branche-vin {
+  border-top: 2px solid var(--vin);
+}
+.fig-branche-vin .fig-branche-nom {
+  color: var(--vin) !important;
+}
+
+/* LE CYCLE : trois étapes, puis le retour vers le départ, tireté et
+   coupé. La croix en vin est l'endroit où la méthode se perd. */
+.fig-cycle {
+  display: grid;
+  row-gap: 0;
+}
+/* en grille et non en flex, et alignées PAR LE HAUT : mesuré au
+   navigateur, la troisième étape tombait 11 px plus bas que les deux
+   autres sous « center ». Trois pistes égales, deux couloirs de chevron,
+   et un calage par le haut rendent l'alignement inconditionnel, y compris
+   le jour où un libellé passera sur deux lignes. */
+.fig-etapes {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 8px minmax(0, 1fr) 8px minmax(0, 1fr);
+  align-items: start;
+  column-gap: 18px;
+  padding-bottom: 20px;
+}
+.fig-etapes .fig-pointe {
+  margin-top: 5px;
+}
+.fig-etape {
+  font-weight: 500;
+}
+.fig-retour {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.fig-retour-trait {
+  flex: 1 1 0;
+  height: 1px;
+  background-image: linear-gradient(to right, var(--gris-2) 50%, transparent 50%);
+  background-size: 9px 1px;
+  background-repeat: repeat-x;
+}
+.fig-croix {
+  width: 16px;
+  height: 16px;
+  flex: none;
+  color: var(--vin);
+}
+.fig-rupture {
+  padding-top: 16px;
+  text-align: center;
+  color: var(--vin) !important;
+  font-weight: 500;
+}
+
+/* sur téléphone la bifurcation et le cycle passent en pile : les
+   libellés ont besoin de la largeur, pas d'une colonne de 100 px */
+@media (max-width: 760px) {
+  .fig-branche,
+  .fig-etapes {
+    grid-template-columns: minmax(0, 1fr);
+    justify-items: start;
+    row-gap: 8px;
+  }
+  .fig-branche .fig-pointe,
+  .fig-etapes .fig-pointe {
+    transform: rotate(90deg);
+  }
+  .fig-decalage {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  }
+  .fig-borne-g {
+    grid-column: 1;
+    text-align: left;
+    padding-right: 0;
+  }
+  .fig-borne-d {
+    grid-column: 2;
+    text-align: right;
+    padding-left: 0;
+  }
+  .fig-ligne {
+    grid-column: 1 / 3;
+  }
+  .fig-zone {
+    grid-column: 1 / 3;
+  }
+  .fig-issue-g {
+    grid-column: 1;
+  }
+  .fig-issue-d {
+    grid-column: 2;
+  }
+}
+.figure-legende {
+  margin: 20px 0 0;
+  max-width: 560px;
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--gris-2);
+}
+
+/* LES DEUX AUTRES ANALYSES, en pied d'article : la lecture ne s'arrête
+   pas sur du vide. Même gabarit que la rangée de l'accueil. */
+.article-suite {
+  margin-top: 88px;
+  padding-top: 28px;
+  border-top: 2px solid var(--encre);
+}
+.article-suite-titre {
+  margin: 0 0 32px;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.4;
+}
+.article-suite-grille {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: 48px;
+}
 .page-retour {
   margin: 0 0 40px;
 }
@@ -2091,6 +2480,14 @@ body {
   font-size: 18px;
   line-height: 1.7;
   color: var(--gris);
+}
+/* L'ATTAQUE. Le premier paragraphe se compose plus grand et en encre
+   pleine : c'est la marche d'entrée dans le texte, et c'est la moitié du
+   remède à « tous les paragraphes se ressemblent ». */
+.article-corps > p:first-child {
+  font-size: 20px;
+  line-height: 1.6;
+  color: var(--encre);
 }
 .article-corps p:last-child {
   margin-bottom: 0;

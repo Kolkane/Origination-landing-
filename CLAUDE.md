@@ -1896,6 +1896,79 @@ sur une hauteur ni une largeur de texte, qui se remesurent sur le build.
   LA PLANCHE RESTE au dépôt : elle porte les huit variantes essayées et les
   trois rangées comparées, elle fait foi sur ce qui a été jugé.
 
+- LES ANALYSES, v85 (arbitrage Vincent, 17/09/2026, régime 2, décision
+  explicite au brief) : « rends les textes mieux proportionnés à l'écran,
+  ou ajoute des médias, là c'est trop vide ; et humanise, les paragraphes
+  sont trop similaires en taille, c'est trop plat ».
+  CE QUI N'A PAS ÉTÉ FAIT, ET POURQUOI : AUCUN GRAPHIQUE DE DONNÉES. Le
+  site n'a pas un seul chiffre mesuré à publier sur ces trois sujets, le
+  backtest national n'est pas publiable (v72) et la liste blanche interdit
+  d'inventer. Un graphe à barres ou un camembert aurait été un mensonge
+  dessiné, et c'est exactement le genre de remplissage qu'un associé en
+  due diligence repère. Ne pas « ajouter des chiffres pour illustrer ».
+  LE CORPS N'EST PLUS UN TABLEAU DE PARAGRAPHES. Trois articles de six
+  paragraphes de même longueur, sans intertitre, sans respiration : la
+  MISE EN PAGE trahissait la machine avant les mots. Le corps devient une
+  suite de BLOCS TYPÉS dans analyses.ts (p, intertitre, exergue, chute,
+  figure), et c'est la variété des blocs qui donne le rythme. Le type
+  interdit d'ajouter un bloc sans lui donner une forme.
+  LES TEXTES SONT RÉÉCRITS, le fond ne bouge pas. Longueurs alternées, de
+  une ligne à six ; deux à trois intertitres par article ; un exergue qui
+  REPREND une phrase déjà écrite, jamais une affirmation nouvelle ; une
+  chute composée plus grand. Corrigé au passage, c'était un tell : DEUX
+  DES TROIS ARTICLES se terminaient sur la même construction clivée,
+  « C'est ce... qui... ». Les trois standfirsts ne sont PAS touchés, ils
+  sont des arbitrages (v77 pour le premier, la planche V80 pour les deux
+  autres) et ils nourrissent l'index, la meta, l'OpenGraph et le JSON-LD.
+  TROIS FIGURES, UNE PAR ARTICLE, QUI DESSINENT UN RAISONNEMENT ET JAMAIS
+  UNE QUANTITÉ : le décalage entre le moment où la transmission devient
+  inévitable et celui où elle est traitée ; la bifurcation entre le
+  dirigeant approché en direct et le dirigeant conseillé d'abord ; le
+  cycle de l'origination interne et l'endroit où il casse. Aucun axe,
+  aucune échelle, aucune série. Chaque figure porte UNE marque en vin,
+  celle que l'article désigne, et sa légende dit explicitement ce qu'elle
+  ne figure pas.
+  ELLES SONT EN HTML RÉGLÉ, PAS EN SVG, et c'est une correction faite sur
+  pièce : la première version posait les libellés en <text> à des
+  coordonnées fixes, et à la deuxième figure les libellés français, longs,
+  se chevauchaient. LEÇON, elle vaut pour toute figure future : un
+  diagramme dont la mise en page dépend de la longueur d'une chaîne se
+  dessine avec des filets et une grille, jamais avec des coordonnées. Les
+  bénéfices seconds sont réels, la figure se recompose sur téléphone et se
+  lit à la voix dans l'ordre du texte.
+  LE VIDE EST TRAITÉ SANS TOUCHER À LA MESURE. La colonne de 580 px est la
+  seule valeur mesurée de ces pages (lot 4, 70 caractères) : elle ne bouge
+  pas d'un pixel. Ce sont les DEUX MARGES qui travaillent. À gauche un
+  RAIL de 200 px qui tient le sommaire, collant sous la barre fixe. À
+  droite, les blocs qui ne sont pas de la prose, figures, exergues et
+  chute, débordent jusqu'au bord du conteneur, 944 px. Sous 1101 px le
+  rail revient dans le flux et la page redevient une colonne.
+  LE RAIL EST UNE EXCEPTION ASSUMÉE à la v61, « un seul bord gauche », et
+  l'amendement la prévoyait lui-même : la marginalia « ne tient que si la
+  marge porte du contenu RÉCURRENT, des notes, des dates, des
+  références ». Un sommaire qui suit la lecture en est un ; le libellé de
+  neuf caractères que la v61 avait retiré n'en était pas. Cette exception
+  vaut pour les pages d'article et pour elles seules : ne pas la remonter
+  sur l'accueil.
+  LE SOMMAIRE SE DÉDUIT des intertitres et les ancres se déduisent de leur
+  texte : aucun identifiant à tenir à jour à côté du contenu, donc aucun
+  lien de sommaire ne peut pointer dans le vide. Vérifié sur le build, les
+  cinq ancres des trois articles ont leur cible.
+  LES DEUX AUTRES ANALYSES ferment la page, entre l'article et la bande de
+  rendez-vous : la lecture ne s'arrête plus sur du blanc.
+  L'ATTAQUE, premier paragraphe à 20 px en encre pleine, et la CHUTE, à
+  21 px sur filet : un article qui se termine sur un paragraphe de la même
+  taille que les autres n'a pas de fin, il s'arrête.
+  PIÈGE DE SPÉCIFICITÉ, corrigé sur pièce et consigné parce qu'il se
+  reprendra : « .article-corps p » (0-1-1) écrasait « .article-exergue »
+  (0-1-0), l'exergue sortait donc à 18 px comme le corps. Tout bloc de
+  corps qui change d'échelle doit être sélectionné DANS son conteneur.
+  MESURÉ AU NAVIGATEUR, pas en planche : aucun débordement horizontal à
+  390, 1000 et 1440 px sur les trois articles ; les trois étapes du cycle
+  alignées au pixel (sous « align-items: center » la troisième tombait
+  11 px plus bas, elles sont calées par le haut). Build et lint verts.
+  AUCUNE ANIMATION, la règle v54 tient : rien n'apparaît au scroll.
+
 - MÉTHODE DU CHANTIER : cinq lots, un commit par lot, un rapport court et une
   validation entre chaque. 0 préparation (emblèmes, Hanken, tokens, charte) ;
   1 hero, en-tête, pied de page ; 2 service, dossier et popup, méthode ;
