@@ -1348,6 +1348,8 @@ sur une hauteur ni une largeur de texte, qui se remesurent sur le build.
   public/emblem-clair.png (traits clairs, pour les fonds sombres) remplacent
   logo-imbrin.png et logo-dossier.png dans les composants. Les anciens
   fichiers RESTENT dans public/ : la signature mail pointe encore dessus.
+  L'image OpenGraph lit emblem-encre-300.png, pas la source de 520 px :
+  voir « MISE EN LIGNE, 17/09/2026 » dans les lots.
 - LES ICÔNES. Les quatre SVG inline de la planche (plaque de cabinet, carte de
   France avec la région remplie en vert, registre, chemise à sangle), dans un
   composant Icones.tsx, aria-hidden, currentColor. La carte vient de
@@ -1618,6 +1620,24 @@ sur une hauteur ni une largeur de texte, qui se remesurent sur le build.
   retainer, fee, honoraires de succès, protection ni article 14 hors
   /confidentialite et /dirigeants ; Lighthouse mobile de l'accueil : voir
   le rapport du lot (référence à tenir 98/100/100/100).
+- MISE EN LIGNE, 17/09/2026 : v80 fusionnée dans main sans avance rapide
+  (4ca5e8e), la branche v80 conservée à 799aae7 comme point de retour. Les
+  trois premiers déploiements Vercel ont ÉCHOUÉ, build vert, à l'étape de
+  déploiement : « The Edge Function "opengraph-image" size is 1.1 MB and
+  your plan size limit is 1 MB ». Cause : le fichier lu par fetch(new
+  URL(..., import.meta.url)) dans une route Edge est EMBARQUÉ dans la
+  fonction, et le lot 0 y lisait public/emblem-encre.png en 520 px, 357 Ko
+  qu'un PNG ne compresse pas ; avec @vercel/og (deux wasm, 1,4 Mo bruts
+  mais compressibles) le bundle faisait 1,07 Mo compressés. Le passage du
+  dépôt en privé, soupçonné d'abord, n'y était pour rien : les statuts
+  Vercel sur les commits GitHub le montrent. RÈGLE : tout fichier lu par
+  l'image OpenGraph passe par une variante réduite du script emblemes.mjs,
+  jamais la source ; l'encre a un 300 px pour cela (150 px dessinés, au
+  double), bundle 0,84 Mo. Mesure locale sans Vercel : les entrées
+  « files », « assets » et « wasm » de la fonction dans
+  .next/server/middleware-manifest.json, sommées après gzip. La question
+  v56 (sortir du runtime Edge, limite 50 Mo) reste ouverte, ce n'est pas
+  le soir d'une mise en ligne qu'on la tranche.
 - MÉTHODE DU CHANTIER : cinq lots, un commit par lot, un rapport court et une
   validation entre chaque. 0 préparation (emblèmes, Hanken, tokens, charte) ;
   1 hero, en-tête, pied de page ; 2 service, dossier et popup, méthode ;

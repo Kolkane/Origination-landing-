@@ -3,7 +3,10 @@
    sources ; ils sont copiés tels quels dans public/ pour le JSON-LD et
    l'image OpenGraph, et réduits à deux fois chaque rendu du site :
    72 et 88 pour l'en-tête (30 et 34 px), 208 et 264 pour le pied (104 et
-   132 px). Le document (couverture, spécimen) prend le 72.
+   132 px). Le document (couverture, spécimen) prend le 72. L'encre a de
+   plus un 300 pour l'image OpenGraph (150 px dans l'image, au double) :
+   la fonction Edge qui la rend embarque ce fichier, et le 520 px la
+   faisait dépasser la limite de 1 Mo de Vercel (17/09/2026).
    Lancer : npm run emblemes. Aucune retouche à la main sur les sorties :
    on relance le script. Redimensionnement Lanczos, PNG sans palette, la
    gravure est une texture qu'une palette abîmerait. */
@@ -15,7 +18,7 @@ import sharp from "sharp";
 const racine = process.cwd();
 const sorties = path.join(racine, "public");
 const EMBLEMES = [
-  { source: "emblem-encre.png", tailles: [72, 88] },
+  { source: "emblem-encre.png", tailles: [72, 88, 300] },
   { source: "emblem-clair.png", tailles: [72, 88, 208, 264] },
 ];
 

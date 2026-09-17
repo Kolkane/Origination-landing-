@@ -40,11 +40,16 @@ async function policeGoogle(famille: string, poids: number, texte: string) {
    remplace le PNG clair embarqué en base64 dans logo-imbrin-image.ts,
    supprimé avec cette version : 63 Ko de source pour une image de 160px,
    quand le fichier de public/ sert déjà. Octet par octet : un seul
-   fromCharCode sur 350 Ko dépasserait la pile, et la cible TypeScript
-   du projet n'itère pas un Uint8Array par décomposition. */
+   fromCharCode sur 100 Ko dépasserait la pile, et la cible TypeScript
+   du projet n'itère pas un Uint8Array par décomposition.
+   17/09/2026 : la variante de 300 px (npm run emblemes), pas le 520 px.
+   Le fichier lu ici est EMBARQUÉ dans la fonction Edge, et Vercel la
+   refuse au-delà de 1 Mo compressé : avec le 520 px (357 Ko, un PNG ne
+   se compresse pas) le bundle faisait 1,07 Mo, avec le 300 px il fait
+   0,84 Mo. L'emblème est dessiné à 150 px, la source au double. */
 async function emblemeEncre() {
   const buf = await (
-    await fetch(new URL("../../public/emblem-encre.png", import.meta.url))
+    await fetch(new URL("../../public/emblem-encre-300.png", import.meta.url))
   ).arrayBuffer();
   const octets = new Uint8Array(buf);
   let bin = "";
