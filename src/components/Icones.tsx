@@ -41,7 +41,8 @@ function Cabinet() {
   );
 }
 
-/* la carte : une seule région remplie, en vert, les autres au trait. Le
+/* la carte : une seule région remplie, en vin depuis la v83 (elle était
+   verte), les autres au trait. C'est le seul aplat de couleur du site. Le
    trait est plus épais (9) parce que le tracé est dessiné dans un repère
    de 820 unités là où les trois autres tiennent dans 64. */
 function Carte() {
@@ -51,7 +52,7 @@ function Carte() {
         <path
           key={trace.d.slice(0, 24)}
           d={trace.d}
-          fill={trace.rempli ? "var(--vert)" : "none"}
+          fill={trace.rempli ? "var(--vin)" : "none"}
           stroke="currentColor"
           strokeWidth={9}
           strokeLinejoin="round"

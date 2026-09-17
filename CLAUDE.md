@@ -1299,7 +1299,10 @@ ordre des sections. Zéro latitude de design : ce qui n'est pas dans la planche
 n'existe pas. Le brief du chantier est PROMPT-CC-V80.md, à la racine. La
 leçon v60 tient : une planche fait foi sur la forme et les couleurs, jamais
 sur une hauteur ni une largeur de texte, qui se remesurent sur le build.
-- PALETTE. Fond blanc #FFFFFF. Encre #16201C : texte, bande noire du dossier,
+- PALETTE. REMPLACÉE PAR LA V83, voir « LA PALETTE V83 » à la fin des lots :
+  plus aucun vert nulle part, fond blanc cassé, encre et gris anthracite. Ce
+  qui suit est le procès-verbal de la palette V80, il ne décrit plus le code.
+  Fond blanc #FFFFFF. Encre #16201C : texte, bande noire du dossier,
   pied de page. Vert #1E3A32 : boutons, bande finale « Prendre rendez-vous »,
   filet épais de l'origination, région remplie de la carte. Filets #DCE1DD et
   #C9D0CC, lignes de tableau du dossier #EEF1EF. Gris de texte #2B3530 et
@@ -1308,7 +1311,9 @@ sur une hauteur ni une largeur de texte, qui se remesurent sur le build.
   bande sombre en tête, avec la bande noire du dossier et le pied de page.
   Les tokens vivent dans globals.css sous leur nom français (--encre, --vert,
   --gris, --filet, --clair, --vin) ; les tokens de la DA v7 sont morts au lot 4.
-- LE VIN À QUATRE ENDROITS, et nulle part ailleurs, exactement comme dans la
+- LE VIN À QUATRE ENDROITS. AMENDÉ PAR LA V83 : il en a sept, les trois qui
+  s'ajoutent reprenant les emplois du vert où la couleur portait un sens. Ce
+  qui suit reste vrai pour les quatre premiers. Exactement comme dans la
   planche : le soulignement des liens texte sur fond blanc
   (text-decoration-color #8E2438, le texte reste encre ; #B32E46 sur le hero ;
   blanc sur la bande verte), les trois numéros de la méthode, la mention
@@ -1779,6 +1784,48 @@ sur une hauteur ni une largeur de texte, qui se remesurent sur le build.
   produit : ni SIREN de l'entité ni adresse du siège sur l'accueil, le
   paragraphe présent, aucun tiret. Captures 1440 et 390 dans
   V80-captures/v82-apropos.
+- LA PALETTE V83, « blanc cassé, encre, vin » (arbitrage Vincent,
+  17/09/2026, après la v82). LE VERT EST SUPPRIMÉ DU SITE. La palette est
+  désormais un blanc cassé, une encre et des gris anthracite, et le vin en
+  pointes. Cet amendement PRIME sur le point PALETTE de la V80 et sur les
+  planches MAQUETTE-V80-*.html, qui restent des archives : elles font encore
+  foi sur les formes, les tailles et les espacements, PLUS SUR AUCUNE
+  COULEUR. Ne pas « remettre la page conforme à sa planche » sur ce point.
+  LE VERT N'ÉTAIT PAS QUE DANS --vert. Les quatre emplois déclarés (filet de
+  tête du panneau d'offre, « Au devis », les coches, la bande de rendez-vous)
+  étaient la partie visible ; les QUATORZE NEUTRES de la V80 étaient tous
+  teintés de vert, #16201C, #2B3530, #56605B, #DCE1DD, #C9D0CC, #EEF1EF,
+  #DDE5E1, #B9C6C0, #9AA7A1, #C9D2CD, #EDF0EC, #0A0E0C et les deux voiles en
+  rgba(6,10,8). C'est de là que venait la dominante, pas des quatre aplats :
+  retirer le seul --vert aurait laissé une page verte. Tous sont repris sur
+  une teinte chaude neutre, À LUMINANCE CONSTANTE, et les contrastes de la
+  planche sont tenus à un dixième près : #5C5751 sur le papier donne 6,57:1
+  quand #56605B sur le blanc donnait 6,52 ; l'encre 15,98 contre 16,70 ; le
+  vin 7,85 contre 8,54 ; le clair sur l'encre 13,59 contre 13,02 ; le plus bas
+  de la page reste le gris-2 à 6,57:1. Tous AA, calculés couple par couple.
+  LE FOND N'EST PLUS BLANC. --blanc est RENOMMÉ --papier et vaut #F7F5F2 : le
+  nom ment à la première bascule (leçon v55), et le token sert aussi bien de
+  fond de page que de texte sur l'encre, ce que « papier » dit et que
+  « blanc » ne disait plus. Les cases du tableau du mandat, la couverture et
+  le feuillet du popup le suivent d'eux-mêmes, ils le lisaient déjà.
+  LE PIED DE PAGE PREND UN CRAN, --noir #121110, ET C'EST LA SEULE VALEUR
+  AJOUTÉE. La bande de rendez-vous passe à l'encre, comme la bande du
+  dossier ; sans ce cran elle se serait fondue dans le pied, qui la suit
+  immédiatement, et la page se serait terminée sur une seule dalle noire de
+  deux écrans. Le vin plein en bande a été écarté : l'arbitrage dit « juste
+  des pointes », un aplat pleine largeur n'en est pas une.
+  LES TROIS EMPLOIS DU VERT QUI PASSENT AU VIN, et pas un de plus : le filet
+  de 3 px en tête du panneau d'offre, les six coches des gains, et la région
+  remplie de la carte du service, seul aplat de couleur du site. Ce sont des
+  marques, pas des surfaces. « AU DEVIS » PASSE À L'ENCRE et non au vin : un
+  prix se lit, il ne se décore pas, et c'était le seul des quatre où la
+  couleur ne portait rien.
+  L'IMAGE OPENGRAPH SUIT, précédent v18 et v55 : #F7F5F2, #1B1A18, #5C5751.
+  VÉRIFIÉ SUR LE BUILD : build et lint sans erreur ni avertissement ; zéro
+  occurrence de --vert, de --blanc et des quatorze hex V80 dans src/ ;
+  captures 1440 et 390 des sept sections, du popup et de la jonction bande de
+  rendez-vous / pied.
+
 - MÉTHODE DU CHANTIER : cinq lots, un commit par lot, un rapport court et une
   validation entre chaque. 0 préparation (emblèmes, Hanken, tokens, charte) ;
   1 hero, en-tête, pied de page ; 2 service, dossier et popup, méthode ;

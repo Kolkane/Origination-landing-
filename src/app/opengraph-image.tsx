@@ -80,7 +80,7 @@ export default async function Image() {
           display: "flex",
           flexDirection: "column",
           justifyContent: "flex-end",
-          backgroundColor: "#FFFFFF",
+          backgroundColor: "#F7F5F2",
           padding: "80px 96px",
         }}
       >
@@ -93,7 +93,7 @@ export default async function Image() {
             fontWeight: 600,
             fontSize: 120,
             letterSpacing: "-0.01em",
-            color: "#16201C",
+            color: "#1B1A18",
             lineHeight: 1.06,
           }}
         >
@@ -105,7 +105,7 @@ export default async function Image() {
             fontFamily: "Hanken Grotesk",
             fontWeight: 400,
             fontSize: 30,
-            color: "#56605B",
+            color: "#5C5751",
             lineHeight: 1.3,
           }}
         >

@@ -16,35 +16,36 @@
 }
 
 /* ============================================================
-   V80 · LES TOKENS (arbitrage Vincent, 17/09/2026, planches
-   MAQUETTE-V80-ACCUEIL.html et MAQUETTE-V80-ACCUEIL-MOBILE.html, qui
-   font foi). Fond blanc, encre, vert, et le vin en pointe à quatre
-   endroits. Les tokens de la DA v7 sont morts au lot 4 avec les
-   dernières pages qui les lisaient. Aucune valeur n'est inventée :
-   chacune est un hex de la planche.
+   V83 · LES TOKENS (arbitrage Vincent, 17/09/2026). LE VERT EST MORT :
+   la palette est blanc cassé, encre et gris anthracite, et le vin en
+   pointe. Aucun token n'a plus de composante verte, ni les neutres,
+   qui étaient tous teintés (#16201C, #2B3530, #DCE1DD, #DDE5E1...),
+   ni les voiles. Les neutres V80 sont repris à luminance constante,
+   sur une teinte chaude neutre : les contrastes de la planche sont
+   tenus à un dixième près, vérifiés couple par couple.
    ============================================================ */
 :root {
-  --blanc: #ffffff;
-  --encre: #16201c; /* texte, bande du dossier, pied de page */
-  --vert: #1e3a32; /* boutons, bande finale, filet épais de l'origination, région de la carte */
-  --gris: #2b3530; /* corps de texte sur blanc, survol du bouton encre */
-  --gris-2: #56605b; /* libellés, notes, légendes */
-  --survol: #3b4a43; /* liens texte au survol */
-  --filet: #dce1dd; /* filet courant, bas de l'en-tête fixe */
-  --filet-2: #c9d0cc; /* bord de la couverture */
-  --filet-3: #eef1ef; /* lignes de tableau du dossier */
-  --clair: #dde5e1; /* texte courant sur fond sombre */
-  --clair-2: #b9c6c0; /* libellés sur la bande verte */
-  --clair-3: #9aa7a1; /* notes sur fond sombre, légende du hero, pied */
-  --clair-pied: #c9d2cd; /* liens du pied de page */
+  --papier: #f7f5f2; /* le fond du site, blanc cassé (V80 : blanc pur) */
+  --encre: #1b1a18; /* texte, bande du dossier, bande de rendez-vous */
+  --noir: #121110; /* le pied de page, seul cran plus sombre que l'encre */
+  --gris: #302e2b; /* corps de texte sur papier, survol du bouton encre */
+  --gris-2: #5c5751; /* libellés, notes, légendes */
+  --survol: #46433e; /* liens texte au survol */
+  --filet: #e2ded8; /* filet courant, bas de l'en-tête fixe */
+  --filet-2: #cfcbc4; /* bord de la couverture, cadre du panneau d'offre */
+  --filet-3: #efede9; /* lignes de tableau du dossier */
+  --clair: #e6e3de; /* texte courant sur fond sombre */
+  --clair-2: #c4c0b9; /* libellés sur la bande de rendez-vous */
+  --clair-3: #a5a199; /* notes sur fond sombre, légende du hero, pied */
+  --clair-pied: #d2cec8; /* liens du pied de page */
   --pied-filet: rgba(255, 255, 255, 0.18); /* filet du bas du pied */
-  --bouton-survol: #edf0ec; /* bouton blanc au survol */
-  --vin: #8e2438; /* soulignés sur blanc, numéros de la méthode, Confidentiel, rubriques du dossier */
+  --bouton-survol: #eae7e2; /* bouton clair au survol */
+  --vin: #8e2438; /* soulignés, numéros de la méthode, Confidentiel, rubriques du dossier, filet et coches de l'offre, région de la carte */
   --vin-hero: #b32e46; /* souligné du hero, seul emploi */
-  --hero-fond: #0a0e0c; /* derrière la vidéo, avant qu'elle charge */
-  --voile: rgba(6, 10, 8, 0.16);
-  --voile-mobile: rgba(6, 10, 8, 0.22);
-  --popup-voile: rgba(10, 16, 13, 0.64);
+  --hero-fond: #0e0d0c; /* derrière la vidéo, avant qu'elle charge */
+  --voile: rgba(9, 8, 7, 0.16);
+  --voile-mobile: rgba(9, 8, 7, 0.22);
+  --popup-voile: rgba(14, 12, 10, 0.64);
 
   --anneau: rgba(255, 255, 255, 0.35); /* survol de la couverture */
   --menu-bord: rgba(255, 255, 255, 0.6); /* bouton Menu sur le hero */
@@ -77,7 +78,7 @@
   min-height: 640px;
   overflow: hidden;
   background: var(--hero-fond);
-  color: var(--blanc);
+  color: var(--papier);
 }
 .hero-video {
   position: absolute;
@@ -135,7 +136,7 @@
   font-weight: 500;
   line-height: 1.1;
   letter-spacing: -0.015em;
-  color: var(--blanc);
+  color: var(--papier);
 }
 .hero-texte p {
   max-width: 480px;
@@ -148,14 +149,14 @@
   display: inline-block;
   margin-top: 18px;
   font-size: 15px;
-  color: var(--blanc);
+  color: var(--papier);
   text-decoration: underline;
   text-underline-offset: 6px;
   text-decoration-thickness: 1px;
   text-decoration-color: var(--vin-hero);
 }
 .hero-lien:hover {
-  color: var(--blanc);
+  color: var(--papier);
   text-decoration-thickness: 2px;
 }
 .hero-legende {
@@ -168,7 +169,7 @@
 /* sur l'encre du hero, le contour de focus est blanc : celui de la
    planche, encre, n'y serait pas visible */
 .hero :focus-visible {
-  outline: 2px solid var(--blanc);
+  outline: 2px solid var(--papier);
   outline-offset: 4px;
 }
 /* v82 : L'APPARITION SÉQUENCÉE, reprise de la V78 (arbitrage Vincent,
@@ -242,7 +243,7 @@
   align-items: center;
   justify-content: space-between;
   gap: 32px;
-  color: var(--blanc);
+  color: var(--papier);
 }
 .entete-marque {
   display: flex;
@@ -287,7 +288,7 @@ html {
 .entete[data-etat="fixe"] {
   position: fixed;
   padding: 14px 48px;
-  background: var(--blanc);
+  background: var(--papier);
   color: var(--encre);
   border-bottom: 1px solid var(--filet);
 }
@@ -307,7 +308,7 @@ html {
   flex-direction: column;
   box-sizing: border-box;
   padding: 18px 24px 32px;
-  background: var(--blanc);
+  background: var(--papier);
   color: var(--encre);
   overflow: auto;
 }
@@ -392,8 +393,8 @@ html {
 
 /* ---------- pied de page ---------- */
 .pied {
-  background: var(--encre);
-  color: var(--blanc);
+  background: var(--noir);
+  color: var(--papier);
   padding: 72px 0 40px;
 }
 .pied-grille {
@@ -412,7 +413,7 @@ html {
   font-size: 21px;
   font-weight: 600;
   line-height: 1.2;
-  color: var(--blanc);
+  color: var(--papier);
 }
 .pied-baseline {
   margin: 4px 0 0;
@@ -430,7 +431,7 @@ html {
   font-size: 14px;
   font-weight: 600;
   line-height: 1.5;
-  color: var(--blanc);
+  color: var(--papier);
 }
 .pied-col a {
   font-size: 15px;
@@ -439,7 +440,7 @@ html {
   text-decoration: none;
 }
 .pied-col a:hover {
-  color: var(--blanc);
+  color: var(--papier);
   text-decoration: underline;
   text-underline-offset: 6px;
 }
@@ -455,7 +456,7 @@ html {
   color: var(--clair-3);
 }
 .pied :focus-visible {
-  outline: 2px solid var(--blanc);
+  outline: 2px solid var(--papier);
   outline-offset: 4px;
 }
 
@@ -535,9 +536,9 @@ html {
   .hero-texte p,
   .hero-lien {
     text-shadow:
-      0 1px 3px rgba(6, 10, 8, 0.5),
-      0 0 14px rgba(6, 10, 8, 0.45),
-      0 0 28px rgba(6, 10, 8, 0.4);
+      0 1px 3px rgba(9, 8, 7, 0.5),
+      0 0 14px rgba(9, 8, 7, 0.45),
+      0 0 28px rgba(9, 8, 7, 0.4);
   }
   .pied {
     padding: 48px 0 32px;
@@ -618,7 +619,7 @@ html {
   align-items: center;
   height: 54px;
   padding: 0 28px;
-  background: var(--blanc);
+  background: var(--papier);
   color: var(--encre);
   border: 0;
   border-radius: 2px;
@@ -671,11 +672,11 @@ html {
 /* ---------- le dossier d'approche ---------- */
 .dossier {
   background: var(--encre);
-  color: var(--blanc);
+  color: var(--papier);
   padding: 104px 0;
 }
 .dossier .titre-section {
-  color: var(--blanc);
+  color: var(--papier);
 }
 .dossier-grille {
   display: grid;
@@ -701,7 +702,7 @@ html {
   margin-top: 36px;
 }
 .dossier :focus-visible {
-  outline: 2px solid var(--blanc);
+  outline: 2px solid var(--papier);
   outline-offset: 4px;
 }
 
@@ -712,7 +713,7 @@ html {
   box-sizing: border-box;
   width: 320px;
   height: 452px;
-  background: var(--blanc);
+  background: var(--papier);
   color: var(--encre);
   border: 1px solid var(--filet-2);
   padding: 30px 30px 26px;
@@ -812,7 +813,7 @@ html {
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  background: var(--blanc);
+  background: var(--papier);
   color: var(--encre);
 }
 @keyframes popup-voile {
@@ -847,7 +848,7 @@ html {
   gap: 16px;
   padding: 14px 20px 14px 24px;
   border-bottom: 1px solid var(--filet);
-  background: var(--blanc);
+  background: var(--papier);
 }
 .popup-titre {
   font-size: 14px;
@@ -870,7 +871,7 @@ html {
   height: 40px;
   padding: 0 16px;
   background: var(--encre);
-  color: var(--blanc);
+  color: var(--papier);
   border: 0;
   border-radius: 2px;
   font-family: inherit;
@@ -880,7 +881,7 @@ html {
 }
 .popup-fermer:hover {
   background: var(--gris);
-  color: var(--blanc);
+  color: var(--papier);
 }
 .popup-corps {
   overflow: auto;
@@ -1294,9 +1295,9 @@ html {
    lire »). La section fait écho à une section de prix, et une section de
    prix a un code que tout le monde lit sans effort : le titre, le prix,
    ce que vous obtenez, les conditions. L'origination est un seul
-   panneau : filet vert de 3 px en tête (seul filet coloré du site, seul
-   emploi du vert hors bouton et bande finale, avec « Au devis » et les
-   coches), filet fin #C9D0CC autour, celui du bord de la couverture. Ce
+   panneau : filet de 3 px en vin en tête (v83 : il était vert, et c'est
+   le seul filet coloré du site), filet fin autour, celui du bord de la
+   couverture. Ce
    n'est pas une grille de cartes, c'est un panneau unique. Dedans : à
    gauche le titre et le prix, à droite six gains cochés, en pied les six
    termes sur trois colonnes. Le mandat reste en tableau réglé (rangée à
@@ -1304,7 +1305,7 @@ html {
 .offre {
   margin-top: 56px;
   border: 1px solid var(--filet-2);
-  border-top: 3px solid var(--vert);
+  border-top: 3px solid var(--vin);
 }
 .offre-haut {
   display: grid;
@@ -1319,8 +1320,9 @@ html {
   line-height: 1.05;
   letter-spacing: -0.01em;
 }
-/* à la place du prix : « Au devis », en vert, sa phrase, et le pas
-   suivant en lien texte vers la bande de rendez-vous */
+/* à la place du prix : « Au devis » en encre (v83 : il était vert ; un
+   prix se lit, il ne se décore pas), sa phrase, et le pas suivant en
+   lien texte vers la bande de rendez-vous */
 .offre-prix {
   margin-top: 28px;
   padding-top: 24px;
@@ -1332,7 +1334,7 @@ html {
   font-weight: 500;
   line-height: 1.1;
   letter-spacing: -0.01em;
-  color: var(--vert);
+  color: var(--encre);
 }
 .offre-prix-texte {
   margin: 8px 0 0;
@@ -1347,8 +1349,8 @@ html {
 .offre-sous-titre {
   margin-bottom: 14px;
 }
-/* les gains : une liste cochée, la coche au trait dans le vert, un
-   filet entre les lignes */
+/* les gains : une liste cochée, la coche au trait en vin (v83 : elle
+   était verte), un filet entre les lignes */
 .gains {
   margin: 0;
   padding: 0;
@@ -1372,7 +1374,7 @@ html {
   width: 18px;
   height: 18px;
   margin-top: 5px;
-  color: var(--vert);
+  color: var(--vin);
 }
 /* les termes : six définitions sur trois colonnes, le libellé gris
    au-dessus de la condition en encre */
@@ -1413,7 +1415,7 @@ html {
 }
 .case {
   grid-column: span 3;
-  background: var(--blanc);
+  background: var(--papier);
   padding: 24px 32px 28px 0;
 }
 .rangee .case + .case {
@@ -1577,12 +1579,12 @@ html {
 
 /* ---------- prendre rendez-vous ---------- */
 .rendez-vous {
-  background: var(--vert);
-  color: var(--blanc);
+  background: var(--encre);
+  color: var(--papier);
   padding: 104px 0;
 }
 .rendez-vous .titre-section {
-  color: var(--blanc);
+  color: var(--papier);
 }
 .rendez-vous-grille {
   display: grid;
@@ -1611,25 +1613,26 @@ html {
   line-height: 1.5;
   color: var(--clair-2);
 }
-/* sur la bande verte le souligné est blanc : le vin n'y serait pas
-   lisible, et la planche le dit ainsi */
+/* sur la bande de rendez-vous le souligné est clair : le vin n'y serait
+   pas lisible (2,3:1 sur l'encre), et la planche le disait déjà ainsi
+   quand la bande était verte */
 .rendez-vous-coord a {
   display: inline-block;
   margin-top: 4px;
   font-size: 26px;
   font-weight: 500;
   line-height: 1.2;
-  color: var(--blanc);
+  color: var(--papier);
   text-decoration: underline;
   text-underline-offset: 6px;
   text-decoration-thickness: 1px;
 }
 .rendez-vous-coord a:hover {
-  color: var(--blanc);
+  color: var(--papier);
   text-decoration-thickness: 2px;
 }
 .rendez-vous :focus-visible {
-  outline: 2px solid var(--blanc);
+  outline: 2px solid var(--papier);
   outline-offset: 4px;
 }
 
@@ -1858,7 +1861,7 @@ html {
    ============================================================ */
 
 body {
-  background: var(--blanc);
+  background: var(--papier);
   color: var(--encre);
   font-family: var(--f-corps);
   /* v29 : Chromium ne retravaille que la queue du paragraphe. Posé
@@ -1894,7 +1897,7 @@ body {
   z-index: 100;
   padding: 12px 16px;
   background: var(--encre);
-  color: var(--blanc);
+  color: var(--papier);
   font-size: 15px;
   font-weight: 500;
   text-decoration: none;
@@ -1902,7 +1905,7 @@ body {
 }
 .evitement:focus-visible {
   transform: none;
-  outline: 2px solid var(--blanc);
+  outline: 2px solid var(--papier);
   outline-offset: -4px;
 }
 
