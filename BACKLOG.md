@@ -96,3 +96,9 @@ une correction. À trancher.
   compte. La carte « Facturation » et « un mois sans dossier livré n'est
   pas facturé » sont partis au lot 4 bis : le plancher mensuel ne survit
   nulle part sur le site.
+- **Premier contact : les conditions viendront de la note de l'avocat (v81,
+  17/09/2026).** Le site n'en dit rien hors « Premier contact · Au devis ». Quand la
+  note arrive, elle nourrit l'annexe signée avant la première remise nominative,
+  dans le dépôt de production, et non ce site ; si elle impose une information
+  publique du dirigeant, /dirigeants et la notice s'en trouveront modifiées par un
+  amendement propre. Rien à faire ici d'ici là.

@@ -47,6 +47,13 @@ Cette règle a sauté trois fois sous une formulation fausse ; ne pas la reformu
 Elle gouverne la notice d'information de l'article 14, la page /dirigeants et toute
 copie future. Les amendements v59, v63, v68 et v69 en gardent l'historique : ils ne
 sont pas réécrits, ce sont les procès-verbaux des trois rechutes.
+AMENDEMENT v81 (arbitrage Vincent, 17/09/2026) : LE SITE NE PORTE PLUS CETTE RÈGLE.
+Aucune mention juridique du premier contact ne s'écrit sur le site : ni le canal, ni
+le pli, ni qui écrit le premier, ni ce qu'un cabinet fait ensuite. Le site dit une
+seule chose, en section Conditions : qui contacte les dirigeants, et selon quelles
+modalités, se décide ensemble à la signature du devis ; les conditions viendront de la
+note de l'avocat. L'invariant ci-dessus reste la PRATIQUE d'Imbrin quand c'est Imbrin
+qui contacte ; il n'est plus une promesse publiée. Voir l'amendement v81.
 
 ## Le public
 Des associés de cabinets M&A et des family officers qui font une due diligence fournisseur
@@ -1206,6 +1213,47 @@ trouvé sur vous". Codes attendus : document financier imprimé, pas SaaS IA.
   sur le site, vérifié par grep sur les sept pages produites. La règle v8
   n'a donc plus d'exception ; les amendements v71 et suivants qui la
   décrivent restent en procès-verbal.
+- Amendement v81 (arbitrage Vincent, 17/09/2026) : AUCUNE MENTION JURIDIQUE DU
+  PREMIER CONTACT SUR LE SITE. Décidé après une journée où le premier contact a
+  changé trois fois de forme (Imbrin seul ; deux modes au choix du client ; puis
+  ceci). La règle : le site ne décrit ni qui contacte les dirigeants, ni comment,
+  ni à quelles conditions. Il dit seulement, en section Conditions, que cela se
+  décide ensemble à la signature du devis (« Premier contact · Au devis »). Les
+  conditions viendront de la note de l'avocat et vivront dans une annexe signée
+  avant la première remise nominative, pas sur le site. Nous ne répondons pas de
+  la façon dont un client contacte : le site dit ce que le dossier est, pas
+  comment un dirigeant est contacté.
+  CE QUI CHANGE, /dirigeants : quatre choses, qui nous sommes, pourquoi vous
+  pouvez être contacté, un message suffit pour refuser et le refus est respecté,
+  contact ; les trois « possibilités », le pli fermé, « nous vous écrivons
+  personnellement » et « avant qu'un cabinet vous approche » sortent ; « Rien
+  d'autre que ce que ces registres publient » (le dossier dit qui détient le
+  capital, on ne promet donc pas « aucune donnée privée ») ; « Ce dossier ne
+  s'appuie que sur ce que le registre laisse voir » ; « Le dossier vous concerne
+  dans votre fonction de dirigeant, jamais à titre privé » ; la liste des sources
+  est la même que dans la notice, SIRENE et BODACC compris.
+  CE QUI CHANGE, notice : forme minimale obligatoire, finalité (sans procédure de
+  contact), données, origine (même liste de sources), destinataires (« nos
+  clients sous contrat, cabinets de conseil ou acquéreurs »), transferts, durées,
+  droits, CNIL, contact ; « le dossier concerne le dirigeant en sa qualité de
+  dirigeant » remplace « le dirigeant est contacté ».
+  CE QUI CHANGE, Conditions, alignée sur la page « Comment je travaille » remise à
+  un cabinet le 18/09 : « Facturation · Au mois · Un mois sans dossier livré n'est
+  pas facturé » remplace « Pendant le contrat · Un seul cabinet », la grille garde
+  quatre valeurs ; l'exclusivité passe dans le texte de l'origination, « pour un
+  client, sur un périmètre, pendant une durée fixée au devis » ; aucun fee, aucune
+  protection. La section « Offre publiée, 17/09/2026 » est complétée en ce sens.
+  CE QUI NE CHANGE PAS : l'invariant de tête, comme pratique d'Imbrin ; le
+  vocabulaire proscrit de /dirigeants (v68) ; la liste blanche des chiffres ; les
+  amendements v59 à v78, procès-verbaux ; « un mois » et « trois mois ». Aucune
+  balise de version, aucun journal, aucune liste de destinataires sur le site : la
+  proposition de mission ne dépend pas du site, sa garde porte sur la remise, dans
+  le dépôt de production. Les textes « deux modes » du même jour, jamais commités,
+  sont archivés hors de ce dépôt.
+  VÉRIFIÉ SUR LE HTML PRODUIT : /dirigeants et /confidentialite sans « pli fermé »,
+  « personnellement », « jamais par vos équipes », « écrit d'abord », « avant
+  qu'un cabinet » ; « premier contact » n'apparaît qu'en Conditions (« au devis »)
+  et dans la bande du dossier (« que l'associé lit avant le premier contact »).
 - Interdits définitifs (hérités des itérations rejetées) : ticker, métriques animées,
   count-up, grilles de cards, beam/bordures lumineuses, tilt 3D, spotlight souris, pings,
   glow, dégradés colorés, grid de fond, badges/chips, emojis, icônes décoratives,
@@ -1594,6 +1642,12 @@ la protection de vingt-quatre mois, métadonnées et JSON-LD compris,
 vérifié sur le HTML produit. Le mandat de recherche ne change pas
 (rémunération fixée au devis, à la mission). La note « ni conseil, ni
 négociation » reste.
+COMPLÉMENT v81 (arbitrage Vincent, 17/09/2026) : le bloc « L'origination » montre
+« Facturation · Au mois · Un mois sans dossier livré n'est pas facturé » à la place
+de « Pendant le contrat · Un seul cabinet » ; l'exclusivité s'écrit dans le texte du
+bloc, « pour un client, sur un périmètre, pendant une durée fixée au devis » ; la
+quatrième valeur reste « Premier contact · Au devis ». Aligné sur la page « Comment
+je travaille » remise à un cabinet le 18/09/2026.
 RESTENT EN VIGUEUR : les règles de vocabulaire de l'offre v15 (« zone »,
 « verticale », « abonnement », « cellule » proscrits, le livrable s'appelle
 « dossier d'approche ») et l'interdit de toute promesse de volume ; la

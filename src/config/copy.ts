@@ -312,7 +312,7 @@ export const copy = typoDeep({
       libelle: "En continu",
       titre: "L’origination",
       texte:
-        "Votre périmètre est tenu sous veille. Chaque dossier vous est livré dès qu’il est vérifié. Le volume du périmètre est mesuré et annoncé au devis, avant tout engagement.",
+        "Votre périmètre est tenu sous veille. Chaque dossier vous est livré dès qu’il est vérifié. Le volume du périmètre est mesuré et annoncé au devis, avant tout engagement. L’exclusivité vaut pour un client, sur un périmètre, pendant une durée fixée au devis.",
       valeurs: [
         {
           libelle: "Pour commencer",
@@ -326,10 +326,13 @@ export const copy = typoDeep({
           texte:
             "Des périodes de trois mois, résiliables à chaque échéance avec un mois de préavis.",
         },
+        /* v81 : facturé au mois, un mois sans dossier livré n'est pas facturé ;
+           l'exclusivité est remontée dans le texte de l'origination (un client,
+           un périmètre, une durée fixée au devis) pour garder quatre valeurs. */
         {
-          libelle: "Pendant le contrat",
-          valeur: "Un seul cabinet",
-          texte: "Votre périmètre vous est réservé.",
+          libelle: "Facturation",
+          valeur: "Au mois",
+          texte: "Un mois sans dossier livré n’est pas facturé.",
         },
         /* la seule mention du premier contact sur le site, et elle est
            commerciale : qui contacte, et comment, se décide au devis
@@ -424,61 +427,37 @@ export const copy = typoDeep({
         être vrai le jour de la publication », l'interdit donc.
      ============================================================ */
   dirigeants: {
-    /* v69 : « reçu un courrier » devient « été contacté ». Quatre canaux
-       seront utilisés selon l'âge du dirigeant, lettre, mail, LinkedIn et
-       téléphone : le titre doit les couvrir tous. Le CORPS garde
-       « courrier » là où il parle de la lettre elle-même. */
+    /* v81 (arbitrage Vincent, 17/09/2026) : AUCUNE MENTION JURIDIQUE DU PREMIER
+       CONTACT sur cette page. Qui contacte les dirigeants, et à quelles
+       conditions, se décide au devis (section Conditions) ; les conditions
+       viendront de la note de l'avocat. La page dit quatre choses, et rien
+       d'autre : qui nous sommes, pourquoi vous pouvez être contacté, un message
+       suffit pour refuser et le refus est respecté, contact. Elle ne dit pas
+       comment un dirigeant est contacté : nous ne répondons pas de la façon
+       dont un client contacte. La liste des sources est la même que dans la
+       notice. Le vocabulaire proscrit de la v68 reste entier. */
     metaTitre: "Vous avez été contacté par Imbrin Research",
     kicker: "Vous avez été contacté par Imbrin Research",
-    titre:
-      "Ce que nous faisons, ce que nous ne faisons pas, et ce que vous pouvez décider.",
-    chapo:
-      "Cette page existe parce que vous devez pouvoir vérifier ce que nous vous avons écrit.",
+    titre: "Qui nous sommes, pourquoi vous pouvez être contacté, et comment refuser.",
+    chapo: "Cette page existe parce que vous devez pouvoir vérifier qui nous sommes et ce que nous faisons.",
     blocs: [
       {
-        titre: "Ce que nous faisons",
+        titre: "Qui nous sommes",
         corps: [
-          "Nous préparons des dossiers pour des cabinets de conseil qui accompagnent des dirigeants de PME dans la transmission de leur entreprise. Ces dossiers sont établis à partir de registres publics : registre du commerce, actes déposés au greffe, comptes annuels. Rien d’autre. Aucune donnée privée, aucun renseignement sur votre patrimoine, aucune source qui ne soit pas publique.",
+          "Imbrin Research prépare des dossiers sur des PME françaises pour ses clients, des cabinets de conseil et des acquéreurs. Ces dossiers sont établis à partir de registres publics : le registre national des entreprises, les actes déposés au greffe, les comptes annuels, le répertoire SIRENE et le BODACC. Rien d’autre que ce que ces registres publient.",
+          "Nous ne sommes ni acquéreur, ni conseil. Nous n’avons aucune offre à vous transmettre, nous ne prenons aucune part à une éventuelle transaction, et vous ne nous devez rien, ni aujourd’hui, ni plus tard.",
         ],
       },
       {
-        titre: "Ce que nous ne faisons pas",
+        titre: "Pourquoi vous pouvez être contacté",
         corps: [
-          /* « nous vous écrivons à votre entreprise » est retiré : voir la
-             note de tête, la v63 a établi que c'était faux. La capacité
-             remplace le canal, et elle, elle est vraie. */
-          "Nous ne sommes ni acquéreur, ni conseil. Nous n’avons aucune offre à vous transmettre. Nous ne prenons aucune part à une éventuelle transaction, et vous ne nous devez rien, ni aujourd’hui, ni plus tard. Nous ne contactons jamais un dirigeant à titre privé : nous vous écrivons personnellement, dans votre fonction de dirigeant, et jamais par vos équipes. Un courrier vous arrive sous pli fermé, marqué « Personnel et confidentiel », à votre nom.",
+          "Un acte déposé au registre par votre société, daté, l’a fait entrer dans un dossier ; nous avons ensuite lu ce que le registre porte : qui dirige, qui détient le capital, ce que disent les comptes. Ce dossier ne s’appuie que sur ce que le registre laisse voir. Le dossier vous concerne dans votre fonction de dirigeant, jamais à titre privé.",
         ],
       },
       {
-        titre: "Ce que vous pouvez décider",
+        titre: "Refuser",
         corps: [
-          "Avant qu’un cabinet vous approche, nous vous écrivons. Vous avez trois possibilités.",
-        ],
-        choix: [
-          {
-            fort: "Ne rien faire.",
-            suite:
-              "Nous vous appellerons une fois, à la date indiquée dans notre message, et nous n’insisterons pas.",
-          },
-          {
-            fort: "Refuser.",
-            suite:
-              "Un message suffit, par mail ou par téléphone. Ce refus est définitif : personne ne vous contactera par notre intermédiaire.",
-          },
-          {
-            fort: "Nous dire que la question vous intéresse,",
-            /* le tiret cadratin du brief est transposé en virgule, règle
-               de charte v8, même transposition qu'en v46b */
-            suite:
-              "même de loin, même sans échéance. Nous vous montrerons alors ce que le registre laisse voir de votre société, et ce qu’il ne laisse pas voir. Vous jugerez seul si un échange avec un cabinet, un seul, choisi pour votre secteur, vaut la peine. C’est vous qui décidez, à chaque étape.",
-          },
-        ],
-      },
-      {
-        titre: "Vos droits",
-        corps: [
-          `Les informations qui ont permis de vous contacter proviennent exclusivement de registres publics. Vous pouvez à tout moment vous opposer à leur utilisation, demander ce que nous détenons vous concernant, ou en demander la suppression. Une demande à l’adresse ci-dessous suffit ; elle est traitée sous ${brand.DELAI_OPPOSITION}, et l’opposition est définitive.`,
+          "Un message suffit, par mail ou par téléphone, à l’adresse ci-dessous. Votre refus est respecté : votre société sort de nos dossiers.",
         ],
       },
     ] as BlocDirigeant[],
@@ -572,8 +551,11 @@ export const copy = typoDeep({
                acte déposé et daté, puis des lectures. « Son âge » reste dans
                les données traitées ci-dessous, l'âge est lu, il n'est plus
                une porte, et une notice liste ce qui est traité. */
-            "Nous identifions des sociétés à partir d’un acte déposé au registre, daté ; nous lisons ensuite qui dirige, qui détient le capital et qui pourrait prendre la suite. Imbrin Research vous écrit d’abord, vous seul, dans votre fonction de dirigeant, par un courrier ou un message qui vous est personnellement adressé. Un courrier vous arrive sous pli fermé, marqué « Personnel et confidentiel », à votre nom. Nous ne passons jamais par votre standard ni par vos équipes. Un cabinet, un seul, choisi pour votre secteur, ne vous approche que si vous l’avez accepté ; c’est à lui, et à lui seul, que ces informations sont transmises.",
-            "Le traitement repose sur l’intérêt légitime : faciliter la transmission d’entreprises en mettant en relation leurs dirigeants avec des professionnels du conseil en cession. Il n’a pas d’autre finalité que celle-là : le dirigeant est contacté en sa qualité de dirigeant, jamais à titre privé, et aucune démarche ne vise son patrimoine personnel.",
+            /* v81 (arbitrage Vincent, 17/09/2026) : la notice ne décrit plus la
+               procédure de premier contact ; elle dit la finalité, et rien
+               d'autre. Les conditions viendront de la note de l'avocat. */
+            "Nous identifions des sociétés à partir d’un acte déposé au registre, daté ; nous lisons ensuite qui dirige, qui détient le capital et qui pourrait prendre la suite, et nous en établissons un dossier pour nos clients sous contrat.",
+            "Le traitement repose sur l’intérêt légitime : faciliter la transmission d’entreprises en mettant en relation leurs dirigeants avec des professionnels du conseil en cession. Il n’a pas d’autre finalité que celle-là : le dossier concerne le dirigeant en sa qualité de dirigeant, jamais à titre privé, et aucune démarche ne vise son patrimoine personnel.",
           ],
         },
         {
@@ -583,15 +565,15 @@ export const copy = typoDeep({
         {
           titre: "Origine des données",
           corps: [
-            "L’identité, la société, les chiffres, les actes et la structure de détention viennent des registres publics français (RNE, SIRENE, BODACC). Les coordonnées proviennent de prestataires d’enrichissement B2B ; elles peuvent inclure une ligne directe du dirigeant. Chaque coordonnée livrée porte son statut. Le dirigeant est contacté en sa qualité de dirigeant, jamais à titre privé. L’opt-out est définitif.",
+            "L’identité, la société, les chiffres, les actes et la structure de détention viennent des registres publics français : le registre national des entreprises, les actes déposés au greffe, les comptes annuels, le répertoire SIRENE et le BODACC. Les coordonnées proviennent de prestataires d’enrichissement B2B ; elles peuvent inclure une ligne directe du dirigeant. Chaque coordonnée livrée porte son statut. Le dossier concerne le dirigeant en sa qualité de dirigeant, jamais à titre privé. L’opt-out est définitif.",
             "Ces données ne sont pas collectées auprès du dirigeant. L’information prévue à l’article 14 du RGPD est rendue publiquement accessible par cette page.",
-            "Une version lisible de cette information, écrite pour le dirigeant que nous avons contacté, est publiée à part.",
+            "Une version lisible de cette information, écrite pour le dirigeant, est publiée à part.",
           ],
           lien: { label: "Vous avez été contacté ?", href: "/dirigeants" },
         },
         {
           titre: "Destinataires",
-          corps: "Le dossier d’approche est livré au cabinet servi sur le périmètre concerné, et à lui seul. Interviennent également l’hébergeur de notre base et le prestataire chargé de l’enrichissement des coordonnées, qui agissent pour notre compte et sur nos instructions.",
+          corps: "Le dossier d’approche est livré à nos clients sous contrat, cabinets de conseil ou acquéreurs. Interviennent également l’hébergeur de notre base et le prestataire chargé de l’enrichissement des coordonnées, qui agissent pour notre compte et sur nos instructions.",
         },
         {
           titre: "Transferts hors Union européenne",
@@ -599,13 +581,13 @@ export const copy = typoDeep({
         },
         {
           titre: "Durées de conservation",
-          corps: "Une détection non retenue est conservée 3 ans à compter de sa dernière mise à jour. Un dossier livré à un cabinet est conservé pendant la durée du contrat, puis 5 ans. Le registre d’opposition est conservé sans limitation de durée : c’est ce qui rend l’opt-out définitif.",
+          corps: "Une détection non retenue est conservée 3 ans à compter de sa dernière mise à jour. Un dossier livré à un client est conservé pendant la durée du contrat, puis 5 ans. Le registre d’opposition est conservé sans limitation de durée : c’est ce qui rend l’opt-out définitif.",
         },
         {
           titre: "Vos droits",
           corps: [
             "Vous disposez d’un droit d’accès, de rectification, d’effacement, de limitation et d’opposition sur les données qui vous concernent. Vous pouvez obtenir une copie des données que nous détenons sur vous.",
-            "Vous pouvez demander un opt-out définitif : il est honoré sans condition, et vos coordonnées sont inscrites à notre registre d’opposition. Cette opposition peut être exercée à tout moment, y compris avant toute livraison à un cabinet.",
+            "Vous pouvez demander un opt-out définitif : il est honoré sans condition, et vos coordonnées sont inscrites à notre registre d’opposition. Cette opposition peut être exercée à tout moment, y compris avant toute livraison à un client.",
             "Vous pouvez introduire une réclamation auprès de la Commission nationale de l’informatique et des libertés, 3 place de Fontenoy, TSA 80715, 75334 Paris Cedex 07 (cnil.fr).",
           ],
         },
