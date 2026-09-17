@@ -3,6 +3,7 @@ import Analyses from "@/components/Analyses";
 import APropos from "@/components/APropos";
 import Conditions from "@/components/Conditions";
 import Dossier from "@/components/Dossier";
+import Footer from "@/components/Footer";
 import Hero from "@/components/Hero";
 import Methode from "@/components/Methode";
 import RendezVous from "@/components/RendezVous";
@@ -17,21 +18,24 @@ export const metadata: Metadata = {
 
 /* V80 · L'ACCUEIL, dans l'ordre des planches : hero, ce que fait Imbrin
    Research, le dossier d'approche, la méthode, les conditions, à propos,
-   les analyses, prendre rendez-vous. Le pied de page vient du layout.
+   les analyses, prendre rendez-vous, puis le pied de page.
    Rien n'apparaît au défilement, rien ne se recouvre : plus de Reveal,
    plus de barre d'action mobile, plus de FAQ ni de balisage FAQPage.
    « haut » est la cible du lien de marque de l'en-tête et du pied. */
 export default function Home() {
   return (
-    <main id="haut">
-      <Hero />
-      <Service />
-      <Dossier />
-      <Methode />
-      <Conditions />
-      <APropos />
-      <Analyses />
-      <RendezVous />
-    </main>
+    <>
+      <main id="haut">
+        <Hero />
+        <Service />
+        <Dossier />
+        <Methode />
+        <Conditions />
+        <APropos />
+        <Analyses />
+        <RendezVous />
+      </main>
+      <Footer />
+    </>
   );
 }

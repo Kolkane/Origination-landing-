@@ -1,5 +1,16 @@
 # CLAUDE.md — Règles du projet (ne jamais dévier)
 
+## Préséance (arbitrage Vincent, 17/09/2026)
+La direction artistique V80, « blanc, encre, une seule grotesque » (section
+plus bas, avec ses lots), PRIME sur toutes les règles de direction artistique
+antérieures de ce fichier : la DA v7 et ses amendements v7 à v78 sont des
+procès-verbaux, ils disent ce qui a été essayé et pourquoi, ils ne décrivent
+plus le code. RESTENT EN VIGUEUR, et priment sur la V80 quand elle les
+contredit : la charte d'honnêteté et la liste blanche des chiffres, le
+vocabulaire de l'offre (section « L'offre v15 »), l'invariant du premier
+contact et les règles absolues de la page /dirigeants (v68). Rien d'autre
+n'est effacé.
+
 ## Ce qu'est ce site
 Landing one-page d'un service d'origination externe pour boutiques M&A sell-side : un analyste,
 sur pièces, repère au registre (sources publiques) les PME françaises dont la situation réunit
@@ -1244,7 +1255,7 @@ sur une hauteur ni une largeur de texte, qui se remesurent sur le build.
   liens du pied. Le hero vidéo reste plein écran et sombre : c'est la seule
   bande sombre en tête, avec la bande noire du dossier et le pied de page.
   Les tokens vivent dans globals.css sous leur nom français (--encre, --vert,
-  --gris, --filet, --clair, --vin) ; les tokens de la DA v7 meurent au lot 3.
+  --gris, --filet, --clair, --vin) ; les tokens de la DA v7 sont morts au lot 4.
 - LE VIN À QUATRE ENDROITS, et nulle part ailleurs, exactement comme dans la
   planche : le soulignement des liens texte sur fond blanc
   (text-decoration-color #8E2438, le texte reste encre ; #B32E46 sur le hero ;
@@ -1419,6 +1430,62 @@ sur une hauteur ni une largeur de texte, qui se remesurent sur le build.
   SIGNALÉ, NON TRANCHÉ : le libellé « Abonnement » au-dessus de
   « L'origination » est dans la planche ; la section « L'offre v15 » de
   cette charte proscrit le mot. Porté tel quel, à arbitrer.
+- LOT 4, FAIT LE 17/09/2026 : les pages intérieures, le nettoyage, les
+  emblèmes, l'accessibilité, le mobile, Lighthouse.
+  « ABONNEMENT » SORT : le libellé de la planche devient « En continu »,
+  en miroir de « À la mission » ; la règle de vocabulaire de l'offre prime
+  sur la planche. Les autres écarts de vocabulaire relevés sur la copy
+  V80 sont listés au rapport du lot, non appliqués.
+  PAGES INTÉRIEURES, sans planche : elles reprennent l'échelle de
+  l'accueil (titre de section, libellé, lien souligné de vin) dans une
+  colonne de lecture de 580 px, soit 70 caractères par ligne pleine en
+  18 px, interligne 1,7, MESURÉ sur le texte réel des articles (la
+  convention « 68ch » du CSS, qui compte des zéros, aurait donné 685 px
+  et 83 caractères). Intertitres en 500 quand les articles en auront,
+  aucune date affichée. L'en-tête y est fixe et blanc dès le chargement
+  (prop « fixe »), la page réserve sa hauteur ; le pied est rendu par
+  chaque page et non plus par le layout. Le libellé « Analyses » au-dessus
+  du titre d'article est retiré : le lien de retour porte déjà le mot.
+  /DIRIGEANTS garde ses règles absolues (v68) : en-tête SANS navigation
+  ni menu (les six entrées mènent aux conditions, qui sont l'offre), pied
+  SANS la colonne « Le site », pour la même raison. La marque en tête de
+  page, qui tenait lieu d'en-tête, est portée par l'en-tête lui-même. Le
+  point médian n'est plus posé dans le JSX entre les deux liens du pied ;
+  il reste dans la chaîne « entite » de copy.ts, contenu inchangé, à
+  arbitrer (la V80 ne veut plus de point médian hors pied de page).
+  NETTOYAGE : les tokens v7, le body v7 et son overflow-x caché, .wrap,
+  .cta, .kicker, .statement, .label, .display, .ap-*, .dir-*, LogoImbrin,
+  scripts/build-map.mjs et scripts/data, la dépendance d3-geo et le script
+  build:map, les extensions Tailwind (Tailwind ne sert plus que son
+  socle), les couleurs déclarées par section au lot 2 et 3, devenues
+  redondantes une fois le body sur blanc et encre. logo-imbrin.png et
+  logo-dossier.png restent dans public/. Aucun débordement horizontal à
+  360 ni à 390 sur les cinq pages, vérifié sans filet.
+  EMBLÈMES : scripts/emblemes.mjs (sharp, dépendance de développement,
+  « npm run emblemes ») tire des deux fichiers déposés des variantes à
+  deux fois le rendu, 72 et 88 pour l'en-tête, 208 et 264 pour le pied,
+  72 pour la couverture et le spécimen ; Embleme.tsx choisit par emploi,
+  en srcset. Les fichiers de 520 px restent pour le JSON-LD et l'image
+  OpenGraph. Les deux fichiers de 520 px pesaient 738 Ko par page ; les
+  variantes servies pèsent de 35 à 110 Ko selon la densité d'écran, dont
+  10 à 14 au premier écran.
+  ACCESSIBILITÉ : lien d'évitement « Aller au contenu », premier élément
+  focusable de chaque page, visible au focus seulement ; contour de focus
+  encre à 4 px partout, blanc sur les fonds sombres ; scroll-padding-top
+  sur html (63 px, 69 sur téléphone) pour que ni une ancre ni un focus
+  ne passent sous la barre fixe, il remplace le scroll-margin-top du lot
+  3 ; le nom accessible de la couverture commence par « Lire le dossier
+  spécimen » puis porte son texte visible (l'aria-label seul de la
+  planche échouait l'audit label-content-name-mismatch). Parcours clavier
+  réel vérifié sur les cinq pages. Contrastes calculés sur chaque couple
+  de couleurs des planches : tous AA, le plus bas étant 6,5:1 (#56605B sur
+  blanc) et 3,1:1 pour le souligné vin du hero, non textuel.
+  LE TEXTE DU HERO SUR LA VIDÉO, mesuré sur le poster et sur 33 images du
+  clip (une toutes les 0,25 s, voile compris) : à 1440, le pixel le plus
+  clair de la zone du texte reste au-dessus de 9,7:1 ; à 390, sur 13
+  images, quelques pixels de reflets passent sous 4,5:1 (pire : 1,5:1 à
+  5,75 s), sur au plus 2 % de la zone, la médiane restant à 20:1. NON
+  CORRIGÉ, sur consigne : captures fournies, arbitrage à rendre.
 - MÉTHODE DU CHANTIER : cinq lots, un commit par lot, un rapport court et une
   validation entre chaque. 0 préparation (emblèmes, Hanken, tokens, charte) ;
   1 hero, en-tête, pied de page ; 2 service, dossier et popup, méthode ;

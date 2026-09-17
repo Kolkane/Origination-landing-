@@ -7,31 +7,35 @@ import { copy } from "@/config/copy";
    (les six entrées de la navigation, la même source que l'en-tête),
    « Informations » et « Contact », et la ligne de bas de page. Sur
    téléphone l'emblème passe en 104 px et les colonnes en grille de deux.
-   Porté par le layout, il vaut pour toutes les pages. L'identité
-   juridique (raison sociale, SIREN) ne s'y affiche plus : la planche ne
-   l'a pas, elle vit aux mentions légales et, au lot 3, dans À propos. */
-export default function Footer() {
+   Rendu par chaque page et non par le layout (lot 4) : /dirigeants le
+   demande SANS la colonne « Le site », dont les entrées mènent à la
+   section de l'offre que sa charte (v68) lui interdit de lier.
+   L'identité juridique (raison sociale, SIREN) ne s'y affiche pas : la
+   planche ne l'a pas, elle vit aux mentions légales et dans À propos. */
+export default function Footer({ sansSite = false }: { sansSite?: boolean }) {
   const p = copy.pied;
   const nav = copy.nav;
   return (
     <footer className="pied">
       <div className="cadre">
-        <div className="pied-grille">
+        <div className={`pied-grille${sansSite ? " pied-grille-court" : ""}`}>
           <div className="pied-marque">
-            <Embleme ton="clair" taille={132} alt={p.emblemeAlt} differe />
+            <Embleme ton="clair" emploi="pied" alt={p.emblemeAlt} differe />
             <p className="pied-nom">
               {brand.MARQUE} {brand.SUFFIXE}
             </p>
             <p className="pied-baseline">{brand.BASELINE}</p>
           </div>
-          <nav aria-label={p.site.aria} className="pied-col">
-            <p className="pied-titre">{p.site.titre}</p>
-            {nav.liens.map((l) => (
-              <a key={l.href} href={l.href}>
-                {l.label}
-              </a>
-            ))}
-          </nav>
+          {sansSite ? null : (
+            <nav aria-label={p.site.aria} className="pied-col">
+              <p className="pied-titre">{p.site.titre}</p>
+              {nav.liens.map((l) => (
+                <a key={l.href} href={l.href}>
+                  {l.label}
+                </a>
+              ))}
+            </nav>
+          )}
           <div className="pied-col">
             <p className="pied-titre">{p.informations.titre}</p>
             {p.informations.liens.map((l) => (

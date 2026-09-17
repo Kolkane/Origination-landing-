@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "build:map": "node scripts/build-map.mjs"
+    "emblemes": "node scripts/emblemes.mjs"
   },
   "dependencies": {
     "next": "14.2.35",
@@ -18,10 +18,10 @@
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
-    "d3-geo": "^3.1.1",
     "eslint": "^8",
     "eslint-config-next": "14.2.35",
     "postcss": "^8",
+    "sharp": "^0.35.4",
     "tailwindcss": "^3.4.1",
     "typescript": "^5"
   }

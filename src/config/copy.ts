@@ -82,6 +82,9 @@ export const copy = typoDeep({
        états, le bouton de fermeture du panneau et les libellés des
        coordonnées qu'il porte. Le panneau n'est pas dans la planche
        (lot 1, décision consignée dans CLAUDE.md). */
+    /* le lien d'évitement, premier élément focusable de chaque page,
+       visible au focus seulement */
+    evitement: "Aller au contenu",
     menu: "Menu",
     menuOuvrir: "Ouvrir le menu",
     menuFermer: "Fermer le menu",
@@ -297,15 +300,16 @@ export const copy = typoDeep({
      reste due, pas que le mandat l'est. La structure de la rémunération
      est donnée, jamais un nombre ni un pourcentage (offre v15) : les
      montants sont renvoyés au devis dans l'intro.
-     SIGNALÉ, NON TRANCHÉ : le libellé « Abonnement » est dans la planche,
-     et la section « L'offre v15 » de CLAUDE.md proscrit le mot. Porté tel
-     quel, à arbitrer. */
+     Le libellé « Abonnement » de la planche est remplacé par « En
+     continu », en miroir de « À la mission » : la section « L'offre v15 »
+     de CLAUDE.md proscrit le mot, et la charte prime (arbitrage Vincent,
+     17/09/2026, lot 4). */
   conditions: {
     titre: "Conditions",
     intro:
       "Deux façons de travailler ensemble. Les montants sont chiffrés au devis, avant signature, après mesure de votre périmètre.",
     origination: {
-      libelle: "Abonnement",
+      libelle: "En continu",
       titre: "L’origination",
       texte:
         "Votre périmètre est tenu sous veille. Chaque dossier vous est livré dès qu’il est vérifié. Le volume du périmètre est mesuré et annoncé au devis, avant tout engagement.",

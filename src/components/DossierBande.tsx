@@ -154,14 +154,14 @@ export default function DossierBande({ pdf }: { pdf: string | null }) {
             {d.bouton}
           </button>
         </div>
-        <button
-          type="button"
-          className="couverture"
-          aria-label={d.bouton}
-          onClick={ouvrir}
-        >
+        {/* le nom accessible de la couverture commence par l'action, puis
+            porte son texte visible : un aria-label seul (planche) donnait
+            un nom qui ne contenait pas le texte du bouton, audit
+            label-content-name-mismatch en échec au lot 3 */}
+        <button type="button" className="couverture" onClick={ouvrir}>
+          <span className="visuellement-cache">{d.bouton}. </span>
           <span className="couverture-tete">
-            <Embleme ton="encre" taille={26} className="couverture-embleme" differe />
+            <Embleme ton="encre" emploi="document" className="couverture-embleme" differe />
             <span>{c.marque}</span>
           </span>
           <span className="couverture-corps">
@@ -211,7 +211,7 @@ export default function DossierBande({ pdf }: { pdf: string | null }) {
             <div className="specimen">
               <div className="specimen-tete">
                 <div className="specimen-marque">
-                  <Embleme ton="encre" taille={28} differe />
+                  <Embleme ton="encre" emploi="document" differe />
                   <span>{p.marque}</span>
                 </div>
                 <div className="specimen-meta">

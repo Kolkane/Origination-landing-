@@ -30,29 +30,32 @@ npm run build   # build de production
 
 Règle de fond : **rien codé en dur dans le JSX**, ni texte ni valeur.
 
-## Quatre conventions de style à connaître
+## Cinq conventions à connaître (V80)
 
-- `.papier` retourne une section entière sur le fond clair en redéfinissant les
-  tokens de couleur. Ne jamais écrire d'exception de couleur enfant par enfant.
-- **Un seul bord gauche pour les sections** : le premier élément de chaque
-  section part du bord du `.wrap`. Deux exceptions, voulues : le fondateur et
-  l'appel final, centrés. Ne pas introduire de retrait de section.
-- **Le hero, lui, est excentré** et le reste : ce n'est pas une section, c'est
-  une plaque pleine page. Son texte tient les bords de l'écran quelle que
-  soit sa taille, comme la couverture d'un imprimé. Le décrochage avec les
-  sections est délibéré, ne pas le « corriger ».
+- Les planches `MAQUETTE-V80-ACCUEIL.html` et `MAQUETTE-V80-ACCUEIL-MOBILE.html`
+  font foi sur l'accueil : mêmes valeurs, même copy, même ordre. Ce qui n'y
+  est pas n'existe pas, et ce qui s'en écarte est consigné dans `CLAUDE.md`.
+- `.cadre` est le conteneur des sections : 1200 px de contenu, en content-box
+  comme la planche. **Le hero, lui, est excentré** : c'est une plaque pleine
+  page, son texte tient les bords de l'écran.
+- Le vin (`--vin`) n'a que quatre emplois : les soulignés de liens sur blanc,
+  les numéros de la méthode, la mention « Confidentiel », les rubriques du
+  spécimen. Ni bouton, ni aplat, ni filet.
 - `--f-display`, `--f-corps`, `--f-label` sont les trois **rôles**
-  typographiques. `globals.css` ne nomme aucune police : changer de fonte ne
-  touche que `layout.tsx`.
-- Les **documents** (`.doc`, le spécimen du dossier, et `.fiche-o`, la fiche du
-  devis) ont leur propre typographie : ils redéfinissent `--f-label` sur la
-  serif du corps, donc aucun monospace à l'intérieur. C'est délibéré, c'est ce
-  qui les fait lire comme des pièces posées sur la page.
+  typographiques ; ils pointent tous sur Hanken Grotesk. `globals.css` ne
+  nomme aucune police : changer de fonte ne touche que `layout.tsx`.
+- Les pages intérieures n'ont pas de planche : elles reprennent l'échelle de
+  l'accueil dans une colonne de lecture de 580 px, mesurée à 70 caractères
+  par ligne. `/dirigeants` garde ses règles absolues : aucun lien vers l'offre,
+  donc un en-tête sans navigation et un pied sans la colonne « Le site ».
 
 ## Stack
 
-Next 14 App Router, TypeScript strict, Tailwind, next/font. Zéro dépendance UI
-externe : les apparitions passent par IntersectionObserver et des classes CSS.
+Next 14 App Router, TypeScript strict, Tailwind (son seul socle, aucune classe
+utilitaire), next/font. Zéro dépendance UI externe : l'en-tête bascule par
+IntersectionObserver, le dossier s'ouvre dans un `<dialog>` natif, rien
+n'apparaît au défilement. `sharp` en dépendance de développement sert
+`npm run emblemes`, qui tire les variantes de l'emblème des fichiers déposés.
 
 Police, via `next/font/google` : **Hanken Grotesk** seule, en 400, 500 et 600
 (V80, 17/09/2026). Instrument Serif, Geist, Literata, Familjen Grotesk, Source

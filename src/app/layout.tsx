@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { Hanken_Grotesk } from "next/font/google";
-import Footer from "@/components/Footer";
 import JsonLd from "@/components/JsonLd";
 import { fondateurSchema, organisationSchema } from "@/config/schema";
 import { copy } from "@/config/copy";
@@ -84,8 +83,11 @@ export default function RootLayout({
             pages : elle est portée par le layout, pas par l'accueil */}
         <JsonLd data={organisationSchema} />
         <JsonLd data={fondateurSchema} />
+        {/* V80, lot 4 : l'en-tête et le pied sont rendus par chaque page,
+            pas par le layout. L'accueil pose l'en-tête dans son hero ;
+            /dirigeants demande l'un sans navigation et l'autre sans la
+            colonne « Le site » (charte v68). */}
         {children}
-        <Footer />
       </body>
     </html>
   );

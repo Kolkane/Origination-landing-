@@ -12,7 +12,15 @@ import { copy } from "@/config/copy";
    emblème encre, texte encre, filet en bas. Le passage est décidé par un
    IntersectionObserver posé sur le hero, le parent de ce composant :
    aucun écouteur de défilement, aucun calcul de position. Sur une page
-   sans hero (lot 4), la prop « fixe » pose l'état fixe d'emblée.
+   sans hero (lot 4), la prop « fixe » pose l'état fixe dès le chargement,
+   et la page réserve la hauteur de la barre (.page).
+   « sansNav » : la marque seule, ni navigation ni menu. C'est l'en-tête
+   de /dirigeants, dont la charte (v68) interdit tout lien vers la section
+   de l'offre : les six entrées y mèneraient.
+   LE LIEN D'ÉVITEMENT est le premier élément focusable de chaque page :
+   invisible jusqu'au focus, il saute la barre et va au contenu. La cible
+   est « #contenu » sur les pages intérieures et la première section
+   après le hero sur l'accueil.
    LE MENU MOBILE, sous 760 px : un bouton « Menu » qui porte
    aria-expanded et aria-controls, un panneau plein écran avec les six
    entrées et les coordonnées, le corps bloqué tant qu'il est ouvert, la
@@ -20,11 +28,15 @@ import { copy } from "@/config/copy";
    au bouton à la fermeture, sauf quand c'est un lien qui a fermé : la
    navigation vers l'ancre prend alors le focus. Le panneau n'est pas
    dans la planche : sa composition est consignée dans CLAUDE.md, lot 1. */
-type Props = { fixe?: boolean };
+type Props = { fixe?: boolean; sansNav?: boolean; cibleContenu?: string };
 
 const FOCUSABLES = "a[href], button:not([disabled])";
 
-export default function Entete({ fixe = false }: Props) {
+export default function Entete({
+  fixe = false,
+  sansNav = false,
+  cibleContenu = "#contenu",
+}: Props) {
   const ref = useRef<HTMLElement>(null);
   const boutonRef = useRef<HTMLButtonElement>(null);
   const panneauRef = useRef<HTMLDivElement>(null);
@@ -103,57 +115,64 @@ export default function Entete({ fixe = false }: Props) {
 
   return (
     <header ref={ref} className="entete" data-etat={horsHero ? "fixe" : "hero"}>
+      <a className="evitement" href={cibleContenu}>
+        {nav.evitement}
+      </a>
       <a className="entete-marque" href={nav.haut}>
-        <Embleme ton={horsHero ? "encre" : "clair"} taille={34} />
+        <Embleme ton={horsHero ? "encre" : "clair"} emploi="entete" />
         <span>{marque}</span>
       </a>
-      <nav aria-label={nav.aria} className="entete-nav">
-        {nav.liens.map((l) => (
-          <a key={l.href} href={l.href}>
-            {l.label}
-          </a>
-        ))}
-      </nav>
-      <button
-        ref={boutonRef}
-        type="button"
-        className="entete-menu"
-        aria-expanded={ouvert}
-        aria-controls="menu"
-        aria-label={ouvert ? nav.menuFermer : nav.menuOuvrir}
-        onClick={() => (ouvert ? fermer(true) : setOuvert(true))}
-      >
-        {nav.menu}
-      </button>
-      <div ref={panneauRef} id="menu" className="menu" hidden={!ouvert}>
-        <div className="menu-haut">
-          <span className="entete-marque">
-            <Embleme ton="encre" taille={30} />
-            <span>{marque}</span>
-          </span>
+      {sansNav ? null : (
+        <>
+          <nav aria-label={nav.aria} className="entete-nav">
+            {nav.liens.map((l) => (
+              <a key={l.href} href={l.href}>
+                {l.label}
+              </a>
+            ))}
+          </nav>
           <button
+            ref={boutonRef}
             type="button"
-            className="menu-fermer"
-            aria-label={nav.menuFermer}
-            onClick={() => fermer(true)}
+            className="entete-menu"
+            aria-expanded={ouvert}
+            aria-controls="menu"
+            aria-label={ouvert ? nav.menuFermer : nav.menuOuvrir}
+            onClick={() => (ouvert ? fermer(true) : setOuvert(true))}
           >
-            {nav.fermer}
+            {nav.menu}
           </button>
-        </div>
-        <nav aria-label={nav.aria} className="menu-liens">
-          {nav.liens.map((l) => (
-            <a key={l.href} href={l.href} onClick={() => fermer(false)}>
-              {l.label}
-            </a>
-          ))}
-        </nav>
-        <div className="menu-coord">
-          <p>{nav.coordTel}</p>
-          <a href={brand.TELEPHONE.lien}>{brand.TELEPHONE.affiche}</a>
-          <p>{nav.coordMail}</p>
-          <a href={`mailto:${brand.CONTACT_EMAIL}`}>{brand.CONTACT_EMAIL}</a>
-        </div>
-      </div>
+          <div ref={panneauRef} id="menu" className="menu" hidden={!ouvert}>
+            <div className="menu-haut">
+              <span className="entete-marque">
+                <Embleme ton="encre" emploi="entete" />
+                <span>{marque}</span>
+              </span>
+              <button
+                type="button"
+                className="menu-fermer"
+                aria-label={nav.menuFermer}
+                onClick={() => fermer(true)}
+              >
+                {nav.fermer}
+              </button>
+            </div>
+            <nav aria-label={nav.aria} className="menu-liens">
+              {nav.liens.map((l) => (
+                <a key={l.href} href={l.href} onClick={() => fermer(false)}>
+                  {l.label}
+                </a>
+              ))}
+            </nav>
+            <div className="menu-coord">
+              <p>{nav.coordTel}</p>
+              <a href={brand.TELEPHONE.lien}>{brand.TELEPHONE.affiche}</a>
+              <p>{nav.coordMail}</p>
+              <a href={`mailto:${brand.CONTACT_EMAIL}`}>{brand.CONTACT_EMAIL}</a>
+            </div>
+          </div>
+        </>
+      )}
     </header>
   );
 }

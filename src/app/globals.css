@@ -3,44 +3,13 @@
 @tailwind utilities;
 
 /* ============================================================
-   Styles portés de MAQUETTE-V8.html (source de vérité, v8.1) —
-   mêmes classes, mêmes valeurs. Fonts via next/font (variables).
+   V80 · LES TROIS RÔLES TYPOGRAPHIQUES (v55) : le fichier ne nomme
+   aucune police, il nomme des emplois. Ils pointent tous sur Hanken
+   Grotesk, seule police du site, et restent trois pour que la
+   prochaine bascule, si elle sépare à nouveau les emplois, ne touche
+   que ces trois lignes. Le repli est le sans-serif des planches.
    ============================================================ */
-
 :root {
-  --bg: #0a0a0a;
-  --bg-2: #0e0e0e;
-  --paper: #ece7df;
-  --line-dark: rgba(0, 0, 0, 0.14);
-  --panel: #0d0d0d;
-  --txt: #f4f2ef;
-  --txt-2: #b9b6b2;
-  --txt-3: #83807c;
-  --line: rgba(255, 255, 255, 0.12);
-  --line-soft: rgba(255, 255, 255, 0.06);
-  --wine: #8e2438;
-  /* v54 · hiérarchie de filets. Un filet unique à 12 % servait à tout :
-     ouvrir une section, séparer deux entrées, souligner un appel. En
-     imprimerie le POIDS dit le rang. Trois emplois, trois valeurs :
-     --line-tete ouvre un ensemble (2px), --line sépare deux entrées,
-     --line-soft tabule à l'intérieur d'une entrée. */
-  --line-tete: rgba(255, 255, 255, 0.26);
-  --grade: saturate(0.82) contrast(1.06) brightness(0.94);
-  --ease: cubic-bezier(0.22, 0.75, 0.25, 1);
-  /* v33 · mesure de section. Bord droit partagé par une prose et par ce qui
-     l'encadre. Ce n'est pas une valeur inventée : c'est la plus large colonne
-     de lecture de la page, .p-corps à 48,0625rem, arrondie au rem. Rien n'a
-     donc à s'élargir, et tout ce qu'on y borne tient déjà dedans. */
-  --mesure: 48rem;
-
-  /* v55 · LES TROIS RÔLES TYPOGRAPHIQUES. Le fichier ne nomme plus
-     aucune police : il nomme des emplois. Changer de fonte, c'est
-     désormais toucher layout.tsx et rien d'autre.
-     V80 : les trois rôles pointent sur la même famille, Hanken
-     Grotesk, seule police du site. Ils restent trois pour que la
-     prochaine bascule, si elle sépare à nouveau les emplois, ne
-     touche que ces trois lignes. Le repli est le sans-serif des
-     planches. L'axe WONK de Fraunces (v55, v58) est parti avec elle. */
   --f-display: var(--font-hanken), "Helvetica Neue", Helvetica, Arial, sans-serif;
   --f-corps: var(--font-hanken), "Helvetica Neue", Helvetica, Arial, sans-serif;
   --f-label: var(--font-hanken), "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -50,10 +19,9 @@
    V80 · LES TOKENS (arbitrage Vincent, 17/09/2026, planches
    MAQUETTE-V80-ACCUEIL.html et MAQUETTE-V80-ACCUEIL-MOBILE.html, qui
    font foi). Fond blanc, encre, vert, et le vin en pointe à quatre
-   endroits. Posés au lot 0 ; les sections sont portées lot par lot,
-   et les tokens de la DA v7 ci-dessus (--bg, --txt, --paper, --ink,
-   --wine) meurent au lot 3 avec les composants qu'ils servaient.
-   Aucune valeur n'est inventée : chacune est un hex de la planche.
+   endroits. Les tokens de la DA v7 sont morts au lot 4 avec les
+   dernières pages qui les lisaient. Aucune valeur n'est inventée :
+   chacune est un hex de la planche.
    ============================================================ */
 :root {
   --blanc: #ffffff;
@@ -77,7 +45,7 @@
   --voile: rgba(6, 10, 8, 0.16);
   --voile-mobile: rgba(6, 10, 8, 0.22);
   --popup-voile: rgba(10, 16, 13, 0.64);
-  --popup-ombre: 0 30px 80px -30px rgba(0, 0, 0, 0.6);
+
   --anneau: rgba(255, 255, 255, 0.35); /* survol de la couverture */
   --menu-bord: rgba(255, 255, 255, 0.6); /* bouton Menu sur le hero */
 }
@@ -93,9 +61,7 @@
    24 px sur téléphone. En content-box à dessein : la planche n'a pas de
    reset CSS, son max-width de 1200 px exclut le rembourrage, et son
    contenu court de 120 à 1320 px à 1440. Sous le border-box de Tailwind
-   la même déclaration donnerait 1104 px, mesuré sur le build. .wrap
-   (1440 px) reste pour les sections de la DA v7 tant qu'elles ne sont
-   pas portées, et meurt au lot 3. */
+   la même déclaration donnerait 1104 px, mesuré sur le build. */
 .cadre {
   box-sizing: content-box;
   max-width: 1200px;
@@ -237,11 +203,14 @@
   text-underline-offset: 7px;
   text-decoration-thickness: 1px;
 }
-/* un saut d'ancre passe sous la barre fixe : chaque section cible
-   dégage sa hauteur, 63 px mesurés sur le build (69 sur téléphone), pour
-   que son titre ne soit pas recouvert. Vu au lot 3, à la comparaison. */
-main section[id] {
-  scroll-margin-top: 63px;
+/* un saut d'ancre, ou le défilement qui suit un focus au clavier, passe
+   sous la barre fixe : la page dégage sa hauteur, 63 px mesurés sur le
+   build (69 sur téléphone), pour que la cible ne soit pas recouverte.
+   Vu au lot 3 pour les ancres, étendu au focus au lot 4. Toujours vrai :
+   la seule position où la barre n'est pas fixe est le haut du hero, où
+   aucune cible ne vit. */
+html {
+  scroll-padding-top: 63px;
 }
 /* l'état fixe, hors planche : même composition, fond blanc, encre, filet
    en bas et rembourrage symétrique */
@@ -457,8 +426,8 @@ main section[id] {
   .entete[data-etat="fixe"] {
     padding: 12px 24px;
   }
-  main section[id] {
-    scroll-margin-top: 69px;
+  html {
+    scroll-padding-top: 69px;
   }
   .hero-bas {
     padding: 0 24px 32px;
@@ -532,7 +501,6 @@ html {
   font-weight: 500;
   line-height: 1.1;
   letter-spacing: -0.01em;
-  color: var(--encre);
 }
 /* le lien texte sur fond blanc : encre souligné de vin. C'est l'un des
    quatre emplois du vin de la V80, et le seul qui se répète. */
@@ -572,14 +540,8 @@ html {
 }
 
 /* ---------- ce que fait Imbrin Research ---------- */
-/* la couleur du texte est DÉCLARÉE et pas héritée : tant que le lot 3
-   n'a pas retourné le body sur le blanc, il porte encore l'encre claire
-   de la DA v7, et tout ce qui n'a pas de couleur propre (les h3) sortait
-   en blanc sur blanc. Vu à la comparaison avec la planche. */
 .service {
   padding: 104px 0;
-  background: var(--blanc);
-  color: var(--encre);
 }
 .service-intro {
   margin: 24px 0 0;
@@ -598,7 +560,6 @@ html {
   display: block;
   width: 64px;
   height: 64px;
-  color: var(--encre);
 }
 .service-titre {
   margin: 24px 0 0;
@@ -970,8 +931,6 @@ html {
 /* ---------- la méthode ---------- */
 .methode {
   padding: 104px 0;
-  background: var(--blanc);
-  color: var(--encre);
 }
 .methode-etapes {
   margin: 48px 0 0;
@@ -1212,15 +1171,12 @@ html {
    ============================================================ */
 
 /* les trois sections blanches qui se suivent : la couleur ne coupe
-   pas, le filet de tête le fait. Couleur de texte déclarée, comme au
-   lot 2, tant que le body porte l'encre claire de la DA v7. */
+   pas, le filet de tête le fait */
 .conditions,
 .apropos,
 .analyses {
   border-top: 1px solid var(--filet);
   padding: 104px 0;
-  background: var(--blanc);
-  color: var(--encre);
 }
 /* l'intro de section, sous le titre, et le libellé gris qui coiffe un
    bloc : deux gabarits partagés par les planches */
@@ -1415,7 +1371,6 @@ html {
   font-size: 25px;
   font-weight: 500;
   line-height: 1.25;
-  color: var(--encre);
 }
 .analyse-chapeau {
   margin: 12px 0 0;
@@ -1658,381 +1613,255 @@ html {
   }
 }
 
-/* v30 : les largeurs de colonne du corps ne sont PLUS en ch, et ne doivent
-   plus y revenir. Le ch vaut l'avance du « 0 », donc toute largeur exprimée
-   ainsi se déplace au moindre changement de police de corps : la bascule
-   Geist → Literata les avait toutes rétrécies de 12,7 pour cent d'un coup,
-   sans qu'aucune déclaration ait bougé. Les 37 déclarations du corps sont
-   figées en rem, aux largeurs rendues sous Geist avant cette bascule ; les
-   deux font-size en clamp sont reproduites borne par borne, clamp étant
-   homogène pour un facteur positif. Les 22 déclarations en ch qui restent
-   dans ce fichier sont portées par Familjen ou par le mono : elles ne
-   dépendent pas de la police du corps, elles peuvent rester.
-   v55, ET C'EST UNE ALERTE : cette dernière phrase N'EST PLUS VRAIE.
-   Familjen et le mono viennent d'être remplacés par Fraunces et Cutive
-   Mono, dont l'avance du « 0 » n'est pas la même. Les 15 déclarations en
-   ch qui subsistent — toutes des max-width de TITRES — ont donc changé
-   de valeur en silence, et le découpage des titres a bougé. Ce n'était
-   pas évitable en une passe : figer ces largeurs en rem en même temps
-   que la police aurait fait deux changements simultanés qui se masquent
-   l'un l'autre, exactement l'erreur que la v28 a commise et que ce
-   paragraphe raconte. L'ordre est donc : juger les polices sur pièce,
-   PUIS réancrer ces 15 largeurs en rem, bornes de clamp comprises, aux
-   valeurs rendues sous Fraunces. Ne pas ajouter de nouvelle largeur en
-   ch entre-temps. */
+/* ============================================================
+   V80 · LOT 4 : le socle de la page, le lien d'évitement, et les
+   pages intérieures (articles, notice, mentions, dirigeants), qui
+   n'ont pas de planche : elles reprennent l'échelle de l'accueil,
+   titre de section, libellé, lien souligné de vin, et une colonne de
+   lecture d'environ 68 caractères en 18 px, interligne 1,7. Les
+   tokens et le body de la DA v7 sont morts ici.
+   ============================================================ */
+
 body {
-  background: var(--bg);
-  color: var(--txt);
+  background: var(--blanc);
+  color: var(--encre);
   font-family: var(--f-corps);
-  /* v29 : Chromium ne retravaille que la queue du paragraphe, l'effet
-     mesuré est donc faible, deux cas sur douze et jamais sur le drapeau.
-     Posé quand même : coût nul, ignoré là où il n'est pas supporté, et
-     l'implémentation ne peut que s'améliorer. */
+  /* v29 : Chromium ne retravaille que la queue du paragraphe. Posé
+     quand même : coût nul, et la planche n'a pas de raison de s'y
+     opposer. Les lignes se coupent donc parfois autrement qu'en planche. */
   text-wrap: pretty;
   -webkit-font-smoothing: antialiased;
-  overflow-x: hidden;
+  text-rendering: optimizeLegibility;
 }
-
-/* v55 : .mono est renommée .label, pour la raison exacte qui avait fait
-   renommer .serif en .display. La classe ne rend plus un monospace
-   partout : dans les documents, --f-label vaut la serif du corps. Un nom
-   qui dit la police ment à la première bascule ; un nom qui dit le rôle
-   survit. .mono n'était utilisée qu'ici en CSS, le renommage est sans
-   effet de bord. */
-.label {
-  font-family: var(--f-label);
-}
-/* la classe s'appelait .serif tant que le display était Instrument Serif.
-   Le display est une grotesque depuis la v18 : le nom décrit désormais le
-   RÔLE, pas la classification, sinon il ment à la prochaine bascule. */
-.display {
-  font-family: var(--f-display);
-  font-weight: 400;
-}
-.wrap {
-  max-width: 1080px;
-  margin: 0 auto;
-  padding: 0 40px;
-}
-
+/* le contour de focus de la planche, encre à 4 px ; les fonds sombres
+   (hero, dossier, rendez-vous, pied, menu) le passent en blanc */
 :focus-visible {
-  outline: 2px solid var(--txt);
-  outline-offset: 2px;
+  outline: 2px solid var(--encre);
+  outline-offset: 4px;
+}
+/* du texte pour les lecteurs d'écran seulement, jamais display:none */
+.visuellement-cache {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+/* le lien d'évitement : premier élément focusable de chaque page, hors
+   de l'écran tant qu'il n'a pas le focus, jamais display:none */
+.evitement {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  z-index: 100;
+  padding: 12px 16px;
+  background: var(--encre);
+  color: var(--blanc);
+  font-size: 15px;
+  font-weight: 500;
+  text-decoration: none;
+  transform: translateY(-300%);
+}
+.evitement:focus-visible {
+  transform: none;
+  outline: 2px solid var(--blanc);
+  outline-offset: -4px;
 }
 
-.cta {
-  display: inline-block;
-  margin-top: 30px;
-  color: var(--txt);
-  text-decoration: none;
-  font-size: 12px;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  border-bottom: 1px solid var(--line);
-  padding-bottom: 6px;
-  transition: border-color 0.25s, letter-spacing 0.25s;
+/* ---------- les pages intérieures ---------- */
+/* l'en-tête y est fixe et blanc dès le chargement : la page réserve sa
+   hauteur, 63 px mesurés (69 sur téléphone), puis l'air d'une section */
+.page {
+  padding: 63px 0 104px;
 }
-.cta:hover {
-  border-color: var(--wine);
-  letter-spacing: 0.24em;
+.page > .cadre {
+  padding-top: 64px;
 }
-.kicker {
-  font-size: 10.5px;
-  letter-spacing: 0.28em;
-  text-transform: uppercase;
-  color: var(--txt-3);
-  margin-bottom: 18px;
+/* environ 68 caractères par ligne pleine en 18 px, MESURÉ sur le build
+   avec le texte réel des articles : 580 px donnent 70 caractères en
+   moyenne, espaces comprises (600 px en donnent 72, 640 en donnent 76).
+   La convention « 68ch » du CSS, qui compte des « 0 », aurait donné
+   685 px et 83 caractères réels. En px et non en ch (règle v30) : la
+   mesure ne bouge que si la police change, et alors elle se refait. */
+.colonne-lecture {
+  max-width: 580px;
 }
-.statement {
-  font-family: var(--f-display);
-  font-weight: 400;
-  /* v38 : l'échelle monte (40 -> 50px). Plafond à 50px : la borne posée
-     par l'arbitrage v17 sur les engagements vaut pour tous les statements
-     hors hero. */
-  font-size: clamp(28px, 3.8vw, 50px);
-  line-height: 1.12;
-  letter-spacing: -0.015em;
-  max-width: 26ch;
+.page-retour {
+  margin: 0 0 40px;
+}
+.libelle + .titre-section {
+  margin-top: 8px;
+}
+.article-chapeau {
+  margin: 20px 0 0;
+  font-size: 21px;
+  line-height: 1.5;
+  color: var(--gris);
+}
+.article-corps {
+  margin-top: 40px;
+  padding-top: 32px;
+  border-top: 1px solid var(--encre);
+}
+.article-corps p {
+  margin: 0 0 22px;
+  font-size: 18px;
+  line-height: 1.7;
+  color: var(--gris);
+}
+.article-corps p:last-child {
+  margin-bottom: 0;
+}
+/* les intertitres, quand les articles en auront : en 500, à l'échelle
+   du titre d'analyse de l'accueil */
+.article-corps h2 {
+  margin: 40px 0 14px;
+  font-size: 25px;
+  font-weight: 500;
+  line-height: 1.25;
+  color: var(--encre);
+}
+.article-corps a {
+  color: var(--encre);
+  text-decoration: underline;
+  text-underline-offset: 5px;
+  text-decoration-thickness: 1px;
+  text-decoration-color: var(--vin);
+}
+.article-corps a:hover {
+  color: var(--survol);
+}
+.article-pied {
+  margin-top: 56px;
+  padding-top: 24px;
+  border-top: 1px solid var(--filet);
+}
+.article-pied p {
+  margin: 0;
+  font-size: 17px;
+  line-height: 1.6;
+  color: var(--gris);
+}
+/* la notice, les mentions, la page des dirigeants : des rubriques
+   titrées en 500 sous le titre de page */
+.legale-section {
+  margin-top: 44px;
+}
+.legale-section:first-of-type {
+  margin-top: 40px;
+}
+.legale-titre {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 500;
+  line-height: 1.3;
+}
+.legale-p {
+  margin: 12px 0 0;
+  font-size: 17px;
+  line-height: 1.7;
+  color: var(--gris);
+}
+.legale-section .lien-vin {
+  margin-top: 14px;
+}
+.dirigeants-chapo {
+  margin: 20px 0 0;
+  font-size: 19px;
+  line-height: 1.6;
+  color: var(--gris);
+}
+/* les trois possibilités : des entrées sur filets, jamais des puces */
+.dirigeants-choix {
+  list-style: none;
+  margin: 20px 0 0;
+  padding: 0;
+  border-bottom: 1px solid var(--filet);
+}
+.dirigeants-choix li {
+  padding: 16px 0;
+  border-top: 1px solid var(--filet);
+  font-size: 17px;
+  line-height: 1.7;
+  color: var(--gris);
+}
+.dirigeants-choix b {
+  color: var(--encre);
+  font-weight: 600;
+}
+.dirigeants-pied {
+  margin-top: 56px;
+  padding-top: 28px;
+  border-top: 1px solid var(--encre);
+}
+.dirigeants-contact {
+  margin: 12px 0 0;
+  font-size: 17px;
+  line-height: 1.9;
+}
+.dirigeants-contact .lien-vin {
+  margin-top: 0;
+}
+.dirigeants-entite {
+  margin: 16px 0 0;
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--gris-2);
+}
+
+@media (max-width: 760px) {
+  .page {
+    padding: 69px 0 56px;
+  }
+  .page > .cadre {
+    padding-top: 40px;
+  }
+  .page-retour {
+    margin-bottom: 28px;
+  }
+  .article-chapeau {
+    font-size: 19px;
+  }
+  .article-corps {
+    margin-top: 28px;
+    padding-top: 24px;
+  }
+  .article-corps p {
+    font-size: 17px;
+  }
+  .article-corps h2 {
+    font-size: 22px;
+  }
+  .article-pied {
+    margin-top: 40px;
+  }
+  .legale-section {
+    margin-top: 36px;
+  }
+  .legale-section:first-of-type {
+    margin-top: 32px;
+  }
+  .legale-titre {
+    font-size: 20px;
+  }
+  .legale-p,
+  .dirigeants-choix li {
+    font-size: 16px;
+  }
+  .dirigeants-chapo {
+    font-size: 17px;
+  }
+  .dirigeants-pied {
+    margin-top: 44px;
+    padding-top: 22px;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
-  }
-}
-
-/* ============================================================
-   v10 : grille éditoriale. La colonne de lecture reste étroite
-   (le confort de lecture ne se négocie pas) mais elle est POSÉE
-   dans une grille de 12 colonnes au lieu d'être centrée : le
-   libellé de section tient la marge gauche, le contenu occupe
-   la droite. L'espace horizontal travaille au lieu de se vider.
-   ============================================================ */
-
-.wrap {
-  max-width: 1440px;
-  margin: 0 auto;
-  padding: 0 clamp(22px, 4.4vw, 76px);
-}
-
-/* ---------- page article ---------- */
-.article-page {
-  padding: clamp(48px, 6vw, 80px) 0 clamp(72px, 9vw, 120px);
-}
-.article-page .wrap {
-  max-width: 1240px;
-}
-.ap-back {
-  font-size: 11px;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--txt-3);
-  text-decoration: none;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  margin-bottom: clamp(40px, 5vw, 64px);
-  transition: color 0.25s var(--ease);
-}
-.ap-back:hover {
-  color: var(--txt);
-}
-.ap-col {
-  max-width: 680px;
-  margin: 0 auto;
-}
-.ap-eyebrow {
-  font-size: 10.5px;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: var(--txt-3);
-  margin-bottom: 22px;
-}
-.ap-h1 {
-  font-family: var(--f-display);
-  font-weight: 400;
-  font-size: clamp(34px, 5vw, 58px);
-  line-height: 1.05;
-  letter-spacing: -0.02em;
-  margin-bottom: 20px;
-}
-.ap-standfirst {
-  font-size: clamp(17px, 1.5vw, 20px);
-  line-height: 1.5;
-  color: var(--txt-2);
-  margin-bottom: clamp(36px, 4.4vw, 52px);
-  padding-bottom: clamp(28px, 3vw, 40px);
-  border-bottom: 1px solid var(--line);
-}
-.ap-body p {
-  font-size: 16.5px;
-  line-height: 1.72;
-  color: var(--txt-2);
-  margin-bottom: 22px;
-  max-width: 43.75rem;
-}
-/* la chute passe en encre pleine : c'est elle qu'on retient */
-.ap-body p:last-child {
-  color: var(--txt);
-  margin-bottom: 0;
-}
-.ap-foot {
-  margin-top: clamp(48px, 6vw, 72px);
-  padding-top: 28px;
-  border-top: 1px solid var(--line);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 24px;
-  flex-wrap: wrap;
-}
-.ap-foot-t {
-  font-size: 15px;
-  color: var(--txt-2);
-}
-.ap-foot .cta {
-  margin-top: 0;
-  white-space: nowrap;
-}
-
-/* ============================================================
-   v32 : équilibrage des TITRES DE SECTION seulement. La règle
-   v29 couvrait dix-huit sélecteurs, du h1 du hero aux intitulés
-   d'engagement ; retirée en bloc à la v30, elle laissait « Ce
-   que nous mesurons sur / nous-mêmes » avec un mot seul en
-   dernière ligne. Elle revient sur les neuf titres de section
-   h2 et équivalents, et sur eux seuls.
-   Restent DEHORS, délibérément : le h1 du hero, qui porte ses
-   propres <br /> et dont balance combattrait le découpage
-   voulu ; les kickers ; la citation du fondateur, composée pour
-   tomber d'une certaine façon (règle v29 conservée) ; les
-   intitulés de niveau inférieur (.c-p, .en-t, .st-t, .d-title,
-   .angle-t) et les titres d'article en liste (.a-row-t), qui
-   tombent déjà bien et dont l'équilibrage déplacerait le rythme
-   d'une liste. Le corps garde pretty, jamais balance.
-   Mesuré au navigateur à 1440 et 1280px : quatre titres de
-   l'accueil changent de découpage, cinq sont inchangés, et le
-   titre des pages article passe de deux lignes pleines plus
-   « veut faire » à trois lignes égales. Aucun ne perd de ligne.
-   ============================================================ */
-.statement,
-.ap-h1 {
-  text-wrap: balance;
-}
-
-/* ============================================================
-   v68 · LA PAGE DES DIRIGEANTS (/dirigeants).
-   Une colonne, une mesure de lecture, des blancs larges. Aucun
-   gabarit n'est inventé : elle emprunte au site sa colonne, ses
-   filets et ses trois rôles typographiques. Elle se distingue par
-   ce qu'elle N'A PAS — ni image, ni vidéo, ni chiffre, ni appel
-   commercial, ni navigation.
-   La mesure est à 640px, celle des pages légales : c'est un texte
-   qu'on lit en entier, pas une page qu'on parcourt. Le corps monte
-   à 16px, au-dessus des 15 du site : la page s'adresse à un
-   dirigeant qui vérifie une lettre reçue, pas à un lecteur qui
-   scanne une offre.
-   ============================================================ */
-.dir {
-  padding: clamp(48px, 6vw, 76px) 0 clamp(80px, 10vw, 132px);
-}
-/* la marque tient lieu d'en-tête à elle seule : celui qui arrive ici
-   vient vérifier QUI lui a écrit */
-.dir-marque {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-size: 11px;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--txt-2);
-  margin: 0 0 clamp(56px, 8vw, 104px);
-}
-.dir-col {
-  max-width: 640px;
-}
-.dir-kicker {
-  font-size: 10px;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  /* tertiaire et non vin : à 10px c'est du petit texte, il lui faut
-     4,5:1, et le vin éclairci n'en donne que 3,2 sur l'encre */
-  color: var(--txt-3);
-  margin: 0 0 22px;
-}
-.dir-h1 {
-  font-family: var(--f-display);
-  font-weight: 400;
-  font-size: clamp(28px, 3.4vw, 42px);
-  line-height: 1.14;
-  letter-spacing: -0.02em;
-  margin: 0;
-  text-wrap: balance;
-}
-.dir-chapo {
-  margin: 26px 0 0;
-  font-size: 17px;
-  line-height: 1.7;
-  color: var(--txt-2);
-}
-.dir-bloc {
-  margin-top: clamp(44px, 5.5vw, 68px);
-  padding-top: clamp(22px, 2.6vw, 30px);
-  border-top: 1px solid var(--line-soft);
-}
-.dir-bloc-t {
-  margin: 0 0 18px;
-  font-size: 10px;
-  font-weight: 400;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--txt-3);
-}
-.dir-p {
-  margin: 0;
-  font-size: 16px;
-  line-height: 1.75;
-  color: var(--txt-2);
-}
-.dir-p + .dir-p {
-  margin-top: 16px;
-}
-/* les trois possibilités : des entrées sur filets, jamais des puces.
-   Le « · » de puce du brief est réservé par la charte aux lignes de
-   labels ; le filet est l'idiome du site, et il reste vertical en
-   mobile sans rien avoir à déclarer. */
-.dir-choix {
-  list-style: none;
-  margin: 26px 0 0;
-  padding: 0;
-  border-top: 1px solid var(--line-soft);
-}
-.dir-choix li {
-  padding: 18px 0;
-  border-bottom: 1px solid var(--line-soft);
-  font-size: 16px;
-  line-height: 1.75;
-  color: var(--txt-2);
-}
-.dir-choix b {
-  color: var(--txt);
-  font-weight: 500;
-}
-.dir-pied {
-  margin-top: clamp(52px, 6.5vw, 80px);
-  padding-top: clamp(24px, 3vw, 32px);
-  border-top: 2px solid var(--line-tete);
-}
-/* le contact est le seul appel de la page, et ce n'en est pas un :
-   il sert à refuser autant qu'à répondre */
-.dir-contact {
-  margin: 14px 0 0;
-  font-size: 15px;
-  letter-spacing: 0.04em;
-  color: var(--txt);
-}
-.dir-contact a {
-  color: inherit;
-  text-decoration: none;
-  border-bottom: 1px solid var(--line);
-  padding-bottom: 2px;
-  transition: border-color 0.2s var(--ease);
-}
-.dir-contact a:hover {
-  border-color: var(--wine);
-}
-.dir-entite {
-  margin: 20px 0 0;
-  font-size: 10px;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--txt-3);
-}
-.dir-notice {
-  display: inline-block;
-  margin-top: 18px;
-  font-size: 11px;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--txt-3);
-  text-decoration: none;
-  border-bottom: 1px solid var(--line-soft);
-  padding-bottom: 3px;
-  transition: color 0.2s var(--ease), border-color 0.2s var(--ease);
-}
-.dir-notice:hover {
-  color: var(--txt-2);
-  border-color: var(--line);
-}
-
-@media (max-width: 760px) {
-  .dir {
-    padding: 40px 0 72px;
-  }
-  .dir-marque {
-    margin-bottom: 48px;
-  }
-  .dir-chapo {
-    font-size: 16px;
   }
 }

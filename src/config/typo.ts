@@ -11,15 +11,15 @@
    le binaire à l'époque de Source Serif 4 : le sous-ensemble
    latin que next/font/google embarque n'y contenait PAS le
    glyphe U+202F, alors que son unicode-range (u+2000-206f) le
-   couvre. La v55 a changé les trois polices du site, la réserve
-   vaut donc à nouveau et n'a PAS été revérifiée sur Spectral,
-   Fraunces et Cutive Mono : U+00A0 reste le choix sûr, il est
-   servi par tous les sous-ensembles latins de Google.
+   couvre. La v55 puis la V80 ont changé les polices du site, la
+   réserve vaut donc à nouveau et n'a PAS été revérifiée sur Hanken
+   Grotesk : U+00A0 reste le choix sûr, il est servi par tous les
+   sous-ensembles latins de Google.
    Le navigateur retiendrait donc la fonte, n'y trouverait rien,
    et retomberait sur Georgia puis sur la serif système : une
    espace à la largeur d'une autre fonte, variable selon la
    machine. Aucun sous-ensemble Google de cette fonte ne le
-   sert. U+00A0 est présent dans les trois fontes du site.
+   sert. U+00A0 est présent dans la fonte du site.
    ============================================================ */
 
 const INS = " ";
@@ -61,13 +61,10 @@ const R6 = /(^|[\s(])([ày]) /g;
    les appliquer deux fois donne le même résultat que les appliquer une
    fois. C'est ce qui rend sûre la composition typoDeep() puis grand(). */
 
-/* Il reste TROIS U+00A0 écrites à la main dans copy.ts, et seulement trois :
-   celles qui suivent le séparateur « · » de l'eyebrow du hero et des deux
-   lignes du pied de page. Aucune règle ne les couvre, le séparateur n'étant
-   ni une ponctuation haute ni un guillemet. Elles restent littérales faute
-   d'une règle dédiée, qui n'a pas été demandée. Si le « · » devient une
-   convention à part entière du site, c'est ici qu'elle se déclare, et
-   ces trois caractères disparaissent des sources. */
+/* V80 : plus AUCUNE U+00A0 écrite à la main dans copy.ts, vérifié par
+   grep au lot 4. Les trois qui suivaient un séparateur « · » sont parties
+   avec l'eyebrow du hero et les lignes de labels du pied de page ; le
+   point médian n'existe plus hors du pied, et le pied n'en a plus. */
 
 /** R1 à R5 et R7, mécaniques. Appliquées à toute la copy via typoDeep(). */
 export function typo(s: string): string {

@@ -20,7 +20,7 @@ export default function Hero() {
       <link rel="preload" as="image" href={m.posterHero} />
       <VideoHero src={m.videoHero} poster={m.posterHero} />
       <div className="hero-voile" aria-hidden="true" />
-      <Entete />
+      <Entete cibleContenu="#service" />
       <div className="hero-bas">
         <div className="hero-texte">
           <h1>{grand(h.titre)}</h1>
