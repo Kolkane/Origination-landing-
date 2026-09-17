@@ -1,9 +1,6 @@
 import { brand } from "./brand";
 import { typoDeep } from "./typo";
 
-/* un seul libellé d’appel sur tout le site : trois copies indépendantes avaient
-   déjà produit une divergence en v13 */
-const CTA = "Réserver un échange";
 
 /* le fondateur : son nom nourrit À propos, la légende du portrait et le
    JSON-LD Person. Une seule chaîne, un seul endroit. */
@@ -149,7 +146,7 @@ export const copy = typoDeep({
   dossier: {
     titre: "Le dossier d’approche",
     texte:
-      "Chaque société retenue fait l’objet d’un dossier écrit, que l’associé lit avant son premier appel : identité, trois exercices de comptes, structure de détention, chronologie datée des actes, angle d’approche, coordonnées avec leur statut, et ce que les sources ne permettent pas d’établir.",
+      "Chaque société retenue fait l’objet d’un dossier écrit, que l’associé lit avant le premier contact : identité, trois exercices de comptes, structure de détention, chronologie datée des actes, angle d’approche, coordonnées avec leur statut, et ce que les sources ne permettent pas d’établir.",
     sous:
       "Le spécimen est fictif : société, personnes et chiffres sont inventés. En rendez-vous, un dossier complet est parcouru avec vous, page à page.",
     bouton: "Lire le dossier spécimen",
@@ -256,8 +253,6 @@ export const copy = typoDeep({
           paragraphes: [
             "Registre national des entreprises (INPI) : extrait et actes déposés. Comptes annuels déposés, exercices 2023 à 2025. BODACC. Répertoire SIRENE (INSEE).",
           ],
-          note:
-            "Information des personnes : article 14 du RGPD, notice accessible sur la page Confidentialité du site.",
         },
       ] as RubriqueDossier[],
       pied: {
@@ -336,6 +331,15 @@ export const copy = typoDeep({
           valeur: "Un seul cabinet",
           texte: "Votre périmètre vous est réservé.",
         },
+        /* la seule mention du premier contact sur le site, et elle est
+           commerciale : qui contacte, et comment, se décide au devis
+           (arbitrage Vincent, 17/09/2026) */
+        {
+          libelle: "Premier contact",
+          valeur: "Au devis",
+          texte:
+            "Qui contacte les dirigeants, et selon quelles modalités, se décide ensemble à la signature.",
+        },
       ],
     },
     mandat: {
@@ -376,16 +380,15 @@ export const copy = typoDeep({
      lus dans src/config/analyses.ts, qui nourrit aussi les pages
      d'article. Le lien « Toutes les analyses » de la planche n'est pas
      repris (arbitrage Vincent, 17/09/2026) : les trois analyses sont déjà
-     affichées, il pointait sur sa propre section. Les quatre dernières
-     clés servent le gabarit des pages d'article, repris au lot 4. */
+     affichées, il pointait sur sa propre section. Les deux dernières
+     clés servent le gabarit des pages d'article, dont l'appel de pied a
+     été remplacé par la bande « Prendre rendez-vous » de l'accueil. */
   analyses: {
     titre: "Analyses",
     lire: "Lire",
     lireAria: "Lire l’analyse : ",
     kicker: "Analyses",
     retour: "Analyses",
-    piedTexte: "C’est exactement ce que nous faisons, pour un cabinet par périmètre.",
-    cta: CTA,
   },
   /* V80 · PRENDRE RENDEZ-VOUS, au mot près de la planche : la bande
      verte, le seul bouton commercial du site (le lien Calendly de

@@ -1239,12 +1239,12 @@ html {
   line-height: 1.6;
   color: var(--gris);
 }
-/* trois valeurs et non quatre : la carte « Facturation » de la planche est
-   partie au lot 4 bis, le plancher mensuel ne survit nulle part */
+/* quatre valeurs, quatre colonnes égales, comme la planche ; ce ne sont
+   plus les siennes : l'offre publiée du 17/09/2026 (voir CLAUDE.md) */
 .valeurs {
   margin-top: 56px;
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   column-gap: 48px;
 }
 .valeur-grande {
@@ -1753,17 +1753,7 @@ body {
 .article-corps a:hover {
   color: var(--survol);
 }
-.article-pied {
-  margin-top: 56px;
-  padding-top: 24px;
-  border-top: 1px solid var(--filet);
-}
-.article-pied p {
-  margin: 0;
-  font-size: 17px;
-  line-height: 1.6;
-  color: var(--gris);
-}
+
 /* la notice, les mentions, la page des dirigeants : des rubriques
    titrées en 500 sous le titre de page */
 .legale-section {
@@ -1854,9 +1844,7 @@ body {
   .article-corps h2 {
     font-size: 22px;
   }
-  .article-pied {
-    margin-top: 40px;
-  }
+
   .legale-section {
     margin-top: 36px;
   }

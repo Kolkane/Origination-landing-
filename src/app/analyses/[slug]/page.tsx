@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import Entete from "@/components/Entete";
 import Footer from "@/components/Footer";
 import JsonLd from "@/components/JsonLd";
+import RendezVous from "@/components/RendezVous";
 import { analyses, articleParSlug } from "@/config/analyses";
 import { brand } from "@/config/brand";
 import { copy } from "@/config/copy";
@@ -44,7 +45,8 @@ export function generateMetadata({ params }: Props): Metadata {
    colonne de lecture d'environ 68 caractères en 18 px, interligne 1,7,
    aucune date affichée (datePublished ne sert qu'au balisage et au
    sitemap). Le contenu ne change pas dans ce chantier : les trois
-   articles seront réécrits séparément. */
+   articles seront réécrits séparément. La page se termine par la bande
+   « Prendre rendez-vous » de l'accueil, puis le pied. */
 export default function Analyse({ params }: Props) {
   const article = articleParSlug(params.slug);
   if (!article) notFound();
@@ -70,20 +72,13 @@ export default function Analyse({ params }: Props) {
                 <p key={paragraphe.slice(0, 48)}>{paragraphe}</p>
               ))}
             </div>
-            <div className="article-pied">
-              <p>{a.piedTexte}</p>
-              <a
-                className="lien-vin"
-                href={brand.CALENDLY_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                {a.cta}
-              </a>
-            </div>
           </article>
         </div>
       </main>
+      {/* la bande « Prendre rendez-vous » de l'accueil, à l'identique, en
+          lieu et place de l'ancien appel de pied d'article ; ni /dirigeants
+          ni les pages légales ne la reçoivent */}
+      <RendezVous />
       <Footer />
     </>
   );

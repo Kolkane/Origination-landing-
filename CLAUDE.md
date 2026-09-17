@@ -1545,6 +1545,31 @@ sur une hauteur ni une largeur de texte, qui se remesurent sur le build.
   intermédiaires : la couche 14 px à .45 seule donne 2,88 (une image
   sous le seuil), la couche 28 px à .3 donne 3,00 tout juste sous le seuil
   sur une image. Captures avant et après dans V80-captures/lot4ter.
+- LOT 5, FAIT LE 17/09/2026, dernier avant la relecture de la préview.
+  PREMIER CONTACT : une seule mention sur le site, et elle est
+  commerciale. Conditions, bloc « L'origination », quatrième valeur après
+  « Pendant le contrat » : « Premier contact, Au devis, Qui contacte les
+  dirigeants, et selon quelles modalités, se décide ensemble à la
+  signature. » Grille de quatre colonnes égales sur ordinateur, valeurs
+  empilées entre filets sur téléphone. La bande du dossier dit « que
+  l'associé lit avant le premier contact ». /dirigeants, la notice de
+  confidentialité, l'invariant en tête de ce fichier et l'entrée RGPD du
+  BACKLOG ne changent pas ; aucune mention juridique n'est ajoutée.
+  SPÉCIMEN, rubrique « Sources » : la ligne « Information des personnes :
+  article 14 du RGPD… » est retirée, le reste ne change pas.
+  ARTICLES : l'appel de pied (« C'est exactement ce que nous faisons… »
+  et le lien « Réserver un échange ») est remplacé par la bande « Prendre
+  rendez-vous » de l'accueil, à l'identique, entre l'article et le pied.
+  Ni /dirigeants ni les pages légales ne la reçoivent. La constante CTA
+  de copy.ts n'avait plus d'emploi, elle part.
+  CONTRÔLE AVANT FUSION, sur le build : build et lint sans erreur ni
+  avertissement ; 74 liens internes vérifiés sur les sept pages, ancres
+  comprises, aucun cassé ; aucune trace de Fraunces, Spectral, Cutive
+  Mono ni des tokens v7 dans le CSS et le JS produits ; aucun tiret
+  cadratin ni demi-cadratin dans les textes rendus ; aucune mention de
+  retainer, fee, honoraires de succès, protection ni article 14 hors
+  /confidentialite et /dirigeants ; Lighthouse mobile de l'accueil : voir
+  le rapport du lot (référence à tenir 98/100/100/100).
 - MÉTHODE DU CHANTIER : cinq lots, un commit par lot, un rapport court et une
   validation entre chaque. 0 préparation (emblèmes, Hanken, tokens, charte) ;
   1 hero, en-tête, pied de page ; 2 service, dossier et popup, méthode ;
