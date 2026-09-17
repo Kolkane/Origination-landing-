@@ -1289,97 +1289,100 @@ html {
 }
 
 /* ---------- les conditions ---------- */
-/* v82 : LA FEUILLE DE CONDITIONS (arbitrage Vincent, 17/09/2026), à la
-   place des quatre grandes valeurs de la planche. Deux offres, la même
-   grille 5/7 : à gauche le libellé, le titre et le texte ; à droite la
-   feuille, une ligne par condition. L'origination est l'offre principale :
-   le filet vert de 3 px (seul filet coloré du site, seul emploi du vert
-   hors bouton et bande finale, avec les durées de sa feuille), titre à
-   46 px, six lignes. Le mandat de recherche la complète : filet d'encre
-   fin, titre à 28 px, deux lignes, corps un cran plus petit. */
-.offre {
-  display: grid;
-  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
-  column-gap: 80px;
-  align-items: start;
+/* v82 : LE TABLEAU (arbitrage Vincent, 17/09/2026), à la place des quatre
+   grandes valeurs de la planche ; une feuille de conditions, une ligne
+   par point, a été essayée entre les deux, lisible mais plate. Une grille
+   réglée de douze colonnes, dessinée par des filets et rien d'autre : le
+   fond de la rangée est de la couleur du filet, les cases sont blanches
+   et espacées d'un pixel, c'est l'interstice qui trace les lignes. Ni
+   fond, ni bord arrondi, ni ombre : ce n'est pas une grille de cartes,
+   c'est un tableau de rapport. L'origination sous le filet vert de 3 px
+   (seul filet coloré du site, seul emploi du vert hors bouton et bande
+   finale, avec les valeurs de ses cases) : case de tête sur six colonnes,
+   deux durées sur trois colonnes chacune, puis quatre cases égales. Le
+   mandat de recherche reprend la grille sous le filet d'encre fin, un
+   cran plus petit. La première case d'une rangée s'aligne sur le bord du
+   cadre (pas de rembourrage à gauche), les suivantes s'écartent du filet
+   de 32 px. */
+.tableau {
+  margin-top: 64px;
 }
 .origination {
-  margin-top: 64px;
   border-top: 3px solid var(--vert);
-  padding-top: 36px;
+}
+.rangee {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: 1px;
+  background: var(--filet);
+  border-bottom: 1px solid var(--filet);
+}
+.case {
+  grid-column: span 3;
+  background: var(--blanc);
+  padding: 30px 32px 34px 0;
+}
+.rangee .case + .case {
+  padding-left: 32px;
+}
+.case-tete {
+  grid-column: span 6;
 }
 .origination-titre {
-  margin: 8px 0 0;
+  margin: 6px 0 0;
   font-size: 46px;
   font-weight: 500;
   line-height: 1.05;
   letter-spacing: -0.01em;
 }
-.offre-texte {
-  margin: 20px 0 0;
-  max-width: 420px;
+.case-texte {
+  margin: 18px 0 0;
+  max-width: 440px;
   font-size: 19px;
   line-height: 1.6;
   color: var(--gris);
 }
-/* la feuille : le libellé sur 170 px, la condition à droite, un filet
-   entre les lignes ; la première ligne commence à la hauteur du libellé
-   de gauche. Une liste de définitions : dt, dd. */
-.feuille {
-  margin: 0;
+/* la valeur, seul mot en grand et en vert : une durée ou une cadence */
+.case-valeur {
+  margin: 18px 0 0;
+  font-size: 44px;
+  font-weight: 500;
+  line-height: 1.05;
+  letter-spacing: -0.015em;
+  color: var(--vert);
 }
-.feuille-ligne {
-  display: grid;
-  grid-template-columns: 170px minmax(0, 1fr);
-  column-gap: 32px;
-  padding: 20px 0;
-  border-bottom: 1px solid var(--filet);
+.case-petit {
+  margin: 12px 0 0;
+  font-size: 15px;
+  line-height: 1.55;
+  color: var(--gris);
 }
-.feuille-ligne:first-child {
-  padding-top: 2px;
-}
-.feuille dt {
-  margin: 0;
-  padding-top: 3px;
-  font-size: 14px;
-  line-height: 1.6;
-  color: var(--gris-2);
-}
-.feuille dd {
-  margin: 0;
+.case-seul {
+  margin: 18px 0 0;
   font-size: 17px;
   line-height: 1.55;
   color: var(--gris);
 }
-.feuille dd strong {
-  display: block;
-  margin-bottom: 4px;
-  font-size: 26px;
-  font-weight: 500;
-  line-height: 1.15;
-  letter-spacing: -0.01em;
-  color: var(--vert);
-}
 .mandat {
-  margin-top: 72px;
+  margin-top: 56px;
   border-top: 1px solid var(--encre);
-  padding-top: 28px;
+}
+.mandat .case {
+  padding-top: 24px;
+  padding-bottom: 28px;
 }
 .mandat-titre {
-  margin: 8px 0 0;
+  margin: 6px 0 0;
   font-size: 28px;
   font-weight: 500;
   line-height: 1.15;
 }
-.mandat .offre-texte {
-  margin-top: 14px;
+.mandat .case-texte {
+  margin-top: 12px;
   font-size: 17px;
 }
-.mandat .feuille dd {
-  font-size: 16px;
-}
 .conditions-note {
-  margin: 56px 0 0;
+  margin: 48px 0 0;
   font-size: 16px;
   line-height: 1.6;
   color: var(--gris-2);
@@ -1555,15 +1558,20 @@ html {
 /* entre 761 et 1000 px, hors planche : les grilles larges cèdent avant
    le point de rupture, comme au lot 2 */
 @media (max-width: 1000px) {
-  /* les deux offres empilent le titre et la feuille ; la feuille garde
-     son libellé à gauche jusqu'au point de rupture */
-  .offre {
-    grid-template-columns: minmax(0, 1fr);
-    row-gap: 24px;
+  /* le tableau : la case de tête prend la rangée, les autres vont par
+     deux ; la première case de chaque rangée reste au bord du cadre */
+  .case {
+    grid-column: span 6;
   }
-  .feuille-ligne:first-child {
-    padding-top: 20px;
-    border-top: 1px solid var(--filet);
+  .case-tete {
+    grid-column: span 12;
+  }
+  .rangee .case + .case {
+    padding-left: 0;
+  }
+  .rangee-tete .case:nth-child(3),
+  .rangee-suite .case:nth-child(even) {
+    padding-left: 32px;
   }
   .apropos-grille {
     grid-template-columns: minmax(0, 1fr);
@@ -1601,46 +1609,50 @@ html {
     margin-top: 18px;
     font-size: 17px;
   }
-  .origination {
+  .tableau {
     margin-top: 40px;
-    padding-top: 24px;
   }
-  .offre {
-    row-gap: 8px;
+  /* sur téléphone, une case par ligne, toutes au bord du cadre */
+  .case,
+  .case-tete {
+    grid-column: span 12;
+    padding: 20px 0 24px;
+  }
+  .rangee .case + .case,
+  .rangee-tete .case:nth-child(3),
+  .rangee-suite .case:nth-child(even) {
+    padding-left: 0;
   }
   .origination-titre {
     margin-top: 6px;
     font-size: 36px;
   }
-  .offre-texte {
-    margin-top: 16px;
+  .case-texte {
+    margin-top: 14px;
     font-size: 17px;
   }
-  /* la feuille sur téléphone : le libellé au-dessus de la condition,
-     une ligne entre deux filets */
-  .feuille-ligne {
-    grid-template-columns: minmax(0, 1fr);
-    row-gap: 4px;
-    padding: 18px 0;
+  .case-valeur {
+    margin-top: 12px;
+    font-size: 32px;
   }
-  .feuille-ligne:first-child {
-    padding-top: 18px;
+  .case-petit {
+    margin-top: 8px;
   }
-  .feuille dt {
-    padding-top: 0;
-  }
-  .feuille dd strong {
-    font-size: 24px;
+  .case-seul {
+    margin-top: 10px;
+    font-size: 16px;
   }
   .mandat {
-    margin-top: 44px;
-    padding-top: 20px;
+    margin-top: 40px;
+  }
+  .mandat .case {
+    padding: 20px 0 24px;
   }
   .mandat-titre {
     margin-top: 6px;
     font-size: 24px;
   }
-  .mandat .offre-texte {
+  .mandat .case-texte {
     margin-top: 12px;
     font-size: 16px;
   }

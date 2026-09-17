@@ -308,27 +308,25 @@ export const copy = typoDeep({
     titre: "Conditions",
     intro:
       "Deux façons de travailler ensemble. Les montants sont chiffrés au devis, avant signature, après mesure de votre périmètre.",
-    /* v82 (arbitrage Vincent, 17/09/2026) : LA FEUILLE DE CONDITIONS. Les
-       quatre « grandes valeurs » de la planche mettaient sur le même plan
-       deux durées, une règle de facturation et une décision reportée ; on
-       n'y lisait pas le déroulé. Chaque condition a désormais sa ligne,
-       dans l'ordre du temps, libellé à gauche et condition à droite ; la
-       durée reste le seul mot en grand quand il y en a une (valeur
-       facultative). Les phrases sont celles de l'offre publiée du 17/09 et
-       du v81, seuls les libellés de lignes sont nouveaux. L'origination
-       est l'offre principale : toute la largeur, six lignes ; le mandat de
-       recherche la complète en dessous, deux lignes, un cran plus petit. */
+    /* v82 (arbitrage Vincent, 17/09/2026) : LE TABLEAU. Les quatre
+       « grandes valeurs » de la planche mettaient sur le même plan deux
+       durées, une règle de facturation et une décision reportée ; on n'y
+       lisait pas le déroulé. Une feuille de conditions (une ligne par
+       point) a été essayée, jugée lisible mais plate. Forme retenue : une
+       grille réglée de cases, dessinée par des filets. L'origination, la
+       grande case de tête, avec ses deux durées en grand à côté (première
+       rangée), puis quatre cases égales (seconde rangée) ; le mandat de
+       recherche reprend la grille, un cran plus petit. La valeur est le
+       seul mot en grand, et en vert : une durée ou une cadence. Les
+       phrases sont celles de l'offre publiée du 17/09 et du v81, seuls les
+       libellés de cases sont nouveaux. */
     origination: {
       libelle: "En continu",
       titre: "L’origination",
       texte:
         "Votre périmètre est tenu sous veille. Chaque dossier d’approche vous est livré dès qu’il est vérifié.",
-      lignes: [
-        {
-          libelle: "Avant tout engagement",
-          valeur: "La mesure du périmètre",
-          texte: "Son volume est mesuré et annoncé au devis.",
-        },
+      /* la première rangée : les deux durées, à côté de la case de tête */
+      durees: [
         {
           libelle: "Pour commencer",
           valeur: "Un mois",
@@ -340,6 +338,13 @@ export const copy = typoDeep({
           valeur: "Trois mois",
           texte:
             "Des périodes de trois mois, résiliables à chaque échéance avec un mois de préavis.",
+        },
+      ],
+      /* la seconde rangée : quatre cases égales */
+      lignes: [
+        {
+          libelle: "Avant tout engagement",
+          texte: "Le volume de votre périmètre est mesuré et annoncé au devis.",
         },
         /* v81 : facturé au mois, un mois sans dossier livré n'est pas facturé */
         {
