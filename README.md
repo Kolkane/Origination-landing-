@@ -54,7 +54,7 @@ Règle de fond : **rien codé en dur dans le JSX**, ni texte ni valeur.
 Next 14 App Router, TypeScript strict, Tailwind, next/font. Zéro dépendance UI
 externe : les apparitions passent par IntersectionObserver et des classes CSS.
 
-Polices, toutes via `next/font/google` : **Fraunces** en titres, **Spectral** en
-corps, **Cutive Mono** en libellés. Instrument Serif, Geist, Literata, Familjen
-Grotesk et Source Serif 4 ont toutes été retirées du site à la suite
-d'arbitrages documentés dans `CLAUDE.md` : ne pas les réintroduire.
+Police, via `next/font/google` : **Hanken Grotesk** seule, en 400, 500 et 600
+(V80, 17/09/2026). Instrument Serif, Geist, Literata, Familjen Grotesk, Source
+Serif 4, Fraunces, Spectral et Cutive Mono ont toutes été retirées du site à la
+suite d'arbitrages documentés dans `CLAUDE.md` : ne pas les réintroduire.

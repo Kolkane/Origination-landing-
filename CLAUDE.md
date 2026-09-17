@@ -1225,6 +1225,114 @@ trouvé sur vous". Codes attendus : document financier imprimé, pas SaaS IA.
   décrit plus le code depuis la refonte v17 (voir l'amendement Typo). Ne pas
   s'en servir pour « remettre la section conforme à sa planche ».
 
+## Direction artistique V80, « blanc, encre, une seule grotesque » (arbitrage Vincent, 17/09/2026)
+REMPLACE la DA v7 « Sanjaya / sombre » ci-dessus. Les amendements v7 à v78
+restent en procès-verbal : ils ne décrivent plus le code, ils disent pourquoi
+il a été fait ainsi et ce qui a déjà été essayé. Les planches
+MAQUETTE-V80-ACCUEIL.html (ordinateur, 1440 px) et
+MAQUETTE-V80-ACCUEIL-MOBILE.html (390 px), à la racine, FONT FOI sur la page
+d'accueil : mêmes couleurs, mêmes tailles, mêmes espacements, même copy, même
+ordre des sections. Zéro latitude de design : ce qui n'est pas dans la planche
+n'existe pas. Le brief du chantier est PROMPT-CC-V80.md, à la racine. La
+leçon v60 tient : une planche fait foi sur la forme et les couleurs, jamais
+sur une hauteur ni une largeur de texte, qui se remesurent sur le build.
+- PALETTE. Fond blanc #FFFFFF. Encre #16201C : texte, bande noire du dossier,
+  pied de page. Vert #1E3A32 : boutons, bande finale « Prendre rendez-vous »,
+  filet épais de l'origination, région remplie de la carte. Filets #DCE1DD et
+  #C9D0CC, lignes de tableau du dossier #EEF1EF. Gris de texte #2B3530 et
+  #56605B. Sur fonds sombres : #DDE5E1, #B9C6C0, #9AA7A1, et #C9D2CD pour les
+  liens du pied. Le hero vidéo reste plein écran et sombre : c'est la seule
+  bande sombre en tête, avec la bande noire du dossier et le pied de page.
+  Les tokens vivent dans globals.css sous leur nom français (--encre, --vert,
+  --gris, --filet, --clair, --vin) ; les tokens de la DA v7 meurent au lot 3.
+- LE VIN À QUATRE ENDROITS, et nulle part ailleurs, exactement comme dans la
+  planche : le soulignement des liens texte sur fond blanc
+  (text-decoration-color #8E2438, le texte reste encre ; #B32E46 sur le hero ;
+  blanc sur la bande verte), les trois numéros de la méthode, la mention
+  « Confidentiel » de la couverture, et dans le dossier lui-même les titres de
+  rubriques et le « Confidentiel » du pied. Pas de bouton, pas d'aplat, pas de
+  filet en vin. Sur les fonds sombres, #8E2438 et #B32E46 ne composent jamais
+  du texte (contraste insuffisant), seulement un soulignement. Le vert garde
+  les boutons, la bande finale et l'offre.
+- TYPOGRAPHIE. Une seule famille, Hanken Grotesk, via next/font/google, en
+  400, 500 et 600, romain. Fraunces, Spectral et Cutive Mono sortent du site,
+  image OpenGraph comprise : ne pas les réintroduire. Les trois rôles de
+  globals.css restent (--f-display, --f-corps, --f-label) et pointent tous sur
+  Hanken. Plus aucune capitale espacée en mono, plus aucun mot en italique
+  dans un titre, plus aucun point médian hors pied de page. L'axe WONK (v55,
+  v58) et l'alerte v55 sur les largeurs en ch n'ont plus d'objet : les
+  largeurs V80 sont celles de la planche.
+- STRUCTURE DE L'ACCUEIL, dans cet ordre. Hero vidéo plein écran (en-tête
+  transparent par-dessus, bloc de texte en bas à gauche, légende en bas à
+  droite). « Ce que fait Imbrin Research » (intro, rangée de quatre icônes au
+  trait, sans cadre ni fond). « Le dossier d'approche » (bande noire,
+  description, couverture cliquable, bouton qui ouvre le dossier en popup).
+  « Méthode » (trois étapes numérotées, numéros en vin). « Conditions »
+  (l'origination sous un filet vert épais avec quatre grandes valeurs, le
+  mandat de recherche en dessous sous un filet fin). « À propos » (portrait,
+  texte, coordonnées légales). « Analyses » (trois colonnes, sans date).
+  « Prendre rendez-vous » (bande verte, seul bouton commercial du site,
+  « Choisir un créneau »). Pied de page noir avec l'emblème clair.
+- LE HERO. public/imbrin.mp4 avec public/imbrin-poster.jpg, autoplay muet en
+  boucle, playsinline, object-fit cover, hauteur 100svh (repli 100vh), voile
+  UNIFORME rgba(6,10,8,.16) sur ordinateur et .22 sur mobile, jamais de
+  dégradé, jamais de zoom, aucun filtre. Sous prefers-reduced-motion la vidéo
+  ne se lance pas et le poster reste. L'en-tête est transparent sur le hero
+  (emblème clair, nom en blanc, navigation en blanc), puis devient fixe, blanc
+  et opaque (emblème encre, texte encre, filet #DCE1DD en bas) dès que le
+  visiteur a quitté le hero. Sur mobile, le bouton « Menu » ouvre un panneau
+  plein écran avec les six entrées et les coordonnées ; le corps ne défile
+  plus tant qu'il est ouvert. L'arbitrage v64 (hero excentré, texte aux bords
+  de l'écran) survit dans la planche : 48 px de bord contre 48 px de padding
+  dans un conteneur de 1200 px pour les sections.
+- L'EMBLÈME. public/emblem-encre.png (traits sombres, pour les fonds clairs) et
+  public/emblem-clair.png (traits clairs, pour les fonds sombres) remplacent
+  logo-imbrin.png et logo-dossier.png dans les composants. Les anciens
+  fichiers RESTENT dans public/ : la signature mail pointe encore dessus.
+- LES ICÔNES. Les quatre SVG inline de la planche (plaque de cabinet, carte de
+  France avec la région remplie en vert, registre, chemise à sangle), dans un
+  composant Icones.tsx, aria-hidden, currentColor. La carte vient de
+  src/components/carte/france-paths.ts simplifié. C'est la seule dérogation
+  à « aucune icône nulle part » (v12, v51), décidée par le brief V80 : quatre
+  icônes au trait, sans cadre ni fond, à cet endroit et à lui seul.
+- LE POPUP DU DOSSIER. Un vrai <dialog> HTML ouvert par showModal() : focus
+  piégé, Échap, aria-labelledby, fermeture au clic sur le voile et sur
+  « Fermer », retour du focus sur l'élément déclencheur, corps non défilant
+  pendant l'ouverture. Entrée conforme à la planche (voile en fondu 0,28 s,
+  page qui monte de 22 px en 0,4 s), coupée sous prefers-reduced-motion. Huit
+  rubriques, dans copy.ts, présentes dans le DOM sans JavaScript. Le lien
+  « Version PDF » ne s'affiche que si public/specimen-imbrin.pdf existe : pas
+  de lien mort. L'interdit « popup/chatbot » vise les fenêtres non
+  sollicitées ; ce dossier ne s'ouvre qu'au clic du visiteur, et le brief V80
+  le demande.
+- CE QUI DISPARAÎT DE L'ACCUEIL : Entonnoir (la toise), NeFaitPas, Faq,
+  BarreAction (le CTA mobile), Reveal (plus aucune animation d'entrée, ni
+  .rev ni .mask, ni séquence de chargement), IconesOffre, CarteFrance si elle
+  n'est plus montée, et le viseur interactif du dossier avec sa lecture
+  automatique. Les composants et le CSS mort qui ne servent qu'à eux sont
+  supprimés. Le contenu de la FAQ ne se perd pas : la reconduction est dans
+  Conditions, le RGPD est sur la page Confidentialité.
+- CE QUI NE CHANGE PAS : la charte d'honnêteté et la liste blanche des
+  chiffres (le spécimen est fictif et le dit), l'invariant du premier contact,
+  la page /dirigeants, zéro tiret cadratin ni demi-cadratin, brand.ts seule
+  source des constantes, le JSON-LD, le sitemap, robots.ts, l'image OpenGraph
+  (repeinte en blanc, encre, emblème encre), le lien Calendly, « Site sans
+  traceurs ». Les crochets [Raison sociale], [Adresse du siège], [Parcours du
+  fondateur] de la planche sont des EMPLACEMENTS : À propos lit brand.ENTITY,
+  et le parcours reste une chaîne vide, masquée tant qu'elle n'est pas remplie.
+- CONTRADICTION SIGNALÉE, NON TRANCHÉE : l'ombre portée du popup
+  (0 30px 80px -30px rgba(0,0,0,.6)) est dans la planche et contredit
+  « shadow-md et au-delà » des interdits absolus. La planche est portée telle
+  quelle ; à arbitrer devant l'écran.
+- MÉTHODE DU CHANTIER : cinq lots, un commit par lot, un rapport court et une
+  validation entre chaque. 0 préparation (emblèmes, Hanken, tokens, charte) ;
+  1 hero, en-tête, pied de page ; 2 service, dossier et popup, méthode ;
+  3 conditions, à propos, analyses, rendez-vous, suppression des composants
+  morts ; 4 pages intérieures, mobile, qualité. Référence Lighthouse mobile de
+  l'accueil à tenir : 88 / 96 / 100 / 100 (V78, médiane de trois passes) ; pas
+  de recul sur la performance, et si la vidéo pèse, une solution sans la
+  retirer.
+
 ## L'offre v15 (arbitrage Vincent, 02/09/2026 — remplace la v13)
 PRINCIPE, et il gouverne tout le reste : le site donne la STRUCTURE de la
 rémunération, JAMAIS un nombre ni un pourcentage. Tout chiffre est renvoyé

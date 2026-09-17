@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Cutive_Mono, Fraunces, Spectral } from "next/font/google";
+import { Hanken_Grotesk } from "next/font/google";
 import Footer from "@/components/Footer";
 import JsonLd from "@/components/JsonLd";
 import { fondateurSchema, organisationSchema } from "@/config/schema";
@@ -8,83 +8,24 @@ import { SITE_URL } from "@/config/site";
 import "./globals.css";
 
 /* ============================================================
-   v55 · LA BASCULE TYPOGRAPHIQUE (arbitrage Vincent, 29/08/2026,
-   sur la planche MAQUETTE-V55-TYPO.html, qui fait foi).
-   Direction C pour le SITE, direction B pour les DOCUMENTS.
-
-   Motif : « ça fait beaucoup site généré par l'IA, encore moins
-   dans les documents ». Le diagnostic tenait en une incohérence de
-   cette charte : la v28 a retiré Geist Sans au motif qu'elle est
-   « la police maison de Vercel, devenue le signe des sites
-   générés », et la dernière ligne du même amendement disait
-   « GEIST MONO RESTE ». Or c'est Geist Mono qui composait les 25
-   libellés du spécimen. Un acte, un Kbis, un rapport de commissaire
-   aux comptes n'étiquettent jamais leurs champs en capitales
-   monospace espacées : c'est le vocabulaire d'un tableau de bord,
-   et c'est ce qui faisait que le document « se voyait généré ».
-
-   Les VARIABLES SONT NOMMÉES PAR RÔLE, pas par police. C'est le
-   principe déjà posé en v18 (.serif renommée .display) et en v28
-   (la clé « sans » renommée « corps ») : le nom ne doit pas mentir
-   à la prochaine bascule. Celle-ci est la quatrième, elle n'aurait
-   pas dû toucher autre chose que ce fichier, et elle a quand même
-   dû renommer --font-familjen dans vingt-trois déclarations. Plus
-   maintenant : globals.css ne connaît que --f-display, --f-corps
-   et --f-label.
-   ============================================================ */
-
-/* DISPLAY · Fraunces. Variable, avec deux axes qui n'existent chez
-   presque personne : WONK, qui bascule vers des dessins volontairement
-   irréguliers, réglé à 1 dans globals.css. Une police qui a l'air
-   DESSINÉE, ce qu'aucun générateur ne produit. L'optique (opsz) reste
-   demandée, elle s'applique automatiquement selon la taille.
-   Elle reprend les trois italiques du site, que Familjen portait.
-   v58 : L'AXE SOFT EST SORTI DE LA LISTE. Il était demandé puis réglé
-   à 0 dans globals.css, c'est-à-dire à sa PROPRE VALEUR PAR DÉFAUT :
-   il ne changeait rien au rendu et se payait quand même, parce qu'un
-   axe demandé fait servir la fonte variable sur cet axe. Mesuré au
-   build : 305 Ko de fontes préchargées avec lui, 187 Ko sans, et 677
-   contre 425 Ko en tout. 118 Ko préchargés pour rien.
-   Retirer aussi opsz descendrait à 121 Ko préchargés, mais coûterait
-   l'optique automatique, qui elle se voit entre un titre de 62px et
-   un libellé de 10px : ce serait un arbitrage de rendu, pas un gain
-   gratuit, et il n'a pas été pris. */
-const display = Fraunces({
+   V80 · UNE SEULE FAMILLE (arbitrage Vincent, 17/09/2026, sur les
+   planches MAQUETTE-V80-ACCUEIL.html et MAQUETTE-V80-ACCUEIL-MOBILE.html,
+   qui font foi).
+   Hanken Grotesk, 400, 500 et 600, romain, latin, et rien d'autre.
+   Fraunces, Spectral et Cutive Mono sortent du site, image OpenGraph
+   comprise. Ce que la v55 voulait se produit ici pour la première fois :
+   la bascule ne touche que ce fichier et la ligne des trois rôles de
+   globals.css, --f-display, --f-corps et --f-label, qui pointent tous
+   sur la même variable. Ce sont des emplois, pas des polices, et ils
+   gardent leur nom pour que la prochaine bascule ne coûte pas plus.
+   Trois graisses statiques et non la fonte variable : on ne demande que
+   ce qu'on compose (leçon v58). Aucune italique : plus aucun mot en
+   italique dans un titre. */
+const hanken = Hanken_Grotesk({
   subsets: ["latin"],
-  style: ["normal", "italic"],
-  axes: ["WONK", "opsz"],
-  variable: "--font-display",
-  display: "swap",
-});
-
-/* CORPS · Spectral, dessinée par Production Type, fonderie
-   parisienne, commandée par Google pour la lecture à l'écran :
-   une serif de travail, du registre des documents imprimés que la
-   page revendique. 400 et 500, romain, latin — exactement le
-   gabarit que tenait Source Serif 4, pour que les <b> continuent
-   de tomber sur 500 et qu'aucune graisse ne se synthétise.
-   Aucun italique : les trois du site sont portés par le display. */
-const corps = Spectral({
-  subsets: ["latin"],
-  weight: ["400", "500"],
+  weight: ["400", "500", "600"],
   style: ["normal"],
-  variable: "--font-corps",
-  display: "swap",
-});
-
-/* LIBELLÉS · Cutive Mono. Une machine à écrire, pas une police de
-   code : c'est tout le sujet de la bascule. Plus sobre que Courier,
-   sans son cliché de scénario. Un seul dessin, une seule graisse,
-   comme une vraie machine.
-   Elle ne compose QUE la page. Dans les documents — le spécimen du
-   dossier et la fiche du devis — les libellés passent à Spectral,
-   sans aucun monospace : c'est la direction B, retenue là pour son
-   espacement, plus confortable à l'oeil. La bascule se fait par le
-   token --f-label, redéfini sur .doc et .fiche-o dans globals.css. */
-const label = Cutive_Mono({
-  subsets: ["latin"],
-  weight: "400",
-  variable: "--font-label",
+  variable: "--font-hanken",
   display: "swap",
 });
 
@@ -118,14 +59,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="fr"
-      className={`${display.variable} ${corps.variable} ${label.variable}`}
-    >
+    <html lang="fr" className={hanken.variable}>
       <head>
         {/* sans JavaScript, aucun bloc animé ne doit rester invisible :
             les apparitions au scroll sont un agrément, jamais une condition
-            d'accès au contenu */}
+            d'accès au contenu.
+            V80, lot 0 : ce bloc décrit encore les composants de la DA v7
+            (toise, viseur, Reveal). Il meurt avec eux aux lots 2 et 3. */}
         <noscript>
           <style
             dangerouslySetInnerHTML={{

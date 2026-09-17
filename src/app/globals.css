@@ -35,26 +35,51 @@
 
   /* v55 · LES TROIS RÔLES TYPOGRAPHIQUES. Le fichier ne nomme plus
      aucune police : il nomme des emplois. Changer de fonte, c'est
-     désormais toucher layout.tsx et rien d'autre — ce que les
-     renommages v18 et v28 visaient sans jamais l'obtenir, faute
-     d'avoir sorti les noms de familles d'ici. */
-  --f-display: var(--font-display), Georgia, serif;
-  --f-corps: var(--font-corps), Georgia, serif;
-  --f-label: var(--font-label), "Courier New", monospace;
+     désormais toucher layout.tsx et rien d'autre.
+     V80 : les trois rôles pointent sur la même famille, Hanken
+     Grotesk, seule police du site. Ils restent trois pour que la
+     prochaine bascule, si elle sépare à nouveau les emplois, ne
+     touche que ces trois lignes. Le repli est le sans-serif des
+     planches. L'axe WONK de Fraunces (v55, v58) est parti avec elle. */
+  --f-display: var(--font-hanken), "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --f-corps: var(--font-hanken), "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --f-label: var(--font-hanken), "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
-/* v55 · l'axe propre à Fraunces : WONK à 1, les dessins irréguliers.
-   Posé à la racine, il est hérité partout et simplement ignoré par
-   Spectral et Cutive Mono, qui ne l'ont pas. L'optique (opsz) reste
-   automatique : un titre de 62px prend son dessin de titre, une ligne
-   de 15px le sien, sans qu'on ait à l'écrire.
-   v58 : « SOFT 0 » est retiré d'ici et de la liste des axes demandés
-   dans layout.tsx. 0 EST la valeur par défaut de SOFT : la déclaration
-   ne changeait rien au rendu, mais demander l'axe faisait servir une
-   fonte variable sur cet axe. 118 Ko préchargés, mesurés au build,
-   pour une déclaration qui était un no-op. */
+/* ============================================================
+   V80 · LES TOKENS (arbitrage Vincent, 17/09/2026, planches
+   MAQUETTE-V80-ACCUEIL.html et MAQUETTE-V80-ACCUEIL-MOBILE.html, qui
+   font foi). Fond blanc, encre, vert, et le vin en pointe à quatre
+   endroits. Posés au lot 0 ; les sections sont portées lot par lot,
+   et les tokens de la DA v7 ci-dessus (--bg, --txt, --paper, --ink,
+   --wine) meurent au lot 3 avec les composants qu'ils servaient.
+   Aucune valeur n'est inventée : chacune est un hex de la planche.
+   ============================================================ */
 :root {
-  font-variation-settings: "WONK" 1;
+  --blanc: #ffffff;
+  --encre: #16201c; /* texte, bande du dossier, pied de page */
+  --vert: #1e3a32; /* boutons, bande finale, filet épais de l'origination, région de la carte */
+  --gris: #2b3530; /* corps de texte sur blanc, survol du bouton encre */
+  --gris-2: #56605b; /* libellés, notes, légendes */
+  --survol: #3b4a43; /* liens texte au survol */
+  --filet: #dce1dd; /* filet courant, bas de l'en-tête fixe */
+  --filet-2: #c9d0cc; /* bord de la couverture */
+  --filet-3: #eef1ef; /* lignes de tableau du dossier */
+  --clair: #dde5e1; /* texte courant sur fond sombre */
+  --clair-2: #b9c6c0; /* libellés sur la bande verte */
+  --clair-3: #9aa7a1; /* notes sur fond sombre, légende du hero, pied */
+  --clair-pied: #c9d2cd; /* liens du pied de page */
+  --pied-filet: rgba(255, 255, 255, 0.18); /* filet du bas du pied */
+  --bouton-survol: #edf0ec; /* bouton blanc au survol */
+  --vin: #8e2438; /* soulignés sur blanc, numéros de la méthode, Confidentiel, rubriques du dossier */
+  --vin-hero: #b32e46; /* souligné du hero, seul emploi */
+  --hero-fond: #0a0e0c; /* derrière la vidéo, avant qu'elle charge */
+  --voile: rgba(6, 10, 8, 0.16);
+  --voile-mobile: rgba(6, 10, 8, 0.22);
+  --popup-voile: rgba(10, 16, 13, 0.64);
+  --popup-ombre: 0 30px 80px -30px rgba(0, 0, 0, 0.6);
+  --anneau: rgba(255, 255, 255, 0.35); /* survol de la couverture */
+  --menu-bord: rgba(255, 255, 255, 0.6); /* bouton Menu sur le hero */
 }
 
 html {

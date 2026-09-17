@@ -1,5 +1,4 @@
 import { ImageResponse } from "next/og";
-import { LOGO_DATA_URI } from "@/components/logo-imbrin-image";
 import { brand } from "@/config/brand";
 
 /* v56 · RUNTIME. Retirer cette ligne prégénérerait le PNG au build au
@@ -12,7 +11,7 @@ import { brand } from "@/config/brand";
    on ne troque pas un build de production contre une image sociale.
    À reprendre sur une branche, où Vercel bâtira une préview qui tranche.
    Ce qui EST optimisé ici, et qui vaut dans les deux runtimes : les
-   quatre requêtes réseau de la génération sont marquées immuables. */
+   requêtes réseau de la génération sont marquées immuables. */
 export const runtime = "edge";
 
 export const alt = `${brand.MARQUE} ${brand.SUFFIXE}, ${brand.BASELINE}`;
@@ -36,18 +35,35 @@ async function policeGoogle(famille: string, poids: number, texte: string) {
   return (await fetch(url, { cache: "force-cache" })).arrayBuffer();
 }
 
+/* V80 : l'emblème encre est lu dans public/ au moment du build (webpack
+   émet le fichier et résout l'URL), puis passé en data URI à Satori. Il
+   remplace le PNG clair embarqué en base64 dans logo-imbrin-image.ts,
+   supprimé avec cette version : 63 Ko de source pour une image de 160px,
+   quand le fichier de public/ sert déjà. Octet par octet : un seul
+   fromCharCode sur 350 Ko dépasserait la pile, et la cible TypeScript
+   du projet n'itère pas un Uint8Array par décomposition. */
+async function emblemeEncre() {
+  const buf = await (
+    await fetch(new URL("../../public/emblem-encre.png", import.meta.url))
+  ).arrayBuffer();
+  const octets = new Uint8Array(buf);
+  let bin = "";
+  for (let i = 0; i < octets.length; i++) {
+    bin += String.fromCharCode(octets[i]);
+  }
+  return `data:image/png;base64,${btoa(bin)}`;
+}
+
 export default async function Image() {
   const marque = `${brand.MARQUE} ${brand.SUFFIXE}`;
-  const baseline = brand.BASELINE.toUpperCase();
-  /* v55 : les polices suivent la bascule du site. La charte v18 pose
-     que l'image OG n'echappe pas aux arbitrages de police, elle avait
-     alors perdu Instrument Serif ; elle perd ici Familjen et Geist Mono.
-     Fraunces est demandee a wght@400 sans ses axes SOFT et WONK : la
-     carte sociale n'a pas besoin du dessin irregulier, et une requete
-     multi-axes de plus serait un point de casse pour un PNG statique. */
-  const [display, label] = await Promise.all([
-    policeGoogle("Fraunces", 400, marque),
-    policeGoogle("Cutive+Mono", 400, `${baseline} ·`),
+  const baseline = brand.BASELINE;
+  /* V80 : l'image suit la bascule du site, comme en v18 et en v55. Fond
+     blanc, encre, emblème encre, Hanken Grotesk seule : le nom en 600,
+     la baseline en 400, en bas de casse, sans capitales espacées. */
+  const [titre, sous, embleme] = await Promise.all([
+    policeGoogle("Hanken+Grotesk", 600, marque),
+    policeGoogle("Hanken+Grotesk", 400, baseline),
+    emblemeEncre(),
   ]);
 
   return new ImageResponse(
@@ -59,19 +75,20 @@ export default async function Image() {
           display: "flex",
           flexDirection: "column",
           justifyContent: "flex-end",
-          backgroundColor: "#0A0A0A",
+          backgroundColor: "#FFFFFF",
           padding: "80px 96px",
         }}
       >
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src={LOGO_DATA_URI} width="150" height="150" alt="" />
+        <img src={embleme} width="150" height="150" alt="" />
         <div
           style={{
             marginTop: 44,
-            fontFamily: "Fraunces",
+            fontFamily: "Hanken Grotesk",
+            fontWeight: 600,
             fontSize: 120,
-            letterSpacing: "-0.02em",
-            color: "#F4F2EF",
+            letterSpacing: "-0.01em",
+            color: "#16201C",
             lineHeight: 1.06,
           }}
         >
@@ -79,11 +96,12 @@ export default async function Image() {
         </div>
         <div
           style={{
-            marginTop: 34,
-            fontFamily: "Cutive Mono",
-            fontSize: 24,
-            letterSpacing: "0.28em",
-            color: "#B9B6B2",
+            marginTop: 26,
+            fontFamily: "Hanken Grotesk",
+            fontWeight: 400,
+            fontSize: 30,
+            color: "#56605B",
+            lineHeight: 1.3,
           }}
         >
           {baseline}
@@ -93,8 +111,8 @@ export default async function Image() {
     {
       ...size,
       fonts: [
-        { name: "Fraunces", data: display, weight: 400 },
-        { name: "Cutive Mono", data: label, weight: 400 },
+        { name: "Hanken Grotesk", data: titre, weight: 600 },
+        { name: "Hanken Grotesk", data: sous, weight: 400 },
       ],
     }
   );
