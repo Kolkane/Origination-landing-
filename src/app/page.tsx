@@ -23,7 +23,10 @@ export const metadata: Metadata = {
 
 export default function Home() {
   return (
-    <main>
+    /* V80 : « haut » est la cible du lien de marque de l'en-tête et du
+       pied. Sur <main> et non sur le hero, qui garde « hero » pour
+       BarreAction jusqu'au lot 3. */
+    <main id="haut">
       {/* la FAQ n'existe que sur l'accueil : son balisage y reste */}
       <JsonLd data={faqSchema} />
       <Hero />

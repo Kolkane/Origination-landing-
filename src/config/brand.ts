@@ -7,6 +7,18 @@ export const brand = typoDeep({
   CALENDLY_URL: "https://calendly.com/fnr-vincent-pro/echange",
   LINKEDIN_URL: "https://www.linkedin.com/in/vincent-fournier-939021170/",
   CONTACT_EMAIL: "contact@imbrin.fr",
+  /* V80 : les fichiers de public/ que les composants montrent. Deux
+     emblèmes, l'encre pour les fonds clairs et le clair pour les fonds
+     sombres ; la vidéo du hero et son poster ; le portrait. Les anciens
+     logo-imbrin.png et logo-dossier.png restent dans public/ sans être
+     référencés ici : la signature mail pointe encore dessus. */
+  MEDIAS: {
+    emblemeEncre: "/emblem-encre.png",
+    emblemeClair: "/emblem-clair.png",
+    videoHero: "/imbrin.mp4",
+    posterHero: "/imbrin-poster.jpg",
+    portrait: "/portrait-vincent-fournier.webp",
+  },
   /* v68 : le délai de traitement d'une demande d'opposition ou d'accès.
      Constante et non texte en dur : il est annoncé au dirigeant sur la
      page qui lui est destinée, et il devra changer à UN endroit si la

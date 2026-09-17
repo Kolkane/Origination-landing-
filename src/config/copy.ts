@@ -37,45 +37,41 @@ export const copy = typoDeep({
     description:
       "Origination externe pour cabinets M&A sell-side : nous lisons les actes déposés au registre, y compris ceux que personne n’ouvre, et nous livrons des dossiers d’approche datés et sourcés. Un cabinet par périmètre.",
   },
-  hero: {
-    nav: [
-      { label: "Dossier", ancre: "#dossier" },
-      { label: "Méthode", ancre: "#methode" },
-      { label: "Offre", ancre: "#offre" },
-      { label: "FAQ", ancre: "#faq" },
-      { label: "Analyses", ancre: "#analyses" },
+  /* V80 · LA NAVIGATION, partagée par l'en-tête et par la colonne « Le
+     site » du pied de page : six entrées, dans l'ordre de la planche. Les
+     ancres portent le « / » pour servir aussi depuis les pages intérieures
+     (lot 4), où l'en-tête sera le même. */
+  nav: {
+    aria: "Navigation principale",
+    haut: "/#haut",
+    liens: [
+      { label: "Le service", href: "/#service" },
+      { label: "Le dossier", href: "/#dossier" },
+      { label: "Méthode", href: "/#methode" },
+      { label: "Conditions", href: "/#conditions" },
+      { label: "Analyses", href: "/#analyses" },
+      { label: "À propos", href: "/#apropos" },
     ],
-    navAppel: { label: "Définir mon périmètre", ancre: "#appel" },
-    /* v24, arbitrage Vincent : la tranche de taille puis la situation du
-       dirigeant sont retirées, le premier écran ne qualifie plus que le
-       marché visé. L'espace insécable après le « · » est conservée : sans
-       elle, le séparateur peut finir une ligne tout seul quand le libellé
-       passe sur deux lignes, ce qui arrive sur téléphone. */
-    eyebrow: "Origination sell-side · PME françaises",
-    /* v40 (arbitrage Vincent, 27/08) : « Nous lisons les actes que
-       personne n'ouvre » est mort — l'accroche dit la répartition du
-       travail, pas la méthode. v41 : DEUX lignes.
-       v42 (arbitrage Vincent, 27/08) : le « vous » en vin faisait
-       bizarre — l'accent passe sur le verbe du métier, « détectons »,
-       au milieu de la première ligne. Les clés suivent la structure :
-       avant + italique + après forment la ligne 1, ligne2 est entière. */
-    titreAvant: "Nous ",
-    titreItalique: "détectons",
-    titreApres: " les dossiers,",
-    titreLigne2: "vous les traitez.",
-    /* v40 : « qui en sort » renvoyait aux actes de l'ancienne accroche,
-       l'antécédent a disparu avec elle. Le sous-titre raccorde : « les »,
-       ce sont les dossiers du titre. */
-    sousTitre:
-      "Un analyste, sur pièces, les détecte au registre et les vérifie à la main. Un cabinet par périmètre.",
-    cta: CTA,
-    ctaSecondaire: { label: "L’origination", ancre: "#origination" },
-    /* le caractère mono-interlocuteur dès le premier écran, en métadonnée :
-       ni bouton ni encadré, ça ne dispute rien aux deux appels */
-    signature: "Un seul interlocuteur, du premier appel à la vérification de vos dossiers.",
-    /* la légende ne décrit que le sujet : ni l'origine ni la durée du média
-       ne sont revendiquées (arbitrage Vincent, v8-4) */
-    legende1: "Plongeon imbrin en chasse",
+    /* le menu mobile : le bouton, son intitulé accessible dans les deux
+       états, le bouton de fermeture du panneau et les libellés des
+       coordonnées qu'il porte. Le panneau n'est pas dans la planche
+       (lot 1, décision consignée dans CLAUDE.md). */
+    menu: "Menu",
+    menuOuvrir: "Ouvrir le menu",
+    menuFermer: "Fermer le menu",
+    fermer: "Fermer",
+    coordTel: "Par téléphone",
+    coordMail: "Par email",
+  },
+  /* V80 · LE HERO, au mot près de la planche : un titre, un sous-titre, un
+     lien souligné vin vers le dossier, et la légende de la vidéo, qui ne
+     décrit que le sujet : ni l'origine ni la durée du média ne sont
+     revendiquées (arbitrage Vincent, v8-4). */
+  hero: {
+    titre: "Origination sell-side pour les cabinets M&A",
+    sous: "Les PME à approcher, repérées au registre et livrées en dossiers vérifiés. Un seul cabinet par périmètre.",
+    lien: { label: "Voir un dossier spécimen", href: "/#dossier" },
+    legende: "Plongeon imbrin en chasse",
   },
   /* v14 : la description du livrable et l'exemple de dossier ne font plus
      qu'une section. Depuis la v19, cliquer un élément ne surligne plus une
@@ -884,22 +880,28 @@ export const copy = typoDeep({
         },
       ] as SectionLegale[],
     },
-  },
-  footer: {
-    gauche: `${brand.MARQUE} ${brand.SUFFIXE} · ${brand.BASELINE}`,
-    /* v57 : l'identité juridique descend du fondateur, où elle fermait la
-       section sur une mention administrative. Elle appartient au pied de
-       page, LinkedIn y était déjà. Posée ICI AVANT d'être retirée là-haut. */
-    entite: `${brand.ENTITY.raisonSociale} · SIREN ${brand.ENTITY.siren}`,
-    mentions: { label: "Mentions légales", href: "/mentions-legales" },
-    confidentialite: { label: "Confidentialité", href: "/confidentialite" },
-    linkedin: "LinkedIn",
-    /* v68 : la porte d'entrée du dirigeant qui a reçu un courrier et
-       cherche à vérifier. Discrète, dans le pied, jamais dans la nav :
-       la page d'accueil s'adresse aux cabinets, pas à lui. */
-    dirigeants: { label: "Vous avez été contacté ?", href: "/dirigeants" },
-    note: "Site sans traceurs · © 2026",
+  },  /* V80 · LE PIED DE PAGE, au mot près de la planche : l'emblème clair, le
+     nom et la baseline ; trois colonnes, « Le site » (les six entrées de
+     la navigation ci-dessus), « Informations » et « Contact » ; une ligne
+     de bas de page. L'année du copyright est celle de la planche. La
+     raison sociale et le SIREN n'y sont plus : la planche ne les a pas,
+     ils vivent aux mentions légales et, au lot 3, dans À propos. */
+  pied: {
+    emblemeAlt: `Emblème d’${brand.MARQUE} ${brand.SUFFIXE}, un plongeon imbrin gravé`,
+    site: { aria: "Pages du site", titre: "Le site" },
+    informations: {
+      titre: "Informations",
+      liens: [
+        /* v68 : la porte d'entrée du dirigeant qui a été contacté et
+           cherche à vérifier. Dans le pied, jamais dans la nav : la page
+           d'accueil s'adresse aux cabinets, pas à lui. */
+        { label: "Vous avez été contacté ?", href: "/dirigeants" },
+        { label: "Mentions légales", href: "/mentions-legales" },
+        { label: "Confidentialité", href: "/confidentialite" },
+      ],
+    },
+    contact: { titre: "Contact", linkedin: "LinkedIn" },
+    copyright: `© 2026 ${brand.MARQUE} ${brand.SUFFIXE}`,
+    note: "Site sans traceurs",
   },
 });
-    /* la légende ne décrit que le sujet : ni l'origine ni la durée du
-       média ne sont revendiquées (arbitrage Vincent, v8-4) */

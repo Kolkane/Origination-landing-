@@ -17,7 +17,9 @@ export const organisationSchema = {
   name: `${brand.MARQUE} ${brand.SUFFIXE}`,
   legalName: brand.ENTITY.raisonSociale,
   url: SITE_URL,
-  logo: `${SITE_URL}/logo-imbrin.png`,
+  /* V80 : l'emblème encre, 520 px de côté. logo-imbrin.png était sous le
+     minimum de 112 px que Google demande pour le logo d'une organisation. */
+  logo: `${SITE_URL}${brand.MEDIAS.emblemeEncre}`,
   description: copy.meta.description,
   founder: { "@id": ID_FONDATEUR },
   sameAs: [brand.LINKEDIN_URL],

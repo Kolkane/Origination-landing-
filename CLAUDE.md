@@ -1324,6 +1324,31 @@ sur une hauteur ni une largeur de texte, qui se remesurent sur le build.
   (0 30px 80px -30px rgba(0,0,0,.6)) est dans la planche et contredit
   « shadow-md et au-delà » des interdits absolus. La planche est portée telle
   quelle ; à arbitrer devant l'écran.
+- LOT 1, FAIT LE 17/09/2026 : hero, en-tête, pied de page, menu mobile.
+  Hors planche, décidé au lot et à juger sur pièce : l'état FIXE de
+  l'en-tête garde la composition de la planche avec un rembourrage
+  symétrique de 14 px (12 px sur téléphone), un fond blanc, l'encre et le
+  filet #DCE1DD ; le passage est décidé par un IntersectionObserver posé
+  sur le hero, jamais par un écouteur de défilement. Le PANNEAU du menu
+  mobile est blanc, plein écran : en tête la marque en encre et un bouton
+  « Fermer » (44 px, filet encre, rayon 2 px), puis les six entrées en
+  27 px / 500 sur filets #DCE1DD sous un filet encre, et en bas les
+  coordonnées, libellés en #56605B, numéro et adresse soulignés vin. Le
+  bouton « Menu » porte aria-expanded et aria-controls, Échap ferme, le
+  corps est bloqué, la tabulation reste dans le panneau, le focus revient
+  au bouton sauf quand c'est un lien qui a fermé. La VIDÉO n'a ni autoplay
+  ni preload="auto" : preload="metadata", poster préchargé depuis le
+  <head> (c'est l'élément LCP), et VideoHero.tsx appelle play(), muet,
+  hors prefers-reduced-motion. Le contour de focus est blanc sur le hero
+  et sur le pied, encre partout ailleurs. L'identité juridique (raison
+  sociale, SIREN) quitte le pied, la planche ne l'a pas : elle vit aux
+  mentions légales et revient dans À propos au lot 3. Le logo du JSON-LD
+  Organization passe sur emblem-encre.png (520 px ; logo-imbrin.png était
+  sous le minimum de 112 px), le reste du JSON-LD ne change pas.
+  POIDS SIGNALÉ, à traiter au lot 4 : les deux emblèmes font 357 et 381 Ko
+  pour des rendus de 30 à 132 px. Solution envisagée : des variantes
+  réduites générées depuis les fichiers sources (sharp en dépendance de
+  développement), sans toucher aux fichiers déposés.
 - MÉTHODE DU CHANTIER : cinq lots, un commit par lot, un rapport court et une
   validation entre chaque. 0 préparation (emblèmes, Hanken, tokens, charte) ;
   1 hero, en-tête, pied de page ; 2 service, dossier et popup, méthode ;
