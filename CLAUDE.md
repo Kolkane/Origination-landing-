@@ -1765,9 +1765,17 @@ sur une hauteur ni une largeur de texte, qui se remesurent sur le build.
   vérifie chaque dossier avant de vous le livrer. Vous avez un seul
   interlocuteur, du premier échange à la livraison. » « Plus d'un an » est
   une durée en lettres, comme « un mois », et ne contredit pas la liste
-  blanche des chiffres. Le premier paragraphe (troisième personne, voix
-  du site) est inchangé ; le passage à la première personne au second
-  paragraphe est signalé à Vincent, qui décide. Vérifié sur le HTML
+  blanche des chiffres. SECOND PASSAGE : le premier paragraphe était à
+  la troisième personne (« a été fondé par… Il conduit lui-même… »), le
+  second à la première ; Vincent a laissé le choix entre des guillemets
+  et une seule voix, « prends une décision ». TOUTE LA SECTION EST À LA
+  PREMIÈRE PERSONNE : c'est une page de présentation sous un portrait et
+  un nom, des guillemets en auraient fait une citation rapportée sur son
+  propre site. Le premier paragraphe se réduit à « J'ai fondé Imbrin
+  Research, entre Paris et Bayonne. » ; « il conduit lui-même les
+  échanges et la vérification » est parti, le parcours le dit déjà. Le
+  nom ne figure plus dans le texte, il est sous le portrait, dans l'alt
+  et dans le JSON-LD Person. Vérifié sur le HTML
   produit : ni SIREN de l'entité ni adresse du siège sur l'accueil, le
   paragraphe présent, aucun tiret. Captures 1440 et 390 dans
   V80-captures/v82-apropos.

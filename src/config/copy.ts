@@ -389,15 +389,22 @@ export const copy = typoDeep({
      pas de l'entité ; la société (raison sociale, SIREN) et le siège
      sortent des lignes, ils sont aux mentions légales. Restent le
      téléphone, l'email et LinkedIn. Le PARCOURS, vide depuis la planche,
-     reçoit le paragraphe de Vincent, à la première personne, mot pour
-     mot ; « plus d'un an » est une durée en lettres, comme « un mois ».
+     reçoit le paragraphe de Vincent, mot pour mot ; « plus d'un an » est
+     une durée en lettres, comme « un mois ». Toute la section est à la
+     première personne (second passage, arbitrage Vincent).
      Le nom du fondateur vit ici et nourrit le JSON-LD Person (schema.ts). */
   apropos: {
     titre: "À propos",
     nom: FONDATEUR,
     portraitAlt: `Portrait de ${FONDATEUR}, fondateur d’${brand.MARQUE} ${brand.SUFFIXE}`,
     legende: `${FONDATEUR}, fondateur`,
-    texte: `${brand.MARQUE} ${brand.SUFFIXE} a été fondé par ${FONDATEUR}, entre Paris et Bayonne. Il conduit lui-même les échanges avec les cabinets et la vérification des dossiers.`,
+    /* v82, second passage (arbitrage Vincent, 17/09/2026) : toute la
+       section à la première personne. Le premier paragraphe se réduit à
+       la présentation ; « il conduit lui-même les échanges et la
+       vérification » est parti, le parcours le dit déjà (« je vérifie
+       chaque dossier », « un seul interlocuteur »). Le nom ne figure
+       plus dans le texte : il est sous le portrait et dans le JSON-LD. */
+    texte: `J’ai fondé ${brand.MARQUE} ${brand.SUFFIXE}, entre Paris et Bayonne.`,
     parcours:
       "Je construis des produits de données depuis plus d’un an. En travaillant auprès de conseillers en gestion de patrimoine, j’ai vu le temps que coûte le repérage des sociétés à approcher. J’ai écrit le programme qui lit les registres à l’échelle nationale, et je vérifie chaque dossier avant de vous le livrer. Vous avez un seul interlocuteur, du premier échange à la livraison.",
     identite: {
