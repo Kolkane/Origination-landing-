@@ -1351,9 +1351,23 @@ html {
   letter-spacing: -0.015em;
   color: var(--vert);
 }
+/* la clé en encre des cases sans durée : l'essentiel de la case en une
+   ligne ou deux, la phrase précise en dessous */
+.case-cle {
+  margin: 16px 0 0;
+  font-size: 26px;
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  color: var(--encre);
+  /* les clés de deux lignes se coupent à l'équilibre (« Un client, /
+     un périmètre » plutôt que « Un client, un / périmètre ») ; sans
+     prise en charge, la coupure ordinaire */
+  text-wrap: balance;
+}
 .case-petit {
   margin: 12px 0 0;
-  font-size: 15px;
+  font-size: 16px;
   line-height: 1.55;
   color: var(--gris);
 }
@@ -1380,6 +1394,10 @@ html {
 .mandat .case-texte {
   margin-top: 12px;
   font-size: 17px;
+}
+.mandat .case-cle {
+  margin-top: 14px;
+  font-size: 22px;
 }
 .conditions-note {
   margin: 48px 0 0;
@@ -1635,6 +1653,10 @@ html {
     margin-top: 12px;
     font-size: 32px;
   }
+  .case-cle {
+    margin-top: 10px;
+    font-size: 22px;
+  }
   .case-petit {
     margin-top: 8px;
   }
@@ -1655,6 +1677,10 @@ html {
   .mandat .case-texte {
     margin-top: 12px;
     font-size: 16px;
+  }
+  .mandat .case-cle {
+    margin-top: 10px;
+    font-size: 20px;
   }
   .conditions-note {
     margin-top: 36px;

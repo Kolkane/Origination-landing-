@@ -1718,8 +1718,24 @@ sur une hauteur ni une largeur de texte, qui se remesurent sur le build.
   quatre cases égales (avant tout engagement, facturation « Au mois » en
   grand, exclusivité, premier contact). Le mandat de recherche reprend la
   grille sous le filet d'encre fin, un cran plus petit : case de tête à
-  28 px et deux cases (rémunération, périmètres). La valeur est le seul
-  mot en grand et en vert, et c'est toujours une durée ou une cadence. La
+  28 px et deux cases (rémunération, périmètres).
+  SECOND PASSAGE, LA CLÉ DANS CHAQUE CASE (Vincent : « pas super lisible,
+  peut-être des icônes », carte blanche). Les icônes sont écartées : la
+  charte n'en tolère qu'une rangée, celle du service, et des pictos sur
+  des conditions commerciales sont le code du tableau de prix SaaS que le
+  site refuse. Ce qui manquait : trois cases n'avaient qu'une phrase en
+  petit gris sous leur libellé et se lisaient comme des notes. Désormais
+  CHAQUE CASE A LA MÊME ANATOMIE, libellé, clé, phrase, et la clé dit
+  l'essentiel à elle seule : « La mesure du périmètre », « Au mois »,
+  « Un client, un périmètre », « Décidé ensemble à la signature » ; pour
+  le mandat, « À la mission » et « Hors exclusivité ». Le VERT (44 px)
+  reste réservé aux deux durées d'engagement, « Un mois » et « Trois
+  mois » ; les autres clés sont en encre, 26 px (22 dans le mandat), les
+  phrases passent de 15 à 16 px. Les clés de deux lignes se coupent à
+  l'équilibre (text-wrap: balance, repli ordinaire). Les mots restent
+  ceux du v81, redécoupés entre la clé et la phrase ; une seule phrase
+  reformulée, celle des périmètres du mandat (« Les périmètres déjà
+  réservés à un client ne sont pas concernés. »), même sens. La
   première case d'une rangée s'aligne sur le bord du cadre, les suivantes
   s'écartent du filet de 32 px. Sous 1000 px la case de tête prend la
   rangée et les cases vont par deux ; sous 761 px une case par ligne,

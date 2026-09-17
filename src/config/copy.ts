@@ -316,10 +316,11 @@ export const copy = typoDeep({
        grille réglée de cases, dessinée par des filets. L'origination, la
        grande case de tête, avec ses deux durées en grand à côté (première
        rangée), puis quatre cases égales (seconde rangée) ; le mandat de
-       recherche reprend la grille, un cran plus petit. La valeur est le
-       seul mot en grand, et en vert : une durée ou une cadence. Les
-       phrases sont celles de l'offre publiée du 17/09 et du v81, seuls les
-       libellés de cases sont nouveaux. */
+       recherche reprend la grille, un cran plus petit. Chaque case a la
+       même anatomie : libellé, clé, phrase. La valeur (en vert, en grand)
+       est réservée aux deux durées d'engagement ; les autres clés sont en
+       encre. Les phrases sont celles de l'offre publiée du 17/09 et du
+       v81, seuls les libellés de cases sont nouveaux. */
     origination: {
       libelle: "En continu",
       titre: "L’origination",
@@ -340,29 +341,33 @@ export const copy = typoDeep({
             "Des périodes de trois mois, résiliables à chaque échéance avec un mois de préavis.",
         },
       ],
-      /* la seconde rangée : quatre cases égales */
+      /* la seconde rangée : quatre cases égales, chacune avec sa clé en
+         encre (v82, second passage) : la clé dit l'essentiel à elle
+         seule, la phrase précise. Les mots sont ceux du v81, redécoupés. */
       lignes: [
         {
           libelle: "Avant tout engagement",
-          texte: "Le volume de votre périmètre est mesuré et annoncé au devis.",
+          cle: "La mesure du périmètre",
+          texte: "Son volume est mesuré et annoncé au devis.",
         },
         /* v81 : facturé au mois, un mois sans dossier livré n'est pas facturé */
         {
           libelle: "Facturation",
-          valeur: "Au mois",
+          cle: "Au mois",
           texte: "Un mois sans dossier livré n’est pas facturé.",
         },
         {
           libelle: "Exclusivité",
-          texte: "Pour un client, sur un périmètre, pendant une durée fixée au devis.",
+          cle: "Un client, un périmètre",
+          texte: "Pendant une durée fixée au devis.",
         },
         /* la seule mention du premier contact sur le site, et elle est
            commerciale : qui contacte, et comment, se décide au devis
            (arbitrage Vincent, 17/09/2026) */
         {
           libelle: "Premier contact",
-          texte:
-            "Qui contacte les dirigeants, et selon quelles modalités, se décide ensemble à la signature.",
+          cle: "Décidé ensemble à la signature",
+          texte: "Qui contacte les dirigeants, et selon quelles modalités.",
         },
       ],
     },
@@ -371,8 +376,12 @@ export const copy = typoDeep({
       titre: "Le mandat de recherche",
       texte: `Lorsqu’un mandat de recherche arrive au cabinet, ${brand.MARQUE} ${brand.SUFFIXE} constitue, selon vos critères, une liste de sociétés vérifiées, livrée à la date convenue.`,
       lignes: [
-        { libelle: "Rémunération", texte: "Fixée au devis, à la mission." },
-        { libelle: "Périmètres", texte: "Hors périmètres déjà sous exclusivité." },
+        { libelle: "Rémunération", cle: "À la mission", texte: "Fixée au devis." },
+        {
+          libelle: "Périmètres",
+          cle: "Hors exclusivité",
+          texte: "Les périmètres déjà réservés à un client ne sont pas concernés.",
+        },
       ],
     },
     note: `${brand.MARQUE} ${brand.SUFFIXE} n’intervient pas dans les opérations : ni conseil, ni négociation.`,

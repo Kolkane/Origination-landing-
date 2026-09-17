@@ -16,20 +16,23 @@ import { grand } from "@/config/typo";
    deux cases. Une note grise en pied. Sous 1000 px la case de tête prend
    toute la largeur et les cases vont par deux ; sous 761 px tout
    s'empile, une case par ligne. */
-type Ligne = { libelle: string; valeur?: string; texte: string };
+/* la même anatomie dans chaque case : le libellé, puis la clé, puis la
+   phrase. La clé est une valeur (en vert, en grand : une durée
+   d'engagement) ou une clé en encre ; une case sans l'une ni l'autre
+   (le mandat) ne porte que sa phrase. */
+type Ligne = { libelle: string; valeur?: string; cle?: string; texte: string };
 
 function Case({ l }: { l: Ligne }) {
+  const cle = l.valeur ? (
+    <p className="case-valeur">{grand(l.valeur)}</p>
+  ) : l.cle ? (
+    <p className="case-cle">{grand(l.cle)}</p>
+  ) : null;
   return (
     <div className="case">
       <p className="libelle">{l.libelle}</p>
-      {l.valeur ? (
-        <>
-          <p className="case-valeur">{grand(l.valeur)}</p>
-          <p className="case-petit">{l.texte}</p>
-        </>
-      ) : (
-        <p className="case-seul">{l.texte}</p>
-      )}
+      {cle}
+      <p className={cle ? "case-petit" : "case-seul"}>{l.texte}</p>
     </div>
   );
 }
