@@ -1519,6 +1519,32 @@ sur une hauteur ni une largeur de texte, qui se remesurent sur le build.
   VideoHero.tsx choisit la source UNE FOIS, par
   matchMedia('(max-width: 760px)'), avant de lancer la lecture ; le HTML
   ne porte plus de source, seulement le poster, commun aux deux.
+- LOT 4 TER, FAIT LE 17/09/2026 : l'offre publiée et l'ombre du hero.
+  CONDITIONS : les trois valeurs du bloc « L'origination » sont celles de
+  l'amendement « Offre publiée, 17/09/2026 » (plus bas) : « Pour
+  commencer, Un mois », « Ensuite, Trois mois », « Pendant le contrat, Un
+  seul cabinet ». Les intros et le bloc du mandat ne changent pas. Plus
+  aucune mention sur le site du retainer, du fee, de la part des
+  honoraires ni de la protection de vingt-quatre mois, métadonnées et
+  JSON-LD compris, vérifié sur le HTML des cinq pages ; le « 24 mois » du
+  spécimen est une fenêtre de vérification au registre, pas la protection,
+  il reste. Le commentaire de brand.ts qui décrivait l'ancienne structure
+  est mis à jour, la note du BACKLOG aussi : ce qui reste à trancher ne
+  concerne plus que le contrat.
+  L'OMBRE DU HERO, remesurée ÉLÉMENT PAR ÉLÉMENT avec les bons seuils :
+  le titre fait 27 px, c'est du grand texte au sens des WCAG, seuil 3:1 ;
+  le paragraphe (15 px, #DDE5E1) et le lien (15 px, blanc) restent à
+  4,5:1. Mesure lettre contre fond, luminance réelle de chaque texte, sur
+  les treize images de la vidéo mobile. Sans ombre : titre 2,22:1,
+  paragraphe 5,42:1, lien 19,7:1 ; seul le titre échoue, sur cinq images.
+  Réglage retenu, le plus léger qui tient le titre sur les treize, monté
+  par petits pas : 0 1px 3px rgba(6,10,8,.5), 0 0 14px rgba(6,10,8,.45),
+  0 0 28px rgba(6,10,8,.4), le même sur les trois éléments, sous 761 px
+  seulement, ni dégradé, ni bande, ni voile plus sombre. Avec : titre
+  3,07:1 (pire à 5,75 s), paragraphe 6,56:1, lien 20:1. Les paliers
+  intermédiaires : la couche 14 px à .45 seule donne 2,88 (une image
+  sous le seuil), la couche 28 px à .3 donne 3,00 tout juste sous le seuil
+  sur une image. Captures avant et après dans V80-captures/lot4ter.
 - MÉTHODE DU CHANTIER : cinq lots, un commit par lot, un rapport court et une
   validation entre chaque. 0 préparation (emblèmes, Hanken, tokens, charte) ;
   1 hero, en-tête, pied de page ; 2 service, dossier et popup, méthode ;
@@ -1527,6 +1553,28 @@ sur une hauteur ni une largeur de texte, qui se remesurent sur le build.
   l'accueil à tenir : 88 / 96 / 100 / 100 (V78, médiane de trois passes) ; pas
   de recul sur la performance, et si la vidéo pèse, une solution sans la
   retirer.
+
+## Offre publiée, 17/09/2026 (arbitrage Vincent)
+POUR LE SITE, cet amendement SUPPLANTE la durée d'engagement et les trois
+composantes de la rémunération de la section « L'offre v15 » ci-dessous.
+Ce que le site montre, section Conditions, bloc « L'origination », et rien
+de plus : un PREMIER MOIS pour juger sur pièces, proposé seulement si la
+mesure du périmètre montre des dossiers à livrer ; ensuite des PÉRIODES DE
+TROIS MOIS, résiliables à chaque échéance avec un mois de préavis ;
+l'EXCLUSIVITÉ pendant le contrat, le périmètre est réservé à un seul
+cabinet ; et le RENVOI AU DEVIS pour les montants. La structure de la
+rémunération ne se traite qu'au devis : plus aucune mention sur le site du
+retainer, du fee à la signature, de la part des honoraires de succès ni de
+la protection de vingt-quatre mois, métadonnées et JSON-LD compris,
+vérifié sur le HTML produit. Le mandat de recherche ne change pas
+(rémunération fixée au devis, à la mission). La note « ni conseil, ni
+négociation » reste.
+RESTENT EN VIGUEUR : les règles de vocabulaire de l'offre v15 (« zone »,
+« verticale », « abonnement », « cellule » proscrits, le livrable s'appelle
+« dossier d'approche ») et l'interdit de toute promesse de volume ; la
+liste blanche des chiffres, « un mois » et « trois mois » étant des durées
+d'engagement écrites en lettres, comme « trente minutes ». La section v15
+reste en procès-verbal.
 
 ## L'offre v15 (arbitrage Vincent, 02/09/2026 — remplace la v13)
 PRINCIPE, et il gouverne tout le reste : le site donne la STRUCTURE de la

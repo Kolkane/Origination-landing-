@@ -294,19 +294,21 @@ export const copy = typoDeep({
        elle-même, faute de page. Il reviendra avec une vraie page. */
     note: "Les critères de repérage sont mesurés sur l’historique national des transmissions de PME.",
   },
-  /* V80 · LES CONDITIONS, au mot près de la planche, à deux corrections
-     près (arbitrage Vincent, 17/09/2026) : « sans limite de nombre » sort
-     de l'intro de l'origination, et la protection dit que la rémunération
-     reste due, pas que le mandat l'est. La structure de la rémunération
-     est donnée, jamais un nombre ni un pourcentage (offre v15) : les
-     montants sont renvoyés au devis dans l'intro.
-     Le libellé « Abonnement » de la planche est remplacé par « En
-     continu », en miroir de « À la mission » : la section « L'offre v15 »
-     de CLAUDE.md proscrit le mot, et la charte prime (arbitrage Vincent,
-     17/09/2026, lot 4). La carte « Facturation » de la planche (« Un mois
-     sans dossier livré n'est pas facturé ») est SUPPRIMÉE au lot 4 bis :
-     le plancher mensuel est mort avec le modèle au volume (v65), un
-     retainer le contredit. Trois valeurs restent. */
+  /* V80 · LES CONDITIONS. L’intro de la section, celle de l’origination et
+     le bloc du mandat sont ceux de la planche, à une correction près :
+     « sans limite de nombre » est sorti de l’intro de l’origination
+     (arbitrage Vincent, 17/09/2026). Le libellé « Abonnement » de la
+     planche est devenu « En continu », en miroir de « À la mission » : la
+     section « L’offre v15 » de CLAUDE.md proscrit le mot.
+     LES TROIS VALEURS sont celles de L’OFFRE PUBLIÉE LE 17/09/2026
+     (amendement CLAUDE.md du même nom) et remplacent les quatre cartes de
+     la planche : un premier mois pour juger, proposé seulement si la
+     mesure du périmètre montre des dossiers à livrer ; puis des périodes
+     de trois mois, résiliables à chaque échéance avec un mois de préavis ;
+     et l’exclusivité pendant le contrat. La structure de la rémunération
+     ne se traite qu’au devis : plus de retainer, de fee, de part des
+     honoraires ni de protection sur le site. Les montants sont renvoyés au
+     devis dans l’intro, aucun volume n’est promis. */
   conditions: {
     titre: "Conditions",
     intro:
@@ -318,22 +320,21 @@ export const copy = typoDeep({
         "Votre périmètre est tenu sous veille. Chaque dossier vous est livré dès qu’il est vérifié. Le volume du périmètre est mesuré et annoncé au devis, avant tout engagement.",
       valeurs: [
         {
-          libelle: "Engagement",
-          valeur: "Six mois",
-          texte: "Puis reconduction mensuelle, résiliable avec un mois de préavis.",
+          libelle: "Pour commencer",
+          valeur: "Un mois",
+          texte:
+            "Un premier mois pour juger sur pièces, proposé seulement si la mesure de votre périmètre montre des dossiers à livrer.",
         },
         {
-          libelle: "Rémunération",
-          valeur: "Trois composantes",
+          libelle: "Ensuite",
+          valeur: "Trois mois",
           texte:
-            "Un retainer mensuel, un fee à la signature de chaque mandat obtenu sur un dossier livré, et une part des honoraires de succès.",
+            "Des périodes de trois mois, résiliables à chaque échéance avec un mois de préavis.",
         },
-
         {
-          libelle: "Protection",
-          valeur: "Vingt-quatre mois",
-          texte:
-            "La rémunération reste due sur tout mandat signé avec une société issue d’un dossier livré, contrat en cours ou non.",
+          libelle: "Pendant le contrat",
+          valeur: "Un seul cabinet",
+          texte: "Votre périmètre vous est réservé.",
         },
       ],
     },

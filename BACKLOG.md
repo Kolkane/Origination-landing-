@@ -86,15 +86,13 @@ une correction. À trancher.
 - **Image OpenGraph.** Retirer le runtime edge la ferait prégénérer au
   build, mais le prérendu casse dans `@vercel/og` sur poste Windows. À
   reprendre sur une branche, où une préview Vercel tranchera (v56).
-- **Conditions : un point à aligner sur la décision du 2026-09-17, en
-  attente de la confirmation du contrat.** Plus aucun fee sur les mandats :
-  la « Protection » (vingt-quatre mois, rémunération due sur tout mandat
-  signé avec une société issue d'un dossier livré) sortirait, et la
-  « Rémunération » perdrait son fee à la signature de chaque mandat ; ce qui
-  reste de sa structure est à réécrire. La page « Comment je travaille »
-  remise à un cabinet le 2026-09-18 porte déjà le nouveau texte ; le site
-  porte encore l'ancien, dans `src/config/copy.ts` (conditions.origination).
-  La reconduction mensuelle du site est aussi à confirmer contre le contrat.
-  La carte « Facturation » et son « un mois sans dossier livré n'est pas
-  facturé » sont partis au lot 4 bis de la V80 (17/09/2026) : le plancher
-  mensuel ne survit plus nulle part sur le site.
+- **Conditions : le site porte l'offre publiée le 17/09/2026** (premier
+  mois conditionné à la mesure du périmètre, périodes de trois mois,
+  exclusivité, renvoi au devis), amendement « Offre publiée » de
+  `CLAUDE.md`. Le site ne décrit plus la structure de la rémunération. Ce
+  qui reste à trancher ne concerne plus que le CONTRAT : la fin du fee sur
+  les mandats et de la protection de vingt-quatre mois, dont la page
+  « Comment je travaille » remise à un cabinet le 2026-09-18 tient déjà
+  compte. La carte « Facturation » et « un mois sans dossier livré n'est
+  pas facturé » sont partis au lot 4 bis : le plancher mensuel ne survit
+  nulle part sur le site.

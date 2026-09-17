@@ -446,12 +446,21 @@ html {
     display: none;
   }
   /* sur téléphone le bloc de texte couvre les reflets du plumage : une
-     ombre discrète sous les lettres, et rien d'autre, ni dégradé ni voile
-     plus sombre (arbitrage Vincent, lot 4 bis). Mesurée : voir CLAUDE.md. */
+     ombre sous les lettres, et rien d'autre, ni dégradé, ni bande, ni
+     voile plus sombre (arbitrage Vincent, 17/09/2026). Trois couches, la
+     même pour le titre, le paragraphe et le lien : le réglage le plus
+     léger qui tient le titre (27 px, grand texte, seuil 3:1) au-dessus du
+     seuil sur les treize images où le plumage passe sous le texte, mesuré
+     lettre contre fond sur le build (3,07:1 au pire, à 5,75 s ; 2,22:1
+     sans ombre). Le paragraphe et le lien passaient déjà leurs 4,5:1. Les
+     deux couches douces sont invisibles sur le noir. Voir CLAUDE.md. */
   .hero-texte h1,
   .hero-texte p,
   .hero-lien {
-    text-shadow: 0 1px 3px rgba(6, 10, 8, 0.5);
+    text-shadow:
+      0 1px 3px rgba(6, 10, 8, 0.5),
+      0 0 14px rgba(6, 10, 8, 0.45),
+      0 0 28px rgba(6, 10, 8, 0.4);
   }
   .pied {
     padding: 48px 0 32px;

@@ -52,9 +52,9 @@ export const brand = typoDeep({
   },
   /* v65 : PRICING et SHOW_PRICING sont SUPPRIMÉS. Le site ne publie plus
      aucun montant : ni le plancher mensuel, ni son report annuel, ni le
-     prix du mandat. La rémunération est donnée par sa STRUCTURE — un
-     retainer, un fee à la signature, une part des honoraires de succès —
-     et chiffrée au devis, avant signature. La règle « tout chiffre affiché
+     prix du mandat. V80, offre publiée le 17/09/2026 : la structure de la
+     rémunération elle-même ne se traite plus qu'au devis, le site ne la
+     décrit plus. La règle « tout chiffre affiché
      vient d'ici » n'est pas abandonnée, elle n'a simplement plus de
      chiffre à porter. SHOW_PRICING n'était lu nulle part.
      Ne pas réintroduire de montant sans arbitrage : c'est la liste
