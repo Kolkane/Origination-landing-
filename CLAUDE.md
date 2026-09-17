@@ -1349,6 +1349,40 @@ sur une hauteur ni une largeur de texte, qui se remesurent sur le build.
   pour des rendus de 30 à 132 px. Solution envisagée : des variantes
   réduites générées depuis les fichiers sources (sharp en dépendance de
   développement), sans toucher aux fichiers déposés.
+- LOT 2, FAIT LE 17/09/2026 : le service et ses icônes, la bande du
+  dossier et son popup, la méthode. Trois sections portées au pixel des
+  planches, mesurées sur le build, entre le hero et les six sections v7
+  qui restent jusqu'au lot 3.
+  LES ICÔNES vivent dans Icones.tsx, quatre SVG inline en currentColor,
+  aria-hidden, sans cadre ni fond ; le tracé de la carte est dans
+  carte/france-icone.ts, tracé pour tracé celui de la planche, une seule
+  région remplie en vert. LE POPUP est un <dialog> natif (showModal) :
+  focus piégé et Échap par le navigateur ; ajoutés ici, le corps bloqué,
+  la fermeture au clic sur le voile (le dialog EST le voile, le papier est
+  son enfant), le focus rendu au déclencheur qui a ouvert, couverture ou
+  bouton, et l'ouverture sur « Fermer » comme dans la planche. SANS OMBRE
+  PORTÉE : arbitrage Vincent, la contradiction signalée au lot 0 est
+  tranchée dans le sens de l'interdit. Le dossier est rendu par le
+  serveur, huit rubriques typées dans copy.ts (RubriqueDossier : cinq
+  formes), et le noscript du layout le sort de sa boîte pour qu'il se lise
+  sans JavaScript. Le lien « Version PDF » n'existe que si
+  public/specimen-imbrin.pdf est sur le disque au build (Dossier.tsx,
+  enveloppe serveur) : déposer le fichier suffit. Le spécimen dit qu'il
+  est fictif à quatre endroits visibles, la rubrique 7 ne porte que des
+  statuts, aucune coordonnée.
+  HORS PLANCHE, décidé au lot : entre 761 et 1000 px, la rangée d'icônes
+  passe à deux colonnes, la bande du dossier à une, la méthode à deux ;
+  sur téléphone la couverture précède le bouton par display:contents sur
+  le bloc de texte et un ordre CSS, le DOM ne bouge pas. Les sections
+  blanches DÉCLARENT leur couleur de texte (color: var(--encre)), le body
+  portant encore l'encre claire de la DA v7 jusqu'au lot 3 : sans cela
+  les h3 sortaient en blanc sur blanc, vu à la comparaison. Le texte se
+  coupe parfois autrement que dans la planche : text-wrap: pretty (v29)
+  reste posé sur le body, la planche ne l'a pas.
+  SIGNALÉ, NON TRANCHÉ : le lien « La méthode en détail » de la planche
+  pointe sur la section elle-même (#methode), il n'y a pas de page de
+  méthode ; porté tel quel. Même question au lot 3 pour « Toutes les
+  analyses ».
 - MÉTHODE DU CHANTIER : cinq lots, un commit par lot, un rapport court et une
   validation entre chaque. 0 préparation (emblèmes, Hanken, tokens, charte) ;
   1 hero, en-tête, pied de page ; 2 service, dossier et popup, méthode ;

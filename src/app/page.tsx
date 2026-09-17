@@ -12,6 +12,7 @@ import Methode from "@/components/Methode";
 import NeFaitPas from "@/components/NeFaitPas";
 import Offre from "@/components/Offre";
 import Reveal from "@/components/Reveal";
+import Service from "@/components/Service";
 import { faqSchema } from "@/config/schema";
 
 /* v70 : le canonique de l'accueil est EXPLICITE, comme sur toutes les
@@ -29,24 +30,18 @@ export default function Home() {
     <main id="haut">
       {/* la FAQ n'existe que sur l'accueil : son balisage y reste */}
       <JsonLd data={faqSchema} />
+      {/* V80 · l'ordre des planches, jusqu'où il est porté. Les quatre
+          premières sections sont celles de la V80 ; les six suivantes
+          sont encore celles de la DA v7 et meurent au lot 3, où
+          Conditions, À propos, Analyses et Prendre rendez-vous prennent
+          leur place. */}
       <Hero />
+      <Service />
       <Dossier />
-      <Entonnoir />
       <Methode />
-      {/* v60 : la bande des refus se pose entre la méthode et l'offre —
-          elle ferme la méthode sur ce qu'elle s'interdit, juste avant que
-          l'offre demande de l'argent. Papier, comme la méthode : le trait
-          de vin de la mention rayée ne donne que 2,32:1 sur l'encre et la
-          charte v15 interdit le lift sur un filet. Mesuré : 198px à 1440. */}
+      <Entonnoir />
       <NeFaitPas />
       <Offre />
-      {/* v52 : les engagements sont supprimés (arbitrage Vincent, 27/08) —
-          leurs quatre principes vivent déjà ailleurs : scores dans la
-          méthode, premier contact et données grises dans la FAQ RGPD,
-          opt-out dans le pied de l'offre, chiffres dans la mesure. */}
-      {/* v53 : la mesure est supprimée — le suivi des cohortes vit en FAQ,
-          le taux d'écart par lot dans la note du filtre, le zéro chiffre
-          générique dans la FAQ. */}
       <Fondateur />
       <Analyses />
       <Faq />

@@ -1,30 +1,33 @@
 import { copy } from "@/config/copy";
 import { grand } from "@/config/typo";
 
-/* v38 : la méthode se tait. L'en-tête en bande (kicker à gauche,
-   statement à droite) et les trois colonnes de la v15-B1 sont remplacés
-   par un empilement : statement à l'échelle display, puis trois entrées
-   sur filets, numéro mono, titre, texte. La page ne porte plus qu'une
-   seule voix, l'objet papier du dossier fait le reste.
-   Direction validée sur MAQUETTE-V38-OBJET.html. */
+/* V80 · LA MÉTHODE. Trois étapes numérotées, chacune sous un filet
+   d'encre, le numéro en vin : c'est l'un des quatre emplois du vin de la
+   V80. Puis la note et le lien. Les numéros sont aria-hidden, une liste
+   ordonnée est déjà numérotée pour qui l'écoute.
+   La planche au pixel : trois colonnes sur ordinateur, une pile sur
+   téléphone. */
 export default function Methode() {
   const m = copy.methode;
   return (
-    <section className="method papier" id="methode">
-      <div className="wrap">
-        <p className="kicker label">{m.kicker}</p>
-        <h2 className="m-statement mask">{grand(m.statement)}</h2>
-        <p className="m-sous">{m.sousTitre}</p>
-        <div className="m-entrees">
-          {m.lignes.map((ligne) => (
-            /* v51 : plus de numéros de chrome — trois entrées titrées sur
-               filets n'ont pas besoin d'être comptées */
-            <div className="m-entree" key={ligne.num}>
-              <h3 className="me-t">{grand(ligne.titre)}</h3>
-              <p className="me-p">{ligne.texte}</p>
-            </div>
+    <section className="methode" id="methode">
+      <div className="cadre">
+        <h2 className="titre-section">{grand(m.titre)}</h2>
+        <ol className="methode-etapes">
+          {m.etapes.map((etape, i) => (
+            <li className="methode-etape" key={etape.titre}>
+              <span aria-hidden="true" className="methode-num">
+                {i + 1}
+              </span>
+              <h3 className="methode-titre">{grand(etape.titre)}</h3>
+              <p className="methode-texte">{etape.texte}</p>
+            </li>
           ))}
-        </div>
+        </ol>
+        <p className="methode-note">{m.note}</p>
+        <a className="lien-vin" href={m.lien.href}>
+          {m.lien.label}
+        </a>
       </div>
     </section>
   );

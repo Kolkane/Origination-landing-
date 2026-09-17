@@ -18,6 +18,10 @@ export const brand = typoDeep({
     videoHero: "/imbrin.mp4",
     posterHero: "/imbrin-poster.jpg",
     portrait: "/portrait-vincent-fournier.webp",
+    /* le PDF du spécimen. Le fichier n'existe PAS encore : le lien
+       « Version PDF » du popup ne s'affiche que si Dossier.tsx le trouve
+       sur le disque au build. Déposer le fichier suffit à l'afficher. */
+    specimenPdf: "/specimen-imbrin.pdf",
   },
   /* v68 : le délai de traitement d'une demande d'opposition ou d'accès.
      Constante et non texte en dur : il est annoncé au dirigeant sur la

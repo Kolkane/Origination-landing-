@@ -78,10 +78,13 @@ export default function RootLayout({
                    trait tracé, et les cinq textes reprennent le flux au
                    lieu de s'empiler dans la même cellule */
                 ".cran{opacity:1!important;transform:none!important}.toise-ligne line{stroke-dashoffset:0!important}.toise-scale::after{opacity:1!important}.toise-detail{display:block!important}.td{opacity:1!important;margin-top:10px}" +
-                /* le viseur du dossier n'a plus de nav pour changer de zone :
-                   la scène repasse en flux normal et les six zones se lisent
-                   à la suite, comme un document entier */
-                ".d-scene{display:block!important}.d-scene .zone,.d-scene .zone *{opacity:1!important;transform:none!important;filter:none!important;animation:none!important}.d-scene .zone{pointer-events:auto!important}.d-scene .zone+.zone{margin-top:26px;padding-top:22px;border-top:1px solid var(--ink-line)}",
+                /* V80 : le dossier spécimen est rendu par le serveur, il est
+                   donc dans le HTML ; mais un <dialog> fermé ne s'affiche
+                   pas, et sans JavaScript aucun des deux boutons ne peut
+                   l'ouvrir. Il reprend ici le flux de la page, sous la
+                   bande, et sa barre d'outils disparaît avec ses boutons
+                   inertes. Le contenu reste accessible, c'est la règle. */
+                "dialog.popup{display:block!important;position:static;width:auto;max-width:none;height:auto;max-height:none;padding:0;margin:40px 0 0}dialog.popup .popup-papier{max-width:none}dialog.popup .popup-barre{display:none}",
             }}
           />
         </noscript>
