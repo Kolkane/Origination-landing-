@@ -1331,8 +1331,10 @@ sur une hauteur ni une largeur de texte, qui se remesurent sur le build.
   trait, sans cadre ni fond). « Le dossier d'approche » (bande noire,
   description, couverture cliquable, bouton qui ouvre le dossier en popup).
   « Méthode » (trois étapes numérotées, numéros en vin). « Conditions »
-  (l'origination sous un filet vert épais avec quatre grandes valeurs, le
-  mandat de recherche en dessous sous un filet fin). « À propos » (portrait,
+  (l'origination sous un filet vert épais, le mandat de recherche en
+  dessous sous un filet fin ; depuis la v82, chacune en feuille de
+  conditions, une ligne par point, et non plus en quatre grandes
+  valeurs). « À propos » (portrait,
   texte, coordonnées légales). « Analyses » (trois colonnes, sans date).
   « Prendre rendez-vous » (bande verte, seul bouton commercial du site,
   « Choisir un créneau »). Pied de page noir avec l'emblème clair.
@@ -1690,6 +1692,40 @@ sur une hauteur ni une largeur de texte, qui se remesurent sur le build.
   Les interdits du hero V80 tiennent : voile uniforme, ni dégradé, ni
   zoom, ni filtre ; le retour de l'étalonnage et du voile en dégradé de la
   V78 n'a pas été demandé.
+- RETOUCHES v82, LES CONDITIONS (arbitrage Vincent, 17/09/2026, branche
+  v82). Vincent : « du grand n'importe quoi, en disposition comme en
+  compréhension ; l'objectif est de comprendre, un rendu original mais
+  sobre ». Le diagnostic : les quatre grandes valeurs de la planche
+  mettaient sur le même plan deux durées, une règle de facturation et une
+  décision reportée, on n'y lisait pas le déroulé ; l'intro annonçait
+  « deux façons de travailler ensemble » mais l'origination était mise en
+  scène comme un titre et le mandat comme une note ; « au devis » revenait
+  cinq fois. Deux directions maquettées (la feuille de conditions, la
+  ligne du temps ; captures dans V80-captures/v82-conditions) ; Vincent a
+  retenu LA FEUILLE, en rappelant que l'origination pèse bien plus que le
+  mandat.
+  LA FORME : un term sheet, le code du document financier imprimé que le
+  site vise. Deux offres, la même grille 5/7 (à gauche libellé, titre,
+  texte ; à droite la feuille, une ligne par condition, libellé sur 170 px
+  puis la condition, filets entre les lignes, une liste de définitions dt
+  et dd), deux poids : l'origination sous le filet vert de 3 px, titre à
+  46 px, six lignes dans l'ordre du temps (la mesure du périmètre, un
+  mois, trois mois, au mois, exclusivité, premier contact), les durées
+  seuls mots en grand et en vert, 26 px ; le mandat en dessous sous le
+  filet d'encre fin, titre à 28 px, deux lignes (rémunération,
+  périmètres), corps un cran plus petit. Sous 1000 px le titre et la
+  feuille s'empilent, la feuille gardant son libellé à gauche ; sous
+  761 px le libellé passe au-dessus de la condition, une ligne entre deux
+  filets. La note « ni conseil, ni négociation » ne bouge pas.
+  LES TEXTES : ceux de l'offre publiée et du v81, rien d'autre ; seuls les
+  libellés de lignes sont nouveaux (« Avant tout engagement »,
+  « Rémunération », « Périmètres ») et « La mesure du périmètre » coiffe
+  la phrase « Son volume est mesuré et annoncé au devis ». La phrase
+  d'exclusivité sort du paragraphe pour sa ligne ; le mandat perd ses
+  deux dernières phrases au profit de ses deux lignes. Vérifié sur le
+  HTML produit : une seule mention du premier contact, aucune de
+  retainer, fee, honoraires, protection, article 14, aucun tiret, aucun
+  mot proscrit. Captures 1440, 900 et 390 dans V80-captures/v82-conditions.
 - MÉTHODE DU CHANTIER : cinq lots, un commit par lot, un rapport court et une
   validation entre chaque. 0 préparation (emblèmes, Hanken, tokens, charte) ;
   1 hero, en-tête, pied de page ; 2 service, dossier et popup, méthode ;
@@ -1720,6 +1756,12 @@ de « Pendant le contrat · Un seul cabinet » ; l'exclusivité s'écrit dans le
 bloc, « pour un client, sur un périmètre, pendant une durée fixée au devis » ; la
 quatrième valeur reste « Premier contact · Au devis ». Aligné sur la page « Comment
 je travaille » remise à un cabinet le 18/09/2026.
+COMPLÉMENT v82 (arbitrage Vincent, 17/09/2026) : les « grandes valeurs » n'existent
+plus, la section est une FEUILLE DE CONDITIONS, une ligne par point (voir
+« RETOUCHES v82, LES CONDITIONS » dans les lots V80). Le fond ne change pas : la
+mesure au devis, un mois, trois mois, facturation au mois, exclusivité, premier
+contact au devis pour l'origination ; rémunération à la mission et périmètres hors
+exclusivité pour le mandat. Ce complément ne touche qu'à la forme.
 RESTENT EN VIGUEUR : les règles de vocabulaire de l'offre v15 (« zone »,
 « verticale », « abonnement », « cellule » proscrits, le livrable s'appelle
 « dossier d'approche ») et l'interdit de toute promesse de volume ; la

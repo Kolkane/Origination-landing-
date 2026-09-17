@@ -1289,19 +1289,24 @@ html {
 }
 
 /* ---------- les conditions ---------- */
-/* l'origination : le filet vert de 3 px est le seul filet coloré du
-   site, et le seul emploi du vert hors bouton et bande finale, avec les
-   quatre grandes valeurs qu'il coiffe */
-.origination {
-  margin-top: 64px;
-  border-top: 3px solid var(--vert);
-  padding-top: 36px;
-}
-.origination-tete {
+/* v82 : LA FEUILLE DE CONDITIONS (arbitrage Vincent, 17/09/2026), à la
+   place des quatre grandes valeurs de la planche. Deux offres, la même
+   grille 5/7 : à gauche le libellé, le titre et le texte ; à droite la
+   feuille, une ligne par condition. L'origination est l'offre principale :
+   le filet vert de 3 px (seul filet coloré du site, seul emploi du vert
+   hors bouton et bande finale, avec les durées de sa feuille), titre à
+   46 px, six lignes. Le mandat de recherche la complète : filet d'encre
+   fin, titre à 28 px, deux lignes, corps un cran plus petit. */
+.offre {
   display: grid;
   grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
   column-gap: 80px;
   align-items: start;
+}
+.origination {
+  margin-top: 64px;
+  border-top: 3px solid var(--vert);
+  padding-top: 36px;
 }
 .origination-titre {
   margin: 8px 0 0;
@@ -1310,45 +1315,55 @@ html {
   line-height: 1.05;
   letter-spacing: -0.01em;
 }
-.origination-texte {
-  margin: 6px 0 0;
+.offre-texte {
+  margin: 20px 0 0;
+  max-width: 420px;
   font-size: 19px;
   line-height: 1.6;
   color: var(--gris);
 }
-/* quatre valeurs, quatre colonnes égales, comme la planche ; ce ne sont
-   plus les siennes : l'offre publiée du 17/09/2026 (voir CLAUDE.md) */
-.valeurs {
-  margin-top: 56px;
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  column-gap: 48px;
+/* la feuille : le libellé sur 170 px, la condition à droite, un filet
+   entre les lignes ; la première ligne commence à la hauteur du libellé
+   de gauche. Une liste de définitions : dt, dd. */
+.feuille {
+  margin: 0;
 }
-.valeur-grande {
-  margin: 6px 0 0;
-  font-size: 30px;
+.feuille-ligne {
+  display: grid;
+  grid-template-columns: 170px minmax(0, 1fr);
+  column-gap: 32px;
+  padding: 20px 0;
+  border-bottom: 1px solid var(--filet);
+}
+.feuille-ligne:first-child {
+  padding-top: 2px;
+}
+.feuille dt {
+  margin: 0;
+  padding-top: 3px;
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--gris-2);
+}
+.feuille dd {
+  margin: 0;
+  font-size: 17px;
+  line-height: 1.55;
+  color: var(--gris);
+}
+.feuille dd strong {
+  display: block;
+  margin-bottom: 4px;
+  font-size: 26px;
   font-weight: 500;
   line-height: 1.15;
   letter-spacing: -0.01em;
   color: var(--vert);
 }
-.valeur-texte {
-  margin: 12px 0 0;
-  font-size: 15px;
-  line-height: 1.55;
-  color: var(--gris);
-}
-/* le mandat de recherche : un cran en dessous, filet d'encre fin,
-   titre à 28 px, borné à 900 px */
 .mandat {
   margin-top: 72px;
-  max-width: 900px;
   border-top: 1px solid var(--encre);
   padding-top: 28px;
-  display: grid;
-  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
-  column-gap: 80px;
-  align-items: start;
 }
 .mandat-titre {
   margin: 8px 0 0;
@@ -1356,11 +1371,12 @@ html {
   font-weight: 500;
   line-height: 1.15;
 }
-.mandat-texte {
-  margin: 4px 0 0;
+.mandat .offre-texte {
+  margin-top: 14px;
   font-size: 17px;
-  line-height: 1.6;
-  color: var(--gris);
+}
+.mandat .feuille dd {
+  font-size: 16px;
 }
 .conditions-note {
   margin: 56px 0 0;
@@ -1539,14 +1555,15 @@ html {
 /* entre 761 et 1000 px, hors planche : les grilles larges cèdent avant
    le point de rupture, comme au lot 2 */
 @media (max-width: 1000px) {
-  .origination-tete,
-  .mandat {
+  /* les deux offres empilent le titre et la feuille ; la feuille garde
+     son libellé à gauche jusqu'au point de rupture */
+  .offre {
     grid-template-columns: minmax(0, 1fr);
-    row-gap: 16px;
+    row-gap: 24px;
   }
-  .valeurs {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    row-gap: 40px;
+  .feuille-ligne:first-child {
+    padding-top: 20px;
+    border-top: 1px solid var(--filet);
   }
   .apropos-grille {
     grid-template-columns: minmax(0, 1fr);
@@ -1588,44 +1605,42 @@ html {
     margin-top: 40px;
     padding-top: 24px;
   }
-  .origination-tete {
-    display: block;
+  .offre {
+    row-gap: 8px;
   }
   .origination-titre {
     margin-top: 6px;
     font-size: 36px;
   }
-  .origination-texte {
+  .offre-texte {
     margin-top: 16px;
     font-size: 17px;
   }
-  /* les quatre valeurs s'empilent sur filets, entre deux filets */
-  .valeurs {
-    margin-top: 20px;
-    display: block;
-    border-bottom: 1px solid var(--filet);
+  /* la feuille sur téléphone : le libellé au-dessus de la condition,
+     une ligne entre deux filets */
+  .feuille-ligne {
+    grid-template-columns: minmax(0, 1fr);
+    row-gap: 4px;
+    padding: 18px 0;
   }
-  .valeur {
-    padding: 20px 0;
-    border-top: 1px solid var(--filet);
+  .feuille-ligne:first-child {
+    padding-top: 18px;
   }
-  .valeur-grande {
-    margin-top: 4px;
-    font-size: 26px;
+  .feuille dt {
+    padding-top: 0;
   }
-  .valeur-texte {
-    margin-top: 8px;
+  .feuille dd strong {
+    font-size: 24px;
   }
   .mandat {
     margin-top: 44px;
     padding-top: 20px;
-    display: block;
   }
   .mandat-titre {
     margin-top: 6px;
     font-size: 24px;
   }
-  .mandat-texte {
+  .mandat .offre-texte {
     margin-top: 12px;
     font-size: 16px;
   }

@@ -308,17 +308,32 @@ export const copy = typoDeep({
     titre: "Conditions",
     intro:
       "Deux façons de travailler ensemble. Les montants sont chiffrés au devis, avant signature, après mesure de votre périmètre.",
+    /* v82 (arbitrage Vincent, 17/09/2026) : LA FEUILLE DE CONDITIONS. Les
+       quatre « grandes valeurs » de la planche mettaient sur le même plan
+       deux durées, une règle de facturation et une décision reportée ; on
+       n'y lisait pas le déroulé. Chaque condition a désormais sa ligne,
+       dans l'ordre du temps, libellé à gauche et condition à droite ; la
+       durée reste le seul mot en grand quand il y en a une (valeur
+       facultative). Les phrases sont celles de l'offre publiée du 17/09 et
+       du v81, seuls les libellés de lignes sont nouveaux. L'origination
+       est l'offre principale : toute la largeur, six lignes ; le mandat de
+       recherche la complète en dessous, deux lignes, un cran plus petit. */
     origination: {
       libelle: "En continu",
       titre: "L’origination",
       texte:
-        "Votre périmètre est tenu sous veille. Chaque dossier vous est livré dès qu’il est vérifié. Le volume du périmètre est mesuré et annoncé au devis, avant tout engagement. L’exclusivité vaut pour un client, sur un périmètre, pendant une durée fixée au devis.",
-      valeurs: [
+        "Votre périmètre est tenu sous veille. Chaque dossier d’approche vous est livré dès qu’il est vérifié.",
+      lignes: [
+        {
+          libelle: "Avant tout engagement",
+          valeur: "La mesure du périmètre",
+          texte: "Son volume est mesuré et annoncé au devis.",
+        },
         {
           libelle: "Pour commencer",
           valeur: "Un mois",
           texte:
-            "Un premier mois pour juger sur pièces, proposé seulement si la mesure de votre périmètre montre des dossiers à livrer.",
+            "Un premier mois pour juger sur pièces, proposé seulement si la mesure montre des dossiers à livrer.",
         },
         {
           libelle: "Ensuite",
@@ -326,20 +341,21 @@ export const copy = typoDeep({
           texte:
             "Des périodes de trois mois, résiliables à chaque échéance avec un mois de préavis.",
         },
-        /* v81 : facturé au mois, un mois sans dossier livré n'est pas facturé ;
-           l'exclusivité est remontée dans le texte de l'origination (un client,
-           un périmètre, une durée fixée au devis) pour garder quatre valeurs. */
+        /* v81 : facturé au mois, un mois sans dossier livré n'est pas facturé */
         {
           libelle: "Facturation",
           valeur: "Au mois",
           texte: "Un mois sans dossier livré n’est pas facturé.",
+        },
+        {
+          libelle: "Exclusivité",
+          texte: "Pour un client, sur un périmètre, pendant une durée fixée au devis.",
         },
         /* la seule mention du premier contact sur le site, et elle est
            commerciale : qui contacte, et comment, se décide au devis
            (arbitrage Vincent, 17/09/2026) */
         {
           libelle: "Premier contact",
-          valeur: "Au devis",
           texte:
             "Qui contacte les dirigeants, et selon quelles modalités, se décide ensemble à la signature.",
         },
@@ -348,7 +364,11 @@ export const copy = typoDeep({
     mandat: {
       libelle: "À la mission",
       titre: "Le mandat de recherche",
-      texte: `Lorsqu’un mandat de recherche arrive au cabinet, ${brand.MARQUE} ${brand.SUFFIXE} constitue, selon vos critères, une liste de sociétés vérifiées, livrée à la date convenue. Rémunération fixée au devis, à la mission. Hors périmètres déjà sous exclusivité.`,
+      texte: `Lorsqu’un mandat de recherche arrive au cabinet, ${brand.MARQUE} ${brand.SUFFIXE} constitue, selon vos critères, une liste de sociétés vérifiées, livrée à la date convenue.`,
+      lignes: [
+        { libelle: "Rémunération", texte: "Fixée au devis, à la mission." },
+        { libelle: "Périmètres", texte: "Hors périmètres déjà sous exclusivité." },
+      ],
     },
     note: `${brand.MARQUE} ${brand.SUFFIXE} n’intervient pas dans les opérations : ni conseil, ni négociation.`,
   },
