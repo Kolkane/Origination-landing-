@@ -1761,7 +1761,7 @@ sur une hauteur ni une largeur de texte, qui se remesurent sur le build.
   première personne : « Je construis des produits de données depuis plus
   d'un an. En travaillant auprès de conseillers en gestion de patrimoine,
   j'ai vu le temps que coûte le repérage des sociétés à approcher. J'ai
-  écrit le programme qui lit les registres à l'échelle nationale, et je
+  écrit le programme qui lit les registres à l'échelle nationale et je
   vérifie chaque dossier avant de vous le livrer. Vous avez un seul
   interlocuteur, du premier échange à la livraison. » « Plus d'un an » est
   une durée en lettres, comme « un mois », et ne contredit pas la liste

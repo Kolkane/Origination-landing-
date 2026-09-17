@@ -406,7 +406,7 @@ export const copy = typoDeep({
        plus dans le texte : il est sous le portrait et dans le JSON-LD. */
     texte: `J’ai fondé ${brand.MARQUE} ${brand.SUFFIXE}, entre Paris et Bayonne.`,
     parcours:
-      "Je construis des produits de données depuis plus d’un an. En travaillant auprès de conseillers en gestion de patrimoine, j’ai vu le temps que coûte le repérage des sociétés à approcher. J’ai écrit le programme qui lit les registres à l’échelle nationale, et je vérifie chaque dossier avant de vous le livrer. Vous avez un seul interlocuteur, du premier échange à la livraison.",
+      "Je construis des produits de données depuis plus d’un an. En travaillant auprès de conseillers en gestion de patrimoine, j’ai vu le temps que coûte le repérage des sociétés à approcher. J’ai écrit le programme qui lit les registres à l’échelle nationale et je vérifie chaque dossier avant de vous le livrer. Vous avez un seul interlocuteur, du premier échange à la livraison.",
     identite: {
       telephone: "Téléphone",
       email: "Email",
