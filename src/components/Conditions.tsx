@@ -3,36 +3,48 @@ import { grand } from "@/config/typo";
 
 /* V80 · LES CONDITIONS. La structure de la rémunération, jamais un
    nombre : c'est la règle de l'offre v15, et rien ici n'y déroge.
-   v82 (arbitrage Vincent, 17/09/2026) : LE TABLEAU remplace les quatre
-   grandes valeurs de la planche. Une grille réglée de douze colonnes,
-   dessinée par des filets et rien d'autre : le fond de la rangée est de
-   la couleur du filet, les cases sont blanches et espacées d'un pixel,
-   c'est cet interstice qui trace les lignes. L'origination, l'offre
-   principale, sous le filet vert de 3 px : une case de tête sur six
-   colonnes (libellé, titre à 46 px, texte) et les deux durées en grand,
-   en vert, sur trois colonnes chacune ; puis une rangée de quatre cases
-   égales. Le mandat de recherche, le complément, reprend la grille sous
-   un filet d'encre fin, un cran plus petit : case de tête à 28 px et
-   deux cases. Une note grise en pied. Sous 1000 px la case de tête prend
-   toute la largeur et les cases vont par deux ; sous 761 px tout
-   s'empile, une case par ligne. */
-/* la même anatomie dans chaque case : le libellé, puis la clé, puis la
-   phrase. La clé est une valeur (en vert, en grand : une durée
-   d'engagement) ou une clé en encre ; une case sans l'une ni l'autre
-   (le mandat) ne porte que sa phrase. */
-type Ligne = { libelle: string; valeur?: string; cle?: string; texte: string };
+   v82 (arbitrage Vincent, 17/09/2026), troisième passage : L'OFFRE. La
+   section fait écho à une section de prix, et une section de prix a un
+   code que tout le monde lit sans effort : le titre, le prix, ce que
+   vous obtenez, les conditions. L'origination est donc un seul panneau,
+   filet vert de 3 px en tête et filet fin autour : à gauche le libellé,
+   le titre à 46 px et, à la place du prix, « Au devis » en vert avec sa
+   phrase et le lien vers la bande de rendez-vous ; à droite « Ce que
+   vous recevez », six gains cochés ; en pied du panneau, « Les
+   conditions », six termes sur trois colonnes. LA COCHE est un SVG
+   inline de 18 px, au trait, dans le vert : c'est un marqueur de liste,
+   pas une icône décorative ; elle est aria-hidden, la liste est déjà une
+   liste pour qui l'écoute. Le mandat de recherche reste en tableau
+   réglé (case de tête, deux cases avec leur clé), un cran plus petit,
+   sous un filet d'encre fin. Une note grise en pied. Sous 1000 px le
+   panneau empile ses deux colonnes et les termes vont par deux ; sous
+   761 px tout est sur une colonne. */
+function Coche() {
+  return (
+    <svg
+      aria-hidden="true"
+      focusable="false"
+      viewBox="0 0 18 18"
+      className="gain-coche"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={1.8}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <path d="M3 9.5l4 4 8-8" />
+    </svg>
+  );
+}
+
+type Ligne = { libelle: string; cle?: string; texte: string };
 
 function Case({ l }: { l: Ligne }) {
-  const cle = l.valeur ? (
-    <p className="case-valeur">{grand(l.valeur)}</p>
-  ) : l.cle ? (
-    <p className="case-cle">{grand(l.cle)}</p>
-  ) : null;
   return (
     <div className="case">
       <p className="libelle">{l.libelle}</p>
-      {cle}
-      <p className={cle ? "case-petit" : "case-seul"}>{l.texte}</p>
+      {l.cle ? <p className="case-cle">{grand(l.cle)}</p> : null}
+      <p className={l.cle ? "case-petit" : "case-seul"}>{l.texte}</p>
     </div>
   );
 }
@@ -47,21 +59,42 @@ export default function Conditions() {
         <h2 className="titre-section">{grand(c.titre)}</h2>
         <p className="intro-section">{c.intro}</p>
 
-        <div className="tableau origination">
-          <div className="rangee rangee-tete">
-            <div className="case case-tete">
+        <div className="offre">
+          <div className="offre-haut">
+            <div className="offre-tete">
               <p className="libelle">{o.libelle}</p>
-              <h3 className="origination-titre">{grand(o.titre)}</h3>
-              <p className="case-texte">{o.texte}</p>
+              <h3 className="offre-titre">{grand(o.titre)}</h3>
+              <div className="offre-prix">
+                <p className="libelle">{o.montants.libelle}</p>
+                <p className="offre-prix-valeur">{grand(o.montants.valeur)}</p>
+                <p className="offre-prix-texte">{o.montants.texte}</p>
+                <a className="lien-vin" href={o.lien.href}>
+                  {o.lien.label}
+                </a>
+              </div>
             </div>
-            {o.durees.map((l) => (
-              <Case l={l} key={l.libelle} />
-            ))}
+            <div className="offre-gains">
+              <p className="libelle offre-sous-titre">{o.gainsTitre}</p>
+              <ul className="gains">
+                {o.gains.map((g) => (
+                  <li className="gain" key={g}>
+                    <Coche />
+                    <span>{g}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
-          <div className="rangee rangee-suite">
-            {o.lignes.map((l) => (
-              <Case l={l} key={l.libelle} />
-            ))}
+          <div className="offre-bas">
+            <p className="libelle offre-sous-titre">{o.termesTitre}</p>
+            <dl className="termes">
+              {o.termes.map((t) => (
+                <div className="terme" key={t.libelle}>
+                  <dt>{t.libelle}</dt>
+                  <dd>{t.texte}</dd>
+                </div>
+              ))}
+            </dl>
           </div>
         </div>
 

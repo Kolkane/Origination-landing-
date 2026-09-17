@@ -307,70 +307,68 @@ export const copy = typoDeep({
   conditions: {
     titre: "Conditions",
     intro:
-      "Deux façons de travailler ensemble. Les montants sont chiffrés au devis, avant signature, après mesure de votre périmètre.",
-    /* v82 (arbitrage Vincent, 17/09/2026) : LE TABLEAU. Les quatre
-       « grandes valeurs » de la planche mettaient sur le même plan deux
-       durées, une règle de facturation et une décision reportée ; on n'y
-       lisait pas le déroulé. Une feuille de conditions (une ligne par
-       point) a été essayée, jugée lisible mais plate. Forme retenue : une
-       grille réglée de cases, dessinée par des filets. L'origination, la
-       grande case de tête, avec ses deux durées en grand à côté (première
-       rangée), puis quatre cases égales (seconde rangée) ; le mandat de
-       recherche reprend la grille, un cran plus petit. Chaque case a la
-       même anatomie : libellé, clé, phrase. La valeur (en vert, en grand)
-       est réservée aux deux durées d'engagement ; les autres clés sont en
-       encre. Les phrases sont celles de l'offre publiée du 17/09 et du
-       v81, seuls les libellés de cases sont nouveaux. */
+      "Deux façons de travailler ensemble : l’origination, en continu, et le mandat de recherche, à la mission.",
+    /* v82 (arbitrage Vincent, 17/09/2026), troisième passage : L'OFFRE.
+       Les quatre grandes valeurs de la planche, puis une feuille de
+       conditions, puis un tableau réglé ont été essayés : « toujours
+       difficile à lire ». La section fait écho à une section de prix, et
+       une section de prix a un code que tout le monde lit sans effort :
+       le titre, le prix, ce que vous obtenez, les conditions. Il ne
+       s'applique qu'à l'origination ; le mandat reste en tableau.
+       Les gains sont des faits déjà publiés, redits à l'indicatif ; les
+       conditions reprennent les phrases de l'offre publiée du 17/09 et du
+       v81. « Au devis » n'est écrit qu'une fois en grand, à la place du
+       prix, et n'est plus répété ailleurs qu'où la règle l'exige. */
     origination: {
       libelle: "En continu",
       titre: "L’origination",
-      texte:
-        "Votre périmètre est tenu sous veille. Chaque dossier d’approche vous est livré dès qu’il est vérifié.",
-      /* la première rangée : les deux durées, à côté de la case de tête */
-      durees: [
-        {
-          libelle: "Pour commencer",
-          valeur: "Un mois",
-          texte:
-            "Un premier mois pour juger sur pièces, proposé seulement si la mesure montre des dossiers à livrer.",
-        },
-        {
-          libelle: "Ensuite",
-          valeur: "Trois mois",
-          texte:
-            "Des périodes de trois mois, résiliables à chaque échéance avec un mois de préavis.",
-        },
+      montants: {
+        libelle: "Montants",
+        valeur: "Au devis",
+        texte: "Chiffrés avant signature, après mesure de votre périmètre.",
+      },
+      lien: { label: "Prendre rendez-vous", href: "/#contact" },
+      gainsTitre: "Ce que vous recevez",
+      gains: [
+        "Votre périmètre tenu sous veille, en continu.",
+        "Chaque dossier d’approche livré dès qu’il est vérifié.",
+        "Le volume de votre périmètre mesuré et annoncé avant tout engagement.",
+        "Un premier mois pour juger sur pièces.",
+        "Votre périmètre réservé à un seul cabinet.",
+        "Un mois sans dossier livré n’est pas facturé.",
       ],
-      /* la seconde rangée : quatre cases égales, chacune avec sa clé en
-         encre (v82, second passage) : la clé dit l'essentiel à elle
-         seule, la phrase précise. Les mots sont ceux du v81, redécoupés. */
-      lignes: [
+      termesTitre: "Les conditions",
+      termes: [
         {
-          libelle: "Avant tout engagement",
-          cle: "La mesure du périmètre",
-          texte: "Son volume est mesuré et annoncé au devis.",
+          libelle: "Périmètre",
+          texte: "Défini ensemble au rendez-vous, mesuré au devis.",
         },
-        /* v81 : facturé au mois, un mois sans dossier livré n'est pas facturé */
         {
-          libelle: "Facturation",
-          cle: "Au mois",
-          texte: "Un mois sans dossier livré n’est pas facturé.",
+          libelle: "Engagement",
+          texte:
+            "Un mois pour commencer, si la mesure montre des dossiers à livrer ; puis des périodes de trois mois.",
         },
+        {
+          libelle: "Résiliation",
+          texte: "À chaque échéance, avec un mois de préavis.",
+        },
+        /* v81 : facturé au mois ; le mois sans dossier livré est dans les gains */
+        { libelle: "Facturation", texte: "Au mois." },
         {
           libelle: "Exclusivité",
-          cle: "Un client, un périmètre",
-          texte: "Pendant une durée fixée au devis.",
+          texte: "Pour un client, sur un périmètre, pendant une durée fixée au devis.",
         },
         /* la seule mention du premier contact sur le site, et elle est
            commerciale : qui contacte, et comment, se décide au devis
            (arbitrage Vincent, 17/09/2026) */
         {
           libelle: "Premier contact",
-          cle: "Décidé ensemble à la signature",
-          texte: "Qui contacte les dirigeants, et selon quelles modalités.",
+          texte:
+            "Qui contacte les dirigeants, et selon quelles modalités, se décide ensemble à la signature.",
         },
       ],
     },
+    /* le mandat de recherche reste en tableau (arbitrage Vincent, 17/09/2026) */
     mandat: {
       libelle: "À la mission",
       titre: "Le mandat de recherche",

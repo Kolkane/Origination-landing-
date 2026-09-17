@@ -1332,8 +1332,9 @@ sur une hauteur ni une largeur de texte, qui se remesurent sur le build.
   description, couverture cliquable, bouton qui ouvre le dossier en popup).
   « Méthode » (trois étapes numérotées, numéros en vin). « Conditions »
   (l'origination sous un filet vert épais, le mandat de recherche en
-  dessous sous un filet fin ; depuis la v82, chacune en tableau réglé,
-  une case par point, et non plus en quatre grandes valeurs). « À
+  dessous sous un filet fin ; depuis la v82, l'origination en panneau
+  d'offre, titre, « Au devis », six gains cochés et six termes, le mandat
+  en tableau réglé, et non plus en quatre grandes valeurs). « À
   propos » (portrait,
   texte, coordonnées légales). « Analyses » (trois colonnes, sans date).
   « Prendre rendez-vous » (bande verte, seul bouton commercial du site,
@@ -1693,65 +1694,62 @@ sur une hauteur ni une largeur de texte, qui se remesurent sur le build.
   zoom, ni filtre ; le retour de l'étalonnage et du voile en dégradé de la
   V78 n'a pas été demandé.
 - RETOUCHES v82, LES CONDITIONS (arbitrage Vincent, 17/09/2026, branche
-  v82). Vincent : « du grand n'importe quoi, en disposition comme en
-  compréhension ; l'objectif est de comprendre, un rendu original mais
-  sobre ». Le diagnostic : les quatre grandes valeurs de la planche
-  mettaient sur le même plan deux durées, une règle de facturation et une
-  décision reportée, on n'y lisait pas le déroulé ; l'intro annonçait
-  « deux façons de travailler ensemble » mais l'origination était mise en
-  scène comme un titre et le mandat comme une note ; « au devis » revenait
-  cinq fois. Et l'origination pèse bien plus que le mandat : la
-  hiérarchie doit se voir.
-  PREMIER ESSAI, LA FEUILLE DE CONDITIONS (commit aa34971) : un term
-  sheet, une ligne par point, libellé à gauche et condition à droite.
-  Lisible, jugée « trop simpliste » par Vincent, qui voulait « plus stylé,
-  une disposition plus new age ». Reste en procès-verbal.
-  FORME RETENUE, LE TABLEAU : une grille réglée de douze colonnes,
-  dessinée par des filets et rien d'autre (le fond de la rangée est de la
-  couleur du filet, les cases blanches espacées d'un pixel, c'est
-  l'interstice qui trace les lignes). C'est la disposition en cases de
-  tailles différentes d'aujourd'hui, mais dans la langue du site : ni
-  fond, ni bord arrondi, ni ombre, un tableau de rapport, pas une grille
-  de cartes. L'origination sous le filet vert de 3 px : case de tête sur
-  six colonnes (libellé, titre à 46 px, texte), « Un mois » et « Trois
-  mois » à 44 px en vert sur trois colonnes chacune, puis une rangée de
-  quatre cases égales (avant tout engagement, facturation « Au mois » en
-  grand, exclusivité, premier contact). Le mandat de recherche reprend la
-  grille sous le filet d'encre fin, un cran plus petit : case de tête à
-  28 px et deux cases (rémunération, périmètres).
-  SECOND PASSAGE, LA CLÉ DANS CHAQUE CASE (Vincent : « pas super lisible,
-  peut-être des icônes », carte blanche). Les icônes sont écartées : la
-  charte n'en tolère qu'une rangée, celle du service, et des pictos sur
-  des conditions commerciales sont le code du tableau de prix SaaS que le
-  site refuse. Ce qui manquait : trois cases n'avaient qu'une phrase en
-  petit gris sous leur libellé et se lisaient comme des notes. Désormais
-  CHAQUE CASE A LA MÊME ANATOMIE, libellé, clé, phrase, et la clé dit
-  l'essentiel à elle seule : « La mesure du périmètre », « Au mois »,
-  « Un client, un périmètre », « Décidé ensemble à la signature » ; pour
-  le mandat, « À la mission » et « Hors exclusivité ». Le VERT (44 px)
-  reste réservé aux deux durées d'engagement, « Un mois » et « Trois
-  mois » ; les autres clés sont en encre, 26 px (22 dans le mandat), les
-  phrases passent de 15 à 16 px. Les clés de deux lignes se coupent à
-  l'équilibre (text-wrap: balance, repli ordinaire). Les mots restent
-  ceux du v81, redécoupés entre la clé et la phrase ; une seule phrase
-  reformulée, celle des périmètres du mandat (« Les périmètres déjà
-  réservés à un client ne sont pas concernés. »), même sens. La
-  première case d'une rangée s'aligne sur le bord du cadre, les suivantes
-  s'écartent du filet de 32 px. Sous 1000 px la case de tête prend la
-  rangée et les cases vont par deux ; sous 761 px une case par ligne,
-  toutes au bord. La note « ni conseil, ni négociation » ne bouge pas.
-  Une autre direction a été maquettée et écartée : la colonne fixe avec
-  six énoncés numérotés (captures dans V80-captures/v82-conditions, F et
-  G, avec les maquettes A et B du premier essai).
-  LES TEXTES : ceux de l'offre publiée et du v81, rien d'autre ; seuls les
-  libellés de cases sont nouveaux (« Avant tout engagement »,
-  « Rémunération », « Périmètres »). La phrase d'exclusivité sort du
-  paragraphe pour sa case, la mesure du périmètre aussi (« Le volume de
-  votre périmètre est mesuré et annoncé au devis. ») ; le mandat perd ses
-  deux dernières phrases au profit de ses deux cases. Vérifié sur le HTML
-  produit : une seule mention du premier contact, aucune de retainer, fee,
-  honoraires, protection, article 14, aucun tiret, aucun mot proscrit.
-  Captures 1440, 900 et 390 dans V80-captures/v82-conditions.
+  v82, trois passages). Vincent : « du grand n'importe quoi, en
+  disposition comme en compréhension ; l'objectif est de comprendre, un
+  rendu original mais sobre ». Le diagnostic : les quatre grandes valeurs
+  de la planche mettaient sur le même plan deux durées, une règle de
+  facturation et une décision reportée, on n'y lisait pas le déroulé ;
+  l'intro annonçait « deux façons de travailler ensemble » mais
+  l'origination était mise en scène comme un titre et le mandat comme
+  une note ; « au devis » revenait cinq fois. Et l'origination pèse bien
+  plus que le mandat : la hiérarchie doit se voir.
+  PROCÈS-VERBAL DES ESSAIS. (1) La feuille de conditions (aa34971) : un
+  term sheet, une ligne par point ; lisible, « trop simpliste ». (2) Le
+  tableau réglé (ec2566e, puis d519931 avec une clé dans chaque case) :
+  une grille de douze colonnes dessinée par des filets, l'origination en
+  case de tête avec ses durées en grand ; « stylé » mais « toujours
+  difficile à lire », l'œil n'a pas de parcours dans une grille. Deux
+  autres directions maquettées et écartées : la ligne du temps, la
+  colonne fixe à six énoncés numérotés (captures A, B, F, G dans
+  V80-captures/v82-conditions). Les icônes ont été écartées au passage :
+  la charte n'en tolère qu'une rangée, celle du service, et des pictos
+  sur des conditions commerciales sont le code du tableau de prix SaaS.
+  FORME RETENUE, L'OFFRE (troisième passage, à la demande de Vincent :
+  « une section type pricing, un tableau de gains avec les conditions,
+  lisible, sans friction », pour l'origination seule). Une section de
+  prix a un code que tout le monde lit sans effort : LE TITRE, LE PRIX,
+  CE QUE VOUS OBTENEZ, LES CONDITIONS. L'origination est un seul
+  panneau, filet vert de 3 px en tête et filet fin #C9D0CC autour (celui
+  du bord de la couverture ; un panneau unique, pas une grille de
+  cartes). À gauche : « En continu », le titre à 46 px, puis à la place
+  du prix « Montants · Au devis » en vert à 34 px, « Chiffrés avant
+  signature, après mesure de votre périmètre », et le pas suivant en
+  lien texte souligné de vin, « Prendre rendez-vous », vers la bande
+  (#contact). À droite : « Ce que vous recevez », six gains cochés à
+  18 px en encre, un filet entre les lignes ; LA COCHE est un SVG inline
+  de 18 px au trait dans le vert, un marqueur de liste et non une icône,
+  aria-hidden. En pied du panneau, sous un filet : « Les conditions »,
+  six termes sur trois colonnes, libellé gris et condition en encre :
+  périmètre, engagement, résiliation, facturation, exclusivité, premier
+  contact. Sous 1000 px le panneau empile ses deux colonnes et les
+  termes vont par deux ; sous 761 px tout sur une colonne, 24 px de
+  rembourrage. LE MANDAT DE RECHERCHE RESTE EN TABLEAU RÉGLÉ (Vincent :
+  « qu'on va garder comme c'est ») : case de tête à 28 px et deux cases
+  avec leur clé (« À la mission », « Hors exclusivité »), sous le filet
+  d'encre fin. La note « ni conseil, ni négociation » ne bouge pas.
+  LES TEXTES : les six gains sont des faits déjà publiés, redits à
+  l'indicatif (veille en continu, dossier livré dès qu'il est vérifié,
+  volume mesuré et annoncé avant tout engagement, premier mois sur
+  pièces, périmètre réservé à un seul cabinet, mois sans dossier livré
+  non facturé) ; les termes reprennent les phrases de l'offre publiée et
+  du v81, le périmètre « défini ensemble au rendez-vous, mesuré au devis »
+  reprend la règle v15. L'intro devient « Deux façons de travailler
+  ensemble : l'origination, en continu, et le mandat de recherche, à la
+  mission. » : la phrase sur les montants est partie à la place du prix.
+  Vérifié sur le HTML produit : six gains, six termes, une seule mention
+  du premier contact, aucune de retainer, fee, honoraires, protection,
+  article 14, aucun tiret, aucun mot proscrit. Captures 1440, 900 et 390
+  (conditions-offre-*) dans V80-captures/v82-conditions.
 - MÉTHODE DU CHANTIER : cinq lots, un commit par lot, un rapport court et une
   validation entre chaque. 0 préparation (emblèmes, Hanken, tokens, charte) ;
   1 hero, en-tête, pied de page ; 2 service, dossier et popup, méthode ;
@@ -1783,8 +1781,9 @@ bloc, « pour un client, sur un périmètre, pendant une durée fixée au devis 
 quatrième valeur reste « Premier contact · Au devis ». Aligné sur la page « Comment
 je travaille » remise à un cabinet le 18/09/2026.
 COMPLÉMENT v82 (arbitrage Vincent, 17/09/2026) : les « grandes valeurs » n'existent
-plus, la section est un TABLEAU, une case par point (voir « RETOUCHES v82, LES
-CONDITIONS » dans les lots V80). Le fond ne change pas : la
+plus ; l'origination est un PANNEAU D'OFFRE (titre, « Au devis » à la place du prix,
+six gains cochés, six termes) et le mandat un tableau réglé (voir « RETOUCHES v82,
+LES CONDITIONS » dans les lots V80). Le fond ne change pas : la
 mesure au devis, un mois, trois mois, facturation au mois, exclusivité, premier
 contact au devis pour l'origination ; rémunération à la mission et périmètres hors
 exclusivité pour le mandat. Ce complément ne touche qu'à la forme.
