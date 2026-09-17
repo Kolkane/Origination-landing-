@@ -431,6 +431,10 @@ export const copy = typoDeep({
     lireAria: "Lire l’analyse : ",
     kicker: "Analyses",
     retour: "Analyses",
+    /* v85 : le rail de la page d'article et son pied */
+    sommaire: "Dans cette analyse",
+    sommaireAria: "Sommaire de l’analyse",
+    aussi: "À lire aussi",
   },
   /* V80 · PRENDRE RENDEZ-VOUS, au mot près de la planche : la bande
      verte, le seul bouton commercial du site (le lien Calendly de
