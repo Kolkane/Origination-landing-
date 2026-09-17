@@ -1336,7 +1336,9 @@ sur une hauteur ni une largeur de texte, qui se remesurent sur le build.
   d'offre, titre, « Au devis », six gains cochés et six termes, le mandat
   en tableau réglé, et non plus en quatre grandes valeurs). « À
   propos » (portrait,
-  texte, coordonnées légales). « Analyses » (trois colonnes, sans date).
+  texte, parcours du fondateur et coordonnées ; la société et le siège en
+  sont sortis à la v82, ils sont aux mentions légales). « Analyses »
+  (trois colonnes, sans date).
   « Prendre rendez-vous » (bande verte, seul bouton commercial du site,
   « Choisir un créneau »). Pied de page noir avec l'emblème clair.
 - LE HERO. public/imbrin.mp4 avec public/imbrin-poster.jpg, autoplay muet en
@@ -1750,6 +1752,25 @@ sur une hauteur ni une largeur de texte, qui se remesurent sur le build.
   du premier contact, aucune de retainer, fee, honoraires, protection,
   article 14, aucun tiret, aucun mot proscrit. Captures 1440, 900 et 390
   (conditions-offre-*) dans V80-captures/v82-conditions.
+- RETOUCHES v82, À PROPOS (arbitrage Vincent, 17/09/2026, branche v82).
+  La section parle du fondateur, pas de l'entité : les lignes « Société »
+  (raison sociale, SIREN) et « Siège » sortent des coordonnées, elles
+  sont aux mentions légales et n'ont rien à faire ici. Restent téléphone,
+  email et LinkedIn, lus dans brand.ts. Le PARCOURS, emplacement vide
+  depuis la planche, reçoit le paragraphe de Vincent, mot pour mot, à la
+  première personne : « Je construis des produits de données depuis plus
+  d'un an. En travaillant auprès de conseillers en gestion de patrimoine,
+  j'ai vu le temps que coûte le repérage des sociétés à approcher. J'ai
+  écrit le programme qui lit les registres à l'échelle nationale, et je
+  vérifie chaque dossier avant de vous le livrer. Vous avez un seul
+  interlocuteur, du premier échange à la livraison. » « Plus d'un an » est
+  une durée en lettres, comme « un mois », et ne contredit pas la liste
+  blanche des chiffres. Le premier paragraphe (troisième personne, voix
+  du site) est inchangé ; le passage à la première personne au second
+  paragraphe est signalé à Vincent, qui décide. Vérifié sur le HTML
+  produit : ni SIREN de l'entité ni adresse du siège sur l'accueil, le
+  paragraphe présent, aucun tiret. Captures 1440 et 390 dans
+  V80-captures/v82-apropos.
 - MÉTHODE DU CHANTIER : cinq lots, un commit par lot, un rapport court et une
   validation entre chaque. 0 préparation (emblèmes, Hanken, tokens, charte) ;
   1 hero, en-tête, pied de page ; 2 service, dossier et popup, méthode ;
