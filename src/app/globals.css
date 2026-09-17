@@ -2081,7 +2081,17 @@ body {
    et à droite un débordement réservé aux blocs qui ne sont pas de la
    prose. Le texte courant ne bouge pas d'un pixel.
    ============================================================ */
+/* les quatre mesures de la page, nommées une fois. Le débord s'en déduit :
+   c'est tout ce que le conteneur laisse au-delà du rail et de la colonne de
+   lecture, gouttière comprise, soit 364 px à 1200. Écrit ainsi, changer la
+   largeur du rail ou du conteneur suffit, aucun calcul n'est à refaire à la
+   main dans cinq déclarations. */
 .article-grille {
+  --conteneur: 1200px;
+  --rail: 200px;
+  --gouttiere: 56px;
+  --lecture: 580px;
+  --debord: calc(var(--conteneur) - var(--rail) - var(--gouttiere) - var(--lecture));
   margin-top: 8px;
 }
 .article-colonne {
@@ -2090,14 +2100,26 @@ body {
 .article-titre {
   max-width: 800px;
 }
-@media (min-width: 1101px) {
+/* LE SEUIL EST MESURÉ, PAS CHOISI, et c'est une correction sur pièce.
+   Le débord vaut 364 px, ce que le conteneur laisse QUAND IL FAIT SES
+   1200 px. Le conteneur ne les atteint qu'à partir de 1200 + 2 × 48 de
+   rembourrage, soit 1296 px. Entre 1101 et 1295, la grille se posait mais
+   le débord dépassait le conteneur : 147 px de défilement horizontal,
+   mesuré à 1101 px sur les trois articles.
+   LEÇON, elle vaut pour toute maquette à débord : une largeur de débord
+   figée n'est juste qu'au-dessus de la largeur où le conteneur est plein.
+   Et le balayage qui l'a trouvée est celui qui teste le SEUIL LUI-MÊME,
+   pas trois largeurs commodes : 390, 1000 et 1440 passaient tous les
+   trois. Tester la valeur du point de rupture, et celle juste au-dessus.
+   Coût assumé : un écran de 1280 n'a pas le rail, un 1366 l'a. */
+@media (min-width: 1296px) {
   /* rail 200, colonne 580, et le reste en débord de droite. 200 + 56 +
      580 = 836 px : les 364 px qui restent dans le conteneur de 1200 ne
      sont plus du vide, les figures et les exergues les prennent. */
   .article-grille {
     display: grid;
-    grid-template-columns: 200px 580px minmax(0, 1fr);
-    column-gap: 56px;
+    grid-template-columns: var(--rail) var(--lecture) minmax(0, 1fr);
+    column-gap: var(--gouttiere);
   }
   .article-colonne {
     grid-column: 2;
@@ -2107,7 +2129,7 @@ body {
      droite : la page s'ouvre large, la prose reste étroite */
   .article-titre,
   .article-chapeau {
-    width: calc(100% + 56px + ((1200px - 836px) - 56px));
+    width: calc(100% + var(--debord));
     max-width: none;
   }
   /* LE RAIL. Exception assumée à la v61, « un seul bord gauche », que
@@ -2130,7 +2152,7 @@ body {
   .article-corps .figure,
   .article-corps .article-exergue,
   .article-corps .article-chute {
-    width: calc(100% + 56px + ((1200px - 836px) - 56px));
+    width: calc(100% + var(--debord));
   }
 }
 .article-rail-titre {
@@ -2164,10 +2186,10 @@ body {
   text-decoration-thickness: 1px;
   text-decoration-color: var(--vin);
 }
-/* sous 1101 px le rail redevient un bloc dans le flux, au-dessus du
-   corps : il garde son utilité sur un écran étroit, où l'article est
-   long, et il ne coûte plus une colonne */
-@media (max-width: 1100px) {
+/* sous 1296 px le rail redevient un bloc dans le flux, sous le chapeau :
+   il garde son utilité sur un écran étroit, où l'article est long, et il
+   ne coûte plus une colonne */
+@media (max-width: 1295px) {
   .article-rail {
     max-width: 580px;
     margin: 36px 0 0;

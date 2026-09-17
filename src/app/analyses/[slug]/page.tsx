@@ -7,6 +7,7 @@ import JsonLd from "@/components/JsonLd";
 import RendezVous from "@/components/RendezVous";
 import FigureAnalyse from "@/components/analyses/FigureAnalyse";
 import { analyses, articleParSlug, autresAnalyses } from "@/config/analyses";
+import type { BlocArticle } from "@/config/analyses";
 import { brand } from "@/config/brand";
 import { copy } from "@/config/copy";
 import { articleSchema } from "@/config/schema";
@@ -57,7 +58,7 @@ export function generateMetadata({ params }: Props): Metadata {
 
 /* V80 · LA PAGE D'ARTICLE, refondue en v85 (arbitrage Vincent : « trop
    vide, et les paragraphes sont trop similaires, c'est trop plat »).
-   TROIS COLONNES au-dessus de 1100 px : un RAIL de gauche qui tient le
+   TROIS COLONNES au-dessus de 1296 px, seuil mesuré (voir globals.css) : un RAIL de gauche qui tient le
    sommaire, la colonne de lecture de 580 px, et une marge de droite dans
    laquelle les FIGURES et les EXERGUES débordent. C'est ce débordement
    qui remplit la page : la mesure de lecture ne bouge pas d'un pixel,
@@ -67,7 +68,7 @@ export function generateMetadata({ params }: Props): Metadata {
    marge porte du contenu RÉCURRENT, des notes, des dates, des
    références ». Un sommaire collant qui suit la lecture en est ; le
    libellé de neuf caractères que la v61 avait retiré n'en était pas.
-   Sous 1100 px le rail disparaît, la page redevient une colonne.
+   Sous 1296 px le rail revient dans le flux, la page redevient une colonne.
    La page se termine par les deux autres analyses, puis la bande
    « Prendre rendez-vous » de l'accueil, puis le pied. */
 export default function Analyse({ params }: Props) {
@@ -76,8 +77,13 @@ export default function Analyse({ params }: Props) {
   const a = copy.analyses;
   const autres = autresAnalyses(article.slug);
   /* le sommaire se DÉDUIT des intertitres, il n'est pas saisi à part :
-     un sommaire tenu à la main finit toujours par mentir */
-  const sommaire = article.corps.filter((b) => b.forme === "intertitre");
+     un sommaire tenu à la main finit toujours par mentir.
+     Le prédicat de type est ÉCRIT, pas déduit : TypeScript sait l'inférer
+     depuis la 5.5, mais en silence, et le jour où un bloc n'aura plus de
+     clé « texte » le code casserait sans qu'aucune déclaration ait bougé. */
+  const sommaire = article.corps.filter(
+    (b): b is Extract<BlocArticle, { forme: "intertitre" }> => b.forme === "intertitre",
+  );
 
   return (
     <>
@@ -92,18 +98,6 @@ export default function Analyse({ params }: Props) {
               retour, juste au-dessus, porte déjà le mot, et les deux se
               lisaient en doublon (lot 4, à la capture) */}
           <div className="article-grille">
-            {sommaire.length > 0 && (
-              <nav className="article-rail" aria-label={a.sommaireAria}>
-                <p className="article-rail-titre">{a.sommaire}</p>
-                <ol className="article-rail-liste">
-                  {sommaire.map((b) => (
-                    <li key={b.texte}>
-                      <a href={`#${ancre(b.texte)}`}>{b.texte}</a>
-                    </li>
-                  ))}
-                </ol>
-              </nav>
-            )}
             <article className="article-colonne">
               <h1 className="titre-section article-titre">{grand(article.titre)}</h1>
               <p className="article-chapeau">{article.standfirst}</p>
@@ -140,6 +134,23 @@ export default function Analyse({ params }: Props) {
                 })}
               </div>
             </article>
+            {/* LE RAIL EST APRÈS L'ARTICLE DANS LE DOM, et placé à gauche par la
+                grille. Un sommaire qui précède le titre fait rencontrer « Dans
+                cette analyse » avant de savoir de quelle analyse il s'agit, au
+                clavier comme au lecteur d'écran. L'ordre visuel vient de
+                grid-column, l'ordre de lecture reste celui du document. */}
+            {sommaire.length > 0 && (
+              <nav className="article-rail" aria-label={a.sommaireAria}>
+                <p className="article-rail-titre">{a.sommaire}</p>
+                <ol className="article-rail-liste">
+                  {sommaire.map((b) => (
+                    <li key={b.texte}>
+                      <a href={`#${ancre(b.texte)}`}>{b.texte}</a>
+                    </li>
+                  ))}
+                </ol>
+              </nav>
+            )}
           </div>
           {/* les deux autres analyses : la lecture ne s'arrête pas sur du
               vide, et c'est ce qui ferme le bas de la page */}

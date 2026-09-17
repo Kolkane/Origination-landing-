@@ -1963,11 +1963,37 @@ sur une hauteur ni une largeur de texte, qui se remesurent sur le build.
   reprendra : « .article-corps p » (0-1-1) écrasait « .article-exergue »
   (0-1-0), l'exergue sortait donc à 18 px comme le corps. Tout bloc de
   corps qui change d'échelle doit être sélectionné DANS son conteneur.
-  MESURÉ AU NAVIGATEUR, pas en planche : aucun débordement horizontal à
-  390, 1000 et 1440 px sur les trois articles ; les trois étapes du cycle
-  alignées au pixel (sous « align-items: center » la troisième tombait
-  11 px plus bas, elles sont calées par le haut). Build et lint verts.
+  MESURÉ AU NAVIGATEUR, pas en planche : les trois étapes du cycle alignées
+  au pixel (sous « align-items: center » la troisième tombait 11 px plus
+  bas, elles sont calées par le haut). Build et lint verts.
   AUCUNE ANIMATION, la règle v54 tient : rien n'apparaît au scroll.
+  v85b, PASSE D'OPTIMISATION, ET ELLE A TROUVÉ UN VRAI DÉFAUT.
+  1. LE SEUIL DU RAIL PASSE DE 1101 À 1296 PX, et il est MESURÉ : le
+  débord vaut 364 px, ce que le conteneur laisse QUAND IL FAIT SES
+  1200 px, et le conteneur ne les atteint qu'à 1200 plus deux fois 48 de
+  rembourrage. Entre 1101 et 1295 la grille se posait mais le débord
+  sortait du conteneur : 147 px de défilement horizontal, mesuré à
+  1101 px sur les trois articles. LEÇON DOUBLE. Une largeur de débord
+  figée n'est juste qu'au-dessus de la largeur où le conteneur est plein.
+  Et le premier balayage, 390, 1000 et 1440, passait les trois : il
+  faut tester LE POINT DE RUPTURE LUI-MÊME et la valeur juste au-dessus.
+  Coût assumé : un écran de 1280 n'a pas le rail, un 1366 l'a.
+  2. LE RAIL PASSE APRÈS L'ARTICLE DANS LE DOM. Un sommaire qui précède le
+  titre fait rencontrer « Dans cette analyse » avant de savoir de quelle
+  analyse il s'agit, au clavier comme au lecteur d'écran. L'ordre visuel
+  vient de grid-column, l'ordre de lecture reste celui du document.
+  3. LES QUATRE MESURES SONT NOMMÉES UNE FOIS sur .article-grille
+  (--conteneur, --rail, --gouttiere, --lecture) et le débord s'en déduit.
+  Le calcul « calc(1200px - 836px) » vivait en double dans deux
+  déclarations, avec deux nombres magiques qu'aucun commentaire ne
+  rattachait à la grille.
+  4. LE PRÉDICAT DE TYPE DU SOMMAIRE EST ÉCRIT et non déduit : TypeScript
+  l'infère depuis la 5.5, mais en silence, et le jour où un bloc n'aura
+  plus de clé « texte » le code casserait sans qu'aucune déclaration ait
+  bougé.
+  BALAYAGE FINAL : trois articles, DIX-SEPT largeurs de 360 à 1920, seuils
+  compris ; aucun débordement horizontal, aucune ancre de sommaire morte.
+  Accueil et pages légales revérifiés à 390, 1280 et 1440.
 
 - MÉTHODE DU CHANTIER : cinq lots, un commit par lot, un rapport court et une
   validation entre chaque. 0 préparation (emblèmes, Hanken, tokens, charte) ;
