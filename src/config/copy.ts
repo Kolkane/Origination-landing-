@@ -146,7 +146,7 @@ export const copy = typoDeep({
   dossier: {
     titre: "Le dossier d’approche",
     texte:
-      "Chaque société retenue fait l’objet d’un dossier écrit, que l’associé lit avant le premier contact : identité, trois exercices de comptes, structure de détention, chronologie datée des actes, angle d’approche, coordonnées avec leur statut, et ce que les sources ne permettent pas d’établir.",
+      "Chaque société retenue fait l’objet d’un dossier écrit, que l’associé lit en premier : identité, trois exercices de comptes, structure de détention, chronologie datée des actes, angle d’approche, coordonnées avec leur statut, et ce que les sources ne permettent pas d’établir.",
     sous:
       "Le spécimen est fictif : société, personnes et chiffres sont inventés. En rendez-vous, un dossier complet est parcouru avec vous, page à page.",
     bouton: "Lire le dossier spécimen",

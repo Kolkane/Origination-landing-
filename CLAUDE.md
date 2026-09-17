@@ -1254,6 +1254,10 @@ trouvé sur vous". Codes attendus : document financier imprimé, pas SaaS IA.
   « personnellement », « jamais par vos équipes », « écrit d'abord », « avant
   qu'un cabinet » ; « premier contact » n'apparaît qu'en Conditions (« au devis »)
   et dans la bande du dossier (« que l'associé lit avant le premier contact »).
+  COMPLÉMENT (arbitrage Vincent, 17/09/2026, dernier changement avant le
+  rendez-vous du 18/09) : la bande du dossier dit « que l'associé lit en
+  premier ». « Premier contact » n'apparaît donc plus qu'en Conditions, « au
+  devis ». Aucune autre modification du site avant la fin du rendez-vous.
 - Interdits définitifs (hérités des itérations rejetées) : ticker, métriques animées,
   count-up, grilles de cards, beam/bordures lumineuses, tilt 3D, spotlight souris, pings,
   glow, dégradés colorés, grid de fond, badges/chips, emojis, icônes décoratives,
