@@ -2074,6 +2074,23 @@ sur une hauteur ni une largeur de texte, qui se remesurent sur le build.
   pas prise. Sur téléphone, 12 px, le corps de la couverture remonte de
   80 à 64 px pour loger les trois lignes. Mesuré sur le build : tout
   tient dans les 320 × 452 et les 240 × 339 de la couverture.
+  v87c, LA COUVERTURE SE LIT COMME UNE UNE (Vincent : « je ne vois pas
+  bien ce qui a été changé »). La hiérarchie est renversée : le nom de la
+  société n'est plus le titre à 25 px, c'est une ligne de rappel à 16 px
+  sous « Dossier d'approche » ; la THÈSE passe à 21 px (15,5 sur
+  téléphone), coiffée d'un filet vin de 2 px, coupures équilibrées ; le
+  FAIT DATÉ qui ouvre le dossier arrive dessous en vin, 13 px, comme sur
+  la page 1 du dossier : « 11 février 2026 : le rapport de transformation
+  est déposé au registre. », phrase du dossier raccourcie sans rien
+  ajouter ; la fiche reste en petit gris. Le corps de la couverture
+  remonte à 40 px (34 sur téléphone). Le filet vin sur la couverture est
+  un emploi de la V83 (marque, pas surface), comme celui du panneau
+  d'offre. Mesuré sur le build : tout tient, avec de l'air avant le pied.
+  EN PARALLÈLE, branche v88 d'une autre session : « le fil de la
+  couverture », un trait vin animé qui fait le tour du dossier
+  (.couverture::after, conic-gradient), non fusionnée, Vincent juge sur
+  la préview. Ce v87c ne touche pas .couverture lui-même ni ::after ; la
+  fusion de v88 devra se relire sur la couverture composée ainsi.
   SIGNALÉ, HORS DE CE DÉPÔT : le pied des deux pages porte deux tirets
   cadratins (« Imbrin Research — Jungle.Block Solutions », « scan lu à
   l'image le 17/09/2026 — spécimen »). C'est le gabarit Veillor.com, pas

@@ -156,6 +156,9 @@ export const copy = typoDeep({
          chiffres sont ceux du spécimen fictif, marqué tel sur la
          couverture même (liste blanche, cas 3). */
       these: "Gérant de 68 ans, 82 % des parts, une transformation en SAS engagée, non décidée.",
+      /* v87c : le fait daté qui ouvre le dossier, en vin comme sur sa page 1 ;
+         la phrase du dossier, raccourcie sans rien ajouter */
+      fait: "11 février 2026 : le rapport de transformation est déposé au registre.",
       activite: "Ingénierie et études techniques, Paris 12e",
       specimen: "Spécimen, données fictives",
       confidentiel: "Confidentiel",
