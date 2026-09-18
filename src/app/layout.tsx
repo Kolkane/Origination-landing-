@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { Hanken_Grotesk } from "next/font/google";
 import JsonLd from "@/components/JsonLd";
-import { fondateurSchema, organisationSchema } from "@/config/schema";
+import { fondateurSchema, organisationSchema, siteSchema } from "@/config/schema";
+import { brand } from "@/config/brand";
 import { copy } from "@/config/copy";
 import { SITE_URL } from "@/config/site";
 import "./globals.css";
@@ -44,6 +45,9 @@ export const metadata: Metadata = {
     description: copy.meta.description,
   },
   openGraph: {
+    /* v86 (référencement) : le nom du site, lu par les moteurs et les
+       réseaux pour l'afficher au-dessus du titre de la page */
+    siteName: `${brand.MARQUE} ${brand.SUFFIXE}`,
     title: copy.meta.title,
     description: copy.meta.description,
     locale: "fr_FR",
@@ -81,6 +85,7 @@ export default function RootLayout({
       <body>
         {/* l'identité de l'entreprise et du fondateur vaut pour toutes les
             pages : elle est portée par le layout, pas par l'accueil */}
+        <JsonLd data={siteSchema} />
         <JsonLd data={organisationSchema} />
         <JsonLd data={fondateurSchema} />
         {/* V80, lot 4 : l'en-tête et le pied sont rendus par chaque page,

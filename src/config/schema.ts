@@ -15,6 +15,9 @@ export const organisationSchema = {
   "@type": "Organization",
   "@id": ID_ORGANISATION,
   name: `${brand.MARQUE} ${brand.SUFFIXE}`,
+  /* v86 (référencement, 18/09/2026) : le nom court, tel qu'on le tape
+     dans un moteur ; il relie la requête « Imbrin » au domaine */
+  alternateName: brand.MARQUE,
   legalName: brand.ENTITY.raisonSociale,
   url: SITE_URL,
   /* V80 : l'emblème encre, 520 px de côté. logo-imbrin.png était sous le
@@ -43,6 +46,22 @@ export const organisationSchema = {
       availableLanguage: "French",
     },
   ],
+};
+
+/* v86 (référencement, 18/09/2026) : le site lui-même. C'est ce graphe
+   que Google lit pour afficher le NOM DU SITE au-dessus du titre dans ses
+   résultats, et pour relier « Imbrin » et « Imbrin Research » au domaine.
+   Le site n'était indexé nulle part à cette date : le nom dans le titre,
+   dans l'Organization et ici, et la Search Console côté Vincent. */
+export const siteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": `${SITE_URL}/#site`,
+  name: `${brand.MARQUE} ${brand.SUFFIXE}`,
+  alternateName: brand.MARQUE,
+  url: SITE_URL,
+  inLanguage: "fr-FR",
+  publisher: { "@id": ID_ORGANISATION },
 };
 
 export const fondateurSchema = {

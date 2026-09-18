@@ -1995,6 +1995,26 @@ sur une hauteur ni une largeur de texte, qui se remesurent sur le build.
   compris ; aucun débordement horizontal, aucune ancre de sommaire morte.
   Accueil et pages légales revérifiés à 390, 1280 et 1440.
 
+- RÉFÉRENCEMENT v86 (18/09/2026, à la demande de Vincent : « mon site
+  n'est pas référencé sur Google »). Constat : le site n'était indexé
+  nulle part (ni Google, ni Bing, ni DuckDuckGo) et rien ne le bloquait,
+  robots ouvert, sitemap déclaré, pas de noindex, canoniques, titre avec
+  le nom, Organization avec nom, URL et LinkedIn. Cause : un domaine
+  récent sans aucun lien entrant, jamais soumis à un moteur. CÔTÉ CODE :
+  une entité WebSite dans les données structurées (nom, alternateName
+  « Imbrin », URL, inLanguage, publisher vers l'Organization), le même
+  alternateName sur l'Organization, og:site_name dans le layout, et la
+  méta description réécrite avec les mots du hero V80 (« Origination
+  sell-side pour les cabinets M&A. Les PME à approcher, repérées au
+  registre et livrées en dossiers d'approche vérifiés. Un seul cabinet
+  par périmètre. », 161 caractères) : l'ancienne disait encore « les
+  actes que personne n'ouvre », abandonné en v40. CÔTÉ VINCENT : Google
+  Search Console en propriété Domaine, vérification par TXT dans la zone
+  DNS OVH (ns106.ovh.net), soumission du sitemap, demande d'indexation
+  de l'accueil, de /dirigeants et des trois analyses ; Bing Webmaster
+  Tools par import ; quelques liens entrants (LinkedIn, annuaires,
+  signature). RÈGLE : rien de nouveau dans schema.ts qui ne vienne de
+  brand.ts ou copy.ts, la WebSite lit brand.MARQUE et brand.SUFFIXE.
 - MÉTHODE DU CHANTIER : cinq lots, un commit par lot, un rapport court et une
   validation entre chaque. 0 préparation (emblèmes, Hanken, tokens, charte) ;
   1 hero, en-tête, pied de page ; 2 service, dossier et popup, méthode ;

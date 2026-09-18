@@ -57,8 +57,12 @@ export type RubriqueDossier = { titre: string } & (
 export const copy = typoDeep({
   meta: {
     title: `${brand.MARQUE} ${brand.SUFFIXE}, ${brand.BASELINE}`,
+    /* v86 (référencement, 18/09/2026) : la description est ce que Google
+       affiche sous le titre. L'ancienne disait encore « les actes que
+       personne n'ouvre », formulation abandonnée en v40 ; celle-ci reprend
+       les mots du hero V80, rien d'autre. */
     description:
-      "Origination externe pour cabinets M&A sell-side : nous lisons les actes déposés au registre, y compris ceux que personne n’ouvre, et nous livrons des dossiers d’approche datés et sourcés. Un cabinet par périmètre.",
+      "Origination sell-side pour les cabinets M&A. Les PME à approcher, repérées au registre et livrées en dossiers d’approche vérifiés. Un seul cabinet par périmètre.",
   },
   /* V80 · LA NAVIGATION, partagée par l'en-tête et par la colonne « Le
      site » du pied de page : six entrées, dans l'ordre de la planche. Les
