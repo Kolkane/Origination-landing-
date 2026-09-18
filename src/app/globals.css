@@ -950,7 +950,9 @@ html {
 .popup-papier {
   position: relative;
   width: 100%;
-  max-width: 800px;
+  /* v87 : la feuille A4 à sa taille, 794 px, plus le débord de la
+     seconde et le rembourrage du corps */
+  max-width: 860px;
   max-height: 100%;
   box-sizing: border-box;
   display: flex;
@@ -1028,140 +1030,95 @@ html {
 .popup-corps {
   overflow: auto;
   min-height: 0;
+  padding: 28px 28px 24px;
 }
-
-/* ---------- le spécimen lui-même ---------- */
-.specimen {
-  padding: 44px 56px 40px;
-  font-size: 15px;
-  line-height: 1.55;
-  color: var(--encre);
+/* ---------- le cahier, v87 : le vrai dossier en deux feuilles ---------- */
+/* Les deux pages du PDF du spécimen, en images 1× et 2×, posées sur le
+   papier du popup comme deux feuilles empilées : la seconde dépasse de
+   10 px derrière la première, en bas à droite. Le conteneur porte le
+   rapport de l'A4 et réserve ce débord ; les feuilles sont en absolu
+   dedans. Tourner la page : la première feuille pivote sur son bord
+   gauche (rotateY, 0,6 s), sa face arrière n'est pas dessinée, et la
+   seconde avance à sa place ; sous prefers-reduced-motion, le changement
+   est immédiat. Ni ombre, ni dégradé : un filet fin autour de chaque
+   feuille, celui de la couverture. */
+.cahier {
+  --debord: 10px;
+  max-width: calc(794px + var(--debord));
+  margin: 0 auto;
 }
-.specimen-tete {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: 16px;
-  padding-bottom: 14px;
-  border-bottom: 1px solid var(--encre);
+.cahier-feuilles {
+  position: relative;
+  aspect-ratio: 794 / 1123;
+  margin-right: var(--debord);
+  margin-bottom: var(--debord);
+  perspective: 2400px;
 }
-.specimen-marque {
+.feuille {
+  position: absolute;
+  inset: 0;
+  display: block;
+  padding: 0;
+  margin: 0;
+  border: 1px solid var(--filet-2);
+  background: #fff;
+  cursor: pointer;
+  transform-origin: left center;
+  transition: transform 0.6s cubic-bezier(0.22, 0.75, 0.25, 1);
+  backface-visibility: hidden;
+}
+.feuille img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+/* la seconde feuille, derrière, décalée ; devant quand la page est tournée */
+.feuille + .feuille {
+  transform: translate(var(--debord), var(--debord));
+  z-index: 0;
+}
+.cahier[data-page="0"] .feuille:first-child {
+  z-index: 1;
+}
+.cahier[data-page="1"] .feuille:first-child {
+  transform: rotateY(-180deg);
+}
+.cahier[data-page="1"] .feuille + .feuille {
+  transform: none;
+  z-index: 1;
+}
+.feuille:focus-visible {
+  outline: 2px solid var(--encre);
+  outline-offset: 4px;
+}
+.cahier-commandes {
   display: flex;
   align-items: center;
-  gap: 9px;
-  font-size: 15px;
-  font-weight: 600;
-}
-.specimen-meta {
-  text-align: right;
-  font-size: 13px;
-  line-height: 1.45;
-  color: var(--gris-2);
-}
-.specimen-societe {
-  margin-top: 28px;
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  gap: 16px;
-  flex-wrap: wrap;
-}
-.specimen-nom {
-  font-size: 32px;
-  font-weight: 600;
-  line-height: 1.15;
-  letter-spacing: -0.01em;
-}
-.specimen-region {
-  font-size: 13px;
-  color: var(--gris-2);
-}
-.specimen-sous {
-  margin: 8px 0 0;
-  color: var(--gris);
-}
-.specimen-rubrique {
-  margin-top: 26px;
-}
-.specimen-rubrique:first-of-type {
-  margin-top: 30px;
-}
-/* les titres de rubrique : quatrième emploi du vin */
-.specimen-rubrique h3 {
-  margin: 0;
-  font-size: 15px;
-  font-weight: 600;
-  line-height: 1.5;
-  padding-bottom: 6px;
-  border-bottom: 1px solid var(--filet);
-  color: var(--vin);
-}
-.specimen-dl {
-  margin: 0;
-}
-.specimen-ligne {
-  display: grid;
-  grid-template-columns: 150px minmax(0, 1fr);
-  column-gap: 16px;
-  padding: 7px 0;
-  border-bottom: 1px solid var(--filet-3);
-}
-.specimen-ligne:last-child {
-  border-bottom: 0;
-}
-.specimen-ligne dt {
-  color: var(--gris-2);
-}
-.specimen-ligne dd {
-  margin: 0;
-}
-.specimen-table {
-  width: 100%;
-  border-collapse: collapse;
-  font-variant-numeric: tabular-nums;
-}
-.specimen-table th,
-.specimen-table td {
-  padding: 7px 0;
-  border-bottom: 1px solid var(--filet-3);
-  font-weight: 400;
-  text-align: left;
-  vertical-align: top;
-}
-.specimen-table tr:last-child th,
-.specimen-table tr:last-child td {
-  border-bottom: 0;
-}
-.specimen-table thead th {
-  color: var(--gris-2);
-}
-.specimen-table .nombre {
-  text-align: right;
-}
-.specimen-table .gris {
-  color: var(--gris-2);
-}
-.specimen-table .date {
-  width: 150px;
-  color: var(--gris-2);
-}
-.specimen-p {
-  margin: 10px 0 0;
-  color: var(--gris);
-}
-.specimen-note {
-  margin: 8px 0 0;
-  font-size: 13px;
-  color: var(--gris-2);
-}
-.specimen-pied {
-  margin-top: 36px;
-  padding-top: 14px;
-  border-top: 1px solid var(--filet);
-  display: flex;
   justify-content: space-between;
   gap: 16px;
-  font-size: 13px;
+  margin-top: 18px;
+}
+.cahier-bouton {
+  padding: 9px 14px;
+  border: 1px solid var(--encre);
+  border-radius: 2px;
+  background: transparent;
+  color: var(--encre);
+  font: inherit;
+  font-size: 14px;
+  cursor: pointer;
+}
+.cahier-bouton:hover:not(:disabled) {
+  background: var(--encre);
+  color: var(--papier);
+}
+.cahier-bouton:disabled {
+  border-color: var(--filet-2);
+  color: var(--gris-2);
+  cursor: default;
+}
+.cahier-compteur {
+  font-size: 14px;
   color: var(--gris-2);
 }
 
@@ -1343,30 +1300,22 @@ html {
   .popup-papier {
     max-width: 100%;
   }
-  .specimen {
-    padding: 24px 20px 20px;
-    font-size: 14px;
+  /* le cahier sur téléphone : la feuille prend la largeur, les commandes
+     restent sous elle ; le PDF de la barre reste le chemin pour lire à
+     l'aise */
+  .popup-corps {
+    padding: 16px 16px 20px;
   }
-  .specimen-marque {
-    font-size: 14px;
+  .cahier-commandes {
+    margin-top: 14px;
+    gap: 10px;
   }
-  .specimen-meta,
-  .specimen-region,
-  .specimen-note,
-  .specimen-pied {
-    font-size: 12px;
+  .cahier-bouton {
+    padding: 8px 10px;
+    font-size: 13px;
   }
-  .specimen-nom {
-    font-size: 26px;
-  }
-  .specimen-rubrique h3 {
-    font-size: 14px;
-  }
-  .specimen-ligne {
-    grid-template-columns: 110px minmax(0, 1fr);
-  }
-  .specimen-table .date {
-    width: 110px;
+  .cahier-compteur {
+    font-size: 13px;
   }
   .methode-etapes {
     margin-top: 28px;
@@ -1396,6 +1345,9 @@ html {
   .popup[open]::backdrop,
   .popup[open] .popup-papier {
     animation: none;
+  }
+  .feuille {
+    transition: none;
   }
 }
 

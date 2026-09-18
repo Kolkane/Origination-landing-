@@ -20,10 +20,17 @@ export const brand = typoDeep({
     videoHero: "/imbrin.mp4",
     posterHero: "/imbrin-poster.jpg",
     portrait: "/portrait-vincent-fournier.webp",
-    /* le PDF du spécimen. Le fichier n'existe PAS encore : le lien
-       « Version PDF » du popup ne s'affiche que si Dossier.tsx le trouve
-       sur le disque au build. Déposer le fichier suffit à l'afficher. */
+    /* le PDF du spécimen, et ses deux pages en images (v87). Tout vient de
+       npm run specimen-pages : le PDF est copié depuis le dépôt Veillor.com
+       (2026-000, Vérane Ingénierie, fictif) et chaque page rendue en WebP
+       sans perte à 96 dpi (794 × 1123) et 192 dpi (le « @2x »). Le lien
+       « Version PDF » du popup ne s'affiche que si Dossier.tsx trouve le
+       fichier sur le disque au build. */
     specimenPdf: "/specimen-imbrin.pdf",
+    specimenPages: [
+      { simple: "/dossier-specimen-1.webp", double: "/dossier-specimen-1@2x.webp" },
+      { simple: "/dossier-specimen-2.webp", double: "/dossier-specimen-2@2x.webp" },
+    ],
   },
   /* v68 : le délai de traitement d'une demande d'opposition ou d'accès.
      Constante et non texte en dur : il est annoncé au dirigeant sur la

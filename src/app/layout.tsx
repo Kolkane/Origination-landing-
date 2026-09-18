@@ -76,8 +76,11 @@ export default function RootLayout({
                    pas, et sans JavaScript aucun des deux boutons ne peut
                    l'ouvrir. Il reprend ici le flux de la page, sous la
                    bande, et sa barre d'outils disparaît avec ses boutons
-                   inertes. Le contenu reste accessible, c'est la règle. */
-                "dialog.popup{display:block!important;position:static;width:auto;max-width:none;height:auto;max-height:none;padding:0;margin:40px 0 0}dialog.popup .popup-papier{max-width:none}dialog.popup .popup-barre{display:none}",
+                   inertes. Le contenu reste accessible, c'est la règle.
+                   v87 : le contenu est le cahier, deux feuilles en images ;
+                   sans JavaScript elles se posent l'une sous l'autre, à
+                   plat, et les commandes de page disparaissent. */
+                "dialog.popup{display:block!important;position:static;width:auto;max-width:none;height:auto;max-height:none;padding:0;margin:40px 0 0}dialog.popup .popup-papier{max-width:none}dialog.popup .popup-barre{display:none}dialog.popup .cahier{max-width:none}dialog.popup .cahier-feuilles{aspect-ratio:auto;margin:0;perspective:none}dialog.popup .feuille{position:static;transform:none!important;margin:0 0 24px;cursor:default}dialog.popup .cahier-commandes{display:none}",
             }}
           />
         </noscript>

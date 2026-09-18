@@ -1390,6 +1390,9 @@ sur une hauteur ni une largeur de texte, qui se remesurent sur le build.
   de lien mort. L'interdit « popup/chatbot » vise les fenêtres non
   sollicitées ; ce dossier ne s'ouvre qu'au clic du visiteur, et le brief V80
   le demande.
+  v87 (arbitrage Vincent, 18/09/2026) : LES HUIT RUBRIQUES N'EXISTENT PLUS,
+  le popup montre le vrai dossier, les deux pages du PDF en images dans un
+  cahier qu'on tourne ; voir « LE CAHIER, v87 » à la fin des lots.
 - CE QUI DISPARAÎT DE L'ACCUEIL : Entonnoir (la toise), NeFaitPas, Faq,
   BarreAction (le CTA mobile), Reveal (plus aucune animation d'entrée, ni
   .rev ni .mask, ni séquence de chargement), IconesOffre, CarteFrance si elle
@@ -2015,6 +2018,56 @@ sur une hauteur ni une largeur de texte, qui se remesurent sur le build.
   Tools par import ; quelques liens entrants (LinkedIn, annuaires,
   signature). RÈGLE : rien de nouveau dans schema.ts qui ne vienne de
   brand.ts ou copy.ts, la WebSite lit brand.MARQUE et brand.SUFFIXE.
+- LE CAHIER, v87 (arbitrage Vincent, 18/09/2026) : « le dossier qui s'ouvre
+  en popup doit montrer les deux pages distinctes, avec un effet de
+  superposition ou un clic pour tourner la page ; montrer le vrai bon
+  dossier et pas une représentation ». LE VRAI DOSSIER est le spécimen
+  2026-000 du gabarit HTML du dépôt Veillor.com, Vérane Ingénierie,
+  FICTIF (son sous-titre le dit, son pied aussi ; l'entrée « Veranex » du
+  cache INPI n'a rien à voir). Deux pages A4.
+  LES PAGES SONT DES IMAGES DU PDF, pas un rendu du HTML ni un PDF.js :
+  scripts/specimen-pages.mjs (« npm run specimen-pages ») copie le PDF dans
+  public/specimen-imbrin.pdf, ce qui fait apparaître le lien « Version
+  PDF » (Dossier.tsx), rend chaque page avec PyMuPDF (le venv du dépôt
+  Veillor.com) à 96 et 192 dpi, 794 × 1123 et 1587 × 2246, et écrit des
+  WebP SANS PERTE (65 + 49 Ko en 1×, 129 + 97 Ko en 2× ; le lossy à 92
+  pesait plus lourd et bavait sur le texte). brand.MEDIAS.specimenPages
+  les liste, en srcset 1x / 2x ; chargement différé, le popup est fermé
+  au chargement. Aucune retouche à la main : on relance le script quand
+  le dossier change.
+  LE CAHIER : deux feuilles en absolu dans un conteneur au rapport de
+  l'A4, la seconde décalée de 10 px derrière la première, en bas à droite
+  (la superposition) ; un filet #C8CACC autour de chaque feuille, celui
+  de la couverture, ni ombre ni dégradé. TOURNER LA PAGE : un clic sur la
+  feuille, sur « Tourner la page » ou une flèche du clavier ; la première
+  feuille pivote sur son bord gauche (rotateY, 0,6 s, face arrière non
+  dessinée) et la seconde avance à sa place ; immédiat sous
+  prefers-reduced-motion ; le corps du popup remonte en haut à chaque
+  page. « Page précédente » et le compteur « Page 1 sur 2 » (aria-live)
+  sous les feuilles. Le cahier se rouvre toujours à la page 1. Le papier
+  du popup passe de 800 à 860 px pour servir la feuille à 794 px ; sur
+  téléphone la feuille prend la largeur, le PDF reste le chemin pour lire
+  à l'aise. Sans JavaScript, le noscript du layout pose les deux feuilles
+  l'une sous l'autre, à plat, et masque les commandes.
+  Ce n'est pas le « tilt 3D » des interdits, qui vise l'inclinaison
+  décorative au survol : c'est le geste demandé, tourner une page, et il
+  ne joue qu'au clic.
+  CE QUI PART : les huit rubriques HTML du spécimen (copy.dossier.popup),
+  le type RubriqueDossier, le composant Rubrique et 130 lignes de CSS
+  .specimen-*. La couverture de la bande devient la page 1 du dossier
+  qu'on ouvre : « Vérane Ingénierie », « Ingénierie et études techniques,
+  10 à 19 salariés », « Paris 12e », mots du sous-titre du dossier ;
+  « Établissements Vasseur » n'existe plus. La mention « spécimen » reste
+  visible trois fois : la couverture, la barre du popup (« Dossier
+  d'approche, spécimen 2026-000 »), et les pages elles-mêmes.
+  SIGNALÉ, HORS DE CE DÉPÔT : le pied des deux pages porte deux tirets
+  cadratins (« Imbrin Research — Jungle.Block Solutions », « scan lu à
+  l'image le 17/09/2026 — spécimen »). C'est le gabarit Veillor.com, pas
+  un texte du site ; la règle v8 vaut pour les textes du site.
+  Vérifié sur le HTML produit : deux feuilles, deux srcset 2x, le lien
+  PDF, « Vérane Ingénierie » trois fois, « Vasseur » zéro, aucun tiret.
+  Captures popup page 1, tournée, page 2, à 1440 et 390, dans
+  V80-captures/v87-cahier.
 - MÉTHODE DU CHANTIER : cinq lots, un commit par lot, un rapport court et une
   validation entre chaque. 0 préparation (emblèmes, Hanken, tokens, charte) ;
   1 hero, en-tête, pied de page ; 2 service, dossier et popup, méthode ;

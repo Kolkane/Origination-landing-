@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "next lint",
     "emblemes": "node scripts/emblemes.mjs",
-    "video-mobile": "node scripts/video-mobile.mjs"
+    "video-mobile": "node scripts/video-mobile.mjs",
+    "specimen-pages": "node scripts/specimen-pages.mjs"
   },
   "dependencies": {
     "next": "14.2.35",

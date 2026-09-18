@@ -1,8 +1,9 @@
 "use client";
 
-import { useCallback, useEffect, useRef } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import Embleme from "@/components/Embleme";
-import { copy, type RubriqueDossier } from "@/config/copy";
+import { brand } from "@/config/brand";
+import { copy } from "@/config/copy";
 import { grand } from "@/config/typo";
 
 /* V80 · LA BANDE DU DOSSIER et son popup.
@@ -17,106 +18,41 @@ import { grand } from "@/config/typo";
    monte de 22 px en 0,4 s, coupée sous prefers-reduced-motion (CSS).
    L'ombre portée de la planche n'est PAS reprise : arbitrage Vincent du
    17/09, elle contredisait l'interdit « shadow-md et au-delà ».
-   Le contenu du dossier est rendu par le serveur : il est dans le HTML,
-   donc dans le DOM, sans JavaScript. Le noscript du layout le sort de sa
-   boîte pour qu'il reste lisible quand les scripts ne s'exécutent pas. */
-
-function Rubrique({ r }: { r: RubriqueDossier }) {
-  return (
-    <div className="specimen-rubrique">
-      <h3>{r.titre}</h3>
-      {r.forme === "definitions" && (
-        <dl className="specimen-dl">
-          {r.lignes.map((l) => (
-            <div className="specimen-ligne" key={l.k}>
-              <dt>{l.k}</dt>
-              <dd>{l.v}</dd>
-            </div>
-          ))}
-        </dl>
-      )}
-      {r.forme === "comptes" && (
-        <table className="specimen-table">
-          <thead>
-            <tr>
-              {r.colonnes.map((c, i) => (
-                <th key={c} scope="col" className={i > 0 ? "nombre" : undefined}>
-                  {c}
-                </th>
-              ))}
-            </tr>
-          </thead>
-          <tbody>
-            {r.lignes.map((l) => (
-              <tr key={l.k}>
-                <th scope="row">{l.k}</th>
-                {/* une valeur unique court sous les trois exercices : elle
-                    ne porte pas sur un exercice, elle porte sur la ligne */}
-                {l.valeurs.map((v) => (
-                  <td
-                    key={v}
-                    className={`nombre${l.gris ? " gris" : ""}`}
-                    colSpan={l.valeurs.length === 1 ? r.colonnes.length - 1 : undefined}
-                  >
-                    {v}
-                  </td>
-                ))}
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      )}
-      {r.forme === "chronologie" && (
-        <table className="specimen-table">
-          <tbody>
-            {r.lignes.map((l) => (
-              <tr key={l.date}>
-                <td className="date">{l.date}</td>
-                <td>{l.ev}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      )}
-      {r.forme === "statuts" && (
-        <>
-          <table className="specimen-table">
-            <tbody>
-              {r.lignes.map((l) => (
-                <tr key={l.k}>
-                  <td className="date">{l.k}</td>
-                  <td>{l.v}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-          <p className="specimen-note">{r.note}</p>
-        </>
-      )}
-      {r.forme === "prose" && (
-        <>
-          {r.paragraphes.map((p) => (
-            <p className="specimen-p" key={p.slice(0, 32)}>
-              {p}
-            </p>
-          ))}
-          {r.note ? <p className="specimen-note">{r.note}</p> : null}
-        </>
-      )}
-    </div>
-  );
-}
-
+   v87 (arbitrage Vincent, 18/09/2026) : LE POPUP MONTRE LE VRAI DOSSIER,
+   pas une représentation. Les deux pages du PDF du spécimen (Vérane
+   Ingénierie, 2026-000, fictif) sont des images (brand.MEDIAS
+   .specimenPages, 1× et 2×), posées dans un CAHIER : deux feuilles
+   empilées, la seconde dépasse de quelques pixels derrière la première,
+   et un clic sur la feuille, sur « Tourner la page » ou une flèche du
+   clavier tourne la page (la première feuille pivote sur son bord
+   gauche, comme une page de livre ; sous prefers-reduced-motion elle
+   change sans pivoter). Le cahier se rouvre toujours à la page 1. Les
+   images sont dans le HTML : sans JavaScript, le noscript du layout sort
+   le dialog de sa boîte et pose les deux feuilles l'une sous l'autre. Le
+   PDF lui-même est en lien dans la barre. */
 export default function DossierBande({ pdf }: { pdf: string | null }) {
   const d = copy.dossier;
   const c = d.couverture;
   const p = d.popup;
+  const feuilles = brand.MEDIAS.specimenPages;
   const dialogue = useRef<HTMLDialogElement>(null);
   const fermerRef = useRef<HTMLButtonElement>(null);
+  const corps = useRef<HTMLDivElement>(null);
   const declencheur = useRef<HTMLButtonElement | null>(null);
+  const [page, setPage] = useState(0);
+  const derniere = feuilles.length - 1;
+
+  /* une page tournée s'ouvre par le haut : si le lecteur a fait défiler
+     la première jusqu'aux commandes, la seconde ne doit pas apparaître
+     par son pied. Défilement doux, immédiat sous prefers-reduced-motion. */
+  useEffect(() => {
+    const reduit = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    corps.current?.scrollTo({ top: 0, behavior: reduit ? "auto" : "smooth" });
+  }, [page]);
 
   const ouvrir = useCallback((e: React.MouseEvent<HTMLButtonElement>) => {
     declencheur.current = e.currentTarget;
+    setPage(0);
     dialogue.current?.showModal();
     document.body.style.overflow = "hidden";
     /* la planche ouvre sur « Fermer » : c'est la sortie, et elle doit
@@ -141,6 +77,12 @@ export default function DossierBande({ pdf }: { pdf: string | null }) {
      dialog pour cible, y compris un clic sur le ::backdrop */
   const surClic = (e: React.MouseEvent<HTMLDialogElement>) => {
     if (e.target === dialogue.current) dialogue.current?.close();
+  };
+
+  /* les flèches tournent les pages ; Échap reste au navigateur */
+  const surTouche = (e: React.KeyboardEvent<HTMLDialogElement>) => {
+    if (e.key === "ArrowRight" && page < derniere) setPage(page + 1);
+    if (e.key === "ArrowLeft" && page > 0) setPage(page - 1);
   };
 
   return (
@@ -185,6 +127,7 @@ export default function DossierBande({ pdf }: { pdf: string | null }) {
         className="popup"
         aria-labelledby="popup-titre"
         onClick={surClic}
+        onKeyDown={surTouche}
       >
         <div className="popup-papier">
           <div className="popup-barre">
@@ -207,30 +150,52 @@ export default function DossierBande({ pdf }: { pdf: string | null }) {
               </button>
             </div>
           </div>
-          <div className="popup-corps">
-            <div className="specimen">
-              <div className="specimen-tete">
-                <div className="specimen-marque">
-                  <Embleme ton="encre" emploi="document" differe />
-                  <span>{p.marque}</span>
-                </div>
-                <div className="specimen-meta">
-                  {p.metaLigne1}
-                  <br />
-                  {p.metaLigne2}
-                </div>
+          <div className="popup-corps" ref={corps}>
+            <div className="cahier" data-page={page}>
+              <div className="cahier-feuilles">
+                {feuilles.map((f, i) => (
+                  <button
+                    type="button"
+                    className="feuille"
+                    key={f.simple}
+                    aria-label={p.tourner}
+                    aria-hidden={i !== page}
+                    tabIndex={i === page ? 0 : -1}
+                    onClick={() => setPage(i === derniere ? 0 : i + 1)}
+                  >
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={f.simple}
+                      srcSet={`${f.simple} 1x, ${f.double} 2x`}
+                      width={794}
+                      height={1123}
+                      alt={p.pages[i].alt}
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </button>
+                ))}
               </div>
-              <div className="specimen-societe">
-                <div className="specimen-nom">{p.societe}</div>
-                <div className="specimen-region">{p.region}</div>
-              </div>
-              <p className="specimen-sous">{p.sousTitre}</p>
-              {p.rubriques.map((r) => (
-                <Rubrique key={r.titre} r={r} />
-              ))}
-              <div className="specimen-pied">
-                <span>{p.pied.specimen}</span>
-                <span className="confidentiel">{p.pied.confidentiel}</span>
+              <div className="cahier-commandes">
+                <button
+                  type="button"
+                  className="cahier-bouton"
+                  onClick={() => setPage(page - 1)}
+                  disabled={page === 0}
+                >
+                  {p.precedente}
+                </button>
+                <span className="cahier-compteur" aria-live="polite">
+                  {p.compteur[page]}
+                </span>
+                <button
+                  type="button"
+                  className="cahier-bouton"
+                  onClick={() => setPage(page + 1)}
+                  disabled={page === derniere}
+                >
+                  {p.suivante}
+                </button>
               </div>
             </div>
           </div>

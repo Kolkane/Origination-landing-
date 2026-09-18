@@ -32,24 +32,6 @@ export type SectionLegale = {
    Icones.tsx le rend en SVG inline, sans fichier ni bibliothèque. */
 export type NomIconeService = "cabinet" | "carte" | "registre" | "chemise";
 
-/* V80 · UNE RUBRIQUE DU DOSSIER SPÉCIMEN. Cinq formes, parce que les huit
-   rubriques n'ont pas la même nature : des définitions, un tableau de
-   comptes, une chronologie datée, de la prose, des statuts de
-   vérification. La forme est déclarée ici, le composant ne fait que la
-   rendre : c'est la règle « rien codé en dur dans le JSX » appliquée à
-   une structure et pas seulement à un texte. */
-export type RubriqueDossier = { titre: string } & (
-  | { forme: "definitions"; lignes: { k: string; v: string }[] }
-  | {
-      forme: "comptes";
-      colonnes: string[];
-      lignes: { k: string; valeurs: string[]; gris?: boolean }[];
-    }
-  | { forme: "chronologie"; lignes: { date: string; ev: string }[] }
-  | { forme: "prose"; paragraphes: string[]; note?: string }
-  | { forme: "statuts"; lignes: { k: string; v: string }[]; note: string }
-);
-
 /* Copy v8 : reprise AU MOT PRÈS de MAQUETTE-V8.html (source de vérité).
    Règle v8 : aucun tiret cadratin ni demi-cadratin dans les textes.
    V80 : les sections de l'accueil sont reprises AU MOT PRÈS des planches
@@ -159,115 +141,40 @@ export const copy = typoDeep({
     sous:
       "Le spécimen est fictif : société, personnes et chiffres sont inventés. En rendez-vous, un dossier complet est parcouru avec vous, page à page.",
     bouton: "Lire le dossier spécimen",
+    /* v87 (arbitrage Vincent, 18/09/2026) : la couverture est la page 1
+       du dossier que le popup ouvre, le spécimen 2026-000 du gabarit
+       Veillor.com, Vérane Ingénierie, fictif : ses mots sont ceux de son
+       sous-titre. */
     couverture: {
       marque: `${brand.MARQUE} ${brand.SUFFIXE}`,
       label: "Dossier d’approche",
-      titre: "Établissements Vasseur",
-      activite: "Génie climatique, 60 à 99 salariés",
-      region: "Région exemple",
+      titre: "Vérane Ingénierie",
+      activite: "Ingénierie et études techniques, 10 à 19 salariés",
+      region: "Paris 12e",
       specimen: "Spécimen, données fictives",
       confidentiel: "Confidentiel",
     },
+    /* v87 : LE POPUP MONTRE LE VRAI DOSSIER. Les rubriques HTML qui
+       représentaient le spécimen sont parties : le popup affiche les deux
+       pages du PDF en images (brand.MEDIAS.specimenPages), empilées, avec
+       un clic pour tourner la page. Ne restent ici que la barre, les
+       commandes du cahier et les textes alternatifs des pages. */
     popup: {
-      titre: "Dossier d’approche, spécimen",
+      titre: "Dossier d’approche, spécimen 2026-000",
       pdf: "Version PDF",
       fermer: "Fermer",
-      marque: `${brand.MARQUE} ${brand.SUFFIXE}`,
-      metaLigne1: "Dossier d’approche",
-      metaLigne2: "Spécimen, données fictives",
-      societe: "Établissements Vasseur",
-      region: "Région exemple",
-      sousTitre: "Génie climatique, SAS, 60 à 99 salariés. Dossier établi le 07/2026.",
-      rubriques: [
+      pages: [
         {
-          titre: "1. Identité",
-          forme: "definitions",
-          lignes: [
-            { k: "Dirigeant", v: "Gérard Vasseur, président, 63 ans" },
-            { k: "Capital", v: "Détenu en totalité par le dirigeant depuis 2011" },
-            { k: "Forme", v: "SAS depuis 03/2026, titres cessibles" },
-            { k: "Immobilier", v: "Murs d’exploitation logés dans une SCI depuis 2023" },
-          ],
+          alt: "Page 1 du dossier spécimen Vérane Ingénierie : le fait daté, les chiffres clés, l’angle, l’identité et ce que le registre établit.",
         },
         {
-          titre: "2. Comptes déposés",
-          forme: "comptes",
-          colonnes: ["Exercice clos au 31/12", "2023", "2024", "2025"],
-          lignes: [
-            { k: "Résultat net", valeurs: ["510 K€", "590 K€", "640 K€"] },
-            {
-              k: "Chiffre d’affaires",
-              valeurs: ["Sous option de confidentialité depuis 2021"],
-              gris: true,
-            },
-            { k: "Trésorerie au 31/12/2025", valeurs: ["1,9 M€"] },
-            { k: "Fonds de roulement", valeurs: ["2,1 M€"] },
-            { k: "Dettes financières / capitaux propres", valeurs: ["0,2"] },
-          ],
+          alt: "Page 2 du dossier spécimen Vérane Ingénierie : les contreparties, les comptes, qui achète dans cette classe, ce que nous ne savons pas, les pièces lues, sources et méthode.",
         },
-        {
-          titre: "3. Détention",
-          forme: "prose",
-          paragraphes: [
-            "Aucune entrée d’associé et aucun mouvement de titres depuis la reprise de 2011, jusqu’à l’acte de mars 2026. L’affaire est saine : trois exercices en hausse, un endettement financier faible. Les murs d’exploitation ont été isolés dans une SCI en 2023 ; l’acte est daté et figure à la chronologie.",
-          ],
-        },
-        {
-          titre: "4. Chronologie des actes déposés",
-          forme: "chronologie",
-          lignes: [
-            { date: "1998", ev: "Création, transmission familiale" },
-            { date: "2011", ev: "Reprise par le dirigeant actuel" },
-            { date: "2023", ev: "Constitution d’une SCI, murs d’exploitation isolés" },
-            {
-              date: "03/2026",
-              ev: "Transformation en SAS, titres rendus cessibles, acte déposé",
-            },
-            { date: "04/2026", ev: "Dépôt des comptes clos au 31/12/2025" },
-            {
-              date: "07/2026",
-              ev: "Vérification au registre : dirigeant actif, aucun mouvement de contrôle sur 24 mois",
-            },
-          ],
-        },
-        {
-          titre: "5. Angle d’approche",
-          forme: "prose",
-          paragraphes: [
-            "La valeur de l’entreprise repose sur son dirigeant, qui a 63 ans. L’échange peut s’ouvrir sur la continuité de l’exploitation, avant toute question de cession.",
-            "Les titres viennent d’être rendus cessibles : le geste est daté, l’acte est au registre. Ce que le dirigeant prépare, l’acte ne le dit pas. C’est la première question à lui poser.",
-          ],
-        },
-        {
-          titre: "6. Ce que les sources n’établissent pas",
-          forme: "prose",
-          paragraphes: [
-            "Le chiffre d’affaires est sous option de confidentialité depuis 2021 : une fourchette est donnée, pas un montant. Les deux enfants du dirigeant sont hors de l’entreprise ; rien n’indique s’ils constituent une piste de reprise. Aucun acte ne renseigne l’intention du dirigeant.",
-          ],
-        },
-        {
-          titre: "7. Coordonnées",
-          forme: "statuts",
-          lignes: [
-            { k: "Mobile", v: "Vérifié le 07/2026" },
-            { k: "Email nominatif", v: "Vérifié le 07/2026" },
-            { k: "Ligne directe", v: "Non vérifiée" },
-          ],
-          note:
-            "Coordonnées masquées dans le spécimen. Elles proviennent de fournisseurs sous contrat ; chaque ligne porte son statut de vérification.",
-        },
-        {
-          titre: "8. Sources",
-          forme: "prose",
-          paragraphes: [
-            "Registre national des entreprises (INPI) : extrait et actes déposés. Comptes annuels déposés, exercices 2023 à 2025. BODACC. Répertoire SIRENE (INSEE).",
-          ],
-        },
-      ] as RubriqueDossier[],
-      pied: {
-        specimen: "Spécimen. Société, personnes et chiffres inventés.",
-        confidentiel: "Confidentiel",
-      },
+      ],
+      precedente: "Page précédente",
+      suivante: "Tourner la page",
+      compteur: ["Page 1 sur 2", "Page 2 sur 2"],
+      tourner: "Tourner la page",
     },
   },
   /* V80 · LA MÉTHODE, au mot près de la planche : trois étapes
