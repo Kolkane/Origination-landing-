@@ -2086,14 +2086,18 @@ sur une hauteur ni une largeur de texte, qui se remesurent sur le build.
   très fine, rouge vin, qui tourne autour du dossier, légèrement en
   dégradé, pour faire comprendre qu'on peut cliquer dessus et donner envie
   de le lire : c'est la preuve ultime de ma valeur ajoutée ». Un trait de
-  1 px en --vin fait le tour de la couverture en 7 s, tête pleine sur un
-  huitième du tour, queue en fondu sur un quart, en boucle, avant tout
-  survol ; le survol
-  garde son anneau. Dessin : un pseudo-élément ::after posé sur le filet
-  #C8CACC, conic-gradient dont l'angle de départ est une propriété
-  personnalisée animée (@property --tour, sans quoi un angle ne
-  s'interpole pas), masque qui ne garde que l'anneau de 1 px, aucun
-  filtre, aucune ombre, rien à l'intérieur de la couverture. Sous
+  1 px en --vin fait le tour de la couverture en 7 s, en boucle, avant tout
+  survol ; le survol garde son anneau. v88b, LA COMÈTE (Vincent, même jour :
+  « j'imaginais quelque chose de plus voyant, avec une sorte de traînée de
+  pixels : sobre, élégant mais efficace pour attirer l'attention ») : le
+  trait passe à 2 px — un pixel sur le filet #C8CACC, un sur le papier, là
+  où le vin se voit —, tête pleine sur un dixième du tour, traînée en fondu
+  sur plus d'un tiers, tour en 6 s. Dessin : un pseudo-élément ::after,
+  conic-gradient dont l'angle de départ est une propriété personnalisée
+  animée (@property --tour, sans quoi un angle ne s'interpole pas), masque
+  qui ne garde que l'anneau de 2 px, aucun filtre, aucune ombre, rien à
+  l'intérieur de la couverture. Pas de lueur autour de la tête : ce serait
+  une ombre portée, et « shadow-md et au-delà » tient. Sous
   prefers-reduced-motion le pseudo-élément disparaît : le repos est le
   dessin d'avant. Sans @property (navigateurs anciens), le trait reste
   posé, fixe, en haut à droite.
