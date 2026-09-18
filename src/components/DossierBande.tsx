@@ -109,11 +109,8 @@ export default function DossierBande({ pdf }: { pdf: string | null }) {
           <span className="couverture-corps">
             <span className="couverture-label">{c.label}</span>
             <span className="couverture-titre">{c.titre}</span>
-            <span className="couverture-activite">
-              {c.activite}
-              <br />
-              {c.region}
-            </span>
+            <span className="couverture-these">{grand(c.these)}</span>
+            <span className="couverture-activite">{c.activite}</span>
           </span>
           <span className="couverture-pied">
             <span>{c.specimen}</span>

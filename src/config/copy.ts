@@ -149,8 +149,14 @@ export const copy = typoDeep({
       marque: `${brand.MARQUE} ${brand.SUFFIXE}`,
       label: "Dossier d’approche",
       titre: "Vérane Ingénierie",
-      activite: "Ingénierie et études techniques, 10 à 19 salariés",
-      region: "Paris 12e",
+      /* v87b (arbitrage Vincent, 18/09/2026) : la couverture porte la THÈSE
+         du dossier, la phrase de synthèse en tête de sa page 1, mot pour
+         mot ; c'est elle qui donne envie d'ouvrir, une fiche signalétique
+         n'appelle personne. La fiche passe en dessous, en petit. Les
+         chiffres sont ceux du spécimen fictif, marqué tel sur la
+         couverture même (liste blanche, cas 3). */
+      these: "Gérant de 68 ans, 82 % des parts, une transformation en SAS engagée, non décidée.",
+      activite: "Ingénierie et études techniques, Paris 12e",
       specimen: "Spécimen, données fictives",
       confidentiel: "Confidentiel",
     },

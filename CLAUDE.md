@@ -2060,6 +2060,20 @@ sur une hauteur ni une largeur de texte, qui se remesurent sur le build.
   « Établissements Vasseur » n'existe plus. La mention « spécimen » reste
   visible trois fois : la couverture, la barre du popup (« Dossier
   d'approche, spécimen 2026-000 »), et les pages elles-mêmes.
+  v87b, LA COUVERTURE PORTE LA THÈSE (Vincent : « est-ce vraiment la
+  meilleure chose à marquer ici, il faudrait quelque chose qui donne plus
+  envie de lire le PDF »). Une fiche signalétique décrit, elle n'appelle
+  personne ; ce qui donne envie d'ouvrir un dossier, c'est sa thèse, et
+  le dossier en a une en tête de sa page 1. La couverture porte donc,
+  sous le nom, cette phrase mot pour mot, en 500 à 15 px : « Gérant de
+  68 ans, 82 % des parts, une transformation en SAS engagée, non
+  décidée. », et la fiche redescend en petit gris, « Ingénierie et études
+  techniques, Paris 12e ». Les chiffres sont ceux du spécimen fictif,
+  marqué tel sur la couverture même (liste blanche, cas 3), et la phrase
+  ne prête aucune intention : un rapport déposé, une décision qui n'est
+  pas prise. Sur téléphone, 12 px, le corps de la couverture remonte de
+  80 à 64 px pour loger les trois lignes. Mesuré sur le build : tout
+  tient dans les 320 × 452 et les 240 × 339 de la couverture.
   SIGNALÉ, HORS DE CE DÉPÔT : le pied des deux pages porte deux tirets
   cadratins (« Imbrin Research — Jungle.Block Solutions », « scan lu à
   l'image le 17/09/2026 — spécimen »). C'est le gabarit Veillor.com, pas

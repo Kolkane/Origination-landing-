@@ -899,12 +899,22 @@ html {
   line-height: 1.15;
   letter-spacing: -0.01em;
 }
+/* v87b : la thèse du dossier sous le nom, à l'échelle d'un sous-titre,
+   en encre ; la fiche (activité, lieu) redescend en petit gris */
+.couverture-these {
+  display: block;
+  margin-top: 12px;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1.4;
+  color: var(--encre);
+}
 .couverture-activite {
   display: block;
-  margin-top: 10px;
+  margin-top: 12px;
   font-size: 12.5px;
   line-height: 1.5;
-  color: var(--gris);
+  color: var(--gris-2);
 }
 .couverture-pied {
   display: flex;
@@ -1270,7 +1280,7 @@ html {
     height: 20px;
   }
   .couverture-corps {
-    margin-top: 80px;
+    margin-top: 64px;
   }
   .couverture-label {
     font-size: 10px;
@@ -1278,6 +1288,10 @@ html {
   .couverture-titre {
     margin-top: 4px;
     font-size: 19px;
+  }
+  .couverture-these {
+    margin-top: 8px;
+    font-size: 12px;
   }
   .couverture-activite {
     margin-top: 8px;
