@@ -2107,6 +2107,33 @@ sur une hauteur ni une largeur de texte, qui se remesurent sur le build.
   PDF, « Vérane Ingénierie » trois fois, « Vasseur » zéro, aucun tiret.
   Captures popup page 1, tournée, page 2, à 1440 et 390, dans
   V80-captures/v87-cahier.
+- LE FIL DE LA COUVERTURE, v88 (demande Vincent, 18/09/2026) : « une ligne
+  très fine, rouge vin, qui tourne autour du dossier, légèrement en
+  dégradé, pour faire comprendre qu'on peut cliquer dessus et donner envie
+  de le lire : c'est la preuve ultime de ma valeur ajoutée ». Un trait de
+  1 px en --vin fait le tour de la couverture en 7 s, en boucle, avant tout
+  survol ; le survol garde son anneau. v88b, LA COMÈTE (Vincent, même jour :
+  « j'imaginais quelque chose de plus voyant, avec une sorte de traînée de
+  pixels : sobre, élégant mais efficace pour attirer l'attention ») : le
+  trait passe à 2 px — un pixel sur le filet #C8CACC, un sur le papier, là
+  où le vin se voit —, tête pleine sur un dixième du tour, traînée en fondu
+  sur plus d'un tiers, tour en 6 s. Dessin : un pseudo-élément ::after,
+  conic-gradient dont l'angle de départ est une propriété personnalisée
+  animée (@property --tour, sans quoi un angle ne s'interpole pas), masque
+  qui ne garde que l'anneau de 2 px, aucun filtre, aucune ombre, rien à
+  l'intérieur de la couverture. Pas de lueur autour de la tête : ce serait
+  une ombre portée, et « shadow-md et au-delà » tient. Sous
+  prefers-reduced-motion le pseudo-élément disparaît : le repos est le
+  dessin d'avant. Sans @property (navigateurs anciens), le trait reste
+  posé, fixe, en haut à droite.
+  DEUX RÈGLES QU'IL TOUCHE, ARBITRÉES PAR LA DEMANDE : « dégradés » est aux
+  interdits absolus (la queue du fil est un dégradé de 1 px de large sur
+  un tiers de tour, pas un fond ni un texte) ; « pas de filet en vin » est
+  dans la DA V80 (le token --vin porte déjà le filet et les coches de
+  l'offre depuis la v83). Ce fil est le seul élément du site animé au
+  repos : la règle qui interdit toute animation d'entrée au scroll (Reveal,
+  v80) et celle des icônes au survol (v84) restent entières. Si le fil
+  finit par lasser, il se retire en supprimant le bloc V88 de globals.css.
 - MÉTHODE DU CHANTIER : cinq lots, un commit par lot, un rapport court et une
   validation entre chaque. 0 préparation (emblèmes, Hanken, tokens, charte) ;
   1 hero, en-tête, pied de page ; 2 service, dossier et popup, méthode ;

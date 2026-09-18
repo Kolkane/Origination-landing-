@@ -868,6 +868,55 @@ html {
 .couverture:hover {
   box-shadow: 0 0 0 3px var(--anneau);
 }
+/* V88 · LA COMÈTE DE LA COUVERTURE. Un trait de 2 px, vin, qui fait le tour
+   de la couverture en 6 s : tête pleine sur un dixième du tour, traînée en
+   fondu sur plus d'un tiers (v88b, Vincent : « plus voyant, une traînée,
+   sobre mais efficace »). Il dit « on peut ouvrir » avant tout survol. Un
+   pixel sur le filet #C8CACC, un pixel sur le papier : c'est sur le blanc
+   cassé que le vin se voit. Dessiné par un pseudo-élément en conic-gradient
+   dont l'angle de départ est une propriété personnalisée animée (@property,
+   sinon un angle ne s'interpole pas) ; le masque ne garde que l'anneau de
+   2 px, l'intérieur reste la couverture. Sans @property (navigateurs anciens) le trait reste posé, fixe,
+   en haut à droite. Sous prefers-reduced-motion : rien, le repos est le
+   dessin d'avant. */
+@property --tour {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
+}
+.couverture {
+  position: relative;
+}
+.couverture::after {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  padding: 2px;
+  pointer-events: none;
+  background: conic-gradient(
+    from var(--tour),
+    transparent 0 52%,
+    rgba(142, 36, 56, 0) 52%,
+    rgba(142, 36, 56, 0.45) 78%,
+    var(--vin) 88% 98%,
+    transparent 98% 100%
+  );
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  animation: couverture-tour 6s linear infinite;
+}
+@keyframes couverture-tour {
+  to {
+    --tour: 360deg;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .couverture::after {
+    display: none;
+  }
+}
 .couverture-tete {
   display: flex;
   align-items: center;
