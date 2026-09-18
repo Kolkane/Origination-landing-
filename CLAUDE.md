@@ -2091,6 +2091,14 @@ sur une hauteur ni une largeur de texte, qui se remesurent sur le build.
   (.couverture::after, conic-gradient), non fusionnée, Vincent juge sur
   la préview. Ce v87c ne touche pas .couverture lui-même ni ::after ; la
   fusion de v88 devra se relire sur la couverture composée ainsi.
+  v87d, RETOUR À LA COUVERTURE V87b (Vincent : « je préférais presque
+  l'ancienne une, sobre et professionnelle ; je voulais juste une sorte de
+  filigrane qui fait le tour pour inciter à cliquer »). La hiérarchie
+  renversée de v87c est annulée : le nom revient en titre à 25 px, la
+  thèse à 15 px dessous, la fiche en petit gris, sans filet vin ni fait
+  daté. Le « filigrane qui fait le tour » est la comète de la branche v88
+  de l'autre session, fusionnée dans main dans la foulée : voir « LA
+  COMÈTE DE LA COUVERTURE, V88 ». v87c reste en procès-verbal.
   SIGNALÉ, HORS DE CE DÉPÔT : le pied des deux pages porte deux tirets
   cadratins (« Imbrin Research — Jungle.Block Solutions », « scan lu à
   l'image le 17/09/2026 — spécimen »). C'est le gabarit Veillor.com, pas

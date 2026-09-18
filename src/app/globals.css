@@ -881,14 +881,9 @@ html {
   width: 26px;
   height: 26px;
 }
-/* v87c (arbitrage Vincent, 18/09/2026) : la couverture se lit comme une
-   UNE. Le nom de la société n'est plus le titre, il devient une ligne de
-   rappel ; la thèse du dossier passe en grand, coiffée d'un court filet
-   vin ; le fait daté qui ouvre le dossier arrive dessous, en vin, comme
-   sur sa page 1 ; la fiche (activité, lieu) reste en petit gris. */
 .couverture-corps {
   display: block;
-  margin-top: 40px;
+  margin-top: 110px;
 }
 .couverture-label {
   display: block;
@@ -898,31 +893,21 @@ html {
 }
 .couverture-titre {
   display: block;
-  margin-top: 4px;
-  font-size: 16px;
+  margin-top: 6px;
+  font-size: 25px;
   font-weight: 600;
-  line-height: 1.3;
-  letter-spacing: -0.005em;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
 }
+/* v87b : la thèse du dossier sous le nom, à l'échelle d'un sous-titre,
+   en encre ; la fiche (activité, lieu) redescend en petit gris */
 .couverture-these {
   display: block;
-  margin-top: 22px;
-  padding-top: 14px;
-  border-top: 2px solid var(--vin);
-  font-size: 21px;
+  margin-top: 12px;
+  font-size: 15px;
   font-weight: 500;
-  line-height: 1.3;
-  letter-spacing: -0.01em;
+  line-height: 1.4;
   color: var(--encre);
-  text-wrap: balance;
-}
-.couverture-fait {
-  display: block;
-  margin-top: 14px;
-  font-size: 13px;
-  font-weight: 500;
-  line-height: 1.45;
-  color: var(--vin);
 }
 .couverture-activite {
   display: block;
@@ -1295,23 +1280,18 @@ html {
     height: 20px;
   }
   .couverture-corps {
-    margin-top: 34px;
+    margin-top: 64px;
   }
   .couverture-label {
     font-size: 10px;
   }
   .couverture-titre {
-    margin-top: 3px;
-    font-size: 13px;
+    margin-top: 4px;
+    font-size: 19px;
   }
   .couverture-these {
-    margin-top: 14px;
-    padding-top: 10px;
-    font-size: 15.5px;
-  }
-  .couverture-fait {
-    margin-top: 10px;
-    font-size: 10.5px;
+    margin-top: 8px;
+    font-size: 12px;
   }
   .couverture-activite {
     margin-top: 8px;
