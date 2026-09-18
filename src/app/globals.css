@@ -868,6 +868,52 @@ html {
 .couverture:hover {
   box-shadow: 0 0 0 3px var(--anneau);
 }
+/* V88 · LE FIL DE LA COUVERTURE. Un trait de 1 px, vin, qui fait le tour de
+   la couverture en 7 s, tête pleine sur un huitième du tour, queue en fondu sur un quart :
+   il dit « on peut ouvrir » avant tout survol. Dessiné par un pseudo-élément
+   posé sur le filet #C8CACC, en conic-gradient dont l'angle de départ est une
+   propriété personnalisée animée (@property, sinon un angle ne s'interpole
+   pas) ; le masque ne garde que l'anneau de 1 px, l'intérieur reste la
+   couverture. Sans @property (navigateurs anciens) le trait reste posé, fixe,
+   en haut à droite. Sous prefers-reduced-motion : rien, le repos est le
+   dessin d'avant. */
+@property --tour {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
+}
+.couverture {
+  position: relative;
+}
+.couverture::after {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  padding: 1px;
+  pointer-events: none;
+  background: conic-gradient(
+    from var(--tour),
+    transparent 0 60%,
+    rgba(142, 36, 56, 0) 60%,
+    var(--vin) 85% 97.5%,
+    transparent 97.5% 100%
+  );
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  animation: couverture-tour 7s linear infinite;
+}
+@keyframes couverture-tour {
+  to {
+    --tour: 360deg;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .couverture::after {
+    display: none;
+  }
+}
 .couverture-tete {
   display: flex;
   align-items: center;
