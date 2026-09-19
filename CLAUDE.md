@@ -2134,6 +2134,66 @@ sur une hauteur ni une largeur de texte, qui se remesurent sur le build.
   repos : la règle qui interdit toute animation d'entrée au scroll (Reveal,
   v80) et celle des icônes au survol (v84) restent entières. Si le fil
   finit par lasser, il se retire en supprimant le bloc V88 de globals.css.
+- v89, DEUX OPTIMISATIONS APRÈS RELECTURE DE LA V87 ET DE LA V88 (arbitrage
+  Vincent, 19/09/2026 : « tu as entièrement raison sur les deux points, je me
+  demandais aussi pourquoi on ne voyait pas bien le dossier »).
+  1. LA COMÈTE COÛTAIT UN FIL PRINCIPAL ENTIER, ET MÊME HORS CHAMP. Le dessin
+  de la v88b ne change pas d'un pixel, sa MÉCANIQUE change. Elle animait
+  l'angle du conic-gradient par une propriété personnalisée (@property
+  --tour) : un navigateur ne sait pas compositer ça, il recalculait le style
+  et repeignait À CHAQUE IMAGE, pour toute la vie de la page. MESURÉ sur le
+  build, 6 s de page au repos, sans interaction : 424 ms de fil principal et
+  360 recalculs de style, contre 24 ms et 27 sans la comète. Et couverture
+  HORS CHAMP le coût était identique, 367 ms : un onglet laissé ouvert payait
+  ça indéfiniment, batterie comprise sur téléphone.
+  La comète devient une ROTATION. Le masque en anneau vit sur un élément à
+  lui, .couverture-fil, et reste FIXE ; le dégradé tourne sur son ::before,
+  en transform. La géométrie est la même, le conic restant centré sur la
+  couverture : faire tourner le carré qui le porte autour de ce centre
+  revient exactement à faire tourner son angle. Après : 32 ms et 35
+  recalculs, soit treize fois moins de fil principal. Vérifié aussi, le
+  dessin figé à quatre instants du tour, le nom accessible du bouton
+  inchangé, et rien sous prefers-reduced-motion, getAnimations() à 0.
+  LEÇON, elle vaut pour toute animation future : une propriété personnalisée
+  animée n'est JAMAIS compositée. Si un effet peut s'écrire en transform ou
+  en opacity, il s'écrit ainsi ; sinon il se mesure avant d'être posé. Et une
+  animation en boucle se mesure AUSSI hors champ, c'est là qu'elle est
+  indéfendable.
+  2. LE DOSSIER N'ÉTAIT PLUS DU TEXTE. La v87 a remplacé les huit rubriques
+  par deux images : le vrai document, et c'est l'arbitrage, il ne bouge pas.
+  Mais vérifié sur le HTML produit, « commissaire aux comptes », « L'angle »
+  et « 2,3 M€ » y étaient à ZÉRO occurrence. Le bloc le plus substantiel du
+  site était devenu invisible aux moteurs, DEUX COMMITS APRÈS LA V86 qui ne
+  servait qu'à être indexé. Et à 390 px la page A4 s'affiche à 0,44 fois sa
+  taille, mesuré : le dossier y était illisible, ce que Vincent avait vu sans
+  en connaître la cause.
+  L'ALTERNATIVE TEXTE. Un <details> natif sous le cahier, « Lire le texte du
+  dossier » : le contenu est DANS le DOM, donc lu par les moteurs et par un
+  lecteur d'écran, sans JavaScript et sans texte caché à un visiteur. 5 462
+  caractères rendus à la page. C'est aussi le seul moyen de lire le dossier
+  sur un téléphone.
+  ELLE EST EXTRAITE DE LA COUCHE TEXTE DU PDF, JAMAIS RE-SAISIE
+  (scripts/dossier-texte.py, PyMuPDF, chaîné à specimen-pages.mjs) : une
+  transcription tenue à la main finirait par diverger du document, et la v87
+  a justement choisi l'image pour ne pas « représenter » le dossier. Le
+  NIVEAU de chaque bloc vient de la TAILLE ET DE LA GRAISSE mesurées dans le
+  PDF, pas d'une liste de titres tenue à la main. Deux réglages trouvés sur
+  pièce et consignés parce qu'ils se reprendront de travers : les intertitres
+  du document sont en semi-gras à LA TAILLE DU CORPS, 9,4 pt, donc la taille
+  seule les collait au paragraphe suivant ; et le fait daté qui ouvre la page
+  est lui aussi en gras, sur trois lignes, donc le gras seul en faisait un
+  titre. Un intertitre est COURT, seuil à soixante caractères, c'est ce qui
+  les sépare. Le recollage des lignes ne franchit jamais une frontière de
+  bloc du PDF, sinon les tableaux fusionnaient en une ligne.
+  LA TRANSCRIPTION PASSE PAR typoDeep, comme copy.ts et analyses.ts : sans
+  lui elle serait le seul texte du site sans espaces insécables.
+  ÉCART SIGNALÉ, et c'est le seul : le PDF porte deux tirets cadratins, le
+  générateur les transpose en virgules. La règle v8 n'a plus d'exception
+  depuis la v78 et vaut pour tout texte du site ; aucun fait n'est modifié.
+  VÉRIFIÉ : build et lint verts ; 7 pages x 9 largeurs de 360 à 1920 sans
+  débordement ; cahier, tournage clavier et Échap intacts ; fonction Edge de
+  l'image OpenGraph à 0,84 Mo, sous la limite de 1 Mo.
+
 - MÉTHODE DU CHANTIER : cinq lots, un commit par lot, un rapport court et une
   validation entre chaque. 0 préparation (emblèmes, Hanken, tokens, charte) ;
   1 hero, en-tête, pied de page ; 2 service, dossier et popup, méthode ;

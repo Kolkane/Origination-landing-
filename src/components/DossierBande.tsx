@@ -4,6 +4,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import Embleme from "@/components/Embleme";
 import { brand } from "@/config/brand";
 import { copy } from "@/config/copy";
+import { dossierTexte } from "@/config/dossier-texte";
 import { grand } from "@/config/typo";
 
 /* V80 · LA BANDE DU DOSSIER et son popup.
@@ -101,6 +102,18 @@ export default function DossierBande({ pdf }: { pdf: string | null }) {
             un nom qui ne contenait pas le texte du bouton, audit
             label-content-name-mismatch en échec au lot 3 */}
         <button type="button" className="couverture" onClick={ouvrir}>
+          {/* v89 · LE FIL DE LA COMÈTE porte désormais son propre élément, et
+              ce n'est pas de la plomberie : le masque en anneau doit rester
+              FIXE pendant que le dégradé tourne. Sur un seul pseudo-élément,
+              l'angle du conic-gradient s'animait par une propriété
+              personnalisée, que le navigateur ne peut pas compositer : il
+              recalculait le style et repeignait à chaque image, mesuré à
+              360 recalculs et 424 ms de fil principal par 6 s de page au
+              repos, et il le faisait même couverture hors champ. Ici le
+              masque est sur ce span, la rotation sur son ::before : une
+              transformation, donc le compositeur. Aucun texte, aria-hidden,
+              le nom accessible du bouton ne bouge pas. */}
+          <span className="couverture-fil" aria-hidden="true" />
           <span className="visuellement-cache">{d.bouton}. </span>
           <span className="couverture-tete">
             <Embleme ton="encre" emploi="document" className="couverture-embleme" differe />
@@ -195,6 +208,35 @@ export default function DossierBande({ pdf }: { pdf: string | null }) {
                 </button>
               </div>
             </div>
+            {/* v89 · L'ALTERNATIVE TEXTE. Les deux pages sont des images : le
+                vrai document, c'était l'arbitrage v87, et il ne bouge pas.
+                Mais une image n'est pas du texte, et la substance du dossier
+                avait quitté le HTML deux commits après la v86, qui ne servait
+                qu'à être indexé. La transcription vient de la couche texte du
+                PDF lui-même (src/config/dossier-texte.ts, généré), elle ne
+                peut donc pas diverger du document.
+                Un <details> natif : le contenu est DANS le DOM, donc lu par
+                les moteurs et par un lecteur d'écran, sans JavaScript et sans
+                texte caché à un visiteur. Et c'est le seul moyen de lire le
+                dossier sur un téléphone, où la page A4 s'affiche à 0,44 fois
+                sa taille, mesuré à 390 px. */}
+            <details className="dossier-texte">
+              <summary>{p.texteResume}</summary>
+              {dossierTexte.map((bloc, i) => (
+                <div className="dossier-texte-page" key={p.compteur[i]}>
+                  <p className="dossier-texte-folio">{p.compteur[i]}</p>
+                  {bloc.map((b, j) =>
+                    b.n === "titre" ? (
+                      <h4 key={`${i}-${j}`}>{b.t}</h4>
+                    ) : (
+                      <p key={`${i}-${j}`} className={b.n === "note" ? "dossier-texte-note" : undefined}>
+                        {b.t}
+                      </p>
+                    ),
+                  )}
+                </div>
+              ))}
+            </details>
           </div>
         </div>
       </dialog>

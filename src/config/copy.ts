@@ -181,6 +181,11 @@ export const copy = typoDeep({
       suivante: "Tourner la page",
       compteur: ["Page 1 sur 2", "Page 2 sur 2"],
       tourner: "Tourner la page",
+      /* v89 : l'intitulé de l'alternative texte. Le corps de la
+         transcription n'est pas ici, il est généré depuis la couche texte
+         du PDF (src/config/dossier-texte.ts) : une re-saisie à la main
+         finirait par diverger du document. */
+      texteResume: "Lire le texte du dossier",
     },
   },
   /* V80 · LA MÉTHODE, au mot près de la planche : trois étapes

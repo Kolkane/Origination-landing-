@@ -52,3 +52,14 @@ for (let i = 1; i <= pages; i++) {
   }
 }
 rmSync(tmp, { recursive: true, force: true });
+
+/* v89 · LA TRANSCRIPTION SUIT LES IMAGES, dans le même geste : sinon les
+   pages et leur texte divergeraient au premier regénération oubliée.
+   scripts/dossier-texte.py relit la couche texte du PDF qu'on vient de
+   copier et réécrit src/config/dossier-texte.ts. */
+const texte = spawnSync(PYTHON, [path.join(racine, "scripts", "dossier-texte.py")], {
+  cwd: racine,
+  encoding: "utf8",
+});
+if (texte.status !== 0) throw new Error(`dossier-texte.py : ${texte.stderr || texte.status}`);
+process.stdout.write(texte.stdout);
