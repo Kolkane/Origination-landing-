@@ -868,52 +868,70 @@ html {
 .couverture:hover {
   box-shadow: 0 0 0 3px var(--anneau);
 }
-/* V88 · LA COMÈTE DE LA COUVERTURE. Un trait de 2 px, vin, qui fait le tour
-   de la couverture en 6 s : tête pleine sur un dixième du tour, traînée en
-   fondu sur plus d'un tiers (v88b, Vincent : « plus voyant, une traînée,
-   sobre mais efficace »). Il dit « on peut ouvrir » avant tout survol. Un
-   pixel sur le filet #C8CACC, un pixel sur le papier : c'est sur le blanc
-   cassé que le vin se voit. Dessiné par un pseudo-élément en conic-gradient
-   dont l'angle de départ est une propriété personnalisée animée (@property,
-   sinon un angle ne s'interpole pas) ; le masque ne garde que l'anneau de
-   2 px, l'intérieur reste la couverture. Sans @property (navigateurs anciens) le trait reste posé, fixe,
-   en haut à droite. Sous prefers-reduced-motion : rien, le repos est le
-   dessin d'avant. */
-@property --tour {
-  syntax: "<angle>";
-  inherits: false;
-  initial-value: 0deg;
-}
+/* V88 · LA COMÈTE DE LA COUVERTURE, v89 pour sa mécanique. Un trait de
+   2 px, vin, qui fait le tour de la couverture en 6 s : tête pleine sur un
+   dixième du tour, traînée en fondu sur plus d'un tiers (v88b, Vincent :
+   « plus voyant, une traînée, sobre mais efficace »). Il dit « on peut
+   ouvrir » avant tout survol. Un pixel sur le filet, un pixel sur le
+   papier : c'est sur le blanc cassé que le vin se voit.
+   v89, LE DESSIN NE CHANGE PAS, SA MÉCANIQUE SI. La V88 animait l'angle du
+   conic-gradient par une propriété personnalisée (@property --tour). Un
+   navigateur ne sait pas compositer ça : il recalculait le style et
+   repeignait À CHAQUE IMAGE, pour toute la vie de la page. Mesuré sur le
+   build, 6 s de page au repos, sans interaction : 424 ms de fil principal
+   et 360 recalculs de style, contre 24 ms et 27 sans la comète. Et
+   COUVERTURE HORS CHAMP le coût était le même, 367 ms : un onglet laissé
+   ouvert payait ça indéfiniment, batterie comprise sur téléphone.
+   Ici c'est une ROTATION : le masque en anneau est fixe sur .couverture-fil,
+   le dégradé tourne sur son ::before. Une transformation se composite, donc
+   zéro recalcul de style par image. La géométrie est la même, le conic
+   reste centré sur la couverture : faire tourner le carré qui le porte
+   autour de ce centre revient exactement à faire tourner son angle.
+   Aucun filtre, aucune ombre : pas de lueur, ce serait une ombre portée.
+   Sous prefers-reduced-motion : rien, le repos est le dessin d'avant. */
 .couverture {
   position: relative;
 }
-.couverture::after {
-  content: "";
+.couverture-fil {
   position: absolute;
   inset: -1px;
   padding: 2px;
+  overflow: hidden;
   pointer-events: none;
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+}
+/* le carré qui porte le dégradé déborde largement : en tournant, ses coins
+   doivent couvrir toute la couverture, sans quoi l'anneau se viderait aux
+   angles. 300 % suffisent pour tout rapport de boîte raisonnable. */
+.couverture-fil::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 300%;
+  height: 300%;
   background: conic-gradient(
-    from var(--tour),
+    from 0deg,
     transparent 0 52%,
     rgba(142, 36, 56, 0) 52%,
     rgba(142, 36, 56, 0.45) 78%,
     var(--vin) 88% 98%,
     transparent 98% 100%
   );
-  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
-  mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
+  transform: translate(-50%, -50%) rotate(0deg);
   animation: couverture-tour 6s linear infinite;
+  will-change: transform;
 }
 @keyframes couverture-tour {
   to {
-    --tour: 360deg;
+    transform: translate(-50%, -50%) rotate(360deg);
   }
 }
 @media (prefers-reduced-motion: reduce) {
-  .couverture::after {
+  .couverture-fil {
     display: none;
   }
 }
@@ -1150,6 +1168,75 @@ html {
   outline: 2px solid var(--encre);
   outline-offset: 4px;
 }
+/* v89 · L'ALTERNATIVE TEXTE DU DOSSIER. Un <details> natif sous le cahier :
+   le contenu est dans le DOM, donc lu par les moteurs et par un lecteur
+   d'écran, sans JavaScript et sans texte caché. Composé comme une page de
+   texte, pas comme un document : c'est la version qui se LIT, la feuille
+   au-dessus est celle qui se MONTRE. Sur téléphone c'est la seule lisible,
+   la page A4 y tombant à 0,44 fois sa taille. */
+.dossier-texte {
+  margin-top: 40px;
+  padding-top: 24px;
+  border-top: 1px solid var(--filet-2);
+}
+.dossier-texte > summary {
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--encre);
+  text-decoration: underline;
+  text-underline-offset: 5px;
+  text-decoration-thickness: 1px;
+  text-decoration-color: var(--vin);
+}
+.dossier-texte > summary:hover {
+  color: var(--gris);
+}
+.dossier-texte-page {
+  margin-top: 28px;
+  max-width: 580px;
+}
+.dossier-texte-page + .dossier-texte-page {
+  padding-top: 28px;
+  border-top: 1px solid var(--filet);
+}
+.dossier-texte-folio {
+  margin: 0 0 16px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--gris-2);
+}
+.dossier-texte h4 {
+  margin: 22px 0 8px;
+  font-size: 17px;
+  font-weight: 600;
+  line-height: 1.35;
+  color: var(--encre);
+}
+.dossier-texte-page > h4:first-of-type {
+  margin-top: 0;
+}
+.dossier-texte p {
+  margin: 0 0 12px;
+  font-size: 16px;
+  line-height: 1.65;
+  color: var(--gris);
+}
+.dossier-texte .dossier-texte-note {
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--gris-2);
+}
+@media (max-width: 760px) {
+  .dossier-texte {
+    margin-top: 28px;
+  }
+  .dossier-texte p {
+    font-size: 15px;
+  }
+}
+
 .cahier-commandes {
   display: flex;
   align-items: center;
