@@ -2246,6 +2246,69 @@ sur une hauteur ni une largeur de texte, qui se remesurent sur le build.
   760 et 390, présentes et fonctionnelles au-dessus, « précédentes »
   désactivée au départ et « suivantes » désactivée en fin de course.
 
+- LES FIGURES DE LA QUATRIÈME ANALYSE, v91 (arbitrage Vincent, 19/09/2026 :
+  « améliore l'article avec des figures ou schémas »). L'article de la
+  consolidation était le seul des quatre sans figure, et il portait en plus
+  sept faits datés composés en sept paragraphes de même longueur,
+  c'est-à-dire très exactement la platitude que la v85 a retirée des trois
+  premiers. Trois formes s'ajoutent, aucune règle ne bouge.
+  LA RÈGLE v85 TIENT ENTIÈREMENT : une figure dessine un RAISONNEMENT déjà
+  écrit dans l'article, jamais une quantité ; ni axe, ni échelle, ni série ;
+  en HTML réglé et jamais en SVG à coordonnées ; une seule marque en vin par
+  figure ; et la légende dit explicitement ce que la figure NE figure PAS.
+  Les deux légendes le font : « aucune durée, aucun multiple, aucun nombre
+  d'acquéreurs », « ni quand, ni pour combien de cabinets ».
+  LA BORNE, 7 repères : la règle de détention posée UNE fois en tête, sous
+  son filet vin, puis le même passage joué deux fois, à l'entrée et à la
+  sortie, avec ce qui passe et ce qui reste dehors. C'est la thèse de
+  l'article : le secteur donne la récurrence et la fragmentation, et retire
+  une partie de la plus-value de sortie. La colonne « dehors » recule d'un
+  gris ; elle dit qu'une porte est fermée, elle ne compte pas ce qu'il y a
+  derrière.
+  LA BASCULE, 5 repères : le cabinet d'expertise comptable nommé une fois,
+  et les deux côtés où il se trouve désormais, prescripteur et société à
+  reprendre. CE N'EST PAS LA BIFURCATION, et la différence est le point :
+  la bifurcation fait diverger deux trajectoires d'une même origine, ici
+  rien ne diverge, une seconde position s'ajoute sans que la première
+  disparaisse. D'où deux COLONNES quand la bifurcation est deux RANGÉES.
+  La règle v23 vaut pour les figures comme pour les zones du dossier, LA
+  VARIÉTÉ EST LA FONCTION : ne ramener aucune des cinq au gabarit d'une
+  autre.
+  LA CHRONOLOGIE, nouvelle forme de bloc et non une figure : une suite de
+  faits datés est une FORME, la date tient sa colonne, le fait la sienne,
+  les filets font le reste. En <dl> et non en <ul>, chaque entrée étant une
+  date et ce qu'elle porte, c'est-à-dire une paire terme / définition, et
+  c'est ce qu'un lecteur d'écran doit entendre. Elle ne porte que des faits
+  déjà publiés ailleurs, jamais un décompte du site.
+  DEUX DÉFAUTS VUS À LA CAPTURE ET CORRIGÉS, consignés parce qu'ils se
+  reprendront. (1) Le filet vin de la borne s'AJOUTAIT au filet de tête
+  commun de .figure, deux filets à 32 px d'écart : très exactement le
+  défaut que la v62 a retiré du pied de « ce que nous ne faisons pas ».
+  La figure porte désormais le nom de son dessin (figure-borne) et remplace
+  le filet commun au lieu de s'y ajouter. (2) Les deux côtés de la bascule
+  étaient calés par le haut, donc leurs filets BAS tombaient à des hauteurs
+  différentes, celle de l'écart de longueur des deux textes. Ils sont
+  étirés, la pointe seule reste en haut. C'est l'inverse du Cycle (v85),
+  dont les trois étapes n'ont pas de filet bas : un filet bas partagé
+  demande l'étirement, une rangée sans filet bas demande le calage haut.
+  SUR TÉLÉPHONE les deux figures empilent, comme la bifurcation et le
+  cycle : la borne met le moment au-dessus de sa paire, la bascule empile
+  ses deux côtés avec la pointe tournée vers le bas et le filet bas du
+  premier côté retiré, sinon il suivait le filet vin du second à 8 px. La
+  chronologie passe la date au-dessus de son fait.
+  LES SEPT OPÉRATIONS RESTENT À VÉRIFIER PAR VINCENT, signalé deux fois
+  avant la mise en ligne : noms, dates et ordres de grandeur viennent du
+  texte qu'il a fourni, aucun n'est vérifiable depuis le dépôt. C'est le
+  seul endroit du site qui avance des faits externes datés. L'article le
+  dit lui-même deux fois, en tête et dans « Ce que nous ne savons pas »,
+  et il nomme sa source.
+  VÉRIFIÉ SUR LE BUILD : build et lint verts ; deux figures et sept lignes
+  de chronologie sur la page ; le vin à un seul endroit par figure,
+  #8E2438 mesuré ; filets bas de la bascule alignés au pixel ; aucun filet
+  empilé en tête de la borne ; cinq ancres de sommaire sur cinq ; aucun
+  débordement horizontal, 8 pages x 10 largeurs de 360 à 1920, paliers
+  760/761 et 1295/1296 compris.
+
 - MÉTHODE DU CHANTIER : cinq lots, un commit par lot, un rapport court et une
   validation entre chaque. 0 préparation (emblèmes, Hanken, tokens, charte) ;
   1 hero, en-tête, pied de page ; 2 service, dossier et popup, méthode ;

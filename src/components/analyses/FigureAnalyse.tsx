@@ -20,7 +20,13 @@ import type { NomFigure } from "@/config/analyses";
    ombre, ni arrondi.
    LES REPÈRES SONT DU TEXTE et viennent des données
    (src/config/analyses.ts, clé « reperes »). Chaque figure en attend un
-   nombre FIXE, écrit ci-dessous. */
+   nombre FIXE, écrit ci-dessous.
+
+   v91 : deux figures s’ajoutent pour la quatrième analyse, la borne et
+   la bascule. La règle de la v23 vaut ici aussi, LA VARIÉTÉ EST LA
+   FONCTION : chacune a sa forme propre et aucune ne doit être ramenée au
+   gabarit d’une autre. Une ligne, deux branches, un cycle, une règle qui
+   joue deux fois, un objet qui gagne un second côté. */
 
 /* la pointe des liaisons : un chevron de 7 px, au trait, jamais une
    icône de bibliothèque */
@@ -99,10 +105,65 @@ function Cycle({ r }: { r: string[] }) {
   );
 }
 
+/* LA BORNE, 7 repères : la règle, puis deux moments, chacun avec ce
+   qu’il laisse passer et ce qu’il ferme. C’est la même règle appliquée
+   aux deux bouts du mouvement, et c’est tout le point de l’article : la
+   figure la pose UNE fois, en tête, sous son filet vin, puis la fait
+   jouer deux fois. Le vin ne marque que la règle. Aucun nombre, aucune
+   largeur ne dit « combien » : la colonne de droite dit ce qui reste
+   dehors, pas une quantité. */
+/* « -f » parce que .fig-borne est déjà pris par les deux bornes du
+   Décalage, qui sont des libellés et non un conteneur */
+function Borne({ r }: { r: string[] }) {
+  return (
+    <div className="fig fig-borne-f">
+      <p className="fig-regle">{r[0]}</p>
+      <div className="fig-passage">
+        <p className="fig-moment">{r[1]}</p>
+        <p className="fig-dedans">{r[2]}</p>
+        <p className="fig-dehors">{r[3]}</p>
+      </div>
+      <div className="fig-passage">
+        <p className="fig-moment">{r[4]}</p>
+        <p className="fig-dedans">{r[5]}</p>
+        <p className="fig-dehors">{r[6]}</p>
+      </div>
+    </div>
+  );
+}
+
+/* LA BASCULE, 5 repères : un objet, nommé une fois, et les deux côtés
+   où il se trouve désormais. Ce n’est PAS la bifurcation, qui fait
+   diverger deux trajectoires d’une même origine : ici rien ne diverge,
+   c’est le même cabinet qui gagne une seconde position sans perdre la
+   première. D’où deux colonnes côte à côte et non deux rangées, et la
+   pointe entre elles, pour que les deux formes ne se confondent pas à
+   la lecture. Le vin marque la position qui s’ajoute. */
+function Bascule({ r }: { r: string[] }) {
+  return (
+    <div className="fig fig-bascule">
+      <p className="fig-objet">{r[0]}</p>
+      <div className="fig-cotes">
+        <div className="fig-cote">
+          <p className="fig-cote-nom">{r[1]}</p>
+          <p className="fig-cote-dit">{r[2]}</p>
+        </div>
+        <Pointe />
+        <div className="fig-cote fig-cote-vin">
+          <p className="fig-cote-nom">{r[3]}</p>
+          <p className="fig-cote-dit">{r[4]}</p>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 const FIGURES: Record<NomFigure, (p: { r: string[] }) => JSX.Element> = {
   decalage: Decalage,
   bifurcation: Bifurcation,
   cycle: Cycle,
+  borne: Borne,
+  bascule: Bascule,
 };
 
 export default function FigureAnalyse({
@@ -116,7 +177,7 @@ export default function FigureAnalyse({
 }) {
   const Dessin = FIGURES[nom];
   return (
-    <figure className="figure">
+    <figure className={`figure figure-${nom}`}>
       <Dessin r={reperes} />
       <figcaption className="figure-legende">{legende}</figcaption>
     </figure>

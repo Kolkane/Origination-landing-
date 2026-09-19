@@ -2366,6 +2366,36 @@ body {
 /* L'EXERGUE. Une phrase DÉJÀ ÉCRITE dans l'article, reprise à l'échelle
    du display, entre deux filets d'encre. Ce n'est pas une citation, il
    n'y a donc ni guillemets ni italique : c'est un ralentissement. */
+/* v91 · LA CHRONOLOGIE : la date tient sa colonne, le fait la sienne, les
+   filets font le reste. Sept faits datés à la suite se composaient sinon
+   en sept paragraphes de même longueur, la platitude même que la v85 a
+   retirée des trois premiers articles. */
+.article-corps .article-chrono {
+  margin: 32px 0;
+}
+.article-chrono-ligne {
+  display: grid;
+  grid-template-columns: 150px minmax(0, 1fr);
+  column-gap: 24px;
+  padding: 14px 0;
+  border-top: 1px solid var(--filet-2);
+}
+.article-chrono-ligne:last-child {
+  border-bottom: 1px solid var(--filet-2);
+}
+.article-corps .article-chrono dt {
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1.55;
+  color: var(--encre);
+}
+.article-corps .article-chrono dd {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--gris);
+}
+
 .article-corps .article-exergue {
   margin: 40px 0;
   padding: 26px 0;
@@ -2533,6 +2563,94 @@ body {
   color: var(--vin) !important;
 }
 
+/* v91 · LA BORNE : la règle posée une fois, en tête sous son filet vin,
+   puis le même passage joué deux fois. Trois colonnes, le moment, ce qui
+   passe, ce qui reste dehors. Les colonnes ne disent AUCUNE quantité :
+   leurs largeurs sont celles du texte, pas d’une mesure. */
+.fig-borne-f {
+  display: grid;
+  row-gap: 0;
+}
+/* LE FILET VIN REMPLACE LE FILET DE TÊTE COMMUN, il ne s’y ajoute pas :
+   deux filets à 32 px d’écart, c’est très exactement le défaut que la
+   v62 a retiré du pied de la bande « ce que nous ne faisons pas ». Vu
+   à la capture. */
+.figure-borne {
+  border-top: 0;
+  padding-top: 0;
+}
+.fig-regle {
+  padding: 0 0 16px;
+  border-top: 2px solid var(--vin);
+  color: var(--vin) !important;
+  font-weight: 500;
+}
+.fig-passage {
+  display: grid;
+  grid-template-columns: minmax(0, 3fr) minmax(0, 6fr) minmax(0, 5fr);
+  align-items: start;
+  column-gap: 18px;
+  padding: 16px 0;
+  border-top: 1px solid var(--filet-2);
+}
+.fig-passage:last-child {
+  border-bottom: 1px solid var(--filet-2);
+}
+.fig-moment {
+  font-weight: 500;
+}
+/* ce qui reste dehors recule d’un gris : la figure dit qu’une porte est
+   fermée, elle ne compte pas ce qu’il y a derrière */
+.fig-dehors {
+  color: var(--gris-2) !important;
+}
+
+/* v91 · LA BASCULE : un objet nommé une fois, et les deux côtés où il se
+   trouve désormais. Deux COLONNES, quand la bifurcation est deux
+   RANGÉES : les deux formes ne doivent pas se lire pareil. Le second
+   côté, celui qui s’ajoute, porte le vin. */
+.fig-bascule {
+  display: grid;
+  row-gap: 0;
+}
+.fig-objet {
+  padding-bottom: 14px;
+  color: var(--gris-2) !important;
+}
+/* LES DEUX CÔTÉS SONT À LA MÊME HAUTEUR, étirés et non calés par le
+   haut : leurs filets bas sont deux traits de la même figure, ils doivent
+   se lire sur une ligne. C’est l’inverse du Cycle, où les trois étapes
+   n’ont pas de filet bas et se calent par le haut (v85). La pointe, elle,
+   reste en haut. */
+.fig-cotes {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 8px minmax(0, 1fr);
+  align-items: stretch;
+  column-gap: 18px;
+}
+.fig-cotes .fig-pointe {
+  align-self: start;
+  margin-top: 16px;
+}
+.fig-cote {
+  padding: 14px 0 16px;
+  border-top: 1px solid var(--filet-2);
+  border-bottom: 1px solid var(--filet-2);
+}
+.fig-cote-nom {
+  font-weight: 500;
+}
+.fig-cote-dit {
+  margin-top: 6px !important;
+  color: var(--gris) !important;
+}
+.fig-cote-vin {
+  border-top: 2px solid var(--vin);
+}
+.fig-cote-vin .fig-cote-nom {
+  color: var(--vin) !important;
+}
+
 /* LE CYCLE : trois étapes, puis le retour vers le départ, tireté et
    coupé. La croix en vin est l'endroit où la méthode se perd. */
 .fig-cycle {
@@ -2586,14 +2704,38 @@ body {
    libellés ont besoin de la largeur, pas d'une colonne de 100 px */
 @media (max-width: 760px) {
   .fig-branche,
-  .fig-etapes {
+  .fig-etapes,
+  .fig-cotes {
     grid-template-columns: minmax(0, 1fr);
     justify-items: start;
     row-gap: 8px;
   }
   .fig-branche .fig-pointe,
-  .fig-etapes .fig-pointe {
+  .fig-etapes .fig-pointe,
+  .fig-cotes .fig-pointe {
     transform: rotate(90deg);
+  }
+  /* v91 : la bascule empile ses deux côtés, la pointe bascule vers le
+     bas ; le filet bas du premier côté et le filet vin du second se
+     suivraient à 8 px, on retire le premier */
+  .fig-cotes .fig-pointe {
+    margin: 4px 0;
+  }
+  .fig-cote:first-child {
+    border-bottom: 0;
+  }
+  .fig-cote {
+    width: 100%;
+  }
+  /* la borne : le moment passe au-dessus de sa paire */
+  .fig-passage {
+    grid-template-columns: minmax(0, 1fr);
+    row-gap: 6px;
+  }
+  /* la chronologie : la date au-dessus de son fait */
+  .article-chrono-ligne {
+    grid-template-columns: minmax(0, 1fr);
+    row-gap: 4px;
   }
   .fig-decalage {
     grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);

@@ -17,7 +17,14 @@ import { typoDeep } from "./typo";
    La règle « rien codé en dur dans le JSX » vaut aussi pour les figures :
    leurs repères sont du texte, ils vivent donc ici, et le composant ne
    fait que les placer. */
-export type NomFigure = "decalage" | "bifurcation" | "cycle";
+export type NomFigure =
+  | "decalage"
+  | "bifurcation"
+  | "cycle"
+  /* v91, la quatrième analyse : la règle qui borne les DEUX bouts du
+     mouvement, et le rôle qui change de côté */
+  | "borne"
+  | "bascule";
 
 export type BlocArticle =
   | { forme: "p"; texte: string }
@@ -30,7 +37,14 @@ export type BlocArticle =
      aucun chiffre mesuré à montrer et la liste blanche interdit d'en
      inventer. Le nombre de repères est fixe par figure, voir
      src/components/analyses/FigureAnalyse.tsx. */
-  | { forme: "figure"; nom: NomFigure; legende: string; reperes: string[] };
+  | { forme: "figure"; nom: NomFigure; legende: string; reperes: string[] }
+  /* v91 · LA CHRONOLOGIE. Sept faits datés à la suite se composaient en
+     sept paragraphes de même longueur, c'est-à-dire exactement la platitude
+     que la v85 a retirée des trois premiers articles. Une liste de faits
+     datés est une FORME, pas de la prose : la date tient sa colonne, le
+     fait la sienne, et les filets font le reste. Elle ne porte que des
+     faits déjà publiés ailleurs, jamais un décompte du site. */
+  | { forme: "chronologie"; entrees: { date: string; fait: string }[] };
 
 export type Article = {
   slug: string;
@@ -280,39 +294,37 @@ export const analyses: Article[] = typoDeep([
           "Entre fin juillet et mi-septembre 2026, les annonces publiques ont recensé six opérations sur des cabinets d’expertise comptable français, et une septième sur l’éditeur d’un logiciel qui leur est destiné.",
       },
       {
-        forme: "p",
-        texte:
-          "24 juillet : un cabinet parisien d’environ 20 millions d’euros de chiffre d’affaires réalise son premier LBO (Impulsa).",
-      },
-      {
-        forme: "p",
-        texte:
-          "30 juillet : un groupe parisien accompagné par un fonds atteint environ 42 millions de revenus après quatre acquisitions (Numéris, avec Strada Partners).",
-      },
-      {
-        forme: "p",
-        texte:
-          "3 août : un groupe lyonnais d’environ 100 millions, adossé à un investisseur, reprend des implantations dont un cabinet francilien (Implid, avec EMZ).",
-      },
-      {
-        forme: "p",
-        texte:
-          "Début septembre : un cabinet strasbourgeois d’environ 50 millions ouvre son capital à un minoritaire (Wema).",
-      },
-      {
-        forme: "p",
-        texte:
-          "4 septembre : un groupe normand détenu par un fonds atteint environ 90 millions de revenus consolidés en acquérant deux cabinets dans le Sud-Est (Kerogo, avec Perwyn).",
-      },
-      {
-        forme: "p",
-        texte:
-          "7 septembre : un groupe parisien d’expertise comptable, d’audit et de conseil financier reprend un confrère francilien (Aurys).",
-      },
-      {
-        forme: "p",
-        texte:
-          "19 septembre : l’éditeur d’un logiciel dédié aux cabinets, soutenu par un fonds, diversifie son offre par acquisition (MyUnisoft, avec Hg).",
+        forme: "chronologie",
+        entrees: [
+          {
+            date: "24 juillet",
+            fait: "Un cabinet parisien d’environ 20 millions d’euros de chiffre d’affaires réalise son premier LBO (Impulsa).",
+          },
+          {
+            date: "30 juillet",
+            fait: "Un groupe parisien accompagné par un fonds atteint environ 42 millions de revenus après quatre acquisitions (Numéris, avec Strada Partners).",
+          },
+          {
+            date: "3 août",
+            fait: "Un groupe lyonnais d’environ 100 millions, adossé à un investisseur, reprend des implantations dont un cabinet francilien (Implid, avec EMZ).",
+          },
+          {
+            date: "Début septembre",
+            fait: "Un cabinet strasbourgeois d’environ 50 millions ouvre son capital à un minoritaire (Wema).",
+          },
+          {
+            date: "4 septembre",
+            fait: "Un groupe normand détenu par un fonds atteint environ 90 millions de revenus consolidés en acquérant deux cabinets dans le Sud-Est (Kerogo, avec Perwyn).",
+          },
+          {
+            date: "7 septembre",
+            fait: "Un groupe parisien d’expertise comptable, d’audit et de conseil financier reprend un confrère francilien (Aurys).",
+          },
+          {
+            date: "19 septembre",
+            fait: "L’éditeur d’un logiciel dédié aux cabinets, soutenu par un fonds, diversifie son offre par acquisition (MyUnisoft, avec Hg).",
+          },
+        ],
       },
       {
         forme: "p",
@@ -367,6 +379,21 @@ export const analyses: Article[] = typoDeep([
           "À la sortie, l’acquéreur suivant est soumis à la même contrainte. L’arbitrage de multiple qui fait l’attrait ordinaire du regroupement, acheter petit à un multiple bas et revendre gros à un multiple élevé, est borné : le groupe consolidé ne pourra être cédé qu’à un autre groupe de professionnels, ou à un autre investisseur acceptant une position non contrôlante. Le pool d’acquéreurs à la sortie est plus étroit qu’ailleurs, et le prix s’en ressent.",
       },
       {
+        forme: "figure",
+        nom: "borne",
+        legende:
+          "La même règle s’applique aux deux bouts du mouvement. Aucune durée, aucun multiple, aucun nombre d’acquéreurs n’est figuré : la figure dit ce qui est fermé, pas de combien.",
+        reperes: [
+          "Le capital reste majoritairement détenu par des professionnels inscrits",
+          "À l’entrée",
+          "Un groupe lui-même dirigé par des professionnels",
+          "Pas un financier venu de l’extérieur",
+          "À la sortie",
+          "Un autre groupe de professionnels, ou un investisseur non contrôlant",
+          "Pas le pool ordinaire des acquéreurs",
+        ],
+      },
+      {
         forme: "exergue",
         texte:
           "Le consolidateur est un cabinet devenu grand, pas un financier venu de l’extérieur.",
@@ -392,6 +419,19 @@ export const analyses: Article[] = typoDeep([
         forme: "p",
         texte:
           "D’abord, un déplacement de rôle. Le cabinet d’expertise comptable était, pour le conseil en cession, un prescripteur : le premier confident du dirigeant de PME, celui qui oriente vers un intermédiaire au moment de vendre. Il se retrouve lui-même du côté des sociétés à reprendre, avec les mêmes questions de calendrier, de structuration et de valeur que ses propres clients. Le conseil qui sait accompagner un expert-comptable cédant dispose d’un accès naturel à une population qu’il connaît déjà.",
+      },
+      {
+        forme: "figure",
+        nom: "bascule",
+        legende:
+          "Le même cabinet, vu de deux côtés de la même table. Le rôle d’hier ne disparaît pas, un second s’ajoute : la figure ne dit ni quand, ni pour combien de cabinets.",
+        reperes: [
+          "Le cabinet d’expertise comptable",
+          "Prescripteur",
+          "Premier confident du dirigeant de PME, il oriente vers un intermédiaire au moment de vendre.",
+          "Société à reprendre",
+          "Mêmes questions de calendrier, de structuration et de valeur que ses propres clients.",
+        ],
       },
       {
         forme: "p",
