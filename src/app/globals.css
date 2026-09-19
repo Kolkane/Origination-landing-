@@ -1795,11 +1795,71 @@ html {
 }
 
 /* ---------- les analyses ---------- */
-.analyses-grille {
+/* v90 · UNE SEULE LIGNE, QUI DÉFILE. Quatre analyses ne tenaient plus sur
+   trois colonnes : la quatrième carte tombait seule en deuxième rangée, et
+   comme la grille n'avait qu'un column-gap (row-gap: normal, donc zéro),
+   son filet de tête se collait au « Lire » de la première et se lisait
+   comme un séparateur interne de cette carte. La rangée devient une BANDE
+   HORIZONTALE : une seule ligne à toutes les largeurs, le nombre
+   d'analyses n'a plus d'effet sur le gabarit.
+   LA LARGEUR DE CARTE EST EN POURCENTAGE, ET ELLE EST MESURÉE : elle vaut
+   trois cartes visibles plus une amorce de la quatrième, l'amorce étant
+   ce qui dit qu'il y a une suite. La gouttière reste celle des sections.
+   AUCUNE BARRE DE DÉFILEMENT : les flèches et l'amorce font le travail, et
+   une barre horizontale sous une rangée de cartes est du chrome. Le
+   défilement au doigt, au trackpad et au clavier (le focus d'un « Lire »
+   amène sa carte) reste entier. */
+.analyses-tete {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+}
+.analyses-fleches {
+  display: flex;
+  gap: 8px;
+  flex: none;
+}
+/* le gabarit du bouton « Fermer » du menu mobile (lot 1) : 44px, filet
+   d'encre, rayon 2px. Pas un nouveau bouton, le même. */
+.analyses-fleche {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  background: transparent;
+  border: 1px solid var(--encre);
+  border-radius: 2px;
+  color: var(--encre);
+  cursor: pointer;
+}
+.analyses-fleche:hover:not(:disabled) {
+  background: var(--bouton-survol);
+}
+.analyses-fleche:disabled {
+  border-color: var(--filet-2);
+  color: var(--filet-2);
+  cursor: default;
+}
+.analyses-rail {
   margin-top: 40px;
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  display: flex;
   column-gap: 48px;
+  overflow-x: auto;
+  scroll-snap-type: x proximity;
+  scrollbar-width: none;
+  /* le contour de focus fait 4px : sans cette marge, celui du dernier
+     « Lire » serait rogné par le débordement */
+  padding-bottom: 6px;
+}
+.analyses-rail::-webkit-scrollbar {
+  display: none;
+}
+.analyses-rail > .analyse {
+  flex: 0 0 27.7%;
+  scroll-snap-align: start;
 }
 .analyse {
   border-top: 1px solid var(--encre);
@@ -1924,9 +1984,8 @@ html {
   .apropos-figure {
     max-width: 360px;
   }
-  .analyses-grille {
-    grid-template-columns: minmax(0, 1fr);
-    row-gap: 32px;
+  .analyses-rail > .analyse {
+    flex: 0 0 42%;
   }
   .rendez-vous-grille {
     grid-template-columns: minmax(0, 1fr);
@@ -2052,11 +2111,17 @@ html {
     margin-top: 2px;
     line-height: 1.5;
   }
-  .analyses-grille {
+  /* sur téléphone la bande se pousse au doigt : les flèches sortent, et
+     la carte prend presque toute la largeur pour rester lisible */
+  .analyses-fleches {
+    display: none;
+  }
+  .analyses-rail {
     margin-top: 28px;
-    display: flex;
-    flex-direction: column;
-    gap: 28px;
+    column-gap: 24px;
+  }
+  .analyses-rail > .analyse {
+    flex: 0 0 78%;
   }
   .analyse {
     padding-top: 18px;
@@ -2577,10 +2642,29 @@ body {
   font-weight: 600;
   line-height: 1.4;
 }
+/* v90 : le pied d'article liste les AUTRES analyses, donc une de moins
+   que le total. À trois entrées dans une grille de deux colonnes, la
+   troisième tombait seule, et sans row-gap elle se collait à la première.
+   Trois colonnes, et une gouttière de rangée pour que tout ajout futur
+   tombe proprement. */
 .article-suite-grille {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   column-gap: 48px;
+  row-gap: 40px;
+}
+/* trois colonnes ne tiennent pas sous la largeur où la colonne de lecture
+   occupe déjà la page : deux, puis une */
+@media (max-width: 1000px) {
+  .article-suite-grille {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: 760px) {
+  .article-suite-grille {
+    grid-template-columns: minmax(0, 1fr);
+    row-gap: 28px;
+  }
 }
 .page-retour {
   margin: 0 0 40px;

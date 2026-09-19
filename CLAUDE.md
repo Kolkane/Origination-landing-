@@ -2194,6 +2194,58 @@ sur une hauteur ni une largeur de texte, qui se remesurent sur le build.
   débordement ; cahier, tournage clavier et Échap intacts ; fonction Edge de
   l'image OpenGraph à 0,84 Mo, sous la limite de 1 Mo.
 
+- LA BANDE DES ANALYSES, v90 (arbitrage Vincent, 19/09/2026, à l'ajout de la
+  quatrième analyse) : « je veux qu'on reste sur une seule ligne sur
+  ordinateur, qu'on puisse tourner horizontalement avec une flèche ; et sur
+  téléphone pareil, un seul bloc qu'on peut scroller horizontalement ».
+  LE DÉFAUT QUE ÇA CORRIGE, et il était réel : .analyses-grille était une
+  grille de trois colonnes qui ne déclarait qu'un column-gap. row-gap valait
+  donc « normal », c'est-à-dire ZÉRO, et la quatrième carte tombait seule en
+  deuxième rangée à 1 px de la première : son filet de tête se lisait comme
+  un séparateur interne de la carte du dessus. Même défaut, même cause, au
+  pied des pages d'article, où .article-suite-grille listait les AUTRES
+  analyses, donc trois entrées dans une grille de deux colonnes.
+  LA RANGÉE DEVIENT UNE BANDE HORIZONTALE. Une seule ligne à toutes les
+  largeurs, et le nombre d'analyses n'a plus aucun effet sur le gabarit :
+  c'est le point, une cinquième analyse ne redemandera pas d'arbitrage.
+  Mesuré sur le build, pas en planche (leçon v60) : carte à 27,7 % au-dessus
+  de 1000 px, soit 332 px dans le conteneur de 1200, trois cartes visibles
+  et 60 px d'AMORCE de la quatrième ; 42 % jusqu'à 1000 px ; 78 % sous
+  761 px, soit un seul bloc et son amorce, 267 px à 390. L'amorce n'est pas
+  décorative, c'est elle qui dit qu'il y a une suite.
+  LES DEUX FLÈCHES reprennent le gabarit du bouton « Fermer » du menu mobile
+  du lot 1, 44 px, filet d'encre, rayon 2 px : pas un nouveau bouton, le
+  même. Chevrons en SVG inline, currentColor, aria-hidden, terminaisons
+  carrées (la charte proscrit les arrondis). Ce sont des COMMANDES, pas des
+  icônes décoratives : même statut que la coche du panneau d'offre (v83).
+  Le pas d'un clic est UNE carte, mesurée au rendu et jamais réécrite dans
+  le composant, sinon elle diverge du CSS au premier palier changé.
+  ELLES N'EXISTENT QU'APRÈS LE MONTAGE, et c'est une règle : un contrôle
+  inerte est un lien mort, même raison que le lien « Version PDF » du
+  dossier, qui n'existe que si le fichier est sur le disque. Sans
+  JavaScript, la bande reste une bande qui défile au doigt, au trackpad et
+  au clavier, et rien n'annonce une commande qui ne répondrait pas. Elles
+  disparaissent aussi quand tout tient à l'écran, et sous 761 px, où c'est
+  le doigt qui pousse.
+  AUCUNE BARRE DE DÉFILEMENT VISIBLE : les flèches et l'amorce font le
+  travail, une barre horizontale sous une rangée de cartes est du chrome.
+  Le focus d'un « Lire » amène sa carte, le parcours clavier est entier ;
+  6 px de rembourrage en pied de bande pour que le contour de focus de
+  4 px ne soit pas rogné par le débordement.
+  CE N'EST PAS LE « CARROUSEL » DES INTERDITS, qui vise le carrousel de
+  témoignages : rien ne tourne tout seul, rien ne boucle, rien n'apparaît
+  au scroll. La règle v54 tient, et le mouvement n'existe que sous la main
+  du visiteur (v20, v84) ; le défilement au clic suit
+  prefers-reduced-motion, où il devient instantané.
+  LE PIED D'ARTICLE passe à trois colonnes avec une gouttière de rangée,
+  deux sous 1000 px et une sous 761 px : il liste toujours une analyse de
+  moins que le total, il n'a donc pas besoin de bande.
+  VÉRIFIÉ SUR LE BUILD : build et lint verts ; une seule rangée aux sept
+  largeurs de 360 à 1920 ; aucun débordement horizontal, 8 pages x 10
+  largeurs, les paliers 760/761 et 1295/1296 compris ; flèches masquées à
+  760 et 390, présentes et fonctionnelles au-dessus, « précédentes »
+  désactivée au départ et « suivantes » désactivée en fin de course.
+
 - MÉTHODE DU CHANTIER : cinq lots, un commit par lot, un rapport court et une
   validation entre chaque. 0 préparation (emblèmes, Hanken, tokens, charte) ;
   1 hero, en-tête, pied de page ; 2 service, dossier et popup, méthode ;

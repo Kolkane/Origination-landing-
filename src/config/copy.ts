@@ -357,6 +357,12 @@ export const copy = typoDeep({
     sommaire: "Dans cette analyse",
     sommaireAria: "Sommaire de l’analyse",
     aussi: "À lire aussi",
+    /* v90 : la rangée des analyses défile sur une seule ligne. Les deux
+       flèches n’existent que sur ordinateur et que si la bande déborde ;
+       sur téléphone c’est le doigt, et elles sont masquées. */
+    railAria: "Les analyses",
+    avantAria: "Analyses précédentes",
+    apresAria: "Analyses suivantes",
   },
   /* V80 · PRENDRE RENDEZ-VOUS, au mot près de la planche : la bande
      verte, le seul bouton commercial du site (le lien Calendly de
