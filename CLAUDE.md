@@ -2194,6 +2194,121 @@ sur une hauteur ni une largeur de texte, qui se remesurent sur le build.
   débordement ; cahier, tournage clavier et Échap intacts ; fonction Edge de
   l'image OpenGraph à 0,84 Mo, sous la limite de 1 Mo.
 
+- LA BANDE DES ANALYSES, v90 (arbitrage Vincent, 19/09/2026, à l'ajout de la
+  quatrième analyse) : « je veux qu'on reste sur une seule ligne sur
+  ordinateur, qu'on puisse tourner horizontalement avec une flèche ; et sur
+  téléphone pareil, un seul bloc qu'on peut scroller horizontalement ».
+  LE DÉFAUT QUE ÇA CORRIGE, et il était réel : .analyses-grille était une
+  grille de trois colonnes qui ne déclarait qu'un column-gap. row-gap valait
+  donc « normal », c'est-à-dire ZÉRO, et la quatrième carte tombait seule en
+  deuxième rangée à 1 px de la première : son filet de tête se lisait comme
+  un séparateur interne de la carte du dessus. Même défaut, même cause, au
+  pied des pages d'article, où .article-suite-grille listait les AUTRES
+  analyses, donc trois entrées dans une grille de deux colonnes.
+  LA RANGÉE DEVIENT UNE BANDE HORIZONTALE. Une seule ligne à toutes les
+  largeurs, et le nombre d'analyses n'a plus aucun effet sur le gabarit :
+  c'est le point, une cinquième analyse ne redemandera pas d'arbitrage.
+  Mesuré sur le build, pas en planche (leçon v60) : carte à 27,7 % au-dessus
+  de 1000 px, soit 332 px dans le conteneur de 1200, trois cartes visibles
+  et 60 px d'AMORCE de la quatrième ; 42 % jusqu'à 1000 px ; 78 % sous
+  761 px, soit un seul bloc et son amorce, 267 px à 390. L'amorce n'est pas
+  décorative, c'est elle qui dit qu'il y a une suite.
+  LES DEUX FLÈCHES reprennent le gabarit du bouton « Fermer » du menu mobile
+  du lot 1, 44 px, filet d'encre, rayon 2 px : pas un nouveau bouton, le
+  même. Chevrons en SVG inline, currentColor, aria-hidden, terminaisons
+  carrées (la charte proscrit les arrondis). Ce sont des COMMANDES, pas des
+  icônes décoratives : même statut que la coche du panneau d'offre (v83).
+  Le pas d'un clic est UNE carte, mesurée au rendu et jamais réécrite dans
+  le composant, sinon elle diverge du CSS au premier palier changé.
+  ELLES N'EXISTENT QU'APRÈS LE MONTAGE, et c'est une règle : un contrôle
+  inerte est un lien mort, même raison que le lien « Version PDF » du
+  dossier, qui n'existe que si le fichier est sur le disque. Sans
+  JavaScript, la bande reste une bande qui défile au doigt, au trackpad et
+  au clavier, et rien n'annonce une commande qui ne répondrait pas. Elles
+  disparaissent aussi quand tout tient à l'écran, et sous 761 px, où c'est
+  le doigt qui pousse.
+  AUCUNE BARRE DE DÉFILEMENT VISIBLE : les flèches et l'amorce font le
+  travail, une barre horizontale sous une rangée de cartes est du chrome.
+  Le focus d'un « Lire » amène sa carte, le parcours clavier est entier ;
+  6 px de rembourrage en pied de bande pour que le contour de focus de
+  4 px ne soit pas rogné par le débordement.
+  CE N'EST PAS LE « CARROUSEL » DES INTERDITS, qui vise le carrousel de
+  témoignages : rien ne tourne tout seul, rien ne boucle, rien n'apparaît
+  au scroll. La règle v54 tient, et le mouvement n'existe que sous la main
+  du visiteur (v20, v84) ; le défilement au clic suit
+  prefers-reduced-motion, où il devient instantané.
+  LE PIED D'ARTICLE passe à trois colonnes avec une gouttière de rangée,
+  deux sous 1000 px et une sous 761 px : il liste toujours une analyse de
+  moins que le total, il n'a donc pas besoin de bande.
+  VÉRIFIÉ SUR LE BUILD : build et lint verts ; une seule rangée aux sept
+  largeurs de 360 à 1920 ; aucun débordement horizontal, 8 pages x 10
+  largeurs, les paliers 760/761 et 1295/1296 compris ; flèches masquées à
+  760 et 390, présentes et fonctionnelles au-dessus, « précédentes »
+  désactivée au départ et « suivantes » désactivée en fin de course.
+
+- LES FIGURES DE LA QUATRIÈME ANALYSE, v91 (arbitrage Vincent, 19/09/2026 :
+  « améliore l'article avec des figures ou schémas »). L'article de la
+  consolidation était le seul des quatre sans figure, et il portait en plus
+  sept faits datés composés en sept paragraphes de même longueur,
+  c'est-à-dire très exactement la platitude que la v85 a retirée des trois
+  premiers. Trois formes s'ajoutent, aucune règle ne bouge.
+  LA RÈGLE v85 TIENT ENTIÈREMENT : une figure dessine un RAISONNEMENT déjà
+  écrit dans l'article, jamais une quantité ; ni axe, ni échelle, ni série ;
+  en HTML réglé et jamais en SVG à coordonnées ; une seule marque en vin par
+  figure ; et la légende dit explicitement ce que la figure NE figure PAS.
+  Les deux légendes le font : « aucune durée, aucun multiple, aucun nombre
+  d'acquéreurs », « ni quand, ni pour combien de cabinets ».
+  LA BORNE, 7 repères : la règle de détention posée UNE fois en tête, sous
+  son filet vin, puis le même passage joué deux fois, à l'entrée et à la
+  sortie, avec ce qui passe et ce qui reste dehors. C'est la thèse de
+  l'article : le secteur donne la récurrence et la fragmentation, et retire
+  une partie de la plus-value de sortie. La colonne « dehors » recule d'un
+  gris ; elle dit qu'une porte est fermée, elle ne compte pas ce qu'il y a
+  derrière.
+  LA BASCULE, 5 repères : le cabinet d'expertise comptable nommé une fois,
+  et les deux côtés où il se trouve désormais, prescripteur et société à
+  reprendre. CE N'EST PAS LA BIFURCATION, et la différence est le point :
+  la bifurcation fait diverger deux trajectoires d'une même origine, ici
+  rien ne diverge, une seconde position s'ajoute sans que la première
+  disparaisse. D'où deux COLONNES quand la bifurcation est deux RANGÉES.
+  La règle v23 vaut pour les figures comme pour les zones du dossier, LA
+  VARIÉTÉ EST LA FONCTION : ne ramener aucune des cinq au gabarit d'une
+  autre.
+  LA CHRONOLOGIE, nouvelle forme de bloc et non une figure : une suite de
+  faits datés est une FORME, la date tient sa colonne, le fait la sienne,
+  les filets font le reste. En <dl> et non en <ul>, chaque entrée étant une
+  date et ce qu'elle porte, c'est-à-dire une paire terme / définition, et
+  c'est ce qu'un lecteur d'écran doit entendre. Elle ne porte que des faits
+  déjà publiés ailleurs, jamais un décompte du site.
+  DEUX DÉFAUTS VUS À LA CAPTURE ET CORRIGÉS, consignés parce qu'ils se
+  reprendront. (1) Le filet vin de la borne s'AJOUTAIT au filet de tête
+  commun de .figure, deux filets à 32 px d'écart : très exactement le
+  défaut que la v62 a retiré du pied de « ce que nous ne faisons pas ».
+  La figure porte désormais le nom de son dessin (figure-borne) et remplace
+  le filet commun au lieu de s'y ajouter. (2) Les deux côtés de la bascule
+  étaient calés par le haut, donc leurs filets BAS tombaient à des hauteurs
+  différentes, celle de l'écart de longueur des deux textes. Ils sont
+  étirés, la pointe seule reste en haut. C'est l'inverse du Cycle (v85),
+  dont les trois étapes n'ont pas de filet bas : un filet bas partagé
+  demande l'étirement, une rangée sans filet bas demande le calage haut.
+  SUR TÉLÉPHONE les deux figures empilent, comme la bifurcation et le
+  cycle : la borne met le moment au-dessus de sa paire, la bascule empile
+  ses deux côtés avec la pointe tournée vers le bas et le filet bas du
+  premier côté retiré, sinon il suivait le filet vin du second à 8 px. La
+  chronologie passe la date au-dessus de son fait.
+  LES SEPT OPÉRATIONS RESTENT À VÉRIFIER PAR VINCENT, signalé deux fois
+  avant la mise en ligne : noms, dates et ordres de grandeur viennent du
+  texte qu'il a fourni, aucun n'est vérifiable depuis le dépôt. C'est le
+  seul endroit du site qui avance des faits externes datés. L'article le
+  dit lui-même deux fois, en tête et dans « Ce que nous ne savons pas »,
+  et il nomme sa source.
+  VÉRIFIÉ SUR LE BUILD : build et lint verts ; deux figures et sept lignes
+  de chronologie sur la page ; le vin à un seul endroit par figure,
+  #8E2438 mesuré ; filets bas de la bascule alignés au pixel ; aucun filet
+  empilé en tête de la borne ; cinq ancres de sommaire sur cinq ; aucun
+  débordement horizontal, 8 pages x 10 largeurs de 360 à 1920, paliers
+  760/761 et 1295/1296 compris.
+
 - MÉTHODE DU CHANTIER : cinq lots, un commit par lot, un rapport court et une
   validation entre chaque. 0 préparation (emblèmes, Hanken, tokens, charte) ;
   1 hero, en-tête, pied de page ; 2 service, dossier et popup, méthode ;

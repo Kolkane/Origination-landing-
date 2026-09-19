@@ -121,6 +121,22 @@ export default function Analyse({ params }: Props) {
                         {grand(bloc.texte)}
                       </p>
                     );
+                  /* v91 : une suite de faits datés est une FORME, la date
+                     tient sa colonne et le fait la sienne. En <dl> et non
+                     en <ul> : chaque entrée est une date et ce qu’elle
+                     porte, c’est exactement une paire terme / définition,
+                     et c’est ce qu’un lecteur d’écran doit entendre. */
+                  if (bloc.forme === "chronologie")
+                    return (
+                      <dl className="article-chrono" key={bloc.entrees[0].date}>
+                        {bloc.entrees.map((e) => (
+                          <div className="article-chrono-ligne" key={e.date}>
+                            <dt>{e.date}</dt>
+                            <dd>{grand(e.fait)}</dd>
+                          </div>
+                        ))}
+                      </dl>
+                    );
                   if (bloc.forme === "figure")
                     return (
                       <FigureAnalyse

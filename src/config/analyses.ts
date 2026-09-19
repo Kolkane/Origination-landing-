@@ -17,7 +17,14 @@ import { typoDeep } from "./typo";
    La règle « rien codé en dur dans le JSX » vaut aussi pour les figures :
    leurs repères sont du texte, ils vivent donc ici, et le composant ne
    fait que les placer. */
-export type NomFigure = "decalage" | "bifurcation" | "cycle";
+export type NomFigure =
+  | "decalage"
+  | "bifurcation"
+  | "cycle"
+  /* v91, la quatrième analyse : la règle qui borne les DEUX bouts du
+     mouvement, et le rôle qui change de côté */
+  | "borne"
+  | "bascule";
 
 export type BlocArticle =
   | { forme: "p"; texte: string }
@@ -30,7 +37,14 @@ export type BlocArticle =
      aucun chiffre mesuré à montrer et la liste blanche interdit d'en
      inventer. Le nombre de repères est fixe par figure, voir
      src/components/analyses/FigureAnalyse.tsx. */
-  | { forme: "figure"; nom: NomFigure; legende: string; reperes: string[] };
+  | { forme: "figure"; nom: NomFigure; legende: string; reperes: string[] }
+  /* v91 · LA CHRONOLOGIE. Sept faits datés à la suite se composaient en
+     sept paragraphes de même longueur, c'est-à-dire exactement la platitude
+     que la v85 a retirée des trois premiers articles. Une liste de faits
+     datés est une FORME, pas de la prose : la date tient sa colonne, le
+     fait la sienne, et les filets font le reste. Elle ne porte que des
+     faits déjà publiés ailleurs, jamais un décompte du site. */
+  | { forme: "chronologie"; entrees: { date: string; fait: string }[] };
 
 export type Article = {
   slug: string;
@@ -259,6 +273,186 @@ export const analyses: Article[] = typoDeep([
         forme: "chute",
         texte:
           "Le problème n’est pas de savoir qu’il faudrait le faire. C’est de trouver qui le fera, sans relâche, et pour un seul cabinet à la fois.",
+      },
+    ],
+  },
+  {
+    slug: "consolidation-expertise-comptable",
+    titre: "La consolidation de l’expertise comptable",
+    /* Quatrième analyse, 19/09/2026. Trois écarts au texte source, chacun
+       adossé à une règle de la charte : l’âge ne cause plus rien (v77), pas
+       d’horizon affirmé (« en fin de cycle » retiré), et un dirigeant n’est
+       pas une cible (v69). Les opérations citées sont des annonces
+       publiques, et l’article le dit. */
+    standfirst:
+      "Six opérations sur des cabinets en huit semaines. Ce qu’un métier réglementé et récurrent révèle de la logique des consolidateurs.",
+    datePublished: "2026-09-19",
+    corps: [
+      {
+        forme: "p",
+        texte:
+          "Entre fin juillet et mi-septembre 2026, les annonces publiques ont recensé six opérations sur des cabinets d’expertise comptable français, et une septième sur l’éditeur d’un logiciel qui leur est destiné.",
+      },
+      {
+        forme: "chronologie",
+        entrees: [
+          {
+            date: "24 juillet",
+            fait: "Un cabinet parisien d’environ 20 millions d’euros de chiffre d’affaires réalise son premier LBO (Impulsa).",
+          },
+          {
+            date: "30 juillet",
+            fait: "Un groupe parisien accompagné par un fonds atteint environ 42 millions de revenus après quatre acquisitions (Numéris, avec Strada Partners).",
+          },
+          {
+            date: "3 août",
+            fait: "Un groupe lyonnais d’environ 100 millions, adossé à un investisseur, reprend des implantations dont un cabinet francilien (Implid, avec EMZ).",
+          },
+          {
+            date: "Début septembre",
+            fait: "Un cabinet strasbourgeois d’environ 50 millions ouvre son capital à un minoritaire (Wema).",
+          },
+          {
+            date: "4 septembre",
+            fait: "Un groupe normand détenu par un fonds atteint environ 90 millions de revenus consolidés en acquérant deux cabinets dans le Sud-Est (Kerogo, avec Perwyn).",
+          },
+          {
+            date: "7 septembre",
+            fait: "Un groupe parisien d’expertise comptable, d’audit et de conseil financier reprend un confrère francilien (Aurys).",
+          },
+          {
+            date: "19 septembre",
+            fait: "L’éditeur d’un logiciel dédié aux cabinets, soutenu par un fonds, diversifie son offre par acquisition (MyUnisoft, avec Hg).",
+          },
+        ],
+      },
+      {
+        forme: "p",
+        texte:
+          "Sept mouvements en huit semaines, tous sur des plateformes de 20 à 100 millions d’euros de revenus, tous avec un investisseur financier au capital. Ce n’est plus une suite d’anecdotes : c’est une consolidation installée, et elle a une logique qu’il vaut la peine de démonter.",
+      },
+      { forme: "intertitre", texte: "Pourquoi ce métier" },
+      {
+        forme: "p",
+        texte:
+          "Trois caractéristiques font de l’expertise comptable un terrain de consolidation presque idéal.",
+      },
+      {
+        forme: "p",
+        texte:
+          "La récurrence, d’abord. Un cabinet vit de missions annuelles que ses clients ne peuvent pas ne pas commander : tenue, liasse, bilan, déclarations. Le chiffre d’affaires de l’année prochaine est, pour l’essentiel, déjà connu. C’est la caractéristique que les financeurs paient le plus cher, parce qu’elle permet de porter de la dette.",
+      },
+      {
+        forme: "p",
+        texte:
+          "La fragmentation, ensuite. La profession compte des milliers de cabinets indépendants, dont une majorité de petite taille, dirigés par leur fondateur. Chaque cabinet racheté représente une part de marché acquise sans avoir à la conquérir.",
+      },
+      {
+        forme: "p",
+        texte:
+          "La démographie, enfin. Une génération de dirigeants de cabinets devra transmettre, dans un métier où la succession interne n’est pas toujours possible : reprendre un cabinet suppose d’être soi-même inscrit à l’Ordre et de pouvoir financer une reprise.",
+      },
+      {
+        forme: "p",
+        texte:
+          "Une quatrième s’ajoute depuis peu, la couche logicielle. Les outils de production comptable s’automatisent, ce qui déplace la marge des cabinets et rend la taille plus payante. L’opération sur MyUnisoft n’est pas un hasard de calendrier : l’éditeur et le cabinet se consolident en parallèle, parce que le même mouvement les touche.",
+      },
+      { forme: "intertitre", texte: "Ce que la réglementation change" },
+      {
+        forme: "p",
+        texte:
+          "C’est ici que le secteur se distingue des autres métiers en consolidation, et c’est ce qui échappe le plus souvent aux lectures rapides.",
+      },
+      {
+        forme: "p",
+        texte:
+          "Le capital et les droits de vote d’une société d’expertise comptable doivent rester majoritairement détenus par des professionnels inscrits. Un fonds ne peut donc pas prendre le contrôle d’un cabinet comme il prendrait celui d’une entreprise de services ordinaire. Les structures observées le montrent : les investisseurs sont décrits comme accompagnant, épaulant, détenant une position minoritaire ou structurée, aux côtés d’experts-comptables qui conservent le contrôle réglementaire.",
+      },
+      {
+        forme: "p",
+        texte:
+          "À l’entrée, la consolidation ne peut donc être menée que par des groupes eux-mêmes dirigés par des professionnels. Le consolidateur est un cabinet devenu grand, pas un financier venu de l’extérieur. Cela ralentit le mouvement par rapport à d’autres secteurs et réserve le rôle de plateforme à un petit nombre d’acteurs.",
+      },
+      {
+        forme: "p",
+        texte:
+          "À la sortie, l’acquéreur suivant est soumis à la même contrainte. L’arbitrage de multiple qui fait l’attrait ordinaire du regroupement, acheter petit à un multiple bas et revendre gros à un multiple élevé, est borné : le groupe consolidé ne pourra être cédé qu’à un autre groupe de professionnels, ou à un autre investisseur acceptant une position non contrôlante. Le pool d’acquéreurs à la sortie est plus étroit qu’ailleurs, et le prix s’en ressent.",
+      },
+      {
+        forme: "figure",
+        nom: "borne",
+        legende:
+          "La même règle s’applique aux deux bouts du mouvement. Aucune durée, aucun multiple, aucun nombre d’acquéreurs n’est figuré : la figure dit ce qui est fermé, pas de combien.",
+        reperes: [
+          "Le capital reste majoritairement détenu par des professionnels inscrits",
+          "À l’entrée",
+          "Un groupe lui-même dirigé par des professionnels",
+          "Pas un financier venu de l’extérieur",
+          "À la sortie",
+          "Un autre groupe de professionnels, ou un investisseur non contrôlant",
+          "Pas le pool ordinaire des acquéreurs",
+        ],
+      },
+      {
+        forme: "exergue",
+        texte:
+          "Le consolidateur est un cabinet devenu grand, pas un financier venu de l’extérieur.",
+      },
+      {
+        forme: "p",
+        texte:
+          "Le secteur offre donc aux consolidateurs une récurrence exceptionnelle et une fragmentation abondante, mais leur retire une partie de la plus-value de sortie. C’est cet équilibre qui explique la forme des opérations observées : des plateformes régionales de taille intermédiaire, adossées à des fonds en position minoritaire, qui croissent par acquisitions de cabinets locaux plutôt que par grands rapprochements.",
+      },
+      { forme: "intertitre", texte: "Ce que cela change pour un cédant" },
+      {
+        forme: "p",
+        texte:
+          "Pour le dirigeant d’un cabinet indépendant, la situation a une propriété rare : les acquéreurs sont identifiés. Un cabinet de dix à cinquante collaborateurs dans une région donnée sait, aujourd’hui, quelles plateformes y opèrent et à quel rythme elles achètent. Ce n’est le cas ni dans le bâtiment, ni dans les services numériques, ni dans le conseil, où le pool d’acquéreurs est plus diffus.",
+      },
+      {
+        forme: "p",
+        texte:
+          "La contrepartie est symétrique : ces plateformes savent aussi quels cabinets sont cessibles, et elles les approchent. Un cédant qui ne s’est pas préparé reçoit une offre avant d’avoir organisé une comparaison. C’est la situation décrite dans une analyse précédente sur les cessions hors marché : une transaction de gré à gré, sans mise en concurrence, dont le coût pour le cédant est réel et rarement mesuré.",
+      },
+      { forme: "intertitre", texte: "Ce que cela change pour un conseil" },
+      {
+        forme: "p",
+        texte:
+          "D’abord, un déplacement de rôle. Le cabinet d’expertise comptable était, pour le conseil en cession, un prescripteur : le premier confident du dirigeant de PME, celui qui oriente vers un intermédiaire au moment de vendre. Il se retrouve lui-même du côté des sociétés à reprendre, avec les mêmes questions de calendrier, de structuration et de valeur que ses propres clients. Le conseil qui sait accompagner un expert-comptable cédant dispose d’un accès naturel à une population qu’il connaît déjà.",
+      },
+      {
+        forme: "figure",
+        nom: "bascule",
+        legende:
+          "Le même cabinet, vu de deux côtés de la même table. Le rôle d’hier ne disparaît pas, un second s’ajoute : la figure ne dit ni quand, ni pour combien de cabinets.",
+        reperes: [
+          "Le cabinet d’expertise comptable",
+          "Prescripteur",
+          "Premier confident du dirigeant de PME, il oriente vers un intermédiaire au moment de vendre.",
+          "Société à reprendre",
+          "Mêmes questions de calendrier, de structuration et de valeur que ses propres clients.",
+        ],
+      },
+      {
+        forme: "p",
+        texte:
+          "Ensuite, un besoin. Les plateformes en consolidation ont, structurellement, un problème d’alimentation : elles doivent trouver, chaque année, plusieurs cabinets cessibles au bon calibre, dans les régions qu’elles ont choisies. Leur flux repose sur le réseau et sur l’approche directe. Or la population qu’elles cherchent, celle des cabinets dirigés par leur fondateur et sans relais identifié, est précisément celle qui se lit dans les registres avant de se déclarer.",
+      },
+      { forme: "intertitre", texte: "Ce que nous ne savons pas" },
+      {
+        forme: "p",
+        texte:
+          "Les opérations citées proviennent d’annonces publiques. Leurs montants, leurs structures exactes et les conseils intervenants ne sont pas accessibles. Le régime de détention du capital évolue et doit être vérifié au texte en vigueur avant toute application à un cas particulier.",
+      },
+      {
+        forme: "p",
+        texte:
+          "Sources : annonces publiques et presse spécialisée du corporate finance, juillet à septembre 2026.",
+      },
+      {
+        forme: "chute",
+        texte:
+          "Sept mouvements en huit semaines décrivent une tendance. Ils n’en disent pas le rythme annuel, et c’est ce que nous suivons.",
       },
     ],
   },
